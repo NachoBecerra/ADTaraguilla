@@ -134,7 +134,21 @@ src/app/                     /, /equipos, /noticias, /galeria, /clubes
 public/admin/                Panel de edición (Decap CMS)
 ```
 
-## Panel `/admin`
+## Panel `/panel`
+
+Panel propio, dentro de la web. Se entra con **una contraseña del club**: quien
+publica no necesita cuenta de GitHub. El servidor hace el commit por dentro con
+un único token, así que cualquier persona del club puede subir contenido desde
+el móvil sin darse de alta en ningún sitio.
+
+Al subir fotos se **reducen en el propio navegador** antes de enviarlas (lado
+mayor 1800 px) y todas viajan en **un solo commit**, para no encadenar veinte
+despliegues.
+
+Variables necesarias (ver `.env.example`): `CLAVE_PANEL`, `GITHUB_TOKEN`,
+`GITHUB_REPO`.
+
+## Panel `/admin` (Decap, en retirada)
 
 ### Probar en local, sin GitHub
 
