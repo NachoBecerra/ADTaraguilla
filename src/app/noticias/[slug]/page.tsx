@@ -6,7 +6,8 @@ import { fechaLarga } from "@/lib/formato";
 import { site } from "@/data/site";
 import MediaCompleta from "@/components/MediaCompleta";
 import { TarjetaNoticia } from "@/components/TarjetaNoticia";
-import { IconoFlecha, IconoWhatsApp, IconoX, IconoFacebook } from "@/components/Iconos";
+import Compartir from "@/components/Compartir";
+import { IconoFlecha } from "@/components/Iconos";
 
 export function generateStaticParams() {
   return getNoticias().map((n) => ({ slug: n.slug }));
@@ -38,13 +39,6 @@ export default async function PaginaNoticia({ params }: PageProps<"/noticias/[sl
   if (!noticia) notFound();
 
   const url = `${site.url}/noticias/${noticia.slug}`;
-  const texto = encodeURIComponent(`${noticia.titulo} — ${site.nombre}`);
-
-  const compartir = [
-    { id: "wa", nombre: "WhatsApp", Icono: IconoWhatsApp, href: `https://wa.me/?text=${texto}%20${encodeURIComponent(url)}` },
-    { id: "x", nombre: "X", Icono: IconoX, href: `https://x.com/intent/tweet?text=${texto}&url=${encodeURIComponent(url)}` },
-    { id: "fb", nombre: "Facebook", Icono: IconoFacebook, href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}` },
-  ];
 
   const relacionadas = getNoticias()
     .filter((n) => n.slug !== noticia.slug)
@@ -98,20 +92,12 @@ export default async function PaginaNoticia({ params }: PageProps<"/noticias/[sl
 
         <div className="mt-10 border-t border-linea pt-6">
           <p className="eyebrow mb-3">Compartir</p>
-          <div className="flex flex-wrap gap-2">
-            {compartir.map(({ id, nombre, Icono, href }) => (
-              <a
-                key={id}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-ghost px-4 py-2.5 text-sm"
-              >
-                <Icono size={18} />
-                {nombre}
-              </a>
-            ))}
-          </div>
+          <Compartir
+            titulo={noticia.titulo}
+            resumen={noticia.resumen}
+            url={url}
+            portada={noticia.portada}
+          />
         </div>
       </div>
 
