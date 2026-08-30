@@ -3,16 +3,6 @@
   "items": [
     {
       "tipo": "foto",
-      "id": "01",
-      "titulo": "Amistoso Infantil B - San Roque",
-      "fecha": "2026-08-30",
-      "album": "Infantil B",
-      "fotos": [
-        "/img/galeria/chatgpt-image-30-ago-2026-13_22_09.png"
-      ]
-    },
-    {
-      "tipo": "foto",
       "id": "001",
       "titulo": "Amistoso Infantil B - San Roque",
       "fecha": "2026-08-30",
@@ -23,11 +13,96 @@
     },
     {
       "tipo": "foto",
+      "id": "01",
+      "titulo": "Amistoso Infantil B - San Roque",
+      "fecha": "2026-08-30",
+      "album": "Infantil B",
+      "fotos": [
+        "/img/galeria/chatgpt-image-30-ago-2026-13_22_09.png"
+      ]
+    },
+    {
+      "tipo": "foto",
       "titulo": "Amistoso Infantil B - San Roque",
       "id": "Amistoso Infantil B - San Roque",
       "fecha": "2026-08-30",
       "album": "Infantil B",
       "fotos": "/img/galeria/chatgpt-image-30-ago-2026-18_29_03.png"
+    },
+    {
+      "tipo": "foto",
+      "fotos": [
+        "/img/galeria/chatgpt-image-30-ago-2026-18_22_39.png"
+      ],
+      "id": "Amistoso Infantil B - San Roque",
+      "titulo": "Amistoso Infantil B - San Roque",
+      "fecha": "2026-08-30",
+      "album": "Infantil B"
+    },
+    {
+      "tipo": "foto",
+      "id": "",
+      "titulo": "Amistoso Infantil B - San Roque",
+      "fecha": "2026-08-30",
+      "album": "Infantil B",
+      "fotos": [
+        "/img/galeria/chatgpt-image-30-ago-2026-18_26_43.png"
+      ]
+    },
+    {
+      "tipo": "foto",
+      "titulo": "Amistoso Infantil B - San Roque",
+      "fecha": "2026-08-30",
+      "album": "Infantil B",
+      "fotos": [
+        "/img/galeria/chatgpt-image-30-ago-2026-18_21_28.png"
+      ]
+    },
+    {
+      "tipo": "foto",
+      "titulo": "Amistoso Infantil B - San Roque",
+      "fecha": "2026-08-30",
+      "album": "Infantil B",
+      "fotos": [
+        "/img/galeria/chatgpt-image-30-ago-2026-18_21_17.png"
+      ],
+      "id": ""
+    },
+    {
+      "tipo": "foto",
+      "titulo": "Amistoso Infantil B - San Roque",
+      "album": "Infantil B",
+      "fotos": [
+        "/img/galeria/chatgpt-image-30-ago-2026-18_05_01.png"
+      ],
+      "fecha": "2026-08-30"
+    },
+    {
+      "tipo": "foto",
+      "titulo": "Amistoso Infantil B - San Roque",
+      "album": "Infantil B",
+      "fotos": [
+        "/img/galeria/chatgpt-image-30-ago-2026-18_02_59.png"
+      ],
+      "fecha": "2026-08-30"
+    },
+    {
+      "tipo": "foto",
+      "titulo": "Amistoso Infantil B - San Roque",
+      "album": "Infantil B",
+      "fotos": [
+        "/img/galeria/chatgpt-image-30-ago-2026-18_01_19.png"
+      ],
+      "fecha": "2026-08-30"
+    },
+    {
+      "tipo": "foto",
+      "titulo": "Amistoso Infantil B - San Roque",
+      "fecha": "2026-08-30",
+      "album": "Infantil B",
+      "fotos": [
+        "/img/galeria/chatgpt-image-30-ago-2026-17_23_55.png"
+      ]
     }
   ]
 }
