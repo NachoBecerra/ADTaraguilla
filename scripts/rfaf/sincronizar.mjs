@@ -359,9 +359,12 @@ function sePuedeSaltar(previo) {
   if (horas >= HORAS_FRESCURA) return false;
 
   // Una competición sin jornadas solo es aceptable si la RFAF aún no ha
-  // publicado su calendario; si no, es que no logramos leerlo.
+  // publicado su calendario; si no, es que no logramos leerlo. Y si tiene
+  // calendario pero no le hemos sacado los escudos, también queda trabajo.
   const incompleta = (previo.competiciones ?? []).some(
-    (c) => c.estado !== "sin-calendario" && (c.jornadas?.length ?? 0) === 0,
+    (c) =>
+      c.estado !== "sin-calendario" &&
+      ((c.jornadas?.length ?? 0) === 0 || !c.escudosRecogidos),
   );
 
   return !incompleta;
