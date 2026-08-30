@@ -61,7 +61,7 @@ export function getCategorias(): string[] {
 
 /** Una entrada de la galería tal y como se guarda: puede llevar varias fotos. */
 export type EntradaGaleria = {
-  id: string;
+  id?: string;
   tipo: "foto" | "video";
   titulo: string;
   fecha: string;
@@ -90,12 +90,32 @@ function comoLista(fotos?: string[] | string): string[] {
   return (Array.isArray(fotos) ? fotos : [fotos]).filter(Boolean);
 }
 
+/** Identificador estable a partir del texto, para no exigirlo al publicar. */
+function aSlug(texto: string): string {
+  return texto
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 /**
  * Aplana las entradas en fotos sueltas. Una entrada con seis fotos de un
  * partido son seis piezas en la galería, todas con el mismo título y álbum.
  */
 export function getGaleria(): ItemGaleria[] {
   const items: ItemGaleria[] = [];
+  const usados = new Set<string>();
+
+  /** Nunca dos claves iguales, aunque se repitan títulos o falten ids. */
+  const idUnico = (base: string): string => {
+    const raiz = aSlug(base) || "foto";
+    let id = raiz;
+    for (let n = 2; usados.has(id); n++) id = `${raiz}-${n}`;
+    usados.add(id);
+    return id;
+  };
 
   for (const entrada of galeriaData.items as EntradaGaleria[]) {
     const fotos = comoLista(entrada.fotos);
@@ -106,6 +126,7 @@ export function getGaleria(): ItemGaleria[] {
       const medida = src ? dimensionesDe(src) : null;
       items.push({
         ...entrada,
+        id: idUnico(entrada.id || `${entrada.titulo}-${entrada.fecha}`),
         src,
         ancho: medida?.ancho ?? 480,
         alto: medida?.alto ?? 360,
@@ -113,21 +134,18 @@ export function getGaleria(): ItemGaleria[] {
       continue;
     }
 
-    if (fotos.length === 0) {
-      items.push({ ...entrada, src: "", ancho: 4, alto: 3 });
-      continue;
-    }
+    if (fotos.length === 0) continue; // entrada sin foto: no hay nada que enseñar
 
-    fotos.forEach((src, i) => {
+    for (const src of fotos) {
       const medida = dimensionesDe(src);
       items.push({
         ...entrada,
-        id: fotos.length > 1 ? `${entrada.id}-${i + 1}` : entrada.id,
+        id: idUnico(entrada.id || `${entrada.titulo}-${entrada.fecha}`),
         src,
         ancho: medida?.ancho ?? 4,
         alto: medida?.alto ?? 3,
       });
-    });
+    }
   }
 
   return items.sort((a, b) => b.fecha.localeCompare(a.fecha));

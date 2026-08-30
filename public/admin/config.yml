@@ -70,33 +70,41 @@ collections:
   # ------------------------------------------------------ datos del club
   - name: datos
     label: Datos del club
+    # El panel de vista previa no aporta nada en un archivo de datos y se come
+    # media pantalla del formulario
+    editor:
+      preview: false
     files:
       # .............................................................. galería
       - name: galeria
         label: Galería (fotos y vídeos)
         file: src/data/galeria.json
-        media_folder: ../../public/img/galeria
+        media_folder: /public/img/galeria
         public_folder: /img/galeria
         fields:
           - name: items
             label: Elementos
             label_singular: Elemento
             widget: list
-            summary: "{{fields.titulo}}"
+            collapsed: false
+            summary: "{{fields.titulo}} · {{fields.album}} · {{fields.fecha}}"
             fields:
-              - { name: id, label: Identificador único, widget: string, hint: "Cualquier texto sin repetir, ej. derbi-2026-01" }
+              - { name: id, label: Identificador, widget: string, required: false, hint: "Se puede dejar vacío: se deduce del título y la fecha" }
               - { name: tipo, label: Tipo, widget: select, options: [foto, video], default: foto }
               - { name: titulo, label: Título, widget: string }
               - { name: fecha, label: Fecha, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
               - { name: album, label: Álbum, widget: string, hint: "Ej. Pretemporada, Cantera, Afición" }
-              - {
-                  name: fotos,
-                  label: Fotos,
-                  widget: image,
-                  allow_multiple: true,
-                  required: false,
-                  hint: "Se pueden marcar varias de una vez; cada una aparecerá como una foto de la galería",
-                }
+              - name: fotos
+                label: Fotos
+                widget: image
+                required: false
+                hint: "Se pueden marcar varias de una vez; cada una aparecerá como una foto de la galería"
+                # `multiple` es lo que hace que el campo guarde una lista;
+                # `allow_multiple` solo permite marcar varias en el selector
+                media_library:
+                  allow_multiple: true
+                  config:
+                    multiple: true
               - {
                   name: youtubeId,
                   label: ID del vídeo de YouTube,
