@@ -192,8 +192,6 @@ ahora se manda `CodJornada` vacío.
 
 - **Escudo**: `public/img/escudo.png` mide 88×86 px. Si tenéis el original en SVG
   o PNG grande, sustituidlo en la misma ruta y regenerad el favicon.
-- **Redes sociales**: las URLs de `site.ts` están escritas por convención
-  (`/adtaraguilla`); hay que comprobar que son las cuentas reales.
 - **Contacto**: correo y dirección del campo.
 - **Equipos sin competición**: la RFAF marca dos con `*` (Alevín B y
   Prebenjamín). Aparecerán solos en cuanto tengan calendario.

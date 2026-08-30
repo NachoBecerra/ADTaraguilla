@@ -25,9 +25,10 @@ export const site = {
 
   /** Redes sociales. Deja la url vacía ("") para ocultar la red del sitio. */
   redes: [
-    { id: "instagram", nombre: "Instagram", url: "https://instagram.com/adtaraguilla", handle: "@adtaraguilla" },
-    { id: "facebook", nombre: "Facebook", url: "https://facebook.com/adtaraguilla", handle: "AD Taraguilla" },
-    { id: "x", nombre: "X", url: "https://x.com/adtaraguilla", handle: "@adtaraguilla" },
+    { id: "instagram", nombre: "Instagram", url: "https://www.instagram.com/a.d.taraguilla/", handle: "@a.d.taraguilla" },
+    { id: "facebook", nombre: "Facebook", url: "https://www.facebook.com/TaraguillaAD", handle: "AD Taraguilla" },
+    // X sin actualizar desde 2021: se deja fuera dejando la url vacía
+    { id: "x", nombre: "X", url: "", handle: "" },
     { id: "youtube", nombre: "YouTube", url: "", handle: "" },
     { id: "tiktok", nombre: "TikTok", url: "", handle: "" },
     { id: "whatsapp", nombre: "WhatsApp", url: "", handle: "" },
