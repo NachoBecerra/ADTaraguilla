@@ -2,70 +2,12 @@
   "_nota": "Editable desde /admin. En 'src' pon la ruta de la imagen (ej. /img/galeria/derbi-01.jpg). Si lo dejas vacío se muestra un marcador de posición con los colores del club. Para vídeos, 'youtubeId' es el código que aparece tras v= en la URL de YouTube.",
   "items": [
     {
-      "id": "g1",
       "tipo": "foto",
-      "titulo": "Presentación de la plantilla 2026/27",
-      "fecha": "2026-08-24",
-      "album": "Pretemporada",
-      "src": ""
-    },
-    {
-      "id": "g2",
-      "tipo": "foto",
-      "titulo": "Primer entrenamiento en el municipal",
-      "fecha": "2026-08-18",
-      "album": "Pretemporada",
-      "src": ""
-    },
-    {
-      "id": "g3",
-      "tipo": "foto",
-      "titulo": "Afición en la grada sur",
-      "fecha": "2026-08-24",
-      "album": "Afición",
-      "src": ""
-    },
-    {
-      "id": "g4",
-      "tipo": "foto",
-      "titulo": "Nueva equipación titular",
-      "fecha": "2026-08-10",
-      "album": "Club",
-      "src": ""
-    },
-    {
-      "id": "g5",
-      "tipo": "foto",
-      "titulo": "Cantera: alevines campeones de liga",
-      "fecha": "2026-06-14",
-      "album": "Cantera",
-      "src": ""
-    },
-    {
-      "id": "g6",
-      "tipo": "foto",
-      "titulo": "Amistoso de pretemporada",
-      "fecha": "2026-08-20",
-      "album": "Pretemporada",
-      "src": ""
-    },
-    {
-      "id": "v1",
-      "tipo": "video",
-      "titulo": "Resumen del amistoso de pretemporada",
-      "fecha": "2026-08-20",
-      "album": "Resúmenes",
-      "src": "",
-      "youtubeId": ""
-    },
-    {
-      "id": "v2",
-      "tipo": "video",
-      "titulo": "Los mejores goles de la temporada pasada",
-      "fecha": "2026-06-30",
-      "album": "Resúmenes",
-      "src": "",
-      "youtubeId": ""
+      "src": "/img/galeria/chatgpt-image-30-ago-2026-13_22_09.png",
+      "id": "01",
+      "titulo": "01",
+      "fecha": "2026-08-30",
+      "album": "01"
     }
   ]
 }
