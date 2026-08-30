@@ -76,12 +76,20 @@ export type Equipo = {
   competiciones: Competicion[];
 };
 
+/**
+ * En los grupos con un número impar de equipos, cada jornada uno descansa.
+ * La RFAF lo publica como si el rival se llamara "Descansa".
+ */
+export const esDescanso = (nombre?: string | null) => /^\s*descansa\s*$/i.test(nombre ?? "");
+
 /** Partido de uno de nuestros equipos, ya visto desde nuestro lado. */
 export type PartidoPropio = Partido & {
   competicion: string;
   jornada: string;
   esLocal: boolean;
   rival: string;
+  /** No es un partido: esa jornada el equipo descansa. */
+  descanso: boolean;
   golesPropios: number | null;
   golesRival: number | null;
   resultado: "G" | "E" | "P" | null;
@@ -144,12 +152,15 @@ export function partidosDe(equipo: Equipo): PartidoPropio[] {
         const golesPropios = esLocal ? partido.golesLocal : partido.golesVisitante;
         const golesRival = esLocal ? partido.golesVisitante : partido.golesLocal;
 
+        const rival = esLocal ? partido.visitante : partido.local;
+
         partidos.push({
           ...partido,
           competicion: competicion.nombre,
           jornada: jornada.nombre,
           esLocal,
-          rival: esLocal ? partido.visitante : partido.local,
+          rival,
+          descanso: esDescanso(rival),
           golesPropios,
           golesRival,
           resultado:
@@ -178,17 +189,19 @@ const hoy = hoyIso;
  * pendiente, que sería mentir.
  */
 export function sinResultado(p: PartidoPropio): boolean {
-  return !p.jugado && !!p.fecha && p.fecha < hoyIso();
+  return !p.descanso && !p.jugado && !!p.fecha && p.fecha < hoyIso();
 }
 
 export function proximoPartido(equipo: Equipo): PartidoPropio | null {
   return (
-    partidosDe(equipo).find((p) => !p.jugado && (p.fecha ?? "9999") >= hoy()) ?? null
+    partidosDe(equipo).find(
+      (p) => !p.descanso && !p.jugado && (p.fecha ?? "9999") >= hoy(),
+    ) ?? null
   );
 }
 
 export function ultimoResultado(equipo: Equipo): PartidoPropio | null {
-  const jugados = partidosDe(equipo).filter((p) => p.jugado);
+  const jugados = partidosDe(equipo).filter((p) => p.jugado && !p.descanso);
   return jugados.length > 0 ? jugados[jugados.length - 1] : null;
 }
 

@@ -48,22 +48,36 @@ export function FilaPartido({
   partido: PartidoPropio;
   mostrarCompeticion?: boolean;
 }) {
+  const fecha = (
+    <div className="w-14 shrink-0 text-center">
+      <p className="text-[11px] font-bold uppercase tracking-wide text-mute">
+        {partido.jornada.replace(/^Jornada\s*/i, "J")}
+      </p>
+      <p className="text-xs text-mute">
+        {partido.fecha
+          ? new Intl.DateTimeFormat("es-ES", {
+              day: "2-digit",
+              month: "2-digit",
+              timeZone: "Europe/Madrid",
+            }).format(new Date(partido.fecha))
+          : "—"}
+      </p>
+    </div>
+  );
+
+  // Jornada de descanso: no hay rival, campo ni marcador que enseñar
+  if (partido.descanso) {
+    return (
+      <li className="flex items-center gap-3 border-b border-linea py-3 last:border-0">
+        {fecha}
+        <p className="flex-1 text-sm italic text-mute">Jornada de descanso</p>
+      </li>
+    );
+  }
+
   return (
     <li className="flex items-center gap-3 border-b border-linea py-3 last:border-0">
-      <div className="w-14 shrink-0 text-center">
-        <p className="text-[11px] font-bold uppercase tracking-wide text-mute">
-          {partido.jornada.replace(/^Jornada\s*/i, "J")}
-        </p>
-        <p className="text-xs text-mute">
-          {partido.fecha
-            ? new Intl.DateTimeFormat("es-ES", {
-                day: "2-digit",
-                month: "2-digit",
-                timeZone: "Europe/Madrid",
-              }).format(new Date(partido.fecha))
-            : "—"}
-        </p>
-      </div>
+      {fecha}
 
       <EscudoClub
         nombre={partido.rival}
@@ -72,7 +86,7 @@ export function FilaPartido({
       />
 
       <div className="min-w-0 flex-1">
-        <p className="truncate font-semibold text-tinta">
+        <p className="line-clamp-2 font-semibold leading-tight text-tinta">
           <span className="mr-1.5 text-[11px] font-bold uppercase text-club-soft">
             {partido.esLocal ? "Casa" : "Fuera"}
           </span>

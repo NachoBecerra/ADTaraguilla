@@ -1,24 +1,24 @@
 {
-  "generado": "2026-08-30T14:59:23.524Z",
+  "generado": "2026-08-30T16:16:07.446Z",
   "temporada": "2026-2027",
   "clubes": [
     {
       "nombre": "A.D. LOS BURREÑOS",
-      "codigo": null,
+      "codigo": "38886689",
       "competiciones": [
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
-      "escudo": null,
-      "urlRfaf": null
+      "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0001130170_escudo_20burre_o.jpg",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38886689"
     },
     {
       "nombre": "A.D. MARIANISTAS C.D.",
-      "codigo": null,
+      "codigo": "343216",
       "competiciones": [
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
-      "escudo": null,
-      "urlRfaf": null
+      "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0001798932_ad_marianistas_jerez_vectorial.jpg",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=343216"
     },
     {
       "nombre": "ALGAIDA U.D.",
@@ -40,32 +40,32 @@
     },
     {
       "nombre": "ARCOS C.F.",
-      "codigo": null,
+      "codigo": "48486015",
       "competiciones": [
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
-      "escudo": null,
-      "urlRfaf": null
+      "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0000241604_escudo_son_fondo_arcos_cf.png",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=48486015"
     },
     {
       "nombre": "ATLETICO ZABAL",
-      "codigo": "326324",
+      "codigo": "326326",
       "competiciones": [
         "3ª ANDALUZA CADETE (CADIZ)",
         "3ª ANDALUZA INFANTIL (CADIZ)",
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
       "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0002208821_0626F6E7_CFA5_4DAD_8A6E_81DF52F085EB.png",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=326324"
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=326326"
     },
     {
       "nombre": "BALON LINENSE C.F. C.D.",
-      "codigo": null,
+      "codigo": "5725181",
       "competiciones": [
         "3ª ANDALUZA INFANTIL (CADIZ)"
       ],
-      "escudo": null,
-      "urlRfaf": null
+      "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/03207.gif",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=5725181"
     },
     {
       "nombre": "BARBATE C.F.",
@@ -87,12 +87,12 @@
     },
     {
       "nombre": "C.D. AD PUEBLO NUEVO LA GRANJA",
-      "codigo": null,
+      "codigo": "329822",
       "competiciones": [
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
-      "escudo": null,
-      "urlRfaf": null
+      "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0001130453_ESCUDO_PUEBLO_NUEVO.png",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=329822"
     },
     {
       "nombre": "C.D. ASOC. DVA. NERVION",
@@ -151,12 +151,12 @@
     },
     {
       "nombre": "C.D. DIVINA PASTORA SANLUQUEÑA",
-      "codigo": null,
+      "codigo": "354820",
       "competiciones": [
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
-      "escudo": null,
-      "urlRfaf": null
+      "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0002209715_WhatsApp_Image_2026_07_20_at_12.40.44.jpeg",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=354820"
     },
     {
       "nombre": "C.D. EL PALMAR VEREDA REAL",
@@ -178,13 +178,13 @@
     },
     {
       "nombre": "C.D. EPRO CAMPO DE GIBRALTAR",
-      "codigo": "45125368",
+      "codigo": "45124692",
       "competiciones": [
         "3ª ANDALUZA CADETE (CADIZ)",
         "3ª ANDALUZA INFANTIL (CADIZ)"
       ],
       "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0001684378_ESCUDO_PNG.png",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=45125368"
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=45124692"
     },
     {
       "nombre": "C.D. ESTRELLA PORTUENSE F.C.",
@@ -206,14 +206,14 @@
     },
     {
       "nombre": "C.D. GUADIARO",
-      "codigo": "307318",
+      "codigo": "307319",
       "competiciones": [
         "1ª ANDALUZA SENIOR (CADIZ)",
         "3ª ANDALUZA CADETE (CADIZ)",
         "3ª ANDALUZA INFANTIL (CADIZ)"
       ],
       "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/03073.jpg",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307318"
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307319"
     },
     {
       "nombre": "C.D. JUAN SEBASTIAN ELCANO",
@@ -226,12 +226,12 @@
     },
     {
       "nombre": "C.D. LA SALLE",
-      "codigo": null,
+      "codigo": "309525",
       "competiciones": [
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
-      "escudo": null,
-      "urlRfaf": null
+      "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0000001528_Escudo_actual.jpg",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=309525"
     },
     {
       "nombre": "C.D. MONTALBEÑO",
@@ -280,32 +280,32 @@
     },
     {
       "nombre": "C.D. SAN FERNANDO 1940",
-      "codigo": null,
+      "codigo": "45021237",
       "competiciones": [
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
-      "escudo": null,
-      "urlRfaf": null
+      "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0001865530_Escudo_Color.png",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=45021237"
     },
     {
       "nombre": "C.D. SAN ROQUE",
-      "codigo": "307715",
+      "codigo": "307726",
       "competiciones": [
         "1ª ANDALUZA SENIOR (CADIZ)",
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
       "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0000639729_cd_san_roque.jpg",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307715"
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307726"
     },
     {
       "nombre": "C.D. SAN ROQUE \"A\"",
-      "codigo": "307717",
+      "codigo": "307718",
       "competiciones": [
         "3ª ANDALUZA CADETE (CADIZ)",
         "3ª ANDALUZA INFANTIL (CADIZ)"
       ],
       "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0000639729_cd_san_roque.jpg",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307717"
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307718"
     },
     {
       "nombre": "C.D. TARIFA FUTBOL ACADEMY",
@@ -336,22 +336,22 @@
     },
     {
       "nombre": "C.F. SAN JOSE OBRERO",
-      "codigo": "303120",
+      "codigo": "303122",
       "competiciones": [
         "1ª Andaluza Infantil Fundación Cajasol",
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
       "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0000130882_Escudo_C.F._San_Jose_Obrero.jpg",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=303120"
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=303122"
     },
     {
       "nombre": "CADIZ C.F., S.A.D.",
-      "codigo": null,
+      "codigo": "28636857",
       "competiciones": [
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
-      "escudo": null,
-      "urlRfaf": null
+      "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0000632407_escudotwitter.jpg",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28636857"
     },
     {
       "nombre": "CHICLANA C.F.",
@@ -390,25 +390,15 @@
       "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=2064329"
     },
     {
-      "nombre": "Descansa",
-      "codigo": null,
-      "competiciones": [
-        "4ª ANDALUZA JUVENIL (CADIZ)",
-        "3ª ANDALUZA INFANTIL (CADIZ)"
-      ],
-      "escudo": null,
-      "urlRfaf": null
-    },
-    {
       "nombre": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
-      "codigo": "33458699",
+      "codigo": "33451843",
       "competiciones": [
         "4ª ANDALUZA JUVENIL (CADIZ)",
         "3ª ANDALUZA CADETE (CADIZ)",
         "3ª ANDALUZA INFANTIL (CADIZ)"
       ],
       "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0002202203_unnamed.png",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=33458699"
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=33451843"
     },
     {
       "nombre": "JEREZ INDUSTRIAL C.F.",
@@ -448,13 +438,13 @@
     },
     {
       "nombre": "LOS CORTIJILLOS A.D.",
-      "codigo": "20122366",
+      "codigo": "24078390",
       "competiciones": [
         "4ª ANDALUZA JUVENIL (CADIZ)",
         "3ª ANDALUZA INFANTIL (CADIZ)"
       ],
       "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/03480.jpg",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=20122366"
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=24078390"
     },
     {
       "nombre": "LUCECOR F.S.",
@@ -467,12 +457,12 @@
     },
     {
       "nombre": "MONITORES FUTBOL DE ALGECIRAS",
-      "codigo": null,
+      "codigo": "5847346",
       "competiciones": [
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
-      "escudo": null,
-      "urlRfaf": null
+      "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0000068649_Monitores_Algeciras.png",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=5847346"
     },
     {
       "nombre": "MONTILLA C.F.",
@@ -512,12 +502,12 @@
     },
     {
       "nombre": "PUENTE MAYORGA RVO",
-      "codigo": null,
+      "codigo": "323615",
       "competiciones": [
         "3ª ANDALUZA INFANTIL (CADIZ)"
       ],
-      "escudo": null,
-      "urlRfaf": null
+      "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0001799661_IMG_20240822_WA0018.jpg",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=323615"
     },
     {
       "nombre": "R.C.R. HUELVA, S.A.D.",
@@ -584,22 +574,22 @@
     },
     {
       "nombre": "SPORTING CHICLANA C.D.",
-      "codigo": null,
+      "codigo": "360216",
       "competiciones": [
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
-      "escudo": null,
-      "urlRfaf": null
+      "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/03602.jpg",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=360216"
     },
     {
       "nombre": "TARIFA U.D.",
-      "codigo": "308315",
+      "codigo": "308320",
       "competiciones": [
         "1ª ANDALUZA SENIOR (CADIZ)",
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
       "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0001909063_escudo_ud_tarifa.png",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=308315"
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=308320"
     },
     {
       "nombre": "TREBUJENA C.F.",
@@ -622,12 +612,12 @@
     },
     {
       "nombre": "U.D. LA ALGAIDA",
-      "codigo": null,
+      "codigo": "2065225",
       "competiciones": [
         "2ª ANDALUZA ALEVIN (CADIZ)"
       ],
-      "escudo": null,
-      "urlRfaf": null
+      "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0000805676_Escudo_U.D.Algaida_vectorizado_.jpeg",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=2065225"
     },
     {
       "nombre": "U.D. LOS BARRIOS",
@@ -649,13 +639,13 @@
     },
     {
       "nombre": "U.D. TESORILLO C.D.",
-      "codigo": "307217",
+      "codigo": "2070674",
       "competiciones": [
         "3ª ANDALUZA CADETE (CADIZ)",
         "3ª ANDALUZA INFANTIL (CADIZ)"
       ],
       "escudo": "https://rfaf.filesnovanet.es/pnfg/pimg/Clubes/00100_0000066773_UDT.png",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307217"
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=2070674"
     },
     {
       "nombre": "UNION BALOMPEDICA LEBRIJANA",

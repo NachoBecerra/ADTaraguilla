@@ -48,6 +48,12 @@ const DIAS_ATRAS = 60;
 /** Días hacia delante en los que ya puede haber horario y campo asignados. */
 const DIAS_ADELANTE = 14;
 
+/**
+ * En los grupos impares una jornada la descansa un equipo, y la RFAF lo
+ * escribe en el calendario como si fuese el rival.
+ */
+export const esDescanso = (nombre) => /^\s*descansa\s*$/i.test(nombre ?? "");
+
 const log = (...a) => console.log("·", ...a);
 const aviso = (...a) => console.warn("⚠", ...a);
 
@@ -390,7 +396,7 @@ async function recomponerIndices(config, urlClub, temporada, equipos, escudos) {
             ["visitante", "codVisitante"],
           ]) {
             const nombre = p[lado];
-            if (!nombre || nombre === datos.nombreRfaf) continue;
+            if (!nombre || nombre === datos.nombreRfaf || esDescanso(nombre)) continue;
             const antes = rivales.get(nombre);
             rivales.set(nombre, {
               nombre,
