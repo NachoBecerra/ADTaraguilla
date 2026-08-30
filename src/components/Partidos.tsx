@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { sinResultado, type PartidoPropio } from "@/lib/competicion";
-import { site } from "@/data/site";
 import { fechaLarga, diaYHora } from "@/lib/formato";
-import { IconoCalendario, IconoUbicacion, IconoEscudo, IconoEnlaceExterno } from "@/components/Iconos";
+import { site } from "@/data/site";
+import EscudoClub from "@/components/EscudoClub";
+import { IconoCalendario, IconoUbicacion, IconoEnlaceExterno } from "@/components/Iconos";
 
 const COLOR_RESULTADO = {
   G: "bg-club text-white",
@@ -65,6 +65,12 @@ export function FilaPartido({
         </p>
       </div>
 
+      <EscudoClub
+        nombre={partido.rival}
+        codigo={partido.esLocal ? partido.codVisitante : partido.codLocal}
+        size={26}
+      />
+
       <div className="min-w-0 flex-1">
         <p className="truncate font-semibold text-tinta">
           <span className="mr-1.5 text-[11px] font-bold uppercase text-club-soft">
@@ -107,27 +113,19 @@ export function TarjetaProximoPartido({
     ? diaYHora(`${partido.fecha}T${partido.hora ?? "12:00"}:00`)
     : { dia: "Fecha por confirmar", hora: "" };
 
-  const nosotros = (
+  const lado = (nombre: string, props: { esNuestro?: boolean; codigo?: string | null }) => (
     <div className="flex flex-1 flex-col items-center gap-2 text-center">
       <div className="grid h-14 w-14 place-items-center rounded-full bg-panel-2 sm:h-16 sm:w-16">
-        <Image src={site.escudo} alt="" width={34} height={33} />
+        <EscudoClub nombre={nombre} size={38} {...props} />
       </div>
-      <span className="title text-sm leading-tight text-tinta sm:text-base">
-        {site.nombre}
-      </span>
+      <span className="title text-sm leading-tight text-tinta sm:text-base">{nombre}</span>
     </div>
   );
 
-  const rival = (
-    <div className="flex flex-1 flex-col items-center gap-2 text-center">
-      <div className="grid h-14 w-14 place-items-center rounded-full bg-panel-2 sm:h-16 sm:w-16">
-        <IconoEscudo size={26} className="text-mute" />
-      </div>
-      <span className="title text-sm leading-tight text-tinta sm:text-base">
-        {partido.rival}
-      </span>
-    </div>
-  );
+  const nosotros = lado(site.nombre, { esNuestro: true });
+  const rival = lado(partido.rival, {
+    codigo: partido.esLocal ? partido.codVisitante : partido.codLocal,
+  });
 
   return (
     <section className="card overflow-hidden">

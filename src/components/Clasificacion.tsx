@@ -1,4 +1,5 @@
 import { haEmpezado, type Competicion, type Equipo } from "@/lib/competicion";
+import EscudoClub from "@/components/EscudoClub";
 
 const COLOR_RACHA = {
   G: "bg-club text-white",
@@ -79,7 +80,10 @@ export default function Clasificacion({
               >
                 <td className="py-2.5 pl-3 pr-2 tabular-nums text-mute">{fila.posicion}</td>
                 <td className={`py-2.5 pr-2 ${nuestro ? "text-club" : "text-tinta"}`}>
-                  {fila.equipo}
+                  <span className="flex items-center gap-2">
+                    <EscudoClub nombre={fila.equipo} esNuestro={nuestro} size={22} />
+                    {fila.equipo}
+                  </span>
                 </td>
                 <td className="py-2.5 px-2 text-center font-bold tabular-nums text-tinta">
                   {fila.puntos}

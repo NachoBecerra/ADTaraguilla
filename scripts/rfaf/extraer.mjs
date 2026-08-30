@@ -155,12 +155,16 @@ export function extraerJornada(html) {
 
     // Los dos enlaces a ficha de equipo de la fila van en orden: local, visitante
     const codigos = enlaces(filaHtml, "NFG_VisEquipos").map((u) => parametro(u, "Codigo_Equipo"));
+    // Y los dos escudos, en ese mismo orden
+    const escudos = escudosDeFila(filaHtml);
 
     partidos.push({
       local,
       visitante,
       codLocal: codigos[0] ?? null,
       codVisitante: codigos[1] ?? null,
+      escudoLocal: escudos[0] ?? null,
+      escudoVisitante: escudos[1] ?? null,
       fecha,
       hora: hora(centro),
       golesLocal: goles ? goles[0] : null,
@@ -171,6 +175,16 @@ export function extraerJornada(html) {
   }
 
   return partidos;
+}
+
+/**
+ * Escudos de los dos equipos de una fila de partido, en orden local/visitante.
+ * La RFAF los sirve desde su CDN; las rutas relativas se normalizan.
+ */
+function escudosDeFila(filaHtml) {
+  return [...filaHtml.matchAll(/<img[^>]+src\s*=\s*["']?([^"'>\s]*pimg\/Clubes\/[^"'>\s]+)/gi)].map(
+    (m) => (m[1].startsWith("http") ? m[1] : `https://rfaf.filesnovanet.es${m[1]}`),
+  );
 }
 
 /** "San Roque - HERMANOS GARCIA MOTA (F11) Hierba Artificial Árbitro: X, Y" */

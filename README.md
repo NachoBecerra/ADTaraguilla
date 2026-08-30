@@ -43,8 +43,17 @@ Se escribe en `src/data/rfaf/`:
 ```
 club.json              Índice: temporada y equipos con su posición
 rivales.json           Directorio de clubes, para /clubes
+escudos.json           Escudo de cada club, por código de equipo
 equipos/<id>.json      Detalle de cada equipo: competiciones, jornadas, tabla
 ```
+
+Los escudos se guardan **como URL, no como imagen**. La página de una jornada
+trae el escudo de todos los equipos del grupo, así que basta una petición por
+competición para tenerlos todos, y se pide solo la primera vez. `next/image` los
+descarga y los cachea en el servidor, de modo que el navegador de quien visita la
+web no llega a tocar la CDN de la RFAF: se sirven optimizados desde el propio
+dominio, sin engordar el repositorio con binarios ni tener que reconciliarlos
+cuando un club cambie de escudo.
 
 **Nunca se descargan datos personales.** Las plantillas, los árbitros y la junta
 directiva están en la RFAF, pero no se copian aquí: la web solo enlaza a la ficha

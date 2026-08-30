@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import type { ClubRival } from "@/lib/competicion";
 import { site } from "@/data/site";
-import { IconoBuscar, IconoEscudo, IconoEnlaceExterno } from "@/components/Iconos";
+import EscudoImg from "@/components/EscudoImg";
+import { IconoBuscar, IconoEnlaceExterno } from "@/components/Iconos";
 
 /** Quita acentos para que "cadiz" encuentre "Cádiz". */
 function normalizar(texto: string): string {
@@ -74,12 +75,7 @@ export default function DirectorioClubes({
         {resultados.map((club) => (
           <li key={club.nombre} className="card p-4">
             <div className="flex items-center gap-3.5">
-              <span
-                aria-hidden
-                className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-panel-2"
-              >
-                <IconoEscudo size={20} className="text-mute" />
-              </span>
+              <EscudoImg src={club.escudo} size={44} />
 
               <div className="min-w-0 flex-1">
                 <h3 className="title text-lg leading-tight text-tinta">{club.nombre}</h3>

@@ -35,6 +35,7 @@ const RAIZ = process.cwd();
 const DIR_SALIDA = path.join(RAIZ, "src", "data", "rfaf");
 const DIR_EQUIPOS = path.join(DIR_SALIDA, "equipos");
 const CONFIG = path.join(RAIZ, "src", "data", "equipos.json");
+const RUTA_ESCUDOS = path.join(DIR_SALIDA, "escudos.json");
 
 const COMPLETO = process.argv.includes("--completo");
 const FORZAR = process.argv.includes("--forzar");
@@ -152,7 +153,7 @@ function hayQueRefrescar(jornada, previa) {
 
 /* ------------------------------------------------------------------ proceso */
 
-async function sincronizarCompeticion(cliente, competicion, previa) {
+async function sincronizarCompeticion(cliente, competicion, previa, escudos) {
   const grupoHtml = await cliente.pedir(
     `/pnfg/NPcd/NFG_VisGrupos_Vis?cod_primaria=1000123&codgrupo=${competicion.codGrupo}`,
   );
@@ -175,11 +176,15 @@ async function sincronizarCompeticion(cliente, competicion, previa) {
   const jornadas = [];
   let pedidas = 0;
 
+  // Una sola página de jornada trae el escudo de todos los equipos del grupo.
+  // Si aún no los tenemos, se fuerza esa única petición.
+  let faltanEscudos = !previa?.escudosRecogidos;
+
   for (const jornada of calendario) {
     const previaJ = previa?.jornadas?.find((j) => j.numero === jornada.numero);
 
     let partidosJornada = null;
-    if (hayQueRefrescar(jornada, previaJ)) {
+    if (hayQueRefrescar(jornada, previaJ) || faltanEscudos) {
       const url =
         `/pnfg/NPcd/NFG_CmpJornada?cod_primaria=1000120` +
         `&CodCompeticion=${grupo.codCompeticion}&CodGrupo=${competicion.codGrupo}` +
@@ -187,6 +192,11 @@ async function sincronizarCompeticion(cliente, competicion, previa) {
       try {
         partidosJornada = extraerJornada(await cliente.pedir(url));
         pedidas++;
+        for (const p of partidosJornada) {
+          if (p.codLocal && p.escudoLocal) escudos.set(p.codLocal, p.escudoLocal);
+          if (p.codVisitante && p.escudoVisitante) escudos.set(p.codVisitante, p.escudoVisitante);
+        }
+        if (partidosJornada.some((p) => p.escudoLocal)) faltanEscudos = false;
       } catch (e) {
         if (e instanceof ErrorDeCupo) throw e;
         aviso(`  jornada ${jornada.numero}: ${e.message}`);
@@ -215,6 +225,7 @@ async function sincronizarCompeticion(cliente, competicion, previa) {
 
   return {
     ...competicion,
+    escudosRecogidos: !faltanEscudos || previa?.escudosRecogidos === true,
     codCompeticion: grupo.codCompeticion,
     urlCalendario: urlAbsoluta(grupo.urlCalendario),
     urlClasificacion: grupo.urlClasificacion ? urlAbsoluta(grupo.urlClasificacion) : null,
@@ -249,6 +260,11 @@ async function principal() {
   if (!temporada) throw new Error("No se pudo determinar la temporada en curso");
   log(`Temporada ${temporada}`);
 
+  // Escudos ya conocidos: nunca se pierden, solo se añaden o actualizan
+  const escudos = new Map(
+    Object.entries((await leerJson(RUTA_ESCUDOS, { escudos: {} })).escudos ?? {}),
+  );
+
   let incompleto = false;
 
   for (const equipo of equipos) {
@@ -279,7 +295,7 @@ async function principal() {
       for (const competicion of competiciones) {
         const previa = previo?.competiciones?.find((c) => c.codGrupo === competicion.codGrupo);
         try {
-          detalladas.push(await sincronizarCompeticion(cliente, competicion, previa));
+          detalladas.push(await sincronizarCompeticion(cliente, competicion, previa, escudos));
         } catch (e) {
           if (e instanceof ErrorDeCupo) throw e;
           aviso(`  ${competicion.nombre}: ${e.message} — se conservan los datos anteriores`);
@@ -312,7 +328,13 @@ async function principal() {
     }
   }
 
-  await recomponerIndices(config, urlClub, temporada, equipos);
+  await escribirJson(RUTA_ESCUDOS, {
+    generado: new Date().toISOString(),
+    _nota: "Escudos de los clubes, tal y como los sirve la CDN de la RFAF.",
+    escudos: Object.fromEntries([...escudos].sort()),
+  });
+
+  await recomponerIndices(config, urlClub, temporada, equipos, escudos);
 
   if (incompleto) {
     console.warn("\n⚠ Pasada incompleta: quedan equipos por sincronizar.");
@@ -349,7 +371,7 @@ function sePuedeSaltar(previo) {
  * club.json y rivales.json se reconstruyen siempre a partir de los archivos
  * de equipo que haya en disco, se haya completado la pasada o no.
  */
-async function recomponerIndices(config, urlClub, temporada, equipos) {
+async function recomponerIndices(config, urlClub, temporada, equipos, escudos) {
   const resumen = [];
   const rivales = new Map();
 
@@ -411,6 +433,7 @@ async function recomponerIndices(config, urlClub, temporada, equipos) {
     clubes: [...rivales.values()]
       .map((r) => ({
         ...r,
+        escudo: (r.codigo && escudos.get(r.codigo)) || null,
         urlRfaf: r.codigo
           ? urlAbsoluta(`NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=${r.codigo}`)
           : null,

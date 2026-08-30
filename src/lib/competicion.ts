@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import clubJson from "@/data/rfaf/club.json";
 import rivalesJson from "@/data/rfaf/rivales.json";
+import escudosJson from "@/data/rfaf/escudos.json";
 
 /**
  * Lectura de los datos que sincroniza scripts/rfaf desde la RFAF.
@@ -234,9 +235,45 @@ export type ClubRival = {
   nombre: string;
   codigo: string | null;
   competiciones: string[];
+  escudo: string | null;
   urlRfaf: string | null;
 };
 
 export function getRivales(): ClubRival[] {
   return rivalesJson.clubes as ClubRival[];
+}
+
+/* -------------------------------------------------------------- escudos */
+
+const porCodigo: Record<string, string> = escudosJson.escudos ?? {};
+
+/**
+ * Escudos por nombre de equipo. La clasificación solo trae el nombre, así que
+ * el puente se construye con los partidos, donde vienen nombre y código.
+ */
+let porNombre: Map<string, string> | null = null;
+
+function mapaPorNombre(): Map<string, string> {
+  if (porNombre) return porNombre;
+
+  porNombre = new Map();
+  for (const equipo of getEquipos()) {
+    for (const competicion of equipo.competiciones) {
+      for (const jornada of competicion.jornadas) {
+        for (const p of jornada.partidos) {
+          if (p.codLocal && porCodigo[p.codLocal]) porNombre.set(p.local, porCodigo[p.codLocal]);
+          if (p.codVisitante && porCodigo[p.codVisitante])
+            porNombre.set(p.visitante, porCodigo[p.codVisitante]);
+        }
+      }
+    }
+  }
+  return porNombre;
+}
+
+/** Escudo de un equipo, por código o por nombre. Null si no lo tenemos. */
+export function escudoDe({ codigo, nombre }: { codigo?: string | null; nombre?: string | null }) {
+  if (codigo && porCodigo[codigo]) return porCodigo[codigo];
+  if (nombre) return mapaPorNombre().get(nombre) ?? null;
+  return null;
 }
