@@ -30,25 +30,33 @@ export function paginaPuente(
   resultado: "success" | "error",
   contenido: Record<string, unknown> | string,
 ): string {
-  // En éxito Decap espera un JSON; en error, texto plano.
-  const carga =
-    typeof contenido === "string" ? contenido : JSON.stringify(contenido);
+  // Decap hace JSON.parse tanto del payload de éxito como del de error,
+  // así que ambos van serializados.
+  const carga = JSON.stringify(contenido);
 
   return `<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><title>Autenticando…</title></head>
-<body style="font-family:system-ui;background:#0b0d10;color:#eef2f6;display:grid;place-items:center;height:100vh;margin:0">
+<body style="font-family:system-ui;background:#f6f8f4;color:#10180c;display:grid;place-items:center;height:100vh;margin:0">
 <p>Conectando con GitHub…</p>
 <script>
   (function () {
     var mensaje = 'authorization:github:${resultado}:' + ${JSON.stringify(carga)};
+
     function alRecibir(e) {
-      if (!e.data || String(e.data).indexOf('authorizing:github') !== 0) return;
+      // El token solo se entrega a la propia web, nunca a una página ajena
+      // que haya abierto esta ventana para quedárselo.
+      if (e.origin !== window.location.origin) return;
+      if (String(e.data) !== 'authorizing:github') return;
+
       window.removeEventListener('message', alRecibir, false);
       e.source.postMessage(mensaje, e.origin);
     }
+
     window.addEventListener('message', alRecibir, false);
+
     if (window.opener) {
-      window.opener.postMessage('authorizing:github', '*');
+      // Decap responde con el mismo texto y entonces se le manda el token
+      window.opener.postMessage('authorizing:github', window.location.origin);
     } else {
       document.body.innerHTML = '<p>Abre el panel desde /admin.</p>';
     }
