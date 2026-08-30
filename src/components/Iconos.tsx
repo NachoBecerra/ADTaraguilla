@@ -152,6 +152,15 @@ export function IconoEscudo({ size = 24, className }: Props) {
   );
 }
 
+export function IconoDescarga({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3v12M7.5 10.5 12 15l4.5-4.5" />
+      <path d="M4.5 17v1.5A2.5 2.5 0 0 0 7 21h10a2.5 2.5 0 0 0 2.5-2.5V17" />
+    </svg>
+  );
+}
+
 export function IconoImagen({ size = 20, className }: Props) {
   return (
     <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getNoticia, getNoticias } from "@/lib/contenido";
 import { fechaLarga } from "@/lib/formato";
 import { site } from "@/data/site";
-import Media from "@/components/Media";
+import MediaCompleta from "@/components/MediaCompleta";
 import { TarjetaNoticia } from "@/components/TarjetaNoticia";
 import { IconoFlecha, IconoWhatsApp, IconoX, IconoFacebook } from "@/components/Iconos";
 
@@ -74,11 +74,10 @@ export default async function PaginaNoticia({ params }: PageProps<"/noticias/[sl
       </div>
 
       <div className="mx-auto mt-7 max-w-4xl px-5">
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-linea">
-          <Media
+        <div className="overflow-hidden rounded-2xl border border-linea bg-panel">
+          <MediaCompleta
             src={noticia.portada}
             alt={noticia.titulo}
-            className="h-full w-full"
             sizes="(min-width: 896px) 896px, 100vw"
             priority
           />

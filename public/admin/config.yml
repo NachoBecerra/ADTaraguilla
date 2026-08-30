@@ -89,7 +89,14 @@ collections:
               - { name: titulo, label: Título, widget: string }
               - { name: fecha, label: Fecha, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
               - { name: album, label: Álbum, widget: string, hint: "Ej. Pretemporada, Cantera, Afición" }
-              - { name: src, label: Imagen, widget: image, required: false }
+              - {
+                  name: fotos,
+                  label: Fotos,
+                  widget: image,
+                  allow_multiple: true,
+                  required: false,
+                  hint: "Se pueden marcar varias de una vez; cada una aparecerá como una foto de la galería",
+                }
               - {
                   name: youtubeId,
                   label: ID del vídeo de YouTube,

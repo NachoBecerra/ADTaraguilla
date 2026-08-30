@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import clubJson from "@/data/rfaf/club.json";
-import rivalesJson from "@/data/rfaf/rivales.json";
 import escudosJson from "@/data/rfaf/escudos.json";
 
 /**
@@ -242,19 +241,6 @@ export function resumenEquipos() {
   }));
 }
 
-/* -------------------------------------------------------------- rivales */
-
-export type ClubRival = {
-  nombre: string;
-  codigo: string | null;
-  competiciones: string[];
-  escudo: string | null;
-  urlRfaf: string | null;
-};
-
-export function getRivales(): ClubRival[] {
-  return rivalesJson.clubes as ClubRival[];
-}
 
 /* -------------------------------------------------------------- escudos */
 

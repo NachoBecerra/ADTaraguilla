@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { marked } from "marked";
+import { dimensionesDe } from "@/lib/imagenes";
 import galeriaData from "@/data/galeria.json";
 
 const DIR_NOTICIAS = path.join(process.cwd(), "content", "noticias");
@@ -58,22 +59,78 @@ export function getCategorias(): string[] {
 
 /* ---------------------------------------------------------------- galería */
 
+/** Una entrada de la galería tal y como se guarda: puede llevar varias fotos. */
+export type EntradaGaleria = {
+  id: string;
+  tipo: "foto" | "video";
+  titulo: string;
+  fecha: string;
+  album: string;
+  fotos?: string[] | string;
+  youtubeId?: string;
+};
+
+/** Una foto o vídeo suelto, que es lo que se pinta en la galería. */
 export type ItemGaleria = {
   id: string;
   tipo: "foto" | "video";
   titulo: string;
   fecha: string;
   album: string;
-  /** Ruta de la imagen (fotos) o miniatura (vídeos). */
   src: string;
-  /** ID del vídeo de YouTube, solo para tipo "video". */
   youtubeId?: string;
+  /** Dimensiones reales, para enseñar la foto entera sin saltos de maquetación. */
+  ancho: number;
+  alto: number;
 };
 
+/** El widget de imagen devuelve una cadena si se elige una sola foto. */
+function comoLista(fotos?: string[] | string): string[] {
+  if (!fotos) return [];
+  return (Array.isArray(fotos) ? fotos : [fotos]).filter(Boolean);
+}
+
+/**
+ * Aplana las entradas en fotos sueltas. Una entrada con seis fotos de un
+ * partido son seis piezas en la galería, todas con el mismo título y álbum.
+ */
 export function getGaleria(): ItemGaleria[] {
-  return [...(galeriaData.items as ItemGaleria[])].sort((a, b) =>
-    b.fecha.localeCompare(a.fecha),
-  );
+  const items: ItemGaleria[] = [];
+
+  for (const entrada of galeriaData.items as EntradaGaleria[]) {
+    const fotos = comoLista(entrada.fotos);
+
+    if (entrada.tipo === "video") {
+      // Las miniaturas de YouTube siempre vienen en 480x360
+      const src = fotos[0] ?? "";
+      const medida = src ? dimensionesDe(src) : null;
+      items.push({
+        ...entrada,
+        src,
+        ancho: medida?.ancho ?? 480,
+        alto: medida?.alto ?? 360,
+      });
+      continue;
+    }
+
+    if (fotos.length === 0) {
+      items.push({ ...entrada, src: "", ancho: 4, alto: 3 });
+      continue;
+    }
+
+    fotos.forEach((src, i) => {
+      const medida = dimensionesDe(src);
+      items.push({
+        ...entrada,
+        id: fotos.length > 1 ? `${entrada.id}-${i + 1}` : entrada.id,
+        src,
+        ancho: medida?.ancho ?? 4,
+        alto: medida?.alto ?? 3,
+      });
+    });
+  }
+
+  return items.sort((a, b) => b.fecha.localeCompare(a.fecha));
 }
 
 export function getAlbumes(): string[] {

@@ -12,7 +12,6 @@ const NAV = [
   { href: "/equipos", texto: "Equipos" },
   { href: "/noticias", texto: "Noticias" },
   { href: "/galeria", texto: "Galería" },
-  { href: "/clubes", texto: "Clubes" },
 ];
 
 export default function Cabecera() {

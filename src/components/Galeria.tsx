@@ -1,9 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ItemGaleria } from "@/lib/contenido";
-import Media from "@/components/Media";
-import { IconoPlay, IconoCerrar, IconoFlecha } from "@/components/Iconos";
+import {
+  IconoPlay,
+  IconoCerrar,
+  IconoFlecha,
+  IconoDescarga,
+  IconoImagen,
+} from "@/components/Iconos";
 import { fechaLarga } from "@/lib/formato";
 
 type Filtro = "todo" | "foto" | "video";
@@ -19,6 +25,18 @@ function miniatura(item: ItemGaleria): string {
   if (item.src) return item.src;
   if (item.youtubeId) return `https://i.ytimg.com/vi/${item.youtubeId}/hqdefault.jpg`;
   return "";
+}
+
+/** Nombre con el que se guarda la foto al descargarla. */
+function nombreDescarga(item: ItemGaleria): string {
+  const extension = item.src?.split(".").pop() ?? "jpg";
+  const base = item.titulo
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+  return `${base || item.id}.${extension}`;
 }
 
 export default function Galeria({ items }: { items: ItemGaleria[] }) {
@@ -118,37 +136,52 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
           Todavía no hay contenido en esta sección.
         </p>
       ) : (
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {visibles.map((item, i) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => setAbierto(i)}
-              className="group relative aspect-square overflow-hidden rounded-xl border border-linea text-left"
-            >
-              <Media
-                src={miniatura(item)}
-                alt={item.titulo}
-                className="h-full w-full transition-transform duration-500 group-hover:scale-105"
-                sizes="(min-width: 1024px) 25vw, 50vw"
-              />
-              <span className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/85 via-black/25 to-transparent" />
+        /*
+         * Mosaico en columnas: cada foto conserva su proporción y la columna
+         * se va rellenando. Es lo que mejor encaja cuando se mezclan fotos
+         * verticales del móvil con apaisadas, sin recortar ninguna.
+         */
+        <div className="mt-6 columns-2 gap-3 sm:columns-3 lg:columns-4 *:mb-3">
+          {visibles.map((item, i) => {
+            const src = miniatura(item);
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setAbierto(i)}
+                className="group relative block w-full break-inside-avoid overflow-hidden rounded-xl border border-linea bg-panel text-left"
+              >
+                {src ? (
+                  <Image
+                    src={src}
+                    alt={item.titulo}
+                    width={item.ancho}
+                    height={item.alto}
+                    sizes="(min-width: 1024px) 25vw, 50vw"
+                    className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                ) : (
+                  <span className="grid aspect-4/3 w-full place-items-center bg-linear-to-br from-club/15 via-panel-2 to-linea">
+                    <IconoImagen size={28} className="text-club/35" />
+                  </span>
+                )}
 
-              {item.tipo === "video" ? (
-                <span className="pointer-events-none absolute inset-0 grid place-items-center">
-                  <span className="grid h-12 w-12 place-items-center rounded-full bg-club text-white shadow-lg">
-                    <IconoPlay size={22} />
+                <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-black/85 via-black/35 to-transparent p-3 pt-8">
+                  <span className="line-clamp-2 text-xs font-semibold leading-snug text-white">
+                    {item.titulo}
                   </span>
                 </span>
-              ) : null}
 
-              <span className="pointer-events-none absolute inset-x-0 bottom-0 p-3">
-                <span className="line-clamp-2 text-xs font-semibold leading-snug text-white">
-                  {item.titulo}
-                </span>
-              </span>
-            </button>
-          ))}
+                {item.tipo === "video" ? (
+                  <span className="pointer-events-none absolute inset-0 grid place-items-center">
+                    <span className="grid h-12 w-12 place-items-center rounded-full bg-club text-white shadow-lg">
+                      <IconoPlay size={22} />
+                    </span>
+                  </span>
+                ) : null}
+              </button>
+            );
+          })}
         </div>
       )}
 
@@ -159,21 +192,35 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
           aria-modal="true"
           aria-label={actual.titulo}
         >
-          <div className="flex items-center justify-between px-5 py-4">
+          <div className="flex items-center justify-between gap-3 px-5 py-4">
             <p className="text-xs uppercase tracking-wider text-white/70">
               {(abierto ?? 0) + 1} / {visibles.length} · {actual.album}
             </p>
-            <button
-              type="button"
-              onClick={cerrar}
-              aria-label="Cerrar"
-              className="grid h-11 w-11 place-items-center rounded-full border border-white/25 text-white"
-            >
-              <IconoCerrar />
-            </button>
+
+            <div className="flex items-center gap-2">
+              {actual.tipo === "foto" && actual.src ? (
+                <a
+                  href={actual.src}
+                  download={nombreDescarga(actual)}
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-bold text-club transition-transform active:scale-95"
+                >
+                  <IconoDescarga size={17} />
+                  <span className="hidden sm:inline">Descargar</span>
+                </a>
+              ) : null}
+
+              <button
+                type="button"
+                onClick={cerrar}
+                aria-label="Cerrar"
+                className="grid h-11 w-11 place-items-center rounded-full border border-white/25 text-white"
+              >
+                <IconoCerrar />
+              </button>
+            </div>
           </div>
 
-          <div className="flex flex-1 items-center justify-center px-4 pb-4">
+          <div className="flex flex-1 items-center justify-center overflow-hidden px-4 pb-4">
             {actual.tipo === "video" ? (
               actual.youtubeId ? (
                 <div className="aspect-video w-full max-w-4xl overflow-hidden rounded-xl bg-black">
@@ -190,16 +237,16 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
                   Este vídeo todavía no tiene enlace de YouTube configurado.
                 </p>
               )
-            ) : (
-              <div className="relative h-full max-h-[70vh] w-full max-w-4xl overflow-hidden rounded-xl">
-                <Media
-                  src={actual.src}
-                  alt={actual.titulo}
-                  className="h-full w-full !object-contain"
-                  sizes="100vw"
-                />
-              </div>
-            )}
+            ) : actual.src ? (
+              <Image
+                src={actual.src}
+                alt={actual.titulo}
+                width={actual.ancho}
+                height={actual.alto}
+                sizes="100vw"
+                className="max-h-full w-auto rounded-xl object-contain"
+              />
+            ) : null}
           </div>
 
           <div className="flex items-center justify-between gap-4 border-t border-white/15 px-5 py-4">

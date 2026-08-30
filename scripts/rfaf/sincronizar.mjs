@@ -340,7 +340,7 @@ async function principal() {
     escudos: Object.fromEntries([...escudos].sort()),
   });
 
-  await recomponerIndices(config, urlClub, temporada, equipos, escudos);
+  await recomponerIndices(config, urlClub, temporada, equipos);
 
   if (incompleto) {
     console.warn("\n⚠ Pasada incompleta: quedan equipos por sincronizar.");
@@ -377,36 +377,16 @@ function sePuedeSaltar(previo) {
 }
 
 /**
- * club.json y rivales.json se reconstruyen siempre a partir de los archivos
- * de equipo que haya en disco, se haya completado la pasada o no.
+ * club.json se reconstruye siempre a partir de los archivos de equipo que
+ * haya en disco, se haya completado la pasada o no.
  */
-async function recomponerIndices(config, urlClub, temporada, equipos, escudos) {
+async function recomponerIndices(config, urlClub, temporada, equipos) {
   const resumen = [];
-  const rivales = new Map();
 
   for (const equipo of equipos) {
     const datos = await leerJson(path.join(DIR_EQUIPOS, `${equipo.id}.json`));
     if (!datos) continue;
 
-    for (const comp of datos.competiciones ?? []) {
-      for (const jornada of comp.jornadas ?? []) {
-        for (const p of jornada.partidos) {
-          for (const [lado, campoCodigo] of [
-            ["local", "codLocal"],
-            ["visitante", "codVisitante"],
-          ]) {
-            const nombre = p[lado];
-            if (!nombre || nombre === datos.nombreRfaf || esDescanso(nombre)) continue;
-            const antes = rivales.get(nombre);
-            rivales.set(nombre, {
-              nombre,
-              codigo: p[campoCodigo] ?? antes?.codigo ?? null,
-              competiciones: [...new Set([...(antes?.competiciones ?? []), comp.nombre])],
-            });
-          }
-        }
-      }
-    }
 
     resumen.push({
       id: datos.id,
@@ -436,21 +416,8 @@ async function recomponerIndices(config, urlClub, temporada, equipos, escudos) {
     equipos: resumen.sort((a, b) => a.orden - b.orden),
   });
 
-  await escribirJson(path.join(DIR_SALIDA, "rivales.json"), {
-    generado: new Date().toISOString(),
-    temporada,
-    clubes: [...rivales.values()]
-      .map((r) => ({
-        ...r,
-        escudo: (r.codigo && escudos.get(r.codigo)) || null,
-        urlRfaf: r.codigo
-          ? urlAbsoluta(`NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=${r.codigo}`)
-          : null,
-      }))
-      .sort((a, b) => a.nombre.localeCompare(b.nombre, "es")),
-  });
 
-  log(`Índices: ${resumen.length} equipos, ${rivales.size} clubes rivales`);
+  log(`Índice: ${resumen.length} equipos`);
 }
 
 principal().catch((e) => {

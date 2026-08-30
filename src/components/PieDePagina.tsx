@@ -28,7 +28,6 @@ export default function PieDePagina() {
                 { href: "/equipos", t: "Equipos" },
                 { href: "/noticias", t: "Noticias" },
                 { href: "/galeria", t: "Galería" },
-                { href: "/clubes", t: "Clubes de la competición" },
               ].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-white/75 transition-colors hover:text-white">

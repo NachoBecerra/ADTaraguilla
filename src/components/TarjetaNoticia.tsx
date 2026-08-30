@@ -15,11 +15,17 @@ export function TarjetaNoticia({
       href={`/noticias/${noticia.slug}`}
       className="group card block overflow-hidden transition-colors hover:border-club"
     >
-      <div className={`relative w-full ${destacada ? "aspect-[16/10]" : "aspect-[16/9]"}`}>
+      {/*
+        La foto se ve entera dentro de un marco de altura fija: así las
+        tarjetas del listado quedan alineadas sin recortar caras.
+      */}
+      <div
+        className={`relative w-full bg-panel-2 ${destacada ? "aspect-16/10" : "aspect-16/9"}`}
+      >
         <Media
           src={noticia.portada}
           alt={noticia.titulo}
-          className="h-full w-full transition-transform duration-500 group-hover:scale-[1.04]"
+          className="h-full w-full !object-contain transition-transform duration-500 group-hover:scale-[1.03]"
           sizes="(min-width: 1024px) 33vw, 100vw"
         />
         <span className="absolute left-3 top-3 rounded-full bg-club px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
@@ -53,8 +59,13 @@ export function TarjetaNoticiaCompacta({ noticia }: { noticia: Noticia }) {
       href={`/noticias/${noticia.slug}`}
       className="group flex gap-4 border-b border-linea py-4 last:border-0"
     >
-      <div className="relative h-20 w-28 shrink-0 overflow-hidden rounded-lg">
-        <Media src={noticia.portada} alt={noticia.titulo} className="h-full w-full" sizes="112px" />
+      <div className="relative h-20 w-28 shrink-0 overflow-hidden rounded-lg bg-panel-2">
+        <Media
+          src={noticia.portada}
+          alt={noticia.titulo}
+          className="h-full w-full !object-contain"
+          sizes="112px"
+        />
       </div>
       <div className="min-w-0">
         <p className="text-[11px] font-semibold uppercase tracking-wider text-club-soft">

@@ -4,9 +4,7 @@ import { site } from "@/data/site";
 import { getNoticias, getGaleria } from "@/lib/contenido";
 import {
   resumenEquipos,
-  getRivales,
   temporada,
-  competicionPrincipal,
   haEmpezado,
   getEquipos,
 } from "@/lib/competicion";
@@ -14,7 +12,7 @@ import { TarjetaNoticia } from "@/components/TarjetaNoticia";
 import { TarjetaProximoPartido, Marcador } from "@/components/Partidos";
 import SeccionRedes from "@/components/SeccionRedes";
 import Media from "@/components/Media";
-import { IconoFlecha, IconoPlay, IconoEnlaceExterno } from "@/components/Iconos";
+import { IconoFlecha, IconoPlay } from "@/components/Iconos";
 import { fechaLarga } from "@/lib/formato";
 
 function TituloSeccion({
@@ -51,10 +49,8 @@ export default function Inicio() {
   const noticias = getNoticias();
   const galeria = getGaleria().slice(0, 8);
   const equipos = resumenEquipos();
-  const rivales = getRivales();
 
   const primerEquipo = equipos[0];
-  const principal = primerEquipo ? competicionPrincipal(primerEquipo.equipo) : null;
 
   // En la tira de equipos solo entran los que ya tienen algo que contar
   const conActividad = equipos.filter((e) => e.proximo || e.ultimo);
@@ -246,42 +242,6 @@ export default function Inicio() {
         </section>
       ) : null}
 
-      {/* ------------------------------------------------------------ clubes */}
-      {rivales.length > 0 ? (
-        <section className="mx-auto max-w-6xl px-5 pt-14">
-          <div className="card overflow-hidden">
-            <div className="p-6 sm:p-8">
-              <p className="eyebrow">Directorio</p>
-              <h2 className="title mt-1.5 text-3xl text-tinta sm:text-4xl">
-                Los {rivales.length} clubes de la competición
-              </h2>
-              <p className="mt-3 max-w-lg text-sm leading-relaxed text-mute">
-                Todos los rivales de nuestros equipos esta temporada, con enlace directo a su
-                ficha en la {site.federacion.nombre} para consultar clasificación, resultados y
-                actas.
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link href="/clubes" className="btn btn-primary">
-                  Ver el directorio
-                  <IconoFlecha size={17} />
-                </Link>
-                {principal?.urlClasificacion ? (
-                  <a
-                    href={principal.urlClasificacion}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-ghost"
-                  >
-                    Clasificación en {site.federacion.siglas}
-                    <IconoEnlaceExterno size={15} />
-                  </a>
-                ) : null}
-              </div>
-            </div>
-          </div>
-        </section>
-      ) : null}
 
       {/* ------------------------------------------------------------- redes */}
       <div className="pt-14">
