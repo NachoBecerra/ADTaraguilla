@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <title>Panel del club · AD Taraguilla</title>
+    <!--
+      Ruta explícita del archivo de configuración. Vercel sirve esta página en
+      /admin (sin barra final), así que una ruta relativa buscaría el config en
+      la raíz del sitio y daría 404.
+    -->
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
   </head>
   <body>
     <!-- Panel de edición Decap CMS. Guarda los cambios como commits en el repositorio. -->
