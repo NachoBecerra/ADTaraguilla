@@ -16,7 +16,7 @@
 
 backend:
   name: github
-  repo: usuario/adtaraguilla # TODO
+  repo: NachoBecerra/ADTaraguilla
   branch: main
   base_url: https://adtaraguilla.es # TODO
   auth_endpoint: api/auth
