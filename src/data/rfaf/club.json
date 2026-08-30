@@ -1,0 +1,188 @@
+{
+  "generado": "2026-08-30T11:47:12.692Z",
+  "temporada": "2026-2027",
+  "club": {
+    "codigo": "3075",
+    "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VerClub?cod_primaria=1000118&codigo_club=3075"
+  },
+  "equipos": [
+    {
+      "id": "primer-equipo",
+      "nombre": "Primer equipo",
+      "categoria": "1ª ANDALUZA SENIOR",
+      "codigo": "38877699",
+      "orden": 1,
+      "enCompeticion": true,
+      "actualizado": "2026-08-30T11:07:45.286Z",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=38877699",
+      "competiciones": [
+        {
+          "nombre": "Copa Andalucía Senior",
+          "grupo": "Occidental",
+          "estado": "activa",
+          "puntos": null,
+          "posicion": null,
+          "equiposEnGrupo": 0,
+          "jornadas": 6
+        },
+        {
+          "nombre": "1ª ANDALUZA SENIOR (CADIZ)",
+          "grupo": "UNICO",
+          "estado": "activa",
+          "puntos": 0,
+          "posicion": null,
+          "equiposEnGrupo": 18,
+          "jornadas": 34
+        }
+      ]
+    },
+    {
+      "id": "juvenil",
+      "nombre": "Juvenil",
+      "categoria": "4ª ANDALUZA JUVENIL",
+      "codigo": "307516",
+      "orden": 2,
+      "enCompeticion": true,
+      "actualizado": "2026-08-30T11:07:55.307Z",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307516",
+      "competiciones": [
+        {
+          "nombre": "4ª ANDALUZA JUVENIL (CADIZ)",
+          "grupo": "Grupo 5º",
+          "estado": "activa",
+          "puntos": 0,
+          "posicion": null,
+          "equiposEnGrupo": 13,
+          "jornadas": 26
+        }
+      ]
+    },
+    {
+      "id": "cadete",
+      "nombre": "Cadete",
+      "categoria": "3ª ANDALUZA CADETE",
+      "codigo": "307517",
+      "orden": 3,
+      "enCompeticion": true,
+      "actualizado": "2026-08-30T11:08:05.337Z",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307517",
+      "competiciones": [
+        {
+          "nombre": "3ª ANDALUZA CADETE (CADIZ)",
+          "grupo": "Grupo 4º",
+          "estado": "activa",
+          "puntos": 0,
+          "posicion": null,
+          "equiposEnGrupo": 12,
+          "jornadas": 22
+        }
+      ]
+    },
+    {
+      "id": "infantil-a",
+      "nombre": "Infantil A",
+      "categoria": "1ª ANDALUZA INFANTIL",
+      "codigo": "307520",
+      "orden": 4,
+      "enCompeticion": true,
+      "actualizado": "2026-08-30T11:08:17.896Z",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307520",
+      "competiciones": [
+        {
+          "nombre": "1ª Andaluza Infantil Fundación Cajasol",
+          "grupo": "Grupo 1",
+          "estado": "activa",
+          "puntos": 0,
+          "posicion": null,
+          "equiposEnGrupo": 16,
+          "jornadas": 30
+        }
+      ]
+    },
+    {
+      "id": "infantil-b",
+      "nombre": "Infantil B",
+      "categoria": "3ª ANDALUZA INFANTIL",
+      "codigo": "307528",
+      "orden": 5,
+      "enCompeticion": true,
+      "actualizado": "2026-08-30T11:47:02.634Z",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307528",
+      "competiciones": [
+        {
+          "nombre": "3ª ANDALUZA INFANTIL (CADIZ)",
+          "grupo": "Grupo 5º",
+          "estado": "activa",
+          "puntos": 0,
+          "posicion": null,
+          "equiposEnGrupo": 11,
+          "jornadas": 22
+        }
+      ]
+    },
+    {
+      "id": "alevin-a",
+      "nombre": "Alevín A",
+      "categoria": "2ª ANDALUZA ALEVIN",
+      "codigo": "307521",
+      "orden": 6,
+      "enCompeticion": true,
+      "actualizado": "2026-08-30T11:47:12.681Z",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307521",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA ALEVIN (CADIZ)",
+          "grupo": "GRUPO UNICO",
+          "estado": "activa",
+          "puntos": 0,
+          "posicion": null,
+          "equiposEnGrupo": 16,
+          "jornadas": 30
+        }
+      ]
+    },
+    {
+      "id": "alevin-b",
+      "nombre": "Alevín B",
+      "categoria": "3ª ANDALUZA ALEVIN",
+      "codigo": "28567666",
+      "orden": 7,
+      "enCompeticion": false,
+      "actualizado": "2026-08-30T10:36:56.231Z",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=28567666",
+      "competiciones": []
+    },
+    {
+      "id": "benjamin",
+      "nombre": "Benjamín",
+      "categoria": "2ª ANDALUZA BENJAMIN",
+      "codigo": "307530",
+      "orden": 8,
+      "enCompeticion": true,
+      "actualizado": "2026-08-30T10:36:57.577Z",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307530",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA BENJAMIN (CADIZ)",
+          "grupo": "GRUPO UNICO",
+          "estado": "sin-calendario",
+          "puntos": 0,
+          "posicion": null,
+          "equiposEnGrupo": 0,
+          "jornadas": 0
+        }
+      ]
+    },
+    {
+      "id": "prebenjamin",
+      "nombre": "Prebenjamín",
+      "categoria": "2ª ANDALUZA PREBENJAMIN",
+      "codigo": "307531",
+      "orden": 9,
+      "enCompeticion": false,
+      "actualizado": "2026-08-30T10:36:58.281Z",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307531",
+      "competiciones": []
+    }
+  ]
+}

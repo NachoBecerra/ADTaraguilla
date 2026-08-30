@@ -1,0 +1,606 @@
+{
+  "generado": "2026-08-30T11:47:12.693Z",
+  "temporada": "2026-2027",
+  "clubes": [
+    {
+      "nombre": "A.D. LOS BURREÑOS",
+      "codigo": null,
+      "competiciones": [
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "A.D. MARIANISTAS C.D.",
+      "codigo": null,
+      "competiciones": [
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "ALGAIDA U.D.",
+      "codigo": "310415",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=310415"
+    },
+    {
+      "nombre": "ALGECIRAS C.F., S.A.D.",
+      "codigo": "300219",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=300219"
+    },
+    {
+      "nombre": "ARCOS C.F.",
+      "codigo": null,
+      "competiciones": [
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "ATLETICO ZABAL",
+      "codigo": null,
+      "competiciones": [
+        "3ª ANDALUZA CADETE (CADIZ)",
+        "3ª ANDALUZA INFANTIL (CADIZ)",
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "BALON LINENSE C.F. C.D.",
+      "codigo": null,
+      "competiciones": [
+        "3ª ANDALUZA INFANTIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "BARBATE C.F.",
+      "codigo": "308515",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=308515"
+    },
+    {
+      "nombre": "C.D. A.D. SAN GARCIA",
+      "codigo": null,
+      "competiciones": [
+        "4ª ANDALUZA JUVENIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. AD PUEBLO NUEVO LA GRANJA",
+      "codigo": null,
+      "competiciones": [
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. ASOC. DVA. NERVION",
+      "codigo": "118920",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=118920"
+    },
+    {
+      "nombre": "C.D. ATHLETIC CLUB JIMENA",
+      "codigo": null,
+      "competiciones": [
+        "3ª ANDALUZA CADETE (CADIZ)",
+        "3ª ANDALUZA INFANTIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. ATLETICO PASTORES ALGECIRAS \"B\"",
+      "codigo": null,
+      "competiciones": [
+        "4ª ANDALUZA JUVENIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. BALON LINENSE C.F.",
+      "codigo": null,
+      "competiciones": [
+        "4ª ANDALUZA JUVENIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. BALON LINENSE C.F. \"A\"",
+      "codigo": null,
+      "competiciones": [
+        "3ª ANDALUZA CADETE (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. CIUDAD DE CADIZ",
+      "codigo": "20779397",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=20779397"
+    },
+    {
+      "nombre": "C.D. DIVINA PASTORA SANLUQUEÑA",
+      "codigo": null,
+      "competiciones": [
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. EL PALMAR VEREDA REAL",
+      "codigo": null,
+      "competiciones": [
+        "Copa Andalucía Senior"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. EL TORNO 2009",
+      "codigo": "343715",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=343715"
+    },
+    {
+      "nombre": "C.D. EPRO CAMPO DE GIBRALTAR",
+      "codigo": null,
+      "competiciones": [
+        "3ª ANDALUZA CADETE (CADIZ)",
+        "3ª ANDALUZA INFANTIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. ESTRELLA PORTUENSE F.C.",
+      "codigo": "2064077",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=2064077"
+    },
+    {
+      "nombre": "C.D. GUADALCACIN",
+      "codigo": "303615",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=303615"
+    },
+    {
+      "nombre": "C.D. GUADIARO",
+      "codigo": "307315",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)",
+        "3ª ANDALUZA CADETE (CADIZ)",
+        "3ª ANDALUZA INFANTIL (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307315"
+    },
+    {
+      "nombre": "C.D. JUAN SEBASTIAN ELCANO",
+      "codigo": null,
+      "competiciones": [
+        "4ª ANDALUZA JUVENIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. LA SALLE",
+      "codigo": null,
+      "competiciones": [
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. MONTALBEÑO",
+      "codigo": null,
+      "competiciones": [
+        "Copa Andalucía Senior"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. MOSQUITO",
+      "codigo": "122718",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=122718"
+    },
+    {
+      "nombre": "C.D. PUERTO DE LA LINEA",
+      "codigo": null,
+      "competiciones": [
+        "3ª ANDALUZA CADETE (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. RACING DEPORTIVO ALGECIRAS",
+      "codigo": null,
+      "competiciones": [
+        "4ª ANDALUZA JUVENIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. ROTA",
+      "codigo": "300815",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=300815"
+    },
+    {
+      "nombre": "C.D. SAN FERNANDO 1940",
+      "codigo": null,
+      "competiciones": [
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. SAN ROQUE",
+      "codigo": "307715",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)",
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307715"
+    },
+    {
+      "nombre": "C.D. SAN ROQUE \"A\"",
+      "codigo": null,
+      "competiciones": [
+        "3ª ANDALUZA CADETE (CADIZ)",
+        "3ª ANDALUZA INFANTIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. TARIFA FUTBOL ACADEMY",
+      "codigo": null,
+      "competiciones": [
+        "4ª ANDALUZA JUVENIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "C.D. UNION DEPORTIVA ESPERANZA 2019",
+      "codigo": "16393952",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=16393952"
+    },
+    {
+      "nombre": "C.D.C. NUEVO MOLINO CSIF",
+      "codigo": "623017",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=623017"
+    },
+    {
+      "nombre": "C.F. SAN JOSE OBRERO",
+      "codigo": "303120",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol",
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=303120"
+    },
+    {
+      "nombre": "CADIZ C.F., S.A.D.",
+      "codigo": null,
+      "competiciones": [
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "CHICLANA C.F.",
+      "codigo": "301516",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=301516"
+    },
+    {
+      "nombre": "CHICLANA IND. C.F.",
+      "codigo": "327715",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=327715"
+    },
+    {
+      "nombre": "CLUB RVO. BAHIA DE ALGECIRAS",
+      "codigo": null,
+      "competiciones": [
+        "4ª ANDALUZA JUVENIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "CUESTA DEL RAYO VETERANOS C.F.",
+      "codigo": null,
+      "competiciones": [
+        "4ª ANDALUZA JUVENIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "Descansa",
+      "codigo": null,
+      "competiciones": [
+        "4ª ANDALUZA JUVENIL (CADIZ)",
+        "3ª ANDALUZA INFANTIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
+      "codigo": null,
+      "competiciones": [
+        "4ª ANDALUZA JUVENIL (CADIZ)",
+        "3ª ANDALUZA CADETE (CADIZ)",
+        "3ª ANDALUZA INFANTIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "JEREZ INDUSTRIAL C.F.",
+      "codigo": "300915",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=300915"
+    },
+    {
+      "nombre": "JUVENTUD DVA. GINES",
+      "codigo": "2071870",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=2071870"
+    },
+    {
+      "nombre": "JUVENTUD SANLUQUEÑA A.D.",
+      "codigo": "339215",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=339215"
+    },
+    {
+      "nombre": "LA PALMA C.F.",
+      "codigo": null,
+      "competiciones": [
+        "Copa Andalucía Senior"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "LOS CORTIJILLOS A.D.",
+      "codigo": null,
+      "competiciones": [
+        "4ª ANDALUZA JUVENIL (CADIZ)",
+        "3ª ANDALUZA INFANTIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "LUCECOR F.S.",
+      "codigo": "9136888",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=9136888"
+    },
+    {
+      "nombre": "MONITORES FUTBOL DE ALGECIRAS",
+      "codigo": null,
+      "competiciones": [
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "MONTILLA C.F.",
+      "codigo": null,
+      "competiciones": [
+        "Copa Andalucía Senior"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "PALMA DEL RIO ATLETICO C.F.",
+      "codigo": null,
+      "competiciones": [
+        "Copa Andalucía Senior"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "PEÑA MADRIDISTA LINENSE \"A\"",
+      "codigo": null,
+      "competiciones": [
+        "4ª ANDALUZA JUVENIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "PINZON C.D.",
+      "codigo": null,
+      "competiciones": [
+        "Copa Andalucía Senior"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "PUENTE MAYORGA RVO",
+      "codigo": null,
+      "competiciones": [
+        "3ª ANDALUZA INFANTIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "R.C.R. HUELVA, S.A.D.",
+      "codigo": "600122",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=600122"
+    },
+    {
+      "nombre": "REAL BALOMPEDICA LINENSE",
+      "codigo": "16370635",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=16370635"
+    },
+    {
+      "nombre": "REAL BETIS BALOMPIE S.A.D.",
+      "codigo": "100229",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=100229"
+    },
+    {
+      "nombre": "SAN ROQUE BALOMPIE",
+      "codigo": "12792465",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=12792465"
+    },
+    {
+      "nombre": "SENECA C.F.",
+      "codigo": "403820",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=403820"
+    },
+    {
+      "nombre": "SEVILLA F.C., S.A.D.",
+      "codigo": "100136",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=100136"
+    },
+    {
+      "nombre": "SIEMPRE ALEGRES C.D.",
+      "codigo": "2064503",
+      "competiciones": [
+        "1ª Andaluza Infantil Fundación Cajasol"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=2064503"
+    },
+    {
+      "nombre": "SPORTING CHICLANA C.D.",
+      "codigo": null,
+      "competiciones": [
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "TARIFA U.D.",
+      "codigo": "308315",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)",
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=308315"
+    },
+    {
+      "nombre": "TREBUJENA C.F.",
+      "codigo": "2064845",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=2064845"
+    },
+    {
+      "nombre": "U.D. CASTELLAR C.F.",
+      "codigo": null,
+      "competiciones": [
+        "4ª ANDALUZA JUVENIL (CADIZ)",
+        "3ª ANDALUZA CADETE (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "U.D. LA ALGAIDA",
+      "codigo": null,
+      "competiciones": [
+        "2ª ANDALUZA ALEVIN (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "U.D. LOS BARRIOS",
+      "codigo": "308015",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=308015"
+    },
+    {
+      "nombre": "U.D. LOS BARRIOS \"B\"",
+      "codigo": null,
+      "competiciones": [
+        "3ª ANDALUZA CADETE (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "U.D. TESORILLO C.D.",
+      "codigo": null,
+      "competiciones": [
+        "3ª ANDALUZA CADETE (CADIZ)",
+        "3ª ANDALUZA INFANTIL (CADIZ)"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "UNION BALOMPEDICA LEBRIJANA",
+      "codigo": null,
+      "competiciones": [
+        "Copa Andalucía Senior"
+      ],
+      "urlRfaf": null
+    },
+    {
+      "nombre": "XEREZ DEPORTIVO F.C.",
+      "codigo": "12785604",
+      "competiciones": [
+        "1ª ANDALUZA SENIOR (CADIZ)"
+      ],
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=12785604"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+name: Sincronizar con la RFAF
+
+# Trae calendarios, horarios, resultados y clasificaciones de los equipos del
+# club y los commitea. Nadie tiene que teclear nada.
+#
+# La RFAF limita por volumen y responde con páginas vacías cuando se pasa de
+# unas 40 peticiones seguidas; por eso la pasada es reanudable y se programa
+# varias veces al día en vez de una sola grande.
+
+on:
+  schedule:
+    # Horas UTC. En invierno son +1 y en verano +2 respecto a la hora española.
+    - cron: "15 5 * * *" # cada mañana: cambios de calendario
+    - cron: "15 9 * * *" # media mañana: continúa si la anterior se quedó a medias
+    - cron: "0 17,19,21 * * 6,0" # sábado y domingo por la tarde: resultados
+  workflow_dispatch:
+    inputs:
+      completo:
+        description: "Recargar todas las jornadas, no solo las recientes"
+        type: boolean
+        default: false
+
+# Evita que dos pasadas se pisen y agoten el cupo entre ellas
+concurrency:
+  group: sincronizar-rfaf
+  cancel-in-progress: false
+
+jobs:
+  sincronizar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Sincronizar
+        run: |
+          node scripts/rfaf/sincronizar.mjs \
+            ${{ inputs.completo && '--completo' || '' }} \
+            | tee salida.txt
+
+      - name: Resumen
+        if: always()
+        run: |
+          {
+            echo '### Sincronización con la RFAF'
+            echo '```'
+            cat salida.txt 2>/dev/null || echo 'sin salida'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publicar cambios
+        run: |
+          if [ -z "$(git status --porcelain src/data/rfaf)" ]; then
+            echo "Sin cambios en los datos de competición."
+            exit 0
+          fi
+          git config user.name  "Sincronización RFAF"
+          git config user.email "actions@github.com"
+          git add src/data/rfaf
+          git commit -m "Datos de competición actualizados desde la RFAF"
+          git push

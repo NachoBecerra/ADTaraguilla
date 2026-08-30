@@ -1,26 +1,210 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   PALETA DEL CLUB — blanco + verde del escudo
+   El verde principal (#265612) es el tono que más predomina en
+   el escudo. Cambia estos valores y toda la web se adapta.
+   ============================================================ */
+@theme {
+  /* Verdes */
+  --color-club: #265612; /* verde del escudo */
+  --color-club-dark: #17380a; /* pulsado, pie de página */
+  --color-club-soft: #3d7523; /* texto de acento sobre fondo claro (5.6:1) */
+  --color-club-claro: #a8d98c; /* texto de acento sobre fondo verde (5.3:1) */
+
+  /* Neutros */
+  --color-fondo: #f6f8f4; /* fondo de página */
+  --color-panel: #ffffff; /* tarjetas */
+  --color-panel-2: #edf2e9; /* chips, avatares, rellenos suaves */
+  --color-linea: #dde5d8; /* bordes */
+  --color-tinta: #10180c; /* texto principal (18:1) */
+  --color-mute: #55614f; /* texto secundario (6:1) */
+
+  --font-display: var(--font-display), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-sans-body), system-ui, sans-serif;
+
+  --radius-card: 1rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-fondo);
+  color: var(--color-tinta);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Bloquea el scroll de fondo cuando hay un panel a pantalla completa abierto */
+body[data-menu-open="true"] {
+  overflow: hidden;
+}
+
+@layer components {
+  /* Titular deportivo: condensado, alto, en mayúsculas */
+  .title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  /* Etiqueta pequeña tipo "marcador" */
+  .eyebrow {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-club-soft);
+  }
+
+  /* Sobre fondo verde la etiqueta va en verde claro */
+  .eyebrow-claro {
+    color: var(--color-club-claro);
+  }
+
+  .card {
+    background: var(--color-panel);
+    border: 1px solid var(--color-linea);
+    border-radius: var(--radius-card);
+  }
+
+  /* Barra verde diagonal decorativa */
+  .slash {
+    background: linear-gradient(
+      100deg,
+      var(--color-club) 0%,
+      var(--color-club) 55%,
+      var(--color-club-dark) 55%,
+      var(--color-club-dark) 100%
+    );
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .btn-primary {
+    background: var(--color-club);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--color-club-dark);
+  }
+
+  .btn-ghost {
+    border: 1px solid var(--color-linea);
+    background: var(--color-panel);
+    color: var(--color-tinta);
+  }
+  .btn-ghost:hover {
+    border-color: var(--color-club);
+    color: var(--color-club);
+  }
+
+  /* Variante para botones sobre fondo verde */
+  .btn-sobre-verde {
+    background: #fff;
+    color: var(--color-club);
+  }
+
+  /* Carrusel horizontal con scroll-snap (patrón móvil) */
+  .rail {
+    display: flex;
+    gap: 0.875rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-inline: 1.25rem;
+    scroll-padding-left: 1.25rem;
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+  .rail > * {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+  }
+}
+
+/* Contenido de las noticias generado desde Markdown */
+.prosa {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: #2c3527;
+}
+.prosa > * + * {
+  margin-top: 1.15em;
+}
+.prosa h2,
+.prosa h3 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--color-tinta);
+  line-height: 1.1;
+  margin-top: 2em;
+}
+.prosa h2 {
+  font-size: 1.6rem;
+}
+.prosa h3 {
+  font-size: 1.3rem;
+}
+.prosa a {
+  color: var(--color-club-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prosa img {
+  border-radius: 0.875rem;
+  width: 100%;
+  height: auto;
+}
+.prosa ul,
+.prosa ol {
+  padding-left: 1.25rem;
+}
+.prosa ul {
+  list-style: disc;
+}
+.prosa ol {
+  list-style: decimal;
+}
+.prosa li::marker {
+  color: var(--color-club);
+}
+.prosa blockquote {
+  border-left: 3px solid var(--color-club);
+  padding-left: 1rem;
+  font-style: italic;
+  color: var(--color-mute);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

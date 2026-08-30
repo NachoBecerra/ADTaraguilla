@@ -1,0 +1,16 @@
+{
+  "_nota": "Lo único que se mantiene a mano. El resto (competiciones, calendarios, clasificaciones y rivales) lo sincroniza scripts/rfaf desde la ficha del club en la RFAF.",
+  "codigoClub": "3075",
+  "_nombres": "Nombre y orden con que se muestra cada equipo. La clave es su código en la RFAF. Un equipo que no aparezca aquí se publica igualmente, con el nombre deducido de su categoría.",
+  "nombres": {
+    "38877699": { "nombre": "Primer equipo", "orden": 1 },
+    "307516": { "nombre": "Juvenil", "orden": 2 },
+    "307517": { "nombre": "Cadete", "orden": 3 },
+    "307520": { "nombre": "Infantil A", "orden": 4 },
+    "307528": { "nombre": "Infantil B", "orden": 5 },
+    "307521": { "nombre": "Alevín A", "orden": 6 },
+    "28567666": { "nombre": "Alevín B", "orden": 7 },
+    "307530": { "nombre": "Benjamín", "orden": 8 },
+    "307531": { "nombre": "Prebenjamín", "orden": 9 }
+  }
+}

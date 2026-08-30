@@ -1,0 +1,99 @@
+# ---------------------------------------------------------------------------
+# Panel de edición del club (Decap CMS)
+#
+# 1. Cambia `repo` por tu repositorio real de GitHub (usuario/repositorio).
+# 2. Cambia `base_url` por el dominio donde esté publicada la web.
+# 3. Crea una OAuth App en GitHub y rellena GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET
+#    (ver README.md). El endpoint de autenticación ya está implementado en la
+#    propia web: /api/auth y /api/callback.
+#
+# Aquí solo se edita lo que no se puede sacar de ningún sitio: noticias y
+# galería. Equipos, calendarios, resultados, clasificaciones y rivales se
+# sincronizan solos desde la RFAF (scripts/rfaf).
+#
+# Para editar en local sin GitHub:  npx decap-server  +  npm run dev  ->  /admin
+# ---------------------------------------------------------------------------
+
+backend:
+  name: github
+  repo: usuario/adtaraguilla # TODO
+  branch: main
+  base_url: https://adtaraguilla.es # TODO
+  auth_endpoint: api/auth
+
+# Permite editar contra el sistema de archivos local con `npx decap-server`.
+local_backend: true
+
+locale: es
+
+media_folder: public/img/noticias
+public_folder: /img/noticias
+
+collections:
+  # ------------------------------------------------------------- noticias
+  - name: noticias
+    label: Noticias
+    label_singular: Noticia
+    description: Crónicas, fichajes, convocatorias y avisos del club.
+    folder: content/noticias
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{fields.slug}}"
+    summary: "{{fecha}} · {{titulo}}"
+    sortable_fields: [fecha, titulo]
+    fields:
+      - { name: titulo, label: Título, widget: string }
+      - {
+          name: slug,
+          label: Dirección web (sin espacios ni acentos),
+          widget: string,
+          hint: "Ejemplo: victoria-en-el-derbi",
+        }
+      - { name: fecha, label: Fecha, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - {
+          name: categoria,
+          label: Categoría,
+          widget: select,
+          default: Primer equipo,
+          options: [Primer equipo, Cantera, Club, Afición, Fútbol femenino],
+        }
+      - {
+          name: resumen,
+          label: Resumen,
+          widget: text,
+          hint: "Dos o tres líneas. Es lo que se ve en el listado y al compartir en redes.",
+        }
+      - { name: portada, label: Foto de portada, widget: image, required: false }
+      - { name: autor, label: Autor, widget: string, default: AD Taraguilla, required: false }
+      - { name: destacada, label: Destacar en portada, widget: boolean, default: false, required: false }
+      - { name: body, label: Cuerpo de la noticia, widget: markdown }
+
+  # ------------------------------------------------------ datos del club
+  - name: datos
+    label: Datos del club
+    files:
+      # .............................................................. galería
+      - name: galeria
+        label: Galería (fotos y vídeos)
+        file: src/data/galeria.json
+        media_folder: ../../public/img/galeria
+        public_folder: /img/galeria
+        fields:
+          - name: items
+            label: Elementos
+            label_singular: Elemento
+            widget: list
+            summary: "{{fields.titulo}}"
+            fields:
+              - { name: id, label: Identificador único, widget: string, hint: "Cualquier texto sin repetir, ej. derbi-2026-01" }
+              - { name: tipo, label: Tipo, widget: select, options: [foto, video], default: foto }
+              - { name: titulo, label: Título, widget: string }
+              - { name: fecha, label: Fecha, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+              - { name: album, label: Álbum, widget: string, hint: "Ej. Pretemporada, Cantera, Afición" }
+              - { name: src, label: Imagen, widget: image, required: false }
+              - {
+                  name: youtubeId,
+                  label: ID del vídeo de YouTube,
+                  widget: string,
+                  required: false,
+                  hint: "Solo para vídeos: el código que aparece después de v= en la URL",
+                }
