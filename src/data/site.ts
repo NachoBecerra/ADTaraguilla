@@ -11,7 +11,7 @@ export const site = {
   localidad: "Taraguilla, San Roque (Cádiz)",
   fundacion: "1969", // TODO: confirmar año real de fundación
   escudo: "/img/escudo.png",
-  url: "https://adtaraguilla.es", // TODO: dominio definitivo
+  url: "https://ad-taraguilla.vercel.app", // TODO: cambiar al dominio propio cuando lo haya
   descripcion:
     "Web oficial de la AD Taraguilla: noticias, resultados, galería de fotos y vídeos, y directorio de clubes de la competición.",
 

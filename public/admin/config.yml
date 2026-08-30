@@ -2,7 +2,7 @@
 # Panel de edición del club (Decap CMS)
 #
 # 1. Cambia `repo` por tu repositorio real de GitHub (usuario/repositorio).
-# 2. Cambia `base_url` por el dominio donde esté publicada la web.
+# 2. `base_url` debe apuntar al dominio donde esté publicada la web.
 # 3. Crea una OAuth App en GitHub y rellena GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET
 #    (ver README.md). El endpoint de autenticación ya está implementado en la
 #    propia web: /api/auth y /api/callback.
@@ -18,7 +18,7 @@ backend:
   name: github
   repo: NachoBecerra/ADTaraguilla
   branch: main
-  base_url: https://adtaraguilla.es # TODO
+  base_url: https://ad-taraguilla.vercel.app
   auth_endpoint: api/auth
 
 # Permite editar contra el sistema de archivos local con `npx decap-server`.
