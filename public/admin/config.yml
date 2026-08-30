@@ -86,7 +86,7 @@ collections:
             label: Elementos
             label_singular: Elemento
             widget: list
-            collapsed: false
+            collapsed: true
             summary: "{{fields.titulo}} · {{fields.album}} · {{fields.fecha}}"
             fields:
               - { name: id, label: Identificador, widget: string, required: false, hint: "Se puede dejar vacío: se deduce del título y la fecha" }
