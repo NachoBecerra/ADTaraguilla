@@ -3,34 +3,48 @@ name: Sincronizar con la RFAF
 # Trae calendarios, horarios, resultados y clasificaciones de los equipos del
 # club y los commitea. Nadie tiene que teclear nada.
 #
-# El horario sigue a cuándo se juega de verdad, no a un reparto uniforme:
-# la cantera juega el SÁBADO (Alevín A, Cadete, Infantil B) y el primer equipo,
-# el Juvenil y el Infantil A juegan el DOMINGO. Entre semana casi no hay nada,
-# salvo alguna eliminatoria de copa del primer equipo.
+# El horario lo marca cómo funciona la competición de verdad:
 #
-# Y hay que ir con tiento: la RFAF corta el acceso pasadas unas 40 peticiones
-# seguidas. Por eso solo se pide lo que puede haber cambiado y una pasada que
-# no encuentra nada nuevo apenas gasta.
+#  - Los HORARIOS de los partidos se asignan durante la semana, sobre todo de
+#    martes a jueves. Por eso hay tres pasadas diarias de lunes a jueves.
+#  - Se juega VIERNES tarde, SÁBADO todo el día (el primero a las 10:00) y
+#    algún DOMINGO, casi siempre el primer equipo.
+#  - El resultado no aparece al pitar el final, sino cuando el árbitro cierra
+#    el acta: sobre hora y media o dos después del saque.
+#
+# Frecuencia y cupo de la RFAF: el portal corta pasadas ~40 peticiones
+# seguidas, así que lo que importa no es cuántas pasadas hay, sino lo que
+# cuesta cada una. Una pasada que no encuentra nada pendiente gasta 5 o 6
+# peticiones; solo se consultan los equipos cuyo partido YA ha terminado y
+# sigue sin resultado. Por eso se puede mirar cada media hora un sábado sin
+# acercarse al límite.
+#
+# Aviso: GitHub no garantiza la puntualidad de estos disparos. Suelen llegar
+# con unos minutos de retraso y, si su cola va cargada, alguno puede saltarse.
+# Por eso los minutos no son en punto: a esa hora se programa medio mundo.
 
 on:
   schedule:
     # Horas UTC. En horario de verano son +2 y en invierno +1 respecto a España.
+    # Los comentarios van en hora española de verano.
 
-    # Cada mañana: cambios de calendario y horarios asignados durante la semana.
-    - cron: "10 5 * * *"
+    # Lunes a jueves: 10:00 · 15:00 · 20:00
+    # La primera del día revisa todo; las otras dos recogen los horarios que se
+    # van asignando y apenas gastan.
+    - cron: "7 8,13,18 * * 1-4"
 
-    # Sábado por la tarde y noche: resultados de la cantera.
-    - cron: "30 15,17,19,21 * * 6"
+    # Viernes: revisión a las 10:00 y, desde las 16:00, cada media hora hasta
+    # medianoche, que es cuando empiezan a llegar resultados.
+    - cron: "7 8 * * 5"
+    - cron: "7,37 14-22 * * 5"
 
-    # Domingo: resultados del primer equipo, Juvenil e Infantil A. Se alarga
-    # hasta la noche porque los partidos del domingo empiezan más tarde.
-    - cron: "30 13,15,17,19,21 * * 0"
+    # Sábado: día grande. Revisión a las 9:00 y cada media hora de 11:00 a
+    # medianoche; el primer partido es a las 10:00 y su acta cae sobre las 12.
+    - cron: "7 7 * * 6"
+    - cron: "7,37 9-22 * * 6"
 
-    # Lunes a primera hora: recoge las actas que se cierran tarde el domingo.
-    - cron: "0 7 * * 1"
-
-    # Miércoles por la noche: alguna eliminatoria de copa entre semana.
-    - cron: "0 21 * * 3"
+    # Domingo: menos partidos y casi siempre del primer equipo.
+    - cron: "7 8,12,16,21 * * 0"
 
   workflow_dispatch:
     inputs:

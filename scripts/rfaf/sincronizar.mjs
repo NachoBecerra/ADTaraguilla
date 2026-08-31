@@ -396,13 +396,37 @@ function sePuedeSaltar(previo) {
   return !faltaAlgunResultado(previo);
 }
 
-/** ¿Hay algún partido ya disputado del que no tengamos resultado? */
+/**
+ * ¿Hay algún partido ya terminado del que no tengamos resultado?
+ *
+ * Se mira la hora, no solo el día: un partido de hoy a las 20:00 no aporta
+ * nada si son las once de la mañana, y con una pasada cada media hora eso
+ * serían veinte consultas inútiles. Se da por terminado dos horas después del
+ * saque, que es cuando el árbitro puede haber cerrado el acta.
+ */
+const MINUTOS_DE_PARTIDO = 120;
+
+function yaDeberiaTenerResultado(p) {
+  if (p.jugado || !p.fecha) return false;
+
+  const día = hoy();
+  if (p.fecha < día) return true; // de días anteriores: siempre
+  if (p.fecha > día) return false; // aún no ha llegado
+
+  // Es hoy. Sin hora asignada no sabemos cuándo acaba: se mira igualmente.
+  if (!p.hora) return true;
+
+  const [h, m] = p.hora.split(":").map(Number);
+  const fin = new Date(`${p.fecha}T${p.hora}:00`);
+  if (Number.isNaN(fin.getTime()) || Number.isNaN(h) || Number.isNaN(m)) return true;
+
+  fin.setMinutes(fin.getMinutes() + MINUTOS_DE_PARTIDO);
+  return Date.now() >= fin.getTime();
+}
+
 function faltaAlgunResultado(previo) {
-  const limite = hoy();
   return (previo.competiciones ?? []).some((c) =>
-    (c.jornadas ?? []).some((j) =>
-      j.partidos.some((p) => !p.jugado && p.fecha && p.fecha <= limite),
-    ),
+    (c.jornadas ?? []).some((j) => j.partidos.some(yaDeberiaTenerResultado)),
   );
 }
 
