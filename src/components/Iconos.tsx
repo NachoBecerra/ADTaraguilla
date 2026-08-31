@@ -144,6 +144,27 @@ export function IconoEnlaceExterno({ size = 16, className }: Props) {
   );
 }
 
+/** Clasificación: la tabla de posiciones. */
+export function IconoTabla({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round">
+      <path d="M4 6.5h3M4 12h3M4 17.5h3" />
+      <path d="M10.5 6.5H20M10.5 12H20M10.5 17.5H20" />
+    </svg>
+  );
+}
+
+/** Resultados: el marcador del partido. */
+export function IconoMarcador({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">
+      <rect x="2.5" y="5.5" width="19" height="13" rx="2.5" />
+      <path d="M12 8v8" strokeDasharray="2 2.4" />
+      <path d="M6 11h2.6M6 14h2.6M15.4 11H18M15.4 14H18" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export function IconoEscudo({ size = 24, className }: Props) {
   return (
     <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round">

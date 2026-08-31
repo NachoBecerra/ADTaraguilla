@@ -16,6 +16,7 @@ import {
 import { site } from "@/data/site";
 import Clasificacion from "@/components/Clasificacion";
 import { getGaleriaDeEquipo } from "@/lib/contenido";
+import NavegacionEquipo, { type Bloque } from "@/components/NavegacionEquipo";
 import Image from "next/image";
 import { FilaPartido, TarjetaProximoPartido } from "@/components/Partidos";
 import { fechaLarga } from "@/lib/formato";
@@ -52,15 +53,24 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
     ? principal?.clasificacion.find((f) => f.equipo === equipo.nombreRfaf)
     : null;
 
-  // Un partido con fecha pasada y sin resultado no es "próximo": va con los
-  // disputados, marcado como sin resultado publicado.
   const fotos = getGaleriaDeEquipo(equipo.id);
 
+  // Un partido con fecha pasada y sin resultado no es "próximo": va con los
+  // disputados, marcado como sin resultado publicado.
   const disputados = partidos.filter((p) => p.jugado || sinResultado(p));
   const pendientes = partidos.filter(
     (p) => !p.jugado && (!p.fecha || p.fecha >= hoyIso()),
   );
   const faltanResultados = disputados.some(sinResultado);
+
+  // La barra inferior solo enseña los bloques que este equipo tiene: uno
+  // recién inscrito no tiene todavía ni resultados ni fotos
+  const bloques: Bloque[] = [
+    ...(principal ? (["clasificacion"] as const) : []),
+    ...(pendientes.length > 0 ? (["calendario"] as const) : []),
+    ...(disputados.length > 0 ? (["resultados"] as const) : []),
+    ...(fotos.length > 0 ? (["imagenes"] as const) : []),
+  ];
 
   return (
     <>
@@ -110,7 +120,7 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
         </div>
       </section>
 
-      <div className="mx-auto max-w-5xl space-y-12 px-5 py-8">
+      <div className="mx-auto max-w-5xl space-y-12 px-5 py-8 pb-28 md:pb-8">
         {proximo ? <TarjetaProximoPartido partido={proximo} titulo="Próximo partido" /> : null}
 
         {equipo.competiciones.length === 0 ? (
@@ -121,7 +131,7 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
         ) : null}
 
         {principal ? (
-          <section>
+          <section id="clasificacion" className="scroll-mt-20">
             <h2 className="title text-3xl text-tinta">Clasificación</h2>
             <p className="mb-4 mt-1 text-sm text-mute">
               {principal.nombre}
@@ -132,7 +142,7 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
         ) : null}
 
         {pendientes.length > 0 ? (
-          <section>
+          <section id="calendario" className="scroll-mt-20">
             <h2 className="title text-3xl text-tinta">Calendario</h2>
             <ul className="mt-4 rounded-xl border border-linea bg-panel px-4">
               {pendientes.map((p, i) => (
@@ -146,7 +156,7 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
           </section>
         ) : null}
         {disputados.length > 0 ? (
-          <section>
+          <section id="resultados" className="scroll-mt-20">
             <h2 className="title text-3xl text-tinta">Resultados</h2>
             <ul className="mt-4 rounded-xl border border-linea bg-panel px-4">
               {[...disputados].reverse().map((p, i) => (
@@ -171,7 +181,7 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
         ) : null}
 
         {fotos.length > 0 ? (
-          <section>
+          <section id="imagenes" className="scroll-mt-20">
             <h2 className="title text-3xl text-tinta">Imágenes</h2>
             <p className="mb-4 mt-1 text-sm text-mute">
               {fotos.length} {fotos.length === 1 ? "foto" : "fotos"} del equipo.
@@ -210,6 +220,8 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
         ) : null}
 
       </div>
+
+      <NavegacionEquipo bloques={bloques} />
     </>
   );
 }
