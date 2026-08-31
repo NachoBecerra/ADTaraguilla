@@ -89,33 +89,7 @@ export default function Inicio() {
             </div>
           </div>
 
-          {/*
-            El nombre, como un solo bloque rectangular.
-
-            El <h1> se encoge al ancho de "Taraguilla", que es la palabra más
-            larga, y "Agrupación Deportiva" reparte ese mismo ancho con una
-            palabra a cada extremo. Así los bordes cuadran solos en cualquier
-            pantalla, sin medidas fijas que ajustar por breakpoint.
-          */}
-          <div className="relative mt-7 inline-block">
-            {/*
-              El escudo de fondo, en silueta.
-
-              A todo color no funcionaba: al bajarle la opacidad, el blanco y
-              el azul se leen como manchas sobre el verde. El filtro lo deja
-              en una silueta de un solo tono, que es como se hace un sello y
-              sí se reconoce como el escudo.
-            */}
-            <Image
-              src={site.escudo}
-              alt=""
-              aria-hidden
-              width={843}
-              height={836}
-              sizes="300px"
-              className="pointer-events-none absolute left-1/2 top-1/2 h-[250%] w-auto -translate-x-1/2 -translate-y-1/2 opacity-10 [filter:brightness(0)_invert(1)]"
-            />
-          <h1 className="relative inline-block text-[3.25rem] leading-[0.88] sm:text-7xl lg:text-8xl">
+          <h1 className="mt-7 inline-block text-[3.25rem] leading-[0.88] sm:text-7xl lg:text-8xl">
             {/*
               Las dos líneas ocupan lo mismo sin forzar nada.
 
@@ -132,7 +106,6 @@ export default function Inicio() {
               {site.nombreLargo.split(" ").at(-1)}
             </span>
           </h1>
-          </div>
 
           <p className="mt-4 max-w-md text-base leading-relaxed text-white/85">
             {site.lema}. Resultados y calendarios de todos nuestros equipos, actualizados
