@@ -12,7 +12,7 @@ const NAV = [
   { href: "/equipos", texto: "Equipos" },
   { href: "/noticias", texto: "Noticias" },
   { href: "/galeria", texto: "Galería" },
-  { href: "/palmares", texto: "Palmarés" },
+  { href: "/historico", texto: "Histórico" },
 ];
 
 export default function Cabecera() {

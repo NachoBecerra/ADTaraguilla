@@ -165,10 +165,10 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
             <Historial historico={historico} />
 
             <Link
-              href="/palmares"
+              href="/historico"
               className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-club-soft"
             >
-              El palmarés de todo el club
+              El histórico de todo el club
               <IconoFlecha size={15} />
             </Link>
           </section>

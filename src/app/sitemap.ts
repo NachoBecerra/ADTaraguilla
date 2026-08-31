@@ -4,7 +4,7 @@ import { getNoticias } from "@/lib/contenido";
 import { getEquipos } from "@/lib/competicion";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const estaticas = ["", "/equipos", "/noticias", "/galeria", "/palmares"].map((ruta) => ({
+  const estaticas = ["", "/equipos", "/noticias", "/galeria", "/historico"].map((ruta) => ({
     url: `${site.url}${ruta}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,

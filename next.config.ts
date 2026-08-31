@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // La sección se llamó /palmares durante unas horas: por si alguien
+  // compartió el enlace, se redirige en vez de dar un 404.
+  async redirects() {
+    return [{ source: "/palmares", destination: "/historico", permanent: true }];
+  },
+
   images: {
     remotePatterns: [
       // Escudos de los clubes, servidos por la CDN de la RFAF
