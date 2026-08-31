@@ -50,11 +50,14 @@ export function extraerEquipos(html) {
  */
 export function extraerCompeticiones(html, temporada) {
   const bloque = bloquesPorTemporada(html).find((b) => b.temporada === temporada);
-  if (!bloque) return [];
+  return bloque ? extraerCompeticionesDeBloque(bloque.html) : [];
+}
 
+/** Las competiciones que hay dentro del bloque de una temporada. */
+function extraerCompeticionesDeBloque(html) {
   const competiciones = [];
 
-  for (const fila of filas(bloque.html)) {
+  for (const fila of filas(html)) {
     const urlGrupo = enlaces(fila.html, "NFG_VisGrupos_Vis")[0];
     if (!urlGrupo) continue;
 
@@ -72,6 +75,22 @@ export function extraerCompeticiones(html, temporada) {
   }
 
   return competiciones;
+}
+
+/**
+ * Todas las temporadas del equipo salvo la indicada.
+ *
+ * Sale de la misma página que ya se pide en cada pasada para saber en qué
+ * compite ahora, así que el palmarés no cuesta ni una petición extra.
+ */
+export function extraerHistorico(html, excluirTemporada) {
+  return bloquesPorTemporada(html)
+    .filter((b) => b.temporada !== excluirTemporada)
+    .map((b) => ({
+      temporada: b.temporada,
+      competiciones: extraerCompeticionesDeBloque(b.html),
+    }))
+    .filter((t) => t.competiciones.length > 0);
 }
 
 /* --------------------------------------------------------- página de grupo */

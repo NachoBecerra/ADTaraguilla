@@ -28,6 +28,7 @@ import {
   extraerCalendario,
   extraerJornada,
   extraerClasificacion,
+  extraerHistorico,
   nombreDesdeCategoria,
 } from "./extraer.mjs";
 
@@ -36,6 +37,15 @@ const DIR_SALIDA = path.join(RAIZ, "src", "data", "rfaf");
 const DIR_EQUIPOS = path.join(DIR_SALIDA, "equipos");
 const CONFIG = path.join(RAIZ, "src", "data", "equipos.json");
 const RUTA_ESCUDOS = path.join(DIR_SALIDA, "escudos.json");
+const DIR_HISTORICO = path.join(DIR_SALIDA, "historico");
+
+/**
+ * Peticiones que cada pasada dedica a rellenar el histórico, además de su
+ * trabajo normal. Se hace a fuego lento a propósito: son ~140 peticiones de
+ * una sola vez y la RFAF corta a las 40, así que se reparten entre pasadas y
+ * en un día está completo. Cuando no queda nada pendiente, no gasta nada.
+ */
+const PRESUPUESTO_HISTORICO = 12;
 
 const COMPLETO = process.argv.includes("--completo");
 const FORZAR = process.argv.includes("--forzar");
@@ -324,6 +334,9 @@ async function principal() {
               `/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=${equipo.codigo}`,
             );
 
+      // El palmarés sale de esta misma página: ni una petición extra
+      await guardarPalmares(equipo, extraerHistorico(html, temporada));
+
       const competiciones = extraerCompeticiones(html, temporada);
       if (competiciones.length === 0) {
         aviso(`  sin competiciones asignadas todavía en ${temporada}`);
@@ -373,6 +386,9 @@ async function principal() {
     _nota: "Escudos de los clubes, tal y como los sirve la CDN de la RFAF.",
     escudos: Object.fromEntries([...escudos].sort()),
   });
+
+  // Con lo que sobre del cupo, se va completando el histórico
+  if (!incompleto) await rellenarHistorico(cliente, equipos, temporada);
 
   await recomponerIndices(config, urlClub, temporada, equipos);
 
@@ -447,6 +463,120 @@ function faltaAlgunResultado(previo) {
   return (previo.competiciones ?? []).some((c) =>
     (c.jornadas ?? []).some((j) => j.partidos.some(yaDeberiaTenerResultado)),
   );
+}
+
+/* --------------------------------------------------------------- histórico */
+
+const rutaHistorico = (id) => path.join(DIR_HISTORICO, `${id}.json`);
+
+/**
+ * Guarda el palmarés del equipo conservando las clasificaciones ya recogidas.
+ * Las temporadas pasadas no cambian, así que lo que ya está no se vuelve a
+ * pedir nunca.
+ */
+async function guardarPalmares(equipo, temporadas) {
+  if (temporadas.length === 0) return;
+
+  const previo = await leerJson(rutaHistorico(equipo.id));
+  const yaTengo = new Map();
+  for (const t of previo?.temporadas ?? []) {
+    for (const c of t.competiciones) {
+      if (c.clasificacion?.length) yaTengo.set(`${t.temporada}|${c.codGrupo}`, c);
+    }
+  }
+
+  await escribirJson(rutaHistorico(equipo.id), {
+    id: equipo.id,
+    nombre: equipo.nombre,
+    nombreRfaf: equipo.nombreRfaf,
+    codigo: equipo.codigo,
+    orden: equipo.orden,
+    actualizado: new Date().toISOString(),
+    temporadas: temporadas.map((t) => ({
+      temporada: t.temporada,
+      competiciones: t.competiciones.map((c) => {
+        const guardada = yaTengo.get(`${t.temporada}|${c.codGrupo}`);
+        return guardada ? { ...c, ...guardada } : c;
+      }),
+    })),
+  });
+}
+
+/**
+ * Completa las clasificaciones finales que falten, gastando como mucho el
+ * presupuesto de la pasada. Se empieza por lo más reciente, que es lo que la
+ * gente mira primero.
+ */
+async function rellenarHistorico(cliente, equipos, temporadaActual) {
+  let quedan = PRESUPUESTO_HISTORICO;
+
+  for (const equipo of equipos) {
+    if (quedan <= 0) break;
+
+    const ruta = rutaHistorico(equipo.id);
+    let datos = await leerJson(ruta);
+
+    // Un equipo que hoy se saltó no tiene todavía su palmarés: se pide una vez
+    if (!datos) {
+      if (quedan < 3) break;
+      try {
+        const html = await cliente.pedir(
+          `/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=${equipo.codigo}`,
+        );
+        quedan--;
+        await guardarPalmares(equipo, extraerHistorico(html, temporadaActual));
+        datos = await leerJson(ruta);
+      } catch (e) {
+        if (e instanceof ErrorDeCupo) return;
+        continue;
+      }
+    }
+    if (!datos) continue;
+
+    let tocado = false;
+    for (const t of datos.temporadas) {
+      for (const c of t.competiciones) {
+        if (quedan < 2) break;
+        if (c.clasificacion?.length || c.sinClasificacion) continue;
+
+        try {
+          const grupo = extraerGrupo(
+            await cliente.pedir(
+              `/pnfg/NPcd/NFG_VisGrupos_Vis?cod_primaria=1000123&codgrupo=${c.codGrupo}`,
+            ),
+          );
+          quedan--;
+
+          if (!grupo.urlClasificacion) {
+            // Algunas copas no tienen tabla: se marca para no volver a pedirla
+            c.sinClasificacion = true;
+            tocado = true;
+            continue;
+          }
+
+          c.clasificacion = extraerClasificacion(await cliente.pedir(grupo.urlClasificacion));
+          quedan--;
+          c.urlClasificacion = urlAbsoluta(grupo.urlClasificacion);
+          if (c.clasificacion.length === 0) c.sinClasificacion = true;
+          tocado = true;
+          log(`  histórico ${equipo.nombre} ${t.temporada}: ${c.clasificacion.length} equipos`);
+        } catch (e) {
+          if (e instanceof ErrorDeCupo) {
+            if (tocado) await escribirJson(ruta, datos);
+            return;
+          }
+          c.sinClasificacion = true;
+          tocado = true;
+        }
+      }
+    }
+
+    if (tocado) await escribirJson(ruta, datos);
+  }
+
+  if (quedan < PRESUPUESTO_HISTORICO) {
+    log(`Histórico: ${PRESUPUESTO_HISTORICO - quedan} peticiones usadas en esta pasada`);
+  }
 }
 
 /**

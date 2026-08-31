@@ -1,0 +1,830 @@
+{
+  "id": "juvenil",
+  "nombre": "Juvenil",
+  "nombreRfaf": "A.D. TARAGUILLA",
+  "codigo": "307516",
+  "orden": 2,
+  "actualizado": "2026-08-31T08:21:16.073Z",
+  "temporadas": [
+    {
+      "temporada": "2025-2026",
+      "competiciones": [
+        {
+          "nombre": "4ª ANDALUZA JUVENIL (CADIZ)",
+          "categoria": "4ª ANDALUZA JUVENIL",
+          "grupo": "Grupo 7º",
+          "puntos": 26,
+          "posicion": 5,
+          "codGrupo": "45621250",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL \"A\"",
+              "puntos": 56,
+              "jugados": 20,
+              "ganados": 18,
+              "empatados": 2,
+              "perdidos": 0,
+              "golesFavor": 97,
+              "golesContra": 11,
+              "racha": [
+                "E",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 2,
+              "equipo": "C.D. SAN BERNARDO",
+              "puntos": 38,
+              "jugados": 20,
+              "ganados": 12,
+              "empatados": 2,
+              "perdidos": 6,
+              "golesFavor": 45,
+              "golesContra": 32,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 3,
+              "equipo": "C.D. PUERTO DE LA LINEA",
+              "puntos": 30,
+              "jugados": 20,
+              "ganados": 9,
+              "empatados": 3,
+              "perdidos": 8,
+              "golesFavor": 58,
+              "golesContra": 54,
+              "racha": [
+                "E",
+                "P",
+                "P",
+                "P",
+                "E"
+              ]
+            },
+            {
+              "posicion": 4,
+              "equipo": "CALDERON C.D.",
+              "puntos": 28,
+              "jugados": 20,
+              "ganados": 9,
+              "empatados": 1,
+              "perdidos": 10,
+              "golesFavor": 49,
+              "golesContra": 56,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "E"
+              ]
+            },
+            {
+              "posicion": 5,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 26,
+              "jugados": 20,
+              "ganados": 8,
+              "empatados": 2,
+              "perdidos": 10,
+              "golesFavor": 34,
+              "golesContra": 64,
+              "racha": [
+                "P",
+                "P",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 6,
+              "equipo": "C.D. BALON LINENSE C.F.",
+              "puntos": 26,
+              "jugados": 20,
+              "ganados": 8,
+              "empatados": 2,
+              "perdidos": 10,
+              "golesFavor": 34,
+              "golesContra": 61,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "P",
+                "E"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "C.D. GUADIARO",
+              "puntos": 23,
+              "jugados": 20,
+              "ganados": 6,
+              "empatados": 5,
+              "perdidos": 9,
+              "golesFavor": 33,
+              "golesContra": 38,
+              "racha": [
+                "E",
+                "G",
+                "G",
+                "G",
+                "E"
+              ]
+            },
+            {
+              "posicion": 8,
+              "equipo": "JUVENTUD PALMONES",
+              "puntos": 17,
+              "jugados": 20,
+              "ganados": 6,
+              "empatados": 2,
+              "perdidos": 12,
+              "golesFavor": 29,
+              "golesContra": 52,
+              "racha": [
+                "E",
+                "G",
+                "G",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 9,
+              "equipo": "PEÑA MADRIDISTA LINENSE",
+              "puntos": 6,
+              "jugados": 20,
+              "ganados": 2,
+              "empatados": 0,
+              "perdidos": 18,
+              "golesFavor": 16,
+              "golesContra": 96,
+              "racha": [
+                "P",
+                "G",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 10,
+              "equipo": "U.D. TESORILLO",
+              "puntos": 55,
+              "jugados": 20,
+              "ganados": 18,
+              "empatados": 1,
+              "perdidos": 1,
+              "golesFavor": 92,
+              "golesContra": 21,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "C.D. FUERTE SANTA BARBARA",
+              "puntos": 6,
+              "jugados": 4,
+              "ganados": 0,
+              "empatados": 8,
+              "perdidos": 28,
+              "golesFavor": 47,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 7,
+              "equipo": "C.D. FUERTE SANTA BARBARA",
+              "puntos": 6,
+              "jugados": 4,
+              "ganados": 0,
+              "empatados": 8,
+              "perdidos": 28,
+              "golesFavor": 47,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=45621250&codcompeticion=45607074"
+        }
+      ]
+    },
+    {
+      "temporada": "2015-2016",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA JUVENIL (CADIZ)",
+          "categoria": "2ª ANDALUZA JUVENIL",
+          "grupo": "Grupo Ùnico",
+          "puntos": 33,
+          "posicion": 15,
+          "codGrupo": "2776273",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "XEREZ DEPORTIVO F.C. \"A\"",
+              "puntos": 16,
+              "jugados": 20,
+              "ganados": 10,
+              "empatados": 2,
+              "perdidos": 84,
+              "golesFavor": 23,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 2,
+              "equipo": "GUADALCACIN C.D.",
+              "puntos": 16,
+              "jugados": 21,
+              "ganados": 2,
+              "empatados": 9,
+              "perdidos": 79,
+              "golesFavor": 38,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 3,
+              "equipo": "ALGECIRAS C.F.",
+              "puntos": 16,
+              "jugados": 18,
+              "ganados": 5,
+              "empatados": 9,
+              "perdidos": 89,
+              "golesFavor": 46,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 4,
+              "equipo": "A.D. TIEMPO LIBRE \"A\"",
+              "puntos": 16,
+              "jugados": 15,
+              "ganados": 9,
+              "empatados": 8,
+              "perdidos": 83,
+              "golesFavor": 41,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 5,
+              "equipo": "BALONA BALOMPIE C.F. C.D.",
+              "puntos": 16,
+              "jugados": 15,
+              "ganados": 7,
+              "empatados": 10,
+              "perdidos": 98,
+              "golesFavor": 46,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 6,
+              "equipo": "CONIL C.F.",
+              "puntos": 16,
+              "jugados": 14,
+              "ganados": 7,
+              "empatados": 11,
+              "perdidos": 74,
+              "golesFavor": 52,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 7,
+              "equipo": "TARIFA U.D.",
+              "puntos": 16,
+              "jugados": 14,
+              "ganados": 5,
+              "empatados": 13,
+              "perdidos": 75,
+              "golesFavor": 59,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 8,
+              "equipo": "SAN FERNANDO C.D. ISLEÑO \"A\"",
+              "puntos": 16,
+              "jugados": 13,
+              "ganados": 8,
+              "empatados": 11,
+              "perdidos": 85,
+              "golesFavor": 48,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 9,
+              "equipo": "C.D. DIVINA PASTORA SANLUQUEÑA \"A\"",
+              "puntos": 16,
+              "jugados": 12,
+              "ganados": 10,
+              "empatados": 10,
+              "perdidos": 73,
+              "golesFavor": 47,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 10,
+              "equipo": "ARCOS C.F.",
+              "puntos": 16,
+              "jugados": 13,
+              "ganados": 7,
+              "empatados": 12,
+              "perdidos": 97,
+              "golesFavor": 70,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 11,
+              "equipo": "SAN JOSE OBRERO U.D. \"A\"",
+              "puntos": 16,
+              "jugados": 12,
+              "ganados": 8,
+              "empatados": 12,
+              "perdidos": 72,
+              "golesFavor": 60,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 12,
+              "equipo": "RVO PORTUENSE CLUB FUTBOL BASE",
+              "puntos": 16,
+              "jugados": 10,
+              "ganados": 7,
+              "empatados": 15,
+              "perdidos": 66,
+              "golesFavor": 76,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 13,
+              "equipo": "ATCO. SANLUQUEÑO C.F. \"B\"",
+              "puntos": 16,
+              "jugados": 10,
+              "ganados": 6,
+              "empatados": 16,
+              "perdidos": 70,
+              "golesFavor": 63,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 14,
+              "equipo": "ATLETICO ZABAL",
+              "puntos": 16,
+              "jugados": 9,
+              "ganados": 8,
+              "empatados": 15,
+              "perdidos": 68,
+              "golesFavor": 72,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 15,
+              "equipo": "A.D. TARAGUILLA \"A\"",
+              "puntos": 16,
+              "jugados": 9,
+              "ganados": 6,
+              "empatados": 17,
+              "perdidos": 81,
+              "golesFavor": 88,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 16,
+              "equipo": "C.D. LA SALLE",
+              "puntos": 16,
+              "jugados": 7,
+              "ganados": 7,
+              "empatados": 18,
+              "perdidos": 56,
+              "golesFavor": 82,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 17,
+              "equipo": "ROTA C.D.",
+              "puntos": 16,
+              "jugados": 3,
+              "ganados": 2,
+              "empatados": 27,
+              "perdidos": 53,
+              "golesFavor": 120,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=2776273&codcompeticion=2697310"
+        }
+      ]
+    },
+    {
+      "temporada": "2014-2015",
+      "competiciones": [
+        {
+          "nombre": "3ª ANDALUZA JUVENIL (CADIZ)",
+          "categoria": "3ª ANDALUZA JUVENIL",
+          "grupo": "Grupo 2",
+          "puntos": 55,
+          "posicion": 3,
+          "codGrupo": "2068810",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "XEREZ DEPORTIVO F.C. \"A\"",
+              "puntos": 14,
+              "jugados": 26,
+              "ganados": 2,
+              "empatados": 0,
+              "perdidos": 142,
+              "golesFavor": 15,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 2,
+              "equipo": "TARIFA U.D.",
+              "puntos": 14,
+              "jugados": 17,
+              "ganados": 8,
+              "empatados": 3,
+              "perdidos": 102,
+              "golesFavor": 33,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 3,
+              "equipo": "A.D. TARAGUILLA \"A\"",
+              "puntos": 14,
+              "jugados": 17,
+              "ganados": 4,
+              "empatados": 7,
+              "perdidos": 80,
+              "golesFavor": 37,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 4,
+              "equipo": "C.D. SALESIANOS ALGECIRAS",
+              "puntos": 14,
+              "jugados": 13,
+              "ganados": 5,
+              "empatados": 10,
+              "perdidos": 87,
+              "golesFavor": 42,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 5,
+              "equipo": "C.D. SAN ROQUE",
+              "puntos": 14,
+              "jugados": 10,
+              "ganados": 10,
+              "empatados": 8,
+              "perdidos": 68,
+              "golesFavor": 48,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 6,
+              "equipo": "JEREZ INDUSTRIAL C.F.",
+              "puntos": 14,
+              "jugados": 12,
+              "ganados": 3,
+              "empatados": 13,
+              "perdidos": 65,
+              "golesFavor": 64,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 7,
+              "equipo": "CD AD PUEBLO NUEVO LA GRANJA",
+              "puntos": 14,
+              "jugados": 10,
+              "ganados": 8,
+              "empatados": 10,
+              "perdidos": 70,
+              "golesFavor": 56,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 8,
+              "equipo": "C.D. ATHLETIC CLUB JIMENA",
+              "puntos": 14,
+              "jugados": 10,
+              "ganados": 6,
+              "empatados": 12,
+              "perdidos": 63,
+              "golesFavor": 56,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 9,
+              "equipo": "C.D. ANDALUCIA C.M.",
+              "puntos": 14,
+              "jugados": 9,
+              "ganados": 7,
+              "empatados": 12,
+              "perdidos": 68,
+              "golesFavor": 53,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 10,
+              "equipo": "LOLUBA C.F.",
+              "puntos": 14,
+              "jugados": 9,
+              "ganados": 4,
+              "empatados": 15,
+              "perdidos": 72,
+              "golesFavor": 96,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 11,
+              "equipo": "CALDERON C.D.",
+              "puntos": 14,
+              "jugados": 9,
+              "ganados": 1,
+              "empatados": 18,
+              "perdidos": 64,
+              "golesFavor": 83,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 12,
+              "equipo": "U.D. TESORILLO \"B\"",
+              "puntos": 14,
+              "jugados": 11,
+              "ganados": 5,
+              "empatados": 12,
+              "perdidos": 66,
+              "golesFavor": 57,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 13,
+              "equipo": "XEREZ CLUB BALOMPIE",
+              "puntos": 14,
+              "jugados": 8,
+              "ganados": 2,
+              "empatados": 18,
+              "perdidos": 51,
+              "golesFavor": 92,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 14,
+              "equipo": "A.D. LOS CORTIJILLOS",
+              "puntos": 14,
+              "jugados": 5,
+              "ganados": 8,
+              "empatados": 15,
+              "perdidos": 63,
+              "golesFavor": 76,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 15,
+              "equipo": "SAN BENITO C.F.",
+              "puntos": 14,
+              "jugados": 6,
+              "ganados": 3,
+              "empatados": 19,
+              "perdidos": 59,
+              "golesFavor": 102,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=2068810&codcompeticion=2064130"
+        }
+      ]
+    },
+    {
+      "temporada": "2013-2014",
+      "competiciones": [
+        {
+          "nombre": "1ª PROVINCIAL JUVENIL (CÁDIZ)",
+          "categoria": "3ª ANDALUZA JUVENIL",
+          "grupo": "Grupo 2",
+          "puntos": 56,
+          "posicion": 3,
+          "codGrupo": "302402",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "C.D. BALONA BALOMPIE C.F.",
+              "puntos": 13,
+              "jugados": 22,
+              "ganados": 1,
+              "empatados": 3,
+              "perdidos": 105,
+              "golesFavor": 37,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 2,
+              "equipo": "ALGECIRAS C.F.",
+              "puntos": 13,
+              "jugados": 21,
+              "ganados": 3,
+              "empatados": 2,
+              "perdidos": 92,
+              "golesFavor": 19,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 3,
+              "equipo": "A.D. TARAGUILLA \"A\"",
+              "puntos": 13,
+              "jugados": 17,
+              "ganados": 5,
+              "empatados": 4,
+              "perdidos": 83,
+              "golesFavor": 31,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 4,
+              "equipo": "C.D. ANDALUCIA C.M.",
+              "puntos": 13,
+              "jugados": 14,
+              "ganados": 5,
+              "empatados": 7,
+              "perdidos": 69,
+              "golesFavor": 44,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 5,
+              "equipo": "LOLUBA C.F.",
+              "puntos": 13,
+              "jugados": 11,
+              "ganados": 5,
+              "empatados": 10,
+              "perdidos": 70,
+              "golesFavor": 51,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 6,
+              "equipo": "CHICLANA C.F.",
+              "puntos": 13,
+              "jugados": 11,
+              "ganados": 4,
+              "empatados": 11,
+              "perdidos": 65,
+              "golesFavor": 47,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 7,
+              "equipo": "C.D. SIDONIA BALOMPIE",
+              "puntos": 13,
+              "jugados": 11,
+              "ganados": 3,
+              "empatados": 12,
+              "perdidos": 63,
+              "golesFavor": 41,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 8,
+              "equipo": "CALDERON C.D.",
+              "puntos": 13,
+              "jugados": 11,
+              "ganados": 2,
+              "empatados": 13,
+              "perdidos": 70,
+              "golesFavor": 55,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 9,
+              "equipo": "C.D. VEJER BALOMPIE",
+              "puntos": 13,
+              "jugados": 9,
+              "ganados": 5,
+              "empatados": 12,
+              "perdidos": 60,
+              "golesFavor": 63,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 10,
+              "equipo": "A.D. LOS CORTIJILLOS",
+              "puntos": 13,
+              "jugados": 8,
+              "ganados": 5,
+              "empatados": 13,
+              "perdidos": 57,
+              "golesFavor": 55,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 11,
+              "equipo": "XEREZ CLUB BALOMPIE",
+              "puntos": 13,
+              "jugados": 8,
+              "ganados": 4,
+              "empatados": 14,
+              "perdidos": 55,
+              "golesFavor": 61,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 12,
+              "equipo": "C.D. ATHLETIC CLUB JIMENA",
+              "puntos": 13,
+              "jugados": 6,
+              "ganados": 4,
+              "empatados": 16,
+              "perdidos": 53,
+              "golesFavor": 60,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 13,
+              "equipo": "C.D. SAN ROQUE",
+              "puntos": 13,
+              "jugados": 4,
+              "ganados": 5,
+              "empatados": 17,
+              "perdidos": 44,
+              "golesFavor": 80,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 14,
+              "equipo": "PEÑA MADRIDISTA LINENSE",
+              "puntos": 13,
+              "jugados": 2,
+              "ganados": 3,
+              "empatados": 21,
+              "perdidos": 48,
+              "golesFavor": 108,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=302402&codcompeticion=3024"
+        }
+      ]
+    }
+  ]
+}

@@ -15,6 +15,8 @@ import {
 } from "@/lib/competicion";
 import { site } from "@/data/site";
 import Clasificacion from "@/components/Clasificacion";
+import Historial from "@/components/Historial";
+import { historicoDe } from "@/lib/historico";
 import { FilaPartido, TarjetaProximoPartido } from "@/components/Partidos";
 import { fechaLarga } from "@/lib/formato";
 import { IconoFlecha, IconoEnlaceExterno } from "@/components/Iconos";
@@ -51,6 +53,8 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
 
   // Un partido con fecha pasada y sin resultado no es "próximo": va con los
   // disputados, marcado como sin resultado publicado.
+  const historico = historicoDe(equipo.id);
+
   const disputados = partidos.filter((p) => p.jugado || sinResultado(p));
   const pendientes = partidos.filter(
     (p) => !p.jugado && (!p.fecha || p.fecha >= hoyIso()),
@@ -148,6 +152,17 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
                 Último partido disputado: {ultimo.fecha ? fechaLarga(ultimo.fecha) : "—"}
               </p>
             ) : null}
+          </section>
+        ) : null}
+
+        {historico && historico.temporadas.length > 0 ? (
+          <section>
+            <h2 className="title text-3xl text-tinta">Historial</h2>
+            <p className="mt-1 text-sm text-mute">
+              Cómo acabó el equipo en temporadas anteriores. Pulsa una para ver la
+              clasificación completa.
+            </p>
+            <Historial historico={historico} />
           </section>
         ) : null}
 

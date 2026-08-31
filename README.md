@@ -42,6 +42,7 @@ Se escribe en `src/data/rfaf/`:
 
 ```
 club.json              Índice: temporada y equipos con su posición
+historico/<id>.json    Palmarés y clasificaciones de temporadas pasadas
 rivales.json           Directorio de clubes, para /clubes
 escudos.json           Escudo de cada club, por código de equipo
 equipos/<id>.json      Detalle de cada equipo: competiciones, jornadas, tabla
@@ -109,6 +110,22 @@ Además solo se piden las jornadas que pueden haber cambiado: las de las próxim
 dos semanas (es cuando se asignan horarios y campos) y las recientes sin
 resultado. Una jornada cerrada no se vuelve a consultar nunca. En régimen normal
 son dos o tres peticiones por competición.
+
+### El histórico
+
+El palmarés —posición y puntos de cada temporada anterior— **no cuesta ninguna
+petición**: viene en la misma página que ya se pide para saber en qué compite
+hoy cada equipo.
+
+Las clasificaciones finales sí hay que ir a buscarlas, unas 140 peticiones en
+total. Se rellenan a fuego lento: cada pasada dedica como mucho 12 peticiones a
+la temporada pendiente más reciente, además de su trabajo normal. Así nunca se
+roza el límite de la RFAF y en un día está completo. Una temporada terminada no
+cambia, así que lo recogido no se vuelve a pedir jamás y, cuando no queda nada
+pendiente, el relleno no gasta nada.
+
+Las competiciones sin tabla —las copas por eliminatorias— se marcan con
+`sinClasificacion` para no preguntar por ellas una y otra vez.
 
 ### Si la RFAF cambia el HTML
 

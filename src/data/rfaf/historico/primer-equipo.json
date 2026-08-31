@@ -1,0 +1,627 @@
+{
+  "id": "primer-equipo",
+  "nombre": "Primer equipo",
+  "nombreRfaf": "A.D. TARAGUILLA",
+  "codigo": "38877699",
+  "orden": 1,
+  "actualizado": "2026-08-31T08:23:06.585Z",
+  "temporadas": [
+    {
+      "temporada": "2025-2026",
+      "competiciones": [
+        {
+          "nombre": "Copa de Andalucía 1ª Senior (Cádiz)",
+          "categoria": "1ª ANDALUZA SENIOR",
+          "grupo": "ELIMINATORIAS",
+          "puntos": null,
+          "posicion": null,
+          "codGrupo": "45186227",
+          "sinClasificacion": true
+        },
+        {
+          "nombre": "1ª ANDALUZA SENIOR (CADIZ)",
+          "categoria": "1ª ANDALUZA SENIOR",
+          "grupo": "UNICO",
+          "puntos": 47,
+          "posicion": 7,
+          "codGrupo": "45228247",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "RAYO SANLUQUEÑO C.D.",
+              "puntos": 58,
+              "jugados": 30,
+              "ganados": 17,
+              "empatados": 7,
+              "perdidos": 6,
+              "golesFavor": 50,
+              "golesContra": 29,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 2,
+              "equipo": "C.D. GUADALCACIN",
+              "puntos": 51,
+              "jugados": 30,
+              "ganados": 15,
+              "empatados": 6,
+              "perdidos": 9,
+              "golesFavor": 51,
+              "golesContra": 36,
+              "racha": [
+                "P",
+                "G",
+                "P",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 3,
+              "equipo": "ARCOS C.F.",
+              "puntos": 50,
+              "jugados": 30,
+              "ganados": 14,
+              "empatados": 8,
+              "perdidos": 8,
+              "golesFavor": 56,
+              "golesContra": 28,
+              "racha": [
+                "G",
+                "E",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 4,
+              "equipo": "CIUDAD DE CADIZ P.C.D.",
+              "puntos": 50,
+              "jugados": 30,
+              "ganados": 15,
+              "empatados": 5,
+              "perdidos": 10,
+              "golesFavor": 44,
+              "golesContra": 36,
+              "racha": [
+                "E",
+                "G",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 5,
+              "equipo": "TREBUJENA C.F.",
+              "puntos": 49,
+              "jugados": 30,
+              "ganados": 13,
+              "empatados": 10,
+              "perdidos": 7,
+              "golesFavor": 47,
+              "golesContra": 40,
+              "racha": [
+                "E",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 6,
+              "equipo": "JEREZ INDUSTRIAL C.F.",
+              "puntos": 48,
+              "jugados": 30,
+              "ganados": 14,
+              "empatados": 6,
+              "perdidos": 10,
+              "golesFavor": 54,
+              "golesContra": 28,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 47,
+              "jugados": 30,
+              "ganados": 12,
+              "empatados": 11,
+              "perdidos": 7,
+              "golesFavor": 54,
+              "golesContra": 37,
+              "racha": [
+                "P",
+                "G",
+                "P",
+                "G",
+                "E"
+              ]
+            },
+            {
+              "posicion": 8,
+              "equipo": "C.D. GUADIARO",
+              "puntos": 47,
+              "jugados": 30,
+              "ganados": 14,
+              "empatados": 5,
+              "perdidos": 11,
+              "golesFavor": 46,
+              "golesContra": 41,
+              "racha": [
+                "E",
+                "G",
+                "G",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 9,
+              "equipo": "C.D. ROTA",
+              "puntos": 43,
+              "jugados": 30,
+              "ganados": 12,
+              "empatados": 7,
+              "perdidos": 11,
+              "golesFavor": 41,
+              "golesContra": 29,
+              "racha": [
+                "E",
+                "P",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 10,
+              "equipo": "CHICLANA C.F.",
+              "puntos": 42,
+              "jugados": 30,
+              "ganados": 12,
+              "empatados": 6,
+              "perdidos": 12,
+              "golesFavor": 37,
+              "golesContra": 42,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 11,
+              "equipo": "BARBATE C.F.",
+              "puntos": 39,
+              "jugados": 30,
+              "ganados": 11,
+              "empatados": 7,
+              "perdidos": 12,
+              "golesFavor": 37,
+              "golesContra": 35,
+              "racha": [
+                "G",
+                "E",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 12,
+              "equipo": "XEREZ DEPORTIVO F.C.",
+              "puntos": 37,
+              "jugados": 30,
+              "ganados": 9,
+              "empatados": 10,
+              "perdidos": 11,
+              "golesFavor": 39,
+              "golesContra": 48,
+              "racha": [
+                "P",
+                "G",
+                "G",
+                "P",
+                "E"
+              ]
+            },
+            {
+              "posicion": 13,
+              "equipo": "TARIFA U.D.",
+              "puntos": 37,
+              "jugados": 30,
+              "ganados": 11,
+              "empatados": 4,
+              "perdidos": 15,
+              "golesFavor": 39,
+              "golesContra": 50,
+              "racha": [
+                "P",
+                "G",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 14,
+              "equipo": "ALGAIDA U.D.",
+              "puntos": 33,
+              "jugados": 30,
+              "ganados": 9,
+              "empatados": 6,
+              "perdidos": 15,
+              "golesFavor": 34,
+              "golesContra": 42,
+              "racha": [
+                "P",
+                "P",
+                "G",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 15,
+              "equipo": "ROTEÑA U.D.",
+              "puntos": 30,
+              "jugados": 30,
+              "ganados": 7,
+              "empatados": 9,
+              "perdidos": 14,
+              "golesFavor": 33,
+              "golesContra": 38,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 16,
+              "equipo": "PUERTO REAL C.F.",
+              "puntos": 4,
+              "jugados": 30,
+              "ganados": 1,
+              "empatados": 1,
+              "perdidos": 28,
+              "golesFavor": 12,
+              "golesContra": 115,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=45228247&codcompeticion=45228222"
+        }
+      ]
+    },
+    {
+      "temporada": "2024-2025",
+      "competiciones": [
+        {
+          "nombre": "1ª Andaluza Sénior (Cádiz)",
+          "categoria": "1ª ANDALUZA SENIOR",
+          "grupo": "Grupo Único",
+          "puntos": 51,
+          "posicion": 5,
+          "codGrupo": "39998025",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "RACING CLUB PORTUENSE",
+              "puntos": 62,
+              "jugados": 30,
+              "ganados": 19,
+              "empatados": 5,
+              "perdidos": 6,
+              "golesFavor": 54,
+              "golesContra": 31,
+              "racha": [
+                "P",
+                "G",
+                "E",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 2,
+              "equipo": "ARCOS C.F.",
+              "puntos": 54,
+              "jugados": 30,
+              "ganados": 17,
+              "empatados": 3,
+              "perdidos": 10,
+              "golesFavor": 61,
+              "golesContra": 41,
+              "racha": [
+                "G",
+                "G",
+                "P",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 3,
+              "equipo": "JEREZ INDUSTRIAL C.F.",
+              "puntos": 53,
+              "jugados": 30,
+              "ganados": 15,
+              "empatados": 8,
+              "perdidos": 7,
+              "golesFavor": 59,
+              "golesContra": 33,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 4,
+              "equipo": "ROTA C.D.",
+              "puntos": 51,
+              "jugados": 30,
+              "ganados": 15,
+              "empatados": 6,
+              "perdidos": 9,
+              "golesFavor": 55,
+              "golesContra": 30,
+              "racha": [
+                "E",
+                "G",
+                "P",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 5,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 51,
+              "jugados": 30,
+              "ganados": 15,
+              "empatados": 6,
+              "perdidos": 9,
+              "golesFavor": 54,
+              "golesContra": 36,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 6,
+              "equipo": "BARBATE C.F.",
+              "puntos": 50,
+              "jugados": 30,
+              "ganados": 14,
+              "empatados": 8,
+              "perdidos": 8,
+              "golesFavor": 34,
+              "golesContra": 33,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "ROTEÑA U.D.",
+              "puntos": 49,
+              "jugados": 30,
+              "ganados": 15,
+              "empatados": 5,
+              "perdidos": 10,
+              "golesFavor": 53,
+              "golesContra": 29,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 8,
+              "equipo": "C.D. GUADALCACIN",
+              "puntos": 48,
+              "jugados": 30,
+              "ganados": 14,
+              "empatados": 6,
+              "perdidos": 10,
+              "golesFavor": 40,
+              "golesContra": 36,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "E",
+                "P"
+              ]
+            },
+            {
+              "posicion": 9,
+              "equipo": "C.D. GUADIARO",
+              "puntos": 47,
+              "jugados": 30,
+              "ganados": 14,
+              "empatados": 5,
+              "perdidos": 11,
+              "golesFavor": 50,
+              "golesContra": 40,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 10,
+              "equipo": "CIUDAD DE CADIZ P.C.D.",
+              "puntos": 41,
+              "jugados": 30,
+              "ganados": 11,
+              "empatados": 8,
+              "perdidos": 11,
+              "golesFavor": 37,
+              "golesContra": 42,
+              "racha": [
+                "P",
+                "G",
+                "G",
+                "E",
+                "E"
+              ]
+            },
+            {
+              "posicion": 11,
+              "equipo": "PUERTO REAL C.F.",
+              "puntos": 39,
+              "jugados": 30,
+              "ganados": 11,
+              "empatados": 6,
+              "perdidos": 13,
+              "golesFavor": 38,
+              "golesContra": 45,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 12,
+              "equipo": "TREBUJENA C.F.",
+              "puntos": 39,
+              "jugados": 30,
+              "ganados": 9,
+              "empatados": 12,
+              "perdidos": 9,
+              "golesFavor": 37,
+              "golesContra": 44,
+              "racha": [
+                "E",
+                "P",
+                "G",
+                "P",
+                "E"
+              ]
+            },
+            {
+              "posicion": 13,
+              "equipo": "GRUPO EMPRESA BAZAN",
+              "puntos": 34,
+              "jugados": 30,
+              "ganados": 10,
+              "empatados": 4,
+              "perdidos": 16,
+              "golesFavor": 44,
+              "golesContra": 54,
+              "racha": [
+                "P",
+                "G",
+                "E",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 14,
+              "equipo": "CHIPIONA C.F.",
+              "puntos": 24,
+              "jugados": 30,
+              "ganados": 6,
+              "empatados": 6,
+              "perdidos": 18,
+              "golesFavor": 35,
+              "golesContra": 68,
+              "racha": [
+                "E",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 15,
+              "equipo": "REAL BALOMPEDICA LINENSE",
+              "puntos": 15,
+              "jugados": 30,
+              "ganados": 4,
+              "empatados": 4,
+              "perdidos": 22,
+              "golesFavor": 22,
+              "golesContra": 70,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 16,
+              "equipo": "ALGECIRAS C.F., S.A.D.",
+              "puntos": 13,
+              "jugados": 30,
+              "ganados": 3,
+              "empatados": 4,
+              "perdidos": 23,
+              "golesFavor": 25,
+              "golesContra": 66,
+              "racha": [
+                "E",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=39998025&codcompeticion=39998008"
+        }
+      ]
+    }
+  ]
+}
