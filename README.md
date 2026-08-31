@@ -127,6 +127,12 @@ pendiente, el relleno no gasta nada.
 Las competiciones sin tabla —las copas por eliminatorias— se marcan con
 `sinClasificacion` para no preguntar por ellas una y otra vez.
 
+**Códigos anteriores**: la RFAF cambia el código del equipo al cambiar de
+categoría, y su historial previo cuelga del código viejo. Se apuntan en
+`src/data/equipos.json` → `codigosAnteriores` y el sincronizador los fusiona una
+sola vez. Gracias a eso el primer equipo enseña los dos ascensos: campeón de 3ª
+en 2022-23 con 91 puntos y de 2ª en 2023-24 con 65.
+
 ### Si la RFAF cambia el HTML
 
 El scraping se apoya en la estructura de tablas, que es lo único estable entre

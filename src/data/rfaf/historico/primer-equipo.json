@@ -4,7 +4,10 @@
   "nombreRfaf": "A.D. TARAGUILLA",
   "codigo": "38877699",
   "orden": 1,
-  "actualizado": "2026-08-31T08:23:06.585Z",
+  "actualizado": "2026-08-31T08:32:06.001Z",
+  "codigosLeidos": [
+    "28567642"
+  ],
   "temporadas": [
     {
       "temporada": "2025-2026",
@@ -620,6 +623,656 @@
             }
           ],
           "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=39998025&codcompeticion=39998008"
+        }
+      ]
+    },
+    {
+      "temporada": "2023-2024",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA SENIOR (CADIZ)",
+          "categoria": "2ª ANDALUZA SENIOR",
+          "grupo": "GRUPO UNICO",
+          "puntos": 65,
+          "posicion": 1,
+          "codGrupo": "34236331",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 65,
+              "jugados": 30,
+              "ganados": 21,
+              "empatados": 2,
+              "perdidos": 7,
+              "golesFavor": 69,
+              "golesContra": 33,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 2,
+              "equipo": "BARBATE C.F.",
+              "puntos": 61,
+              "jugados": 30,
+              "ganados": 18,
+              "empatados": 7,
+              "perdidos": 5,
+              "golesFavor": 57,
+              "golesContra": 32,
+              "racha": [
+                "E",
+                "E",
+                "P",
+                "G",
+                "E"
+              ]
+            },
+            {
+              "posicion": 3,
+              "equipo": "CHIPIONA C.F.",
+              "puntos": 59,
+              "jugados": 30,
+              "ganados": 18,
+              "empatados": 5,
+              "perdidos": 7,
+              "golesFavor": 53,
+              "golesContra": 32,
+              "racha": [
+                "E",
+                "E",
+                "G",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 4,
+              "equipo": "REAL BALOMPEDICA LINENSE",
+              "puntos": 57,
+              "jugados": 30,
+              "ganados": 17,
+              "empatados": 6,
+              "perdidos": 7,
+              "golesFavor": 52,
+              "golesContra": 36,
+              "racha": [
+                "E",
+                "E",
+                "G",
+                "P",
+                "E"
+              ]
+            },
+            {
+              "posicion": 5,
+              "equipo": "C.D. VEJER BALOMPIE",
+              "puntos": 46,
+              "jugados": 30,
+              "ganados": 14,
+              "empatados": 4,
+              "perdidos": 12,
+              "golesFavor": 45,
+              "golesContra": 43,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 6,
+              "equipo": "ATCO. SANLUQUEÑO C.F.",
+              "puntos": 44,
+              "jugados": 30,
+              "ganados": 14,
+              "empatados": 2,
+              "perdidos": 14,
+              "golesFavor": 47,
+              "golesContra": 53,
+              "racha": [
+                "G",
+                "G",
+                "P",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "JEDULA C.D.",
+              "puntos": 42,
+              "jugados": 30,
+              "ganados": 12,
+              "empatados": 6,
+              "perdidos": 12,
+              "golesFavor": 29,
+              "golesContra": 33,
+              "racha": [
+                "E",
+                "G",
+                "P",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 8,
+              "equipo": "TARIFA U.D.",
+              "puntos": 41,
+              "jugados": 30,
+              "ganados": 11,
+              "empatados": 8,
+              "perdidos": 11,
+              "golesFavor": 40,
+              "golesContra": 36,
+              "racha": [
+                "G",
+                "E",
+                "G",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 9,
+              "equipo": "CHICLANA IND. C.F.",
+              "puntos": 40,
+              "jugados": 30,
+              "ganados": 11,
+              "empatados": 7,
+              "perdidos": 12,
+              "golesFavor": 49,
+              "golesContra": 46,
+              "racha": [
+                "P",
+                "G",
+                "G",
+                "G",
+                "E"
+              ]
+            },
+            {
+              "posicion": 10,
+              "equipo": "A.D. NUEVA JARILLA",
+              "puntos": 39,
+              "jugados": 30,
+              "ganados": 11,
+              "empatados": 6,
+              "perdidos": 13,
+              "golesFavor": 38,
+              "golesContra": 40,
+              "racha": [
+                "P",
+                "G",
+                "P",
+                "P",
+                "E"
+              ]
+            },
+            {
+              "posicion": 11,
+              "equipo": "OLVERA C.D.",
+              "puntos": 39,
+              "jugados": 30,
+              "ganados": 12,
+              "empatados": 3,
+              "perdidos": 15,
+              "golesFavor": 48,
+              "golesContra": 44,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 12,
+              "equipo": "C.D. U.D. VILLAMARTIN",
+              "puntos": 39,
+              "jugados": 30,
+              "ganados": 11,
+              "empatados": 7,
+              "perdidos": 12,
+              "golesFavor": 51,
+              "golesContra": 46,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "E",
+                "G"
+              ]
+            },
+            {
+              "posicion": 13,
+              "equipo": "C.D. UBRIQUE CLUB DE FÚTBOL 2023",
+              "puntos": 37,
+              "jugados": 30,
+              "ganados": 10,
+              "empatados": 8,
+              "perdidos": 12,
+              "golesFavor": 36,
+              "golesContra": 40,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "E",
+                "G"
+              ]
+            },
+            {
+              "posicion": 14,
+              "equipo": "A.D. JUVENTUD SANLUQUEÑA",
+              "puntos": 26,
+              "jugados": 30,
+              "ganados": 7,
+              "empatados": 5,
+              "perdidos": 18,
+              "golesFavor": 37,
+              "golesContra": 68,
+              "racha": [
+                "P",
+                "P",
+                "G",
+                "E",
+                "P"
+              ]
+            },
+            {
+              "posicion": 15,
+              "equipo": "SAN JOSE ATLETICO C.D.",
+              "puntos": 25,
+              "jugados": 30,
+              "ganados": 7,
+              "empatados": 4,
+              "perdidos": 19,
+              "golesFavor": 26,
+              "golesContra": 51,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 16,
+              "equipo": "RVO PORTUENSE CLUB FUTBOL BASE",
+              "puntos": 16,
+              "jugados": 30,
+              "ganados": 4,
+              "empatados": 4,
+              "perdidos": 22,
+              "golesFavor": 33,
+              "golesContra": 77,
+              "racha": [
+                "P",
+                "P",
+                "G",
+                "E",
+                "P"
+              ]
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=34236331&codcompeticion=34235975"
+        }
+      ]
+    },
+    {
+      "temporada": "2022-2023",
+      "competiciones": [
+        {
+          "nombre": "3ª ANDALUZA SENIOR (CADIZ)",
+          "categoria": "3ª ANDALUZA SENIOR",
+          "grupo": "Grupo 2",
+          "puntos": 91,
+          "posicion": 1,
+          "codGrupo": "29200505",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 91,
+              "jugados": 34,
+              "ganados": 29,
+              "empatados": 4,
+              "perdidos": 1,
+              "golesFavor": 124,
+              "golesContra": 22,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 2,
+              "equipo": "A.D. NUEVA JARILLA",
+              "puntos": 74,
+              "jugados": 34,
+              "ganados": 24,
+              "empatados": 3,
+              "perdidos": 7,
+              "golesFavor": 78,
+              "golesContra": 42,
+              "racha": [
+                "P",
+                "E",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 3,
+              "equipo": "RIVERA C.D.",
+              "puntos": 70,
+              "jugados": 34,
+              "ganados": 22,
+              "empatados": 4,
+              "perdidos": 8,
+              "golesFavor": 64,
+              "golesContra": 37,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 4,
+              "equipo": "PUERTO REAL C.F.",
+              "puntos": 70,
+              "jugados": 34,
+              "ganados": 23,
+              "empatados": 1,
+              "perdidos": 10,
+              "golesFavor": 94,
+              "golesContra": 40,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 5,
+              "equipo": "CLUB DE FÚTBOL SHERRY ATLÉTICO",
+              "puntos": 60,
+              "jugados": 34,
+              "ganados": 18,
+              "empatados": 6,
+              "perdidos": 10,
+              "golesFavor": 68,
+              "golesContra": 50,
+              "racha": [
+                "E",
+                "G",
+                "P",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 6,
+              "equipo": "U.D. LOS BARRIOS",
+              "puntos": 60,
+              "jugados": 34,
+              "ganados": 22,
+              "empatados": 2,
+              "perdidos": 10,
+              "golesFavor": 71,
+              "golesContra": 51,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "BURREÑOS ASOC.DVA.",
+              "puntos": 60,
+              "jugados": 34,
+              "ganados": 18,
+              "empatados": 6,
+              "perdidos": 10,
+              "golesFavor": 54,
+              "golesContra": 36,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "P",
+                "E"
+              ]
+            },
+            {
+              "posicion": 8,
+              "equipo": "C.D. BENALUP",
+              "puntos": 56,
+              "jugados": 34,
+              "ganados": 17,
+              "empatados": 5,
+              "perdidos": 12,
+              "golesFavor": 57,
+              "golesContra": 46,
+              "racha": [
+                "G",
+                "G",
+                "E",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 9,
+              "equipo": "RACING CLUB PORTUENSE",
+              "puntos": 50,
+              "jugados": 34,
+              "ganados": 15,
+              "empatados": 5,
+              "perdidos": 14,
+              "golesFavor": 56,
+              "golesContra": 67,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 10,
+              "equipo": "C.D. NOVO CHICLANA",
+              "puntos": 46,
+              "jugados": 34,
+              "ganados": 14,
+              "empatados": 5,
+              "perdidos": 15,
+              "golesFavor": 58,
+              "golesContra": 59,
+              "racha": [
+                "P",
+                "G",
+                "P",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 11,
+              "equipo": "C.D. LA ROCK PUENTE F.C.",
+              "puntos": 43,
+              "jugados": 34,
+              "ganados": 12,
+              "empatados": 7,
+              "perdidos": 15,
+              "golesFavor": 58,
+              "golesContra": 82,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 12,
+              "equipo": "C.F. FEDERICO MAYO \"A\"",
+              "puntos": 36,
+              "jugados": 34,
+              "ganados": 10,
+              "empatados": 8,
+              "perdidos": 16,
+              "golesFavor": 52,
+              "golesContra": 69,
+              "racha": [
+                "E",
+                "G",
+                "G",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 13,
+              "equipo": "NEXTSTARS F.C.",
+              "puntos": 29,
+              "jugados": 34,
+              "ganados": 8,
+              "empatados": 8,
+              "perdidos": 18,
+              "golesFavor": 48,
+              "golesContra": 75,
+              "racha": [
+                "G",
+                "P",
+                "E",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 14,
+              "equipo": "C.D. RAYO ALCALÁ",
+              "puntos": 29,
+              "jugados": 34,
+              "ganados": 7,
+              "empatados": 8,
+              "perdidos": 19,
+              "golesFavor": 38,
+              "golesContra": 84,
+              "racha": [
+                "P",
+                "G",
+                "P",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 15,
+              "equipo": "C.D. MEDINA BALOMPIÉ",
+              "puntos": 24,
+              "jugados": 34,
+              "ganados": 6,
+              "empatados": 6,
+              "perdidos": 22,
+              "golesFavor": 37,
+              "golesContra": 87,
+              "racha": [
+                "P",
+                "G",
+                "E",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 16,
+              "equipo": "C.D. CAÑORRERA",
+              "puntos": 24,
+              "jugados": 34,
+              "ganados": 5,
+              "empatados": 9,
+              "perdidos": 20,
+              "golesFavor": 36,
+              "golesContra": 86,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 17,
+              "equipo": "C.D. UNION DEPORTIVA ESPERANZA 2019",
+              "puntos": 20,
+              "jugados": 34,
+              "ganados": 4,
+              "empatados": 8,
+              "perdidos": 22,
+              "golesFavor": 34,
+              "golesContra": 93,
+              "racha": [
+                "P",
+                "E",
+                "E",
+                "G",
+                "E"
+              ]
+            },
+            {
+              "posicion": 17,
+              "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
+              "puntos": 12,
+              "jugados": 4,
+              "ganados": 1,
+              "empatados": 18,
+              "perdidos": 38,
+              "golesFavor": 72,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 17,
+              "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
+              "puntos": 12,
+              "jugados": 4,
+              "ganados": 1,
+              "empatados": 18,
+              "perdidos": 38,
+              "golesFavor": 72,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=29200505&codcompeticion=29199819"
         }
       ]
     }

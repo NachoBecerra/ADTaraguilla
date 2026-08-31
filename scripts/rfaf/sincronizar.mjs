@@ -388,7 +388,7 @@ async function principal() {
   });
 
   // Con lo que sobre del cupo, se va completando el histórico
-  if (!incompleto) await rellenarHistorico(cliente, equipos, temporada);
+  if (!incompleto) await rellenarHistorico(cliente, equipos, temporada, config);
 
   await recomponerIndices(config, urlClub, temporada, equipos);
 
@@ -481,9 +481,19 @@ async function guardarPalmares(equipo, temporadas) {
   const yaTengo = new Map();
   for (const t of previo?.temporadas ?? []) {
     for (const c of t.competiciones) {
-      if (c.clasificacion?.length) yaTengo.set(`${t.temporada}|${c.codGrupo}`, c);
+      if (c.clasificacion?.length || c.sinClasificacion) {
+        yaTengo.set(`${t.temporada}|${c.codGrupo}`, c);
+      }
     }
   }
+
+  // Las temporadas que vinieron de un código anterior no están en esta página:
+  // se conservan tal cual o se perderían en cada pasada.
+  const deCodigosAnteriores = (previo?.temporadas ?? []).flatMap((t) =>
+    t.competiciones
+      .filter((c) => !temporadas.some((n) => n.temporada === t.temporada))
+      .map((c) => ({ temporada: t.temporada, competicion: c })),
+  );
 
   await escribirJson(rutaHistorico(equipo.id), {
     id: equipo.id,
@@ -492,14 +502,28 @@ async function guardarPalmares(equipo, temporadas) {
     codigo: equipo.codigo,
     orden: equipo.orden,
     actualizado: new Date().toISOString(),
-    temporadas: temporadas.map((t) => ({
-      temporada: t.temporada,
-      competiciones: t.competiciones.map((c) => {
-        const guardada = yaTengo.get(`${t.temporada}|${c.codGrupo}`);
-        return guardada ? { ...c, ...guardada } : c;
-      }),
-    })),
+    codigosLeidos: previo?.codigosLeidos ?? [],
+    temporadas: [
+      ...temporadas.map((t) => ({
+        temporada: t.temporada,
+        competiciones: t.competiciones.map((c) => {
+          const guardada = yaTengo.get(`${t.temporada}|${c.codGrupo}`);
+          return guardada ? { ...c, ...guardada } : c;
+        }),
+      })),
+      ...agrupar(deCodigosAnteriores),
+    ].sort((a, b) => b.temporada.localeCompare(a.temporada)),
   });
+}
+
+/** Agrupa por temporada las competiciones heredadas de códigos anteriores. */
+function agrupar(sueltas) {
+  const mapa = new Map();
+  for (const { temporada, competicion } of sueltas) {
+    if (!mapa.has(temporada)) mapa.set(temporada, []);
+    mapa.get(temporada).push(competicion);
+  }
+  return [...mapa].map(([temporada, competiciones]) => ({ temporada, competiciones }));
 }
 
 /**
@@ -507,7 +531,7 @@ async function guardarPalmares(equipo, temporadas) {
  * presupuesto de la pasada. Se empieza por lo más reciente, que es lo que la
  * gente mira primero.
  */
-async function rellenarHistorico(cliente, equipos, temporadaActual) {
+async function rellenarHistorico(cliente, equipos, temporadaActual, config) {
   let quedan = PRESUPUESTO_HISTORICO;
 
   for (const equipo of equipos) {
@@ -532,6 +556,47 @@ async function rellenarHistorico(cliente, equipos, temporadaActual) {
       }
     }
     if (!datos) continue;
+
+    // La RFAF cambia el código del equipo al cambiar de categoría, así que su
+    // historial anterior cuelga de otro código. Se lee una sola vez y se
+    // fusiona; después queda anotado para no volver a pedirlo.
+    const anteriores = config?.codigosAnteriores?.[equipo.id] ?? [];
+    const leidos = datos.codigosLeidos ?? [];
+    let fusionado = false;
+
+    for (const codigo of anteriores) {
+      if (leidos.includes(codigo) || quedan < 1) continue;
+      try {
+        const html = await cliente.pedir(
+          `/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=${codigo}`,
+        );
+        quedan--;
+
+        const previas = extraerHistorico(html, temporadaActual);
+        const yaHay = new Set(
+          datos.temporadas.flatMap((t) => t.competiciones.map((c) => `${t.temporada}|${c.codGrupo}`)),
+        );
+        for (const t of previas) {
+          const nuevas = t.competiciones.filter((c) => !yaHay.has(`${t.temporada}|${c.codGrupo}`));
+          if (nuevas.length === 0) continue;
+          const existente = datos.temporadas.find((x) => x.temporada === t.temporada);
+          if (existente) existente.competiciones.push(...nuevas);
+          else datos.temporadas.push({ temporada: t.temporada, competiciones: nuevas });
+        }
+
+        leidos.push(codigo);
+        fusionado = true;
+        log(`  histórico ${equipo.nombre}: código anterior ${codigo}, ${previas.length} temporadas`);
+      } catch (e) {
+        if (e instanceof ErrorDeCupo) return;
+      }
+    }
+
+    if (fusionado) {
+      datos.codigosLeidos = leidos;
+      datos.temporadas.sort((a, b) => b.temporada.localeCompare(a.temporada));
+      await escribirJson(ruta, datos);
+    }
 
     let tocado = false;
     for (const t of datos.temporadas) {
