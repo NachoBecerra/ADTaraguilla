@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-08-31T08:50:32.258Z",
+  "actualizado": "2026-08-31T13:24:08.353Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -244,13 +244,13 @@
               "codVisitante": "407115",
               "fecha": "2026-08-30",
               "hora": "20:00",
-              "golesLocal": null,
-              "golesVisitante": null,
+              "golesLocal": 3,
+              "golesVisitante": 2,
               "localidad": "Lebrija",
               "campo": "CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "urlActa": null,
-              "jugado": false
+              "jugado": true
             }
           ]
         },
@@ -299,21 +299,6 @@
           "fecha": "2026-09-06",
           "partidos": [
             {
-              "local": "XEREZ DEPORTIVO F.C.",
-              "visitante": "BARBATE C.F.",
-              "codLocal": "12785604",
-              "codVisitante": "308515",
-              "fecha": "2026-09-06",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "localidad": "Jerez De La Frontera",
-              "campo": "LA GRANJA CENTRO DE DEPORTES",
-              "superficie": "Hierba Artificial",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "C.D. CIUDAD DE CADIZ",
               "visitante": "C.D. EL TORNO 2009",
               "codLocal": "20779397",
@@ -354,21 +339,6 @@
               "golesVisitante": null,
               "localidad": null,
               "campo": "Jerez De La Frontera -Municipal Pedro S. Garrido",
-              "superficie": "Hierba Natural",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
-              "local": "CHICLANA C.F.",
-              "visitante": "CHICLANA IND. C.F.",
-              "codLocal": "301516",
-              "codVisitante": "327715",
-              "fecha": "2026-09-06",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "localidad": "Chiclana De La Frontera",
-              "campo": "CHICLANA ESTADIO MUNICIPAL",
               "superficie": "Hierba Natural",
               "urlActa": null,
               "jugado": false
@@ -415,6 +385,36 @@
               "localidad": "Trebujena",
               "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
               "superficie": "Hierba Artificial",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "XEREZ DEPORTIVO F.C.",
+              "visitante": "BARBATE C.F.",
+              "codLocal": "12785604",
+              "codVisitante": "308515",
+              "fecha": "2026-09-06",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "localidad": "Jerez De La Frontera",
+              "campo": "LA GRANJA CENTRO DE DEPORTES",
+              "superficie": "Hierba Artificial",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "CHICLANA C.F.",
+              "visitante": "CHICLANA IND. C.F.",
+              "codLocal": "301516",
+              "codVisitante": "327715",
+              "fecha": "2026-09-06",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "localidad": "Chiclana De La Frontera",
+              "campo": "CHICLANA ESTADIO MUNICIPAL",
+              "superficie": "Hierba Natural",
               "urlActa": null,
               "jugado": false
             },
