@@ -90,18 +90,45 @@ export default function Inicio() {
           </div>
 
           {/*
-            El nombre del club se parte en dos: "Agrupación Deportiva" es lo
-            que va delante y pesa menos, y "Taraguilla" es lo que la gente
-            busca y lee de lejos.
+            El nombre, como un solo bloque rectangular.
+
+            El <h1> se encoge al ancho de "Taraguilla", que es la palabra más
+            larga, y "Agrupación Deportiva" reparte ese mismo ancho con una
+            palabra a cada extremo. Así los bordes cuadran solos en cualquier
+            pantalla, sin medidas fijas que ajustar por breakpoint.
           */}
-          <h1 className="mt-7">
-            <span className="title block text-lg tracking-[0.13em] text-white/75 sm:text-xl lg:text-2xl">
-              {site.nombreLargo.split(" ").slice(0, -1).join(" ")}
+          <div className="relative mt-7 inline-block">
+            {/*
+              El escudo de fondo, en silueta.
+
+              A todo color no funcionaba: al bajarle la opacidad, el blanco y
+              el azul se leen como manchas sobre el verde. El filtro lo deja
+              en una silueta de un solo tono, que es como se hace un sello y
+              sí se reconoce como el escudo.
+            */}
+            <Image
+              src={site.escudo}
+              alt=""
+              aria-hidden
+              width={843}
+              height={836}
+              sizes="300px"
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[250%] w-auto -translate-x-1/2 -translate-y-1/2 opacity-10 [filter:brightness(0)_invert(1)]"
+            />
+          <h1 className="relative inline-block">
+            <span className="title flex w-full justify-between text-lg tracking-[0.13em] text-white/75 sm:text-xl lg:text-2xl">
+              {/* El interletrado deja aire tras la última letra: se descuenta
+                  para que la "A" final case con la de Taraguilla */}
+              <span>{site.nombreLargo.split(" ")[0]}</span>
+              <span style={{ marginRight: "-0.13em" }}>
+                {site.nombreLargo.split(" ")[1]}
+              </span>
             </span>
-            <span className="title mt-1 block text-[3.25rem] leading-[0.88] text-club-claro sm:text-7xl lg:text-8xl">
+            <span className="title block text-[3.25rem] leading-[0.88] text-club-claro sm:text-7xl lg:text-8xl">
               {site.nombreLargo.split(" ").at(-1)}
             </span>
           </h1>
+          </div>
 
           <p className="mt-4 max-w-md text-base leading-relaxed text-white/85">
             {site.lema}. Resultados y calendarios de todos nuestros equipos, actualizados
