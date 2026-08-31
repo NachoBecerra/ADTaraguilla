@@ -6,7 +6,7 @@
 
 export const site = {
   nombre: "AD Taraguilla",
-  nombreLargo: "Asociación Deportiva Taraguilla",
+  nombreLargo: "Agrupación Deportiva Taraguilla",
   lema: "Cantera, barrio y fútbol",
   localidad: "Taraguilla, San Roque (Cádiz)",
   fundacion: "1969", // TODO: confirmar año real de fundación

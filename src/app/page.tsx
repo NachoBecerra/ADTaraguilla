@@ -88,10 +88,18 @@ export default function Inicio() {
             </div>
           </div>
 
-          <h1 className="title mt-7 text-[3.25rem] leading-[0.88] sm:text-7xl lg:text-8xl">
-            {site.nombreLargo.split(" ").slice(0, -1).join(" ")}
-            <br />
-            <span className="text-club-claro">{site.nombreLargo.split(" ").at(-1)}</span>
+          {/*
+            El nombre del club se parte en dos: "Agrupación Deportiva" es lo
+            que va delante y pesa menos, y "Taraguilla" es lo que la gente
+            busca y lee de lejos.
+          */}
+          <h1 className="mt-7">
+            <span className="title block text-lg tracking-[0.13em] text-white/75 sm:text-xl lg:text-2xl">
+              {site.nombreLargo.split(" ").slice(0, -1).join(" ")}
+            </span>
+            <span className="title mt-1 block text-[3.25rem] leading-[0.88] text-club-claro sm:text-7xl lg:text-8xl">
+              {site.nombreLargo.split(" ").at(-1)}
+            </span>
           </h1>
 
           <p className="mt-4 max-w-md text-base leading-relaxed text-white/85">
