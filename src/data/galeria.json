@@ -2,15 +2,15 @@
   "_nota": "Editable desde /admin. Cada entrada puede llevar VARIAS fotos: en el selector de imagen se pueden marcar todas de una vez. Para vídeos, 'youtubeId' es el código que aparece tras v= en la URL.",
   "items": [
     {
-      "id": "prueba-tecnica-borrar-mtgwj8y4",
       "tipo": "foto",
-      "titulo": "PRUEBA TÉCNICA — borrar",
+      "titulo": "PRUEBA editada",
       "album": "Pruebas",
       "fecha": "2026-08-31",
       "fotos": [
         "/img/galeria/pruebas-mtgwj8uh-01.jpg",
         "/img/galeria/pruebas-mtgwj8ui-02.jpg"
-      ]
+      ],
+      "id": "prueba-tecnica-borrar-mtgwj8y4"
     },
     {
       "tipo": "foto",
