@@ -351,8 +351,10 @@ async function principal() {
         enCompeticion: equipo.enCompeticion,
         temporada,
         actualizado: new Date().toISOString(),
+        // Ficha del equipo, no su histórico de competiciones: es la vista que
+        // enseña sus datos, la equipación y la plantilla de esta temporada.
         urlRfaf: urlAbsoluta(
-          `NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=${equipo.codigo}`,
+          `NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=${equipo.codigo}`,
         ),
         competiciones: detalladas,
       });

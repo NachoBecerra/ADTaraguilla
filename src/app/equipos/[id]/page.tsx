@@ -99,7 +99,7 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
             rel="noopener noreferrer"
             className="btn btn-ghost mt-6"
           >
-            Ficha, plantilla y actas en {site.federacion.siglas}
+            Ficha del equipo en {site.federacion.siglas}
             <IconoEnlaceExterno size={15} />
           </a>
         </div>

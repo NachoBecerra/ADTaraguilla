@@ -14,7 +14,7 @@
       "orden": 1,
       "enCompeticion": true,
       "actualizado": "2026-08-31T07:59:22.402Z",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=38877699",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
       "competiciones": [
         {
           "nombre": "Copa Andalucía Senior",
@@ -44,7 +44,7 @@
       "orden": 2,
       "enCompeticion": true,
       "actualizado": "2026-08-30T14:54:58.436Z",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307516",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307516",
       "competiciones": [
         {
           "nombre": "4ª ANDALUZA JUVENIL (CADIZ)",
@@ -65,7 +65,7 @@
       "orden": 3,
       "enCompeticion": true,
       "actualizado": "2026-08-30T14:55:11.198Z",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307517",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
       "competiciones": [
         {
           "nombre": "3ª ANDALUZA CADETE (CADIZ)",
@@ -86,7 +86,7 @@
       "orden": 4,
       "enCompeticion": true,
       "actualizado": "2026-08-30T16:15:42.380Z",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307520",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
       "competiciones": [
         {
           "nombre": "1ª Andaluza Infantil Fundación Cajasol",
@@ -107,7 +107,7 @@
       "orden": 5,
       "enCompeticion": true,
       "actualizado": "2026-08-30T16:15:54.866Z",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307528",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307528",
       "competiciones": [
         {
           "nombre": "3ª ANDALUZA INFANTIL (CADIZ)",
@@ -128,7 +128,7 @@
       "orden": 6,
       "enCompeticion": true,
       "actualizado": "2026-08-30T16:16:07.435Z",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307521",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
       "competiciones": [
         {
           "nombre": "2ª ANDALUZA ALEVIN (CADIZ)",
@@ -149,7 +149,7 @@
       "orden": 7,
       "enCompeticion": true,
       "actualizado": "2026-08-31T07:59:24.808Z",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=28567666",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
       "competiciones": []
     },
     {
@@ -160,7 +160,7 @@
       "orden": 8,
       "enCompeticion": true,
       "actualizado": "2026-08-31T07:59:37.444Z",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307530",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
       "competiciones": [
         {
           "nombre": "2ª ANDALUZA BENJAMIN (CADIZ)",
@@ -181,7 +181,7 @@
       "orden": 9,
       "enCompeticion": false,
       "actualizado": "2026-08-31T07:59:39.898Z",
-      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307531",
+      "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307531",
       "competiciones": []
     }
   ]
