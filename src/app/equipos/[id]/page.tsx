@@ -15,7 +15,6 @@ import {
 } from "@/lib/competicion";
 import { site } from "@/data/site";
 import Clasificacion from "@/components/Clasificacion";
-import Historial from "@/components/Historial";
 import { historicoDe } from "@/lib/historico";
 import { FilaPartido, TarjetaProximoPartido } from "@/components/Partidos";
 import { fechaLarga } from "@/lib/formato";
@@ -131,6 +130,20 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
           </section>
         ) : null}
 
+        {pendientes.length > 0 ? (
+          <section>
+            <h2 className="title text-3xl text-tinta">Calendario</h2>
+            <ul className="mt-4 rounded-xl border border-linea bg-panel px-4">
+              {pendientes.map((p, i) => (
+                <FilaPartido
+                  key={`${p.fecha}-${p.rival}-${i}`}
+                  partido={p}
+                  mostrarCompeticion={equipo.competiciones.length > 1}
+                />
+              ))}
+            </ul>
+          </section>
+        ) : null}
         {disputados.length > 0 ? (
           <section>
             <h2 className="title text-3xl text-tinta">Resultados</h2>
@@ -157,37 +170,13 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
         ) : null}
 
         {historico && historico.temporadas.length > 0 ? (
-          <section>
-            <h2 className="title text-3xl text-tinta">Historial</h2>
-            <p className="mt-1 text-sm text-mute">
-              Cómo acabó el equipo en temporadas anteriores. Pulsa una para ver la
-              clasificación completa.
-            </p>
-            <Historial historico={historico} />
-
-            <Link
-              href="/historico"
-              className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-club-soft"
-            >
-              El histórico de todo el club
-              <IconoFlecha size={15} />
-            </Link>
-          </section>
-        ) : null}
-
-        {pendientes.length > 0 ? (
-          <section>
-            <h2 className="title text-3xl text-tinta">Calendario</h2>
-            <ul className="mt-4 rounded-xl border border-linea bg-panel px-4">
-              {pendientes.map((p, i) => (
-                <FilaPartido
-                  key={`${p.fecha}-${p.rival}-${i}`}
-                  partido={p}
-                  mostrarCompeticion={equipo.competiciones.length > 1}
-                />
-              ))}
-            </ul>
-          </section>
+          <Link
+            href="/historico"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-club-soft"
+          >
+            Temporadas anteriores de este equipo
+            <IconoFlecha size={15} />
+          </Link>
         ) : null}
       </div>
     </>
