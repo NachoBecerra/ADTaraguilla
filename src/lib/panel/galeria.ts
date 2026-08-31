@@ -17,6 +17,8 @@ export type EntradaPanel = {
   id: string;
   titulo: string;
   albumes: string[];
+  /** Identificadores de los equipos a los que se asignó la entrada. */
+  equipos: string[];
   fecha: string;
   fotos: FotoGuardada[];
 };
@@ -55,12 +57,14 @@ export async function entradasDeGaleria(): Promise<EntradaPanel[]> {
           fotos?: FotoGuardada[] | string[] | string;
           albumes?: string[] | string;
           album?: string;
+          equipos?: string[] | string;
         },
         i: number,
       ) => ({
         id: e.id || `${aSlug(e.titulo ?? "foto")}-${i}`,
         titulo: e.titulo ?? "",
         albumes: etiquetas(e),
+        equipos: comoLista(e.equipos),
         fecha: e.fecha ?? "",
         fotos: fotosDe(e.fotos),
       }),

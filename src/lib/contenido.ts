@@ -3,6 +3,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import { marked } from "marked";
 import { dimensionesDe } from "@/lib/imagenes";
+import { getEquipos } from "@/lib/competicion";
 import galeriaData from "@/data/galeria.json";
 
 const DIR_NOTICIAS = path.join(process.cwd(), "content", "noticias");
@@ -72,6 +73,14 @@ export type EntradaGaleria = {
   /** Formato antiguo, de una sola etiqueta. Se sigue leyendo. */
   album?: string;
   fotos?: FotoGuardada[] | string[] | string;
+  /**
+   * Equipos a los que pertenecen estas fotos, por identificador.
+   *
+   * Se guarda el id y no el nombre a propósito: el nombre puede cambiar
+   * ("Alevín B" pasa a "Alevín"), y entonces las fotos se despegarían del
+   * equipo. El nombre se resuelve al pintar.
+   */
+  equipos?: string[];
 };
 
 /**
@@ -89,6 +98,8 @@ export type ItemGaleria = {
   titulo: string;
   fecha: string;
   albumes: string[];
+  /** Identificadores de los equipos a los que se asignó la foto. */
+  equipos: string[];
   src: string;
   /** Dimensiones reales, para enseñar la foto entera sin saltos de maquetación. */
   ancho: number;
@@ -146,6 +157,7 @@ export function getEntradasGaleria() {
     id: e.id || `${aSlug(e.titulo ?? "foto")}-${i}`,
     titulo: e.titulo,
     albumes: etiquetasDe(e),
+    equipos: comoLista(e.equipos),
     fecha: e.fecha,
     fotos: fotosDe(e.fotos),
   }));
@@ -164,14 +176,29 @@ export function getGaleria(): ItemGaleria[] {
     return id;
   };
 
+  // Para pintar el nombre a partir del id guardado
+  const nombreDeEquipo = new Map(getEquipos().map((e) => [e.id, e.nombre]));
+
   for (const entrada of galeriaData.items as EntradaGaleria[]) {
     const fotos = fotosDe(entrada.fotos);
+    const equipos = comoLista(entrada.equipos);
+
+    // El equipo se comporta además como una etiqueta más, para que el filtro
+    // de la galería lo encuentre sin tener que duplicarlo a mano al subir
+    const etiquetas = [...etiquetasDe(entrada)];
+    for (const id of equipos) {
+      const nombre = nombreDeEquipo.get(id);
+      if (nombre && !etiquetas.some((a) => a.toLowerCase() === nombre.toLowerCase())) {
+        etiquetas.push(nombre);
+      }
+    }
     if (fotos.length === 0) continue; // entrada sin foto: no hay nada que enseñar
 
     for (const foto of fotos) {
       items.push({
         ...entrada,
-        albumes: etiquetasDe(entrada),
+        albumes: etiquetas,
+        equipos,
         id: idUnico(entrada.id || `${entrada.titulo}-${entrada.fecha}`),
         src: foto.url,
         ancho: foto.ancho,
@@ -194,3 +221,7 @@ export function getAlbumes(): string[] {
     .map(([a]) => a);
 }
 
+/** Fotos asignadas a un equipo, de la más reciente a la más antigua. */
+export function getGaleriaDeEquipo(id: string): ItemGaleria[] {
+  return getGaleria().filter((i) => i.equipos.includes(id));
+}

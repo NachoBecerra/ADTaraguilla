@@ -4,6 +4,7 @@ import { useActionState, useRef, useState } from "react";
 import { upload } from "@vercel/blob/client";
 import { subirFotos, type Resultado } from "./acciones";
 import CampoEtiquetas from "@/components/CampoEtiquetas";
+import SelectorEquipos, { type OpcionEquipo } from "@/components/SelectorEquipos";
 import { IconoImagen, IconoCerrar } from "@/components/Iconos";
 
 /** Lado mayor al que se reducen las fotos antes de subirlas. */
@@ -81,7 +82,13 @@ function aSlug(texto: string): string {
   );
 }
 
-export default function Subidor({ albumes }: { albumes: string[] }) {
+export default function Subidor({
+  albumes,
+  equipos,
+}: {
+  albumes: string[];
+  equipos: OpcionEquipo[];
+}) {
   const [elegidas, setElegidas] = useState<Elegida[]>([]);
   const [preparando, setPreparando] = useState(false);
   const [aviso, setAviso] = useState<string | null>(null);
@@ -166,12 +173,19 @@ export default function Subidor({ albumes }: { albumes: string[] }) {
         </label>
 
         <div className="sm:col-span-2">
+          <span className="text-sm font-semibold text-tinta">Equipo</span>
+          <div className="mt-1.5">
+            <SelectorEquipos nombre="equipos" equipos={equipos} />
+          </div>
+        </div>
+
+        <div className="sm:col-span-2">
           <span className="text-sm font-semibold text-tinta">Etiquetas</span>
           <div className="mt-1.5">
             <CampoEtiquetas
               nombre="albumes"
               sugerencias={albumes}
-              ayuda="Equipo, temporada, jugador… Las fotos aparecen bajo todas las que lleven."
+              ayuda="Temporada, jugador, torneo… Además del equipo de arriba."
             />
           </div>
         </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { haySesion } from "@/lib/panel/sesion";
 import { entradasDeGaleria, albumesDe } from "@/lib/panel/galeria";
+import { getEquipos } from "@/lib/competicion";
 import Acceso from "../Acceso";
 import Subidor from "./Subidor";
 import Listado from "./Listado";
@@ -21,6 +22,9 @@ export default async function PanelGaleria() {
   const albumes = albumesDe(entradas);
   const totalFotos = entradas.reduce((n, e) => n + e.fotos.length, 0);
 
+  // Solo id y nombre: lo demás no hace falta en el navegador
+  const equipos = getEquipos().map((e) => ({ id: e.id, nombre: e.nombre }));
+
   return (
     <section className="mx-auto max-w-3xl px-5 py-10">
       <Link
@@ -38,7 +42,7 @@ export default async function PanelGaleria() {
         subirse, así que da igual que sean las originales de la cámara.
       </p>
 
-      <Subidor albumes={albumes} />
+      <Subidor albumes={albumes} equipos={equipos} />
 
       <div className="mt-14">
         <h2 className="title text-3xl text-tinta">Lo que ya está publicado</h2>
@@ -51,7 +55,7 @@ export default async function PanelGaleria() {
           fotos sueltas o eliminarla entera.
         </p>
 
-        <Listado entradas={entradas} albumes={albumes} />
+        <Listado entradas={entradas} albumes={albumes} equipos={equipos} />
       </div>
     </section>
   );

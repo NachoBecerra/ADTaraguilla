@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import type { ItemGaleria } from "@/lib/contenido";
 import {
   IconoCerrar,
@@ -18,6 +19,21 @@ import { fechaLarga } from "@/lib/formato";
  */
 const POR_TANDA = 24;
 
+/**
+ * Etiqueta pedida por la URL, tal y como está escrita en los datos.
+ *
+ * La ficha de un equipo enlaza aquí con ?album=Infantil B para enseñar solo
+ * sus fotos. Se compara sin distinguir mayúsculas ni acentos del enlace.
+ */
+function albumPedido(items: ItemGaleria[], pedido: string | null): string {
+  if (!pedido) return "todos";
+  for (const i of items) {
+    const encaja = i.albumes.find((a) => a.toLowerCase() === pedido.toLowerCase());
+    if (encaja) return encaja;
+  }
+  return "todos";
+}
+
 /** Nombre con el que se guarda la foto al descargarla. */
 function nombreDescarga(item: ItemGaleria): string {
   const extension = item.src?.split(".").pop() ?? "jpg";
@@ -31,7 +47,11 @@ function nombreDescarga(item: ItemGaleria): string {
 }
 
 export default function Galeria({ items }: { items: ItemGaleria[] }) {
-  const [album, setAlbum] = useState<string>("todos");
+  const parametros = useSearchParams();
+  // Se resuelve en el primer pintado: sin efecto no hay parpadeo de "todas"
+  const [album, setAlbum] = useState<string>(() =>
+    albumPedido(items, parametros.get("album")),
+  );
   const [abierto, setAbierto] = useState<number | null>(null);
   const [tanda, setTanda] = useState(POR_TANDA);
 

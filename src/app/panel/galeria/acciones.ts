@@ -16,6 +16,8 @@ type Entrada = {
   id: string;
   titulo: string;
   albumes: string[];
+  /** Equipos a los que pertenece, por identificador. */
+  equipos: string[];
   fecha: string;
   fotos: Foto[];
 };
@@ -71,11 +73,13 @@ async function leerGaleria(): Promise<{ items: Entrada[] }> {
         fotos?: Foto[] | string[] | string;
         albumes?: string[] | string;
         album?: string;
+        equipos?: string[] | string;
       },
       i: number,
     ) => ({
       titulo: e.titulo ?? "",
       albumes: etiquetasDe(e),
+      equipos: comoLista(e.equipos),
       fecha: e.fecha ?? "",
       fotos: fotosDe(e.fotos),
       // Los identificadores antiguos podían faltar o repetirse: se aseguran
@@ -151,6 +155,7 @@ export async function subirFotos(
 
   const titulo = String(datos.get("titulo") ?? "").trim();
   const albumes = datos.getAll("albumes").map(String).map((a) => a.trim()).filter(Boolean);
+  const equipos = datos.getAll("equipos").map(String).map((e) => e.trim()).filter(Boolean);
   const fecha = String(datos.get("fecha") ?? "").trim();
 
   let fotos: Foto[] = [];
@@ -161,7 +166,9 @@ export async function subirFotos(
   }
 
   if (!titulo) return { ok: false, mensaje: "Ponle un título." };
-  if (albumes.length === 0) return { ok: false, mensaje: "Ponle al menos una etiqueta." };
+  if (albumes.length === 0 && equipos.length === 0) {
+    return { ok: false, mensaje: "Elige un equipo o ponle al menos una etiqueta." };
+  }
   if (fotos.length === 0) return { ok: false, mensaje: "No has elegido ninguna foto." };
 
   try {
@@ -171,6 +178,7 @@ export async function subirFotos(
         id: `${aSlug(titulo)}-${Date.now().toString(36)}`,
         titulo,
         albumes,
+        equipos,
         fecha: fecha || new Date().toISOString().slice(0, 10),
         fotos,
       },
@@ -203,6 +211,7 @@ export async function guardarEntrada(
   const id = String(datos.get("id") ?? "");
   const titulo = String(datos.get("titulo") ?? "").trim();
   const albumes = datos.getAll("albumes").map(String).map((a) => a.trim()).filter(Boolean);
+  const equipos = datos.getAll("equipos").map(String).map((e) => e.trim()).filter(Boolean);
   const fecha = String(datos.get("fecha") ?? "").trim();
 
   if (!titulo) return { ok: false, mensaje: "El título no puede quedar vacío." };
@@ -214,6 +223,7 @@ export async function guardarEntrada(
 
     entrada.titulo = titulo;
     entrada.albumes = albumes;
+    entrada.equipos = equipos;
     if (fecha) entrada.fecha = fecha;
 
     await guardarGaleria(galeria, `Galería: cambios en «${titulo}»`);

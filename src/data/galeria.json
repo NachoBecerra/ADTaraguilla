@@ -16,7 +16,10 @@
           "alto": 1537
         }
       ],
-      "id": "001"
+      "id": "001",
+      "equipos": [
+        "infantil-b"
+      ]
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
@@ -31,7 +34,10 @@
           "alto": 1672
         }
       ],
-      "id": "01"
+      "id": "01",
+      "equipos": [
+        "infantil-b"
+      ]
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
@@ -46,7 +52,10 @@
           "alto": 1672
         }
       ],
-      "id": "Amistoso Infantil B - San Roque"
+      "id": "Amistoso Infantil B - San Roque",
+      "equipos": [
+        "infantil-b"
+      ]
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
@@ -61,7 +70,10 @@
           "alto": 1672
         }
       ],
-      "id": "Amistoso Infantil B - San Roque"
+      "id": "Amistoso Infantil B - San Roque",
+      "equipos": [
+        "infantil-b"
+      ]
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
@@ -76,7 +88,10 @@
           "alto": 1672
         }
       ],
-      "id": "amistoso-infantil-b-san-roque-4"
+      "id": "amistoso-infantil-b-san-roque-4",
+      "equipos": [
+        "infantil-b"
+      ]
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
@@ -91,7 +106,10 @@
           "alto": 1672
         }
       ],
-      "id": "amistoso-infantil-b-san-roque-5"
+      "id": "amistoso-infantil-b-san-roque-5",
+      "equipos": [
+        "infantil-b"
+      ]
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
@@ -106,7 +124,10 @@
           "alto": 1537
         }
       ],
-      "id": "amistoso-infantil-b-san-roque-6"
+      "id": "amistoso-infantil-b-san-roque-6",
+      "equipos": [
+        "infantil-b"
+      ]
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
@@ -121,7 +142,10 @@
           "alto": 1672
         }
       ],
-      "id": "amistoso-infantil-b-san-roque-7"
+      "id": "amistoso-infantil-b-san-roque-7",
+      "equipos": [
+        "infantil-b"
+      ]
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
@@ -136,7 +160,10 @@
           "alto": 1672
         }
       ],
-      "id": "amistoso-infantil-b-san-roque-8"
+      "id": "amistoso-infantil-b-san-roque-8",
+      "equipos": [
+        "infantil-b"
+      ]
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
@@ -151,7 +178,10 @@
           "alto": 1672
         }
       ],
-      "id": "amistoso-infantil-b-san-roque-9"
+      "id": "amistoso-infantil-b-san-roque-9",
+      "equipos": [
+        "infantil-b"
+      ]
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
@@ -166,7 +196,10 @@
           "alto": 1672
         }
       ],
-      "id": "amistoso-infantil-b-san-roque-10"
+      "id": "amistoso-infantil-b-san-roque-10",
+      "equipos": [
+        "infantil-b"
+      ]
     }
   ]
 }

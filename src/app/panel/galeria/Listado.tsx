@@ -9,6 +9,7 @@ import {
   type Resultado,
 } from "./acciones";
 import CampoEtiquetas from "@/components/CampoEtiquetas";
+import SelectorEquipos, { type OpcionEquipo } from "@/components/SelectorEquipos";
 import { IconoCerrar, IconoBuscar } from "@/components/Iconos";
 import { fechaCorta } from "@/lib/formato";
 
@@ -16,6 +17,7 @@ export type EntradaPanel = {
   id: string;
   titulo: string;
   albumes: string[];
+  equipos: string[];
   fecha: string;
   fotos: { url: string; ancho: number; alto: number }[];
 };
@@ -42,10 +44,12 @@ function Aviso({ resultado }: { resultado: Resultado | null }) {
 function Editor({
   entrada,
   sugerencias,
+  equipos,
   alCerrar,
 }: {
   entrada: EntradaPanel;
   sugerencias: string[];
+  equipos: OpcionEquipo[];
   alCerrar: () => void;
 }) {
   const [guardado, guardar, guardando] = useActionState<Resultado | null, FormData>(
@@ -108,6 +112,19 @@ function Editor({
                 className="mt-1 w-full rounded-lg border border-linea bg-panel px-3 py-2 text-tinta focus:border-club focus:outline-none"
               />
             </label>
+
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-wide text-mute">
+                Equipo
+              </span>
+              <div className="mt-1">
+                <SelectorEquipos
+                  nombre="equipos"
+                  equipos={equipos}
+                  iniciales={entrada.equipos}
+                />
+              </div>
+            </div>
 
             <div>
               <span className="text-xs font-semibold uppercase tracking-wide text-mute">
@@ -208,9 +225,11 @@ function Editor({
 export default function Listado({
   entradas,
   albumes,
+  equipos,
 }: {
   entradas: EntradaPanel[];
   albumes: string[];
+  equipos: OpcionEquipo[];
 }) {
   const [consulta, setConsulta] = useState("");
   const [album, setAlbum] = useState("todos");
@@ -326,7 +345,12 @@ export default function Listado({
       ) : null}
 
       {abierta ? (
-        <Editor entrada={abierta} sugerencias={albumes} alCerrar={() => setEditando(null)} />
+        <Editor
+          entrada={abierta}
+          sugerencias={albumes}
+          equipos={equipos}
+          alCerrar={() => setEditando(null)}
+        />
       ) : null}
     </>
   );

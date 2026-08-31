@@ -16,6 +16,8 @@ import {
 import { site } from "@/data/site";
 import Clasificacion from "@/components/Clasificacion";
 import { historicoDe } from "@/lib/historico";
+import { getGaleriaDeEquipo } from "@/lib/contenido";
+import Image from "next/image";
 import { FilaPartido, TarjetaProximoPartido } from "@/components/Partidos";
 import { fechaLarga } from "@/lib/formato";
 import { IconoFlecha, IconoEnlaceExterno } from "@/components/Iconos";
@@ -54,6 +56,7 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
   // Un partido con fecha pasada y sin resultado no es "próximo": va con los
   // disputados, marcado como sin resultado publicado.
   const historico = historicoDe(equipo.id);
+  const fotos = getGaleriaDeEquipo(equipo.id);
 
   const disputados = partidos.filter((p) => p.jugado || sinResultado(p));
   const pendientes = partidos.filter(
@@ -165,6 +168,45 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
               <p className="mt-2 text-xs text-mute">
                 Último partido disputado: {ultimo.fecha ? fechaLarga(ultimo.fecha) : "—"}
               </p>
+            ) : null}
+          </section>
+        ) : null}
+
+        {fotos.length > 0 ? (
+          <section>
+            <h2 className="title text-3xl text-tinta">Imágenes</h2>
+            <p className="mb-4 mt-1 text-sm text-mute">
+              {fotos.length} {fotos.length === 1 ? "foto" : "fotos"} del equipo.
+            </p>
+
+            <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {fotos.slice(0, 8).map((foto) => (
+                <li key={foto.id}>
+                  <Link
+                    href={`/galeria?album=${encodeURIComponent(equipo.nombre)}`}
+                    className="group relative block overflow-hidden rounded-xl border border-linea bg-panel"
+                  >
+                    <Image
+                      src={foto.src}
+                      alt={foto.titulo}
+                      width={foto.ancho}
+                      height={foto.alto}
+                      sizes="(min-width: 640px) 22vw, 45vw"
+                      className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {fotos.length > 8 ? (
+              <Link
+                href={`/galeria?album=${encodeURIComponent(equipo.nombre)}`}
+                className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-club-soft"
+              >
+                Ver las {fotos.length} fotos del equipo
+                <IconoFlecha size={15} />
+              </Link>
             ) : null}
           </section>
         ) : null}
