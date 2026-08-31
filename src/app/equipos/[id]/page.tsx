@@ -15,7 +15,6 @@ import {
 } from "@/lib/competicion";
 import { site } from "@/data/site";
 import Clasificacion from "@/components/Clasificacion";
-import { historicoDe } from "@/lib/historico";
 import { getGaleriaDeEquipo } from "@/lib/contenido";
 import Image from "next/image";
 import { FilaPartido, TarjetaProximoPartido } from "@/components/Partidos";
@@ -55,7 +54,6 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
 
   // Un partido con fecha pasada y sin resultado no es "próximo": va con los
   // disputados, marcado como sin resultado publicado.
-  const historico = historicoDe(equipo.id);
   const fotos = getGaleriaDeEquipo(equipo.id);
 
   const disputados = partidos.filter((p) => p.jugado || sinResultado(p));
@@ -211,15 +209,6 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
           </section>
         ) : null}
 
-        {historico && historico.temporadas.length > 0 ? (
-          <Link
-            href="/historico"
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-club-soft"
-          >
-            Temporadas anteriores de este equipo
-            <IconoFlecha size={15} />
-          </Link>
-        ) : null}
       </div>
     </>
   );
