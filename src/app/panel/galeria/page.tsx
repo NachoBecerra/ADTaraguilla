@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { haySesion } from "@/lib/panel/sesion";
-import { getGaleria, getAlbumes, getEntradasGaleria } from "@/lib/contenido";
+import { entradasDeGaleria, albumesDe } from "@/lib/panel/galeria";
 import Acceso from "../Acceso";
 import Subidor from "./Subidor";
 import Listado from "./Listado";
@@ -15,9 +15,11 @@ export const metadata: Metadata = {
 export default async function PanelGaleria() {
   if (!(await haySesion())) return <Acceso />;
 
-  const fotos = getGaleria();
-  const entradas = getEntradasGaleria();
-  const albumes = getAlbumes();
+  // Se leen del repositorio, no de la compilación: así un cambio recién
+  // guardado se ve al momento y no dentro de dos minutos.
+  const entradas = await entradasDeGaleria();
+  const albumes = albumesDe(entradas);
+  const totalFotos = entradas.reduce((n, e) => n + e.fotos.length, 0);
 
   return (
     <section className="mx-auto max-w-3xl px-5 py-10">
@@ -41,7 +43,7 @@ export default async function PanelGaleria() {
       <div className="mt-14">
         <h2 className="title text-3xl text-tinta">Lo que ya está publicado</h2>
         <p className="mt-1 text-sm text-mute">
-          {fotos.length} {fotos.length === 1 ? "foto" : "fotos"} en la{" "}
+          {totalFotos} {totalFotos === 1 ? "foto" : "fotos"} en la{" "}
           <Link href="/galeria" className="text-club-soft underline underline-offset-2">
             galería
           </Link>

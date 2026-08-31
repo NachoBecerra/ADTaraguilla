@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { haySesion } from "@/lib/panel/sesion";
-import { getNoticias, getGaleria } from "@/lib/contenido";
+import { getNoticias } from "@/lib/contenido";
+import { entradasDeGaleria } from "@/lib/panel/galeria";
 import Acceso from "./Acceso";
 import { salir } from "./acciones";
 import { IconoFlecha, IconoImagen } from "@/components/Iconos";
@@ -15,7 +16,7 @@ export default async function Panel() {
   if (!(await haySesion())) return <Acceso />;
 
   const noticias = getNoticias().length;
-  const fotos = getGaleria().length;
+  const fotos = (await entradasDeGaleria()).reduce((n, e) => n + e.fotos.length, 0);
 
   const secciones = [
     {
