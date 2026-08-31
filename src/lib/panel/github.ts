@@ -118,6 +118,19 @@ export async function commitear(
   return commit.sha;
 }
 
+/** Nombres de los archivos de una carpeta del repositorio. */
+export async function listarCarpeta(ruta: string): Promise<string[]> {
+  const { repo, rama } = ajustes();
+  try {
+    const datos = await pedir<{ name: string; type: string }[]>(
+      `/repos/${repo}/contents/${encodeURI(ruta)}?ref=${rama}`,
+    );
+    return datos.filter((f) => f.type === "file").map((f) => f.name);
+  } catch {
+    return [];
+  }
+}
+
 /** Contenido actual de un archivo del repositorio, o null si no existe. */
 export async function leerArchivo(ruta: string): Promise<string | null> {
   const { repo, rama } = ajustes();
