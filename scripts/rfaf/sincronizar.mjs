@@ -487,13 +487,20 @@ async function guardarPalmares(equipo, temporadas) {
     }
   }
 
-  // Las temporadas que vinieron de un código anterior no están en esta página:
-  // se conservan tal cual o se perderían en cada pasada.
-  const deCodigosAnteriores = (previo?.temporadas ?? []).flatMap((t) =>
-    t.competiciones
-      .filter((c) => !temporadas.some((n) => n.temporada === t.temporada))
-      .map((c) => ({ temporada: t.temporada, competicion: c })),
+  // Lo que vino de un código anterior no está en esta página: si no se
+  // conservara, cada pasada lo borraría. Se compara competición a competición
+  // por si una temporada tuviera datos de los dos códigos.
+  const enEstaPagina = new Set(
+    temporadas.flatMap((t) => t.competiciones.map((c) => `${t.temporada}|${c.codGrupo}`)),
   );
+  const heredadas = (previo?.temporadas ?? [])
+    .map((t) => ({
+      temporada: t.temporada,
+      competiciones: t.competiciones.filter(
+        (c) => !enEstaPagina.has(`${t.temporada}|${c.codGrupo}`),
+      ),
+    }))
+    .filter((t) => t.competiciones.length > 0);
 
   await escribirJson(rutaHistorico(equipo.id), {
     id: equipo.id,
@@ -511,19 +518,17 @@ async function guardarPalmares(equipo, temporadas) {
           return guardada ? { ...c, ...guardada } : c;
         }),
       })),
-      ...agrupar(deCodigosAnteriores),
-    ].sort((a, b) => b.temporada.localeCompare(a.temporada)),
+      ...heredadas,
+    ]
+      .reduce((acc, t) => {
+        // Una misma temporada puede llegar por los dos caminos: se juntan
+        const ya = acc.find((x) => x.temporada === t.temporada);
+        if (ya) ya.competiciones.push(...t.competiciones);
+        else acc.push({ ...t, competiciones: [...t.competiciones] });
+        return acc;
+      }, [])
+      .sort((a, b) => b.temporada.localeCompare(a.temporada)),
   });
-}
-
-/** Agrupa por temporada las competiciones heredadas de códigos anteriores. */
-function agrupar(sueltas) {
-  const mapa = new Map();
-  for (const { temporada, competicion } of sueltas) {
-    if (!mapa.has(temporada)) mapa.set(temporada, []);
-    mapa.get(temporada).push(competicion);
-  }
-  return [...mapa].map(([temporada, competiciones]) => ({ temporada, competiciones }));
 }
 
 /**

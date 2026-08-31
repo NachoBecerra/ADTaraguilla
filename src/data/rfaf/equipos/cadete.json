@@ -7,7 +7,7 @@
   "orden": 3,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-08-30T14:55:11.198Z",
+  "actualizado": "2026-08-31T08:35:24.379Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
   "competiciones": [
     {
@@ -19,6 +19,7 @@
       "codGrupo": "49196403",
       "escudosRecogidos": true,
       "codCompeticion": "49189596",
+      "codTemporada": null,
       "urlCalendario": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCalendario_Vis?cod_primaria=1000120&codtemporada=22&codcompeticion=49189596&codgrupo=49196403",
       "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=49196403&codcompeticion=49189596",
       "estado": "activa",
