@@ -1,15 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useMemo, useState } from "react";
 import {
   guardarEntrada,
   borrarFoto,
   borrarEntrada,
   type Resultado,
 } from "./acciones";
-import { IconoCerrar, IconoFlecha } from "@/components/Iconos";
-import { fechaLarga } from "@/lib/formato";
+import { IconoCerrar, IconoBuscar } from "@/components/Iconos";
+import { fechaCorta } from "@/lib/formato";
 
 export type EntradaPanel = {
   id: string;
@@ -20,7 +20,14 @@ export type EntradaPanel = {
   fotos: string[];
 };
 
-/** Aviso corto tras guardar o borrar. */
+/** Quita acentos para que "cadiz" encuentre "Cádiz". */
+function normalizar(texto: string): string {
+  return texto
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "");
+}
+
 function Aviso({ resultado }: { resultado: Resultado | null }) {
   if (!resultado) return null;
   return (
@@ -30,8 +37,17 @@ function Aviso({ resultado }: { resultado: Resultado | null }) {
   );
 }
 
-function Entrada({ entrada }: { entrada: EntradaPanel }) {
-  const [abierta, setAbierta] = useState(false);
+/* ------------------------------------------------------------------ modal */
+
+function Editor({
+  entrada,
+  alCerrar,
+}: {
+  entrada: EntradaPanel;
+  // La lista de álbumes la pinta el listado como <datalist>, y el campo la
+  // referencia por id: no hace falta pasarla hasta aquí.
+  alCerrar: () => void;
+}) {
   const [guardado, guardar, guardando] = useActionState<Resultado | null, FormData>(
     guardarEntrada,
     null,
@@ -45,49 +61,43 @@ function Entrada({ entrada }: { entrada: EntradaPanel }) {
     null,
   );
 
+  // Cerrar con Escape y bloquear el scroll del fondo
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && alCerrar();
+    window.addEventListener("keydown", onKey);
+    document.body.dataset.menuOpen = "true";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      delete document.body.dataset.menuOpen;
+    };
+  }, [alCerrar]);
+
   return (
-    <li className="card overflow-hidden">
-      <button
-        type="button"
-        onClick={() => setAbierta((v) => !v)}
-        aria-expanded={abierta}
-        className="flex w-full items-center gap-3 p-3 text-left"
-      >
-        {entrada.fotos[0] ? (
-          <Image
-            src={entrada.fotos[0]}
-            alt=""
-            width={64}
-            height={64}
-            className="h-16 w-16 shrink-0 rounded-lg object-cover"
-          />
-        ) : (
-          <span className="grid h-16 w-16 shrink-0 place-items-center rounded-lg bg-panel-2 text-xs text-mute">
-            vídeo
-          </span>
-        )}
+    <div
+      className="fixed inset-0 z-70 flex items-end justify-center bg-tinta/60 p-0 sm:items-center sm:p-6"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Editar ${entrada.titulo}`}
+      onClick={(e) => e.target === e.currentTarget && alCerrar()}
+    >
+      <div className="max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-2xl bg-panel sm:rounded-2xl">
+        <div className="sticky top-0 flex items-center justify-between gap-3 border-b border-linea bg-panel px-5 py-3">
+          <p className="title truncate text-xl text-tinta">Editar</p>
+          <button
+            type="button"
+            onClick={alCerrar}
+            aria-label="Cerrar"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-linea text-tinta"
+          >
+            <IconoCerrar size={18} />
+          </button>
+        </div>
 
-        <span className="min-w-0 flex-1">
-          <span className="block truncate font-semibold text-tinta">{entrada.titulo}</span>
-          <span className="block truncate text-xs text-mute">
-            {entrada.album}
-            {entrada.fecha ? ` · ${fechaLarga(entrada.fecha)}` : ""}
-            {entrada.fotos.length > 1 ? ` · ${entrada.fotos.length} fotos` : ""}
-          </span>
-        </span>
-
-        <IconoFlecha
-          size={18}
-          className={`shrink-0 text-mute transition-transform ${abierta ? "rotate-90" : ""}`}
-        />
-      </button>
-
-      {abierta ? (
-        <div className="border-t border-linea p-4">
-          <form action={guardar} className="grid gap-3 sm:grid-cols-3">
+        <div className="p-5">
+          <form action={guardar} className="grid gap-3">
             <input type="hidden" name="id" value={entrada.id} />
 
-            <label className="block sm:col-span-3">
+            <label className="block">
               <span className="text-xs font-semibold uppercase tracking-wide text-mute">
                 Título
               </span>
@@ -99,31 +109,33 @@ function Entrada({ entrada }: { entrada: EntradaPanel }) {
               />
             </label>
 
-            <label className="block sm:col-span-2">
-              <span className="text-xs font-semibold uppercase tracking-wide text-mute">
-                Álbum
-              </span>
-              <input
-                name="album"
-                defaultValue={entrada.album}
-                list="albumes-publicados"
-                className="mt-1 w-full rounded-lg border border-linea bg-panel px-3 py-2 text-tinta focus:border-club focus:outline-none"
-              />
-            </label>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <label className="block">
+                <span className="text-xs font-semibold uppercase tracking-wide text-mute">
+                  Álbum
+                </span>
+                <input
+                  name="album"
+                  defaultValue={entrada.album}
+                  list="albumes-publicados"
+                  className="mt-1 w-full rounded-lg border border-linea bg-panel px-3 py-2 text-tinta focus:border-club focus:outline-none"
+                />
+              </label>
 
-            <label className="block">
-              <span className="text-xs font-semibold uppercase tracking-wide text-mute">
-                Fecha
-              </span>
-              <input
-                name="fecha"
-                type="date"
-                defaultValue={entrada.fecha?.slice(0, 10)}
-                className="mt-1 w-full rounded-lg border border-linea bg-panel px-3 py-2 text-tinta focus:border-club focus:outline-none"
-              />
-            </label>
+              <label className="block">
+                <span className="text-xs font-semibold uppercase tracking-wide text-mute">
+                  Fecha
+                </span>
+                <input
+                  name="fecha"
+                  type="date"
+                  defaultValue={entrada.fecha?.slice(0, 10)}
+                  className="mt-1 w-full rounded-lg border border-linea bg-panel px-3 py-2 text-tinta focus:border-club focus:outline-none"
+                />
+              </label>
+            </div>
 
-            <div className="sm:col-span-3">
+            <div>
               <button
                 type="submit"
                 disabled={guardando}
@@ -137,10 +149,10 @@ function Entrada({ entrada }: { entrada: EntradaPanel }) {
 
           {entrada.fotos.length > 0 ? (
             <>
-              <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-mute">
+              <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-mute">
                 Fotos de esta entrada
               </p>
-              <ul className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-5">
+              <ul className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-4">
                 {entrada.fotos.map((foto) => (
                   <li key={foto} className="relative">
                     <Image
@@ -168,7 +180,7 @@ function Entrada({ entrada }: { entrada: EntradaPanel }) {
             </>
           ) : null}
 
-          <form action={quitarEntrada} className="mt-5 border-t border-linea pt-4">
+          <form action={quitarEntrada} className="mt-6 border-t border-linea pt-4">
             <input type="hidden" name="id" value={entrada.id} />
             <button
               type="submit"
@@ -185,10 +197,12 @@ function Entrada({ entrada }: { entrada: EntradaPanel }) {
             <Aviso resultado={borrado} />
           </form>
         </div>
-      ) : null}
-    </li>
+      </div>
+    </div>
   );
 }
+
+/* ----------------------------------------------------------------- listado */
 
 export default function Listado({
   entradas,
@@ -197,6 +211,23 @@ export default function Listado({
   entradas: EntradaPanel[];
   albumes: string[];
 }) {
+  const [consulta, setConsulta] = useState("");
+  const [album, setAlbum] = useState("todos");
+  const [editando, setEditando] = useState<string | null>(null);
+
+  const visibles = useMemo(() => {
+    const q = normalizar(consulta.trim());
+    return entradas.filter(
+      (e) =>
+        (album === "todos" || e.album === album) &&
+        (q === "" ||
+          normalizar(e.titulo).includes(q) ||
+          normalizar(e.album).includes(q)),
+    );
+  }, [entradas, consulta, album]);
+
+  const abierta = entradas.find((e) => e.id === editando) ?? null;
+
   if (entradas.length === 0) {
     return (
       <p className="mt-6 rounded-xl border border-linea bg-panel p-4 text-sm text-mute">
@@ -207,18 +238,101 @@ export default function Listado({
 
   return (
     <>
-      {/* Lista propia para no depender del formulario de subida */}
       <datalist id="albumes-publicados">
         {albumes.map((a) => (
           <option key={a} value={a} />
         ))}
       </datalist>
 
-      <ul className="mt-6 space-y-3">
-        {entradas.map((e) => (
-          <Entrada key={e.id} entrada={e} />
+      <div className="relative mt-6">
+        <IconoBuscar className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-mute" />
+        <input
+          type="search"
+          value={consulta}
+          onChange={(e) => setConsulta(e.target.value)}
+          placeholder="Buscar por título o álbum…"
+          aria-label="Buscar por título o álbum"
+          className="w-full rounded-full border border-linea bg-panel py-3 pl-12 pr-4 text-base text-tinta placeholder:text-mute focus:border-club focus:outline-none"
+        />
+      </div>
+
+      {albumes.length > 1 ? (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {["todos", ...albumes].map((a) => (
+            <button
+              key={a}
+              type="button"
+              onClick={() => setAlbum(a)}
+              aria-pressed={album === a}
+              className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
+                album === a
+                  ? "bg-club text-white"
+                  : "border border-linea bg-panel text-mute hover:border-club hover:text-club"
+              }`}
+            >
+              {a === "todos" ? "Todos" : a}
+            </button>
+          ))}
+        </div>
+      ) : null}
+
+      <p className="mt-4 text-sm text-mute">
+        {visibles.length} {visibles.length === 1 ? "entrada" : "entradas"}
+      </p>
+
+      <ul className="mt-3 grid grid-cols-3 gap-3">
+        {visibles.map((e) => (
+          <li key={e.id}>
+            <button
+              type="button"
+              onClick={() => setEditando(e.id)}
+              className="group block w-full overflow-hidden rounded-xl border border-linea bg-panel text-left transition-colors hover:border-club"
+            >
+              <span className="relative block aspect-square w-full bg-panel-2">
+                {e.fotos[0] ? (
+                  <Image
+                    src={e.fotos[0]}
+                    alt=""
+                    fill
+                    sizes="(min-width: 640px) 220px, 33vw"
+                    className="object-cover"
+                  />
+                ) : (
+                  <span className="grid h-full w-full place-items-center text-xs text-mute">
+                    vídeo
+                  </span>
+                )}
+
+                {e.fotos.length > 1 ? (
+                  <span className="absolute right-1.5 top-1.5 rounded-full bg-tinta/80 px-2 py-0.5 text-[11px] font-bold text-white">
+                    {e.fotos.length}
+                  </span>
+                ) : null}
+              </span>
+
+              <span className="block p-2.5">
+                <span className="line-clamp-2 text-xs font-semibold leading-snug text-tinta">
+                  {e.titulo}
+                </span>
+                <span className="mt-0.5 block truncate text-[11px] text-mute">
+                  {e.album}
+                  {e.fecha ? ` · ${fechaCorta(e.fecha)}` : ""}
+                </span>
+              </span>
+            </button>
+          </li>
         ))}
       </ul>
+
+      {visibles.length === 0 ? (
+        <p className="mt-8 text-center text-sm text-mute">
+          Nada coincide con la búsqueda.
+        </p>
+      ) : null}
+
+      {abierta ? (
+        <Editor entrada={abierta} alCerrar={() => setEditando(null)} />
+      ) : null}
     </>
   );
 }
