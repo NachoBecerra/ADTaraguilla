@@ -53,6 +53,18 @@ const FORZAR = process.argv.includes("--forzar");
 /** Horas durante las que un equipo ya sincronizado se considera al día. */
 const HORAS_FRESCURA = 20;
 
+/**
+ * Lo mismo, pero para un equipo al que la RFAF todavía no le ha publicado
+ * calendario.
+ *
+ * A ese no le sirve la excepción de los resultados pendientes —no tiene
+ * partidos que reclamar—, así que con la frescura normal se pasaba un día
+ * entero sin mirar. En pretemporada, que es justo cuando van apareciendo los
+ * calendarios, eso significa enseñar un equipo vacío que en la federación ya
+ * está completo. Revisarlo cuesta una petición: sale barato mirar a menudo.
+ */
+const HORAS_FRESCURA_SIN_CALENDARIO = 3;
+
 /** Días hacia atrás que se siguen revisando en busca de resultados. */
 const DIAS_ATRAS = 60;
 /** Días hacia delante en los que ya puede haber horario y campo asignados. */
@@ -411,8 +423,13 @@ async function principal() {
 function sePuedeSaltar(previo) {
   if (COMPLETO || FORZAR || !previo?.actualizado) return false;
 
+  // Un equipo sin competición todavía se vuelve a mirar mucho antes
+  const sinCalendario =
+    (previo.competiciones ?? []).length === 0 ||
+    (previo.competiciones ?? []).every((c) => c.estado === "sin-calendario");
+
   const horas = (Date.now() - new Date(previo.actualizado)) / 3_600_000;
-  if (horas >= HORAS_FRESCURA) return false;
+  if (horas >= (sinCalendario ? HORAS_FRESCURA_SIN_CALENDARIO : HORAS_FRESCURA)) return false;
 
   // Una competición sin jornadas solo es aceptable si la RFAF aún no ha
   // publicado su calendario; si no, es que no logramos leerlo. Y si tiene

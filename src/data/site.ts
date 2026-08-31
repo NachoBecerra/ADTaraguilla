@@ -20,7 +20,7 @@ export const site = {
     telefono: "", // opcional
     campo: "Campo Municipal Hermanos García Mota",
     direccion: "San Roque (Cádiz)",
-    mapaUrl: "https://maps.google.com/?q=Taraguilla,+San+Roque,+C%C3%A1diz",
+    mapaUrl: "https://maps.app.goo.gl/vtfdquUtJBExsGbFA",
   },
 
   /** Redes sociales. Deja la url vacía ("") para ocultar la red del sitio. */
