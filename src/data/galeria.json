@@ -2,21 +2,6 @@
   "_nota": "Editable desde /admin y desde /panel. Cada entrada puede llevar VARIAS fotos y VARIAS etiquetas (equipo, temporada, jugador...). Una foto aparece bajo todas sus etiquetas.",
   "items": [
     {
-      "id": "prueba-mthhm8s7",
-      "titulo": "Prueba",
-      "albumes": [
-        "Alevín A"
-      ],
-      "fecha": "2026-08-31",
-      "fotos": [
-        {
-          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/prueba-01-dxZtDyzzVmCi17SVrIA0FiR2fnhZig.jpg",
-          "ancho": 1409,
-          "alto": 1800
-        }
-      ]
-    },
-    {
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B",
