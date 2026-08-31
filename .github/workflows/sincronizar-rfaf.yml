@@ -46,8 +46,12 @@ on:
     - cron: "7 7 * * 6"
     - cron: "7,37 9-22 * * 6"
 
-    # Domingo: menos partidos y casi siempre del primer equipo.
-    - cron: "7 8,12,16,21 * * 0"
+    # Domingo: igual que el sábado. El calendario de esta temporada dice que
+    # juegan tres equipos —Infantil A, Juvenil y el primer equipo—, 89 partidos
+    # en total frente a los 134 del sábado. Con las cuatro pasadas de antes, un
+    # resultado de media tarde tardaba horas en aparecer.
+    - cron: "7 7 * * 0"
+    - cron: "7,37 9-22 * * 0"
 
   workflow_dispatch:
     inputs:
