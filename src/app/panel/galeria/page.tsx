@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { haySesion } from "@/lib/panel/sesion";
-import { getGaleria, getAlbumes } from "@/lib/contenido";
+import { getGaleria, getAlbumes, getEntradasGaleria } from "@/lib/contenido";
 import Acceso from "../Acceso";
 import Subidor from "./Subidor";
+import Listado from "./Listado";
 import { IconoFlecha } from "@/components/Iconos";
 
 export const metadata: Metadata = {
@@ -15,6 +16,8 @@ export default async function PanelGaleria() {
   if (!(await haySesion())) return <Acceso />;
 
   const fotos = getGaleria();
+  const entradas = getEntradasGaleria();
+  const albumes = getAlbumes();
 
   return (
     <section className="mx-auto max-w-3xl px-5 py-10">
@@ -33,17 +36,21 @@ export default async function PanelGaleria() {
         subirse, así que da igual que sean las originales de la cámara.
       </p>
 
-      <Subidor albumes={getAlbumes()} />
+      <Subidor albumes={albumes} />
 
-      {fotos.length > 0 ? (
-        <p className="mt-10 text-sm text-mute">
-          Ahora mismo hay {fotos.length} {fotos.length === 1 ? "foto" : "fotos"} en la{" "}
+      <div className="mt-14">
+        <h2 className="title text-3xl text-tinta">Lo que ya está publicado</h2>
+        <p className="mt-1 text-sm text-mute">
+          {fotos.length} {fotos.length === 1 ? "foto" : "fotos"} en la{" "}
           <Link href="/galeria" className="text-club-soft underline underline-offset-2">
             galería
           </Link>
-          .
+          . Pulsa en cualquiera para cambiar su título, su álbum o su fecha, quitar
+          fotos sueltas o eliminarla entera.
         </p>
-      ) : null}
+
+        <Listado entradas={entradas} albumes={albumes} />
+      </div>
     </section>
   );
 }

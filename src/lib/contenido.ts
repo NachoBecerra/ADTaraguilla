@@ -104,6 +104,18 @@ function aSlug(texto: string): string {
  * Aplana las entradas en fotos sueltas. Una entrada con seis fotos de un
  * partido son seis piezas en la galería, todas con el mismo título y álbum.
  */
+/** Las entradas tal y como se guardan, para editarlas desde el panel. */
+export function getEntradasGaleria() {
+  return (galeriaData.items as EntradaGaleria[]).map((e, i) => ({
+    id: e.id || `${aSlug(e.titulo ?? "foto")}-${i}`,
+    tipo: e.tipo,
+    titulo: e.titulo,
+    album: e.album,
+    fecha: e.fecha,
+    fotos: comoLista(e.fotos),
+  }));
+}
+
 export function getGaleria(): ItemGaleria[] {
   const items: ItemGaleria[] = [];
   const usados = new Set<string>();

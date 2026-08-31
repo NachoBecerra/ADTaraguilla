@@ -47,11 +47,22 @@ async function pedir<T>(ruta: string, opciones: RequestInit = {}): Promise<T> {
 }
 
 /**
- * Publica varios archivos en un solo commit.
- * Devuelve el sha del commit creado.
+ * Escribe y borra archivos en un único commit.
+ *
+ * Va todo junto a propósito: al editar una entrada de galería suelen cambiar
+ * a la vez el JSON y algún archivo de imagen, y separarlo en dos commits
+ * dispararía dos despliegues y dejaría un instante con los datos y las fotos
+ * descuadrados.
  */
-export async function publicar(archivos: Archivo[], mensaje: string): Promise<string> {
-  if (archivos.length === 0) throw new Error("No hay nada que publicar");
+export async function commitear(
+  cambios: { escribir?: Archivo[]; eliminar?: string[] },
+  mensaje: string,
+): Promise<string> {
+  const archivos = cambios.escribir ?? [];
+  const aBorrar = cambios.eliminar ?? [];
+  if (archivos.length === 0 && aBorrar.length === 0) {
+    throw new Error("No hay ningún cambio que guardar");
+  }
   const { repo, rama } = ajustes();
 
   // 1. Dónde está ahora la rama
@@ -79,7 +90,14 @@ export async function publicar(archivos: Archivo[], mensaje: string): Promise<st
   // 3. Árbol nuevo colgando del anterior, y commit encima
   const arbol = await pedir<{ sha: string }>(`/repos/${repo}/git/trees`, {
     method: "POST",
-    body: JSON.stringify({ base_tree: commitBase.tree.sha, tree: blobs }),
+    body: JSON.stringify({
+      base_tree: commitBase.tree.sha,
+      // sha a null en la API de árboles significa "quita este archivo"
+      tree: [
+        ...blobs,
+        ...aBorrar.map((ruta) => ({ path: ruta, mode: "100644", type: "blob", sha: null })),
+      ],
+    }),
   });
 
   const commit = await pedir<{ sha: string }>(`/repos/${repo}/git/commits`, {
@@ -111,38 +129,4 @@ export async function leerArchivo(ruta: string): Promise<string | null> {
   } catch {
     return null;
   }
-}
-
-/** Borra archivos del repositorio en un solo commit. */
-export async function borrar(rutas: string[], mensaje: string): Promise<string> {
-  if (rutas.length === 0) throw new Error("No hay nada que borrar");
-  const { repo, rama } = ajustes();
-
-  const ref = await pedir<{ object: { sha: string } }>(
-    `/repos/${repo}/git/ref/heads/${rama}`,
-  );
-  const commitBase = await pedir<{ tree: { sha: string } }>(
-    `/repos/${repo}/git/commits/${ref.object.sha}`,
-  );
-
-  const arbol = await pedir<{ sha: string }>(`/repos/${repo}/git/trees`, {
-    method: "POST",
-    body: JSON.stringify({
-      base_tree: commitBase.tree.sha,
-      // sha a null en la API de árboles significa "quita este archivo"
-      tree: rutas.map((ruta) => ({ path: ruta, mode: "100644", type: "blob", sha: null })),
-    }),
-  });
-
-  const commit = await pedir<{ sha: string }>(`/repos/${repo}/git/commits`, {
-    method: "POST",
-    body: JSON.stringify({ message: mensaje, tree: arbol.sha, parents: [ref.object.sha] }),
-  });
-
-  await pedir(`/repos/${repo}/git/refs/heads/${rama}`, {
-    method: "PATCH",
-    body: JSON.stringify({ sha: commit.sha }),
-  });
-
-  return commit.sha;
 }

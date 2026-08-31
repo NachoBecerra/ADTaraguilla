@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import {
   IconoWhatsApp,
   IconoX,
@@ -29,12 +29,17 @@ export default function Compartir({
   url: string;
   portada?: string;
 }) {
-  const [hayMenuNativo, setHayMenuNativo] = useState(false);
   const [copiado, setCopiado] = useState(false);
   const [ocupado, setOcupado] = useState(false);
 
-  // Solo se sabe en el navegador, así que se comprueba tras montar
-  useEffect(() => setHayMenuNativo(typeof navigator !== "undefined" && !!navigator.share), []);
+  // Si hay menú de compartir solo se sabe en el navegador. Con
+  // useSyncExternalStore se lee sin desajustar la primera pintada: en el
+  // servidor vale false y no cambia nunca después.
+  const hayMenuNativo = useSyncExternalStore(
+    () => () => {},
+    () => typeof navigator !== "undefined" && !!navigator.share,
+    () => false,
+  );
 
   const texto = `${titulo}${resumen ? ` — ${resumen}` : ""}`;
 
