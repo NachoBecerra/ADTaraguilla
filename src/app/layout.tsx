@@ -7,6 +7,8 @@ import { ClubJsonLd } from "@/components/DatosEstructurados";
 import PieDePagina from "@/components/PieDePagina";
 import AvisoInstalar from "@/components/AvisoInstalar";
 import RegistrarSW from "@/components/RegistrarSW";
+import AvisoDatosNuevos from "@/components/AvisoDatosNuevos";
+import { actualizado } from "@/lib/competicion";
 
 const display = Barlow_Condensed({
   variable: "--font-display",
@@ -91,6 +93,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <PieDePagina />
         <AvisoInstalar />
         <RegistrarSW />
+        <AvisoDatosNuevos generado={actualizado} />
       </body>
     </html>
   );
