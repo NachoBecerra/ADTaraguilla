@@ -108,6 +108,10 @@ function Editor({
             portadaNueva.archivo,
             { access: "public", handleUploadUrl: "/api/subir" },
           );
+          // La que había deja de usarse: se apunta para borrarla del
+          // almacenamiento y que no quede ocupando sitio para siempre
+          const anterior = String(datos.get("portada") ?? "");
+          if (anterior.startsWith("http")) datos.set("portadaAnterior", anterior);
           datos.set("portada", blob.url);
         } catch (e) {
           return { ok: false, mensaje: `No se ha podido subir la portada: ${(e as Error).message}` };

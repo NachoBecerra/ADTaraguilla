@@ -109,6 +109,16 @@ export async function guardarNoticia(
       anterior ? `Noticia: cambios en «${titulo}»` : `Noticia: ${titulo}`,
     );
 
+    // La portada que se ha sustituido ya no la usa nadie
+    const portadaVieja = String(datos.get("portadaAnterior") ?? "");
+    if (portadaVieja.startsWith("http") && portadaVieja !== portada) {
+      try {
+        await del(portadaVieja);
+      } catch {
+        // Un archivo huérfano es molesto, perder el cambio sería peor
+      }
+    }
+
     revalidatePath("/noticias");
     revalidatePath("/panel/noticias");
     revalidatePath("/");
