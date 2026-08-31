@@ -16,7 +16,244 @@
           "grupo": "Grupo 8º",
           "puntos": 48,
           "posicion": 5,
-          "codGrupo": "45707794"
+          "codGrupo": "45707794",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "C.D. PUERTO DE LA LINEA \"B\"",
+              "puntos": 66,
+              "jugados": 24,
+              "ganados": 22,
+              "empatados": 0,
+              "perdidos": 2,
+              "golesFavor": 165,
+              "golesContra": 47,
+              "racha": [
+                "P",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 2,
+              "equipo": "C.D. GUADIARO",
+              "puntos": 60,
+              "jugados": 24,
+              "ganados": 20,
+              "empatados": 0,
+              "perdidos": 4,
+              "golesFavor": 133,
+              "golesContra": 55,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 3,
+              "equipo": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL \"A\"",
+              "puntos": 50,
+              "jugados": 24,
+              "ganados": 16,
+              "empatados": 3,
+              "perdidos": 5,
+              "golesFavor": 108,
+              "golesContra": 75,
+              "racha": [
+                "E",
+                "G",
+                "E",
+                "G",
+                "E"
+              ]
+            },
+            {
+              "posicion": 4,
+              "equipo": "SAN GARCIA A.D. \"B\"",
+              "puntos": 49,
+              "jugados": 24,
+              "ganados": 15,
+              "empatados": 4,
+              "perdidos": 5,
+              "golesFavor": 100,
+              "golesContra": 70,
+              "racha": [
+                "G",
+                "E",
+                "E",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 5,
+              "equipo": "A.D. TARAGUILLA \"A\"",
+              "puntos": 48,
+              "jugados": 24,
+              "ganados": 16,
+              "empatados": 0,
+              "perdidos": 8,
+              "golesFavor": 112,
+              "golesContra": 73,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 6,
+              "equipo": "REAL BALOMPEDICA LINENSE",
+              "puntos": 34,
+              "jugados": 24,
+              "ganados": 10,
+              "empatados": 4,
+              "perdidos": 10,
+              "golesFavor": 73,
+              "golesContra": 87,
+              "racha": [
+                "G",
+                "P",
+                "E",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "MONITORES FUTBOL DE ALGECIRAS \"B\"",
+              "puntos": 30,
+              "jugados": 24,
+              "ganados": 9,
+              "empatados": 3,
+              "perdidos": 12,
+              "golesFavor": 85,
+              "golesContra": 96,
+              "racha": [
+                "G",
+                "E",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 8,
+              "equipo": "C.D. SAN BERNARDO",
+              "puntos": 25,
+              "jugados": 24,
+              "ganados": 6,
+              "empatados": 7,
+              "perdidos": 11,
+              "golesFavor": 78,
+              "golesContra": 107,
+              "racha": [
+                "E",
+                "E",
+                "E",
+                "P",
+                "E"
+              ]
+            },
+            {
+              "posicion": 9,
+              "equipo": "C.D. ATHLETIC CLUB JIMENA",
+              "puntos": 24,
+              "jugados": 24,
+              "ganados": 7,
+              "empatados": 3,
+              "perdidos": 14,
+              "golesFavor": 91,
+              "golesContra": 106,
+              "racha": [
+                "P",
+                "E",
+                "P",
+                "E",
+                "G"
+              ]
+            },
+            {
+              "posicion": 10,
+              "equipo": "C.D. OLIVILLOS 87",
+              "puntos": 24,
+              "jugados": 24,
+              "ganados": 7,
+              "empatados": 3,
+              "perdidos": 14,
+              "golesFavor": 79,
+              "golesContra": 107,
+              "racha": [
+                "P",
+                "E",
+                "G",
+                "P",
+                "E"
+              ]
+            },
+            {
+              "posicion": 11,
+              "equipo": "C.D. EPRO CAMPO DE GIBRALTAR",
+              "puntos": 16,
+              "jugados": 24,
+              "ganados": 5,
+              "empatados": 1,
+              "perdidos": 18,
+              "golesFavor": 64,
+              "golesContra": 121,
+              "racha": [
+                "P",
+                "P",
+                "G",
+                "P",
+                "E"
+              ]
+            },
+            {
+              "posicion": 12,
+              "equipo": "C.D. S.M. MIRADOR \"B\"",
+              "puntos": 13,
+              "jugados": 24,
+              "ganados": 3,
+              "empatados": 4,
+              "perdidos": 17,
+              "golesFavor": 57,
+              "golesContra": 129,
+              "racha": [
+                "P",
+                "E",
+                "E",
+                "P",
+                "E"
+              ]
+            },
+            {
+              "posicion": 13,
+              "equipo": "U.D. TESORILLO",
+              "puntos": 11,
+              "jugados": 24,
+              "ganados": 3,
+              "empatados": 2,
+              "perdidos": 19,
+              "golesFavor": 48,
+              "golesContra": 120,
+              "racha": [
+                "E",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=45707794&codcompeticion=45697740"
         }
       ]
     },
@@ -29,7 +266,244 @@
           "grupo": "Grupo 4º",
           "puntos": 45,
           "posicion": 6,
-          "codGrupo": "40788654"
+          "codGrupo": "40788654",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "C.D. OLIVILLOS 87 \"A\"",
+              "puntos": 58,
+              "jugados": 24,
+              "ganados": 19,
+              "empatados": 1,
+              "perdidos": 4,
+              "golesFavor": 117,
+              "golesContra": 42,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 2,
+              "equipo": "A.D. LOS CORTIJILLOS",
+              "puntos": 53,
+              "jugados": 24,
+              "ganados": 17,
+              "empatados": 2,
+              "perdidos": 5,
+              "golesFavor": 147,
+              "golesContra": 79,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 3,
+              "equipo": "C.D. S.M. MIRADOR \"B\"",
+              "puntos": 50,
+              "jugados": 24,
+              "ganados": 16,
+              "empatados": 2,
+              "perdidos": 6,
+              "golesFavor": 116,
+              "golesContra": 82,
+              "racha": [
+                "G",
+                "E",
+                "P",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 4,
+              "equipo": "U.D. LOS BARRIOS",
+              "puntos": 48,
+              "jugados": 24,
+              "ganados": 15,
+              "empatados": 3,
+              "perdidos": 6,
+              "golesFavor": 118,
+              "golesContra": 74,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 5,
+              "equipo": "U.D. TESORILLO",
+              "puntos": 46,
+              "jugados": 24,
+              "ganados": 15,
+              "empatados": 1,
+              "perdidos": 8,
+              "golesFavor": 128,
+              "golesContra": 83,
+              "racha": [
+                "P",
+                "E",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 6,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 45,
+              "jugados": 24,
+              "ganados": 14,
+              "empatados": 3,
+              "perdidos": 7,
+              "golesFavor": 121,
+              "golesContra": 82,
+              "racha": [
+                "E",
+                "P",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "REAL BALOMPEDICA LINENSE",
+              "puntos": 36,
+              "jugados": 24,
+              "ganados": 11,
+              "empatados": 3,
+              "perdidos": 10,
+              "golesFavor": 106,
+              "golesContra": 102,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 8,
+              "equipo": "C.D. GUADIARO",
+              "puntos": 31,
+              "jugados": 24,
+              "ganados": 9,
+              "empatados": 4,
+              "perdidos": 11,
+              "golesFavor": 85,
+              "golesContra": 102,
+              "racha": [
+                "E",
+                "P",
+                "E",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 9,
+              "equipo": "C.D. BALON LINENSE C.F.",
+              "puntos": 25,
+              "jugados": 24,
+              "ganados": 8,
+              "empatados": 1,
+              "perdidos": 15,
+              "golesFavor": 90,
+              "golesContra": 124,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 10,
+              "equipo": "C.D. PUERTO DE LA LINEA",
+              "puntos": 18,
+              "jugados": 24,
+              "ganados": 5,
+              "empatados": 3,
+              "perdidos": 16,
+              "golesFavor": 71,
+              "golesContra": 109,
+              "racha": [
+                "G",
+                "E",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 11,
+              "equipo": "C.D. EPRO CAMPO DE GIBRALTAR",
+              "puntos": 17,
+              "jugados": 24,
+              "ganados": 5,
+              "empatados": 2,
+              "perdidos": 17,
+              "golesFavor": 52,
+              "golesContra": 122,
+              "racha": [
+                "P",
+                "P",
+                "G",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 12,
+              "equipo": "RECREATIVO CLUB DE FÚTBOL",
+              "puntos": 17,
+              "jugados": 24,
+              "ganados": 5,
+              "empatados": 2,
+              "perdidos": 17,
+              "golesFavor": 70,
+              "golesContra": 124,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 13,
+              "equipo": "U.D. TARIFA \"B\"",
+              "puntos": 9,
+              "jugados": 24,
+              "ganados": 2,
+              "empatados": 3,
+              "perdidos": 19,
+              "golesFavor": 56,
+              "golesContra": 152,
+              "racha": [
+                "E",
+                "P",
+                "P",
+                "G",
+                "P"
+              ]
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=40788654&codcompeticion=40786153"
         }
       ]
     },
@@ -42,7 +516,262 @@
           "grupo": "Grupo 4º",
           "puntos": 29,
           "posicion": 9,
-          "codGrupo": "34896065"
+          "codGrupo": "34896065",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "BALON LINENSE C.F. C.D. \"A\"",
+              "puntos": 76,
+              "jugados": 26,
+              "ganados": 25,
+              "empatados": 1,
+              "perdidos": 0,
+              "golesFavor": 174,
+              "golesContra": 46,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 2,
+              "equipo": "U.D. LOS BARRIOS",
+              "puntos": 66,
+              "jugados": 26,
+              "ganados": 22,
+              "empatados": 0,
+              "perdidos": 4,
+              "golesFavor": 168,
+              "golesContra": 41,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 3,
+              "equipo": "ATLETICO ZABAL \"A\"",
+              "puntos": 57,
+              "jugados": 26,
+              "ganados": 18,
+              "empatados": 3,
+              "perdidos": 5,
+              "golesFavor": 157,
+              "golesContra": 69,
+              "racha": [
+                "P",
+                "G",
+                "G",
+                "E",
+                "G"
+              ]
+            },
+            {
+              "posicion": 4,
+              "equipo": "REAL BALOMPEDICA LINENSE",
+              "puntos": 52,
+              "jugados": 26,
+              "ganados": 17,
+              "empatados": 1,
+              "perdidos": 8,
+              "golesFavor": 130,
+              "golesContra": 65,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 5,
+              "equipo": "C.D. GUADIARO",
+              "puntos": 48,
+              "jugados": 26,
+              "ganados": 14,
+              "empatados": 6,
+              "perdidos": 6,
+              "golesFavor": 122,
+              "golesContra": 82,
+              "racha": [
+                "G",
+                "G",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 6,
+              "equipo": "U.D. TESORILLO",
+              "puntos": 46,
+              "jugados": 26,
+              "ganados": 13,
+              "empatados": 7,
+              "perdidos": 6,
+              "golesFavor": 99,
+              "golesContra": 97,
+              "racha": [
+                "G",
+                "E",
+                "G",
+                "E",
+                "G"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "JUVENTUD PALMONES",
+              "puntos": 44,
+              "jugados": 26,
+              "ganados": 14,
+              "empatados": 2,
+              "perdidos": 10,
+              "golesFavor": 118,
+              "golesContra": 71,
+              "racha": [
+                "P",
+                "E",
+                "G",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 8,
+              "equipo": "C.D. OLIVILLOS 87 \"A\"",
+              "puntos": 41,
+              "jugados": 26,
+              "ganados": 13,
+              "empatados": 2,
+              "perdidos": 11,
+              "golesFavor": 115,
+              "golesContra": 87,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 9,
+              "equipo": "A.D. TARAGUILLA \"A\"",
+              "puntos": 29,
+              "jugados": 26,
+              "ganados": 9,
+              "empatados": 2,
+              "perdidos": 15,
+              "golesFavor": 93,
+              "golesContra": 114,
+              "racha": [
+                "P",
+                "G",
+                "P",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 10,
+              "equipo": "RECREATIVO CLUB DE FÚTBOL",
+              "puntos": 26,
+              "jugados": 26,
+              "ganados": 7,
+              "empatados": 5,
+              "perdidos": 14,
+              "golesFavor": 76,
+              "golesContra": 125,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 11,
+              "equipo": "C.D. ATHLETIC CLUB JIMENA",
+              "puntos": 22,
+              "jugados": 26,
+              "ganados": 7,
+              "empatados": 1,
+              "perdidos": 18,
+              "golesFavor": 91,
+              "golesContra": 138,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 12,
+              "equipo": "C.D. SAN BERNARDO",
+              "puntos": 11,
+              "jugados": 26,
+              "ganados": 3,
+              "empatados": 2,
+              "perdidos": 21,
+              "golesFavor": 71,
+              "golesContra": 191,
+              "racha": [
+                "P",
+                "P",
+                "G",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 13,
+              "equipo": "CALDERON C.D.",
+              "puntos": 8,
+              "jugados": 26,
+              "ganados": 2,
+              "empatados": 2,
+              "perdidos": 22,
+              "golesFavor": 42,
+              "golesContra": 133,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 14,
+              "equipo": "PUENTE MAYORGA RVO",
+              "puntos": 3,
+              "jugados": 26,
+              "ganados": 1,
+              "empatados": 0,
+              "perdidos": 25,
+              "golesFavor": 37,
+              "golesContra": 234,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=34896065&codcompeticion=34837623"
         }
       ]
     },
@@ -55,7 +784,244 @@
           "grupo": "Grupo 7º",
           "puntos": 60,
           "posicion": 1,
-          "codGrupo": "30250220"
+          "codGrupo": "30250220",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "A.D. TARAGUILLA \"A\"",
+              "puntos": 60,
+              "jugados": 24,
+              "ganados": 20,
+              "empatados": 0,
+              "perdidos": 4,
+              "golesFavor": 161,
+              "golesContra": 46,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 2,
+              "equipo": "ATLETICO ZABAL",
+              "puntos": 60,
+              "jugados": 24,
+              "ganados": 19,
+              "empatados": 3,
+              "perdidos": 2,
+              "golesFavor": 172,
+              "golesContra": 68,
+              "racha": [
+                "P",
+                "E",
+                "P",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 3,
+              "equipo": "BALON LINENSE C.F. C.D. \"A\"",
+              "puntos": 58,
+              "jugados": 24,
+              "ganados": 18,
+              "empatados": 4,
+              "perdidos": 2,
+              "golesFavor": 123,
+              "golesContra": 64,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 4,
+              "equipo": "C.D. OLIVILLOS 87 \"A\"",
+              "puntos": 49,
+              "jugados": 24,
+              "ganados": 16,
+              "empatados": 1,
+              "perdidos": 7,
+              "golesFavor": 86,
+              "golesContra": 57,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 5,
+              "equipo": "CALDERON C.D.",
+              "puntos": 47,
+              "jugados": 24,
+              "ganados": 14,
+              "empatados": 5,
+              "perdidos": 5,
+              "golesFavor": 87,
+              "golesContra": 55,
+              "racha": [
+                "E",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 6,
+              "equipo": "U.D. LOS BARRIOS",
+              "puntos": 46,
+              "jugados": 24,
+              "ganados": 14,
+              "empatados": 4,
+              "perdidos": 6,
+              "golesFavor": 92,
+              "golesContra": 50,
+              "racha": [
+                "G",
+                "G",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "C.D. GUADIARO",
+              "puntos": 36,
+              "jugados": 24,
+              "ganados": 11,
+              "empatados": 3,
+              "perdidos": 10,
+              "golesFavor": 92,
+              "golesContra": 84,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 8,
+              "equipo": "U.D. TESORILLO",
+              "puntos": 28,
+              "jugados": 24,
+              "ganados": 9,
+              "empatados": 1,
+              "perdidos": 14,
+              "golesFavor": 80,
+              "golesContra": 122,
+              "racha": [
+                "P",
+                "G",
+                "P",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 9,
+              "equipo": "U.D. CASTELLAR",
+              "puntos": 22,
+              "jugados": 24,
+              "ganados": 6,
+              "empatados": 4,
+              "perdidos": 14,
+              "golesFavor": 68,
+              "golesContra": 135,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 10,
+              "equipo": "C.D. SAN BERNARDO",
+              "puntos": 17,
+              "jugados": 24,
+              "ganados": 3,
+              "empatados": 8,
+              "perdidos": 13,
+              "golesFavor": 43,
+              "golesContra": 98,
+              "racha": [
+                "P",
+                "G",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 11,
+              "equipo": "JUVENTUD PALMONES \"A\"",
+              "puntos": 15,
+              "jugados": 24,
+              "ganados": 4,
+              "empatados": 3,
+              "perdidos": 17,
+              "golesFavor": 42,
+              "golesContra": 95,
+              "racha": [
+                "P",
+                "P",
+                "G",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 12,
+              "equipo": "C.D. PUERTO DE LA LINEA",
+              "puntos": 6,
+              "jugados": 24,
+              "ganados": 1,
+              "empatados": 3,
+              "perdidos": 20,
+              "golesFavor": 55,
+              "golesContra": 134,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 13,
+              "equipo": "C.D. ATHLETIC CLUB JIMENA",
+              "puntos": 4,
+              "jugados": 24,
+              "ganados": 1,
+              "empatados": 1,
+              "perdidos": 22,
+              "golesFavor": 79,
+              "golesContra": 172,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=30250220&codcompeticion=30246718"
         }
       ]
     }

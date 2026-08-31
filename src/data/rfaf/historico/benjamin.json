@@ -1,0 +1,3318 @@
+{
+  "id": "benjamin",
+  "nombre": "Benjamín",
+  "nombreRfaf": "A.D. TARAGUILLA",
+  "codigo": "307530",
+  "orden": 8,
+  "actualizado": "2026-08-31T08:44:27.733Z",
+  "codigosLeidos": [],
+  "temporadas": [
+    {
+      "temporada": "2025-2026",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA BENJAMIN (CADIZ)",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "GRUPO UNICO",
+          "puntos": 77,
+          "posicion": 2,
+          "codGrupo": "45450262",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "ARCOS CLUB DE FUTBOL ACADEMY",
+              "puntos": 79,
+              "jugados": 30,
+              "ganados": 25,
+              "empatados": 4,
+              "perdidos": 1,
+              "golesFavor": 125,
+              "golesContra": 39,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 2,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 77,
+              "jugados": 30,
+              "ganados": 25,
+              "empatados": 2,
+              "perdidos": 3,
+              "golesFavor": 115,
+              "golesContra": 27,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 3,
+              "equipo": "MARIANISTAS A.D. C.D.",
+              "puntos": 70,
+              "jugados": 30,
+              "ganados": 23,
+              "empatados": 1,
+              "perdidos": 6,
+              "golesFavor": 163,
+              "golesContra": 65,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 4,
+              "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
+              "puntos": 69,
+              "jugados": 30,
+              "ganados": 22,
+              "empatados": 3,
+              "perdidos": 5,
+              "golesFavor": 100,
+              "golesContra": 39,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 5,
+              "equipo": "BURREÑOS ASOC.DVA.",
+              "puntos": 61,
+              "jugados": 30,
+              "ganados": 19,
+              "empatados": 4,
+              "perdidos": 7,
+              "golesFavor": 88,
+              "golesContra": 46,
+              "racha": [
+                "P",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 6,
+              "equipo": "ATLETICO ZABAL",
+              "puntos": 58,
+              "jugados": 30,
+              "ganados": 18,
+              "empatados": 4,
+              "perdidos": 8,
+              "golesFavor": 102,
+              "golesContra": 69,
+              "racha": [
+                "G",
+                "G",
+                "P",
+                "E",
+                "P"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "C.D. LA SALLE",
+              "puntos": 53,
+              "jugados": 30,
+              "ganados": 17,
+              "empatados": 2,
+              "perdidos": 11,
+              "golesFavor": 77,
+              "golesContra": 73,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 8,
+              "equipo": "C.D. S.M. MIRADOR",
+              "puntos": 49,
+              "jugados": 30,
+              "ganados": 15,
+              "empatados": 4,
+              "perdidos": 11,
+              "golesFavor": 88,
+              "golesContra": 77,
+              "racha": [
+                "P",
+                "G",
+                "G",
+                "E",
+                "G"
+              ]
+            },
+            {
+              "posicion": 9,
+              "equipo": "SANCTI-PETRI A.P.A. A.D.",
+              "puntos": 37,
+              "jugados": 30,
+              "ganados": 12,
+              "empatados": 1,
+              "perdidos": 17,
+              "golesFavor": 74,
+              "golesContra": 111,
+              "racha": [
+                "P",
+                "G",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 10,
+              "equipo": "SAN JOSE OBRERO U.D.",
+              "puntos": 37,
+              "jugados": 30,
+              "ganados": 11,
+              "empatados": 4,
+              "perdidos": 15,
+              "golesFavor": 67,
+              "golesContra": 115,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 11,
+              "equipo": "C.D. SALESIANOS ALGECIRAS",
+              "puntos": 32,
+              "jugados": 30,
+              "ganados": 10,
+              "empatados": 2,
+              "perdidos": 18,
+              "golesFavor": 67,
+              "golesContra": 88,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 12,
+              "equipo": "C.D. ESCUELA BAHIA SAN FERNANDO",
+              "puntos": 27,
+              "jugados": 30,
+              "ganados": 8,
+              "empatados": 3,
+              "perdidos": 19,
+              "golesFavor": 42,
+              "golesContra": 105,
+              "racha": [
+                "P",
+                "E",
+                "P",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 13,
+              "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
+              "puntos": 25,
+              "jugados": 30,
+              "ganados": 8,
+              "empatados": 1,
+              "perdidos": 21,
+              "golesFavor": 59,
+              "golesContra": 112,
+              "racha": [
+                "P",
+                "P",
+                "G",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 14,
+              "equipo": "ATCO. SANLUQUEÑO C.F.",
+              "puntos": 20,
+              "jugados": 30,
+              "ganados": 6,
+              "empatados": 2,
+              "perdidos": 22,
+              "golesFavor": 64,
+              "golesContra": 105,
+              "racha": [
+                "P",
+                "E",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 15,
+              "equipo": "C.D. UBRIQUE CLUB DE FÚTBOL 2023",
+              "puntos": 7,
+              "jugados": 30,
+              "ganados": 2,
+              "empatados": 1,
+              "perdidos": 27,
+              "golesFavor": 35,
+              "golesContra": 165,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=45450262&codcompeticion=45450222"
+        }
+      ]
+    },
+    {
+      "temporada": "2024-2025",
+      "competiciones": [
+        {
+          "nombre": "2º Andaluza Benjamín (Cádiz)",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "GRUPO UNICO",
+          "puntos": 73,
+          "posicion": 2,
+          "codGrupo": "40089235",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "ATLETICO ZABAL",
+              "puntos": 79,
+              "jugados": 28,
+              "ganados": 26,
+              "empatados": 1,
+              "perdidos": 1,
+              "golesFavor": 173,
+              "golesContra": 36,
+              "racha": [
+                "G",
+                "E",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 2,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 73,
+              "jugados": 28,
+              "ganados": 24,
+              "empatados": 1,
+              "perdidos": 3,
+              "golesFavor": 152,
+              "golesContra": 36,
+              "racha": [
+                "G",
+                "G",
+                "E",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 3,
+              "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
+              "puntos": 68,
+              "jugados": 28,
+              "ganados": 22,
+              "empatados": 2,
+              "perdidos": 4,
+              "golesFavor": 116,
+              "golesContra": 27,
+              "racha": [
+                "G",
+                "E",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 4,
+              "equipo": "C.D. LA SALLE",
+              "puntos": 63,
+              "jugados": 28,
+              "ganados": 21,
+              "empatados": 0,
+              "perdidos": 7,
+              "golesFavor": 142,
+              "golesContra": 96,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 5,
+              "equipo": "MARIANISTAS A.D. C.D.",
+              "puntos": 50,
+              "jugados": 28,
+              "ganados": 16,
+              "empatados": 2,
+              "perdidos": 10,
+              "golesFavor": 104,
+              "golesContra": 81,
+              "racha": [
+                "P",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 6,
+              "equipo": "ARCOS CLUB DE FUTBOL ACADEMY",
+              "puntos": 38,
+              "jugados": 28,
+              "ganados": 12,
+              "empatados": 2,
+              "perdidos": 14,
+              "golesFavor": 68,
+              "golesContra": 91,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "SAN FERNANDO C.D. ISLEÑO S.A.D.",
+              "puntos": 38,
+              "jugados": 28,
+              "ganados": 11,
+              "empatados": 5,
+              "perdidos": 12,
+              "golesFavor": 81,
+              "golesContra": 113,
+              "racha": [
+                "G",
+                "G",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 8,
+              "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
+              "puntos": 35,
+              "jugados": 28,
+              "ganados": 10,
+              "empatados": 5,
+              "perdidos": 13,
+              "golesFavor": 66,
+              "golesContra": 77,
+              "racha": [
+                "G",
+                "G",
+                "E",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 9,
+              "equipo": "BURREÑOS ASOC.DVA.",
+              "puntos": 30,
+              "jugados": 28,
+              "ganados": 9,
+              "empatados": 3,
+              "perdidos": 16,
+              "golesFavor": 74,
+              "golesContra": 100,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 10,
+              "equipo": "C.D. S.M. MIRADOR",
+              "puntos": 30,
+              "jugados": 28,
+              "ganados": 8,
+              "empatados": 6,
+              "perdidos": 14,
+              "golesFavor": 76,
+              "golesContra": 92,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 11,
+              "equipo": "ATCO. SANLUQUEÑO C.F.",
+              "puntos": 30,
+              "jugados": 28,
+              "ganados": 9,
+              "empatados": 3,
+              "perdidos": 16,
+              "golesFavor": 79,
+              "golesContra": 109,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 12,
+              "equipo": "SANCTI-PETRI A.P.A. A.D.",
+              "puntos": 28,
+              "jugados": 28,
+              "ganados": 8,
+              "empatados": 4,
+              "perdidos": 16,
+              "golesFavor": 68,
+              "golesContra": 96,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 13,
+              "equipo": "SAN JOSE OBRERO U.D.",
+              "puntos": 25,
+              "jugados": 28,
+              "ganados": 7,
+              "empatados": 4,
+              "perdidos": 17,
+              "golesFavor": 83,
+              "golesContra": 105,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 14,
+              "equipo": "U.D. TARIFA",
+              "puntos": 22,
+              "jugados": 28,
+              "ganados": 6,
+              "empatados": 4,
+              "perdidos": 18,
+              "golesFavor": 73,
+              "golesContra": 110,
+              "racha": [
+                "E",
+                "P",
+                "G",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 15,
+              "equipo": "XEREZ DEPORTIVO F.C.",
+              "puntos": 0,
+              "jugados": 28,
+              "ganados": 0,
+              "empatados": 0,
+              "perdidos": 28,
+              "golesFavor": 32,
+              "golesContra": 218,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=40089235&codcompeticion=40089192"
+        }
+      ]
+    },
+    {
+      "temporada": "2023-2024",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA BENJAMIN ( CADIZ)",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo Único",
+          "puntos": 33,
+          "posicion": 12,
+          "codGrupo": "34829149",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "C.D. SAN ROQUE",
+              "puntos": 90,
+              "jugados": 30,
+              "ganados": 30,
+              "empatados": 0,
+              "perdidos": 0,
+              "golesFavor": 251,
+              "golesContra": 29,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 2,
+              "equipo": "C.D. LA SALLE",
+              "puntos": 72,
+              "jugados": 30,
+              "ganados": 23,
+              "empatados": 3,
+              "perdidos": 4,
+              "golesFavor": 173,
+              "golesContra": 90,
+              "racha": [
+                "P",
+                "P",
+                "E",
+                "G",
+                "E"
+              ]
+            },
+            {
+              "posicion": 3,
+              "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
+              "puntos": 61,
+              "jugados": 30,
+              "ganados": 18,
+              "empatados": 7,
+              "perdidos": 5,
+              "golesFavor": 103,
+              "golesContra": 64,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "E",
+                "E"
+              ]
+            },
+            {
+              "posicion": 4,
+              "equipo": "ATCO. SANLUQUEÑO C.F.",
+              "puntos": 60,
+              "jugados": 30,
+              "ganados": 18,
+              "empatados": 6,
+              "perdidos": 6,
+              "golesFavor": 126,
+              "golesContra": 63,
+              "racha": [
+                "E",
+                "G",
+                "E",
+                "G",
+                "E"
+              ]
+            },
+            {
+              "posicion": 5,
+              "equipo": "SAN FERNANDO C.D. ISLEÑO S.A.D.",
+              "puntos": 53,
+              "jugados": 30,
+              "ganados": 17,
+              "empatados": 2,
+              "perdidos": 11,
+              "golesFavor": 115,
+              "golesContra": 71,
+              "racha": [
+                "E",
+                "G",
+                "P",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 6,
+              "equipo": "ATLETICO ZABAL",
+              "puntos": 52,
+              "jugados": 30,
+              "ganados": 16,
+              "empatados": 4,
+              "perdidos": 10,
+              "golesFavor": 134,
+              "golesContra": 89,
+              "racha": [
+                "E",
+                "P",
+                "G",
+                "P",
+                "E"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "XEREZ DEPORTIVO F.C.",
+              "puntos": 43,
+              "jugados": 30,
+              "ganados": 13,
+              "empatados": 4,
+              "perdidos": 13,
+              "golesFavor": 91,
+              "golesContra": 96,
+              "racha": [
+                "P",
+                "G",
+                "E",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 8,
+              "equipo": "SANCTI-PETRI A.P.A. A.D.",
+              "puntos": 41,
+              "jugados": 30,
+              "ganados": 12,
+              "empatados": 5,
+              "perdidos": 13,
+              "golesFavor": 71,
+              "golesContra": 94,
+              "racha": [
+                "G",
+                "P",
+                "E",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 9,
+              "equipo": "C.D. GUZMAN EL BUENO",
+              "puntos": 41,
+              "jugados": 30,
+              "ganados": 12,
+              "empatados": 5,
+              "perdidos": 13,
+              "golesFavor": 95,
+              "golesContra": 132,
+              "racha": [
+                "P",
+                "G",
+                "E",
+                "E",
+                "E"
+              ]
+            },
+            {
+              "posicion": 10,
+              "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
+              "puntos": 37,
+              "jugados": 30,
+              "ganados": 11,
+              "empatados": 4,
+              "perdidos": 15,
+              "golesFavor": 69,
+              "golesContra": 84,
+              "racha": [
+                "E",
+                "P",
+                "P",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 11,
+              "equipo": "ARCOS CLUB DE FUTBOL ACADEMY",
+              "puntos": 34,
+              "jugados": 30,
+              "ganados": 10,
+              "empatados": 4,
+              "perdidos": 16,
+              "golesFavor": 79,
+              "golesContra": 107,
+              "racha": [
+                "P",
+                "P",
+                "G",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 12,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 33,
+              "jugados": 30,
+              "ganados": 9,
+              "empatados": 6,
+              "perdidos": 15,
+              "golesFavor": 99,
+              "golesContra": 114,
+              "racha": [
+                "G",
+                "G",
+                "E",
+                "E",
+                "E"
+              ]
+            },
+            {
+              "posicion": 13,
+              "equipo": "SAN JOSE OBRERO U.D.",
+              "puntos": 32,
+              "jugados": 30,
+              "ganados": 9,
+              "empatados": 5,
+              "perdidos": 16,
+              "golesFavor": 85,
+              "golesContra": 112,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 14,
+              "equipo": "MARIANISTAS A.D. C.D.",
+              "puntos": 29,
+              "jugados": 30,
+              "ganados": 8,
+              "empatados": 5,
+              "perdidos": 17,
+              "golesFavor": 93,
+              "golesContra": 122,
+              "racha": [
+                "G",
+                "G",
+                "P",
+                "E",
+                "G"
+              ]
+            },
+            {
+              "posicion": 15,
+              "equipo": "C.D. LAGUNENSE*",
+              "puntos": 10,
+              "jugados": 30,
+              "ganados": 3,
+              "empatados": 1,
+              "perdidos": 26,
+              "golesFavor": 35,
+              "golesContra": 160,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 16,
+              "equipo": "CIUDAD DE CADIZ P.C.D.",
+              "puntos": 1,
+              "jugados": 30,
+              "ganados": 0,
+              "empatados": 1,
+              "perdidos": 29,
+              "golesFavor": 33,
+              "golesContra": 225,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=34829149&codcompeticion=34829112"
+        }
+      ]
+    },
+    {
+      "temporada": "2022-2023",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA BENJAMIN (CADIZ)",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo Único",
+          "puntos": 39,
+          "posicion": 11,
+          "codGrupo": "29302721",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "C.D. SAN ROQUE",
+              "puntos": 76,
+              "jugados": 30,
+              "ganados": 25,
+              "empatados": 1,
+              "perdidos": 4,
+              "golesFavor": 132,
+              "golesContra": 53,
+              "racha": [
+                "G",
+                "E",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 2,
+              "equipo": "ATLETICO ZABAL",
+              "puntos": 62,
+              "jugados": 30,
+              "ganados": 19,
+              "empatados": 5,
+              "perdidos": 6,
+              "golesFavor": 127,
+              "golesContra": 77,
+              "racha": [
+                "G",
+                "G",
+                "P",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 3,
+              "equipo": "MARIANISTAS A.D. C.D.",
+              "puntos": 60,
+              "jugados": 30,
+              "ganados": 19,
+              "empatados": 3,
+              "perdidos": 8,
+              "golesFavor": 110,
+              "golesContra": 66,
+              "racha": [
+                "G",
+                "G",
+                "P",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 4,
+              "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
+              "puntos": 58,
+              "jugados": 30,
+              "ganados": 17,
+              "empatados": 7,
+              "perdidos": 6,
+              "golesFavor": 105,
+              "golesContra": 62,
+              "racha": [
+                "E",
+                "E",
+                "G",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 5,
+              "equipo": "SAN FERNANDO C.D. ISLEÑO S.A.D.",
+              "puntos": 57,
+              "jugados": 30,
+              "ganados": 17,
+              "empatados": 6,
+              "perdidos": 7,
+              "golesFavor": 118,
+              "golesContra": 82,
+              "racha": [
+                "P",
+                "G",
+                "E",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 6,
+              "equipo": "SANCTI-PETRI A.P.A. A.D.",
+              "puntos": 53,
+              "jugados": 30,
+              "ganados": 17,
+              "empatados": 2,
+              "perdidos": 11,
+              "golesFavor": 134,
+              "golesContra": 77,
+              "racha": [
+                "E",
+                "P",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "CIUDAD DE CADIZ P.C.D.",
+              "puntos": 49,
+              "jugados": 30,
+              "ganados": 14,
+              "empatados": 7,
+              "perdidos": 9,
+              "golesFavor": 116,
+              "golesContra": 87,
+              "racha": [
+                "P",
+                "P",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 8,
+              "equipo": "SAN JOSE OBRERO U.D.",
+              "puntos": 46,
+              "jugados": 30,
+              "ganados": 13,
+              "empatados": 7,
+              "perdidos": 10,
+              "golesFavor": 83,
+              "golesContra": 77,
+              "racha": [
+                "E",
+                "P",
+                "E",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 9,
+              "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
+              "puntos": 43,
+              "jugados": 30,
+              "ganados": 12,
+              "empatados": 7,
+              "perdidos": 11,
+              "golesFavor": 98,
+              "golesContra": 76,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 10,
+              "equipo": "ATCO. SANLUQUEÑO C.F.",
+              "puntos": 42,
+              "jugados": 30,
+              "ganados": 13,
+              "empatados": 3,
+              "perdidos": 14,
+              "golesFavor": 106,
+              "golesContra": 83,
+              "racha": [
+                "E",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 11,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 39,
+              "jugados": 30,
+              "ganados": 12,
+              "empatados": 3,
+              "perdidos": 15,
+              "golesFavor": 112,
+              "golesContra": 113,
+              "racha": [
+                "G",
+                "P",
+                "G",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 12,
+              "equipo": "C.D. LA SALLE",
+              "puntos": 37,
+              "jugados": 30,
+              "ganados": 11,
+              "empatados": 4,
+              "perdidos": 15,
+              "golesFavor": 91,
+              "golesContra": 90,
+              "racha": [
+                "P",
+                "G",
+                "G",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 13,
+              "equipo": "C.D. SAFA SAN LUIS",
+              "puntos": 33,
+              "jugados": 30,
+              "ganados": 9,
+              "empatados": 6,
+              "perdidos": 15,
+              "golesFavor": 111,
+              "golesContra": 133,
+              "racha": [
+                "G",
+                "E",
+                "P",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 14,
+              "equipo": "ALGAIDA U.D.",
+              "puntos": 16,
+              "jugados": 30,
+              "ganados": 3,
+              "empatados": 7,
+              "perdidos": 20,
+              "golesFavor": 68,
+              "golesContra": 158,
+              "racha": [
+                "P",
+                "E",
+                "P",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 15,
+              "equipo": "MONITORES FUTBOL DE ALGECIRAS",
+              "puntos": 10,
+              "jugados": 30,
+              "ganados": 3,
+              "empatados": 1,
+              "perdidos": 26,
+              "golesFavor": 64,
+              "golesContra": 203,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 16,
+              "equipo": "BALON LINENSE C.F. C.D.",
+              "puntos": 4,
+              "jugados": 30,
+              "ganados": 1,
+              "empatados": 1,
+              "perdidos": 28,
+              "golesFavor": 51,
+              "golesContra": 189,
+              "racha": [
+                "P",
+                "G",
+                "P",
+                "P",
+                "P"
+              ]
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=29302721&codcompeticion=29302686"
+        }
+      ]
+    },
+    {
+      "temporada": "2021-2022",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA BENJAMIN (CADIZ)",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "GRUPO UNICO",
+          "puntos": 53,
+          "posicion": 7,
+          "codGrupo": "25259715",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "SANCTI-PETRI A.P.A. A.D.",
+              "puntos": 86,
+              "jugados": 32,
+              "ganados": 28,
+              "empatados": 2,
+              "perdidos": 2,
+              "golesFavor": 180,
+              "golesContra": 53,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "E"
+              ]
+            },
+            {
+              "posicion": 2,
+              "equipo": "C.D. SAN ROQUE",
+              "puntos": 83,
+              "jugados": 32,
+              "ganados": 27,
+              "empatados": 2,
+              "perdidos": 3,
+              "golesFavor": 182,
+              "golesContra": 69,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 3,
+              "equipo": "ATLETICO ZABAL",
+              "puntos": 66,
+              "jugados": 32,
+              "ganados": 21,
+              "empatados": 3,
+              "perdidos": 8,
+              "golesFavor": 150,
+              "golesContra": 98,
+              "racha": [
+                "G",
+                "G",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 4,
+              "equipo": "C.D. CADISTA DE LA ISLA",
+              "puntos": 61,
+              "jugados": 32,
+              "ganados": 19,
+              "empatados": 4,
+              "perdidos": 9,
+              "golesFavor": 123,
+              "golesContra": 80,
+              "racha": [
+                "P",
+                "P",
+                "G",
+                "P",
+                "E"
+              ]
+            },
+            {
+              "posicion": 5,
+              "equipo": "MONITORES FUTBOL DE ALGECIRAS",
+              "puntos": 61,
+              "jugados": 32,
+              "ganados": 19,
+              "empatados": 4,
+              "perdidos": 9,
+              "golesFavor": 144,
+              "golesContra": 105,
+              "racha": [
+                "G",
+                "E",
+                "G",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 6,
+              "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
+              "puntos": 58,
+              "jugados": 32,
+              "ganados": 18,
+              "empatados": 4,
+              "perdidos": 10,
+              "golesFavor": 142,
+              "golesContra": 102,
+              "racha": [
+                "P",
+                "G",
+                "P",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 7,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 53,
+              "jugados": 32,
+              "ganados": 16,
+              "empatados": 5,
+              "perdidos": 11,
+              "golesFavor": 124,
+              "golesContra": 93,
+              "racha": [
+                "P",
+                "G",
+                "E",
+                "E",
+                "G"
+              ]
+            },
+            {
+              "posicion": 8,
+              "equipo": "MARIANISTAS A.D. C.D.",
+              "puntos": 53,
+              "jugados": 32,
+              "ganados": 16,
+              "empatados": 5,
+              "perdidos": 11,
+              "golesFavor": 129,
+              "golesContra": 84,
+              "racha": [
+                "E",
+                "P",
+                "E",
+                "P",
+                "G"
+              ]
+            },
+            {
+              "posicion": 9,
+              "equipo": "SAN FERNANDO C.D. ISLEÑO S.A.D.",
+              "puntos": 45,
+              "jugados": 32,
+              "ganados": 14,
+              "empatados": 3,
+              "perdidos": 15,
+              "golesFavor": 124,
+              "golesContra": 112,
+              "racha": [
+                "G",
+                "P",
+                "E",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 10,
+              "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
+              "puntos": 43,
+              "jugados": 32,
+              "ganados": 13,
+              "empatados": 4,
+              "perdidos": 15,
+              "golesFavor": 139,
+              "golesContra": 116,
+              "racha": [
+                "E",
+                "P",
+                "G",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 11,
+              "equipo": "ATCO. SANLUQUEÑO C.F.",
+              "puntos": 43,
+              "jugados": 32,
+              "ganados": 13,
+              "empatados": 4,
+              "perdidos": 15,
+              "golesFavor": 109,
+              "golesContra": 132,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 12,
+              "equipo": "SAN JOSE OBRERO U.D.",
+              "puntos": 42,
+              "jugados": 32,
+              "ganados": 13,
+              "empatados": 3,
+              "perdidos": 16,
+              "golesFavor": 87,
+              "golesContra": 87,
+              "racha": [
+                "E",
+                "P",
+                "P",
+                "G",
+                "G"
+              ]
+            },
+            {
+              "posicion": 13,
+              "equipo": "C.D. LA SALLE",
+              "puntos": 38,
+              "jugados": 32,
+              "ganados": 12,
+              "empatados": 2,
+              "perdidos": 18,
+              "golesFavor": 99,
+              "golesContra": 102,
+              "racha": [
+                "P",
+                "G",
+                "E",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 14,
+              "equipo": "CIUDAD DE CADIZ P.C.D.",
+              "puntos": 31,
+              "jugados": 32,
+              "ganados": 10,
+              "empatados": 1,
+              "perdidos": 21,
+              "golesFavor": 75,
+              "golesContra": 149,
+              "racha": [
+                "G",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            },
+            {
+              "posicion": 15,
+              "equipo": "TRASMALLO F.C. C.D.",
+              "puntos": 11,
+              "jugados": 32,
+              "ganados": 3,
+              "empatados": 2,
+              "perdidos": 27,
+              "golesFavor": 82,
+              "golesContra": 181,
+              "racha": [
+                "P",
+                "P",
+                "G",
+                "E",
+                "P"
+              ]
+            },
+            {
+              "posicion": 16,
+              "equipo": "C.D. ESCUELA BAHIA SAN FERNANDO",
+              "puntos": 9,
+              "jugados": 32,
+              "ganados": 2,
+              "empatados": 3,
+              "perdidos": 27,
+              "golesFavor": 53,
+              "golesContra": 213,
+              "racha": [
+                "P",
+                "G",
+                "P",
+                "G",
+                "P"
+              ]
+            },
+            {
+              "posicion": 17,
+              "equipo": "DEPORTIVO ALGECIRAS",
+              "puntos": 7,
+              "jugados": 32,
+              "ganados": 2,
+              "empatados": 1,
+              "perdidos": 29,
+              "golesFavor": 49,
+              "golesContra": 215,
+              "racha": [
+                "P",
+                "P",
+                "P",
+                "P",
+                "P"
+              ]
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=25259715&codcompeticion=25259608"
+        }
+      ]
+    },
+    {
+      "temporada": "2020-2021",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA BENJAMIN (CADIZ)",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "SUBGRUPO 1º",
+          "puntos": 27,
+          "posicion": 1,
+          "codGrupo": "22390768",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 5,
+              "jugados": 9,
+              "ganados": 0,
+              "empatados": 1,
+              "perdidos": 58,
+              "golesFavor": 16,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 2,
+              "equipo": "C.D. SAN ROQUE",
+              "puntos": 5,
+              "jugados": 6,
+              "ganados": 2,
+              "empatados": 2,
+              "perdidos": 30,
+              "golesFavor": 19,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 3,
+              "equipo": "MARIANISTAS A.D. C.D.",
+              "puntos": 5,
+              "jugados": 6,
+              "ganados": 1,
+              "empatados": 3,
+              "perdidos": 31,
+              "golesFavor": 20,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 4,
+              "equipo": "MONITORES F.ALGECIRAS PMD",
+              "puntos": 5,
+              "jugados": 3,
+              "ganados": 1,
+              "empatados": 6,
+              "perdidos": 29,
+              "golesFavor": 35,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 5,
+              "equipo": "SAN JOSE OBRERO U.D.",
+              "puntos": 5,
+              "jugados": 3,
+              "ganados": 0,
+              "empatados": 7,
+              "perdidos": 26,
+              "golesFavor": 40,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 6,
+              "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
+              "puntos": 5,
+              "jugados": 0,
+              "ganados": 2,
+              "empatados": 8,
+              "perdidos": 23,
+              "golesFavor": 37,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=22390768&codcompeticion=22390387"
+        },
+        {
+          "nombre": "FINAL 2ª ANDALUZA BENJAMIN CADIZ",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "FINAL 2ª BENJAMIN CADIZ",
+          "puntos": null,
+          "posicion": null,
+          "codGrupo": "23821757",
+          "sinClasificacion": true
+        }
+      ]
+    },
+    {
+      "temporada": "2019-2020",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA BENJAMIN (CÁDIZ)",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "GRUPO UNICO",
+          "puntos": 46,
+          "posicion": 7,
+          "codGrupo": "17009575",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "C.D. SAN ROQUE",
+              "puntos": 11,
+              "jugados": 17,
+              "ganados": 2,
+              "empatados": 4,
+              "perdidos": 144,
+              "golesFavor": 44,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 2,
+              "equipo": "SAN FERNANDO C.D. ISLEÑO",
+              "puntos": 12,
+              "jugados": 17,
+              "ganados": 4,
+              "empatados": 3,
+              "perdidos": 130,
+              "golesFavor": 38,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 3,
+              "equipo": "CIUDAD DE CADIZ P.C.D.",
+              "puntos": 12,
+              "jugados": 17,
+              "ganados": 1,
+              "empatados": 5,
+              "perdidos": 107,
+              "golesFavor": 49,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 4,
+              "equipo": "SAN JOSE OBRERO U.D.",
+              "puntos": 12,
+              "jugados": 17,
+              "ganados": 3,
+              "empatados": 4,
+              "perdidos": 114,
+              "golesFavor": 39,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 5,
+              "equipo": "C.D. LA SALLE",
+              "puntos": 11,
+              "jugados": 16,
+              "ganados": 2,
+              "empatados": 5,
+              "perdidos": 106,
+              "golesFavor": 34,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 6,
+              "equipo": "MARIANISTAS A.D. C.D.",
+              "puntos": 12,
+              "jugados": 15,
+              "ganados": 1,
+              "empatados": 7,
+              "perdidos": 97,
+              "golesFavor": 64,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 7,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 11,
+              "jugados": 15,
+              "ganados": 1,
+              "empatados": 7,
+              "perdidos": 121,
+              "golesFavor": 56,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 8,
+              "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
+              "puntos": 12,
+              "jugados": 14,
+              "ganados": 1,
+              "empatados": 8,
+              "perdidos": 108,
+              "golesFavor": 57,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 9,
+              "equipo": "C.D. COMARCA DE JEREZ JUZZT",
+              "puntos": 12,
+              "jugados": 10,
+              "ganados": 3,
+              "empatados": 10,
+              "perdidos": 97,
+              "golesFavor": 69,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 10,
+              "equipo": "ATCO. SANLUQUEÑO C.F.",
+              "puntos": 12,
+              "jugados": 8,
+              "ganados": 4,
+              "empatados": 11,
+              "perdidos": 83,
+              "golesFavor": 56,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 11,
+              "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
+              "puntos": 12,
+              "jugados": 7,
+              "ganados": 5,
+              "empatados": 11,
+              "perdidos": 71,
+              "golesFavor": 78,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 12,
+              "equipo": "JUVENTUD PALMONES",
+              "puntos": 12,
+              "jugados": 8,
+              "ganados": 1,
+              "empatados": 14,
+              "perdidos": 84,
+              "golesFavor": 82,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 13,
+              "equipo": "ARCOS A.D.",
+              "puntos": 11,
+              "jugados": 3,
+              "ganados": 1,
+              "empatados": 19,
+              "perdidos": 67,
+              "golesFavor": 125,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 14,
+              "equipo": "AMIGOS CRUZ ROJA JEREZ A.D.",
+              "puntos": 11,
+              "jugados": 3,
+              "ganados": 1,
+              "empatados": 19,
+              "perdidos": 45,
+              "golesFavor": 93,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 15,
+              "equipo": "C.D. VETERANOS XEREZ",
+              "puntos": 11,
+              "jugados": 2,
+              "ganados": 2,
+              "empatados": 19,
+              "perdidos": 67,
+              "golesFavor": 178,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 16,
+              "equipo": "PEÑA MADRIDISTA LINENSE",
+              "puntos": 11,
+              "jugados": 0,
+              "ganados": 0,
+              "empatados": 23,
+              "perdidos": 19,
+              "golesFavor": 213,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=17009575&codcompeticion=17009413"
+        }
+      ]
+    },
+    {
+      "temporada": "2018-2019",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA BENJAMIN (CADIZ)",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "UNICO",
+          "puntos": 75,
+          "posicion": 1,
+          "codGrupo": "13295747",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 15,
+              "jugados": 24,
+              "ganados": 3,
+              "empatados": 3,
+              "perdidos": 179,
+              "golesFavor": 67,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 2,
+              "equipo": "SAN FERNANDO C.D. ISLEÑO",
+              "puntos": 15,
+              "jugados": 21,
+              "ganados": 3,
+              "empatados": 6,
+              "perdidos": 130,
+              "golesFavor": 69,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 3,
+              "equipo": "C.D. COMARCA DE JEREZ",
+              "puntos": 15,
+              "jugados": 18,
+              "ganados": 3,
+              "empatados": 9,
+              "perdidos": 117,
+              "golesFavor": 90,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 4,
+              "equipo": "C.D. SAN ROQUE",
+              "puntos": 15,
+              "jugados": 17,
+              "ganados": 2,
+              "empatados": 11,
+              "perdidos": 110,
+              "golesFavor": 80,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 5,
+              "equipo": "MARIANISTAS A.D. C.D.",
+              "puntos": 15,
+              "jugados": 15,
+              "ganados": 8,
+              "empatados": 7,
+              "perdidos": 118,
+              "golesFavor": 74,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 6,
+              "equipo": "JUVENTUD PALMONES",
+              "puntos": 15,
+              "jugados": 14,
+              "ganados": 4,
+              "empatados": 12,
+              "perdidos": 112,
+              "golesFavor": 81,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 7,
+              "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
+              "puntos": 15,
+              "jugados": 14,
+              "ganados": 4,
+              "empatados": 12,
+              "perdidos": 103,
+              "golesFavor": 66,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 8,
+              "equipo": "ARCOS A.D.",
+              "puntos": 15,
+              "jugados": 13,
+              "ganados": 6,
+              "empatados": 11,
+              "perdidos": 73,
+              "golesFavor": 61,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 9,
+              "equipo": "C.D. VETERANOS XEREZ",
+              "puntos": 15,
+              "jugados": 12,
+              "ganados": 7,
+              "empatados": 11,
+              "perdidos": 67,
+              "golesFavor": 57,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 10,
+              "equipo": "SAN JOSE OBRERO U.D.",
+              "puntos": 15,
+              "jugados": 11,
+              "ganados": 6,
+              "empatados": 13,
+              "perdidos": 106,
+              "golesFavor": 108,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 11,
+              "equipo": "ATCO. SANLUQUEÑO C.F.",
+              "puntos": 15,
+              "jugados": 11,
+              "ganados": 3,
+              "empatados": 16,
+              "perdidos": 104,
+              "golesFavor": 106,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 12,
+              "equipo": "PEÑA MADRIDISTA LINENSE",
+              "puntos": 15,
+              "jugados": 11,
+              "ganados": 3,
+              "empatados": 16,
+              "perdidos": 119,
+              "golesFavor": 111,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 13,
+              "equipo": "SPORTING CHICLANA C.D.",
+              "puntos": 15,
+              "jugados": 10,
+              "ganados": 4,
+              "empatados": 16,
+              "perdidos": 89,
+              "golesFavor": 94,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 14,
+              "equipo": "CHICLANA IND. C.F.",
+              "puntos": 15,
+              "jugados": 7,
+              "ganados": 6,
+              "empatados": 17,
+              "perdidos": 90,
+              "golesFavor": 107,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 15,
+              "equipo": "SANCTI-PETRI A.P.A. A.D. \"A\"",
+              "puntos": 15,
+              "jugados": 6,
+              "ganados": 3,
+              "empatados": 21,
+              "perdidos": 111,
+              "golesFavor": 118,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 16,
+              "equipo": "ATLETICO ZABAL \"A\"",
+              "puntos": 15,
+              "jugados": 2,
+              "ganados": 3,
+              "empatados": 25,
+              "perdidos": 63,
+              "golesFavor": 162,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=13295747&codcompeticion=13295595"
+        },
+        {
+          "nombre": "CPTO ANDALUCIA CLUBES BENJAMIN (Fase Grupos)",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo 2",
+          "puntos": 4,
+          "posicion": 3,
+          "codGrupo": "16342357",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "REAL BETIS BALOMPIE S.A.D. \"B\"",
+              "puntos": 2,
+              "jugados": 3,
+              "ganados": 0,
+              "empatados": 0,
+              "perdidos": 17,
+              "golesFavor": 0,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 2,
+              "equipo": "C.D. UBEDA VIVA",
+              "puntos": 1,
+              "jugados": 1,
+              "ganados": 1,
+              "empatados": 1,
+              "perdidos": 9,
+              "golesFavor": 9,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 3,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 1,
+              "jugados": 1,
+              "ganados": 1,
+              "empatados": 1,
+              "perdidos": 6,
+              "golesFavor": 9,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 4,
+              "equipo": "U.D. CIUDAD DE ROQUETAS",
+              "puntos": 2,
+              "jugados": 0,
+              "ganados": 0,
+              "empatados": 3,
+              "perdidos": 5,
+              "golesFavor": 13,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=16342357&codcompeticion=16342323"
+        }
+      ]
+    },
+    {
+      "temporada": "2017-2018",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA BENJAMIN (CADIZ)",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo Único",
+          "puntos": 77,
+          "posicion": 2,
+          "codGrupo": "9645769",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "SANCTI-PETRI A.P.A. A.D. \"A\"",
+              "puntos": 15,
+              "jugados": 25,
+              "ganados": 4,
+              "empatados": 1,
+              "perdidos": 148,
+              "golesFavor": 35,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 2,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 15,
+              "jugados": 25,
+              "ganados": 2,
+              "empatados": 3,
+              "perdidos": 176,
+              "golesFavor": 39,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 3,
+              "equipo": "JUVENTUD PALMONES",
+              "puntos": 15,
+              "jugados": 21,
+              "ganados": 3,
+              "empatados": 6,
+              "perdidos": 135,
+              "golesFavor": 61,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 4,
+              "equipo": "SPORTING CHICLANA C.D.",
+              "puntos": 15,
+              "jugados": 18,
+              "ganados": 3,
+              "empatados": 9,
+              "perdidos": 135,
+              "golesFavor": 78,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 5,
+              "equipo": "MARIANISTAS A.D. C.D.",
+              "puntos": 15,
+              "jugados": 18,
+              "ganados": 4,
+              "empatados": 8,
+              "perdidos": 161,
+              "golesFavor": 77,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 6,
+              "equipo": "SAN JOSE OBRERO U.D.",
+              "puntos": 15,
+              "jugados": 17,
+              "ganados": 4,
+              "empatados": 9,
+              "perdidos": 132,
+              "golesFavor": 76,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 7,
+              "equipo": "ATCO. SANLUQUEÑO C.F. \"A\"",
+              "puntos": 15,
+              "jugados": 18,
+              "ganados": 1,
+              "empatados": 11,
+              "perdidos": 142,
+              "golesFavor": 92,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 8,
+              "equipo": "C.D. SAFA SAN LUIS",
+              "puntos": 15,
+              "jugados": 17,
+              "ganados": 3,
+              "empatados": 10,
+              "perdidos": 120,
+              "golesFavor": 83,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 9,
+              "equipo": "SAN FERNANDO C.D. ISLEÑO",
+              "puntos": 15,
+              "jugados": 17,
+              "ganados": 1,
+              "empatados": 12,
+              "perdidos": 147,
+              "golesFavor": 82,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 10,
+              "equipo": "MONITORES F.ALGECIRAS PMD \"A\"",
+              "puntos": 15,
+              "jugados": 12,
+              "ganados": 2,
+              "empatados": 16,
+              "perdidos": 93,
+              "golesFavor": 116,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 11,
+              "equipo": "C.D. VETERANOS XEREZ",
+              "puntos": 15,
+              "jugados": 9,
+              "ganados": 2,
+              "empatados": 19,
+              "perdidos": 75,
+              "golesFavor": 95,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 12,
+              "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
+              "puntos": 15,
+              "jugados": 8,
+              "ganados": 1,
+              "empatados": 21,
+              "perdidos": 82,
+              "golesFavor": 147,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 13,
+              "equipo": "ATLETICO ZABAL \"A\"",
+              "puntos": 15,
+              "jugados": 6,
+              "ganados": 1,
+              "empatados": 23,
+              "perdidos": 93,
+              "golesFavor": 149,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 14,
+              "equipo": "CHICLANA C.F. \"A\"",
+              "puntos": 15,
+              "jugados": 6,
+              "ganados": 0,
+              "empatados": 24,
+              "perdidos": 81,
+              "golesFavor": 134,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 15,
+              "equipo": "C.D. GUZMAN EL BUENO",
+              "puntos": 15,
+              "jugados": 6,
+              "ganados": 0,
+              "empatados": 24,
+              "perdidos": 74,
+              "golesFavor": 156,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 16,
+              "equipo": "C.D. ATLETICO ALGECIREÑO",
+              "puntos": 15,
+              "jugados": 1,
+              "ganados": 1,
+              "empatados": 28,
+              "perdidos": 55,
+              "golesFavor": 189,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=9645769&codcompeticion=9539321"
+        },
+        {
+          "nombre": "COPA RFAF CLUBES BENJAMIN",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo Único",
+          "puntos": null,
+          "posicion": null,
+          "codGrupo": "12693996",
+          "sinClasificacion": true
+        }
+      ]
+    },
+    {
+      "temporada": "2016-2017",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA BENJAMIN (CADIZ)",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo Único",
+          "puntos": 81,
+          "posicion": 1,
+          "codGrupo": "5885401",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 14,
+              "jugados": 27,
+              "ganados": 0,
+              "empatados": 1,
+              "perdidos": 209,
+              "golesFavor": 39,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 2,
+              "equipo": "SAN JOSE OBRERO U.D.",
+              "puntos": 14,
+              "jugados": 25,
+              "ganados": 1,
+              "empatados": 2,
+              "perdidos": 196,
+              "golesFavor": 41,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 3,
+              "equipo": "ATLETICO ZABAL \"A\"",
+              "puntos": 14,
+              "jugados": 18,
+              "ganados": 6,
+              "empatados": 4,
+              "perdidos": 176,
+              "golesFavor": 79,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 4,
+              "equipo": "A.D. MARIANISTAS C.D. \"A\"",
+              "puntos": 14,
+              "jugados": 19,
+              "ganados": 1,
+              "empatados": 8,
+              "perdidos": 140,
+              "golesFavor": 68,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 5,
+              "equipo": "SAN FERNANDO C.D. ISLEÑO",
+              "puntos": 14,
+              "jugados": 15,
+              "ganados": 6,
+              "empatados": 7,
+              "perdidos": 125,
+              "golesFavor": 58,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 6,
+              "equipo": "SANCTI-PETRI A.P.A. A.D. \"A\"",
+              "puntos": 14,
+              "jugados": 14,
+              "ganados": 6,
+              "empatados": 8,
+              "perdidos": 105,
+              "golesFavor": 84,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 7,
+              "equipo": "ATCO. SANLUQUEÑO C.F. \"A\"",
+              "puntos": 14,
+              "jugados": 14,
+              "ganados": 4,
+              "empatados": 10,
+              "perdidos": 120,
+              "golesFavor": 86,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 8,
+              "equipo": "C.D. VETERANOS XEREZ",
+              "puntos": 14,
+              "jugados": 10,
+              "ganados": 5,
+              "empatados": 13,
+              "perdidos": 93,
+              "golesFavor": 102,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 9,
+              "equipo": "C.D. ATLETICO ALGECIREÑO",
+              "puntos": 14,
+              "jugados": 10,
+              "ganados": 4,
+              "empatados": 14,
+              "perdidos": 90,
+              "golesFavor": 85,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 10,
+              "equipo": "C.D. SAFA SAN LUIS",
+              "puntos": 14,
+              "jugados": 10,
+              "ganados": 3,
+              "empatados": 15,
+              "perdidos": 111,
+              "golesFavor": 104,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 11,
+              "equipo": "JUVENTUD PALMONES",
+              "puntos": 14,
+              "jugados": 10,
+              "ganados": 1,
+              "empatados": 17,
+              "perdidos": 84,
+              "golesFavor": 104,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 12,
+              "equipo": "CD AD PUEBLO NUEVO LA GRANJA \"A\"",
+              "puntos": 14,
+              "jugados": 9,
+              "ganados": 3,
+              "empatados": 16,
+              "perdidos": 86,
+              "golesFavor": 111,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 13,
+              "equipo": "CHICLANA C.F. \"A\"",
+              "puntos": 14,
+              "jugados": 5,
+              "ganados": 1,
+              "empatados": 22,
+              "perdidos": 63,
+              "golesFavor": 143,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 14,
+              "equipo": "MONITORES F.ALGECIRAS PMD \"A\"",
+              "puntos": 14,
+              "jugados": 3,
+              "ganados": 1,
+              "empatados": 24,
+              "perdidos": 52,
+              "golesFavor": 167,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 15,
+              "equipo": "XEREZ CLUB BALOMPIE",
+              "puntos": 14,
+              "jugados": 0,
+              "ganados": 0,
+              "empatados": 28,
+              "perdidos": 44,
+              "golesFavor": 213,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=5885401&codcompeticion=5677910"
+        },
+        {
+          "nombre": "CPTO ANDALUCIA CLUBES BENJAMÍN",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo Único",
+          "puntos": null,
+          "posicion": null,
+          "codGrupo": "8965526",
+          "sinClasificacion": true
+        },
+        {
+          "nombre": "COPA PRIMAVERA BENJAMIN LA LINEA (CADIZ)",
+          "categoria": "3ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo 2",
+          "puntos": 15,
+          "posicion": 1,
+          "codGrupo": "8958345",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 2,
+              "jugados": 5,
+              "ganados": 0,
+              "empatados": 0,
+              "perdidos": 42,
+              "golesFavor": 1,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 2,
+              "equipo": "PEÑA MADRIDISTA LINENSE",
+              "puntos": 3,
+              "jugados": 3,
+              "ganados": 0,
+              "empatados": 2,
+              "perdidos": 25,
+              "golesFavor": 17,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 3,
+              "equipo": "BALON LINENSE C.F. C.D. \"A\"",
+              "puntos": 2,
+              "jugados": 2,
+              "ganados": 0,
+              "empatados": 3,
+              "perdidos": 33,
+              "golesFavor": 24,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 4,
+              "equipo": "C.D. SAN ROQUE \"A\"",
+              "puntos": 3,
+              "jugados": 2,
+              "ganados": 0,
+              "empatados": 3,
+              "perdidos": 19,
+              "golesFavor": 27,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 5,
+              "equipo": "ATLETICO ZABAL",
+              "puntos": 3,
+              "jugados": 2,
+              "ganados": 0,
+              "empatados": 3,
+              "perdidos": 21,
+              "golesFavor": 39,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 6,
+              "equipo": "ATLETICO ZABAL \"B\"",
+              "puntos": 2,
+              "jugados": 1,
+              "ganados": 0,
+              "empatados": 4,
+              "perdidos": 18,
+              "golesFavor": 35,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=8958345&codcompeticion=8958343"
+        }
+      ]
+    },
+    {
+      "temporada": "2015-2016",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA BENJAMIN (CADIZ)",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo Único",
+          "puntos": 81,
+          "posicion": 1,
+          "codGrupo": "2873218",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 15,
+              "jugados": 26,
+              "ganados": 3,
+              "empatados": 1,
+              "perdidos": 189,
+              "golesFavor": 34,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 2,
+              "equipo": "SAN FERNANDO C.D. ISLEÑO",
+              "puntos": 15,
+              "jugados": 26,
+              "ganados": 3,
+              "empatados": 1,
+              "perdidos": 163,
+              "golesFavor": 35,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 3,
+              "equipo": "ATCO. SANLUQUEÑO C.F. \"A\"",
+              "puntos": 15,
+              "jugados": 23,
+              "ganados": 2,
+              "empatados": 5,
+              "perdidos": 151,
+              "golesFavor": 62,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 4,
+              "equipo": "SAN JOSE OBRERO U.D.",
+              "puntos": 15,
+              "jugados": 22,
+              "ganados": 1,
+              "empatados": 7,
+              "perdidos": 129,
+              "golesFavor": 76,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 5,
+              "equipo": "XEREZ CLUB BALOMPIE",
+              "puntos": 15,
+              "jugados": 21,
+              "ganados": 2,
+              "empatados": 7,
+              "perdidos": 136,
+              "golesFavor": 57,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 6,
+              "equipo": "SANCTI-PETRI A.P.A. A.D. \"A\"",
+              "puntos": 15,
+              "jugados": 16,
+              "ganados": 5,
+              "empatados": 9,
+              "perdidos": 111,
+              "golesFavor": 68,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 7,
+              "equipo": "CHICLANA C.F. \"A\"",
+              "puntos": 15,
+              "jugados": 13,
+              "ganados": 4,
+              "empatados": 13,
+              "perdidos": 119,
+              "golesFavor": 115,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 8,
+              "equipo": "CD AD PUEBLO NUEVO LA GRANJA \"A\"",
+              "puntos": 15,
+              "jugados": 12,
+              "ganados": 4,
+              "empatados": 14,
+              "perdidos": 86,
+              "golesFavor": 84,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 9,
+              "equipo": "A.D. MARIANISTAS C.D. \"A\"",
+              "puntos": 15,
+              "jugados": 12,
+              "ganados": 3,
+              "empatados": 15,
+              "perdidos": 92,
+              "golesFavor": 117,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 10,
+              "equipo": "C.D. NOVO CHICLANA \"A\"",
+              "puntos": 15,
+              "jugados": 12,
+              "ganados": 1,
+              "empatados": 17,
+              "perdidos": 95,
+              "golesFavor": 114,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 11,
+              "equipo": "C.D. VETERANOS XEREZ",
+              "puntos": 15,
+              "jugados": 11,
+              "ganados": 1,
+              "empatados": 18,
+              "perdidos": 72,
+              "golesFavor": 115,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 12,
+              "equipo": "ATLETICO ZABAL \"A\"",
+              "puntos": 15,
+              "jugados": 9,
+              "ganados": 4,
+              "empatados": 17,
+              "perdidos": 93,
+              "golesFavor": 124,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 13,
+              "equipo": "ARCOS A.D.",
+              "puntos": 15,
+              "jugados": 9,
+              "ganados": 4,
+              "empatados": 17,
+              "perdidos": 72,
+              "golesFavor": 85,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 14,
+              "equipo": "BORNENSE ATLETICO",
+              "puntos": 15,
+              "jugados": 4,
+              "ganados": 2,
+              "empatados": 24,
+              "perdidos": 78,
+              "golesFavor": 185,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 15,
+              "equipo": "C.D. GUZMAN EL BUENO",
+              "puntos": 15,
+              "jugados": 2,
+              "ganados": 2,
+              "empatados": 26,
+              "perdidos": 55,
+              "golesFavor": 145,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 16,
+              "equipo": "CUESTA DEL RAYO VETERANOS C.F.",
+              "puntos": 9,
+              "jugados": 0,
+              "ganados": 3,
+              "empatados": 16,
+              "perdidos": 38,
+              "golesFavor": 122,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 16,
+              "equipo": "CUESTA DEL RAYO VETERANOS C.F.",
+              "puntos": 9,
+              "jugados": 0,
+              "ganados": 3,
+              "empatados": 16,
+              "perdidos": 38,
+              "golesFavor": 122,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=2873218&codcompeticion=2697351"
+        },
+        {
+          "nombre": "CAMPEONATO ANDALUCÍA BENJAMÍN",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Unico",
+          "puntos": null,
+          "posicion": null,
+          "codGrupo": "5646251",
+          "sinClasificacion": true
+        },
+        {
+          "nombre": "COPA BENJAMIN LA LINEA (CADIZ)",
+          "categoria": "3ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo 4",
+          "puntos": 12,
+          "posicion": 1,
+          "codGrupo": "5635031",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 2,
+              "jugados": 4,
+              "ganados": 0,
+              "empatados": 0,
+              "perdidos": 38,
+              "golesFavor": 3,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 2,
+              "equipo": "C.D. GUADIARO",
+              "puntos": 2,
+              "jugados": 3,
+              "ganados": 0,
+              "empatados": 1,
+              "perdidos": 17,
+              "golesFavor": 12,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 3,
+              "equipo": "C.D. BALON LINENSE C.F. \"A\"",
+              "puntos": 2,
+              "jugados": 2,
+              "ganados": 0,
+              "empatados": 2,
+              "perdidos": 22,
+              "golesFavor": 13,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 4,
+              "equipo": "SAN ROQUE C.D. \"D\"",
+              "puntos": 2,
+              "jugados": 1,
+              "ganados": 0,
+              "empatados": 3,
+              "perdidos": 14,
+              "golesFavor": 30,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 5,
+              "equipo": "CALDERON C.D.",
+              "puntos": 2,
+              "jugados": 0,
+              "ganados": 0,
+              "empatados": 4,
+              "perdidos": 4,
+              "golesFavor": 27,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=5635031&codcompeticion=5634798"
+        }
+      ]
+    },
+    {
+      "temporada": "2014-2015",
+      "competiciones": [
+        {
+          "nombre": "2ª ANDALUZA BENJAMIN (CADIZ)",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo Único",
+          "puntos": 66,
+          "posicion": 2,
+          "codGrupo": "2069126",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "SAN FERNANDO C.D. ISLEÑO",
+              "puntos": 14,
+              "jugados": 21,
+              "ganados": 4,
+              "empatados": 3,
+              "perdidos": 138,
+              "golesFavor": 52,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 2,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 14,
+              "jugados": 21,
+              "ganados": 3,
+              "empatados": 4,
+              "perdidos": 158,
+              "golesFavor": 59,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 3,
+              "equipo": "ATLETICO ZABAL \"A\"",
+              "puntos": 14,
+              "jugados": 20,
+              "ganados": 6,
+              "empatados": 2,
+              "perdidos": 123,
+              "golesFavor": 44,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 4,
+              "equipo": "SAN JOSE OBRERO U.D.",
+              "puntos": 14,
+              "jugados": 16,
+              "ganados": 6,
+              "empatados": 6,
+              "perdidos": 132,
+              "golesFavor": 80,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 5,
+              "equipo": "CD AD PUEBLO NUEVO LA GRANJA \"A\"",
+              "puntos": 14,
+              "jugados": 15,
+              "ganados": 7,
+              "empatados": 6,
+              "perdidos": 100,
+              "golesFavor": 60,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 6,
+              "equipo": "SANTIC-PETRI A.P.A. A.D. \"A\"",
+              "puntos": 14,
+              "jugados": 14,
+              "ganados": 5,
+              "empatados": 9,
+              "perdidos": 96,
+              "golesFavor": 63,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 7,
+              "equipo": "ARCOS A.D.",
+              "puntos": 14,
+              "jugados": 11,
+              "ganados": 7,
+              "empatados": 10,
+              "perdidos": 98,
+              "golesFavor": 70,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 8,
+              "equipo": "ATCO. SANLUQUEÑO C.F. \"A\"",
+              "puntos": 14,
+              "jugados": 9,
+              "ganados": 8,
+              "empatados": 11,
+              "perdidos": 78,
+              "golesFavor": 69,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 9,
+              "equipo": "C.D. VETERANOS XEREZ",
+              "puntos": 14,
+              "jugados": 10,
+              "ganados": 5,
+              "empatados": 13,
+              "perdidos": 83,
+              "golesFavor": 70,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 10,
+              "equipo": "A.D. MARIANISTAS C.D. \"A\"",
+              "puntos": 14,
+              "jugados": 8,
+              "ganados": 6,
+              "empatados": 14,
+              "perdidos": 72,
+              "golesFavor": 82,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 11,
+              "equipo": "C.D. GUZMAN EL BUENO",
+              "puntos": 14,
+              "jugados": 8,
+              "ganados": 5,
+              "empatados": 15,
+              "perdidos": 69,
+              "golesFavor": 105,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 12,
+              "equipo": "C.D. NOVO CHICLANA \"A\"",
+              "puntos": 14,
+              "jugados": 6,
+              "ganados": 5,
+              "empatados": 17,
+              "perdidos": 81,
+              "golesFavor": 116,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 13,
+              "equipo": "C.D. DIVINA PASTORA SANLUQUEÑA",
+              "puntos": 14,
+              "jugados": 7,
+              "ganados": 2,
+              "empatados": 19,
+              "perdidos": 74,
+              "golesFavor": 124,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 14,
+              "equipo": "MONITORES F.ALGECIRAS PMD",
+              "puntos": 14,
+              "jugados": 4,
+              "ganados": 4,
+              "empatados": 20,
+              "perdidos": 76,
+              "golesFavor": 109,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 15,
+              "equipo": "A.D. TIEMPO LIBRE \"A\"",
+              "puntos": 14,
+              "jugados": 2,
+              "ganados": 3,
+              "empatados": 23,
+              "perdidos": 52,
+              "golesFavor": 117,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=2069126&codcompeticion=2069125"
+        },
+        {
+          "nombre": "CAMPEONATO ANDALUCÍA BENJAMIN - FASE FINAL",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Único",
+          "puntos": null,
+          "posicion": null,
+          "codGrupo": "2549367",
+          "sinClasificacion": true
+        },
+        {
+          "nombre": "CAMPEONATO ANDALUCIA BENJAMIN",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo Único",
+          "puntos": null,
+          "posicion": null,
+          "codGrupo": "2534210",
+          "sinClasificacion": true
+        }
+      ]
+    },
+    {
+      "temporada": "2013-2014",
+      "competiciones": [
+        {
+          "nombre": "PREFERENTE BENJAMIN (CÁDIZ)",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo 1",
+          "puntos": 73,
+          "posicion": 1,
+          "codGrupo": "380701",
+          "clasificacion": [
+            {
+              "posicion": 1,
+              "equipo": "A.D. TARAGUILLA",
+              "puntos": 14,
+              "jugados": 24,
+              "ganados": 1,
+              "empatados": 3,
+              "perdidos": 190,
+              "golesFavor": 33,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 2,
+              "equipo": "CADIZ C.F., SAD",
+              "puntos": 14,
+              "jugados": 21,
+              "ganados": 4,
+              "empatados": 3,
+              "perdidos": 153,
+              "golesFavor": 30,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 3,
+              "equipo": "SANTIC-PETRI A.P.A. A.D. \"A\"",
+              "puntos": 14,
+              "jugados": 20,
+              "ganados": 1,
+              "empatados": 7,
+              "perdidos": 141,
+              "golesFavor": 68,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 4,
+              "equipo": "C.D. NOVO CHICLANA",
+              "puntos": 14,
+              "jugados": 17,
+              "ganados": 3,
+              "empatados": 8,
+              "perdidos": 110,
+              "golesFavor": 62,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 5,
+              "equipo": "C.D. VETERANOS XEREZ",
+              "puntos": 14,
+              "jugados": 17,
+              "ganados": 2,
+              "empatados": 9,
+              "perdidos": 122,
+              "golesFavor": 81,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 6,
+              "equipo": "SAN JOSE OBRERO U.D.",
+              "puntos": 14,
+              "jugados": 16,
+              "ganados": 3,
+              "empatados": 9,
+              "perdidos": 109,
+              "golesFavor": 75,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 7,
+              "equipo": "SAN FERNANDO C.D. ISLEÑO",
+              "puntos": 14,
+              "jugados": 12,
+              "ganados": 3,
+              "empatados": 13,
+              "perdidos": 108,
+              "golesFavor": 103,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 8,
+              "equipo": "ATLETICO ZABAL \"A\"",
+              "puntos": 14,
+              "jugados": 11,
+              "ganados": 4,
+              "empatados": 13,
+              "perdidos": 103,
+              "golesFavor": 107,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 9,
+              "equipo": "ATCO. SANLUQUEÑO C.F.",
+              "puntos": 14,
+              "jugados": 11,
+              "ganados": 1,
+              "empatados": 16,
+              "perdidos": 100,
+              "golesFavor": 130,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 10,
+              "equipo": "CD AD PUEBLO NUEVO LA GRANJA",
+              "puntos": 14,
+              "jugados": 10,
+              "ganados": 2,
+              "empatados": 16,
+              "perdidos": 91,
+              "golesFavor": 106,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 11,
+              "equipo": "MONITORES F.ALGECIRAS PMD",
+              "puntos": 14,
+              "jugados": 9,
+              "ganados": 3,
+              "empatados": 16,
+              "perdidos": 108,
+              "golesFavor": 120,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 12,
+              "equipo": "C.D. GUZMAN EL BUENO",
+              "puntos": 14,
+              "jugados": 8,
+              "ganados": 6,
+              "empatados": 14,
+              "perdidos": 95,
+              "golesFavor": 100,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 13,
+              "equipo": "C.D. GUADALCACIN",
+              "puntos": 14,
+              "jugados": 7,
+              "ganados": 4,
+              "empatados": 17,
+              "perdidos": 83,
+              "golesFavor": 106,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 14,
+              "equipo": "C.D. VILLA DE LOS BARRIOS",
+              "puntos": 14,
+              "jugados": 4,
+              "ganados": 2,
+              "empatados": 22,
+              "perdidos": 72,
+              "golesFavor": 177,
+              "golesContra": 0,
+              "racha": []
+            },
+            {
+              "posicion": 15,
+              "equipo": "A.D. TIEMPO LIBRE \"A\"",
+              "puntos": 14,
+              "jugados": 2,
+              "ganados": 3,
+              "empatados": 23,
+              "perdidos": 59,
+              "golesFavor": 136,
+              "golesContra": 0,
+              "racha": []
+            }
+          ],
+          "urlClasificacion": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codgrupo=380701&codcompeticion=3807"
+        },
+        {
+          "nombre": "CAMPEONATO DE ANDALUCIA BENJAMIN -FASE FINAL",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo 1",
+          "puntos": null,
+          "posicion": null,
+          "codGrupo": "2062731",
+          "sinClasificacion": true
+        },
+        {
+          "nombre": "CAMPEONATO DE ANDALUCIA BENJAMIN",
+          "categoria": "2ª ANDALUZA BENJAMIN",
+          "grupo": "Grupo 2",
+          "puntos": null,
+          "posicion": null,
+          "codGrupo": "2056102",
+          "sinClasificacion": true
+        }
+      ]
+    }
+  ]
+}
