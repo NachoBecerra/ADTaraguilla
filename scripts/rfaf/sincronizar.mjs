@@ -71,6 +71,15 @@ const DIAS_ATRAS = 60;
 const DIAS_ADELANTE = 14;
 
 /**
+ * Días dentro de los cuales un partido sin hora es motivo para volver a mirar.
+ *
+ * La RFAF asigna los horarios durante la semana del partido, casi siempre de
+ * martes a jueves, y a veces por la tarde. Un partido a menos de una semana
+ * sin hora significa que aún puede aparecer en cualquier momento.
+ */
+const DIAS_HORARIO = 7;
+
+/**
  * En los grupos impares una jornada la descansa un equipo, y la RFAF lo
  * escribe en el calendario como si fuese el rival.
  */
@@ -226,7 +235,15 @@ async function sincronizarCompeticion(cliente, competicion, previa, escudos) {
     const previaJ = previa?.jornadas?.find((j) => j.numero === jornada.numero);
 
     let partidosJornada = null;
-    if (hayQueRefrescar(jornada, previaJ) || faltanEscudos) {
+    /*
+     * Sin número no hay forma de pedir la jornada: la dirección lleva
+     * CodJornada y quedaría vacío, con lo que la RFAF devuelve otra
+     * cualquiera. Pasa en las eliminatorias de copa. Antes se pedían igual
+     * y eran cinco peticiones por pasada tiradas, de un cupo de cuarenta.
+     */
+    const sePuedePedir = jornada.numero !== null && jornada.numero !== undefined;
+
+    if (sePuedePedir && (hayQueRefrescar(jornada, previaJ) || faltanEscudos)) {
       const url =
         `/pnfg/NPcd/NFG_CmpJornada?cod_primaria=1000120` +
         `&CodCompeticion=${grupo.codCompeticion}&CodGrupo=${competicion.codGrupo}` +
@@ -445,7 +462,9 @@ function sePuedeSaltar(previo) {
   // que mirar. Sin esto, las pasadas del sábado por la tarde se saltarían el
   // equipo sincronizado esa misma mañana y el resultado no aparecería hasta
   // el día siguiente, que es justo lo que la gente viene a ver.
-  return !faltaAlgunResultado(previo);
+  // Falta un resultado de un partido ya jugado, o la hora de uno inminente:
+  // en los dos casos el dato puede aparecer en cualquier momento
+  return !faltaAlgunResultado(previo) && !faltaAlgunHorario(previo);
 }
 
 /**
@@ -479,6 +498,26 @@ function yaDeberiaTenerResultado(p) {
 function faltaAlgunResultado(previo) {
   return (previo.competiciones ?? []).some((c) =>
     (c.jornadas ?? []).some((j) => j.partidos.some(yaDeberiaTenerResultado)),
+  );
+}
+
+/**
+ * ¿Hay algún partido a la vuelta de la esquina al que aún le falte la hora?
+ *
+ * Sin esto, un equipo "al día" se saltaba veinte horas seguidas, y el horario
+ * que la RFAF publica un martes por la tarde no se veía hasta el día
+ * siguiente. Es el mismo razonamiento que con los resultados: mientras falte
+ * un dato que puede aparecer en cualquier momento, hay que seguir mirando.
+ */
+function faltaAlgunHorario(previo) {
+  return (previo.competiciones ?? []).some((c) =>
+    (c.jornadas ?? []).some((j) =>
+      j.partidos.some((p) => {
+        if (p.jugado || p.hora || !p.fecha) return false;
+        const dias = diasHasta(p.fecha);
+        return dias !== null && dias >= 0 && dias <= DIAS_HORARIO;
+      }),
+    ),
   );
 }
 

@@ -28,10 +28,13 @@ on:
     # Horas UTC. En horario de verano son +2 y en invierno +1 respecto a España.
     # Los comentarios van en hora española de verano.
 
-    # Lunes a jueves: 10:00 · 15:00 · 20:00
-    # La primera del día revisa todo; las otras dos recogen los horarios que se
-    # van asignando y apenas gastan.
-    - cron: "7 8,13,18 * * 1-4"
+    # Lunes a jueves: cada dos horas, de 09:00 a 23:00.
+    #
+    # Antes eran tres pasadas (10:00, 15:00 y 20:00) y se quedaba un hueco de
+    # catorce horas entre la última y la primera del día siguiente. La RFAF
+    # asigna los horarios durante la semana y a veces de noche: un horario
+    # publicado a las nueve de la tarde no se veía hasta la mañana siguiente.
+    - cron: "7 7-21/2 * * 1-4"
 
     # Viernes: revisión a las 10:00 y, desde las 16:00, cada media hora hasta
     # medianoche, que es cuando empiezan a llegar resultados.
