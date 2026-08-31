@@ -6,6 +6,7 @@ import Cabecera from "@/components/Cabecera";
 import { ClubJsonLd } from "@/components/DatosEstructurados";
 import PieDePagina from "@/components/PieDePagina";
 import AvisoInstalar from "@/components/AvisoInstalar";
+import RegistrarSW from "@/components/RegistrarSW";
 
 const display = Barlow_Condensed({
   variable: "--font-display",
@@ -89,6 +90,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <PieDePagina />
         <AvisoInstalar />
+        <RegistrarSW />
       </body>
     </html>
   );

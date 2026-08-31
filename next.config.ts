@@ -3,6 +3,22 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // La sección se llamó /palmares durante unas horas: por si alguien
   // compartió el enlace, se redirige en vez de dar un 404.
+  /*
+   * El propio service worker no puede quedar cacheado: si el navegador se
+   * queda con una copia vieja, no habría forma de corregirlo nunca.
+   */
+  async headers() {
+    return [
+      {
+        source: "/sw.js",
+        headers: [
+          { key: "Content-Type", value: "application/javascript; charset=utf-8" },
+          { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
+        ],
+      },
+    ];
+  },
+
   async redirects() {
     return [{ source: "/palmares", destination: "/historico", permanent: true }];
   },
