@@ -3,6 +3,7 @@ import { Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
 import Cabecera from "@/components/Cabecera";
+import { ClubJsonLd } from "@/components/DatosEstructurados";
 import PieDePagina from "@/components/PieDePagina";
 
 const display = Barlow_Condensed({
@@ -26,6 +27,18 @@ export const metadata: Metadata = {
   },
   description: site.descripcion,
   applicationName: site.nombre,
+  // Sin canónico, una misma página accesible por varias direcciones compite
+  // consigo misma en los buscadores
+  alternates: { canonical: "/" },
+  keywords: [
+    site.nombre,
+    site.nombreLargo,
+    "fútbol San Roque",
+    "fútbol base Cádiz",
+    "Campo de Gibraltar",
+    "Primera Andaluza",
+    "RFAF",
+  ],
   openGraph: {
     type: "website",
     locale: "es_ES",
@@ -34,6 +47,12 @@ export const metadata: Metadata = {
     description: site.descripcion,
   },
   icons: { icon: site.escudo },
+  twitter: {
+    // La grande enseña la imagen al compartir; la pequeña solo un recuadro
+    card: "summary_large_image",
+    title: `${site.nombre} — Web oficial`,
+    description: site.descripcion,
+  },
 };
 
 export const viewport: Viewport = {
@@ -52,6 +71,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Saltar al contenido
         </a>
+        <ClubJsonLd />
         <Cabecera />
         <main id="contenido" className="flex-1">
           {children}

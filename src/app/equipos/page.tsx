@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Equipos",
   description:
     "Todos los equipos de la AD Taraguilla: clasificación, calendario y resultados de cada categoría, actualizados desde la RFAF.",
+  alternates: { canonical: "/equipos" },
 };
 
 export default function PaginaEquipos() {

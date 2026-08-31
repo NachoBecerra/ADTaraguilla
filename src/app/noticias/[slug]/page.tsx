@@ -7,6 +7,7 @@ import { site } from "@/data/site";
 import MediaCompleta from "@/components/MediaCompleta";
 import { TarjetaNoticia } from "@/components/TarjetaNoticia";
 import Compartir from "@/components/Compartir";
+import { NoticiaJsonLd } from "@/components/DatosEstructurados";
 import { IconoFlecha } from "@/components/Iconos";
 
 export function generateStaticParams() {
@@ -23,6 +24,7 @@ export async function generateMetadata({
   return {
     title: noticia.titulo,
     description: noticia.resumen,
+    alternates: { canonical: `/noticias/${noticia.slug}` },
     openGraph: {
       type: "article",
       title: noticia.titulo,
@@ -46,6 +48,14 @@ export default async function PaginaNoticia({ params }: PageProps<"/noticias/[sl
 
   return (
     <article>
+      <NoticiaJsonLd
+        titulo={noticia.titulo}
+        resumen={noticia.resumen}
+        fecha={noticia.fecha}
+        portada={noticia.portada}
+        autor={noticia.autor}
+        url={url}
+      />
       <div className="mx-auto max-w-3xl px-5 pt-8">
         <Link
           href="/noticias"

@@ -35,6 +35,7 @@ export async function generateMetadata({
   return {
     title: equipo.nombre,
     description: `Clasificación, calendario y resultados del ${equipo.nombre} de la ${site.nombre} en ${equipo.categoria}.`,
+    alternates: { canonical: `/equipos/${equipo.id}` },
   };
 }
 

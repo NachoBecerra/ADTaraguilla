@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Histórico",
   description:
     "Todos los títulos de la AD Taraguilla y cómo acabó cada equipo en las temporadas anteriores.",
+  alternates: { canonical: "/historico" },
 };
 
 export default function Historico() {

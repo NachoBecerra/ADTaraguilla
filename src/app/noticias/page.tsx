@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Noticias",
   description:
     "Toda la actualidad de la AD Taraguilla: crónicas de partido, fichajes, cantera y vida del club.",
+  alternates: { canonical: "/noticias" },
 };
 
 export default function PaginaNoticias() {

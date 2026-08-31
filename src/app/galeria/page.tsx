@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Galería",
   description:
     "Fotos y vídeos de los partidos, la cantera y la vida de la AD Taraguilla.",
+  alternates: { canonical: "/galeria" },
 };
 
 export default function PaginaGaleria() {

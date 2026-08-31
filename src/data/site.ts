@@ -13,7 +13,7 @@ export const site = {
   escudo: "/img/escudo.png",
   url: "https://ad-taraguilla.vercel.app", // TODO: cambiar al dominio propio cuando lo haya
   descripcion:
-    "Web oficial de la AD Taraguilla: noticias, resultados, galería de fotos y vídeos, y directorio de clubes de la competición.",
+    "Web oficial de la AD Taraguilla, club de fútbol de San Roque (Cádiz): noticias, resultados y clasificaciones de sus nueve equipos, galería de fotos y el histórico del club.",
 
   contacto: {
     email: "info@adtaraguilla.es", // TODO
