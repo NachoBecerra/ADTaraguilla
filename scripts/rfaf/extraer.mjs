@@ -178,7 +178,10 @@ export function extraerJornada(html) {
       : null;
 
     const goles = marcador(centro.replace(/\d{2}[-/]\d{2}[-/]\d{4}/, ""));
-    const acta = enlaces(filaHtml, "codacta=").find((u) => /codacta=\d+/.test(u)) ?? null;
+    // El portal escribe "CodActa" con mayúsculas: sin la /i no encajaba nunca.
+    // Solo aparece en los partidos cuyo previo ya ha publicado; en el resto
+    // pone "Previo no disponible" y no hay enlace que guardar.
+    const acta = enlaces(filaHtml, "codacta=").find((u) => /codacta=\d+/i.test(u)) ?? null;
 
     // Los dos enlaces a ficha de equipo de la fila van en orden: local, visitante
     const codigos = enlaces(filaHtml, "NFG_VisEquipos").map((u) => parametro(u, "Codigo_Equipo"));

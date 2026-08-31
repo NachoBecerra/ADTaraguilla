@@ -198,6 +198,22 @@ export function TarjetaProximoPartido({
             )}
           </div>
         </dl>
+
+        {/*
+          La RFAF publica la ficha del partido unos días antes; hasta entonces
+          pone "Previo no disponible" y no hay enlace que dar.
+        */}
+        {partido.urlActa ? (
+          <a
+            href={partido.urlActa}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-club-soft"
+          >
+            Ficha del partido en la RFAF
+            <IconoEnlaceExterno size={14} className="shrink-0" />
+          </a>
+        ) : null}
       </div>
     </section>
   );

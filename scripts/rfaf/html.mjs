@@ -55,7 +55,12 @@ export function enlace(fragmento, patron) {
 export function enlaces(html, patron) {
   const todos = [...limpiar(html).matchAll(/(?:href|onclick)\s*=\s*["']?[^"'>]*?((?:\/pnfg\/NPcd\/)?NFG_[A-Za-z_]+\?[^"'>\s)]+)/g)]
     .map((m) => m[1]);
-  return [...new Set(patron ? todos.filter((u) => u.includes(patron)) : todos)];
+  // Sin distinguir mayúsculas: el portal escribe el mismo parámetro de varias
+  // formas (CodActa, codacta) y un filtro literal se dejaba enlaces fuera.
+  const buscado = patron?.toLowerCase();
+  return [
+    ...new Set(buscado ? todos.filter((u) => u.toLowerCase().includes(buscado)) : todos),
+  ];
 }
 
 /** Valor de un parámetro dentro de una URL del portal. */
