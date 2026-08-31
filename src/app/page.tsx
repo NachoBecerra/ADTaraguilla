@@ -115,16 +115,20 @@ export default function Inicio() {
               sizes="300px"
               className="pointer-events-none absolute left-1/2 top-1/2 h-[250%] w-auto -translate-x-1/2 -translate-y-1/2 opacity-10 [filter:brightness(0)_invert(1)]"
             />
-          <h1 className="relative inline-block">
-            <span className="title flex w-full justify-between text-lg tracking-[0.13em] text-white/75 sm:text-xl lg:text-2xl">
-              {/* El interletrado deja aire tras la última letra: se descuenta
-                  para que la "A" final case con la de Taraguilla */}
-              <span>{site.nombreLargo.split(" ")[0]}</span>
-              <span style={{ marginRight: "-0.13em" }}>
-                {site.nombreLargo.split(" ")[1]}
-              </span>
+          <h1 className="relative inline-block text-[3.25rem] leading-[0.88] sm:text-7xl lg:text-8xl">
+            {/*
+              Las dos líneas ocupan lo mismo sin forzar nada.
+
+              "Agrupación Deportiva" y "Taraguilla" van en la misma tipografía,
+              así que la proporción entre sus anchos es fija: medida, 1,9536.
+              Poniendo el antetítulo a 0.512em del tamaño grande, las dos
+              líneas miden igual con un espacio normal entre palabras, y sigue
+              cuadrando en cualquier pantalla sin tocar cada breakpoint.
+            */}
+            <span className="title block text-[0.512em] leading-none text-white/75">
+              {site.nombreLargo.split(" ").slice(0, -1).join(" ")}
             </span>
-            <span className="title block text-[3.25rem] leading-[0.88] text-club-claro sm:text-7xl lg:text-8xl">
+            <span className="title block leading-[0.88] text-club-claro">
               {site.nombreLargo.split(" ").at(-1)}
             </span>
           </h1>
