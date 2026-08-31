@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   haEmpezado,
-  mapaDelCampo,
   type Competicion,
   type Equipo,
   type PartidoPropio,
