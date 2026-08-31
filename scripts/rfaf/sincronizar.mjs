@@ -160,10 +160,24 @@ function hayQueRefrescar(jornada, previa) {
 /* ------------------------------------------------------------------ proceso */
 
 async function sincronizarCompeticion(cliente, competicion, previa, escudos) {
-  const grupoHtml = await cliente.pedir(
-    `/pnfg/NPcd/NFG_VisGrupos_Vis?cod_primaria=1000123&codgrupo=${competicion.codGrupo}`,
-  );
-  const grupo = extraerGrupo(grupoHtml);
+  // Los enlaces de la página de grupo no cambian en toda la temporada, así que
+  // se reutilizan: es una petición menos por competición y por pasada, que con
+  // el cupo que tiene la RFAF se nota.
+  let grupo;
+  if (!COMPLETO && previa?.urlCalendario && previa?.codCompeticion) {
+    grupo = {
+      urlCalendario: previa.urlCalendario,
+      urlClasificacion: previa.urlClasificacion,
+      codCompeticion: previa.codCompeticion,
+      codTemporada: previa.codTemporada ?? null,
+    };
+  } else {
+    grupo = extraerGrupo(
+      await cliente.pedir(
+        `/pnfg/NPcd/NFG_VisGrupos_Vis?cod_primaria=1000123&codgrupo=${competicion.codGrupo}`,
+      ),
+    );
+  }
 
   if (!grupo.urlCalendario) {
     aviso(`  ${competicion.nombre}: todavía sin calendario publicado`);
@@ -233,6 +247,7 @@ async function sincronizarCompeticion(cliente, competicion, previa, escudos) {
     ...competicion,
     escudosRecogidos: !faltanEscudos || previa?.escudosRecogidos === true,
     codCompeticion: grupo.codCompeticion,
+    codTemporada: grupo.codTemporada,
     urlCalendario: urlAbsoluta(grupo.urlCalendario),
     urlClasificacion: grupo.urlClasificacion ? urlAbsoluta(grupo.urlClasificacion) : null,
     estado: clasificacion.length > 0 || jornadas.length > 0 ? "activa" : "sin-datos",
@@ -372,8 +387,23 @@ function sePuedeSaltar(previo) {
       c.estado !== "sin-calendario" &&
       ((c.jornadas?.length ?? 0) === 0 || !c.escudosRecogidos),
   );
+  if (incompleta) return false;
 
-  return !incompleta;
+  // Y sobre todo: si el equipo ya ha jugado y no tenemos el resultado, hay
+  // que mirar. Sin esto, las pasadas del sábado por la tarde se saltarían el
+  // equipo sincronizado esa misma mañana y el resultado no aparecería hasta
+  // el día siguiente, que es justo lo que la gente viene a ver.
+  return !faltaAlgunResultado(previo);
+}
+
+/** ¿Hay algún partido ya disputado del que no tengamos resultado? */
+function faltaAlgunResultado(previo) {
+  const limite = hoy();
+  return (previo.competiciones ?? []).some((c) =>
+    (c.jornadas ?? []).some((j) =>
+      j.partidos.some((p) => !p.jugado && p.fecha && p.fecha <= limite),
+    ),
+  );
 }
 
 /**

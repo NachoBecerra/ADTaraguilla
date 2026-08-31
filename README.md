@@ -62,10 +62,22 @@ federativos no autoriza al club a replicarlos en una web pública.
 
 ### Cómo se ejecuta
 
-`.github/workflows/sincronizar-rfaf.yml` la lanza por cron: una pasada cada
-mañana (recoge cambios de calendario y horarios), otra a media mañana, y tres el
-sábado y el domingo por la tarde (recoge resultados). Cada pasada commitea lo que
-haya cambiado y el hosting reconstruye.
+`.github/workflows/sincronizar-rfaf.yml` la lanza por cron, siguiendo a cuándo
+se juega de verdad: la cantera (Alevín A, Cadete, Infantil B) juega el **sábado**
+y el primer equipo, el Juvenil y el Infantil A el **domingo**.
+
+| Cuándo | Para qué |
+| --- | --- |
+| Cada mañana | Cambios de calendario y horarios asignados durante la semana |
+| Sábado tarde y noche | Resultados de la cantera |
+| Domingo, de la tarde a la noche | Resultados del resto |
+| Lunes a primera hora | Actas que se cierran tarde el domingo |
+| Miércoles noche | Alguna eliminatoria de copa entre semana |
+
+Son 18 pasadas por semana, pero **solo una es cara**: la de la mañana revisa
+todos los equipos (~32 peticiones). Las del fin de semana miran únicamente los
+equipos que tienen un partido jugado sin resultado, así que gastan unas diez.
+Cada pasada commitea lo que haya cambiado y el hosting reconstruye.
 
 ### Lo que hay que saber del portal de la RFAF
 

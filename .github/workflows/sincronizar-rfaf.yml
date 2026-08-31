@@ -3,16 +3,35 @@ name: Sincronizar con la RFAF
 # Trae calendarios, horarios, resultados y clasificaciones de los equipos del
 # club y los commitea. Nadie tiene que teclear nada.
 #
-# La RFAF limita por volumen y responde con páginas vacías cuando se pasa de
-# unas 40 peticiones seguidas; por eso la pasada es reanudable y se programa
-# varias veces al día en vez de una sola grande.
+# El horario sigue a cuándo se juega de verdad, no a un reparto uniforme:
+# la cantera juega el SÁBADO (Alevín A, Cadete, Infantil B) y el primer equipo,
+# el Juvenil y el Infantil A juegan el DOMINGO. Entre semana casi no hay nada,
+# salvo alguna eliminatoria de copa del primer equipo.
+#
+# Y hay que ir con tiento: la RFAF corta el acceso pasadas unas 40 peticiones
+# seguidas. Por eso solo se pide lo que puede haber cambiado y una pasada que
+# no encuentra nada nuevo apenas gasta.
 
 on:
   schedule:
-    # Horas UTC. En invierno son +1 y en verano +2 respecto a la hora española.
-    - cron: "15 5 * * *" # cada mañana: cambios de calendario
-    - cron: "15 9 * * *" # media mañana: continúa si la anterior se quedó a medias
-    - cron: "0 17,19,21 * * 6,0" # sábado y domingo por la tarde: resultados
+    # Horas UTC. En horario de verano son +2 y en invierno +1 respecto a España.
+
+    # Cada mañana: cambios de calendario y horarios asignados durante la semana.
+    - cron: "10 5 * * *"
+
+    # Sábado por la tarde y noche: resultados de la cantera.
+    - cron: "30 15,17,19,21 * * 6"
+
+    # Domingo: resultados del primer equipo, Juvenil e Infantil A. Se alarga
+    # hasta la noche porque los partidos del domingo empiezan más tarde.
+    - cron: "30 13,15,17,19,21 * * 0"
+
+    # Lunes a primera hora: recoge las actas que se cierran tarde el domingo.
+    - cron: "0 7 * * 1"
+
+    # Miércoles por la noche: alguna eliminatoria de copa entre semana.
+    - cron: "0 21 * * 3"
+
   workflow_dispatch:
     inputs:
       completo:
