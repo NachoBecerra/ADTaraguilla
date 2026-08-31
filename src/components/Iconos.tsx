@@ -144,6 +144,31 @@ export function IconoEnlaceExterno({ size = 16, className }: Props) {
   );
 }
 
+/** Partido en casa. */
+export function IconoCasa({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3.5 10.5 12 3.5l8.5 7" />
+      <path d="M5.5 9.6V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.6" />
+      <path d="M9.8 20.5v-5.2h4.4v5.2" />
+    </svg>
+  );
+}
+
+/** Partido fuera: se viaja. */
+export function IconoAutobus({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 16.5V6.2C4 4.7 5.6 4 12 4s8 .7 8 2.2v10.3" />
+      <path d="M4 10.5h16" />
+      <path d="M4 14.2h16" />
+      <path d="M6.5 16.5v2.2M17.5 16.5v2.2" />
+      <circle cx="7.6" cy="12.4" r=".9" fill="currentColor" stroke="none" />
+      <circle cx="16.4" cy="12.4" r=".9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 /** Clasificación: la tabla de posiciones. */
 export function IconoTabla({ size = 20, className }: Props) {
   return (

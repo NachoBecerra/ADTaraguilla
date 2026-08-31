@@ -1,4 +1,4 @@
-import { sinResultado, type PartidoPropio } from "@/lib/competicion";
+import { sinResultado, mapaDelCampo, type PartidoPropio } from "@/lib/competicion";
 import { fechaLarga, diaYHora } from "@/lib/formato";
 import { site } from "@/data/site";
 import EscudoClub from "@/components/EscudoClub";
@@ -136,6 +136,8 @@ export function TarjetaProximoPartido({
     </div>
   );
 
+  const mapa = mapaDelCampo(partido.codCampo);
+
   const nosotros = lado(site.nombre, { esNuestro: true });
   const rival = lado(partido.rival, {
     codigo: partido.esLocal ? partido.codVisitante : partido.codLocal,
@@ -174,7 +176,26 @@ export function TarjetaProximoPartido({
           </div>
           <div className="flex items-center gap-2.5 text-mute">
             <IconoUbicacion size={18} className="shrink-0 text-club" />
-            <dd>{partido.campo ?? "Campo por confirmar"}</dd>
+            {/*
+              Si sabemos dónde está el campo, se abre en el mapa. Es lo
+              primero que hace falta cuando se juega fuera y no se conoce el
+              pueblo.
+            */}
+            {mapa ? (
+              <dd>
+                <a
+                  href={mapa}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-semibold text-club-soft underline underline-offset-2"
+                >
+                  {partido.campo}
+                  <IconoEnlaceExterno size={13} className="shrink-0" />
+                </a>
+              </dd>
+            ) : (
+              <dd>{partido.campo ?? "Campo por confirmar"}</dd>
+            )}
           </div>
         </dl>
       </div>

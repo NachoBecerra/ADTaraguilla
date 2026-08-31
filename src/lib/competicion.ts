@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import clubJson from "@/data/rfaf/club.json";
 import escudosJson from "@/data/rfaf/escudos.json";
+import camposJson from "@/data/rfaf/campos.json";
 
 /**
  * Lectura de los datos que sincroniza scripts/rfaf desde la RFAF.
@@ -22,6 +23,8 @@ export type Partido = {
   golesVisitante: number | null;
   localidad: string | null;
   campo: string | null;
+  /** Código del campo en la RFAF, para situarlo en el mapa. */
+  codCampo: string | null;
   superficie: string | null;
   urlActa: string | null;
   jugado: boolean;
@@ -275,4 +278,24 @@ export function escudoDe({ codigo, nombre }: { codigo?: string | null; nombre?: 
   if (codigo && porCodigo[codigo]) return porCodigo[codigo];
   if (nombre) return mapaPorNombre().get(nombre) ?? null;
   return null;
+}
+
+/* ------------------------------------------------------------------ campos */
+
+type Campo = { nombre?: string | null; lat?: number; lon?: number };
+
+const campos = (camposJson.campos ?? {}) as Record<string, Campo>;
+
+/**
+ * Enlace al mapa del campo donde se juega.
+ *
+ * Las coordenadas salen de la ficha del campo de la RFAF, que las guarda una
+ * sola vez porque un campo no se mueve. Si de ese campo no las tenemos
+ * todavía, se devuelve null y el campo se enseña como texto suelto.
+ */
+export function mapaDelCampo(codCampo?: string | null): string | null {
+  if (!codCampo) return null;
+  const campo = campos[codCampo];
+  if (!campo || typeof campo.lat !== "number" || typeof campo.lon !== "number") return null;
+  return `https://www.google.com/maps/search/?api=1&query=${campo.lat}%2C${campo.lon}`;
 }

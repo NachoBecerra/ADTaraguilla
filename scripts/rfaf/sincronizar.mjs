@@ -29,6 +29,7 @@ import {
   extraerJornada,
   extraerClasificacion,
   extraerHistorico,
+  extraerCoordenadas,
   nombreDesdeCategoria,
 } from "./extraer.mjs";
 
@@ -37,6 +38,7 @@ const DIR_SALIDA = path.join(RAIZ, "src", "data", "rfaf");
 const DIR_EQUIPOS = path.join(DIR_SALIDA, "equipos");
 const CONFIG = path.join(RAIZ, "src", "data", "equipos.json");
 const RUTA_ESCUDOS = path.join(DIR_SALIDA, "escudos.json");
+const RUTA_CAMPOS = path.join(DIR_SALIDA, "campos.json");
 const DIR_HISTORICO = path.join(DIR_SALIDA, "historico");
 
 /**
@@ -46,6 +48,15 @@ const DIR_HISTORICO = path.join(DIR_SALIDA, "historico");
  * en un día está completo. Cuando no queda nada pendiente, no gasta nada.
  */
 const PRESUPUESTO_HISTORICO = 12;
+
+/**
+ * Fichas de campo que se consultan por pasada.
+ *
+ * Un campo no se mueve: se lee una vez, se guardan sus coordenadas y no se
+ * vuelve a pedir nunca. Con unas pocas por pasada, en dos días están todos
+ * los de la temporada y a partir de ahí sale gratis.
+ */
+const PRESUPUESTO_CAMPOS = 4;
 
 const COMPLETO = process.argv.includes("--completo");
 const FORZAR = process.argv.includes("--forzar");
@@ -154,6 +165,7 @@ function fusionarJornada(jornada, deLaJornada, previos) {
       localidad: fuente.localidad ?? null,
       campo: fuente.campo ?? null,
       superficie: fuente.superficie ?? null,
+      codCampo: fuente.codCampo ?? null,
       urlActa: fuente.urlActa ? urlAbsoluta(fuente.urlActa) : null,
       jugado: fuente.golesLocal !== null && fuente.golesLocal !== undefined,
     };
@@ -416,7 +428,8 @@ async function principal() {
     escudos: Object.fromEntries([...escudos].sort()),
   });
 
-  // Con lo que sobre del cupo, se va completando el histórico
+  // Con lo que sobre del cupo, se completan campos e histórico
+  if (!incompleto) await rellenarCampos(cliente, equipos);
   if (!incompleto) await rellenarHistorico(cliente, equipos, temporada, config);
 
   await recomponerIndices(config, urlClub, temporada, equipos);
@@ -592,6 +605,74 @@ async function guardarPalmares(equipo, temporadas) {
  * presupuesto de la pasada. Se empieza por lo más reciente, que es lo que la
  * gente mira primero.
  */
+/* ------------------------------------------------------------------ campos */
+
+/**
+ * Guarda dónde está cada campo, para poder abrirlo en el mapa.
+ *
+ * La ficha de campo de la RFAF trae un enlace a Google Maps con la posición
+ * exacta. Solo se consultan los campos donde juega alguno de nuestros
+ * equipos, y cada uno una sola vez en toda la vida del proyecto: un campo de
+ * fútbol no se muda.
+ */
+async function rellenarCampos(cliente, equipos) {
+  const guardados = (await leerJson(RUTA_CAMPOS, { campos: {} })).campos ?? {};
+
+  // Los campos de nuestros partidos, no los de toda la competición
+  const pendientes = new Map();
+  for (const equipo of equipos) {
+    const datos = await leerJson(path.join(DIR_EQUIPOS, `${equipo.id}.json`));
+    for (const c of datos?.competiciones ?? []) {
+      for (const j of c.jornadas ?? []) {
+        for (const p of j.partidos ?? []) {
+          if (!p.codCampo || guardados[p.codCampo]) continue;
+          const nuestro = [p.local, p.visitante].some(
+            (n) => n && n === datos.nombreRfaf,
+          );
+          if (nuestro) pendientes.set(p.codCampo, p.campo ?? null);
+        }
+      }
+    }
+  }
+
+  if (pendientes.size === 0) return;
+
+  let quedan = PRESUPUESTO_CAMPOS;
+  let nuevos = 0;
+
+  for (const [codigo, nombre] of pendientes) {
+    if (quedan <= 0) break;
+    try {
+      const html = await cliente.pedir(
+        `/pnfg/NPcd/NFG_VisCampos?cod_primaria=1000122&Codigo_Campo=${codigo}`,
+      );
+      quedan--;
+      const punto = extraerCoordenadas(html);
+      // Se apunta aunque no haya coordenadas: así no se vuelve a pedir cada
+      // pasada un campo que sencillamente no las tiene publicadas
+      guardados[codigo] = { nombre, ...(punto ?? {}) };
+      if (punto) nuevos++;
+    } catch (e) {
+      if (e instanceof ErrorDeCupo) break;
+      aviso(`  campo ${codigo}: ${e.message}`);
+    }
+  }
+
+  await escribirJson(RUTA_CAMPOS, {
+    generado: new Date().toISOString(),
+    _nota: "Ubicación de los campos, para enlazar con el mapa.",
+    campos: Object.fromEntries(
+      Object.entries(guardados).sort(([a], [b]) => a.localeCompare(b)),
+    ),
+  });
+
+  const restantes = pendientes.size - (PRESUPUESTO_CAMPOS - quedan);
+  log(
+    `Campos: ${nuevos} nuevo(s) situado(s)` +
+      (restantes > 0 ? `, ${restantes} para las próximas pasadas` : ""),
+  );
+}
+
 async function rellenarHistorico(cliente, equipos, temporadaActual, config) {
   let quedan = PRESUPUESTO_HISTORICO;
 

@@ -169,6 +169,14 @@ export function extraerJornada(html) {
     const siguiente = todas[i + 1];
     const detalle = siguiente && siguiente.celdas.length === 1 ? siguiente.celdas[0] : "";
 
+    // Esa misma fila enlaza a la ficha del campo, que es donde la RFAF guarda
+    // sus coordenadas. El código no cambia nunca, así que basta con apuntarlo.
+    const codCampo = siguiente
+      ? (enlaces(siguiente.html, "NFG_VisCampos")
+          .map((u) => parametro(u, "Codigo_Campo"))
+          .find(Boolean) ?? null)
+      : null;
+
     const goles = marcador(centro.replace(/\d{2}[-/]\d{2}[-/]\d{4}/, ""));
     const acta = enlaces(filaHtml, "codacta=").find((u) => /codacta=\d+/.test(u)) ?? null;
 
@@ -189,6 +197,7 @@ export function extraerJornada(html) {
       golesLocal: goles ? goles[0] : null,
       golesVisitante: goles ? goles[1] : null,
       ...extraerCampo(detalle),
+      codCampo,
       urlActa: acta,
     });
   }
@@ -223,6 +232,28 @@ function extraerCampo(detalle) {
     campo: resto.replace(/\s*\([^)]*\)\s*$/, "").trim() || null,
     superficie: superficie ? superficie[1] : null,
   };
+}
+
+/**
+ * Coordenadas de un campo, de su ficha en la RFAF.
+ *
+ * La federación pinta un enlace a Google Maps con la posición exacta; de ahí
+ * se sacan la latitud y la longitud. Un campo no se mueve, así que basta con
+ * leerlo una vez y guardarlo.
+ */
+export function extraerCoordenadas(html) {
+  const m = /maps\?[^"']*q=loc:(-?\d+\.\d+)\+(-?\d+\.\d+)/i.exec(html);
+  if (!m) return null;
+
+  const lat = Number(m[1]);
+  const lon = Number(m[2]);
+  if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
+
+  // Andalucía queda holgadamente dentro de este recuadro: descarta lecturas
+  // absurdas si la RFAF cambia el formato algún día
+  if (lat < 35 || lat > 39 || lon < -8 || lon > -1) return null;
+
+  return { lat, lon };
 }
 
 /* ----------------------------------------------------------- clasificación */

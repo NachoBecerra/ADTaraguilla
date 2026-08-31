@@ -1,8 +1,20 @@
 import Link from "next/link";
-import { haEmpezado, type Competicion, type Equipo, type PartidoPropio } from "@/lib/competicion";
+import {
+  haEmpezado,
+  mapaDelCampo,
+  type Competicion,
+  type Equipo,
+  type PartidoPropio,
+} from "@/lib/competicion";
 import { Marcador } from "@/components/Partidos";
 import EscudoClub from "@/components/EscudoClub";
-import { IconoFlecha, IconoCalendario, IconoUbicacion } from "@/components/Iconos";
+import {
+  IconoFlecha,
+  IconoCalendario,
+  IconoUbicacion,
+  IconoCasa,
+  IconoAutobus,
+} from "@/components/Iconos";
 import { fechaPartido } from "@/lib/formato";
 
 /**
@@ -79,8 +91,14 @@ export default function TarjetaEquipo({
                   <p className="truncate font-bold leading-tight text-tinta">
                     {proximo.rival}
                   </p>
-                  <p className="text-[11px] font-bold uppercase tracking-wide text-mute">
-                    {proximo.esLocal ? "En casa" : "A domicilio"}
+                  {/* Una casa o un autobús se leen antes que la palabra */}
+                  <p className="mt-0.5 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-mute">
+                    {proximo.esLocal ? (
+                      <IconoCasa size={15} className="text-club-soft" />
+                    ) : (
+                      <IconoAutobus size={15} className="text-club-soft" />
+                    )}
+                    {proximo.esLocal ? "En casa" : "Fuera"}
                   </p>
                 </div>
 
@@ -112,6 +130,8 @@ export default function TarjetaEquipo({
                     <span className="truncate">{proximo.campo}</span>
                   </span>
                 ) : null}
+                {/* La tarjeta entera ya es un enlace al equipo, así que el
+                    mapa no puede ir aquí dentro: va en la ficha del partido */}
               </div>
             </div>
           )

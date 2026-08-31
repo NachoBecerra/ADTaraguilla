@@ -1,0 +1,16 @@
+{
+  "generado": "2026-08-31T22:07:53.557Z",
+  "_nota": "Ubicación de los campos, para enlazar con el mapa.",
+  "campos": {
+    "3083": {
+      "nombre": "ANTONIO LOPEZ PUA ESTADIO MUNICIPAL",
+      "lat": 36.0246533,
+      "lon": -5.611942399999999
+    },
+    "3236": {
+      "nombre": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
+      "lat": 36.2029487,
+      "lon": -5.4197526
+    }
+  }
+}
