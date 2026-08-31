@@ -118,13 +118,18 @@ export default function TarjetaEquipo({
                 </span>
               </div>
 
-              <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-mute">
-                <span className="inline-flex items-center gap-1.5">
+              {/*
+                Cada dato en su línea, siempre. Envolviéndolos, cuando el
+                nombre del campo era corto se juntaban los dos en la misma
+                línea y unas tarjetas quedaban distintas de otras.
+              */}
+              <div className="mt-2.5 space-y-1 text-xs text-mute">
+                <span className="flex items-center gap-1.5">
                   <IconoCalendario size={14} className="shrink-0 text-club-soft" />
                   {proximo.fecha ? fechaPartido(proximo.fecha) : "Fecha sin fijar"}
                 </span>
                 {proximo.campo ? (
-                  <span className="inline-flex min-w-0 items-center gap-1.5">
+                  <span className="flex min-w-0 items-center gap-1.5">
                     <IconoUbicacion size={14} className="shrink-0 text-club-soft" />
                     <span className="truncate">{proximo.campo}</span>
                   </span>

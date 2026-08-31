@@ -155,16 +155,22 @@ export function IconoCasa({ size = 20, className }: Props) {
   );
 }
 
-/** Partido fuera: se viaja. */
+/**
+ * Partido fuera: se viaja.
+ *
+ * De perfil y no de frente: de frente se confundía con cualquier caja con
+ * dos faros.
+ */
 export function IconoAutobus({ size = 20, className }: Props) {
   return (
     <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 16.5V6.2C4 4.7 5.6 4 12 4s8 .7 8 2.2v10.3" />
-      <path d="M4 10.5h16" />
-      <path d="M4 14.2h16" />
-      <path d="M6.5 16.5v2.2M17.5 16.5v2.2" />
-      <circle cx="7.6" cy="12.4" r=".9" fill="currentColor" stroke="none" />
-      <circle cx="16.4" cy="12.4" r=".9" fill="currentColor" stroke="none" />
+      <path d="M2.6 15.6V8.4a1.8 1.8 0 0 1 1.8-1.8h11.4l3.9 3.4a1.8 1.8 0 0 1 .7 1.4v4.2" />
+      <path d="M2.6 12.4h18.8" />
+      {/* Dos ventanas y no tres: a quince píxeles, tres se funden en una mancha */}
+      <path d="M8.6 6.6v5.8M14.2 6.6v5.8" />
+      <path d="M2.6 15.6h1.9M9.1 15.6h5.9M19.6 15.6h1.8" />
+      <circle cx="7" cy="16.6" r="1.9" />
+      <circle cx="17.4" cy="16.6" r="1.9" />
     </svg>
   );
 }
