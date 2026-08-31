@@ -1,13 +1,13 @@
 {
   "id": "alevin-b",
   "nombre": "Alevín B",
+  "nombreRfaf": "A.D. TARAGUILLA",
   "categoria": "3ª ANDALUZA ALEVIN",
   "codigo": "28567666",
-  "enCompeticion": false,
+  "orden": 7,
+  "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-08-30T10:36:56.231Z",
+  "actualizado": "2026-08-31T07:59:24.808Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=28567666",
-  "competiciones": [],
-  "nombreRfaf": "A.D. TARAGUILLA",
-  "orden": 7
+  "competiciones": []
 }

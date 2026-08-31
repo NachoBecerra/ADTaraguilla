@@ -1,13 +1,13 @@
 {
   "id": "prebenjamin",
   "nombre": "Prebenjamín",
+  "nombreRfaf": "A.D. TARAGUILLA",
   "categoria": "2ª ANDALUZA PREBENJAMIN",
   "codigo": "307531",
+  "orden": 9,
   "enCompeticion": false,
   "temporada": "2026-2027",
-  "actualizado": "2026-08-30T10:36:58.281Z",
+  "actualizado": "2026-08-31T07:59:39.898Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCompeticiones_Equipo?cod_primaria=1000123&codequipo=307531",
-  "competiciones": [],
-  "nombreRfaf": "A.D. TARAGUILLA",
-  "orden": 9
+  "competiciones": []
 }

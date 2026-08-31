@@ -288,9 +288,26 @@ async function principal() {
 
   let incompleto = false;
 
+  // El orden de proceso NO es el de la web. Se atiende primero a quien tiene
+  // un resultado pendiente y luego al que lleva más tiempo sin mirarse: si la
+  // RFAF corta a mitad de pasada, sin esto los últimos de la lista no llegan
+  // a sincronizarse nunca.
+  const previos = new Map();
   for (const equipo of equipos) {
+    previos.set(equipo.id, await leerJson(path.join(DIR_EQUIPOS, `${equipo.id}.json`)));
+  }
+
+  const porAtender = [...equipos].sort((a, b) => {
+    const pa = previos.get(a.id);
+    const pb = previos.get(b.id);
+    const urgente = (p) => (p && faltaAlgunResultado(p) ? 0 : 1);
+    if (urgente(pa) !== urgente(pb)) return urgente(pa) - urgente(pb);
+    return (pa?.actualizado ?? "").localeCompare(pb?.actualizado ?? "");
+  });
+
+  for (const equipo of porAtender) {
     const rutaEquipo = path.join(DIR_EQUIPOS, `${equipo.id}.json`);
-    const previo = await leerJson(rutaEquipo);
+    const previo = previos.get(equipo.id);
 
     if (sePuedeSaltar(previo)) {
       log(`${equipo.nombre}: al día, se salta`);
