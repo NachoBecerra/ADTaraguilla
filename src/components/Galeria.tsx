@@ -20,6 +20,13 @@ const FILTROS: { id: Filtro; texto: string }[] = [
   { id: "video", texto: "Vídeos" },
 ];
 
+/**
+ * Fotos que se pintan de una vez.
+ * Son 6 filas en escritorio y 12 en el móvil: suficiente para llenar la
+ * pantalla sin mandar la galería entera en el HTML de la primera carga.
+ */
+const POR_TANDA = 24;
+
 /** Miniatura de YouTube cuando el vídeo no tiene imagen propia. */
 function miniatura(item: ItemGaleria): string {
   if (item.src) return item.src;
@@ -43,6 +50,7 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
   const [filtro, setFiltro] = useState<Filtro>("todo");
   const [album, setAlbum] = useState<string>("todos");
   const [abierto, setAbierto] = useState<number | null>(null);
+  const [tanda, setTanda] = useState(POR_TANDA);
 
   // Una foto puede llevar varias etiquetas y aparece bajo todas ellas
   const albumes = useMemo(() => {
@@ -66,12 +74,18 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
     [items, filtro, album],
   );
 
+  const mostradas = useMemo(() => visibles.slice(0, tanda), [visibles, tanda]);
+
   const cerrar = useCallback(() => setAbierto(null), []);
   const mover = useCallback(
     (paso: number) =>
-      setAbierto((i) =>
-        i === null ? null : (i + paso + visibles.length) % visibles.length,
-      ),
+      setAbierto((i) => {
+        if (i === null) return null;
+        const siguiente = (i + paso + visibles.length) % visibles.length;
+        // El visor pasa por todas, así que la cuadrícula se estira detrás
+        setTanda((t) => (siguiente < t ? t : siguiente + 1));
+        return siguiente;
+      }),
     [visibles.length],
   );
 
@@ -104,6 +118,7 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
               // Al cambiar de filtro el índice abierto deja de ser válido
               setFiltro(f.id);
               setAbierto(null);
+              setTanda(POR_TANDA);
             }}
             aria-pressed={filtro === f.id}
             className={`rounded-full px-4 py-2 text-sm font-bold transition-colors ${
@@ -126,6 +141,7 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
               onClick={() => {
                 setAlbum(a);
                 setAbierto(null);
+                setTanda(POR_TANDA);
               }}
               aria-pressed={album === a}
               className={`rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors ${
@@ -149,7 +165,7 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
          * verticales del móvil con apaisadas, sin recortar ninguna.
          */
         <div className="mt-6 columns-2 gap-3 sm:columns-3 lg:columns-4 *:mb-3">
-          {visibles.map((item, i) => {
+          {mostradas.map((item, i) => {
             const src = miniatura(item);
             return (
               <button
@@ -191,6 +207,21 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
           })}
         </div>
       )}
+
+      {tanda < visibles.length ? (
+        <div className="mt-8 text-center">
+          <button
+            type="button"
+            onClick={() => setTanda((t) => t + POR_TANDA)}
+            className="btn btn-ghost"
+          >
+            Cargar más fotos
+          </button>
+          <p className="mt-2 text-xs text-mute">
+            {mostradas.length} de {visibles.length}
+          </p>
+        </div>
+      ) : null}
 
       {actual ? (
         <div
