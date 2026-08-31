@@ -19,6 +19,7 @@ export type NoticiaPanel = {
   slug: string;
   fecha: string;
   categoria: string;
+  etiquetas: string[];
   resumen: string;
   portada: string;
   autor: string;
@@ -34,6 +35,9 @@ function deArchivo(nombre: string, crudo: string): NoticiaPanel {
     slug: String(data.slug ?? nombre.replace(/\.md$/, "")),
     fecha: new Date(String(data.fecha ?? Date.now())).toISOString().slice(0, 10),
     categoria: String(data.categoria ?? "Club"),
+    etiquetas: (Array.isArray(data.etiquetas) ? data.etiquetas : [])
+      .map((e) => String(e).trim())
+      .filter(Boolean),
     resumen: String(data.resumen ?? ""),
     portada: String(data.portada ?? ""),
     autor: String(data.autor ?? "AD Taraguilla"),
@@ -77,6 +81,7 @@ export async function noticiasDelRepositorio(): Promise<{
       slug: n.slug,
       fecha: n.fecha.slice(0, 10),
       categoria: n.categoria,
+      etiquetas: n.etiquetas,
       resumen: n.resumen,
       portada: n.portada,
       autor: n.autor,

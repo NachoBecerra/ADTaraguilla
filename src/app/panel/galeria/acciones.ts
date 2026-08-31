@@ -13,7 +13,7 @@ type Entrada = {
   id: string;
   tipo: "foto" | "video";
   titulo: string;
-  album: string;
+  albumes: string[];
   fecha: string;
   fotos: string[];
   youtubeId?: string;
@@ -30,10 +30,16 @@ function aSlug(texto: string): string {
   );
 }
 
-/** El widget antiguo guardaba una cadena cuando había una sola foto. */
-function comoLista(fotos?: string[] | string): string[] {
-  if (!fotos) return [];
-  return (Array.isArray(fotos) ? fotos : [fotos]).filter(Boolean);
+/** Admite lista o valor suelto, que es como se guardaba antes. */
+function comoLista(valor?: string[] | string): string[] {
+  if (!valor) return [];
+  return (Array.isArray(valor) ? valor : [valor]).map((v) => v.trim()).filter(Boolean);
+}
+
+/** Etiquetas de una entrada, del formato nuevo o del antiguo de un solo álbum. */
+function etiquetasDe(e: { albumes?: string[] | string; album?: string }): string[] {
+  const lista = comoLista(e.albumes);
+  return lista.length > 0 ? lista : comoLista(e.album);
 }
 
 /** Lee el archivo del repositorio y normaliza las entradas. */
@@ -42,10 +48,17 @@ async function leerGaleria(): Promise<{ items: Entrada[] }> {
   const datos = crudo ? JSON.parse(crudo) : {};
 
   const items: Entrada[] = (datos.items ?? []).map(
-    (e: Partial<Entrada> & { fotos?: string[] | string }, i: number) => ({
+    (
+      e: Partial<Entrada> & {
+        fotos?: string[] | string;
+        albumes?: string[] | string;
+        album?: string;
+      },
+      i: number,
+    ) => ({
       tipo: e.tipo ?? "foto",
       titulo: e.titulo ?? "",
-      album: e.album ?? "",
+      albumes: etiquetasDe(e),
       fecha: e.fecha ?? "",
       youtubeId: e.youtubeId,
       fotos: comoLista(e.fotos),
@@ -102,12 +115,12 @@ export async function subirFotos(
   if (!(await haySesion())) return { ok: false, mensaje: "La sesión ha caducado. Vuelve a entrar." };
 
   const titulo = String(datos.get("titulo") ?? "").trim();
-  const album = String(datos.get("album") ?? "").trim();
+  const albumes = datos.getAll("albumes").map(String).map((a) => a.trim()).filter(Boolean);
   const fecha = String(datos.get("fecha") ?? "").trim();
   const imagenes = datos.getAll("imagenes").map(String).filter(Boolean);
 
   if (!titulo) return { ok: false, mensaje: "Ponle un título." };
-  if (!album) return { ok: false, mensaje: "Indica el álbum." };
+  if (albumes.length === 0) return { ok: false, mensaje: "Ponle al menos una etiqueta." };
   if (imagenes.length === 0) return { ok: false, mensaje: "No has elegido ninguna foto." };
 
   try {
@@ -115,7 +128,7 @@ export async function subirFotos(
       const [cabecera, base64] = datoUrl.split(",", 2);
       const extension = /png/.test(cabecera) ? "png" : "jpg";
       return {
-        ruta: `${CARPETA}/${nombreArchivo(album, i, extension)}`,
+        ruta: `${CARPETA}/${nombreArchivo(albumes[0], i, extension)}`,
         contenido: base64,
         binario: true,
       };
@@ -127,7 +140,7 @@ export async function subirFotos(
         id: `${aSlug(titulo)}-${Date.now().toString(36)}`,
         tipo: "foto",
         titulo,
-        album,
+        albumes,
         fecha: fecha || new Date().toISOString().slice(0, 10),
         fotos: archivos.map((a) => a.ruta.replace(/^public/, "")),
       },
@@ -172,7 +185,7 @@ export async function guardarEntrada(
 
   const id = String(datos.get("id") ?? "");
   const titulo = String(datos.get("titulo") ?? "").trim();
-  const album = String(datos.get("album") ?? "").trim();
+  const albumes = datos.getAll("albumes").map(String).map((a) => a.trim()).filter(Boolean);
   const fecha = String(datos.get("fecha") ?? "").trim();
 
   if (!titulo) return { ok: false, mensaje: "El título no puede quedar vacío." };
@@ -183,7 +196,7 @@ export async function guardarEntrada(
     if (!entrada) return { ok: false, mensaje: "Esa entrada ya no existe." };
 
     entrada.titulo = titulo;
-    entrada.album = album;
+    entrada.albumes = albumes;
     if (fecha) entrada.fecha = fecha;
 
     await guardarGaleria(galeria, `Galería: cambios en «${titulo}»`);

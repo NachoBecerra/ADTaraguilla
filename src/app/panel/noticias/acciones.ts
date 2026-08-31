@@ -34,6 +34,7 @@ function componerMarkdown(n: {
   slug: string;
   fecha: string;
   categoria: string;
+  etiquetas: string[];
   resumen: string;
   portada: string;
   autor: string;
@@ -46,6 +47,7 @@ function componerMarkdown(n: {
     `slug: ${aYaml(n.slug)}`,
     `fecha: ${n.fecha}`,
     `categoria: ${aYaml(n.categoria)}`,
+    `etiquetas: [${n.etiquetas.map(aYaml).join(", ")}]`,
     `resumen: ${aYaml(n.resumen)}`,
     `portada: ${aYaml(n.portada)}`,
     `autor: ${aYaml(n.autor)}`,
@@ -100,6 +102,7 @@ export async function guardarNoticia(
       slug,
       fecha,
       categoria: String(datos.get("categoria") ?? "Club"),
+      etiquetas: datos.getAll("etiquetas").map(String).map((e) => e.trim()).filter(Boolean),
       resumen: String(datos.get("resumen") ?? "").trim(),
       portada,
       autor: String(datos.get("autor") ?? "AD Taraguilla").trim() || "AD Taraguilla",

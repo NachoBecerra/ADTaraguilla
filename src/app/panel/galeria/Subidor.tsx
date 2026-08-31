@@ -2,6 +2,7 @@
 
 import { useActionState, useRef, useState } from "react";
 import { subirFotos, type Resultado } from "./acciones";
+import CampoEtiquetas from "@/components/CampoEtiquetas";
 import { IconoImagen, IconoCerrar } from "@/components/Iconos";
 
 /** Lado mayor al que se reducen las fotos antes de subirlas. */
@@ -101,21 +102,16 @@ export default function Subidor({ albumes }: { albumes: string[] }) {
           />
         </label>
 
-        <label className="block">
-          <span className="text-sm font-semibold text-tinta">Álbum</span>
-          <input
-            name="album"
-            required
-            list="albumes"
-            placeholder="Infantil B"
-            className="mt-1.5 w-full rounded-xl border border-linea bg-panel px-4 py-3 text-tinta focus:border-club focus:outline-none"
-          />
-          <datalist id="albumes">
-            {albumes.map((a) => (
-              <option key={a} value={a} />
-            ))}
-          </datalist>
-        </label>
+        <div className="sm:col-span-2">
+          <span className="text-sm font-semibold text-tinta">Etiquetas</span>
+          <div className="mt-1.5">
+            <CampoEtiquetas
+              nombre="albumes"
+              sugerencias={albumes}
+              ayuda="Equipo, temporada, jugador… Las fotos aparecen bajo todas las que lleven."
+            />
+          </div>
+        </div>
 
         <label className="block">
           <span className="text-sm font-semibold text-tinta">Fecha</span>

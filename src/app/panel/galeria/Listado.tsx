@@ -8,6 +8,7 @@ import {
   borrarEntrada,
   type Resultado,
 } from "./acciones";
+import CampoEtiquetas from "@/components/CampoEtiquetas";
 import { IconoCerrar, IconoBuscar } from "@/components/Iconos";
 import { fechaCorta } from "@/lib/formato";
 
@@ -15,7 +16,7 @@ export type EntradaPanel = {
   id: string;
   tipo: "foto" | "video";
   titulo: string;
-  album: string;
+  albumes: string[];
   fecha: string;
   fotos: string[];
 };
@@ -41,11 +42,11 @@ function Aviso({ resultado }: { resultado: Resultado | null }) {
 
 function Editor({
   entrada,
+  sugerencias,
   alCerrar,
 }: {
   entrada: EntradaPanel;
-  // La lista de álbumes la pinta el listado como <datalist>, y el campo la
-  // referencia por id: no hace falta pasarla hasta aquí.
+  sugerencias: string[];
   alCerrar: () => void;
 }) {
   const [guardado, guardar, guardando] = useActionState<Resultado | null, FormData>(
@@ -109,19 +110,20 @@ function Editor({
               />
             </label>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-wide text-mute">
-                  Álbum
-                </span>
-                <input
-                  name="album"
-                  defaultValue={entrada.album}
-                  list="albumes-publicados"
-                  className="mt-1 w-full rounded-lg border border-linea bg-panel px-3 py-2 text-tinta focus:border-club focus:outline-none"
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-wide text-mute">
+                Etiquetas
+              </span>
+              <div className="mt-1">
+                <CampoEtiquetas
+                  nombre="albumes"
+                  iniciales={entrada.albumes}
+                  sugerencias={sugerencias}
                 />
-              </label>
+              </div>
+            </div>
 
+            <div className="grid gap-3 sm:grid-cols-2">
               <label className="block">
                 <span className="text-xs font-semibold uppercase tracking-wide text-mute">
                   Fecha
@@ -219,10 +221,10 @@ export default function Listado({
     const q = normalizar(consulta.trim());
     return entradas.filter(
       (e) =>
-        (album === "todos" || e.album === album) &&
+        (album === "todos" || e.albumes.includes(album)) &&
         (q === "" ||
           normalizar(e.titulo).includes(q) ||
-          normalizar(e.album).includes(q)),
+          e.albumes.some((a) => normalizar(a).includes(q))),
     );
   }, [entradas, consulta, album]);
 
@@ -238,12 +240,6 @@ export default function Listado({
 
   return (
     <>
-      <datalist id="albumes-publicados">
-        {albumes.map((a) => (
-          <option key={a} value={a} />
-        ))}
-      </datalist>
-
       <div className="relative mt-6">
         <IconoBuscar className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-mute" />
         <input
@@ -315,7 +311,7 @@ export default function Listado({
                   {e.titulo}
                 </span>
                 <span className="mt-0.5 block truncate text-[11px] text-mute">
-                  {e.album}
+                  {e.albumes.join(" · ")}
                   {e.fecha ? ` · ${fechaCorta(e.fecha)}` : ""}
                 </span>
               </span>
@@ -331,7 +327,7 @@ export default function Listado({
       ) : null}
 
       {abierta ? (
-        <Editor entrada={abierta} alCerrar={() => setEditando(null)} />
+        <Editor entrada={abierta} sugerencias={albumes} alCerrar={() => setEditando(null)} />
       ) : null}
     </>
   );

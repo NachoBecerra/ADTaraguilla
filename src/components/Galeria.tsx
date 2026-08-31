@@ -44,17 +44,24 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
   const [album, setAlbum] = useState<string>("todos");
   const [abierto, setAbierto] = useState<number | null>(null);
 
-  const albumes = useMemo(
-    () => ["todos", ...new Set(items.map((i) => i.album))],
-    [items],
-  );
+  // Una foto puede llevar varias etiquetas y aparece bajo todas ellas
+  const albumes = useMemo(() => {
+    const cuenta = new Map<string, number>();
+    for (const i of items) for (const a of i.albumes) cuenta.set(a, (cuenta.get(a) ?? 0) + 1);
+    return [
+      "todos",
+      ...[...cuenta.entries()]
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "es"))
+        .map(([a]) => a),
+    ];
+  }, [items]);
 
   const visibles = useMemo(
     () =>
       items.filter(
         (i) =>
           (filtro === "todo" || i.tipo === filtro) &&
-          (album === "todos" || i.album === album),
+          (album === "todos" || i.albumes.includes(album)),
       ),
     [items, filtro, album],
   );
@@ -194,7 +201,8 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
         >
           <div className="flex items-center justify-between gap-3 px-5 py-4">
             <p className="text-xs uppercase tracking-wider text-white/70">
-              {(abierto ?? 0) + 1} / {visibles.length} · {actual.album}
+              {(abierto ?? 0) + 1} / {visibles.length}
+              {actual.albumes.length > 0 ? ` · ${actual.albumes.join(" · ")}` : ""}
             </p>
 
             <div className="flex items-center gap-2">

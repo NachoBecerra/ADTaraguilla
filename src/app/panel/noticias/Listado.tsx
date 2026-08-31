@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useActionState, useEffect, useMemo, useState } from "react";
 import { guardarNoticia, borrarNoticia, type Resultado } from "./acciones";
 import type { NoticiaPanel } from "@/lib/panel/noticias";
+import CampoEtiquetas from "@/components/CampoEtiquetas";
 import { IconoCerrar, IconoBuscar, IconoImagen } from "@/components/Iconos";
 import { fechaCorta } from "@/lib/formato";
 
@@ -58,6 +59,7 @@ const VACIA: NoticiaPanel = {
   slug: "",
   fecha: new Date().toISOString().slice(0, 10),
   categoria: "Club",
+  etiquetas: [],
   resumen: "",
   portada: "",
   autor: "AD Taraguilla",
@@ -70,10 +72,12 @@ const VACIA: NoticiaPanel = {
 function Editor({
   noticia,
   categorias,
+  sugerencias,
   alCerrar,
 }: {
   noticia: NoticiaPanel;
   categorias: readonly string[];
+  sugerencias: string[];
   alCerrar: () => void;
 }) {
   const esNueva = noticia.archivo === "";
@@ -181,6 +185,20 @@ function Editor({
                 className="mt-1 w-full rounded-lg border border-linea bg-panel px-3 py-2 text-tinta focus:border-club focus:outline-none"
               />
             </label>
+          </div>
+
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-wide text-mute">
+              Etiquetas
+            </span>
+            <div className="mt-1">
+              <CampoEtiquetas
+                nombre="etiquetas"
+                iniciales={noticia.etiquetas}
+                sugerencias={sugerencias}
+                ayuda="Equipo, temporada, jugador… Sirven para encontrar la noticia después."
+              />
+            </div>
           </div>
 
           <label className="block">
@@ -308,11 +326,15 @@ export default function Listado({
         (q === "" ||
           normalizar(n.titulo).includes(q) ||
           normalizar(n.categoria).includes(q) ||
-          normalizar(n.resumen).includes(q)),
+          normalizar(n.resumen).includes(q) ||
+          n.etiquetas.some((e) => normalizar(e).includes(q))),
     );
   }, [noticias, consulta, categoria]);
 
   const usadas = [...new Set(noticias.map((n) => n.categoria))].sort();
+  const etiquetasUsadas = [...new Set(noticias.flatMap((n) => n.etiquetas))].sort((a, b) =>
+    a.localeCompare(b, "es"),
+  );
 
   return (
     <>
@@ -416,6 +438,7 @@ export default function Listado({
           key={editando.archivo || "nueva"}
           noticia={editando}
           categorias={categorias}
+          sugerencias={etiquetasUsadas}
           alCerrar={() => setEditando(null)}
         />
       ) : null}

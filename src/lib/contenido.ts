@@ -16,6 +16,8 @@ export type Noticia = {
   portada: string;
   autor: string;
   categoria: string;
+  /** Etiquetas libres, además de la categoría: equipo, temporada, jugador… */
+  etiquetas: string[];
   destacada: boolean;
   cuerpoHtml: string;
 };
@@ -38,6 +40,7 @@ function parsearNoticia(archivo: string): Noticia {
     portada: (data.portada as string) ?? "",
     autor: (data.autor as string) ?? AUTOR_POR_DEFECTO,
     categoria: (data.categoria as string) ?? "Club",
+    etiquetas: comoLista(data.etiquetas as string[] | string | undefined),
     destacada: Boolean(data.destacada),
     cuerpoHtml: marked.parse(content, { async: false }),
   };
@@ -65,7 +68,10 @@ export type EntradaGaleria = {
   tipo: "foto" | "video";
   titulo: string;
   fecha: string;
-  album: string;
+  /** Varias etiquetas: equipo, temporada, jugador, lo que haga falta. */
+  albumes?: string[] | string;
+  /** Formato antiguo, de una sola etiqueta. Se sigue leyendo. */
+  album?: string;
   fotos?: string[] | string;
   youtubeId?: string;
 };
@@ -76,7 +82,7 @@ export type ItemGaleria = {
   tipo: "foto" | "video";
   titulo: string;
   fecha: string;
-  album: string;
+  albumes: string[];
   src: string;
   youtubeId?: string;
   /** Dimensiones reales, para enseñar la foto entera sin saltos de maquetación. */
@@ -84,10 +90,16 @@ export type ItemGaleria = {
   alto: number;
 };
 
-/** El widget de imagen devuelve una cadena si se elige una sola foto. */
-function comoLista(fotos?: string[] | string): string[] {
-  if (!fotos) return [];
-  return (Array.isArray(fotos) ? fotos : [fotos]).filter(Boolean);
+/** Admite tanto una lista como un valor suelto, que es como se guardaba antes. */
+function comoLista(valor?: string[] | string): string[] {
+  if (!valor) return [];
+  return (Array.isArray(valor) ? valor : [valor]).map((v) => v.trim()).filter(Boolean);
+}
+
+/** Etiquetas de una entrada, viniendo del formato nuevo o del antiguo. */
+export function etiquetasDe(e: { albumes?: string[] | string; album?: string }): string[] {
+  const lista = comoLista(e.albumes);
+  return lista.length > 0 ? lista : comoLista(e.album);
 }
 
 /** Identificador estable a partir del texto, para no exigirlo al publicar. */
@@ -110,7 +122,7 @@ export function getEntradasGaleria() {
     id: e.id || `${aSlug(e.titulo ?? "foto")}-${i}`,
     tipo: e.tipo,
     titulo: e.titulo,
-    album: e.album,
+    albumes: etiquetasDe(e),
     fecha: e.fecha,
     fotos: comoLista(e.fotos),
   }));
@@ -138,6 +150,7 @@ export function getGaleria(): ItemGaleria[] {
       const medida = src ? dimensionesDe(src) : null;
       items.push({
         ...entrada,
+        albumes: etiquetasDe(entrada),
         id: idUnico(entrada.id || `${entrada.titulo}-${entrada.fecha}`),
         src,
         ancho: medida?.ancho ?? 480,
@@ -152,6 +165,7 @@ export function getGaleria(): ItemGaleria[] {
       const medida = dimensionesDe(src);
       items.push({
         ...entrada,
+        albumes: etiquetasDe(entrada),
         id: idUnico(entrada.id || `${entrada.titulo}-${entrada.fecha}`),
         src,
         ancho: medida?.ancho ?? 4,
@@ -163,7 +177,14 @@ export function getGaleria(): ItemGaleria[] {
   return items.sort((a, b) => b.fecha.localeCompare(a.fecha));
 }
 
+/** Todas las etiquetas en uso, de la más usada a la menos. */
 export function getAlbumes(): string[] {
-  return [...new Set(getGaleria().map((i) => i.album))];
+  const cuenta = new Map<string, number>();
+  for (const i of getGaleria()) {
+    for (const a of i.albumes) cuenta.set(a, (cuenta.get(a) ?? 0) + 1);
+  }
+  return [...cuenta.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "es"))
+    .map(([a]) => a);
 }
 

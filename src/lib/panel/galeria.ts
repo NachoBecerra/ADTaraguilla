@@ -17,14 +17,20 @@ export type EntradaPanel = {
   id: string;
   tipo: "foto" | "video";
   titulo: string;
-  album: string;
+  albumes: string[];
   fecha: string;
   fotos: string[];
 };
 
-function comoLista(fotos?: string[] | string): string[] {
-  if (!fotos) return [];
-  return (Array.isArray(fotos) ? fotos : [fotos]).filter(Boolean);
+function comoLista(valor?: string[] | string): string[] {
+  if (!valor) return [];
+  return (Array.isArray(valor) ? valor : [valor]).map((v) => v.trim()).filter(Boolean);
+}
+
+/** Etiquetas de una entrada, del formato nuevo o del antiguo de un solo álbum. */
+function etiquetas(e: { albumes?: string[] | string; album?: string }): string[] {
+  const lista = comoLista(e.albumes);
+  return lista.length > 0 ? lista : comoLista(e.album);
 }
 
 function aSlug(texto: string): string {
@@ -45,11 +51,18 @@ export async function entradasDeGaleria(): Promise<EntradaPanel[]> {
 
     const datos = JSON.parse(crudo);
     return (datos.items ?? []).map(
-      (e: Partial<EntradaPanel> & { fotos?: string[] | string }, i: number) => ({
+      (
+        e: Partial<EntradaPanel> & {
+          fotos?: string[] | string;
+          albumes?: string[] | string;
+          album?: string;
+        },
+        i: number,
+      ) => ({
         id: e.id || `${aSlug(e.titulo ?? "foto")}-${i}`,
         tipo: e.tipo ?? "foto",
         titulo: e.titulo ?? "",
-        album: e.album ?? "",
+        albumes: etiquetas(e),
         fecha: e.fecha ?? "",
         fotos: comoLista(e.fotos),
       }),
@@ -59,9 +72,11 @@ export async function entradasDeGaleria(): Promise<EntradaPanel[]> {
   }
 }
 
-/** Álbumes existentes, para sugerirlos al escribir. */
+/** Etiquetas en uso, de la más frecuente a la menos, para sugerirlas. */
 export function albumesDe(entradas: EntradaPanel[]): string[] {
-  return [...new Set(entradas.map((e) => e.album).filter(Boolean))].sort((a, b) =>
-    a.localeCompare(b, "es"),
-  );
+  const cuenta = new Map<string, number>();
+  for (const e of entradas) for (const a of e.albumes) cuenta.set(a, (cuenta.get(a) ?? 0) + 1);
+  return [...cuenta.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "es"))
+    .map(([a]) => a);
 }
