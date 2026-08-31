@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { haEmpezado, type Competicion, type Equipo, type PartidoPropio } from "@/lib/competicion";
 import { Marcador } from "@/components/Partidos";
-import { IconoFlecha } from "@/components/Iconos";
-import { fechaLarga } from "@/lib/formato";
+import EscudoClub from "@/components/EscudoClub";
+import { IconoFlecha, IconoCalendario, IconoUbicacion } from "@/components/Iconos";
+import { fechaPartido } from "@/lib/formato";
 
 /**
  * Ficha resumida de un equipo: dónde está en la clasificación, qué hizo el
@@ -57,17 +58,63 @@ export default function TarjetaEquipo({
           </div>
         ) : null}
 
+        {/*
+          El próximo partido es lo que más se consulta, así que se enseña con
+          escudo, si se juega en casa o fuera, cuándo y dónde. Antes era una
+          línea de texto que se cortaba justo en la fecha.
+        */}
         {proximo ? (
-          <div className="flex items-center gap-2.5">
-            <span className="rounded-lg bg-panel-2 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-club-soft">
-              Próximo
-            </span>
-            <span className="min-w-0 truncate text-mute">
-              <span className="text-tinta">{proximo.rival}</span>
-              {proximo.fecha ? ` · ${fechaLarga(proximo.fecha)}` : ""}
-              {proximo.hora ? ` · ${proximo.hora}` : ""}
-            </span>
-          </div>
+          proximo.descanso ? (
+            <p className="text-mute">Jornada de descanso.</p>
+          ) : (
+            <div className="rounded-xl bg-panel-2 p-3">
+              <div className="flex items-center gap-3">
+                <EscudoClub
+                  nombre={proximo.rival}
+                  codigo={proximo.esLocal ? proximo.codVisitante : proximo.codLocal}
+                  size={38}
+                />
+
+                <div className="min-w-0 flex-1">
+                  <p className="truncate font-bold leading-tight text-tinta">
+                    {proximo.rival}
+                  </p>
+                  <p className="text-[11px] font-bold uppercase tracking-wide text-mute">
+                    {proximo.esLocal ? "En casa" : "A domicilio"}
+                  </p>
+                </div>
+
+                {/* La hora, que es el dato que se busca, con el mayor peso */}
+                <span
+                  className={`shrink-0 rounded-lg px-2.5 py-1.5 text-center ${
+                    proximo.hora ? "bg-club text-white" : "bg-panel text-mute"
+                  }`}
+                >
+                  <span className="title block text-base leading-none">
+                    {proximo.hora ?? (
+                      <>
+                        <span aria-hidden>--:--</span>
+                        <span className="sr-only">Hora sin fijar</span>
+                      </>
+                    )}
+                  </span>
+                </span>
+              </div>
+
+              <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-mute">
+                <span className="inline-flex items-center gap-1.5">
+                  <IconoCalendario size={14} className="shrink-0 text-club-soft" />
+                  {proximo.fecha ? fechaPartido(proximo.fecha) : "Fecha sin fijar"}
+                </span>
+                {proximo.campo ? (
+                  <span className="inline-flex min-w-0 items-center gap-1.5">
+                    <IconoUbicacion size={14} className="shrink-0 text-club-soft" />
+                    <span className="truncate">{proximo.campo}</span>
+                  </span>
+                ) : null}
+              </div>
+            </div>
+          )
         ) : null}
 
         {!ultimo && !proximo ? (

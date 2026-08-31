@@ -17,6 +17,24 @@ export function fechaCorta(iso: string): string {
   }).format(new Date(iso));
 }
 
+/**
+ * Fecha de partido: "dom 6 sept".
+ *
+ * El día de la semana es lo primero que se mira en un calendario de fútbol,
+ * y el año sobra porque siempre es el de la temporada en curso. Se quitan la
+ * coma y los puntos que mete el formato del sistema, que aquí solo estorban.
+ */
+export function fechaPartido(iso: string): string {
+  return new Intl.DateTimeFormat("es-ES", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    timeZone: ZONA,
+  })
+    .format(new Date(iso))
+    .replace(/[.,]/g, "");
+}
+
 export function diaYHora(iso: string): { dia: string; hora: string } {
   const d = new Date(iso);
   return {
