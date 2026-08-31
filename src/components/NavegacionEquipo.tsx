@@ -56,6 +56,23 @@ export default function NavegacionEquipo({ bloques }: { bloques: Bloque[] }) {
     return () => observador.disconnect();
   }, [bloques]);
 
+  /*
+   * Saltar no debe dejar rastro en el historial.
+   *
+   * Con el salto normal del navegador, cada toque apila una entrada y luego
+   * "atrás" va deshaciendo saltos en vez de salir de la ficha. Se desplaza a
+   * mano y se sustituye la entrada actual: el botón de volver sigue llevando
+   * a donde estabas antes de entrar.
+   */
+  const saltar = (e: React.MouseEvent<HTMLAnchorElement>, b: Bloque) => {
+    const destino = document.getElementById(b);
+    if (!destino) return; // sin el bloque, que actúe el enlace de siempre
+    e.preventDefault();
+    destino.scrollIntoView({ behavior: "smooth", block: "start" });
+    history.replaceState(null, "", `#${b}`);
+    setActivo(b);
+  };
+
   if (bloques.length < 2) return null;
 
   return (
@@ -72,6 +89,7 @@ export default function NavegacionEquipo({ bloques }: { bloques: Bloque[] }) {
             <li key={b} className="flex-1">
               <a
                 href={`#${b}`}
+                onClick={(e) => saltar(e, b)}
                 aria-current={esActivo ? "true" : undefined}
                 className={`flex flex-col items-center gap-1 py-2.5 text-[11px] font-bold transition-colors ${
                   esActivo ? "text-club" : "text-mute"
