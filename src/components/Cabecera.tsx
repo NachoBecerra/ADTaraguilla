@@ -12,6 +12,7 @@ const NAV = [
   { href: "/equipos", texto: "Equipos" },
   { href: "/noticias", texto: "Noticias" },
   { href: "/galeria", texto: "Galería" },
+  { href: "/palmares", texto: "Palmarés" },
 ];
 
 export default function Cabecera() {
@@ -75,7 +76,7 @@ export default function Cabecera() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={r.nombre}
-                    className="grid h-9 w-9 place-items-center rounded-full text-mute transition-colors hover:bg-panel-2 hover:text-club"
+                    className="grid grid-cols-1 h-9 w-9 place-items-center rounded-full text-mute transition-colors hover:bg-panel-2 hover:text-club"
                   >
                     {Icono ? <Icono size={19} /> : r.nombre[0]}
                   </a>
@@ -88,7 +89,7 @@ export default function Cabecera() {
               onClick={() => setAbierto(true)}
               aria-label="Abrir menú"
               aria-expanded={abierto}
-              className="grid h-11 w-11 place-items-center rounded-full border border-linea bg-panel text-tinta md:hidden"
+              className="grid grid-cols-1 h-11 w-11 place-items-center rounded-full border border-linea bg-panel text-tinta md:hidden"
             >
               <IconoMenu />
             </button>
@@ -111,7 +112,7 @@ export default function Cabecera() {
             type="button"
             onClick={() => setAbierto(false)}
             aria-label="Cerrar menú"
-            className="grid h-11 w-11 place-items-center rounded-full border border-linea bg-panel text-tinta"
+            className="grid grid-cols-1 h-11 w-11 place-items-center rounded-full border border-linea bg-panel text-tinta"
           >
             <IconoCerrar />
           </button>

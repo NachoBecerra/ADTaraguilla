@@ -91,7 +91,7 @@ export default function Subidor({ albumes }: { albumes: string[] }) {
 
   return (
     <form action={accion} className="mt-8">
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="text-sm font-semibold text-tinta">Título</span>
           <input
@@ -173,7 +173,7 @@ export default function Subidor({ albumes }: { albumes: string[] }) {
                   type="button"
                   onClick={() => setElegidas((a) => a.filter((_, j) => j !== i))}
                   aria-label={`Quitar ${f.nombre}`}
-                  className="absolute -right-1.5 -top-1.5 grid h-6 w-6 place-items-center rounded-full bg-tinta text-white"
+                  className="absolute -right-1.5 -top-1.5 grid grid-cols-1 h-6 w-6 place-items-center rounded-full bg-tinta text-white"
                 >
                   <IconoCerrar size={13} />
                 </button>

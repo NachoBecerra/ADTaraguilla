@@ -129,7 +129,7 @@ export function TarjetaProximoPartido({
 
   const lado = (nombre: string, props: { esNuestro?: boolean; codigo?: string | null }) => (
     <div className="flex flex-1 flex-col items-center gap-2 text-center">
-      <div className="grid h-14 w-14 place-items-center rounded-full bg-panel-2 sm:h-16 sm:w-16">
+      <div className="grid grid-cols-1 h-14 w-14 place-items-center rounded-full bg-panel-2 sm:h-16 sm:w-16">
         <EscudoClub nombre={nombre} size={38} {...props} />
       </div>
       <span className="title text-sm leading-tight text-tinta sm:text-base">{nombre}</span>
@@ -167,7 +167,7 @@ export function TarjetaProximoPartido({
           {partido.esLocal ? rival : nosotros}
         </div>
 
-        <dl className="mt-6 grid gap-3 border-t border-linea pt-4 text-sm sm:grid-cols-2">
+        <dl className="mt-6 grid grid-cols-1 gap-3 border-t border-linea pt-4 text-sm sm:grid-cols-2">
           <div className="flex items-center gap-2.5 text-mute">
             <IconoCalendario size={18} className="shrink-0 text-club" />
             <dd className="first-letter:uppercase">{hora ? dia : "Fecha por confirmar"}</dd>

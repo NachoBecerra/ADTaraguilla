@@ -189,11 +189,11 @@ export default function Inicio() {
             enlace="Todas"
           />
 
-          <div className="mt-6 grid gap-4 lg:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
             <div className="lg:col-span-2">
               <TarjetaNoticia noticia={destacada} destacada />
             </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
               {resto.slice(0, 2).map((n) => (
                 <TarjetaNoticia key={n.slug} noticia={n} />
               ))}
@@ -229,7 +229,7 @@ export default function Inicio() {
                 />
 
                 {item.tipo === "video" ? (
-                  <span className="absolute right-2.5 top-2.5 grid h-8 w-8 place-items-center rounded-full bg-club text-white">
+                  <span className="absolute right-2.5 top-2.5 grid grid-cols-1 h-8 w-8 place-items-center rounded-full bg-club text-white">
                     <IconoPlay size={15} />
                   </span>
                 ) : null}

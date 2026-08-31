@@ -168,7 +168,7 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
                     className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 ) : (
-                  <span className="grid aspect-4/3 w-full place-items-center bg-linear-to-br from-club/15 via-panel-2 to-linea">
+                  <span className="grid grid-cols-1 aspect-4/3 w-full place-items-center bg-linear-to-br from-club/15 via-panel-2 to-linea">
                     <IconoImagen size={28} className="text-club/35" />
                   </span>
                 )}
@@ -180,8 +180,8 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
                 </span>
 
                 {item.tipo === "video" ? (
-                  <span className="pointer-events-none absolute inset-0 grid place-items-center">
-                    <span className="grid h-12 w-12 place-items-center rounded-full bg-club text-white shadow-lg">
+                  <span className="pointer-events-none absolute inset-0 grid grid-cols-1 place-items-center">
+                    <span className="grid grid-cols-1 h-12 w-12 place-items-center rounded-full bg-club text-white shadow-lg">
                       <IconoPlay size={22} />
                     </span>
                   </span>
@@ -221,7 +221,7 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
                 type="button"
                 onClick={cerrar}
                 aria-label="Cerrar"
-                className="grid h-11 w-11 place-items-center rounded-full border border-white/25 text-white"
+                className="grid grid-cols-1 h-11 w-11 place-items-center rounded-full border border-white/25 text-white"
               >
                 <IconoCerrar />
               </button>
@@ -262,7 +262,7 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
               type="button"
               onClick={() => mover(-1)}
               aria-label="Anterior"
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/25 text-white"
+              className="grid grid-cols-1 h-11 w-11 shrink-0 place-items-center rounded-full border border-white/25 text-white"
             >
               <IconoFlecha size={20} className="rotate-180" />
             </button>
@@ -274,7 +274,7 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
               type="button"
               onClick={() => mover(1)}
               aria-label="Siguiente"
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/25 text-white"
+              className="grid grid-cols-1 h-11 w-11 shrink-0 place-items-center rounded-full border border-white/25 text-white"
             >
               <IconoFlecha size={20} />
             </button>

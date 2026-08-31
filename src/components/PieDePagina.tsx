@@ -7,7 +7,7 @@ export default function PieDePagina() {
   return (
     <footer className="mt-20 bg-club-dark text-white">
       <div className="mx-auto max-w-6xl px-5 py-12">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2">
             <div className="flex items-center gap-3">
               <Image src={site.escudo} alt="" width={46} height={45} />
@@ -28,6 +28,7 @@ export default function PieDePagina() {
                 { href: "/equipos", t: "Equipos" },
                 { href: "/noticias", t: "Noticias" },
                 { href: "/galeria", t: "Galería" },
+                { href: "/palmares", t: "Palmarés" },
               ].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-white/75 transition-colors hover:text-white">
@@ -83,7 +84,7 @@ export default function PieDePagina() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={r.nombre}
-                    className="grid h-10 w-10 place-items-center rounded-full border border-white/25 text-white/80 transition-colors hover:border-white hover:bg-white hover:text-club-dark"
+                    className="grid grid-cols-1 h-10 w-10 place-items-center rounded-full border border-white/25 text-white/80 transition-colors hover:border-white hover:bg-white hover:text-club-dark"
                   >
                     {Icono ? <Icono size={19} /> : r.nombre[0]}
                   </a>

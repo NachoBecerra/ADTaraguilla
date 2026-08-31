@@ -123,13 +123,13 @@ function Editor({
             type="button"
             onClick={alCerrar}
             aria-label="Cerrar"
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-linea text-tinta"
+            className="grid grid-cols-1 h-10 w-10 shrink-0 place-items-center rounded-full border border-linea text-tinta"
           >
             <IconoCerrar size={18} />
           </button>
         </div>
 
-        <form action={guardar} className="grid gap-4 p-5">
+        <form action={guardar} className="grid grid-cols-1 gap-4 p-5">
           <input type="hidden" name="archivo" value={noticia.archivo} />
           <input type="hidden" name="portada" value={noticia.portada} />
 
@@ -145,7 +145,7 @@ function Editor({
             />
           </label>
 
-          <div className="grid gap-4 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <label className="block">
               <span className="text-xs font-semibold uppercase tracking-wide text-mute">
                 Fecha
@@ -228,7 +228,7 @@ function Editor({
                   className="h-20 w-28 shrink-0 rounded-lg border border-linea object-cover"
                 />
               ) : (
-                <span className="grid h-20 w-28 shrink-0 place-items-center rounded-lg border border-dashed border-linea text-mute">
+                <span className="grid grid-cols-1 h-20 w-28 shrink-0 place-items-center rounded-lg border border-dashed border-linea text-mute">
                   <IconoImagen size={22} />
                 </span>
               )}
@@ -400,7 +400,7 @@ export default function Listado({
                     className="object-cover"
                   />
                 ) : (
-                  <span className="grid h-full w-full place-items-center text-mute">
+                  <span className="grid grid-cols-1 h-full w-full place-items-center text-mute">
                     <IconoImagen size={22} />
                   </span>
                 )}

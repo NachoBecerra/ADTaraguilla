@@ -88,14 +88,14 @@ function Editor({
             type="button"
             onClick={alCerrar}
             aria-label="Cerrar"
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-linea text-tinta"
+            className="grid grid-cols-1 h-10 w-10 shrink-0 place-items-center rounded-full border border-linea text-tinta"
           >
             <IconoCerrar size={18} />
           </button>
         </div>
 
         <div className="p-5">
-          <form action={guardar} className="grid gap-3">
+          <form action={guardar} className="grid grid-cols-1 gap-3">
             <input type="hidden" name="id" value={entrada.id} />
 
             <label className="block">
@@ -123,7 +123,7 @@ function Editor({
               </div>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <label className="block">
                 <span className="text-xs font-semibold uppercase tracking-wide text-mute">
                   Fecha
@@ -170,7 +170,7 @@ function Editor({
                       <button
                         type="submit"
                         aria-label="Quitar esta foto"
-                        className="absolute -right-1.5 -top-1.5 grid h-6 w-6 place-items-center rounded-full bg-tinta text-white"
+                        className="absolute -right-1.5 -top-1.5 grid grid-cols-1 h-6 w-6 place-items-center rounded-full bg-tinta text-white"
                       >
                         <IconoCerrar size={13} />
                       </button>
@@ -294,7 +294,7 @@ export default function Listado({
                     className="object-cover"
                   />
                 ) : (
-                  <span className="grid h-full w-full place-items-center text-xs text-mute">
+                  <span className="grid grid-cols-1 h-full w-full place-items-center text-xs text-mute">
                     vídeo
                   </span>
                 )}

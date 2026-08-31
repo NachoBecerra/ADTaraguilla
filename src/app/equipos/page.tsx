@@ -35,7 +35,7 @@ export default function PaginaEquipos() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-8">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {enCompeticion.map(({ equipo, proximo, ultimo, competicion }) => (
             <TarjetaEquipo
               key={equipo.id}
@@ -53,7 +53,7 @@ export default function PaginaEquipos() {
             <p className="mt-1 text-sm text-mute">
               Inscritos en competición; aparecerán aquí en cuanto la RFAF publique sus partidos.
             </p>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {pendientes.map(({ equipo, proximo, ultimo, competicion }) => (
                 <TarjetaEquipo
                   key={equipo.id}
