@@ -65,26 +65,31 @@ export function getCategorias(): string[] {
 /** Una entrada de la galería tal y como se guarda: puede llevar varias fotos. */
 export type EntradaGaleria = {
   id?: string;
-  tipo: "foto" | "video";
   titulo: string;
   fecha: string;
   /** Varias etiquetas: equipo, temporada, jugador, lo que haga falta. */
   albumes?: string[] | string;
   /** Formato antiguo, de una sola etiqueta. Se sigue leyendo. */
   album?: string;
-  fotos?: string[] | string;
-  youtubeId?: string;
+  fotos?: FotoGuardada[] | string[] | string;
 };
 
-/** Una foto o vídeo suelto, que es lo que se pinta en la galería. */
+/**
+ * Una foto tal y como se guarda desde que las imágenes viven en Vercel Blob.
+ *
+ * El navegador ya sabe cuánto mide la foto cuando la reduce, así que apunta
+ * las medidas al subirla: fuera del repositorio no hay archivo local del que
+ * leerlas en tiempo de compilación.
+ */
+export type FotoGuardada = { url: string; ancho: number; alto: number };
+
+/** Una foto suelta, que es lo que se pinta en la galería. */
 export type ItemGaleria = {
   id: string;
-  tipo: "foto" | "video";
   titulo: string;
   fecha: string;
   albumes: string[];
   src: string;
-  youtubeId?: string;
   /** Dimensiones reales, para enseñar la foto entera sin saltos de maquetación. */
   ancho: number;
   alto: number;
@@ -94,6 +99,25 @@ export type ItemGaleria = {
 function comoLista(valor?: string[] | string): string[] {
   if (!valor) return [];
   return (Array.isArray(valor) ? valor : [valor]).map((v) => v.trim()).filter(Boolean);
+}
+
+/**
+ * Normaliza las fotos de una entrada.
+ *
+ * Conviven dos formatos: las de antes eran una ruta suelta dentro de /public
+ * y hay que medirlas leyendo el archivo; las nuevas viven en Blob y traen las
+ * medidas puestas.
+ */
+export function fotosDe(valor?: FotoGuardada[] | string[] | string): FotoGuardada[] {
+  if (!valor) return [];
+  const lista = Array.isArray(valor) ? valor : [valor];
+  return lista.flatMap((f) => {
+    if (typeof f !== "string") return f.url ? [f] : [];
+    const src = f.trim();
+    if (!src) return [];
+    const medida = dimensionesDe(src);
+    return [{ url: src, ancho: medida?.ancho ?? 4, alto: medida?.alto ?? 3 }];
+  });
 }
 
 /** Etiquetas de una entrada, viniendo del formato nuevo o del antiguo. */
@@ -120,11 +144,10 @@ function aSlug(texto: string): string {
 export function getEntradasGaleria() {
   return (galeriaData.items as EntradaGaleria[]).map((e, i) => ({
     id: e.id || `${aSlug(e.titulo ?? "foto")}-${i}`,
-    tipo: e.tipo,
     titulo: e.titulo,
     albumes: etiquetasDe(e),
     fecha: e.fecha,
-    fotos: comoLista(e.fotos),
+    fotos: fotosDe(e.fotos),
   }));
 }
 
@@ -142,34 +165,17 @@ export function getGaleria(): ItemGaleria[] {
   };
 
   for (const entrada of galeriaData.items as EntradaGaleria[]) {
-    const fotos = comoLista(entrada.fotos);
-
-    if (entrada.tipo === "video") {
-      // Las miniaturas de YouTube siempre vienen en 480x360
-      const src = fotos[0] ?? "";
-      const medida = src ? dimensionesDe(src) : null;
-      items.push({
-        ...entrada,
-        albumes: etiquetasDe(entrada),
-        id: idUnico(entrada.id || `${entrada.titulo}-${entrada.fecha}`),
-        src,
-        ancho: medida?.ancho ?? 480,
-        alto: medida?.alto ?? 360,
-      });
-      continue;
-    }
-
+    const fotos = fotosDe(entrada.fotos);
     if (fotos.length === 0) continue; // entrada sin foto: no hay nada que enseñar
 
-    for (const src of fotos) {
-      const medida = dimensionesDe(src);
+    for (const foto of fotos) {
       items.push({
         ...entrada,
         albumes: etiquetasDe(entrada),
         id: idUnico(entrada.id || `${entrada.titulo}-${entrada.fecha}`),
-        src,
-        ancho: medida?.ancho ?? 4,
-        alto: medida?.alto ?? 3,
+        src: foto.url,
+        ancho: foto.ancho,
+        alto: foto.alto,
       });
     }
   }

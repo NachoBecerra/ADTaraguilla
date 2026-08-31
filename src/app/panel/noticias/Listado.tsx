@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useActionState, useEffect, useMemo, useState } from "react";
+import { upload } from "@vercel/blob/client";
 import { guardarNoticia, borrarNoticia, type Resultado } from "./acciones";
 import type { NoticiaPanel } from "@/lib/panel/noticias";
 import CampoEtiquetas from "@/components/CampoEtiquetas";
@@ -19,8 +20,11 @@ function normalizar(texto: string): string {
     .replace(/\p{Diacritic}/gu, "");
 }
 
+/** La portada, ya reducida y lista para subirse. */
+type Portada = { archivo: File; vista: string };
+
 /** Reduce la portada en el navegador, igual que en la galería. */
-function reducir(archivo: File): Promise<string> {
+function reducir(archivo: File): Promise<Portada> {
   return new Promise((resolver, rechazar) => {
     const lector = new FileReader();
     lector.onerror = () => rechazar(new Error(archivo.name));
@@ -36,7 +40,19 @@ function reducir(archivo: File): Promise<string> {
         const ctx = lienzo.getContext("2d");
         if (!ctx) return rechazar(new Error(archivo.name));
         ctx.drawImage(img, 0, 0, lienzo.width, lienzo.height);
-        resolver(lienzo.toDataURL("image/jpeg", CALIDAD));
+        lienzo.toBlob(
+          (blob) => {
+            if (!blob) return rechazar(new Error(archivo.name));
+            resolver({
+              archivo: new File([blob], archivo.name.replace(/\.[^.]+$/, "") + ".jpg", {
+                type: "image/jpeg",
+              }),
+              vista: URL.createObjectURL(blob),
+            });
+          },
+          "image/jpeg",
+          CALIDAD,
+        );
       };
       img.src = String(lector.result);
     };
@@ -81,10 +97,22 @@ function Editor({
   alCerrar: () => void;
 }) {
   const esNueva = noticia.archivo === "";
-  const [portadaNueva, setPortadaNueva] = useState<string | null>(null);
+  const [portadaNueva, setPortadaNueva] = useState<Portada | null>(null);
   const [guardado, guardar, guardando] = useActionState<Resultado | null, FormData>(
     async (previo, datos) => {
-      if (portadaNueva) datos.set("imagen", portadaNueva);
+      // La portada sube directa al almacenamiento; aquí solo viaja su URL
+      if (portadaNueva) {
+        try {
+          const blob = await upload(
+            `noticias/${portadaNueva.archivo.name}`,
+            portadaNueva.archivo,
+            { access: "public", handleUploadUrl: "/api/subir" },
+          );
+          datos.set("portada", blob.url);
+        } catch (e) {
+          return { ok: false, mensaje: `No se ha podido subir la portada: ${(e as Error).message}` };
+        }
+      }
       return guardarNoticia(previo, datos);
     },
     null,
@@ -104,7 +132,7 @@ function Editor({
     };
   }, [alCerrar]);
 
-  const vistaPrevia = portadaNueva ?? (noticia.portada || null);
+  const vistaPrevia = portadaNueva?.vista ?? (noticia.portada || null);
 
   return (
     <div

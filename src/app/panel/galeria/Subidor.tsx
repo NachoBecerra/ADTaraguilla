@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useRef, useState } from "react";
+import { upload } from "@vercel/blob/client";
 import { subirFotos, type Resultado } from "./acciones";
 import CampoEtiquetas from "@/components/CampoEtiquetas";
 import { IconoImagen, IconoCerrar } from "@/components/Iconos";
@@ -9,21 +10,32 @@ import { IconoImagen, IconoCerrar } from "@/components/Iconos";
 const LADO_MAXIMO = 1800;
 const CALIDAD = 0.82;
 
-type Elegida = { nombre: string; datos: string; kb: number };
+type Elegida = {
+  nombre: string;
+  archivo: File;
+  vista: string;
+  ancho: number;
+  alto: number;
+  kb: number;
+};
 
 /**
  * Reduce la foto en el propio navegador.
  *
  * Las fotos del móvil pesan varios megas y no tiene sentido guardarlas así:
- * ni la web las necesita a ese tamaño, ni el repositorio debe cargar con ellas.
+ * ni la web las necesita a ese tamaño, ni hay por qué pagar por almacenarlas.
+ *
+ * De paso se apuntan las medidas: como la foto ya no vive en el repositorio,
+ * nadie podrá leerlas del archivo al compilar, y sin ellas la galería daría
+ * saltos al cargar.
  */
-function reducir(archivo: File): Promise<Elegida> {
+function reducir(original: File): Promise<Elegida> {
   return new Promise((resolver, rechazar) => {
     const lector = new FileReader();
-    lector.onerror = () => rechazar(new Error(archivo.name));
+    lector.onerror = () => rechazar(new Error(original.name));
     lector.onload = () => {
-      const img = new Image();
-      img.onerror = () => rechazar(new Error(archivo.name));
+      const img = new window.Image();
+      img.onerror = () => rechazar(new Error(original.name));
       img.onload = () => {
         const escala = Math.min(1, LADO_MAXIMO / Math.max(img.width, img.height));
         const lienzo = document.createElement("canvas");
@@ -31,33 +43,84 @@ function reducir(archivo: File): Promise<Elegida> {
         lienzo.height = Math.round(img.height * escala);
 
         const ctx = lienzo.getContext("2d");
-        if (!ctx) return rechazar(new Error(archivo.name));
+        if (!ctx) return rechazar(new Error(original.name));
         ctx.drawImage(img, 0, 0, lienzo.width, lienzo.height);
 
-        const datos = lienzo.toDataURL("image/jpeg", CALIDAD);
-        resolver({
-          nombre: archivo.name,
-          datos,
-          kb: Math.round((datos.length * 0.75) / 1024),
-        });
+        lienzo.toBlob(
+          (blob) => {
+            if (!blob) return rechazar(new Error(original.name));
+            const nombre = original.name.replace(/\.[^.]+$/, "") + ".jpg";
+            resolver({
+              nombre: original.name,
+              archivo: new File([blob], nombre, { type: "image/jpeg" }),
+              vista: URL.createObjectURL(blob),
+              ancho: lienzo.width,
+              alto: lienzo.height,
+              kb: Math.round(blob.size / 1024),
+            });
+          },
+          "image/jpeg",
+          CALIDAD,
+        );
       };
       img.src = String(lector.result);
     };
-    lector.readAsDataURL(archivo);
+    lector.readAsDataURL(original);
   });
+}
+
+/** Nombre con el que se guarda la foto en el almacenamiento. */
+function aSlug(texto: string): string {
+  return (
+    texto
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "") || "foto"
+  );
 }
 
 export default function Subidor({ albumes }: { albumes: string[] }) {
   const [elegidas, setElegidas] = useState<Elegida[]>([]);
   const [preparando, setPreparando] = useState(false);
   const [aviso, setAviso] = useState<string | null>(null);
+  const [progreso, setProgreso] = useState<{ hechas: number; total: number } | null>(null);
   const entrada = useRef<HTMLInputElement>(null);
 
   const [resultado, accion, subiendo] = useActionState<Resultado | null, FormData>(
     async (previo, datos) => {
-      for (const f of elegidas) datos.append("imagenes", f.datos);
+      const titulo = String(datos.get("titulo") ?? "").trim() || "foto";
+
+      /*
+       * Cada foto viaja por su cuenta y directamente al almacenamiento. Antes
+       * iban todas dentro de esta misma petición codificadas en base64, y ahí
+       * chocaban con el límite de 1 MB: cabían dos y la tercera fallaba.
+       */
+      const subidas: { url: string; ancho: number; alto: number }[] = [];
+      setProgreso({ hechas: 0, total: elegidas.length });
+
+      try {
+        for (const [i, f] of elegidas.entries()) {
+          const numero = String(i + 1).padStart(2, "0");
+          const blob = await upload(`galeria/${aSlug(titulo)}-${numero}.jpg`, f.archivo, {
+            access: "public",
+            handleUploadUrl: "/api/subir",
+          });
+          subidas.push({ url: blob.url, ancho: f.ancho, alto: f.alto });
+          setProgreso({ hechas: i + 1, total: elegidas.length });
+        }
+      } catch (e) {
+        setProgreso(null);
+        return { ok: false, mensaje: `No se han podido subir: ${(e as Error).message}` };
+      }
+
+      setProgreso(null);
+      datos.set("fotos", JSON.stringify(subidas));
+
       const r = await subirFotos(previo, datos);
       if (r.ok) {
+        for (const f of elegidas) URL.revokeObjectURL(f.vista);
         setElegidas([]);
         if (entrada.current) entrada.current.value = "";
       }
@@ -124,10 +187,6 @@ export default function Subidor({ albumes }: { albumes: string[] }) {
         </label>
       </div>
 
-      {/*
-        Selección múltiple de verdad: el atributo `multiple` es justo lo que le
-        faltaba al panel anterior y no había forma de añadirle.
-      */}
       <div className="mt-6">
         <input
           ref={entrada}
@@ -165,13 +224,16 @@ export default function Subidor({ albumes }: { albumes: string[] }) {
               <li key={`${f.nombre}-${i}`} className="relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={f.datos}
+                  src={f.vista}
                   alt=""
                   className="aspect-square w-full rounded-lg border border-linea object-cover"
                 />
                 <button
                   type="button"
-                  onClick={() => setElegidas((a) => a.filter((_, j) => j !== i))}
+                  onClick={() => {
+                    URL.revokeObjectURL(f.vista);
+                    setElegidas((a) => a.filter((_, j) => j !== i));
+                  }}
                   aria-label={`Quitar ${f.nombre}`}
                   className="absolute -right-1.5 -top-1.5 grid grid-cols-1 h-6 w-6 place-items-center rounded-full bg-tinta text-white"
                 >
@@ -181,6 +243,20 @@ export default function Subidor({ albumes }: { albumes: string[] }) {
             ))}
           </ul>
         </>
+      ) : null}
+
+      {progreso ? (
+        <div className="mt-5">
+          <div className="h-2 w-full overflow-hidden rounded-full bg-panel-2">
+            <div
+              className="h-full rounded-full bg-club transition-all"
+              style={{ width: `${(progreso.hechas / progreso.total) * 100}%` }}
+            />
+          </div>
+          <p className="mt-2 text-sm text-mute">
+            Subiendo {progreso.hechas} de {progreso.total}…
+          </p>
+        </div>
       ) : null}
 
       {resultado ? (

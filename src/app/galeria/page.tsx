@@ -12,18 +12,15 @@ export const metadata: Metadata = {
 
 export default function PaginaGaleria() {
   const items = getGaleria();
-  const fotos = items.filter((i) => i.tipo === "foto").length;
-  const videos = items.length - fotos;
 
   return (
     <>
       <section className="border-b border-linea">
         <div className="mx-auto max-w-6xl px-5 py-10 sm:py-14">
-          <p className="eyebrow">Multimedia</p>
+          <p className="eyebrow">Fotos</p>
           <h1 className="title mt-2 text-5xl text-tinta sm:text-6xl">Galería</h1>
           <p className="mt-3 text-base text-mute">
-            {fotos} {fotos === 1 ? "foto" : "fotos"} · {videos}{" "}
-            {videos === 1 ? "vídeo" : "vídeos"}
+            {items.length} {items.length === 1 ? "foto" : "fotos"}
           </p>
         </div>
       </section>

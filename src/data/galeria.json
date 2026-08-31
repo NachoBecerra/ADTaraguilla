@@ -2,7 +2,6 @@
   "_nota": "Editable desde /admin y desde /panel. Cada entrada puede llevar VARIAS fotos y VARIAS etiquetas (equipo, temporada, jugador...). Una foto aparece bajo todas sus etiquetas.",
   "items": [
     {
-      "tipo": "foto",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B",
@@ -11,127 +10,161 @@
       ],
       "fecha": "2026-08-30",
       "fotos": [
-        "/img/galeria/chatgpt-image-30-ago-2026-13_45_45.png"
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/chatgpt-image-30-ago-2026-13_45_45-GxhroQePkDHKrb2EEtZiTC7US3RY0A.jpg",
+          "ancho": 1023,
+          "alto": 1537
+        }
       ],
       "id": "001"
     },
     {
-      "tipo": "foto",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
       ],
       "fecha": "2026-08-30",
       "fotos": [
-        "/img/galeria/chatgpt-image-30-ago-2026-13_28_43.png"
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/chatgpt-image-30-ago-2026-13_28_43-kQfgp48huoBpTfzUt9MbCLh1oVg2j2.jpg",
+          "ancho": 941,
+          "alto": 1672
+        }
       ],
       "id": "01"
     },
     {
-      "tipo": "foto",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
       ],
       "fecha": "2026-08-30",
       "fotos": [
-        "/img/galeria/chatgpt-image-30-ago-2026-18_29_03.png"
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/chatgpt-image-30-ago-2026-18_29_03-l8Fiz5d97nptW9u2sT7sF8BU8gj8p5.jpg",
+          "ancho": 941,
+          "alto": 1672
+        }
       ],
       "id": "Amistoso Infantil B - San Roque"
     },
     {
-      "tipo": "foto",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
       ],
       "fecha": "2026-08-30",
       "fotos": [
-        "/img/galeria/chatgpt-image-30-ago-2026-18_22_39.png"
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/chatgpt-image-30-ago-2026-18_22_39-49zR94WeURnXUaRu6aJF1Wi0nOFYHG.jpg",
+          "ancho": 941,
+          "alto": 1672
+        }
       ],
       "id": "Amistoso Infantil B - San Roque"
     },
     {
-      "tipo": "foto",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
       ],
       "fecha": "2026-08-30",
       "fotos": [
-        "/img/galeria/chatgpt-image-30-ago-2026-18_26_43.png"
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/chatgpt-image-30-ago-2026-18_26_43-Q7MKV9xxZ4wBgCQikGEQia1vSYbtod.jpg",
+          "ancho": 941,
+          "alto": 1672
+        }
       ],
       "id": "amistoso-infantil-b-san-roque-4"
     },
     {
-      "tipo": "foto",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
       ],
       "fecha": "2026-08-30",
       "fotos": [
-        "/img/galeria/chatgpt-image-30-ago-2026-18_21_28.png"
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/chatgpt-image-30-ago-2026-18_21_28-WT1I4QUqrYzCtQC9i9luFdwwYnAXsc.jpg",
+          "ancho": 941,
+          "alto": 1672
+        }
       ],
       "id": "amistoso-infantil-b-san-roque-5"
     },
     {
-      "tipo": "foto",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
       ],
       "fecha": "2026-08-30",
       "fotos": [
-        "/img/galeria/chatgpt-image-30-ago-2026-18_21_17.png"
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/chatgpt-image-30-ago-2026-18_21_17-M7FhGrV4OhoJbkHnc2RcX0JgVoEEB3.jpg",
+          "ancho": 1023,
+          "alto": 1537
+        }
       ],
       "id": "amistoso-infantil-b-san-roque-6"
     },
     {
-      "tipo": "foto",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
       ],
       "fecha": "2026-08-30",
       "fotos": [
-        "/img/galeria/chatgpt-image-30-ago-2026-18_05_01.png"
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/chatgpt-image-30-ago-2026-18_05_01-Om91N7aDte7qg5o0xa96x7f13YL2tk.jpg",
+          "ancho": 941,
+          "alto": 1672
+        }
       ],
       "id": "amistoso-infantil-b-san-roque-7"
     },
     {
-      "tipo": "foto",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
       ],
       "fecha": "2026-08-30",
       "fotos": [
-        "/img/galeria/chatgpt-image-30-ago-2026-18_02_59.png"
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/chatgpt-image-30-ago-2026-18_02_59-dP1cldewfjKMvrAYQMzS9Wcpu0CVyR.jpg",
+          "ancho": 941,
+          "alto": 1672
+        }
       ],
       "id": "amistoso-infantil-b-san-roque-8"
     },
     {
-      "tipo": "foto",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
       ],
       "fecha": "2026-08-30",
       "fotos": [
-        "/img/galeria/chatgpt-image-30-ago-2026-18_01_19.png"
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/chatgpt-image-30-ago-2026-18_01_19-yIzDkgPzLsuGCa9uSinM69nBClb2wA.jpg",
+          "ancho": 941,
+          "alto": 1672
+        }
       ],
       "id": "amistoso-infantil-b-san-roque-9"
     },
     {
-      "tipo": "foto",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
       ],
       "fecha": "2026-08-30",
       "fotos": [
-        "/img/galeria/chatgpt-image-30-ago-2026-17_23_55.png"
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/chatgpt-image-30-ago-2026-17_23_55-fkJbw7RbBJcUSaL7TnJmLC12TkShd6.jpg",
+          "ancho": 941,
+          "alto": 1672
+        }
       ],
       "id": "amistoso-infantil-b-san-roque-10"
     }

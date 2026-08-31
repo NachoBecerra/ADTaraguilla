@@ -12,6 +12,7 @@
     "rfaf:completo": "node scripts/rfaf/sincronizar.mjs --completo"
   },
   "dependencies": {
+    "@vercel/blob": "^2.8.0",
     "gray-matter": "^4.0.3",
     "image-size": "^2.0.2",
     "marked": "^18.0.11",

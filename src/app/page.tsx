@@ -12,7 +12,7 @@ import { TarjetaNoticia } from "@/components/TarjetaNoticia";
 import { TarjetaProximoPartido, Marcador } from "@/components/Partidos";
 import SeccionRedes from "@/components/SeccionRedes";
 import Media from "@/components/Media";
-import { IconoFlecha, IconoPlay } from "@/components/Iconos";
+import { IconoFlecha } from "@/components/Iconos";
 import { fechaLarga } from "@/lib/formato";
 
 function TituloSeccion({
@@ -217,22 +217,12 @@ export default function Inicio() {
                 className="group relative h-44 w-36 overflow-hidden rounded-xl border border-linea sm:h-52 sm:w-44"
               >
                 <Media
-                  src={
-                    item.src ||
-                    (item.youtubeId
-                      ? `https://i.ytimg.com/vi/${item.youtubeId}/hqdefault.jpg`
-                      : "")
-                  }
+                  src={item.src}
                   alt={item.titulo}
                   className="h-full w-full transition-transform duration-500 group-hover:scale-105"
                   sizes="176px"
                 />
 
-                {item.tipo === "video" ? (
-                  <span className="absolute right-2.5 top-2.5 grid grid-cols-1 h-8 w-8 place-items-center rounded-full bg-club text-white">
-                    <IconoPlay size={15} />
-                  </span>
-                ) : null}
                 <span className="pie-foto absolute inset-x-0 bottom-0 px-3 pb-2.5 pt-7 text-xs font-semibold leading-snug text-white">
                   <span className="line-clamp-2">{item.titulo}</span>
                 </span>

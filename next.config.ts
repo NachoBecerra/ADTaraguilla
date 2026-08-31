@@ -12,9 +12,8 @@ const nextConfig: NextConfig = {
       // Escudos de los clubes, servidos por la CDN de la RFAF
       { protocol: "https", hostname: "rfaf.filesnovanet.es" },
       { protocol: "https", hostname: "files.rfaf.es" },
-      // Miniaturas de los vídeos de YouTube de la galería
-      { protocol: "https", hostname: "i.ytimg.com" },
-      { protocol: "https", hostname: "img.youtube.com" },
+      // Fotos de la galería y portadas de noticias, en Vercel Blob
+      { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
     ],
   },
 };

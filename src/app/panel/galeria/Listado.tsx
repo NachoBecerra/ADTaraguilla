@@ -14,11 +14,10 @@ import { fechaCorta } from "@/lib/formato";
 
 export type EntradaPanel = {
   id: string;
-  tipo: "foto" | "video";
   titulo: string;
   albumes: string[];
   fecha: string;
-  fotos: string[];
+  fotos: { url: string; ancho: number; alto: number }[];
 };
 
 /** Quita acentos para que "cadiz" encuentre "Cádiz". */
@@ -156,9 +155,9 @@ function Editor({
               </p>
               <ul className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-4">
                 {entrada.fotos.map((foto) => (
-                  <li key={foto} className="relative">
+                  <li key={foto.url} className="relative">
                     <Image
-                      src={foto}
+                      src={foto.url}
                       alt=""
                       width={140}
                       height={140}
@@ -166,7 +165,7 @@ function Editor({
                     />
                     <form action={quitarFoto}>
                       <input type="hidden" name="id" value={entrada.id} />
-                      <input type="hidden" name="foto" value={foto} />
+                      <input type="hidden" name="foto" value={foto.url} />
                       <button
                         type="submit"
                         aria-label="Quitar esta foto"
@@ -287,7 +286,7 @@ export default function Listado({
               <span className="relative block aspect-square w-full bg-panel-2">
                 {e.fotos[0] ? (
                   <Image
-                    src={e.fotos[0]}
+                    src={e.fotos[0].url}
                     alt=""
                     fill
                     sizes="(min-width: 640px) 220px, 33vw"
@@ -295,7 +294,7 @@ export default function Listado({
                   />
                 ) : (
                   <span className="grid grid-cols-1 h-full w-full place-items-center text-xs text-mute">
-                    vídeo
+                    sin foto
                   </span>
                 )}
 

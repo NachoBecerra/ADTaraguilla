@@ -1,12 +1,11 @@
 "use server";
 
 import matter from "gray-matter";
+import { del } from "@vercel/blob";
 import { revalidatePath } from "next/cache";
 import { haySesion } from "@/lib/panel/sesion";
 import { commitear, leerArchivo } from "@/lib/panel/github";
 import { CARPETA } from "@/lib/panel/noticias";
-
-const CARPETA_IMAGENES = "public/img/noticias";
 
 export type Resultado = { ok: boolean; mensaje: string };
 
@@ -81,19 +80,10 @@ export async function guardarNoticia(
   const slug = aSlug(String(datos.get("slug") ?? "").trim() || titulo);
   const archivo = nombreDe(fecha, slug);
 
-  // La portada nueva llega ya reducida desde el navegador
-  const imagen = String(datos.get("imagen") ?? "");
-  let portada = String(datos.get("portada") ?? "");
+  // La portada ya la ha subido el navegador al almacenamiento: aquí llega su URL
+  const portada = String(datos.get("portada") ?? "");
 
   const escribir: { ruta: string; contenido: string; binario?: boolean }[] = [];
-
-  if (imagen) {
-    const [cabecera, base64] = imagen.split(",", 2);
-    const extension = /png/.test(cabecera) ? "png" : "jpg";
-    const ruta = `${CARPETA_IMAGENES}/${slug}-${Date.now().toString(36)}.${extension}`;
-    escribir.push({ ruta, contenido: base64, binario: true });
-    portada = ruta.replace(/^public/, "");
-  }
 
   escribir.push({
     ruta: archivo,
@@ -145,6 +135,13 @@ export async function borrarNoticia(
 
     const eliminar = [archivo];
     if (portada.startsWith("/img/")) eliminar.push(`public${portada}`);
+    if (portada.startsWith("http")) {
+      try {
+        await del(portada);
+      } catch {
+        // Que falle borrar el archivo no debe impedir borrar la noticia
+      }
+    }
 
     await commitear({ eliminar }, `Noticia eliminada: ${archivo.split("/").pop()}`);
 

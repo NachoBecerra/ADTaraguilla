@@ -4,7 +4,7 @@ slug: amistoso-infaltilb-sanroque
 fecha: 2026-08-30
 categoria: Cantera
 resumen: "  "
-portada: /img/noticias/chatgpt-image-30-ago-2026-13_45_45.png
+portada: "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/chatgpt-image-30-ago-2026-13_45_45-ZfAFg58OmGmx8zgak4apP0zXyq7z1s.jpg"
 autor: AD Taraguilla
 destacada: false
 ---

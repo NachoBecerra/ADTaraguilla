@@ -1,5 +1,5 @@
 import { leerArchivo } from "@/lib/panel/github";
-import { getEntradasGaleria } from "@/lib/contenido";
+import { getEntradasGaleria, fotosDe, type FotoGuardada } from "@/lib/contenido";
 
 /**
  * Entradas de la galería tal y como están AHORA en el repositorio.
@@ -15,11 +15,10 @@ import { getEntradasGaleria } from "@/lib/contenido";
 
 export type EntradaPanel = {
   id: string;
-  tipo: "foto" | "video";
   titulo: string;
   albumes: string[];
   fecha: string;
-  fotos: string[];
+  fotos: FotoGuardada[];
 };
 
 function comoLista(valor?: string[] | string): string[] {
@@ -53,18 +52,17 @@ export async function entradasDeGaleria(): Promise<EntradaPanel[]> {
     return (datos.items ?? []).map(
       (
         e: Partial<EntradaPanel> & {
-          fotos?: string[] | string;
+          fotos?: FotoGuardada[] | string[] | string;
           albumes?: string[] | string;
           album?: string;
         },
         i: number,
       ) => ({
         id: e.id || `${aSlug(e.titulo ?? "foto")}-${i}`,
-        tipo: e.tipo ?? "foto",
         titulo: e.titulo ?? "",
         albumes: etiquetas(e),
         fecha: e.fecha ?? "",
-        fotos: comoLista(e.fotos),
+        fotos: fotosDe(e.fotos),
       }),
     );
   } catch {
