@@ -97,8 +97,22 @@ export default function PieDePagina() {
           <p>
             © {new Date().getFullYear()} {site.nombreLargo}. Todos los derechos reservados.
           </p>
-          <p>
-            Datos de competición: {site.federacion.nombre} · {site.federacion.delegacion}
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
+            <span>
+              Datos de competición: {site.federacion.nombre} ·{" "}
+              {site.federacion.delegacion}
+            </span>
+            <span aria-hidden className="hidden sm:inline">
+              ·
+            </span>
+            {/* Discreto a propósito: lo que protege el panel es la contraseña,
+                no que su dirección sea difícil de encontrar. */}
+            <Link
+              href="/panel"
+              className="underline underline-offset-2 transition-colors hover:text-white"
+            >
+              Panel del club
+            </Link>
           </p>
         </div>
       </div>
