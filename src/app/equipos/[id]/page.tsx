@@ -17,7 +17,7 @@ import { site } from "@/data/site";
 import Clasificacion from "@/components/Clasificacion";
 import { getGaleriaDeEquipo } from "@/lib/contenido";
 import NavegacionEquipo, { type Bloque } from "@/components/NavegacionEquipo";
-import Image from "next/image";
+import Galeria from "@/components/Galeria";
 import { FilaPartido, TarjetaProximoPartido } from "@/components/Partidos";
 import { fechaLarga } from "@/lib/formato";
 import { IconoFlecha, IconoEnlaceExterno } from "@/components/Iconos";
@@ -187,35 +187,13 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
               {fotos.length} {fotos.length === 1 ? "foto" : "fotos"} del equipo.
             </p>
 
-            <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {fotos.slice(0, 8).map((foto) => (
-                <li key={foto.id}>
-                  <Link
-                    href={`/galeria?album=${encodeURIComponent(equipo.nombre)}`}
-                    className="group relative block overflow-hidden rounded-xl border border-linea bg-panel"
-                  >
-                    <Image
-                      src={foto.src}
-                      alt={foto.titulo}
-                      width={foto.ancho}
-                      height={foto.alto}
-                      sizes="(min-width: 640px) 22vw, 45vw"
-                      className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                    />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            {fotos.length > 8 ? (
-              <Link
-                href={`/galeria?album=${encodeURIComponent(equipo.nombre)}`}
-                className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-club-soft"
-              >
-                Ver las {fotos.length} fotos del equipo
-                <IconoFlecha size={15} />
-              </Link>
-            ) : null}
+            {/*
+              La misma galería de siempre, pero acotada a este equipo: se ven
+              todas aquí, con su visor a pantalla completa, sin salir a
+              /galeria. Su nombre no se ofrece como filtro porque todas las
+              fotos lo llevan y no filtraría nada.
+            */}
+            <Galeria items={fotos} ocultar={equipo.nombre} conBuscador porTanda={12} />
           </section>
         ) : null}
 

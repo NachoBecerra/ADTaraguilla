@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { getGaleria } from "@/lib/contenido";
 import Galeria from "@/components/Galeria";
 import SeccionRedes from "@/components/SeccionRedes";
@@ -27,13 +26,7 @@ export default function PaginaGaleria() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-8">
-        {/*
-          La galería mira ?album= para poder llegar filtrada desde la ficha de
-          un equipo, y leer la URL obliga a este Suspense.
-        */}
-        <Suspense fallback={<p className="py-10 text-center text-mute">Cargando fotos…</p>}>
-          <Galeria items={items} />
-        </Suspense>
+<Galeria items={items} />
       </section>
 
       <SeccionRedes />

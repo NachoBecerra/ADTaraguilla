@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import type { ItemGaleria } from "@/lib/contenido";
 import {
   IconoCerrar,
   IconoFlecha,
   IconoDescarga,
   IconoImagen,
+  IconoBuscar,
 } from "@/components/Iconos";
 import { fechaLarga } from "@/lib/formato";
 
@@ -19,19 +19,9 @@ import { fechaLarga } from "@/lib/formato";
  */
 const POR_TANDA = 24;
 
-/**
- * Etiqueta pedida por la URL, tal y como está escrita en los datos.
- *
- * La ficha de un equipo enlaza aquí con ?album=Infantil B para enseñar solo
- * sus fotos. Se compara sin distinguir mayúsculas ni acentos del enlace.
- */
-function albumPedido(items: ItemGaleria[], pedido: string | null): string {
-  if (!pedido) return "todos";
-  for (const i of items) {
-    const encaja = i.albumes.find((a) => a.toLowerCase() === pedido.toLowerCase());
-    if (encaja) return encaja;
-  }
-  return "todos";
+/** Quita acentos para que "cadiz" encuentre "Cádiz". */
+function normalizar(texto: string): string {
+  return texto.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
 }
 
 /** Nombre con el que se guarda la foto al descargarla. */
@@ -46,32 +36,62 @@ function nombreDescarga(item: ItemGaleria): string {
   return `${base || item.id}.${extension}`;
 }
 
-export default function Galeria({ items }: { items: ItemGaleria[] }) {
-  const parametros = useSearchParams();
-  // Se resuelve en el primer pintado: sin efecto no hay parpadeo de "todas"
-  const [album, setAlbum] = useState<string>(() =>
-    albumPedido(items, parametros.get("album")),
-  );
+export default function Galeria({
+  items,
+  albumInicial = "todos",
+  ocultar,
+  conBuscador = false,
+  porTanda = POR_TANDA,
+}: {
+  items: ItemGaleria[];
+  /** Etiqueta por la que llega ya filtrada, si viene de un enlace. */
+  albumInicial?: string;
+  /**
+   * Etiqueta que no se ofrece como filtro.
+   *
+   * En la ficha de un equipo todas las fotos son suyas, así que su nombre
+   * como botón no filtraría nada: sobra.
+   */
+  ocultar?: string;
+  conBuscador?: boolean;
+  /** Fotos por tanda. En la ficha de un equipo conviene menos: es una sección
+   *  más dentro de la página, no la página entera. */
+  porTanda?: number;
+}) {
+  const [album, setAlbum] = useState<string>(albumInicial);
+  const [busqueda, setBusqueda] = useState("");
   const [abierto, setAbierto] = useState<number | null>(null);
-  const [tanda, setTanda] = useState(POR_TANDA);
+  const [tanda, setTanda] = useState(porTanda);
 
   // Una foto puede llevar varias etiquetas y aparece bajo todas ellas
   const albumes = useMemo(() => {
     const cuenta = new Map<string, number>();
-    for (const i of items) for (const a of i.albumes) cuenta.set(a, (cuenta.get(a) ?? 0) + 1);
+    for (const i of items) {
+      for (const a of i.albumes) {
+        if (ocultar && a.toLowerCase() === ocultar.toLowerCase()) continue;
+        cuenta.set(a, (cuenta.get(a) ?? 0) + 1);
+      }
+    }
     return [
       "todos",
       ...[...cuenta.entries()]
         .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "es"))
         .map(([a]) => a),
     ];
-  }, [items]);
+  }, [items, ocultar]);
 
-  const visibles = useMemo(
-    () =>
-      items.filter((i) => album === "todos" || i.albumes.includes(album)),
-    [items, album],
-  );
+  const visibles = useMemo(() => {
+    const q = normalizar(busqueda.trim());
+    return items.filter((i) => {
+      if (album !== "todos" && !i.albumes.includes(album)) return false;
+      if (!q) return true;
+      // Busca en el título y en las etiquetas: "amistoso" o "25/26"
+      return (
+        normalizar(i.titulo).includes(q) ||
+        i.albumes.some((a) => normalizar(a).includes(q))
+      );
+    });
+  }, [items, album, busqueda]);
 
   const mostradas = useMemo(() => visibles.slice(0, tanda), [visibles, tanda]);
 
@@ -108,6 +128,27 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
 
   return (
     <>
+      {conBuscador ? (
+        <label className="relative block">
+          <span className="sr-only">Buscar fotos</span>
+          <IconoBuscar
+            size={18}
+            className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-mute"
+          />
+          <input
+            type="search"
+            value={busqueda}
+            onChange={(e) => {
+              setBusqueda(e.target.value);
+              setAbierto(null);
+              setTanda(porTanda);
+            }}
+            placeholder="Buscar por título o etiqueta…"
+            className="w-full rounded-xl border border-linea bg-panel py-2.5 pl-11 pr-4 text-sm text-tinta focus:border-club focus:outline-none"
+          />
+        </label>
+      ) : null}
+
       {albumes.length > 2 ? (
         <div className="mt-3 flex flex-wrap gap-2">
           {albumes.map((a) => (
@@ -117,7 +158,7 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
               onClick={() => {
                 setAlbum(a);
                 setAbierto(null);
-                setTanda(POR_TANDA);
+                setTanda(porTanda);
               }}
               aria-pressed={album === a}
               className={`rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors ${
@@ -132,7 +173,9 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
 
       {visibles.length === 0 ? (
         <p className="mt-10 text-center text-mute">
-          Todavía no hay contenido en esta sección.
+          {busqueda.trim() || album !== "todos"
+            ? "Ninguna foto coincide con lo que buscas."
+            : "Todavía no hay contenido en esta sección."}
         </p>
       ) : (
         /*
@@ -178,7 +221,7 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
         <div className="mt-8 text-center">
           <button
             type="button"
-            onClick={() => setTanda((t) => t + POR_TANDA)}
+            onClick={() => setTanda((t) => t + porTanda)}
             className="btn btn-ghost"
           >
             Cargar más fotos
