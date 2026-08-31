@@ -227,13 +227,13 @@ export default function Inicio() {
                   className="h-full w-full transition-transform duration-500 group-hover:scale-105"
                   sizes="176px"
                 />
-                <span className="absolute inset-0 bg-linear-to-t from-black/85 via-black/25 to-transparent" />
+
                 {item.tipo === "video" ? (
                   <span className="absolute right-2.5 top-2.5 grid h-8 w-8 place-items-center rounded-full bg-club text-white">
                     <IconoPlay size={15} />
                   </span>
                 ) : null}
-                <span className="absolute inset-x-0 bottom-0 p-3 text-xs font-semibold leading-snug text-white">
+                <span className="pie-foto absolute inset-x-0 bottom-0 px-3 pb-2.5 pt-7 text-xs font-semibold leading-snug text-white">
                   <span className="line-clamp-2">{item.titulo}</span>
                 </span>
               </Link>

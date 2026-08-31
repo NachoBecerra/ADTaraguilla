@@ -124,6 +124,24 @@ body[data-menu-open="true"] {
     color: var(--color-club);
   }
 
+  /*
+    Franja de lectura al pie de una foto.
+    El degradado se mantiene casi opaco a la altura del texto y solo se
+    desvanece por arriba: así el título se lee tanto sobre una portería oscura
+    como sobre una pared blanca, sin tapar la foto.
+  */
+  .pie-foto {
+    background: linear-gradient(
+      to top,
+      rgb(0 0 0 / 0.82) 0%,
+      rgb(0 0 0 / 0.74) 58%,
+      rgb(0 0 0 / 0) 100%
+    );
+  }
+  .pie-foto > * {
+    text-shadow: 0 1px 2px rgb(0 0 0 / 0.55);
+  }
+
   /* Carrusel horizontal con scroll-snap (patrón móvil) */
   .rail {
     display: flex;

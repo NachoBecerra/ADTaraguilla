@@ -166,7 +166,7 @@ export default function Galeria({ items }: { items: ItemGaleria[] }) {
                   </span>
                 )}
 
-                <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-black/85 via-black/35 to-transparent p-3 pt-8">
+                <span className="pie-foto pointer-events-none absolute inset-x-0 bottom-0 px-3 pb-2.5 pt-7">
                   <span className="line-clamp-2 text-xs font-semibold leading-snug text-white">
                     {item.titulo}
                   </span>
