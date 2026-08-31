@@ -161,6 +161,17 @@ export function IconoDescarga({ size = 20, className }: Props) {
   );
 }
 
+/** El de Compartir de iOS: hay que reconocerlo de un vistazo en la barra. */
+export function IconoCompartir({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 15V3.5" />
+      <path d="M8.2 7.3 12 3.5l3.8 3.8" />
+      <path d="M7 10.5H5.8A1.8 1.8 0 0 0 4 12.3v6.4a1.8 1.8 0 0 0 1.8 1.8h12.4a1.8 1.8 0 0 0 1.8-1.8v-6.4a1.8 1.8 0 0 0-1.8-1.8H17" />
+    </svg>
+  );
+}
+
 export function IconoImagen({ size = 20, className }: Props) {
   return (
     <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">

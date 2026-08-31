@@ -5,6 +5,7 @@ import { site } from "@/data/site";
 import Cabecera from "@/components/Cabecera";
 import { ClubJsonLd } from "@/components/DatosEstructurados";
 import PieDePagina from "@/components/PieDePagina";
+import AvisoInstalar from "@/components/AvisoInstalar";
 
 const display = Barlow_Condensed({
   variable: "--font-display",
@@ -46,7 +47,17 @@ export const metadata: Metadata = {
     title: `${site.nombre} — Web oficial`,
     description: site.descripcion,
   },
-  icons: { icon: site.escudo },
+  icons: {
+    icon: site.escudo,
+    // iPhone no lee los iconos del manifest: usa este
+    apple: "/apple-icon.png",
+  },
+  appleWebApp: {
+    capable: true,
+    title: site.nombre,
+    // La barra de estado se funde con el verde de la cabecera
+    statusBarStyle: "black-translucent",
+  },
   twitter: {
     // La grande enseña la imagen al compartir; la pequeña solo un recuadro
     card: "summary_large_image",
@@ -77,6 +88,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <PieDePagina />
+        <AvisoInstalar />
       </body>
     </html>
   );
