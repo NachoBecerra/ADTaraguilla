@@ -43,7 +43,15 @@ export default function Cabecera() {
       <header className="sticky top-0 z-50 border-b border-linea bg-fondo/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
           <Link href="/" className="flex items-center gap-2.5" aria-label={`${site.nombre} — inicio`}>
-            <Image src={site.escudo} alt="" width={36} height={35} priority />
+            <Image
+              src={site.escudo}
+              alt=""
+              width={843}
+              height={836}
+              sizes="36px"
+              priority
+              className="h-9 w-auto"
+            />
             <span className="title text-lg leading-none sm:text-xl">
               {site.nombre.split(" ")[0]}{" "}
               <span className="text-club">{site.nombre.split(" ").slice(1).join(" ")}</span>

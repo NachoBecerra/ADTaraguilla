@@ -10,7 +10,14 @@ export default function PieDePagina() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2">
             <div className="flex items-center gap-3">
-              <Image src={site.escudo} alt="" width={46} height={45} />
+              <Image
+                src={site.escudo}
+                alt=""
+                width={843}
+                height={836}
+                sizes="46px"
+                className="h-11 w-auto"
+              />
               <div>
                 <p className="title text-xl text-white">{site.nombreLargo}</p>
                 <p className="text-sm text-club-claro">{site.lema}</p>

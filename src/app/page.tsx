@@ -75,8 +75,9 @@ export default function Inicio() {
             <Image
               src={site.escudo}
               alt=""
-              width={88}
-              height={86}
+              width={843}
+              height={836}
+              sizes="96px"
               priority
               className="h-20 w-auto drop-shadow-[0_10px_28px_rgba(0,0,0,0.35)] sm:h-24"
             />

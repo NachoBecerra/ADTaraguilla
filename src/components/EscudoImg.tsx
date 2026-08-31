@@ -35,6 +35,13 @@ export default function EscudoImg({
       alt=""
       width={size}
       height={size}
+      /*
+       * Sin esto Next solo ofrece el escudo a 1x y 2x, y en un móvil de 3x
+       * se ve blando. Diciéndole a qué tamaño se pinta, el navegador puede
+       * pedir el triple de píxeles; si el original no da para tanto, el
+       * optimizador devuelve lo que haya y no pasa nada.
+       */
+      sizes={`${size}px`}
       className={`shrink-0 object-contain ${className}`}
       style={{ width: size, height: size }}
     />
