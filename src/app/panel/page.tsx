@@ -6,6 +6,7 @@ import { entradasDeGaleria } from "@/lib/panel/galeria";
 import Acceso from "./Acceso";
 import { salir } from "./acciones";
 import { IconoFlecha, IconoImagen } from "@/components/Iconos";
+import ResumenUso from "@/components/ResumenUso";
 
 export const metadata: Metadata = {
   title: "Panel del club",
@@ -62,6 +63,8 @@ export default async function Panel() {
           </Link>
         ))}
       </div>
+
+      <ResumenUso />
 
       <p className="mt-10 rounded-xl border border-linea bg-panel p-4 text-xs leading-relaxed text-mute">
         Lo que publiques aquí se guarda en el repositorio del club y la web se

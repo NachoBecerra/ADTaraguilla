@@ -8,6 +8,8 @@ import PieDePagina from "@/components/PieDePagina";
 import AvisoInstalar from "@/components/AvisoInstalar";
 import RegistrarSW from "@/components/RegistrarSW";
 import AvisoDatosNuevos from "@/components/AvisoDatosNuevos";
+import { Analytics } from "@vercel/analytics/next";
+import ContarUso from "@/components/ContarUso";
 import { actualizado } from "@/lib/competicion";
 
 const display = Barlow_Condensed({
@@ -94,6 +96,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <AvisoInstalar />
         <RegistrarSW />
         <AvisoDatosNuevos generado={actualizado} />
+        {/*
+          Analítica de Vercel: cuenta visitas, páginas, dispositivos y de dónde
+          llega la gente. No usa cookies ni guarda nada en el navegador, así
+          que no hace falta banner de consentimiento.
+        */}
+        <Analytics />
+        <ContarUso />
       </body>
     </html>
   );
