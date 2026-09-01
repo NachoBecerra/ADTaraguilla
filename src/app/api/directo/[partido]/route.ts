@@ -1,6 +1,6 @@
 import { anotarEventos, leerRegistro } from "@/lib/directo/almacen";
 import { enlaceValido } from "@/lib/directo/enlace";
-import { sanearEventos } from "@/lib/directo/modelo";
+import { plegar, sanearEventos } from "@/lib/directo/modelo";
 
 /**
  * El partido en directo: leer lo que hay y anotar lo que va pasando.
@@ -10,6 +10,9 @@ import { sanearEventos } from "@/lib/directo/modelo";
  */
 
 export const dynamic = "force-dynamic";
+
+/** Lo que se sigue pudiendo escribir después de dar el partido por terminado. */
+const TRAS_EL_FINAL_MS = 180 * 60_000;
 
 /** El identificador viaja en la ruta y acaba siendo un nombre de archivo. */
 const ID_VALIDO = /^[a-z0-9-]{3,80}$/;
@@ -83,6 +86,22 @@ export async function POST(peticion: Request, { params }: Contexto): Promise<Res
       { error: "La retransmisión se ha reiniciado", reiniciado: true },
       { status: 409 },
     );
+  }
+
+  /*
+   * El enlace deja de valer tres horas después del pitido final, no de la hora
+   * del saque: un partido que se adelanta o se alarga no tiene por qué llevarse
+   * por delante el margen para rematar la cronología. Se decide aquí y no en la
+   * firma del token porque cuando se firma todavía no se sabe cuándo acabará.
+   */
+  if (actual) {
+    const estado = plegar(actual.eventos, actual.partido.minutosPorParte);
+    if (estado.finMs !== null && Date.now() - estado.finMs > TRAS_EL_FINAL_MS) {
+      return Response.json(
+        { error: "El partido se cerró hace horas", cerrado: true },
+        { status: 403 },
+      );
+    }
   }
 
   const registro = await anotarEventos(partido, eventos);

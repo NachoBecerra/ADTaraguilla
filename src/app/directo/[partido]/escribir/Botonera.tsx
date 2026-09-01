@@ -107,8 +107,11 @@ export default function Botonera({
   /* Para no retroceder si llega una respuesta más vieja que lo que ya tenemos */
   const version = useRef(inicial.version);
   const etag = useRef<string | null>(null);
-  /* El partido se reinició desde el panel: esta pantalla ya no vale */
-  const [reiniciado, setReiniciado] = useState(false);
+  /**
+   * Motivos por los que esta pantalla deja de servir del todo. En los dos casos
+   * no es un fallo pasajero: no tiene sentido seguir pulsando.
+   */
+  const [cierre, setCierre] = useState<null | "reiniciado" | "cerrado">(null);
 
   /* Botones sordos un momento después de cada acción, para el doble toque */
   const [bloqueado, setBloqueado] = useState(false);
@@ -210,7 +213,11 @@ export default function Botonera({
         return;
       }
       if (r.status === 409) {
-        setReiniciado(true);
+        setCierre("reiniciado");
+        return;
+      }
+      if (r.status === 403) {
+        setCierre("cerrado");
         return;
       }
       if (!r.ok) return; // se reintenta solo
@@ -256,7 +263,7 @@ export default function Botonera({
 
       // Reiniciado desde el panel: mejor enterarse sin tener que pulsar nada
       if (registro.abierto && registro.abierto !== inicial.abierto) {
-        setReiniciado(true);
+        setCierre("reiniciado");
         return;
       }
       if (registro.version <= version.current) return;
@@ -271,10 +278,10 @@ export default function Botonera({
   }, [partido.id, inicial.abierto]);
 
   useEffect(() => {
-    if (reiniciado) return;
+    if (cierre) return;
     const reloj = setInterval(() => void preguntar(), CADA_PREGUNTA_MS);
     return () => clearInterval(reloj);
-  }, [preguntar, reiniciado]);
+  }, [preguntar, cierre]);
 
   /* El reintento, para lo que se quedó sin mandar por falta de cobertura */
   useEffect(() => {
@@ -305,8 +312,8 @@ export default function Botonera({
   const { fase } = estado;
 
   const enJuego = fase !== "sin-empezar" && fase !== "final";
-  /* Ni durante el bloqueo por doble toque, ni si el partido se reinició */
-  const sordo = bloqueado || reiniciado;
+  /* Ni durante el bloqueo por doble toque, ni si la pantalla ya no sirve */
+  const sordo = bloqueado || cierre !== null;
   const sinMandar = pendientes.length;
 
   /* Un solo botón de fase: el que toca según dónde esté el partido */
@@ -358,23 +365,30 @@ export default function Botonera({
         </div>
       </div>
 
-      {reiniciado ? (
+      {cierre ? (
         <div
           role="alert"
           className="mt-3 rounded-xl border border-club bg-panel p-4 text-sm leading-relaxed text-tinta"
         >
-          <p className="font-bold text-club">Este partido se ha reiniciado.</p>
-          <p className="mt-1">
-            Alguien lo ha empezado de cero desde el panel del club, así que desde
-            aquí ya no se puede apuntar nada. Recarga la página para seguir.
+          <p className="font-bold text-club">
+            {cierre === "reiniciado"
+              ? "Este partido se ha reiniciado."
+              : "Este partido ya está cerrado."}
           </p>
-          <button
-            type="button"
-            onClick={() => window.location.reload()}
-            className="btn btn-primary mt-3 w-full py-3 text-sm"
-          >
-            Recargar
-          </button>
+          <p className="mt-1">
+            {cierre === "reiniciado"
+              ? "Alguien lo ha empezado de cero desde el panel del club, así que desde aquí ya no se puede apuntar nada. Recarga la página para seguir."
+              : "Pasan unas horas desde el final y la retransmisión se cierra sola. La cronología sigue publicada; para cambiar algo, pide un enlace nuevo en el panel del club."}
+          </p>
+          {cierre === "reiniciado" ? (
+            <button
+              type="button"
+              onClick={() => window.location.reload()}
+              className="btn btn-primary mt-3 w-full py-3 text-sm"
+            >
+              Recargar
+            </button>
+          ) : null}
         </div>
       ) : null}
 

@@ -84,6 +84,14 @@ export type Estado = {
   jugadoParteMs: number;
   /** Desde cuándo corre el reloj, o null si está parado. */
   corriendoDesde: number | null;
+  /**
+   * Cuándo se pitó el final, o null si el partido no se ha cerrado.
+   *
+   * Lo necesitan tres cosas distintas: cuánto sigue valiendo el enlace de quien
+   * escribe, cuánto se sigue enseñando el partido en las tarjetas y cuándo
+   * desaparece del panel.
+   */
+  finMs: number | null;
   /** Del más antiguo al más reciente: el último evento va al final. */
   linea: EventoEnLinea[];
 };
@@ -170,6 +178,7 @@ export function plegar(eventos: Evento[], minutosPorParte: number): Estado {
     minutosPorParte,
     jugadoParteMs: 0,
     corriendoDesde: null,
+    finMs: null,
     linea: [],
   };
 
@@ -204,6 +213,7 @@ export function plegar(eventos: Evento[], minutosPorParte: number): Estado {
         estado.parte = 1;
         estado.jugadoParteMs = 0;
         estado.corriendoDesde = evento.ts;
+        estado.finMs = null;
         break;
 
       case "parar":
@@ -228,11 +238,14 @@ export function plegar(eventos: Evento[], minutosPorParte: number): Estado {
         estado.jugadoParteMs = 0;
         estado.corriendoDesde = evento.ts;
         estado.fase = "jugando";
+        // Reanudar tras un final anulado deja de contar como terminado
+        estado.finMs = null;
         break;
 
       case "final":
         detener(evento.ts);
         estado.fase = "final";
+        estado.finMs = evento.ts;
         break;
 
       case "gol":

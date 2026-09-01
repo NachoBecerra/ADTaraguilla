@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { haySesion } from "@/lib/panel/sesion";
 import { partidosRetransmitibles } from "@/lib/directo/partidos";
-import { retransmisionesAbiertas } from "./acciones";
+import { estadoDeRetransmisiones } from "./acciones";
 import Acceso from "../Acceso";
 import Listado, { type Fila } from "./Listado";
 import { IconoFlecha } from "@/components/Iconos";
@@ -19,18 +19,25 @@ export default async function PanelDirecto() {
   if (!(await haySesion())) return <Acceso />;
 
   const candidatos = partidosRetransmitibles();
-  const abiertas = new Set(await retransmisionesAbiertas(candidatos.map((c) => c.ficha.id)));
+  const estados = await estadoDeRetransmisiones(candidatos.map((c) => c.ficha.id));
 
-  const partidos: Fila[] = candidatos.map(({ ficha }) => ({
-    id: ficha.id,
-    nombreEquipo: ficha.nombreEquipo,
-    local: ficha.local,
-    visitante: ficha.visitante,
-    fecha: ficha.fecha,
-    hora: ficha.hora,
-    campo: ficha.campo,
-    abierta: abiertas.has(ficha.id),
-  }));
+  const partidos: Fila[] = candidatos
+    /*
+     * Un partido cuya retransmisión terminó hace horas ya no se puede escribir,
+     * así que no pinta nada aquí: el panel enseña lo que todavía se puede hacer.
+     * La cronología no se pierde, sigue en la página del partido.
+     */
+    .filter(({ ficha }) => estados[ficha.id] !== "caducada")
+    .map(({ ficha }) => ({
+      id: ficha.id,
+      nombreEquipo: ficha.nombreEquipo,
+      local: ficha.local,
+      visitante: ficha.visitante,
+      fecha: ficha.fecha,
+      hora: ficha.hora,
+      campo: ficha.campo,
+      estado: estados[ficha.id] ?? "sin-abrir",
+    }));
 
   return (
     <section className="mx-auto max-w-3xl px-5 py-10">

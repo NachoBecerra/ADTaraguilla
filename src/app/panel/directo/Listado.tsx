@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { empezarRetransmision, reiniciarRetransmision } from "./acciones";
+import {
+  empezarRetransmision,
+  reiniciarRetransmision,
+  type EstadoPanel,
+} from "./acciones";
 import { fechaPartido } from "@/lib/formato";
 import { IconoFlecha } from "@/components/Iconos";
 
@@ -20,7 +24,17 @@ export type Fila = {
   fecha: string | null;
   hora: string | null;
   campo: string | null;
-  abierta: boolean;
+  estado: EstadoPanel;
+};
+
+/** Cómo se ve de un vistazo en qué punto está cada partido. */
+const CHIP: Record<EstadoPanel, { texto: string; clase: string } | null> = {
+  "sin-abrir": null,
+  abierta: { texto: "Preparada", clase: "bg-panel-2 text-mute" },
+  "en-directo": { texto: "En directo", clase: "bg-club text-white" },
+  terminada: { texto: "Terminada", clase: "bg-panel-2 text-mute" },
+  // No se llega a pintar: el panel no las lista
+  caducada: null,
 };
 
 export default function Listado({ partidos }: { partidos: Fila[] }) {
@@ -89,6 +103,13 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
               <p className="title mt-0.5 truncate text-lg text-tinta">
                 {p.local} · {p.visitante}
               </p>
+              {CHIP[p.estado] ? (
+                <span
+                  className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${CHIP[p.estado]!.clase}`}
+                >
+                  {CHIP[p.estado]!.texto}
+                </span>
+              ) : null}
               <p className="mt-1 text-xs text-mute">
                 {p.fecha ? fechaPartido(p.fecha) : "Sin fecha"}
                 {p.hora ? ` · ${p.hora}` : " · sin hora"}
@@ -104,7 +125,7 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
             >
               {trabajando === p.id
                 ? "Abriendo…"
-                : p.abierta || enlaces[p.id]
+                : p.estado !== "sin-abrir" || enlaces[p.id]
                   ? "Ver enlace"
                   : "Retransmitir"}
             </button>

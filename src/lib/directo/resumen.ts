@@ -1,6 +1,7 @@
 import { leerRegistro, listarRegistros } from "@/lib/directo/almacen";
 import { minutoEn, plegar, type Fase } from "@/lib/directo/modelo";
 import { diasDeLaVentana, idsDeLaVentana } from "@/lib/directo/ventana";
+import { getEquipo, partidosDe } from "@/lib/competicion";
 
 /**
  * Lo justo para encender el "en directo" en una tarjeta.
@@ -31,20 +32,54 @@ export type ResumenDirecto = {
  * Cuánto se sigue enseñando un partido ya terminado.
  *
  * Un rato, para quien entra justo después del pitido final y quiere ver cómo
- * quedó. Pasado eso se retira solo: a partir de ahí el resultado que vale es el
- * del acta de la RFAF, que llega por la sincronización.
+ * quedó. Pasado eso se retira: a partir de ahí el resultado que vale es el del
+ * acta de la RFAF.
  */
 const TRAS_EL_FINAL_MS = 3 * 60 * 60_000;
 
-type ResumenInterno = ResumenDirecto & { terminadoHace: number };
+/**
+ * Tope para un partido que nadie cerró.
+ *
+ * Lo normal es que el directo se apague cuando la RFAF publica el resultado.
+ * Pero en las eliminatorias de copa la federación muchas veces no publica nada
+ * —está documentado como limitación conocida—, y sin este tope un partido de
+ * copa que el delegado olvidara cerrar seguiría marcando "EN DIRECTO 240'"
+ * durante días. Es una red de seguridad, no la regla principal.
+ */
+const SIN_CERRAR_MS = 6 * 60 * 60_000;
+
+/**
+ * ¿Ha publicado ya la RFAF el resultado de este partido?
+ *
+ * Es la señal buena de que el partido acabó: en cuanto llega el acta, el
+ * directo ha cumplido y deja paso a lo oficial, lo pulsara alguien o no.
+ *
+ * Sale de los datos que se generan al compilar, así que llega con el mismo
+ * retraso que el resto de la web: unos minutos tras la sincronización.
+ */
+function hayResultadoOficial(equipoId: string, fecha: string | null): boolean {
+  if (!fecha) return false;
+  const equipo = getEquipo(equipoId);
+  if (!equipo) return false;
+  return partidosDe(equipo).some((p) => p.fecha === fecha && p.jugado);
+}
+
+type ResumenInterno = ResumenDirecto & {
+  terminadoHace: number;
+  desdeElSaque: number;
+  oficial: boolean;
+};
 
 function resumir(registro: Awaited<ReturnType<typeof leerRegistro>>): ResumenInterno | null {
   if (!registro) return null;
 
   const estado = plegar(registro.eventos, registro.partido.minutosPorParte);
+  const saque = estado.linea.find((e) => e.tipo === "inicio")?.ts ?? null;
+
   return {
-    terminadoHace:
-      estado.fase === "final" ? Date.now() - Date.parse(registro.actualizado) : 0,
+    terminadoHace: estado.finMs === null ? 0 : Date.now() - estado.finMs,
+    desdeElSaque: saque === null ? 0 : Date.now() - saque,
+    oficial: hayResultadoOficial(registro.partido.equipo, registro.partido.fecha),
     id: registro.partido.id,
     equipo: registro.partido.equipo,
     local: registro.partido.local,
@@ -69,13 +104,20 @@ export async function directosDeHoy(ahora = new Date()): Promise<ResumenDirecto[
         r !== null &&
         // Abierto pero sin empezar no es un directo: no hay nada que enseñar
         r.fase !== "sin-empezar" &&
-        // Y lo que terminó hace rato deja paso al resultado oficial
-        r.terminadoHace < TRAS_EL_FINAL_MS,
+        // En cuanto la RFAF publica el resultado, el directo ha cumplido
+        !r.oficial &&
+        // Lo que terminó hace rato deja paso a lo oficial
+        r.terminadoHace < TRAS_EL_FINAL_MS &&
+        // Y lo que nadie cerró tampoco puede quedarse encendido para siempre
+        r.desdeElSaque < SIN_CERRAR_MS,
     )
-    // `terminadoHace` es de uso interno: no tiene por qué salir a la red
+    // Lo de decidir es de uso interno: no tiene por qué salir a la red
     .map((r) => {
       const resumen: ResumenDirecto = { ...r };
-      delete (resumen as Partial<ResumenInterno>).terminadoHace;
+      const interno = resumen as Partial<ResumenInterno>;
+      delete interno.terminadoHace;
+      delete interno.desdeElSaque;
+      delete interno.oficial;
       return resumen;
     });
 }
