@@ -72,13 +72,9 @@ async function leer(id: string): Promise<Registro | null> {
       return null;
     }
   }
-  /*
-   * Sin caché, siempre. El almacén sirve por una caché cuya vigencia mínima es
-   * de un minuto, y aquí se lee para modificar y volver a guardar cada pocos
-   * segundos: una lectura de hace un minuto haría perder todo lo apuntado en
-   * ese minuto.
-   */
-  return leerPrivado<Registro | null>(rutaDe(id), null, { sinCache: true });
+  // Sin caché, como todo lo del almacén privado: aquí se lee para modificar y
+  // volver a guardar cada pocos segundos.
+  return leerPrivado<Registro | null>(rutaDe(id), null);
 }
 
 async function escribir(registro: Registro): Promise<boolean> {
@@ -87,9 +83,7 @@ async function escribir(registro: Registro): Promise<boolean> {
     await fs.writeFile(rutaLocal(registro.partido.id), JSON.stringify(registro), "utf8");
     return true;
   }
-  // El mínimo que admite el almacén. Un partido en directo no se parece en
-  // nada a lo que justifica el mes de caché que trae por defecto.
-  return escribirPrivado(rutaDe(registro.partido.id), registro, { cacheMaxAge: 60 });
+  return escribirPrivado(rutaDe(registro.partido.id), registro);
 }
 
 /**
@@ -138,10 +132,7 @@ async function crear(registro: Registro): Promise<boolean> {
       return false;
     }
   }
-  return escribirPrivado(rutaDe(registro.partido.id), registro, {
-    cacheMaxAge: 60,
-    sobrescribir: false,
-  });
+  return escribirPrivado(rutaDe(registro.partido.id), registro, { sobrescribir: false });
 }
 
 /**

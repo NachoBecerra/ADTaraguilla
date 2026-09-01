@@ -11,6 +11,15 @@ import { del, get, list, put } from "@vercel/blob";
  * con pedir la URL: hay que pasar por el SDK con el token, y por eso se lee
  * con `get` en vez de con un fetch normal.
  *
+ * **La caché va desactivada por defecto, y es importante.** El almacén sirve
+ * los archivos por una caché y `put` los guarda con un mes de vigencia; leer a
+ * través de ella devuelve la versión anterior. Aquí dentro no hay nada que se
+ * beneficie de eso: todo son datos que se leen, se modifican y se vuelven a
+ * guardar —el recuento de uso, las suscripciones, el partido en directo—, así
+ * que una lectura vieja no es un dato antiguo sino un dato **perdido**. Costó
+ * un fallo en producción descubrirlo: el directo se comía la cronología entera
+ * a cada gol.
+ *
  * Si la variable no está puesta, todo lo que hay aquí se comporta como si no
  * existiera: la web sigue funcionando y solo se pierde el recuento.
  */
@@ -29,15 +38,12 @@ export const hayAlmacenPrivado = Boolean(TOKEN);
 /**
  * Lee un JSON del almacén privado. Devuelve el valor por defecto si no está.
  *
- * `sinCache` es imprescindible para lo que se lee justo después de haberlo
- * escrito. El almacén sirve los archivos por una caché y `put` los guarda con
- * un mes de vigencia, así que una lectura normal puede devolver la versión
- * anterior: quien lea para modificar y volver a guardar perdería lo último.
+ * Sin pasar por la caché salvo que se pida lo contrario: ver la cabecera.
  */
 export async function leerPrivado<T>(
   ruta: string,
   porDefecto: T,
-  { sinCache = false }: { sinCache?: boolean } = {},
+  { sinCache = true }: { sinCache?: boolean } = {},
 ): Promise<T> {
   if (!TOKEN) return porDefecto;
   try {
@@ -55,21 +61,29 @@ export async function leerPrivado<T>(
 }
 
 /**
+ * Vigencia mínima que admite el almacén. Se usa siempre: nada de lo que se
+ * guarda aquí tiene sentido conservarlo un mes, que es lo que hace `put` si no
+ * se le dice nada.
+ */
+const CACHE_MINIMA_S = 60;
+
+/**
  * Escribe un JSON en el almacén privado, sobrescribiendo lo que hubiera.
  *
  * `sobrescribir: false` hace que falle en vez de pisar lo que ya hubiera, que
  * es lo que hace segura una creación.
  *
- * `cacheMaxAge` baja la vigencia en la caché del almacén, que por defecto es
- * de un mes. Para algo que cambia cada pocos segundos, como un partido en
- * directo, un mes es una eternidad. El mínimo que admite el almacén es un
- * minuto, así que esto reduce el daño pero no lo elimina: lo que necesite leer
- * lo último de verdad tiene que pedirlo además con `sinCache`.
+ * La vigencia corta reduce el daño, pero no basta por sí sola: un minuto sigue
+ * siendo mucho para algo que cambia cada pocos segundos. Lo que de verdad
+ * arregla el problema es que las lecturas no pasen por la caché.
  */
 export async function escribirPrivado(
   ruta: string,
   datos: unknown,
-  { cacheMaxAge, sobrescribir = true }: { cacheMaxAge?: number; sobrescribir?: boolean } = {},
+  {
+    cacheMaxAge = CACHE_MINIMA_S,
+    sobrescribir = true,
+  }: { cacheMaxAge?: number; sobrescribir?: boolean } = {},
 ): Promise<boolean> {
   if (!TOKEN) return false;
   try {
@@ -85,7 +99,7 @@ export async function escribirPrivado(
        * lo que hubiera, cuando no basta con haber mirado antes.
        */
       allowOverwrite: sobrescribir,
-      ...(cacheMaxAge === undefined ? {} : { cacheControlMaxAge: cacheMaxAge }),
+      cacheControlMaxAge: cacheMaxAge,
     });
     return true;
   } catch {

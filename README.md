@@ -229,10 +229,16 @@ temporada.
 ### Un aviso sobre el almacén
 
 `put` de Vercel Blob guarda con **un mes de caché por defecto**, y su mínimo es
-un minuto. Para algo que cambia cada pocos segundos hay que leer con
-`useCache: false`; de lo contrario se lee la versión anterior y se pierde lo
-recién escrito. Está resuelto en `src/lib/privado.ts`, pero conviene saberlo
-antes de añadir cualquier otra cosa que lea justo después de escribir.
+un minuto. Leer a través de esa caché devuelve la versión anterior, así que
+quien lea para modificar y volver a guardar **pierde** lo último. Costó un fallo
+en producción descubrirlo: el directo se comía la cronología entera a cada gol.
+
+Por eso `src/lib/privado.ts` lee **sin caché por defecto** y guarda con la
+vigencia mínima. En ese almacén no hay nada que se beneficie de lo contrario:
+todo son datos que se leen, se modifican y se vuelven a guardar —el recuento de
+uso, las suscripciones a los avisos y el partido en directo—. Si algún día se
+añade ahí algo que de verdad sea de solo lectura, se puede pedir la caché con
+`{ sinCache: false }`, pero por defecto conviene que no la tenga.
 
 Fuera de producción, si no hay `BLOB_PRIVADO_READ_WRITE_TOKEN`, el directo cae a
 `.next/cache` para poder desarrollarlo sin secretos. En producción no: allí, si
