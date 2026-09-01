@@ -34,6 +34,20 @@ import Cronologia from "@/components/Cronologia";
 const CADA_REINTENTO_MS = 5_000;
 
 /**
+ * Lo que los botones quedan sordos después de apuntar algo.
+ *
+ * Se celebra un gol con el móvil en la mano, y el dedo se va. Sin esto, un
+ * doble toque mete dos goles y hay que darse cuenta y corregirlo. Tres segundos
+ * no estorban —no hay dos goles seguidos en un partido de fútbol— y evitan el
+ * error más tonto de todos.
+ *
+ * **Deshacer no se bloquea nunca.** Si uno se equivoca, se da cuenta en el
+ * segundo siguiente: bloquear también la corrección sería dejarle mirando la
+ * pantalla mientras el error está publicado.
+ */
+const BLOQUEO_MS = 3_000;
+
+/**
  * Pone identificador e instante a lo que se acaba de pulsar.
  *
  * Vive fuera del componente porque el instante es del momento de la pulsación
@@ -68,6 +82,17 @@ export default function Botonera({
   const [ahora, setAhora] = useState(() => Date.now());
 
   const enviando = useRef(false);
+
+  /* Botones sordos un momento después de cada acción, para el doble toque */
+  const [bloqueado, setBloqueado] = useState(false);
+  const relojBloqueo = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(
+    () => () => {
+      if (relojBloqueo.current) clearTimeout(relojBloqueo.current);
+    },
+    [],
+  );
 
   /*
    * La cola vive en un ref además de en el estado. El estado es para pintarla;
@@ -168,10 +193,22 @@ export default function Botonera({
   }, [enviar]);
 
   /* Se apunta y se manda ya; si falla, queda en la cola y el reloj lo recoge */
-  const anotar = (evento: EventoNuevo) => {
+  const apuntar = (evento: EventoNuevo) => {
     fijarCola([...cola.current, sellar(evento)]);
     void enviar();
   };
+
+  /** Algo que pasó en el partido: deja los botones sordos un momento. */
+  const anotar = (evento: EventoNuevo) => {
+    apuntar(evento);
+
+    setBloqueado(true);
+    if (relojBloqueo.current) clearTimeout(relojBloqueo.current);
+    relojBloqueo.current = setTimeout(() => setBloqueado(false), BLOQUEO_MS);
+  };
+
+  /** Una corrección. Nunca se bloquea: es justo lo que hay que poder hacer ya. */
+  const anular = (id: string) => apuntar({ tipo: "anula", anulado: id });
 
   const estado = plegar([...confirmados, ...pendientes], partido.minutosPorParte);
   const minuto = minutoEn(estado, ahora);
@@ -247,7 +284,7 @@ export default function Botonera({
             </p>
             <button
               type="button"
-              disabled={!enJuego}
+              disabled={!enJuego || bloqueado}
               onClick={() => anotar({ tipo: "gol", equipo: lado })}
               className="btn btn-primary mt-2 w-full py-6 text-xl disabled:opacity-40"
             >
@@ -256,7 +293,7 @@ export default function Botonera({
             <div className="mt-2 grid grid-cols-2 gap-2">
               <button
                 type="button"
-                disabled={!enJuego}
+                disabled={!enJuego || bloqueado}
                 onClick={() => anotar({ tipo: "tarjeta", equipo: lado, color: "amarilla" })}
                 className="btn btn-ghost py-3 disabled:opacity-40"
               >
@@ -267,7 +304,7 @@ export default function Botonera({
               </button>
               <button
                 type="button"
-                disabled={!enJuego}
+                disabled={!enJuego || bloqueado}
                 onClick={() => anotar({ tipo: "tarjeta", equipo: lado, color: "roja" })}
                 className="btn btn-ghost py-3 disabled:opacity-40"
               >
@@ -285,7 +322,7 @@ export default function Botonera({
       <div className="mt-3 flex gap-2">
         <button
           type="button"
-          disabled={fase !== "jugando" && fase !== "parado"}
+          disabled={bloqueado || (fase !== "jugando" && fase !== "parado")}
           onClick={() => anotar({ tipo: fase === "parado" ? "reanudar" : "parar" })}
           className="btn btn-ghost flex-1 py-3 text-sm disabled:opacity-40"
         >
@@ -294,8 +331,9 @@ export default function Botonera({
         {fase === "descanso" ? (
           <button
             type="button"
+            disabled={bloqueado}
             onClick={() => anotar({ tipo: "final" })}
-            className="btn btn-ghost flex-1 py-3 text-sm"
+            className="btn btn-ghost flex-1 py-3 text-sm disabled:opacity-40"
           >
             Terminar partido
           </button>
@@ -305,8 +343,9 @@ export default function Botonera({
       {faseSiguiente ? (
         <button
           type="button"
+          disabled={bloqueado}
           onClick={() => anotar({ tipo: faseSiguiente.tipo })}
-          className="btn btn-primary mt-2 w-full py-4 text-base"
+          className="btn btn-primary mt-2 w-full py-4 text-base disabled:opacity-40"
         >
           {faseSiguiente.texto}
         </button>
@@ -321,6 +360,9 @@ export default function Botonera({
         className="mt-4 flex gap-2"
         onSubmit={(e) => {
           e.preventDefault();
+          // El Intro del teclado envía el formulario aunque el botón esté
+          // deshabilitado, así que el bloqueo hay que mirarlo también aquí
+          if (bloqueado) return;
           const mensaje = texto.trim();
           if (!mensaje) return;
           anotar({ tipo: "texto", mensaje });
@@ -335,7 +377,11 @@ export default function Botonera({
           aria-label="Comentario"
           className="min-w-0 flex-1 rounded-xl border border-linea bg-panel px-3 py-3 text-base text-tinta focus:border-club focus:outline-none"
         />
-        <button type="submit" className="btn btn-ghost px-4 py-3 text-sm">
+        <button
+          type="submit"
+          disabled={bloqueado}
+          className="btn btn-ghost px-4 py-3 text-sm disabled:opacity-40"
+        >
           Añadir
         </button>
       </form>
@@ -356,7 +402,7 @@ export default function Botonera({
       {ultimo ? (
         <button
           type="button"
-          onClick={() => anotar({ tipo: "anula", anulado: ultimo.id })}
+          onClick={() => anular(ultimo.id)}
           className="btn btn-ghost mt-2 w-full py-3 text-sm"
         >
           Deshacer lo último
@@ -366,7 +412,7 @@ export default function Botonera({
       <Cronologia
         linea={estado.linea}
         partido={partido}
-        alAnular={(id) => anotar({ tipo: "anula", anulado: id })}
+        alAnular={anular}
       />
     </div>
   );
