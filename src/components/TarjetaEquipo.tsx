@@ -7,6 +7,7 @@ import {
 } from "@/lib/competicion";
 import { Marcador } from "@/components/Partidos";
 import EscudoClub from "@/components/EscudoClub";
+import IndicadorAvisos from "@/components/IndicadorAvisos";
 import {
   IconoFlecha,
   IconoCalendario,
@@ -36,9 +37,10 @@ export default function TarjetaEquipo({
     : null;
 
   return (
+    // `relative` para colgar la campanita, y sin recorte para que pueda asomar
     <Link
       href={`/equipos/${equipo.id}`}
-      className="group card block overflow-hidden p-5 transition-colors hover:border-club"
+      className="group card relative block p-5 transition-colors hover:border-club"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
@@ -159,6 +161,9 @@ export default function TarjetaEquipo({
         Ver equipo
         <IconoFlecha size={15} />
       </span>
+
+      {/* Al final: se ve en la esquina igual, pero se lee después del equipo */}
+      <IndicadorAvisos equipo={equipo.id} />
     </Link>
   );
 }

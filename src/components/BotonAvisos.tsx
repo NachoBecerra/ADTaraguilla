@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { IconoCampana, IconoCampanaTachada } from "@/components/Iconos";
+import { CLAVE_AVISOS, EVENTO_AVISOS } from "@/components/IndicadorAvisos";
 
 /**
  * Activa los avisos de un equipo.
@@ -14,8 +15,6 @@ import { IconoCampana, IconoCampanaTachada } from "@/components/Iconos";
  * Solo se puede seguir a un equipo: es lo que mantiene los avisos en dos por
  * semana en vez de quince.
  */
-
-const CLAVE = "avisos-equipo";
 
 /** La clave pública viaja al navegador; la privada nunca sale del servidor. */
 const CLAVE_PUBLICA = process.env.NEXT_PUBLIC_VAPID_CLAVE_PUBLICA;
@@ -61,7 +60,7 @@ async function calcularEstado(equipo: string): Promise<Estado> {
 
     let elegido: string | null = null;
     try {
-      elegido = localStorage.getItem(CLAVE);
+      elegido = localStorage.getItem(CLAVE_AVISOS);
     } catch {
       // Sin almacenamiento no se sabe cuál eligió: se ofrece cambiarlo
     }
@@ -119,10 +118,11 @@ export default function BotonAvisos({
       if (!r.ok) throw new Error("no se pudo guardar");
 
       try {
-        localStorage.setItem(CLAVE, equipo);
+        localStorage.setItem(CLAVE_AVISOS, equipo);
       } catch {
         // El aviso funcionará igual; solo se pierde saber cuál se eligió
       }
+      window.dispatchEvent(new Event(EVENTO_AVISOS));
       setEstado("on");
     } catch {
       setError("No se han podido activar. Inténtalo de nuevo.");
@@ -146,10 +146,11 @@ export default function BotonAvisos({
         await suscripcion.unsubscribe();
       }
       try {
-        localStorage.removeItem(CLAVE);
+        localStorage.removeItem(CLAVE_AVISOS);
       } catch {
         // Da igual: el estado se recalcula al volver
       }
+      window.dispatchEvent(new Event(EVENTO_AVISOS));
       setEstado("off");
     } catch {
       setError("No se han podido desactivar.");

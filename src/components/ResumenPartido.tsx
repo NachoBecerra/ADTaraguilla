@@ -1,5 +1,6 @@
 import Link from "next/link";
 import EscudoClub from "@/components/EscudoClub";
+import IndicadorAvisos from "@/components/IndicadorAvisos";
 import { Marcador } from "@/components/Partidos";
 import { IconoCasa, IconoAutobus } from "@/components/Iconos";
 import { fechaPartido } from "@/lib/formato";
@@ -22,7 +23,7 @@ export default function ResumenPartido({
   return (
     <Link
       href={`/equipos/${equipo.id}`}
-      className="card flex items-center gap-3 p-3 transition-colors hover:border-club"
+      className="card relative flex items-center gap-3 p-3 transition-colors hover:border-club"
     >
       <EscudoClub
         nombre={partido.rival}
@@ -48,6 +49,9 @@ export default function ResumenPartido({
           <p className="mt-1 text-[11px] text-mute">{fechaPartido(partido.fecha)}</p>
         ) : null}
       </div>
+
+      {/* Al final: se ve en la esquina igual, pero se lee después del equipo */}
+      <IndicadorAvisos equipo={equipo.id} />
     </Link>
   );
 }
