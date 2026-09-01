@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-01T07:25:25.285Z",
+  "actualizado": "2026-09-01T09:25:35.758Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -313,22 +313,6 @@
           "fecha": "2026-09-06",
           "partidos": [
             {
-              "local": "C.D. CIUDAD DE CADIZ",
-              "visitante": "C.D. EL TORNO 2009",
-              "codLocal": "20779397",
-              "codVisitante": "343715",
-              "fecha": "2026-09-06",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "localidad": "Cádiz",
-              "campo": "MANUEL DE IRIGOYEN",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3439",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "C.D. SAN ROQUE",
               "visitante": "C.D. GUADIARO",
               "codLocal": "307715",
@@ -377,6 +361,22 @@
               "jugado": false
             },
             {
+              "local": "C.D. CIUDAD DE CADIZ",
+              "visitante": "C.D. EL TORNO 2009",
+              "codLocal": "20779397",
+              "codVisitante": "343715",
+              "fecha": "2026-09-06",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "localidad": "Cádiz",
+              "campo": "MANUEL DE IRIGOYEN",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3439",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662379",
+              "jugado": false
+            },
+            {
               "local": "C.D. ROTA",
               "visitante": "JUVENTUD SANLUQUEÑA A.D.",
               "codLocal": "300815",
@@ -421,7 +421,7 @@
               "campo": "ANTONIO LOPEZ PUA ESTADIO MUNICIPAL",
               "superficie": "Hierba Natural",
               "codCampo": "3083",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662385",
               "jugado": false
             },
             {
