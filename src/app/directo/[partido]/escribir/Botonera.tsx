@@ -8,8 +8,15 @@ import {
   PARTES,
   type Evento,
   type EventoNuevo,
+  type Jugada,
   type Lado,
 } from "@/lib/directo/modelo";
+import {
+  IconoAPuerta,
+  IconoCorner,
+  IconoFueraDeJuego,
+  IconoTiroLibre,
+} from "@/components/Iconos";
 import type { Registro } from "@/lib/directo/almacen";
 import Cronologia from "@/components/Cronologia";
 
@@ -84,6 +91,20 @@ function sellar(evento: EventoNuevo): Evento {
 const PREFIJO = "directo-pendientes-";
 
 const clave = (partido: string, abierto: string) => `${PREFIJO}${partido}-${abierto}`;
+
+/**
+ * Lo que se puede apuntar de cada equipo además de goles y tarjetas.
+ *
+ * Con etiqueta y no solo con dibujo: en una columna de móvil los botones son
+ * pequeños, y un banderín de córner y uno de fuera de juego se parecen
+ * demasiado como para fiarlo todo al icono.
+ */
+const JUGADAS: { clase: Jugada; texto: string; Dibujo: typeof IconoCorner }[] = [
+  { clase: "corner", texto: "Córner", Dibujo: IconoCorner },
+  { clase: "tiroLibre", texto: "Tiro libre", Dibujo: IconoTiroLibre },
+  { clase: "fueraDeJuego", texto: "Fuera de juego", Dibujo: IconoFueraDeJuego },
+  { clase: "disparo", texto: "Tiro a puerta", Dibujo: IconoAPuerta },
+];
 
 export default function Botonera({
   inicial,
@@ -424,28 +445,42 @@ export default function Botonera({
               GOL
             </button>
             <div className="mt-2 grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                disabled={!enJuego || sordo}
-                onClick={() => anotar({ tipo: "tarjeta", equipo: lado, color: "amarilla" })}
-                className="btn btn-ghost py-3 disabled:opacity-40"
-              >
-                <span aria-hidden>🟨</span>
-                <span className="sr-only">
-                  Tarjeta amarilla para {lado === "local" ? partido.local : partido.visitante}
-                </span>
-              </button>
-              <button
-                type="button"
-                disabled={!enJuego || sordo}
-                onClick={() => anotar({ tipo: "tarjeta", equipo: lado, color: "roja" })}
-                className="btn btn-ghost py-3 disabled:opacity-40"
-              >
-                <span aria-hidden>🟥</span>
-                <span className="sr-only">
-                  Tarjeta roja para {lado === "local" ? partido.local : partido.visitante}
-                </span>
-              </button>
+              {/* Las tarjetas con la misma forma que las jugadas: seis botones
+                  iguales se recorren de un vistazo, dos raros no. */}
+              {(["amarilla", "roja"] as const).map((color) => (
+                <button
+                  key={color}
+                  type="button"
+                  disabled={!enJuego || sordo}
+                  onClick={() => anotar({ tipo: "tarjeta", equipo: lado, color })}
+                  className="btn btn-ghost flex min-h-14 flex-col items-center justify-center gap-1 px-1 py-2 leading-tight disabled:opacity-40"
+                >
+                  <span aria-hidden className="text-base leading-none">
+                    {color === "amarilla" ? "🟨" : "🟥"}
+                  </span>
+                  <span className="text-[10px] font-bold capitalize">{color}</span>
+                  <span className="sr-only">
+                    Tarjeta {color} para{" "}
+                    {lado === "local" ? partido.local : partido.visitante}
+                  </span>
+                </button>
+              ))}
+
+              {JUGADAS.map(({ clase, texto, Dibujo }) => (
+                <button
+                  key={clase}
+                  type="button"
+                  disabled={!enJuego || sordo}
+                  onClick={() => anotar({ tipo: "jugada", equipo: lado, clase })}
+                  className="btn btn-ghost flex min-h-14 flex-col items-center justify-center gap-1 px-1 py-2 leading-tight disabled:opacity-40"
+                >
+                  <Dibujo size={17} />
+                  <span className="text-[10px] font-bold">{texto}</span>
+                  <span className="sr-only">
+                    de {lado === "local" ? partido.local : partido.visitante}
+                  </span>
+                </button>
+              ))}
             </div>
           </div>
         ))}

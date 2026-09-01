@@ -265,3 +265,54 @@ export function IconoImagen({ size = 20, className }: Props) {
     </svg>
   );
 }
+
+/* --------------------------------------------------- jugadas del directo */
+
+/**
+ * Banderín de córner: mástil vertical, banderola y el arco de la esquina.
+ * El arco es lo que lo distingue del banderín del juez de línea.
+ */
+export function IconoCorner({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M7 21V3.5" />
+      <path d="M7 4.5l8.5 2.6L7 9.7z" fill="currentColor" />
+      <path d="M3 21a4 4 0 0 1 4-4" />
+    </svg>
+  );
+}
+
+/** Tiro libre: el balón y la trayectoria con efecto. */
+export function IconoTiroLibre({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="6" cy="18" r="2.8" />
+      <path d="M7.4 15.2C11 6.5 18 6.5 20.5 11.5" strokeDasharray="3 2.6" />
+      <path d="M17.6 11.2l3 .4.6-3" />
+    </svg>
+  );
+}
+
+/**
+ * Fuera de juego: el banderín del juez de línea, en alto y en diagonal.
+ * La diagonal es lo que evita confundirlo con el de córner, que va recto.
+ */
+export function IconoFueraDeJuego({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 21L15 6.5" />
+      <path d="M13.2 4l7 1.6-3.3 6z" fill="currentColor" />
+    </svg>
+  );
+}
+
+/** Tiro a puerta: la portería con su red y el balón entrando. */
+export function IconoAPuerta({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 20V7h18v13" />
+      <path d="M9 20V7M15 20V7M3 13.5h18" strokeWidth="1" />
+      <circle cx="12" cy="17" r="2.4" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}

@@ -1,4 +1,10 @@
-import type { EventoEnLinea } from "@/lib/directo/modelo";
+import type { EventoEnLinea, Jugada } from "@/lib/directo/modelo";
+import {
+  IconoAPuerta,
+  IconoCorner,
+  IconoFueraDeJuego,
+  IconoTiroLibre,
+} from "@/components/Iconos";
 import type { FichaPartido } from "@/lib/directo/almacen";
 
 /**
@@ -14,6 +20,20 @@ import type { FichaPartido } from "@/lib/directo/almacen";
  * este último se le pasa `alAnular` y le aparece la equis para corregir.
  */
 
+/** Cada jugada con la preposición que le toca: no es lo mismo "para" que "de". */
+function textoDeJugada(clase: Jugada, equipo: string): string {
+  switch (clase) {
+    case "corner":
+      return `Córner para ${equipo}`;
+    case "tiroLibre":
+      return `Tiro libre para ${equipo}`;
+    case "fueraDeJuego":
+      return `Fuera de juego de ${equipo}`;
+    case "disparo":
+      return `Tiro a puerta de ${equipo}`;
+  }
+}
+
 function describir(evento: EventoEnLinea, partido: FichaPartido): string {
   const nombre = (lado: "local" | "visitante") =>
     lado === "local" ? partido.local : partido.visitante;
@@ -25,6 +45,8 @@ function describir(evento: EventoEnLinea, partido: FichaPartido): string {
       return `Gol de ${nombre(evento.equipo)}`;
     case "tarjeta":
       return `Tarjeta ${evento.color} para ${nombre(evento.equipo)}`;
+    case "jugada":
+      return textoDeJugada(evento.clase, nombre(evento.equipo));
     case "parar":
       return "Se para el reloj";
     case "reanudar":
@@ -40,13 +62,24 @@ function describir(evento: EventoEnLinea, partido: FichaPartido): string {
   }
 }
 
+const DIBUJO_DE_JUGADA = {
+  corner: IconoCorner,
+  tiroLibre: IconoTiroLibre,
+  fueraDeJuego: IconoFueraDeJuego,
+  disparo: IconoAPuerta,
+} as const;
+
 /** Un icono ayuda a encontrar los goles de un vistazo al bajar por la lista. */
-function icono(evento: EventoEnLinea): string {
+function icono(evento: EventoEnLinea): React.ReactNode {
   switch (evento.tipo) {
     case "gol":
       return "⚽";
     case "tarjeta":
       return evento.color === "amarilla" ? "🟨" : "🟥";
+    case "jugada": {
+      const Dibujo = DIBUJO_DE_JUGADA[evento.clase];
+      return <Dibujo size={15} className="text-mute" />;
+    }
     case "inicio":
     case "empezarParte":
       return "▶";

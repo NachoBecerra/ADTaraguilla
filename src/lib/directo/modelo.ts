@@ -22,6 +22,15 @@
 export type Lado = "local" | "visitante";
 
 /**
+ * Lo que pasa en un partido y no cambia ni el marcador ni el reloj.
+ *
+ * Van juntas en un solo tipo de evento en vez de uno por cada una: son la misma
+ * cosa —algo que le ocurre a un equipo y se apunta en la cronología— y así
+ * añadir la quinta es escribir una línea.
+ */
+export type Jugada = "corner" | "tiroLibre" | "fueraDeJuego" | "disparo";
+
+/**
  * Momento en que ocurrió algo, en milisegundos, según el móvil de quien lo
  * escribe. Se guarda el instante y no el minuto: el minuto se deriva, así que
  * si hay que corregir el arranque del partido, todos los minutos se recolocan
@@ -34,6 +43,7 @@ export type Evento = Marca &
     | { tipo: "inicio" }
     | { tipo: "gol"; equipo: Lado }
     | { tipo: "tarjeta"; equipo: Lado; color: "amarilla" | "roja" }
+    | { tipo: "jugada"; equipo: Lado; clase: Jugada }
     /* El reloj se para por una asistencia, una lesión o lo que sea. */
     | { tipo: "parar" }
     | { tipo: "reanudar" }
@@ -265,6 +275,7 @@ export function plegar(eventos: Evento[], minutosPorParte: number): Estado {
         break;
 
       case "tarjeta":
+      case "jugada":
       case "texto":
         // No mueven ni el marcador ni el reloj: solo se cuentan
         break;
@@ -280,9 +291,11 @@ export function plegar(eventos: Evento[], minutosPorParte: number): Estado {
 
 /** Tipos que acepta el registro. Lo que no esté aquí se descarta sin más. */
 const TIPOS = new Set([
-  "inicio", "gol", "tarjeta", "parar", "reanudar",
+  "inicio", "gol", "tarjeta", "jugada", "parar", "reanudar",
   "finParte", "empezarParte", "final", "texto", "anula",
 ]);
+
+const JUGADAS = new Set<string>(["corner", "tiroLibre", "fueraDeJuego", "disparo"]);
 
 const LADOS = new Set<string>(["local", "visitante"]);
 
@@ -337,6 +350,12 @@ export function sanearEventos(datos: unknown, ahora: number): Evento[] {
         if (!LADOS.has(e.equipo as string)) continue;
         if (e.color !== "amarilla" && e.color !== "roja") continue;
         limpios.push({ id, ts, tipo: "tarjeta", equipo: e.equipo as Lado, color: e.color });
+        break;
+
+      case "jugada":
+        if (!LADOS.has(e.equipo as string)) continue;
+        if (!JUGADAS.has(e.clase as string)) continue;
+        limpios.push({ id, ts, tipo: "jugada", equipo: e.equipo as Lado, clase: e.clase as Jugada });
         break;
 
       case "texto": {
