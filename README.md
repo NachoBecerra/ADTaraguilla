@@ -168,13 +168,78 @@ y decidir en qué orden se muestra.
 content/noticias/*.md        Una noticia por archivo
 src/data/site.ts             Nombre, lema, redes, contacto, federación
 src/data/equipos.json        Código del club y nombres de los equipos
-src/data/galeria.json        Fotos y vídeos
+src/data/galeria.json        Fotos: título, etiquetas, equipo y medidas
 src/data/rfaf/               Generado: no editar a mano
 src/lib/contenido.ts         Lectura de noticias y galería
 src/lib/competicion.ts       Lectura de los datos de la RFAF
+src/lib/privado.ts           Acceso al almacén privado
+src/lib/avisos.ts            Suscripciones a las notificaciones
 scripts/rfaf/                Sincronizador
-src/app/                     /, /equipos, /noticias, /galeria, /clubes
+scripts/avisar-prueba.mjs    Aviso manual, para probar las notificaciones
+public/sw.js                 Service worker
+src/app/                     /, /equipos, /noticias, /galeria, /historico
+src/app/api/                 subir, avisos, avisar, uso, version
 ```
+
+## Aplicación instalable
+
+La web se puede instalar en el móvil (`src/app/manifest.ts`). Una vez instalada
+se abre sin barra de direcciones.
+
+`public/sw.js` existe por un motivo concreto: abrir la aplicación justo mientras
+se estaba desplegando la dejaba clavada en la pantalla del escudo. La regla es
+**la red primero, pero con reloj**: se pide a la red y, si no contesta en cinco
+segundos, se abre con lo último que se vio. Nunca se espera indefinidamente. De
+paso funciona sin cobertura. No se guarda nada de `/panel` ni de `/api`.
+
+`AvisoDatosNuevos` pregunta cada minuto y medio por `/api/version`, que devuelve
+la marca de generación de los datos. Si cambió: con la aplicación en segundo
+plano se recarga sola; si hay alguien mirando, sale un aviso y decide.
+
+## Dónde se guardan las fotos
+
+**No en el repositorio.** Van a Vercel Blob, en el almacén público
+`galeria-taraguilla`. El navegador las sube **directamente** al almacenamiento
+(`/api/subir` solo emite el permiso): antes viajaban en base64 dentro de la
+acción de servidor y chocaban con el límite de 1 MB por petición, así que cabían
+dos y la tercera fallaba.
+
+Como ya no son archivos locales, nadie puede medirlas al compilar: el navegador
+apunta el ancho y el alto al reducirlas y se guardan en `galeria.json`.
+
+Hay un segundo almacén, **privado**, `datos-privados`, para lo que no puede leer
+cualquiera: el recuento de uso y las suscripciones a los avisos. Se accede con
+`src/lib/privado.ts` y la variable `BLOB_PRIVADO_READ_WRITE_TOKEN`.
+
+## Avisos al móvil
+
+Quien quiera se suscribe desde la ficha de un equipo. **No hay registro**: la
+suscripción que genera el navegador ya identifica al dispositivo, y junto a ella
+se guarda de qué equipos quiere avisos. Se pueden seguir tantos como se quiera.
+
+Se avisa de tres cosas y de ninguna más: el resultado cuando se publica, la hora
+cuando se asigna y la hora cuando cambia. **Nunca** de que un partido sigue sin
+hora, que sería el ruido que hace apagar los avisos.
+
+Lo dispara la propia sincronización, que es quien sabe qué ha cambiado
+(`novedadesDe` en `scripts/rfaf/sincronizar.mjs`), llamando a `/api/avisar` con
+el secreto `AVISOS_SECRETO`. Para probar sin esperar a la RFAF: Actions → «Aviso
+de prueba», que admite un texto para todos o una lista concreta en JSON.
+
+En iPhone los avisos **solo funcionan con la web instalada** en la pantalla de
+inicio. El botón lo explica en vez de fallar sin decir nada.
+
+## Cuánta gente la usa
+
+Dos piezas, porque ninguna cubre lo de la otra:
+
+- **Vercel Analytics**: visitas, páginas, dispositivos, países y procedencia. Sin
+  cookies, así que sin banner de consentimiento. El plan gratuito **no admite
+  eventos propios** y guarda **solo 1 mes** de histórico.
+- **Recuento propio** (`/api/uso`, visible en `/panel`): cuánta gente la usa
+  instalada y el reparto entre iPhone y Android, que es justo el evento propio
+  que el plan gratuito no permite. Un dispositivo cuenta una vez al día; el panel
+  no cuenta.
 
 ## Panel `/panel`
 
@@ -223,9 +288,8 @@ ahora se manda `CodJornada` vacío.
 
 ## Pendiente de confirmar
 
-- **Escudo**: `public/img/escudo.png` mide 88×86 px. Si tenéis el original en SVG
-  o PNG grande, sustituidlo en la misma ruta y regenerad el favicon.
-- **Contacto**: correo y dirección del campo.
-- **Equipos sin competición**: la RFAF marca dos con `*` (Alevín B y
-  Prebenjamín). Aparecerán solos en cuanto tengan calendario.
-- Las tres noticias de `content/noticias/` son texto de ejemplo.
+- **Contacto**: el correo de `src/data/site.ts` es `info@adtaraguilla.es`, y ese
+  dominio **no existe**: quien escriba recibe un rebote. Falta el correo real del
+  club.
+- **Google Search Console**: dar de alta el dominio y enviar el sitemap.
+- **iPhone**: los avisos y la instalación están probados en Android, no en iOS.
