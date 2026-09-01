@@ -616,6 +616,26 @@ async function guardarPalmares(equipo, temporadas) {
  */
 /* ------------------------------------------------------------------ avisos */
 
+/**
+ * Fecha para el aviso: "sáb 3 oct".
+ *
+ * El mismo formato que usa la web, para que quien reciba el aviso y luego
+ * entre vea escrita la fecha igual. Sin año, que siempre es el de la temporada.
+ */
+function fechaCorta(iso) {
+  if (!iso) return null;
+  const d = new Date(`${iso}T12:00:00`);
+  if (Number.isNaN(d.getTime())) return null;
+  return new Intl.DateTimeFormat("es-ES", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    timeZone: "Europe/Madrid",
+  })
+    .format(d)
+    .replace(/[.,]/g, "");
+}
+
 /** Los partidos de un equipo, aplanados y con clave para poder compararlos. */
 function partidosPorClave(datos) {
   const mapa = new Map();
@@ -675,10 +695,13 @@ function novedadesDe(equipo, previo, nuevo) {
 
     // Estrenar hora y cambiarla se cuentan igual: lo que importa es la que hay
     if (!viejo.hora || viejo.hora !== p.hora) {
+      const cuando = fechaCorta(p.fecha);
       avisos.push({
         equipo: equipo.id,
         titulo: `${equipo.nombre}: cambio de hora`,
-        cuerpo: `${rival} · ${p.hora}`,
+        // Dos líneas: cuándo primero, contra quién debajo
+        cuerpo: `${cuando ? `${cuando} a las ` : ""}${p.hora}
+${rival}`,
         url: `/equipos/${equipo.id}`,
       });
     }
