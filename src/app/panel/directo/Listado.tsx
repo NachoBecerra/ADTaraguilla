@@ -34,6 +34,29 @@ const CHIP: Record<EstadoPanel, { texto: string; clase: string } | null> = {
   caducada: null,
 };
 
+/**
+ * Lo que lee quien recibe el mensaje.
+ *
+ * Un enlace pelado en WhatsApp no dice de qué partido es ni qué hay que hacer
+ * con él, y quien lo recibe puede tener tres de partidos distintos. Así que va
+ * con el equipo, el rival y cuándo se juega, y con la frase que quita el miedo:
+ * no hay que instalar nada ni saber ninguna contraseña.
+ */
+function mensajeDe(p: Fila, url: string): string {
+  const cuando = [p.fecha ? fechaPartido(p.fecha) : null, p.hora]
+    .filter(Boolean)
+    .join(", ");
+
+  return [
+    `Panel de retransmisión · ${p.nombreEquipo}`,
+    `${p.local} · ${p.visitante}${cuando ? ` — ${cuando}` : ""}`,
+    "",
+    "Abre este enlace en el móvil desde el campo para ir apuntando el partido. No hace falta instalar nada ni saber ninguna contraseña.",
+    "",
+    url,
+  ].join("\n");
+}
+
 export default function Listado({ partidos }: { partidos: Fila[] }) {
   const [trabajando, setTrabajando] = useState<string | null>(null);
   const [enlaces, setEnlaces] = useState<Record<string, string>>({});
@@ -41,6 +64,8 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
   const [copiado, setCopiado] = useState<string | null>(null);
   /* Reiniciar borra la cronología: no puede pasar de un solo toque */
   const [confirmando, setConfirmando] = useState<string | null>(null);
+  /* La dirección solo se enseña si el portapapeles falla: si no, estorba */
+  const [aMano, setAMano] = useState<string | null>(null);
 
   async function abrir(id: string) {
     setTrabajando(id);
@@ -75,7 +100,13 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
       setCopiado(id);
       setTimeout(() => setCopiado(null), 2500);
     } catch {
-      // Sin permiso de portapapeles queda el campo de texto para copiar a mano
+      /*
+       * Hay navegadores que no dejan copiar sin más (o sin HTTPS). Solo
+       * entonces aparece la dirección, para poder seleccionarla a mano: tenerla
+       * siempre a la vista no le dice nada a quien no es informático, y encima
+       * invita a tocarla.
+       */
+      setAMano(id);
     }
   }
 
@@ -141,13 +172,8 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
                 solo para este partido y deja de servir unas horas después de
                 acabar.
               </p>
-              <input
-                readOnly
-                value={enlaces[p.id]}
-                onFocus={(e) => e.currentTarget.select()}
-                className="mt-2 w-full rounded-lg border border-linea bg-panel px-3 py-2 text-xs text-tinta"
-              />
-              <div className="mt-2 flex flex-wrap gap-2">
+
+              <div className="mt-3 flex flex-wrap gap-2">
                 <button
                   type="button"
                   onClick={() => copiar(p.id)}
@@ -156,13 +182,37 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
                   {copiado === p.id ? "Copiado" : "Copiar enlace"}
                 </button>
                 <a
+                  href={`https://wa.me/?text=${encodeURIComponent(mensajeDe(p, enlaces[p.id]))}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary px-4 py-2 text-sm"
+                >
+                  Enviar por WhatsApp
+                </a>
+                <a
                   href={enlaces[p.id]}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-ghost inline-flex items-center gap-1.5 px-4 py-2 text-sm"
                 >
-                  Abrir yo
+                  Iniciar retransmisión
                   <IconoFlecha size={15} />
                 </a>
               </div>
+
+              {aMano === p.id ? (
+                <div className="mt-3">
+                  <p className="text-xs font-semibold text-club">
+                    Este navegador no deja copiar solo. Cópialo a mano:
+                  </p>
+                  <input
+                    readOnly
+                    value={enlaces[p.id]}
+                    onFocus={(e) => e.currentTarget.select()}
+                    className="mt-1 w-full rounded-lg border border-linea bg-panel px-3 py-2 text-xs text-tinta"
+                  />
+                </div>
+              ) : null}
 
               {/*
                 Empezar de cero. Va aparte y en dos pasos porque borra la
