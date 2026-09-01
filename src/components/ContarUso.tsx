@@ -16,6 +16,11 @@ import { useEffect } from "react";
 
 const YA_CONTADO = "uso-contado";
 
+/** Hoy, en el huso de aquí: a las 00:00 empieza a contar de nuevo. */
+function hoy(): string {
+  return new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Madrid" }).format(new Date());
+}
+
 function plataforma(): string {
   const ua = navigator.userAgent;
   if (/iphone|ipad|ipod/i.test(ua)) return "ios";
@@ -32,10 +37,23 @@ function instalada(): boolean {
 
 export default function ContarUso() {
   useEffect(() => {
-    // Una vez por sesión: abrir cinco páginas seguidas es una visita, no cinco
+    /*
+     * El panel es trabajo del club, no audiencia: quien sube fotos no debe
+     * inflar las visitas que algún día se le enseñen a un anunciante.
+     */
+    if (window.location.pathname.startsWith("/panel")) return;
+
+    /*
+     * Una vez por dispositivo y día.
+     *
+     * Antes era una vez por sesión, y en la aplicación instalada cerrarla y
+     * abrirla empieza sesión nueva: una tarde de pruebas sumaba diez visitas
+     * de la misma persona.
+     */
+    const dia = hoy();
     try {
-      if (sessionStorage.getItem(YA_CONTADO)) return;
-      sessionStorage.setItem(YA_CONTADO, "1");
+      if (localStorage.getItem(YA_CONTADO) === dia) return;
+      localStorage.setItem(YA_CONTADO, dia);
     } catch {
       // Sin almacenamiento (modo privado) se contará de más: mejor que nada
     }

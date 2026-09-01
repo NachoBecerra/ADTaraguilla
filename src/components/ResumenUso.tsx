@@ -46,7 +46,7 @@ export default async function ResumenUso() {
     <section className="mt-12">
       <h2 className="title text-2xl text-tinta">Uso de la web</h2>
       <p className="mt-1 text-sm text-mute">
-        {mes.split("-").reverse().join("/")} · una visita por persona y sesión.
+        {mes.split("-").reverse().join("/")} · cada dispositivo cuenta una vez al día.
       </p>
 
       <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
