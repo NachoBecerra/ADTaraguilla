@@ -11,7 +11,14 @@ import { head, put } from "@vercel/blob";
  * existiera: la web sigue funcionando y solo se pierde el recuento.
  */
 
-const TOKEN = process.env.BLOB_PRIVADO_TOKEN;
+/*
+ * Vercel nombra la variable según el prefijo que se elija al conectar el
+ * almacén: con el prefijo BLOB_PRIVADO la deja en
+ * BLOB_PRIVADO_READ_WRITE_TOKEN. Se aceptan las dos formas para que no
+ * dependa de cómo se haya conectado.
+ */
+const TOKEN =
+  process.env.BLOB_PRIVADO_READ_WRITE_TOKEN ?? process.env.BLOB_PRIVADO_TOKEN;
 
 export const hayAlmacenPrivado = Boolean(TOKEN);
 
