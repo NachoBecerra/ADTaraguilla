@@ -23,18 +23,36 @@ if (!secreto || !sitio) {
   process.exit(1);
 }
 
-const equipos = readdirSync(DIR_EQUIPOS)
-  .filter((f) => f.endsWith(".json"))
-  .map((f) => JSON.parse(readFileSync(path.join(DIR_EQUIPOS, f), "utf8")));
+/*
+ * Con AVISOS se manda una lista concreta, para ensayar cómo se verá un aviso
+ * de verdad. Sin ella, el mismo texto a todos los equipos.
+ */
+let avisos;
+if (process.env.AVISOS) {
+  try {
+    avisos = JSON.parse(process.env.AVISOS);
+  } catch (e) {
+    console.error("✗ AVISOS no es un JSON válido:", e.message);
+    process.exit(1);
+  }
+  if (!Array.isArray(avisos) || avisos.length === 0) {
+    console.error("✗ AVISOS debe ser una lista con al menos un aviso");
+    process.exit(1);
+  }
+} else {
+  const equipos = readdirSync(DIR_EQUIPOS)
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => JSON.parse(readFileSync(path.join(DIR_EQUIPOS, f), "utf8")));
 
-const avisos = equipos.map((e) => ({
-  equipo: e.id,
-  titulo: "AD Taraguilla",
-  cuerpo: mensaje,
-  url: "/",
-}));
+  avisos = equipos.map((e) => ({
+    equipo: e.id,
+    titulo: "AD Taraguilla",
+    cuerpo: mensaje,
+    url: "/",
+  }));
+}
 
-console.log(`· Mandando la prueba a los ${avisos.length} equipos…`);
+for (const a of avisos) console.log(`· ${a.equipo}: "${a.titulo}" / ${a.cuerpo}`);
 
 const r = await fetch(`${sitio}/api/avisar`, {
   method: "POST",

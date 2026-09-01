@@ -6,9 +6,13 @@ on:
   workflow_dispatch:
     inputs:
       mensaje:
-        description: Texto del aviso
+        description: Texto del aviso (para todos los equipos)
         required: false
         default: Notificación de pruebas, disculpa las molestias
+      avisos:
+        description: 'Lista concreta en JSON. Si se rellena, se ignora el texto de arriba'
+        required: false
+        default: ""
 
 jobs:
   avisar:
@@ -25,4 +29,5 @@ jobs:
           AVISOS_SECRETO: ${{ secrets.AVISOS_SECRETO }}
           SITIO_URL: https://ad-taraguilla.es
           MENSAJE: ${{ inputs.mensaje }}
+          AVISOS: ${{ inputs.avisos }}
         run: node scripts/avisar-prueba.mjs
