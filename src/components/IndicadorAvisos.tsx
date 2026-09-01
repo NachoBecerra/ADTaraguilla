@@ -4,17 +4,51 @@ import { useSyncExternalStore } from "react";
 import { IconoCampanaLlena } from "@/components/Iconos";
 
 /**
- * Campanita en la esquina de la tarjeta del equipo del que se reciben avisos.
+ * Campanita en la esquina de las tarjetas de los equipos que se siguen.
  *
- * El equipo elegido vive en el almacenamiento del navegador, que no es estado
- * de React. Se lee con `useSyncExternalStore`, que es lo que existe justo para
- * eso: no da problemas al pintar en el servidor y se entera de los cambios
- * hechos en otra pestaña.
+ * Los equipos elegidos viven en el almacenamiento del navegador, que no es
+ * estado de React. Se leen con `useSyncExternalStore`, que es lo que existe
+ * justo para eso: no da problemas al pintar en el servidor y se entera de los
+ * cambios hechos en otra pestaña.
  */
 
-export const CLAVE_AVISOS = "avisos-equipo";
+export const CLAVE_AVISOS = "avisos-equipos";
 /** Aviso propio: `storage` solo salta en las OTRAS pestañas, no en la actual. */
-export const EVENTO_AVISOS = "avisos-equipo-cambio";
+export const EVENTO_AVISOS = "avisos-equipos-cambio";
+
+/**
+ * La lista guardada, tal cual está en el almacenamiento.
+ *
+ * Se devuelve el texto en crudo y no la lista ya interpretada a propósito:
+ * `useSyncExternalStore` compara por identidad, y devolver un array nuevo en
+ * cada lectura provocaría un repintado sin fin.
+ */
+export function equiposGuardados(): string {
+  try {
+    return localStorage.getItem(CLAVE_AVISOS) ?? "[]";
+  } catch {
+    return "[]";
+  }
+}
+
+/** Guarda la lista y avisa a las campanitas de esta pestaña. */
+export function guardarEquipos(equipos: string[]): void {
+  try {
+    localStorage.setItem(CLAVE_AVISOS, JSON.stringify(equipos));
+  } catch {
+    // Sin almacenamiento se pierde la marca visual, no los avisos
+  }
+  window.dispatchEvent(new Event(EVENTO_AVISOS));
+}
+
+export function comoLista(crudo: string): string[] {
+  try {
+    const leido = JSON.parse(crudo) as unknown;
+    return Array.isArray(leido) ? (leido as string[]) : [];
+  } catch {
+    return [];
+  }
+}
 
 function suscribir(alCambiar: () => void): () => void {
   window.addEventListener("storage", alCambiar);
@@ -25,16 +59,8 @@ function suscribir(alCambiar: () => void): () => void {
   };
 }
 
-function enElNavegador(): string | null {
-  try {
-    return localStorage.getItem(CLAVE_AVISOS);
-  } catch {
-    return null;
-  }
-}
-
 /** En el servidor no hay navegador, así que no se pinta nada. */
-const enElServidor = (): string | null => null;
+const enElServidor = (): string => "[]";
 
 export default function IndicadorAvisos({
   equipo,
@@ -44,12 +70,12 @@ export default function IndicadorAvisos({
   /**
    * Dónde colgarla. Por defecto dentro de la esquina, que es donde hay hueco
    * en las tarjetas grandes; en las filas compactas esa esquina la ocupa la
-   * hora y hay que sacarla al borde.
+   * hora y hay que apoyarla en el borde.
    */
   posicion?: string;
 }) {
-  const elegido = useSyncExternalStore(suscribir, enElNavegador, enElServidor);
-  if (elegido !== equipo) return null;
+  const crudo = useSyncExternalStore(suscribir, equiposGuardados, enElServidor);
+  if (!comoLista(crudo).includes(equipo)) return null;
 
   return (
     <span

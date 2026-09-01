@@ -57,7 +57,7 @@ export async function POST(peticion: Request): Promise<Response> {
   let caducadas = 0;
 
   for (const aviso of avisos) {
-    const destinatarios = suscripciones.filter((s) => s.equipo === aviso.equipo);
+    const destinatarios = suscripciones.filter((s) => s.equipos.includes(aviso.equipo));
     if (destinatarios.length === 0) continue;
 
     const carga = JSON.stringify({

@@ -24,8 +24,11 @@ const CARPETA = "avisos";
 export type Suscripcion = {
   endpoint: string;
   keys: { p256dh: string; auth: string };
-  /** Identificador del equipo del que se quieren avisos. */
-  equipo: string;
+  /**
+   * Equipos de los que se quieren avisos. Cada quien decide cuántos: seguir a
+   * uno es un aviso por semana y seguirlos todos son seis.
+   */
+  equipos: string[];
   creada: string;
 };
 
@@ -41,6 +44,24 @@ export function rutaDe(endpoint: string): string {
   return `${CARPETA}/${resumen}.json`;
 }
 
+/**
+ * Normaliza lo guardado.
+ *
+ * Las primeras suscripciones guardaban un solo equipo en `equipo`. Se leen
+ * como una lista de uno para que quien ya los tuviera activados no los pierda.
+ */
+function normalizar(s: (Suscripcion & { equipo?: string }) | null): Suscripcion | null {
+  if (!s?.endpoint) return null;
+  const equipos = s.equipos?.length ? s.equipos : s.equipo ? [s.equipo] : [];
+  return equipos.length ? { ...s, equipos } : null;
+}
+
+export async function leerSuscripcion(endpoint: string): Promise<Suscripcion | null> {
+  return normalizar(
+    await leerPrivado<(Suscripcion & { equipo?: string }) | null>(rutaDe(endpoint), null),
+  );
+}
+
 export async function guardarSuscripcion(s: Suscripcion): Promise<boolean> {
   return escribirPrivado(rutaDe(s.endpoint), s);
 }
@@ -53,7 +74,9 @@ export async function borrarSuscripcion(endpoint: string): Promise<void> {
 export async function todasLasSuscripciones(): Promise<Suscripcion[]> {
   const rutas = await listarPrivado(`${CARPETA}/`);
   const leidas = await Promise.all(
-    rutas.map((r) => leerPrivado<Suscripcion | null>(r, null)),
+    rutas.map((r) =>
+      leerPrivado<(Suscripcion & { equipo?: string }) | null>(r, null).then(normalizar),
+    ),
   );
-  return leidas.filter((s): s is Suscripcion => Boolean(s?.endpoint));
+  return leidas.filter((s): s is Suscripcion => s !== null);
 }

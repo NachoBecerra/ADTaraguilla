@@ -2,18 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { IconoCampana, IconoCampanaTachada } from "@/components/Iconos";
-import { CLAVE_AVISOS, EVENTO_AVISOS } from "@/components/IndicadorAvisos";
+import { guardarEquipos } from "@/components/IndicadorAvisos";
 
 /**
- * Activa los avisos de un equipo.
+ * Activa o desactiva los avisos de un equipo.
  *
- * Va en la ficha del equipo a propósito: así elegir equipo favorito es
- * simplemente estar en su página y pulsar. No hay lista que rellenar ni
- * registro que hacer — la suscripción del navegador ya identifica al
- * dispositivo.
+ * Va en la ficha del equipo a propósito: elegir a quién seguir es simplemente
+ * estar en su página y pulsar. No hay registro ni contraseña, porque la
+ * suscripción que genera el navegador ya identifica al dispositivo.
  *
- * Solo se puede seguir a un equipo: es lo que mantiene los avisos en dos por
- * semana en vez de quince.
+ * Se pueden seguir tantos equipos como se quiera: quien sigue a uno recibe un
+ * aviso por semana y quien los sigue todos, seis. Es decisión de cada cual.
  */
 
 /** La clave pública viaja al navegador; la privada nunca sale del servidor. */
@@ -40,11 +39,26 @@ function instalada(): boolean {
   return (navigator as Navigator & { standalone?: boolean }).standalone === true;
 }
 
-type Estado = "cargando" | "no-disponible" | "hace-falta-instalar" | "off" | "otro" | "on";
+type Estado = "cargando" | "no-disponible" | "hace-falta-instalar" | "off" | "on";
+
+/** Pregunta al servidor qué equipos sigue este dispositivo. */
+async function equiposDelServidor(endpoint: string): Promise<string[]> {
+  const r = await fetch("/api/avisos", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ accion: "consulta", endpoint }),
+  });
+  if (!r.ok) return [];
+  const { equipos } = (await r.json()) as { equipos?: string[] };
+  return equipos ?? [];
+}
 
 /**
  * En qué situación está este dispositivo. Devuelve el estado en vez de irlo
  * escribiendo, para que el componente lo aplique de una sola vez.
+ *
+ * La lista la manda el servidor, no el navegador: si alguien limpia los datos
+ * del navegador, al volver sigue viendo lo que tenía activado.
  */
 async function calcularEstado(equipo: string): Promise<Estado> {
   try {
@@ -58,13 +72,9 @@ async function calcularEstado(equipo: string): Promise<Estado> {
     const suscripcion = await registro.pushManager.getSubscription();
     if (!suscripcion) return "off";
 
-    let elegido: string | null = null;
-    try {
-      elegido = localStorage.getItem(CLAVE_AVISOS);
-    } catch {
-      // Sin almacenamiento no se sabe cuál eligió: se ofrece cambiarlo
-    }
-    return elegido === equipo ? "on" : "otro";
+    const equipos = await equiposDelServidor(suscripcion.endpoint);
+    guardarEquipos(equipos);
+    return equipos.includes(equipo) ? "on" : "off";
   } catch {
     return "no-disponible";
   }
@@ -91,14 +101,16 @@ export default function BotonAvisos({
     };
   }, [equipo]);
 
-  async function activar() {
+  async function cambiar(accion: "alta" | "baja") {
     setOcupado(true);
     setError(null);
     try {
-      const permiso = await Notification.requestPermission();
-      if (permiso !== "granted") {
-        setEstado("no-disponible");
-        return;
+      if (accion === "alta" && Notification.permission !== "granted") {
+        const permiso = await Notification.requestPermission();
+        if (permiso !== "granted") {
+          setEstado("no-disponible");
+          return;
+        }
       }
 
       const registro = await navigator.serviceWorker.ready;
@@ -113,47 +125,19 @@ export default function BotonAvisos({
       const r = await fetch("/api/avisos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ endpoint: datos.endpoint, keys: datos.keys, equipo }),
+        body: JSON.stringify({ accion, endpoint: datos.endpoint, keys: datos.keys, equipo }),
       });
       if (!r.ok) throw new Error("no se pudo guardar");
 
-      try {
-        localStorage.setItem(CLAVE_AVISOS, equipo);
-      } catch {
-        // El aviso funcionará igual; solo se pierde saber cuál se eligió
-      }
-      window.dispatchEvent(new Event(EVENTO_AVISOS));
-      setEstado("on");
-    } catch {
-      setError("No se han podido activar. Inténtalo de nuevo.");
-    } finally {
-      setOcupado(false);
-    }
-  }
+      const { equipos } = (await r.json()) as { equipos: string[] };
+      guardarEquipos(equipos);
 
-  async function desactivar() {
-    setOcupado(true);
-    setError(null);
-    try {
-      const registro = await navigator.serviceWorker.ready;
-      const suscripcion = await registro.pushManager.getSubscription();
-      if (suscripcion) {
-        await fetch("/api/avisos", {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ endpoint: suscripcion.endpoint }),
-        });
-        await suscripcion.unsubscribe();
-      }
-      try {
-        localStorage.removeItem(CLAVE_AVISOS);
-      } catch {
-        // Da igual: el estado se recalcula al volver
-      }
-      window.dispatchEvent(new Event(EVENTO_AVISOS));
-      setEstado("off");
+      // Sin ningún equipo ya no hay a quién avisar: se suelta la suscripción
+      if (equipos.length === 0) await suscripcion.unsubscribe();
+
+      setEstado(equipos.includes(equipo) ? "on" : "off");
     } catch {
-      setError("No se han podido desactivar.");
+      setError("No ha podido cambiarse. Inténtalo de nuevo.");
     } finally {
       setOcupado(false);
     }
@@ -170,38 +154,29 @@ export default function BotonAvisos({
     );
   }
 
+  const activo = estado === "on";
+
   return (
     <div className="mt-4">
-      {estado === "on" ? (
-        <button
-          type="button"
-          onClick={desactivar}
-          disabled={ocupado}
-          className="btn btn-ghost disabled:opacity-50"
-        >
-          <IconoCampanaTachada size={17} />
-          {ocupado ? "Un momento…" : "Dejar de recibir avisos"}
-        </button>
-      ) : (
-        <button
-          type="button"
-          onClick={activar}
-          disabled={ocupado}
-          className="btn btn-primary disabled:opacity-50"
-        >
-          <IconoCampana size={17} />
-          {ocupado
-            ? "Un momento…"
-            : estado === "otro"
-              ? `Avisarme de ${nombre} en su lugar`
-              : `Avisarme de ${nombre}`}
-        </button>
-      )}
+      <button
+        type="button"
+        onClick={() => cambiar(activo ? "baja" : "alta")}
+        disabled={ocupado}
+        className={`btn ${activo ? "btn-ghost" : "btn-primary"} disabled:opacity-50`}
+      >
+        {activo ? <IconoCampanaTachada size={17} /> : <IconoCampana size={17} />}
+        {ocupado
+          ? "Un momento…"
+          : activo
+            ? "Desactivar notificaciones"
+            : "Activar notificaciones"}
+      </button>
 
+      {/* El nombre del equipo va aquí, no en el botón: ahí lo alargaba de más */}
       <p className="mt-2 text-xs text-mute">
-        {estado === "on"
-          ? "Recibirás el resultado y la hora de cada partido de este equipo."
-          : "Un aviso cuando se publique el resultado, y otro cuando le pongan hora al partido."}
+        {activo
+          ? `Recibes el resultado y la hora de cada partido de ${nombre}.`
+          : `Un aviso cuando se publique el resultado de ${nombre}, y otro cuando le pongan hora al partido.`}
       </p>
 
       {error ? <p className="mt-2 text-xs font-semibold text-club">{error}</p> : null}
