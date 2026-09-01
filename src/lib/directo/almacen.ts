@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { escribirPrivado, hayAlmacenPrivado, leerPrivado } from "@/lib/privado";
-import type { Evento } from "@/lib/directo/modelo";
+import { MAX_EVENTOS, type Evento } from "@/lib/directo/modelo";
 
 /**
  * Dónde vive un partido en directo.
@@ -49,12 +49,6 @@ export type Registro = {
 
 const rutaDe = (id: string) => `directo/${id}.json`;
 
-/**
- * Un partido no puede crecer sin fin. Noventa minutos dan de sobra con esto, y
- * pone un techo a lo que puede escribir un enlace que se haya ido de las manos.
- */
-export const MAX_EVENTOS = 500;
-
 /* ------------------------------------------------------------ almacenamiento */
 
 /*
@@ -77,7 +71,13 @@ async function leer(id: string): Promise<Registro | null> {
       return null;
     }
   }
-  return leerPrivado<Registro | null>(rutaDe(id), null);
+  /*
+   * Sin caché, siempre. El almacén sirve por una caché cuya vigencia mínima es
+   * de un minuto, y aquí se lee para modificar y volver a guardar cada pocos
+   * segundos: una lectura de hace un minuto haría perder todo lo apuntado en
+   * ese minuto.
+   */
+  return leerPrivado<Registro | null>(rutaDe(id), null, { sinCache: true });
 }
 
 async function escribir(registro: Registro): Promise<boolean> {
@@ -86,7 +86,9 @@ async function escribir(registro: Registro): Promise<boolean> {
     await fs.writeFile(rutaLocal(registro.partido.id), JSON.stringify(registro), "utf8");
     return true;
   }
-  return escribirPrivado(rutaDe(registro.partido.id), registro);
+  // El mínimo que admite el almacén. Un partido en directo no se parece en
+  // nada a lo que justifica el mes de caché que trae por defecto.
+  return escribirPrivado(rutaDe(registro.partido.id), registro, { cacheMaxAge: 60 });
 }
 
 /* ------------------------------------------------------------------ lectura */
@@ -111,28 +113,43 @@ export async function abrirRegistro(partido: FichaPartido): Promise<Registro> {
 }
 
 /**
- * Añade eventos al partido y devuelve el registro entero.
+ * Une lo recibido con lo guardado y devuelve el partido entero.
  *
- * La mezcla es por id, así que reenviar lo ya guardado no duplica nada: es lo
- * que permite que el móvil del campo reintente a ciegas cuando la cobertura va
- * y viene. Se devuelve el registro completo para que quien escribe pueda
- * comparar con su cola y reenviar lo que no vea confirmado; así, si dos
- * dispositivos escriben a la vez y una escritura se pierde, se recupera sola
- * en el evento siguiente.
+ * Quien escribe manda **todo lo que sabe**, no solo lo último, y aquí se hace
+ * la unión por id. Parece redundante y es justo lo que salva el directo: si la
+ * lectura de arriba devolviera una versión atrasada, quedarse solo con ella y
+ * añadirle el gol nuevo borraría media cronología. Mandando el registro
+ * completo, lo peor que puede pasar es reescribir lo mismo.
+ *
+ * Por eso nunca se depende de la relectura para tener razón: el móvil del
+ * campo es quien la tiene mientras dura el partido.
+ *
+ * Se devuelve la unión y no lo leído, para que quien escribe pueda comparar con
+ * su cola y reenviar lo que no vea confirmado. Con dos dispositivos a la vez,
+ * cada uno sigue mandando su lista entera y el registro converge solo.
  */
 export async function anotarEventos(
   id: string,
-  nuevos: Evento[],
+  recibidos: Evento[],
 ): Promise<Registro | null> {
   const registro = await leer(id);
   if (!registro) return null;
 
-  const conocidos = new Set(registro.eventos.map((e) => e.id));
-  const anadir = nuevos.filter((e) => !conocidos.has(e.id));
+  const union = new Map(registro.eventos.map((e) => [e.id, e]));
+  let nuevos = 0;
+  for (const e of recibidos) {
+    if (union.has(e.id)) continue;
+    union.set(e.id, e);
+    nuevos++;
+  }
 
-  if (anadir.length === 0) return registro;
+  const eventos = [...union.values()]
+    .sort((a, b) => a.ts - b.ts || a.id.localeCompare(b.id))
+    .slice(0, MAX_EVENTOS);
 
-  const eventos = [...registro.eventos, ...anadir].slice(0, MAX_EVENTOS);
+  // Nada que no tuviéramos: se contesta con lo que hay, sin gastar una escritura
+  if (nuevos === 0) return { ...registro, eventos };
+
   const actualizado: Registro = {
     ...registro,
     eventos,

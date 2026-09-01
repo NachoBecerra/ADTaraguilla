@@ -26,11 +26,26 @@ const TOKEN =
 
 export const hayAlmacenPrivado = Boolean(TOKEN);
 
-/** Lee un JSON del almacén privado. Devuelve el valor por defecto si no está. */
-export async function leerPrivado<T>(ruta: string, porDefecto: T): Promise<T> {
+/**
+ * Lee un JSON del almacén privado. Devuelve el valor por defecto si no está.
+ *
+ * `sinCache` es imprescindible para lo que se lee justo después de haberlo
+ * escrito. El almacén sirve los archivos por una caché y `put` los guarda con
+ * un mes de vigencia, así que una lectura normal puede devolver la versión
+ * anterior: quien lea para modificar y volver a guardar perdería lo último.
+ */
+export async function leerPrivado<T>(
+  ruta: string,
+  porDefecto: T,
+  { sinCache = false }: { sinCache?: boolean } = {},
+): Promise<T> {
   if (!TOKEN) return porDefecto;
   try {
-    const encontrado = await get(ruta, { access: "private", token: TOKEN });
+    const encontrado = await get(ruta, {
+      access: "private",
+      token: TOKEN,
+      ...(sinCache ? { useCache: false } : {}),
+    });
     if (!encontrado) return porDefecto;
     return (await new Response(encontrado.stream).json()) as T;
   } catch {
@@ -39,8 +54,20 @@ export async function leerPrivado<T>(ruta: string, porDefecto: T): Promise<T> {
   }
 }
 
-/** Escribe un JSON en el almacén privado, sobrescribiendo lo que hubiera. */
-export async function escribirPrivado(ruta: string, datos: unknown): Promise<boolean> {
+/**
+ * Escribe un JSON en el almacén privado, sobrescribiendo lo que hubiera.
+ *
+ * `cacheMaxAge` baja la vigencia en la caché del almacén, que por defecto es
+ * de un mes. Para algo que cambia cada pocos segundos, como un partido en
+ * directo, un mes es una eternidad. El mínimo que admite el almacén es un
+ * minuto, así que esto reduce el daño pero no lo elimina: lo que necesite leer
+ * lo último de verdad tiene que pedirlo además con `sinCache`.
+ */
+export async function escribirPrivado(
+  ruta: string,
+  datos: unknown,
+  { cacheMaxAge }: { cacheMaxAge?: number } = {},
+): Promise<boolean> {
   if (!TOKEN) return false;
   try {
     await put(ruta, JSON.stringify(datos), {
@@ -50,6 +77,7 @@ export async function escribirPrivado(ruta: string, datos: unknown): Promise<boo
       // Ruta fija: hay que poder volver a leer el mismo archivo
       addRandomSuffix: false,
       allowOverwrite: true,
+      ...(cacheMaxAge === undefined ? {} : { cacheControlMaxAge: cacheMaxAge }),
     });
     return true;
   } catch {

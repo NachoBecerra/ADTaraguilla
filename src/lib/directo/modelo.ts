@@ -264,8 +264,14 @@ const LADOS = new Set<string>(["local", "visitante"]);
 /** Como mucho, esto de largo tiene un comentario. Es una web, no un chat. */
 export const LARGO_TEXTO = 200;
 
-/** Cuántos eventos se aceptan de una vez: una cola de reintentos, no un ataque. */
-export const MAX_POR_ENVIO = 50;
+/**
+ * Tope de eventos de un partido.
+ *
+ * Es a la vez lo que cabe en un envío, porque quien escribe manda siempre su
+ * registro entero y no solo lo último. Noventa minutos dan de sobra con esto, y
+ * pone un techo a lo que puede escribir un enlace que se haya ido de las manos.
+ */
+export const MAX_EVENTOS = 500;
 
 /**
  * Convierte lo que llega por la red en eventos de verdad.
@@ -285,7 +291,7 @@ export function sanearEventos(datos: unknown, ahora: number): Evento[] {
   const despues = ahora + 5 * 60_000;
   const limpios: Evento[] = [];
 
-  for (const bruto of datos.slice(0, MAX_POR_ENVIO)) {
+  for (const bruto of datos.slice(0, MAX_EVENTOS)) {
     if (typeof bruto !== "object" || bruto === null) continue;
     const e = bruto as Record<string, unknown>;
 

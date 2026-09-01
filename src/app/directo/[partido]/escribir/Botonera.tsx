@@ -58,6 +58,9 @@ export default function Botonera({
   const partido = inicial.partido;
 
   const [confirmados, setConfirmados] = useState<Evento[]>(inicial.eventos);
+  /* Igual que la cola: el envío necesita la lista de verdad, no la del último
+     render. */
+  const confirmadosRef = useRef<Evento[]>(inicial.eventos);
   const [pendientes, setPendientes] = useState<Evento[]>([]);
   const [texto, setTexto] = useState("");
   const [aviso, setAviso] = useState<string | null>(null);
@@ -118,13 +121,23 @@ export default function Botonera({
   const enviar = useCallback(async () => {
     if (enviando.current || cola.current.length === 0) return;
 
-    const enviados = cola.current;
     enviando.current = true;
     try {
+      /*
+       * Se manda **todo** lo que sabe este móvil, no solo lo pendiente. El
+       * almacén sirve por una caché con un minuto de vigencia mínima, así que
+       * el servidor puede leer una versión atrasada del partido; si le
+       * mandáramos únicamente el gol nuevo, lo añadiría a esa versión vieja y
+       * borraría lo anterior. Mandando la lista entera, lo peor que puede pasar
+       * es reescribir lo mismo.
+       */
       const r = await fetch(`/api/directo/${partido.id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token, eventos: enviados }),
+        body: JSON.stringify({
+          token,
+          eventos: [...confirmadosRef.current, ...cola.current],
+        }),
         cache: "no-store",
       });
 
@@ -137,6 +150,7 @@ export default function Botonera({
       const registro = (await r.json()) as Registro;
       const guardados = new Set(registro.eventos.map((e) => e.id));
 
+      confirmadosRef.current = registro.eventos;
       setConfirmados(registro.eventos);
       fijarCola(cola.current.filter((e) => !guardados.has(e.id)));
       setAviso(null);
