@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "directo:probar": "node scripts/directo/probar.mjs",
     "rfaf": "node scripts/rfaf/sincronizar.mjs",
     "rfaf:forzar": "node scripts/rfaf/sincronizar.mjs --forzar",
     "rfaf:completo": "node scripts/rfaf/sincronizar.mjs --completo"

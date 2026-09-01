@@ -21,6 +21,11 @@ export default async function Panel() {
 
   const secciones = [
     {
+      href: "/panel/directo",
+      titulo: "Directo",
+      texto: "Retransmite un partido y manda el enlace a quien esté en el campo.",
+    },
+    {
       href: "/panel/galeria",
       titulo: "Galería",
       texto: `${fotos} ${fotos === 1 ? "foto" : "fotos"} publicadas. Sube varias de una vez.`,
