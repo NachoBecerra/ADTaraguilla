@@ -159,7 +159,7 @@ export function TarjetaProximoPartido({
             <span
               className={`mt-1 whitespace-nowrap rounded-full px-3 py-1 font-bold ${
                 partido.hora
-                  ? "bg-club text-sm text-white"
+                  ? "bg-club text-sm tabular-nums text-white"
                   : "bg-panel-2 text-[10px] uppercase tracking-wide text-mute"
               }`}
             >

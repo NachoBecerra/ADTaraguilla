@@ -107,7 +107,12 @@ export default function TarjetaEquipo({
                     proximo.hora ? "bg-club text-white" : "bg-panel text-mute"
                   }`}
                 >
-                  <span className="title block text-base leading-none">
+                  {/*
+                    Con la condensada de los titulares, a este tamaño el 9 se
+                    confundía con el 0. La de texto separa mejor las cifras, y
+                    tabular-nums les da a todas el mismo ancho.
+                  */}
+                  <span className="block text-sm font-bold leading-none tabular-nums tracking-wide">
                     {proximo.hora ?? (
                       <>
                         <span aria-hidden>--:--</span>
