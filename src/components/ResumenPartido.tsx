@@ -51,7 +51,7 @@ export default function ResumenPartido({
       </div>
 
       {/* Al final: se ve en la esquina igual, pero se lee después del equipo */}
-      <IndicadorAvisos equipo={equipo.id} posicion="-right-1.5 -top-2" />
+      <IndicadorAvisos equipo={equipo.id} posicion="right-2.5 -top-2" />
     </Link>
   );
 }

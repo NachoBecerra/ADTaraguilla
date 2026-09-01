@@ -63,7 +63,7 @@ export default function IndicadorAvisos({
        */
       className={`absolute z-10 text-club ${posicion}`}
     >
-      <IconoCampanaLlena size={16} />
+      <IconoCampanaLlena size={22} />
     </span>
   );
 }
