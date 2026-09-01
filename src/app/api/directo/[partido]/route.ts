@@ -48,9 +48,13 @@ export async function POST(peticion: Request, { params }: Contexto): Promise<Res
     return Response.json({ error: "Partido no válido" }, { status: 400 });
   }
 
-  let cuerpo: { token?: string; eventos?: unknown };
+  let cuerpo: { token?: string; eventos?: unknown; abierto?: string };
   try {
-    cuerpo = (await peticion.json()) as { token?: string; eventos?: unknown };
+    cuerpo = (await peticion.json()) as {
+      token?: string;
+      eventos?: unknown;
+      abierto?: string;
+    };
   } catch {
     return Response.json({ error: "Petición ilegible" }, { status: 400 });
   }
@@ -63,6 +67,22 @@ export async function POST(peticion: Request, { params }: Contexto): Promise<Res
   const eventos = sanearEventos(cuerpo.eventos, Date.now());
   if (eventos.length === 0) {
     return Response.json({ error: "Nada que anotar" }, { status: 400 });
+  }
+
+  /*
+   * Si el partido se reinició desde el panel, quien tenga la botonera abierta
+   * desde antes sigue guardando la cronología vieja y la mandaría entera al
+   * pulsar cualquier cosa. Se rechaza y se le pide que recargue.
+   *
+   * Las retransmisiones abiertas antes de que existiera esta marca no traen
+   * `abierto`: esas se aceptan, o dejarían de funcionar a media jornada.
+   */
+  const actual = await leerRegistro(partido);
+  if (actual?.abierto && cuerpo.abierto && cuerpo.abierto !== actual.abierto) {
+    return Response.json(
+      { error: "La retransmisión se ha reiniciado", reiniciado: true },
+      { status: 409 },
+    );
   }
 
   const registro = await anotarEventos(partido, eventos);

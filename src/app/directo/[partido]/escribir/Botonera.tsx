@@ -60,7 +60,18 @@ function sellar(evento: EventoNuevo): Evento {
   return { ...evento, id, ts: ahora } as Evento;
 }
 
-const clave = (partido: string) => `directo-pendientes-${partido}`;
+/**
+ * Dónde guarda este móvil lo que aún no ha podido mandar.
+ *
+ * La clave lleva **la apertura además del partido**. Si no, al reiniciar el
+ * partido desde el panel la cola pendiente sobreviviría a la recarga y volvería
+ * a colar en el partido nuevo lo que se acababa de borrar: el rechazo del
+ * servidor evita que se cuele en caliente, pero no vacía lo que ya estaba
+ * guardado en el teléfono.
+ */
+const PREFIJO = "directo-pendientes-";
+
+const clave = (partido: string, abierto: string) => `${PREFIJO}${partido}-${abierto}`;
 
 export default function Botonera({
   inicial,
@@ -107,18 +118,28 @@ export default function Botonera({
       cola.current = siguiente;
       setPendientes(siguiente);
       try {
-        localStorage.setItem(clave(partido.id), JSON.stringify(siguiente));
+        localStorage.setItem(clave(partido.id, inicial.abierto), JSON.stringify(siguiente));
       } catch {
         // Cuota llena: no es motivo para dejar de apuntar el partido
       }
     },
-    [partido.id],
+    [partido.id, inicial.abierto],
   );
 
   /* Al abrir: recuperar lo que quedó sin mandar de una sesión anterior */
   useEffect(() => {
+    const mia = clave(partido.id, inicial.abierto);
     try {
-      const guardado = localStorage.getItem(clave(partido.id));
+      /*
+       * Antes de nada, tirar las colas de aperturas anteriores de este mismo
+       * partido: son de una retransmisión que ya se reinició y no deben volver.
+       */
+      for (let i = localStorage.length - 1; i >= 0; i--) {
+        const k = localStorage.key(i);
+        if (k?.startsWith(`${PREFIJO}${partido.id}-`) && k !== mia) localStorage.removeItem(k);
+      }
+
+      const guardado = localStorage.getItem(mia);
       if (!guardado) return;
       /*
        * El almacenamiento del navegador no existe mientras se renderiza en el
@@ -129,7 +150,7 @@ export default function Botonera({
     } catch {
       // Sin almacenamiento local se sigue igual, pero sin red de seguridad
     }
-  }, [partido.id]);
+  }, [partido.id, inicial.abierto]);
 
   useEffect(() => {
     const reloj = setInterval(() => setAhora(Date.now()), 1000);
@@ -161,6 +182,8 @@ export default function Botonera({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           token,
+          // Para que un envío de antes de un reinicio no resucite lo borrado
+          abierto: inicial.abierto,
           eventos: [...confirmadosRef.current, ...cola.current],
         }),
         cache: "no-store",
@@ -168,6 +191,10 @@ export default function Botonera({
 
       if (r.status === 401) {
         setAviso("El enlace ha caducado. Pide uno nuevo en el panel del club.");
+        return;
+      }
+      if (r.status === 409) {
+        setAviso("El partido se ha reiniciado desde el panel. Recarga la página para seguir.");
         return;
       }
       if (!r.ok) return; // se reintenta solo
@@ -184,7 +211,7 @@ export default function Botonera({
     } finally {
       enviando.current = false;
     }
-  }, [partido.id, token, fijarCola]);
+  }, [partido.id, token, fijarCola, inicial.abierto]);
 
   /* El reintento, para lo que se quedó sin mandar por falta de cobertura */
   useEffect(() => {

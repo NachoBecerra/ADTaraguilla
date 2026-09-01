@@ -45,6 +45,15 @@ export type Registro = {
   /** Sube con cada escritura. Es lo que va en el ETag de la lectura. */
   version: number;
   actualizado: string;
+  /**
+   * Cuándo se abrió esta retransmisión. Cambia al reiniciarla desde el panel.
+   *
+   * Sirve para distinguir "el mismo partido" de "el mismo partido, empezado de
+   * cero". Quien escribe manda todo lo que sabe en cada envío, así que sin esto
+   * una botonera abierta desde antes del reinicio devolvería el partido viejo
+   * entero en cuanto pulsara cualquier cosa.
+   */
+  abierto: string;
 };
 
 const CARPETA = "directo";
@@ -135,6 +144,28 @@ async function crear(registro: Registro): Promise<boolean> {
   return escribirPrivado(rutaDe(registro.partido.id), registro, { sobrescribir: false });
 }
 
+/** Un partido recién abierto: sin nada apuntado todavía. */
+function enBlanco(partido: FichaPartido): Registro {
+  const ahora = new Date().toISOString();
+  return { partido, eventos: [], version: 1, actualizado: ahora, abierto: ahora };
+}
+
+/**
+ * Borra lo apuntado y deja el partido como recién abierto.
+ *
+ * Se escribe encima a propósito, sin mirar antes lo que hubiera: es una acción
+ * deliberada desde el panel y con la contraseña del club, así que aquí la
+ * intención es justo pisar lo que hay.
+ *
+ * Al cambiar `abierto`, cualquier botonera que siguiera abierta con el partido
+ * anterior deja de poder escribir, y se le pide que recargue. Sin eso volvería
+ * a mandar todo lo viejo y el reinicio no serviría de nada.
+ */
+export async function reiniciarRegistro(partido: FichaPartido): Promise<Registro | null> {
+  const nuevo = enBlanco(partido);
+  return (await escribir(nuevo)) ? nuevo : null;
+}
+
 /**
  * Abre la retransmisión de un partido, o devuelve la que ya estuviera abierta.
  *
@@ -147,13 +178,7 @@ export async function abrirRegistro(partido: FichaPartido): Promise<Registro> {
   const existente = await leer(partido.id);
   if (existente) return existente;
 
-  const nuevo: Registro = {
-    partido,
-    eventos: [],
-    version: 1,
-    actualizado: new Date().toISOString(),
-  };
-
+  const nuevo = enBlanco(partido);
   if (await crear(nuevo)) return nuevo;
 
   /*

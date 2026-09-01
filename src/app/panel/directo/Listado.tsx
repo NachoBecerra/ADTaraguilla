@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { empezarRetransmision } from "./acciones";
+import { empezarRetransmision, reiniciarRetransmision } from "./acciones";
 import { fechaPartido } from "@/lib/formato";
 import { IconoFlecha } from "@/components/Iconos";
 
@@ -28,6 +28,8 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
   const [enlaces, setEnlaces] = useState<Record<string, string>>({});
   const [errores, setErrores] = useState<Record<string, string>>({});
   const [copiado, setCopiado] = useState<string | null>(null);
+  /* Reiniciar borra la cronología: no puede pasar de un solo toque */
+  const [confirmando, setConfirmando] = useState<string | null>(null);
 
   async function abrir(id: string) {
     setTrabajando(id);
@@ -39,6 +41,20 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
     } else {
       setErrores((e) => ({ ...e, [id]: r.mensaje }));
     }
+    setTrabajando(null);
+  }
+
+  async function reiniciar(id: string) {
+    setTrabajando(id);
+    setErrores((e) => ({ ...e, [id]: "" }));
+
+    const r = await reiniciarRetransmision(id);
+    if (r.ok && r.ruta) {
+      setEnlaces((e) => ({ ...e, [id]: `${window.location.origin}${r.ruta}` }));
+    } else {
+      setErrores((e) => ({ ...e, [id]: r.mensaje }));
+    }
+    setConfirmando(null);
     setTrabajando(null);
   }
 
@@ -113,7 +129,7 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
                 onFocus={(e) => e.currentTarget.select()}
                 className="mt-2 w-full rounded-lg border border-linea bg-panel px-3 py-2 text-xs text-tinta"
               />
-              <div className="mt-2 flex gap-2">
+              <div className="mt-2 flex flex-wrap gap-2">
                 <button
                   type="button"
                   onClick={() => copiar(p.id)}
@@ -128,6 +144,43 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
                   Abrir yo
                   <IconoFlecha size={15} />
                 </a>
+              </div>
+
+              {/*
+                Empezar de cero. Va aparte y en dos pasos porque borra la
+                cronología del partido, y eso no se guarda en ningún otro sitio.
+              */}
+              <div className="mt-3 border-t border-linea pt-3">
+                {confirmando === p.id ? (
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-xs font-semibold text-club">
+                      Se borra todo lo apuntado. No se puede deshacer.
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => reiniciar(p.id)}
+                      disabled={trabajando === p.id}
+                      className="btn btn-primary px-3 py-1.5 text-xs"
+                    >
+                      {trabajando === p.id ? "Borrando…" : "Sí, empezar de cero"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setConfirmando(null)}
+                      className="btn btn-ghost px-3 py-1.5 text-xs"
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setConfirmando(p.id)}
+                    className="text-xs font-bold text-mute underline transition-colors hover:text-club"
+                  >
+                    Reiniciar el partido
+                  </button>
+                )}
               </div>
             </div>
           ) : null}
