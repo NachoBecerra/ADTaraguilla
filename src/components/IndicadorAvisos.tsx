@@ -47,10 +47,10 @@ export default function IndicadorAvisos({ equipo }: { equipo: string }) {
       aria-label="Recibes avisos de este equipo"
       title="Recibes avisos de este equipo"
       /*
-       * Apoyada en el borde: sobresale de la tarjeta y el aro del color del
-       * fondo la recorta, que es lo que da la sensación de estar encima.
+       * Sin círculo ni fondo: solo la campana, del verde del club. Basta para
+       * saber que ese equipo tiene avisos sin robarle atención a la tarjeta.
        */
-      className="absolute -right-2.5 -top-2.5 z-10 grid h-7 w-7 place-items-center rounded-full bg-club text-white shadow-md ring-2 ring-fondo"
+      className="absolute right-2.5 top-2.5 z-10 text-club"
     >
       <IconoCampana size={14} />
     </span>
