@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { IconoCampana } from "@/components/Iconos";
+import { IconoCampanaLlena } from "@/components/Iconos";
 
 /**
  * Campanita en la esquina de la tarjeta del equipo del que se reciben avisos.
@@ -36,7 +36,18 @@ function enElNavegador(): string | null {
 /** En el servidor no hay navegador, así que no se pinta nada. */
 const enElServidor = (): string | null => null;
 
-export default function IndicadorAvisos({ equipo }: { equipo: string }) {
+export default function IndicadorAvisos({
+  equipo,
+  posicion = "right-2.5 top-2.5",
+}: {
+  equipo: string;
+  /**
+   * Dónde colgarla. Por defecto dentro de la esquina, que es donde hay hueco
+   * en las tarjetas grandes; en las filas compactas esa esquina la ocupa la
+   * hora y hay que sacarla al borde.
+   */
+  posicion?: string;
+}) {
   const elegido = useSyncExternalStore(suscribir, enElNavegador, enElServidor);
   if (elegido !== equipo) return null;
 
@@ -50,9 +61,9 @@ export default function IndicadorAvisos({ equipo }: { equipo: string }) {
        * Sin círculo ni fondo: solo la campana, del verde del club. Basta para
        * saber que ese equipo tiene avisos sin robarle atención a la tarjeta.
        */
-      className="absolute right-2.5 top-2.5 z-10 text-club"
+      className={`absolute z-10 text-club ${posicion}`}
     >
-      <IconoCampana size={14} />
+      <IconoCampanaLlena size={16} />
     </span>
   );
 }

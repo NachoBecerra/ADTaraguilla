@@ -154,6 +154,16 @@ export function IconoCampana({ size = 20, className }: Props) {
   );
 }
 
+/** Campana maciza, para marcar una tarjeta sin ocupar apenas sitio. */
+export function IconoCampanaLlena({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="currentColor">
+      <path d="M12 2.4c-.85 0-1.5.65-1.5 1.5v.55A5.75 5.75 0 0 0 6.3 10.1c0 3.35-.6 4.75-1.3 5.65-.42.55 0 1.35.72 1.35h12.56c.72 0 1.14-.8.72-1.35-.7-.9-1.3-2.3-1.3-5.65a5.75 5.75 0 0 0-4.2-5.65V3.9c0-.85-.65-1.5-1.5-1.5Z" />
+      <path d="M9.75 18.4h4.5a2.25 2.25 0 0 1-4.5 0Z" />
+    </svg>
+  );
+}
+
 /** Avisos desactivados. */
 export function IconoCampanaTachada({ size = 20, className }: Props) {
   return (
