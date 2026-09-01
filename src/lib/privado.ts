@@ -1,4 +1,4 @@
-import { head, put } from "@vercel/blob";
+import { get, put } from "@vercel/blob";
 
 /**
  * Almacén privado del club.
@@ -6,6 +6,10 @@ import { head, put } from "@vercel/blob";
  * Aquí van los datos que no puede leer cualquiera: el recuento de uso y, más
  * adelante, las suscripciones a los avisos. Es un almacén distinto del de las
  * fotos, que es público a propósito.
+ *
+ * Los archivos se guardan y se leen como privados. En un almacén así no basta
+ * con pedir la URL: hay que pasar por el SDK con el token, y por eso se lee
+ * con `get` en vez de con un fetch normal.
  *
  * Si la variable no está puesta, todo lo que hay aquí se comporta como si no
  * existiera: la web sigue funcionando y solo se pierde el recuento.
@@ -26,10 +30,9 @@ export const hayAlmacenPrivado = Boolean(TOKEN);
 export async function leerPrivado<T>(ruta: string, porDefecto: T): Promise<T> {
   if (!TOKEN) return porDefecto;
   try {
-    const info = await head(ruta, { token: TOKEN });
-    const r = await fetch(info.downloadUrl, { cache: "no-store" });
-    if (!r.ok) return porDefecto;
-    return (await r.json()) as T;
+    const encontrado = await get(ruta, { access: "private", token: TOKEN });
+    if (!encontrado) return porDefecto;
+    return (await new Response(encontrado.stream).json()) as T;
   } catch {
     // No existe todavía, o el almacén no responde
     return porDefecto;
@@ -41,9 +44,10 @@ export async function escribirPrivado(ruta: string, datos: unknown): Promise<boo
   if (!TOKEN) return false;
   try {
     await put(ruta, JSON.stringify(datos), {
+      access: "private",
       token: TOKEN,
-      access: "public", // el almacén ya es privado; esto es el modo del archivo
       contentType: "application/json",
+      // Ruta fija: hay que poder volver a leer el mismo archivo
       addRandomSuffix: false,
       allowOverwrite: true,
     });
