@@ -2,11 +2,13 @@ import type { EventoEnLinea } from "@/lib/directo/modelo";
 import type { FichaPartido } from "@/lib/directo/almacen";
 
 /**
- * Lo que ha ido pasando en el partido, del principio al final.
+ * Lo que ha ido pasando en el partido.
  *
- * El orden es el de un chat y no el de un periódico: lo último abajo. Quien
- * sigue un partido en directo lee hacia abajo según van cayendo las cosas, y
- * darle la vuelta obligaría a releer desde arriba en cada actualización.
+ * El orden cambia según quién mire. Quien sigue el partido desde casa quiere lo
+ * último arriba, sin tener que bajar hasta el final cada vez que pasa algo.
+ * Quien está escribiendo en el campo trabaja al revés: va apuntando hacia
+ * abajo, como en un cuaderno, y le cuadra ver la lista en el orden en que la
+ * escribió.
  *
  * La misma lista la ve el público y quien está escribiendo desde el campo; a
  * este último se le pasa `alAnular` y le aparece la equis para corregir.
@@ -64,10 +66,13 @@ export default function Cronologia({
   linea,
   partido,
   alAnular,
+  recienteArriba = false,
 }: {
   linea: EventoEnLinea[];
   partido: FichaPartido;
   alAnular?: (id: string) => void;
+  /** Lo último, primero. Para quien mira en vez de escribir. */
+  recienteArriba?: boolean;
 }) {
   if (linea.length === 0) {
     return (
@@ -77,9 +82,11 @@ export default function Cronologia({
     );
   }
 
+  const enOrden = recienteArriba ? [...linea].reverse() : linea;
+
   return (
     <ol className="mt-3 space-y-1.5">
-      {linea.map((evento) => (
+      {enOrden.map((evento) => (
         <li
           key={evento.id}
           className="flex items-center gap-3 rounded-xl border border-linea bg-panel px-3 py-2.5"

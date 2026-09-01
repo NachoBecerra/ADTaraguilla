@@ -144,7 +144,7 @@ export default function Seguimiento({ inicial }: { inicial: Registro }) {
       </p>
 
       <h2 className="title mt-6 text-xl text-tinta">Cómo va</h2>
-      <Cronologia linea={estado.linea} partido={partido} />
+      <Cronologia linea={estado.linea} partido={partido} recienteArriba />
     </section>
   );
 }
