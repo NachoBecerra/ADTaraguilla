@@ -1,0 +1,28 @@
+name: Aviso de prueba
+
+# A mano y solo a mano: sirve para comprobar que los avisos llegan al móvil
+# sin esperar a que la RFAF publique un resultado.
+on:
+  workflow_dispatch:
+    inputs:
+      mensaje:
+        description: Texto del aviso
+        required: false
+        default: Notificación de pruebas, disculpa las molestias
+
+jobs:
+  avisar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Mandar el aviso
+        env:
+          AVISOS_SECRETO: ${{ secrets.AVISOS_SECRETO }}
+          SITIO_URL: https://ad-taraguilla.es
+          MENSAJE: ${{ inputs.mensaje }}
+        run: node scripts/avisar-prueba.mjs
