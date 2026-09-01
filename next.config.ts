@@ -20,7 +20,12 @@ const nextConfig: NextConfig = {
   },
 
   async redirects() {
-    return [{ source: "/palmares", destination: "/historico", permanent: true }];
+    return [
+      { source: "/palmares", destination: "/historico", permanent: true },
+      // Hubo un panel de Decap aquí; quien tenga el enlace guardado va al bueno
+      { source: "/admin", destination: "/panel", permanent: true },
+      { source: "/admin/:resto*", destination: "/panel", permanent: true },
+    ];
   },
 
   images: {

@@ -151,8 +151,8 @@ una sincronización fallida nunca borra lo que ya había.
 
 | Qué | Dónde |
 | --- | --- |
-| Noticias | Panel `/admin`, o `content/noticias/*.md` |
-| Fotos y vídeos | Panel `/admin`, o `src/data/galeria.json` |
+| Noticias | Panel `/panel`, o `content/noticias/*.md` |
+| Fotos | Panel `/panel`, o `src/data/galeria.json` |
 | Nombre y orden de los equipos | `src/data/equipos.json` → `nombres` |
 | Nombre, lema, contacto, redes | `src/data/site.ts` |
 | Colores del club | `src/app/globals.css` → bloque `@theme` |
@@ -174,7 +174,6 @@ src/lib/contenido.ts         Lectura de noticias y galería
 src/lib/competicion.ts       Lectura de los datos de la RFAF
 scripts/rfaf/                Sincronizador
 src/app/                     /, /equipos, /noticias, /galeria, /clubes
-public/admin/                Panel de edición (Decap CMS)
 ```
 
 ## Panel `/panel`
@@ -191,29 +190,6 @@ despliegues.
 Variables necesarias (ver `.env.example`): `CLAVE_PANEL`, `GITHUB_TOKEN`,
 `GITHUB_REPO`.
 
-## Panel `/admin` (Decap, en retirada)
-
-### Probar en local, sin GitHub
-
-```bash
-npx decap-server     # en una terminal
-npm run dev          # en otra
-```
-
-Y entra en <http://localhost:3000/admin>.
-
-### En producción
-
-1. Sube el proyecto a un repositorio de GitHub.
-2. **Settings → Developer settings → OAuth Apps → New OAuth App**
-   - *Homepage URL*: `https://tu-dominio`
-   - *Authorization callback URL*: `https://tu-dominio/api/callback`
-3. Define `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` y `NEXT_PUBLIC_SITE_URL`
-   (ver `.env.example`).
-4. En `public/admin/config.yml`, pon tu `repo` y tu `base_url`.
-
-El intercambio de OAuth lo resuelve la propia web (`src/app/api/auth` y
-`src/app/api/callback`): no hace falta ningún servicio externo.
 
 ## Paleta
 
