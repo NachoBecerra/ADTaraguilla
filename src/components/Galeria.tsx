@@ -24,6 +24,21 @@ function normalizar(texto: string): string {
   return texto.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
 }
 
+/**
+ * Dirección que descarga la foto en vez de abrirla.
+ *
+ * El atributo `download` de un enlace solo vale si el archivo está en el
+ * mismo dominio, y las fotos viven en el almacenamiento. Además este las
+ * sirve como "inline", que es "enséñala". Con ?download=1 responde
+ * "attachment" y el navegador la guarda; funciona también en el iPhone,
+ * donde las descargas provocadas por código suelen acabar abriendo el
+ * archivo.
+ */
+function urlDescarga(src: string): string {
+  if (!/\.public\.blob\.vercel-storage\.com\//.test(src)) return src;
+  return `${src}${src.includes("?") ? "&" : "?"}download=1`;
+}
+
 /** Nombre con el que se guarda la foto al descargarla. */
 function nombreDescarga(item: ItemGaleria): string {
   const extension = item.src?.split(".").pop() ?? "jpg";
@@ -248,7 +263,9 @@ export default function Galeria({
             <div className="flex items-center gap-2">
               {actual.src ? (
                 <a
-                  href={actual.src}
+                  href={urlDescarga(actual.src)}
+                  // Solo surte efecto en las fotos antiguas, las del propio
+                  // dominio; en las demás el nombre lo pone el almacenamiento
                   download={nombreDescarga(actual)}
                   className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-bold text-club transition-transform active:scale-95"
                 >
