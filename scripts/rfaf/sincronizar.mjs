@@ -636,10 +636,10 @@ function partidosPorClave(datos) {
  * Solo dos cosas, y solo de nuestros partidos:
  *
  * - un resultado que antes no estaba;
- * - una hora ya definida: cuando se asigna por primera vez o cuando cambia.
- *   Nunca mientras siga pendiente; avisar de "sigue sin hora" sería el ruido
- *   que hace que la gente apague los avisos. Un cambio de hora sí importa: es
- *   la diferencia entre llegar a tiempo y plantarse una hora antes.
+ * - una hora ya definida: cuando se asigna por primera vez o cuando cambia,
+ *   que se cuentan igual porque lo que importa es a qué hora se juega. Nunca
+ *   mientras siga pendiente; avisar de "sigue sin hora" sería el ruido que
+ *   hace que la gente apague los avisos.
  */
 function novedadesDe(equipo, previo, nuevo) {
   const antes = partidosPorClave(previo);
@@ -660,10 +660,12 @@ function novedadesDe(equipo, previo, nuevo) {
     if (!viejo.jugado && p.jugado) {
       const propios = esLocal ? p.golesLocal : p.golesVisitante;
       const rivales = esLocal ? p.golesVisitante : p.golesLocal;
+      const desenlace =
+        propios > rivales ? "Victoria" : propios === rivales ? "Empate" : "Derrota";
       avisos.push({
         equipo: equipo.id,
         titulo: `${equipo.nombre}: ${propios} - ${rivales}`,
-        cuerpo: `${esLocal ? "En casa" : "Fuera"} · contra ${rival}`,
+        cuerpo: `${desenlace} del ${equipo.nombre}`,
         url: `/equipos/${equipo.id}`,
       });
       continue;
@@ -671,19 +673,12 @@ function novedadesDe(equipo, previo, nuevo) {
 
     if (p.jugado || !p.hora) continue;
 
-    const donde = esLocal ? "En casa" : "Fuera";
-    if (!viejo.hora) {
+    // Estrenar hora y cambiarla se cuentan igual: lo que importa es la que hay
+    if (!viejo.hora || viejo.hora !== p.hora) {
       avisos.push({
         equipo: equipo.id,
-        titulo: `${equipo.nombre}: ya hay hora`,
-        cuerpo: `${donde} · contra ${rival} · a las ${p.hora}`,
-        url: `/equipos/${equipo.id}`,
-      });
-    } else if (viejo.hora !== p.hora) {
-      avisos.push({
-        equipo: equipo.id,
-        titulo: `${equipo.nombre}: cambia la hora`,
-        cuerpo: `${donde} · contra ${rival} · de las ${viejo.hora} a las ${p.hora}`,
+        titulo: `${equipo.nombre}: cambio de hora`,
+        cuerpo: `${rival} · ${p.hora}`,
         url: `/equipos/${equipo.id}`,
       });
     }
