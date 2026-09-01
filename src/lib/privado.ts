@@ -57,6 +57,9 @@ export async function leerPrivado<T>(
 /**
  * Escribe un JSON en el almacén privado, sobrescribiendo lo que hubiera.
  *
+ * `sobrescribir: false` hace que falle en vez de pisar lo que ya hubiera, que
+ * es lo que hace segura una creación.
+ *
  * `cacheMaxAge` baja la vigencia en la caché del almacén, que por defecto es
  * de un mes. Para algo que cambia cada pocos segundos, como un partido en
  * directo, un mes es una eternidad. El mínimo que admite el almacén es un
@@ -66,7 +69,7 @@ export async function leerPrivado<T>(
 export async function escribirPrivado(
   ruta: string,
   datos: unknown,
-  { cacheMaxAge }: { cacheMaxAge?: number } = {},
+  { cacheMaxAge, sobrescribir = true }: { cacheMaxAge?: number; sobrescribir?: boolean } = {},
 ): Promise<boolean> {
   if (!TOKEN) return false;
   try {
@@ -76,7 +79,12 @@ export async function escribirPrivado(
       contentType: "application/json",
       // Ruta fija: hay que poder volver a leer el mismo archivo
       addRandomSuffix: false,
-      allowOverwrite: true,
+      /*
+       * Con `sobrescribir: false` el almacén rechaza la escritura si el
+       * archivo ya existe. Es la forma de crear algo sin arriesgarse a pisar
+       * lo que hubiera, cuando no basta con haber mirado antes.
+       */
+      allowOverwrite: sobrescribir,
       ...(cacheMaxAge === undefined ? {} : { cacheControlMaxAge: cacheMaxAge }),
     });
     return true;

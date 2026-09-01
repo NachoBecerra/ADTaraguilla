@@ -97,7 +97,41 @@ export const leerRegistro = leer;
 
 /* ----------------------------------------------------------------- escritura */
 
-/** Abre la retransmisión de un partido, o devuelve la que ya estuviera abierta. */
+/**
+ * Crea el partido **solo si no existe**. Devuelve false si ya estaba.
+ *
+ * No vale con haber mirado antes: leer devuelve lo mismo cuando el partido no
+ * existe que cuando el almacén no contesta, y confundir esas dos cosas
+ * significaría arrasar un partido en curso.
+ */
+async function crear(registro: Registro): Promise<boolean> {
+  if (enDisco) {
+    await fs.mkdir(CARPETA_LOCAL, { recursive: true });
+    try {
+      // "wx": falla si el archivo ya existe
+      await fs.writeFile(rutaLocal(registro.partido.id), JSON.stringify(registro), {
+        encoding: "utf8",
+        flag: "wx",
+      });
+      return true;
+    } catch {
+      return false;
+    }
+  }
+  return escribirPrivado(rutaDe(registro.partido.id), registro, {
+    cacheMaxAge: 60,
+    sobrescribir: false,
+  });
+}
+
+/**
+ * Abre la retransmisión de un partido, o devuelve la que ya estuviera abierta.
+ *
+ * Es lo que se llama al pedir el enlace desde el panel, y se pide más de una
+ * vez: para mandárselo a otra persona si al del campo se le muere el móvil, o
+ * simplemente para volver a copiarlo. Por eso **nunca** puede empezar de cero
+ * un partido que ya se está jugando.
+ */
 export async function abrirRegistro(partido: FichaPartido): Promise<Registro> {
   const existente = await leer(partido.id);
   if (existente) return existente;
@@ -108,8 +142,14 @@ export async function abrirRegistro(partido: FichaPartido): Promise<Registro> {
     version: 1,
     actualizado: new Date().toISOString(),
   };
-  await escribir(nuevo);
-  return nuevo;
+
+  if (await crear(nuevo)) return nuevo;
+
+  /*
+   * No se ha podido crear, casi siempre porque ya existía y la lectura de
+   * arriba falló. Se vuelve a leer antes que dar por bueno un partido vacío.
+   */
+  return (await leer(partido.id)) ?? nuevo;
 }
 
 /**
