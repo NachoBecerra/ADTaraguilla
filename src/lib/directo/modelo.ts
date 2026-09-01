@@ -37,9 +37,7 @@ export type Evento = Marca &
     /* El reloj se para por una asistencia, una lesión o lo que sea. */
     | { tipo: "parar" }
     | { tipo: "reanudar" }
-    /* Fin de la parte que se esté jugando: no dice cuál, así que sirve igual
-       para las dos partes del juvenil que para los tres tiempos que pueda
-       tener una categoría pequeña. */
+    /* Fin de la parte que se esté jugando: no dice cuál. */
     | { tipo: "finParte" }
     | { tipo: "empezarParte" }
     | { tipo: "final" }
@@ -48,6 +46,17 @@ export type Evento = Marca &
   );
 
 export type Fase = "sin-empezar" | "jugando" | "parado" | "descanso" | "final";
+
+/**
+ * Partes que tiene un partido. Todas las categorías del club juegan dos.
+ *
+ * Se cierra aquí, en el plegado, y no solo escondiendo el botón: una pantalla
+ * abierta desde antes de un cambio, o un segundo móvil, podrían mandar un
+ * "empezar parte" de más y el reloj se iría a un tercer tiempo que no existe.
+ *
+ * Si alguna categoría pasara a jugar tres tiempos, es cambiar este número.
+ */
+export const PARTES = 2;
 
 /**
  * El minuto de un partido, que no es solo un número.
@@ -193,6 +202,9 @@ export function plegar(eventos: Evento[], minutosPorParte: number): Estado {
   for (const evento of enOrden(eventos)) {
     // Un `anula` no se dibuja, y anular un `anula` no devuelve nada a la vida
     if (evento.tipo === "anula" || anulados.has(evento.id)) continue;
+
+    // No hay tercera parte: se descarta en vez de inventar un tiempo que no existe
+    if (evento.tipo === "empezarParte" && estado.parte >= PARTES) continue;
 
     /*
      * Casi todo se fecha con el reloj tal y como estaba justo antes: el gol

@@ -148,18 +148,26 @@ comprobar("la 2a del benjamin, en el 30", arranqueDeLaSegunda(30), "30'");
 comprobar("la 2a del alevin, en el 35", arranqueDeLaSegunda(35), "35'");
 comprobar("la 2a del infantil, en el 40", arranqueDeLaSegunda(40), "40'");
 
-/* Una categoria con tres tiempos sigue cuadrando: 25, 50, 75 */
-const tresTiempos = plegar(
+/*
+ * Un partido tiene dos partes y se acabo. Si por lo que sea llega un "empezar
+ * parte" de mas —una pantalla vieja, un segundo movil—, se descarta: inventar
+ * un tercer tiempo mandaria el reloj a un minuto que no existe.
+ */
+const terceraParte = plegar(
   [
     { id: "a", ts: min(0), tipo: "inicio" },
     { id: "b", ts: min(26), tipo: "finParte" },
     { id: "c", ts: min(31), tipo: "empezarParte" },
     { id: "d", ts: min(58), tipo: "finParte" },
-    { id: "e", ts: min(63), tipo: "empezarParte" },
+    { id: "e", ts: min(63), tipo: "empezarParte" }, // sobra
+    { id: "f", ts: min(70), tipo: "gol", equipo: "local" },
   ],
   25,
 );
-comprobar("con tres tiempos, el tercero empieza en el 50", tresTiempos.linea[4].minuto.etiqueta, "50'");
+comprobar("no se puede empezar una tercera parte", terceraParte.parte, 2);
+comprobar("y ni siquiera aparece en la cronologia", terceraParte.linea.filter((l) => l.tipo === "empezarParte").length, 1);
+// El reloj sigue parado desde el pitido: no lo arranca un evento descartado
+comprobar("y el reloj se queda donde lo dejo la segunda", terceraParte.linea.at(-1).minuto.etiqueta, "50+2");
 
 /* ------------------------------------------- el reloj sigue corriendo */
 
