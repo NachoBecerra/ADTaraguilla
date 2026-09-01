@@ -1,5 +1,5 @@
 {
-  "generado": "2026-08-31T22:07:53.557Z",
+  "generado": "2026-09-01T07:26:20.098Z",
   "_nota": "Ubicación de los campos, para enlazar con el mapa.",
   "campos": {
     "3083": {
@@ -11,6 +11,11 @@
       "nombre": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
       "lat": 36.2029487,
       "lon": -5.4197526
+    },
+    "2011471": {
+      "nombre": "JOSE RAMÓN CISNEROS CIUDAD DEPORTIVA",
+      "lat": 37.3527809,
+      "lon": -5.938682099999999
     }
   }
 }

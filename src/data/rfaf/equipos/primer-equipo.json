@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-08-31T22:07:48.640Z",
+  "actualizado": "2026-09-01T07:25:25.285Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -329,34 +329,18 @@
               "jugado": false
             },
             {
-              "local": "C.D. GUADIARO",
-              "visitante": "C.D. SAN ROQUE",
-              "codLocal": "307315",
-              "codVisitante": "307715",
+              "local": "C.D. SAN ROQUE",
+              "visitante": "C.D. GUADIARO",
+              "codLocal": "307715",
+              "codVisitante": "307315",
               "fecha": "2026-09-06",
               "hora": null,
               "golesLocal": null,
               "golesVisitante": null,
               "localidad": "San Roque",
-              "campo": "LA UNION",
+              "campo": "MANOLO MESA CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
-              "codCampo": "3073",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
-              "local": "TREBUJENA C.F.",
-              "visitante": "U.D. LOS BARRIOS",
-              "codLocal": "2064845",
-              "codVisitante": "308015",
-              "fecha": "2026-09-06",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "localidad": "Trebujena",
-              "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3011",
+              "codCampo": "3201",
               "urlActa": null,
               "jugado": false
             },
@@ -373,7 +357,7 @@
               "campo": "LA GRANJA CENTRO DE DEPORTES",
               "superficie": "Hierba Artificial",
               "codCampo": "3298",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662378",
               "jugado": false
             },
             {
@@ -389,7 +373,7 @@
               "campo": "CHICLANA ESTADIO MUNICIPAL",
               "superficie": "Hierba Natural",
               "codCampo": "2002086",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662382",
               "jugado": false
             },
             {
@@ -421,7 +405,7 @@
               "campo": "Sanlúcar de Barrameda -Doro Stadium",
               "superficie": "Hierba Artificial",
               "codCampo": "3104",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662380",
               "jugado": false
             },
             {
@@ -441,6 +425,22 @@
               "jugado": false
             },
             {
+              "local": "TREBUJENA C.F.",
+              "visitante": "U.D. LOS BARRIOS",
+              "codLocal": "2064845",
+              "codVisitante": "308015",
+              "fecha": "2026-09-06",
+              "hora": "19:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "localidad": "Trebujena",
+              "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3011",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
               "local": "JEREZ INDUSTRIAL C.F.",
               "visitante": "REAL BALOMPEDICA LINENSE",
               "codLocal": "300915",
@@ -453,7 +453,7 @@
               "campo": "Jerez De La Frontera -Municipal Pedro S. Garrido",
               "superficie": "Hierba Natural",
               "codCampo": "3009",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662381",
               "jugado": false
             }
           ]
@@ -2976,8 +2976,8 @@
               "jugado": false
             },
             {
-              "local": "C.D. SAN ROQUE",
-              "visitante": "C.D. GUADIARO",
+              "local": "C.D. GUADIARO",
+              "visitante": "C.D. SAN ROQUE",
               "codLocal": null,
               "codVisitante": null,
               "fecha": "2027-01-10",

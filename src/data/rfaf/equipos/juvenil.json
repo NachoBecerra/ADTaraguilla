@@ -7,7 +7,7 @@
   "orden": 2,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-08-31T08:35:16.819Z",
+  "actualizado": "2026-09-01T07:25:43.209Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307516",
   "competiciones": [
     {
@@ -41,6 +41,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -56,6 +57,7 @@
               "localidad": "La Línea de La Concepción",
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -71,6 +73,7 @@
               "localidad": "Castellar De La Frontera",
               "campo": "MANUEL LEON MUNICIPAL",
               "superficie": "Hierba Artificial",
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -86,6 +89,7 @@
               "localidad": "Algeciras",
               "campo": "SALADILLO",
               "superficie": "Tierra",
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -101,6 +105,7 @@
               "localidad": "Algeciras",
               "campo": "SAN GARCIA",
               "superficie": "Hierba Artificial",
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -116,6 +121,7 @@
               "localidad": "Tarifa",
               "campo": "ANTONIO LOPEZ PUA ESTADIO MUNICIPAL",
               "superficie": "Hierba Natural",
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -131,6 +137,7 @@
               "localidad": "Algeciras",
               "campo": "JUAN SEBASTIAN ELCANO - PULE",
               "superficie": "Hierba Artificial",
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -153,6 +160,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -168,6 +176,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -183,6 +192,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -198,6 +208,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -213,6 +224,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -228,6 +240,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -243,6 +256,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -265,6 +279,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -280,6 +295,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -295,6 +311,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -310,6 +327,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -325,6 +343,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -340,6 +359,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -355,6 +375,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -377,6 +398,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -392,6 +414,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -407,6 +430,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -422,6 +446,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -437,6 +462,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -452,6 +478,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -467,6 +494,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -489,6 +517,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -504,6 +533,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -519,6 +549,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -534,6 +565,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -549,6 +581,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -564,6 +597,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -579,6 +613,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -601,6 +636,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -616,6 +652,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -631,6 +668,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -646,6 +684,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -661,6 +700,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -676,6 +716,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -691,6 +732,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -713,6 +755,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -728,6 +771,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -743,6 +787,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -758,6 +803,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -773,6 +819,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -788,6 +835,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -803,6 +851,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -825,6 +874,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -840,6 +890,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -855,6 +906,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -870,6 +922,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -885,6 +938,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -900,6 +954,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -915,6 +970,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -937,6 +993,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -952,6 +1009,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -967,6 +1025,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -982,6 +1041,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -997,6 +1057,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1012,6 +1073,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1027,6 +1089,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -1049,6 +1112,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1064,6 +1128,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1079,6 +1144,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1094,6 +1160,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1109,6 +1176,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1124,6 +1192,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1139,6 +1208,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -1161,6 +1231,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1176,6 +1247,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1191,6 +1263,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1206,6 +1279,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1221,6 +1295,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1236,6 +1311,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1251,6 +1327,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -1273,6 +1350,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1288,6 +1366,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1303,6 +1382,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1318,6 +1398,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1333,6 +1414,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1348,6 +1430,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1363,6 +1446,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -1385,6 +1469,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1400,6 +1485,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1415,6 +1501,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1430,6 +1517,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1445,6 +1533,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1460,6 +1549,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1475,6 +1565,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -1497,6 +1588,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1512,6 +1604,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1527,6 +1620,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1542,6 +1636,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1557,6 +1652,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1572,6 +1668,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1587,6 +1684,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -1609,6 +1707,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1624,6 +1723,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1639,6 +1739,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1654,6 +1755,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1669,6 +1771,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1684,6 +1787,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1699,6 +1803,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -1721,6 +1826,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1736,6 +1842,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1751,6 +1858,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1766,6 +1874,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1781,6 +1890,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1796,6 +1906,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1811,6 +1922,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -1833,6 +1945,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1848,6 +1961,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1863,6 +1977,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1878,6 +1993,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1893,6 +2009,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1908,6 +2025,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1923,6 +2041,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -1945,6 +2064,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1960,6 +2080,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1975,6 +2096,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -1990,6 +2112,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2005,6 +2128,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2020,6 +2144,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2035,6 +2160,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -2057,6 +2183,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2072,6 +2199,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2087,6 +2215,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2102,6 +2231,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2117,6 +2247,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2132,6 +2263,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2147,6 +2279,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -2169,6 +2302,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2184,6 +2318,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2199,6 +2334,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2214,6 +2350,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2229,6 +2366,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2244,6 +2382,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2259,6 +2398,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -2281,6 +2421,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2296,6 +2437,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2311,6 +2453,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2326,6 +2469,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2341,6 +2485,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2356,6 +2501,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2371,6 +2517,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -2393,6 +2540,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2408,6 +2556,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2423,6 +2572,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2438,6 +2588,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2453,6 +2604,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2468,6 +2620,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2483,6 +2636,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -2505,6 +2659,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2520,6 +2675,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2535,6 +2691,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2550,6 +2707,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2565,6 +2723,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2580,6 +2739,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2595,6 +2755,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -2617,6 +2778,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2632,6 +2794,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2647,6 +2810,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2662,6 +2826,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2677,6 +2842,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2692,6 +2858,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2707,6 +2874,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -2729,6 +2897,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2744,6 +2913,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2759,6 +2929,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2774,6 +2945,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2789,6 +2961,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2804,6 +2977,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2819,6 +2993,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
@@ -2841,6 +3016,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2856,6 +3032,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2871,6 +3048,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2886,6 +3064,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2901,6 +3080,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2916,6 +3096,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             },
@@ -2931,6 +3112,7 @@
               "localidad": null,
               "campo": null,
               "superficie": null,
+              "codCampo": null,
               "urlActa": null,
               "jugado": false
             }
