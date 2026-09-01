@@ -18,6 +18,7 @@ import Clasificacion from "@/components/Clasificacion";
 import { getGaleriaDeEquipo } from "@/lib/contenido";
 import NavegacionEquipo, { type Bloque } from "@/components/NavegacionEquipo";
 import Galeria from "@/components/Galeria";
+import BotonAvisos from "@/components/BotonAvisos";
 import { FilaPartido, TarjetaProximoPartido } from "@/components/Partidos";
 import { fechaLarga } from "@/lib/formato";
 import { IconoFlecha, IconoEnlaceExterno } from "@/components/Iconos";
@@ -117,6 +118,9 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
             Ficha del equipo en {site.federacion.siglas}
             <IconoEnlaceExterno size={15} />
           </a>
+
+          {/* Elegir equipo favorito es simplemente estar aquí y pulsar */}
+          <BotonAvisos equipo={equipo.id} nombre={equipo.nombre} />
         </div>
       </section>
 

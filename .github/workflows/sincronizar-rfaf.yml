@@ -79,6 +79,12 @@ jobs:
           node-version: 24
 
       - name: Sincronizar
+        # El secreto y la dirección sirven para avisar al móvil de los
+        # resultados y horarios nuevos. Si faltan, la sincronización va
+        # igual y solo deja constancia de que no pudo avisar.
+        env:
+          AVISOS_SECRETO: ${{ secrets.AVISOS_SECRETO }}
+          SITIO_URL: https://ad-taraguilla.es
         run: |
           node scripts/rfaf/sincronizar.mjs \
             ${{ inputs.completo && '--completo' || '' }} \

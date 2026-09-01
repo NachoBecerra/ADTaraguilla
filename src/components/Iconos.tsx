@@ -144,6 +144,28 @@ export function IconoEnlaceExterno({ size = 16, className }: Props) {
   );
 }
 
+/** Avisos activos. */
+export function IconoCampana({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 9.5a6 6 0 1 0-12 0c0 4.2-1.4 5.6-1.4 5.6h14.8S18 13.7 18 9.5" />
+      <path d="M13.7 19a2 2 0 0 1-3.4 0" />
+    </svg>
+  );
+}
+
+/** Avisos desactivados. */
+export function IconoCampanaTachada({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 9.5a6 6 0 0 0-8.3-5.5" />
+      <path d="M6.3 6.4A6 6 0 0 0 6 9.5c0 4.2-1.4 5.6-1.4 5.6h12.1" />
+      <path d="M13.7 19a2 2 0 0 1-3.4 0" />
+      <path d="M3.5 3.5l17 17" />
+    </svg>
+  );
+}
+
 /** Partido en casa. */
 export function IconoCasa({ size = 20, className }: Props) {
   return (

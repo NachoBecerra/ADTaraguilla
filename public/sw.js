@@ -121,3 +121,50 @@ self.addEventListener("fetch", (evento) => {
     evento.respondWith(primeroLoGuardado(peticion));
   }
 });
+
+/* ------------------------------------------------------------------ avisos */
+
+/**
+ * Un aviso del club: un resultado o un horario recién publicado.
+ *
+ * Se agrupan por equipo con `tag`, así que si llegan dos del mismo equipo el
+ * segundo sustituye al primero en vez de apilarse.
+ */
+self.addEventListener("push", (evento) => {
+  if (!evento.data) return;
+
+  let datos;
+  try {
+    datos = evento.data.json();
+  } catch {
+    return;
+  }
+
+  evento.waitUntil(
+    self.registration.showNotification(datos.titulo ?? "AD Taraguilla", {
+      body: datos.cuerpo ?? "",
+      icon: "/icono-192.png",
+      badge: "/icono-192.png",
+      tag: datos.url ?? "club",
+      data: { url: datos.url ?? "/" },
+    }),
+  );
+});
+
+/** Al tocar el aviso: si la aplicación ya está abierta, se reutiliza. */
+self.addEventListener("notificationclick", (evento) => {
+  evento.notification.close();
+  const destino = evento.notification.data?.url ?? "/";
+
+  evento.waitUntil(
+    self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((abiertas) => {
+      for (const ventana of abiertas) {
+        if ("focus" in ventana) {
+          ventana.navigate?.(destino);
+          return ventana.focus();
+        }
+      }
+      return self.clients.openWindow(destino);
+    }),
+  );
+});

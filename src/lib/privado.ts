@@ -1,4 +1,4 @@
-import { get, put } from "@vercel/blob";
+import { del, get, list, put } from "@vercel/blob";
 
 /**
  * Almacén privado del club.
@@ -54,5 +54,32 @@ export async function escribirPrivado(ruta: string, datos: unknown): Promise<boo
     return true;
   } catch {
     return false;
+  }
+}
+
+/** Rutas de todos los archivos que empiezan por ese prefijo. */
+export async function listarPrivado(prefijo: string): Promise<string[]> {
+  if (!TOKEN) return [];
+  const rutas: string[] = [];
+  let cursor: string | undefined;
+  try {
+    do {
+      const pagina = await list({ prefix: prefijo, cursor, token: TOKEN });
+      rutas.push(...pagina.blobs.map((b) => b.pathname));
+      cursor = pagina.hasMore ? pagina.cursor : undefined;
+    } while (cursor);
+  } catch {
+    // Si el almacén no responde, mejor una lista vacía que reventar
+  }
+  return rutas;
+}
+
+/** Borra un archivo del almacén privado. */
+export async function borrarPrivado(ruta: string): Promise<void> {
+  if (!TOKEN) return;
+  try {
+    await del(ruta, { token: TOKEN });
+  } catch {
+    // Un archivo que no se puede borrar no debe tumbar la operación
   }
 }

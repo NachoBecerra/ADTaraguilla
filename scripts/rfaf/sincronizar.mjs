@@ -348,6 +348,9 @@ async function principal() {
     previos.set(equipo.id, await leerJson(path.join(DIR_EQUIPOS, `${equipo.id}.json`)));
   }
 
+  /** Lo que ha cambiado en esta pasada y merece un aviso. */
+  const novedades = [];
+
   const porAtender = [...equipos].sort((a, b) => {
     const pa = previos.get(a.id);
     const pb = previos.get(b.id);
@@ -395,7 +398,7 @@ async function principal() {
         }
       }
 
-      await escribirJson(rutaEquipo, {
+      const datosEquipo = {
         id: equipo.id,
         nombre: equipo.nombre,
         nombreRfaf: equipo.nombreRfaf,
@@ -411,7 +414,11 @@ async function principal() {
           `NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=${equipo.codigo}`,
         ),
         competiciones: detalladas,
-      });
+      };
+
+      // Antes de guardar: qué ha cambiado respecto a lo que había
+      novedades.push(...novedadesDe(equipo, previo, datosEquipo));
+      await escribirJson(rutaEquipo, datosEquipo);
     } catch (e) {
       if (!(e instanceof ErrorDeCupo)) throw e;
       // La RFAF nos ha cortado. Lo ya guardado se queda; el resto se recoge
@@ -427,6 +434,8 @@ async function principal() {
     _nota: "Escudos de los clubes, tal y como los sirve la CDN de la RFAF.",
     escudos: Object.fromEntries([...escudos].sort()),
   });
+
+  await mandarAvisos(novedades);
 
   // Con lo que sobre del cupo, se completan campos e histórico
   if (!incompleto) await rellenarCampos(cliente, equipos);
@@ -605,6 +614,113 @@ async function guardarPalmares(equipo, temporadas) {
  * presupuesto de la pasada. Se empieza por lo más reciente, que es lo que la
  * gente mira primero.
  */
+/* ------------------------------------------------------------------ avisos */
+
+/** Los partidos de un equipo, aplanados y con clave para poder compararlos. */
+function partidosPorClave(datos) {
+  const mapa = new Map();
+  for (const c of datos?.competiciones ?? []) {
+    for (const j of c.jornadas ?? []) {
+      for (const p of j.partidos ?? []) {
+        if (!p.local || !p.visitante) continue;
+        mapa.set(`${c.codGrupo}|${j.numero}|${p.local}|${p.visitante}`, p);
+      }
+    }
+  }
+  return mapa;
+}
+
+/**
+ * Qué ha cambiado que merezca avisar.
+ *
+ * Solo dos cosas, y solo de nuestros partidos:
+ *
+ * - un resultado que antes no estaba;
+ * - una hora ya definida: cuando se asigna por primera vez o cuando cambia.
+ *   Nunca mientras siga pendiente; avisar de "sigue sin hora" sería el ruido
+ *   que hace que la gente apague los avisos. Un cambio de hora sí importa: es
+ *   la diferencia entre llegar a tiempo y plantarse una hora antes.
+ */
+function novedadesDe(equipo, previo, nuevo) {
+  const antes = partidosPorClave(previo);
+  const ahora = partidosPorClave(nuevo);
+  const avisos = [];
+
+  for (const [clave, p] of ahora) {
+    const nombre = nuevo.nombreRfaf;
+    if (p.local !== nombre && p.visitante !== nombre) continue;
+
+    const viejo = antes.get(clave);
+    if (!viejo) continue; // partido nuevo en el calendario: no es para avisar
+
+    const esLocal = p.local === nombre;
+    const rival = esLocal ? p.visitante : p.local;
+    if (esDescanso(rival)) continue;
+
+    if (!viejo.jugado && p.jugado) {
+      const propios = esLocal ? p.golesLocal : p.golesVisitante;
+      const rivales = esLocal ? p.golesVisitante : p.golesLocal;
+      avisos.push({
+        equipo: equipo.id,
+        titulo: `${equipo.nombre}: ${propios} - ${rivales}`,
+        cuerpo: `${esLocal ? "En casa" : "Fuera"} · contra ${rival}`,
+        url: `/equipos/${equipo.id}`,
+      });
+      continue;
+    }
+
+    if (p.jugado || !p.hora) continue;
+
+    const donde = esLocal ? "En casa" : "Fuera";
+    if (!viejo.hora) {
+      avisos.push({
+        equipo: equipo.id,
+        titulo: `${equipo.nombre}: ya hay hora`,
+        cuerpo: `${donde} · contra ${rival} · a las ${p.hora}`,
+        url: `/equipos/${equipo.id}`,
+      });
+    } else if (viejo.hora !== p.hora) {
+      avisos.push({
+        equipo: equipo.id,
+        titulo: `${equipo.nombre}: cambia la hora`,
+        cuerpo: `${donde} · contra ${rival} · de las ${viejo.hora} a las ${p.hora}`,
+        url: `/equipos/${equipo.id}`,
+      });
+    }
+  }
+
+  return avisos;
+}
+
+/** Manda los avisos a la web, que es quien tiene las suscripciones. */
+async function mandarAvisos(avisos) {
+  if (avisos.length === 0) return;
+
+  const secreto = process.env.AVISOS_SECRETO;
+  const sitio = process.env.SITIO_URL;
+  if (!secreto || !sitio) {
+    aviso(`${avisos.length} aviso(s) sin mandar: falta AVISOS_SECRETO o SITIO_URL`);
+    return;
+  }
+
+  try {
+    const r = await fetch(`${sitio}/api/avisar`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-avisos-secreto": secreto },
+      body: JSON.stringify({ avisos }),
+    });
+    const cuerpo = await r.json().catch(() => ({}));
+    if (!r.ok) {
+      aviso(`Avisos: la web respondió ${r.status}`);
+      return;
+    }
+    log(`Avisos: ${avisos.length} novedad(es), ${cuerpo.enviados ?? 0} enviado(s)`);
+  } catch (e) {
+    // Que fallen los avisos no debe tumbar la sincronización
+    aviso(`Avisos: no se han podido mandar (${e.message})`);
+  }
+}
+
 /* ------------------------------------------------------------------ campos */
 
 /**
