@@ -2,9 +2,11 @@
 
 Web del club en Next.js 16 + Tailwind 4, pensada primero para el móvil.
 
-La idea de fondo: **el club solo escribe noticias y sube fotos**. Todo lo de
-competición —equipos, calendarios, horarios, resultados, clasificaciones y
-rivales— se sincroniza solo desde la RFAF.
+La idea de fondo: **el club solo escribe noticias, sube fotos y, si quiere, va
+contando el partido en directo**. Todo lo de competición —equipos, calendarios,
+horarios, resultados, clasificaciones y rivales— se sincroniza solo desde la
+RFAF, y el directo no lo toca: es orientativo mientras se juega y el acta manda
+en cuanto llega.
 
 ## Poner en marcha
 
@@ -17,6 +19,7 @@ npm run dev          # http://localhost:3000
 | --- | --- |
 | `npm run build` / `npm start` | Compilar y servir |
 | `npx eslint .` | Revisar el código |
+| `npm run directo:probar` | Comprueba el reloj y el marcador del directo |
 | `npm run rfaf` | Pasada de sincronización con la RFAF (incremental) |
 | `npm run rfaf:forzar` | Revisa todos los equipos, aunque estén al día |
 | `npm run rfaf:completo` | Recarga además todas las jornadas de la temporada |
@@ -147,6 +150,94 @@ node scripts/rfaf/probar.mjs <carpeta-con-html>   # probar los extractores sin r
 tocar la red. La web mientras tanto sigue mostrando los últimos datos válidos:
 una sincronización fallida nunca borra lo que ya había.
 
+## Seguimiento en directo
+
+**La RFAF no publica nada en vivo.** El resultado solo aparece cuando el árbitro
+cierra el acta, que puede ser media hora después del pitido final. Así que el
+directo no puede salir del scraping: lo escribe alguien del club desde la banda.
+
+**Y nunca toca los datos de la web.** El marcador del directo es orientativo y
+se dice en la propia pantalla. Resultados, clasificaciones y calendario salen
+solo de la RFAF; cuando llega el acta, es la que manda. El directo vive en el
+almacén privado y jamás escribe en `src/data/`.
+
+### Se guardan eventos, no el marcador
+
+Un archivo por partido, con la lista de lo que fue pasando. El resultado, el
+reloj y la fase se **calculan** plegando esa lista (`src/lib/directo/modelo.ts`).
+De ahí salen las propiedades que hacen esto viable en un campo de pueblo:
+
+- La cronología y el marcador no pueden contradecirse: el marcador *es* la
+  cronología sumada.
+- Cada evento lo identifica el móvil que lo escribe, así que **reenviar es
+  inofensivo**. Sin cobertura se encola en el teléfono y se reintenta a ciegas.
+- **Corregir es añadir**, nunca borrar. Hasta el «Iniciar partido» pulsado
+  mientras el equipo calentaba se arregla anulándolo: los minutos se recolocan
+  solos porque se derivan del instante de cada evento.
+- Quien escribe manda **todo lo que sabe** en cada envío y el servidor hace la
+  unión. Así una lectura atrasada del almacén no puede borrar media cronología.
+
+### El reloj
+
+Cada parte arranca en su minuto nominal, no donde acabó la anterior: la segunda
+del benjamín empieza en el 30 y la del juvenil en el 45. Acumulando, los
+descuentos de la primera desplazarían todo el resto del partido. Lo jugado de
+más se enseña como `45+2`.
+
+La duración sale de la categoría (`src/lib/directo/reglamento.ts`) y se copia
+dentro del partido al abrirlo: mientras se juega, el directo no depende de nada
+externo. Prebenjamín 25, benjamín 30, alevín 35, infantil 40, y 45 de cadete
+para arriba.
+
+El minuto es una **resta contra la hora del saque**, no un contador. Da igual
+que la pantalla se cierre, se bloquee o pase media parte en segundo plano: al
+volver, el reloj ya está en su sitio.
+
+### Quién escribe
+
+Desde `/panel` → **Directo** se elige el partido y sale un enlace para mandar
+por WhatsApp a quien vaya al campo. No necesita la contraseña del club ni
+instalar nada.
+
+El enlace va firmado con HMAC de `CLAVE_PANEL`: sin variables nuevas, sin tabla
+de tokens. Vale para **un solo partido**, funciona desde que se genera y caduca
+unas horas después. Uno caducado explica que pida otro; uno inventado da 404.
+
+Se puede volver a pedir cuantas veces haga falta —si al del campo se le muere el
+móvil, sigue otro desde otro teléfono— y **nunca reinicia un partido en curso**.
+
+### Por qué se pregunta en vez de recibir empujones
+
+No hay WebSocket, y no es una elección: en Vercel las funciones se despliegan
+como lambdas, que no mantienen una conexión abierta ni pueden enterarse de lo
+que pasó en otra. Lo dice la propia guía de Next
+(`node_modules/next/dist/docs/01-app/02-guides/backend-for-frontend.md`), que
+para datos que se consultan a menudo recomienda justo lo contrario: preguntar
+desde el cliente.
+
+Así que el navegador pregunta cada cinco segundos con `ETag`: en hora y media
+pasan veinte o treinta cosas, así que casi todas las respuestas son «nada
+nuevo», sin cuerpo. Y como el reloj lo cuenta el propio navegador, entre
+pregunta y pregunta nadie ve un número congelado.
+
+El resumen para encender el «en directo» de las tarjetas (`/api/directo`) va con
+caché de CDN corta, de modo que **el coste depende de lo que dura el partido y
+no de cuánta gente lo mire**. Se filtra por el nombre del archivo antes de leer
+ninguno, así que se leen los partidos de estos días y no los de toda la
+temporada.
+
+### Un aviso sobre el almacén
+
+`put` de Vercel Blob guarda con **un mes de caché por defecto**, y su mínimo es
+un minuto. Para algo que cambia cada pocos segundos hay que leer con
+`useCache: false`; de lo contrario se lee la versión anterior y se pierde lo
+recién escrito. Está resuelto en `src/lib/privado.ts`, pero conviene saberlo
+antes de añadir cualquier otra cosa que lea justo después de escribir.
+
+Fuera de producción, si no hay `BLOB_PRIVADO_READ_WRITE_TOKEN`, el directo cae a
+`.next/cache` para poder desarrollarlo sin secretos. En producción no: allí, si
+falta el token, es un fallo que hay que ver.
+
 ## Qué se edita a mano
 
 | Qué | Dónde |
@@ -174,11 +265,13 @@ src/lib/contenido.ts         Lectura de noticias y galería
 src/lib/competicion.ts       Lectura de los datos de la RFAF
 src/lib/privado.ts           Acceso al almacén privado
 src/lib/avisos.ts            Suscripciones a las notificaciones
+src/lib/directo/             Partidos en directo: modelo, reloj, almacén y enlace
+scripts/directo/probar.mjs   Prueba del reloj y del marcador, sin red
 scripts/rfaf/                Sincronizador
 scripts/avisar-prueba.mjs    Aviso manual, para probar las notificaciones
 public/sw.js                 Service worker
-src/app/                     /, /equipos, /noticias, /galeria, /historico
-src/app/api/                 subir, avisos, avisar, uso, version
+src/app/                     /, /equipos, /noticias, /galeria, /historico, /directo
+src/app/api/                 subir, avisos, avisar, uso, version, directo
 ```
 
 ## Aplicación instalable
@@ -244,7 +337,8 @@ Dos piezas, porque ninguna cubre lo de la otra:
 ## Panel `/panel`
 
 Panel propio, dentro de la web. Se entra con **una contraseña del club**: quien
-publica no necesita cuenta de GitHub. El servidor hace el commit por dentro con
+publica no necesita cuenta de GitHub. Desde aquí se suben noticias y fotos, y se
+abre la retransmisión de un partido. El servidor hace el commit por dentro con
 un único token, así que cualquier persona del club puede subir contenido desde
 el móvil sin darse de alta en ningún sitio.
 

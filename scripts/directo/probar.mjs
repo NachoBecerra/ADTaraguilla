@@ -15,6 +15,7 @@
 
 import { plegar, minutoEn } from "../../src/lib/directo/modelo.ts";
 import { minutosPorParte } from "../../src/lib/directo/reglamento.ts";
+import { diasDeLaVentana, idsDeLaVentana } from "../../src/lib/directo/ventana.ts";
 
 const T0 = Date.parse("2026-09-06T12:00:00Z");
 const min = (m) => T0 + m * 60_000;
@@ -51,6 +52,30 @@ comprobar("una competicion desconocida cae en 45", minutosPorParte("COPA DE ALGO
 comprobar("manda la categoria del equipo, no la copa que juegue", minutosPorParte("2ª ANDALUZA BENJAMIN", "Copa Federacion"), 30);
 comprobar("si no hay categoria, se mira la competicion", minutosPorParte(null, "Copa Andalucia Senior"), 45);
 comprobar("si no se reconoce nada, 45", minutosPorParte("", "Copa Federacion"), 45);
+
+/* ------------------- que retransmisiones se buscan, y cuales no */
+
+/*
+ * El servidor va en UTC y España no. A las 00:30 del domingo en Madrid son
+ * las 22:30 del sabado en el servidor: si se mirara un solo dia, el partido
+ * del sabado por la noche desapareceria a mitad de la segunda parte.
+ */
+const nocheDelSabado = diasDeLaVentana(new Date("2026-09-06T22:30:00Z"));
+comprobar("la ventana cubre ayer, hoy y mañana en hora española", nocheDelSabado, [
+  "2026-09-06", "2026-09-07", "2026-09-08",
+]);
+
+const guardadas = [
+  "directo/primer-equipo-2026-09-06.json",
+  "directo/juvenil-2026-09-06.json",
+  "directo/cadete-2026-03-01.json",   // de marzo: ni se lee
+];
+comprobar(
+  "solo se leen las retransmisiones de estos dias",
+  idsDeLaVentana(guardadas, nocheDelSabado),
+  ["primer-equipo-2026-09-06", "juvenil-2026-09-06"],
+);
+comprobar("y ninguna si no hay nada de estos dias", idsDeLaVentana(guardadas, ["2026-12-25"]), []);
 
 /* ---------------------------- un senior con descuentos en las dos partes */
 

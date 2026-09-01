@@ -8,6 +8,7 @@ import {
 import { Marcador } from "@/components/Partidos";
 import EscudoClub from "@/components/EscudoClub";
 import IndicadorAvisos from "@/components/IndicadorAvisos";
+import { DistintivoDirecto } from "@/components/EnDirecto";
 import {
   IconoFlecha,
   IconoCalendario,
@@ -48,6 +49,8 @@ export default function TarjetaEquipo({
           <p className="truncate text-xs uppercase tracking-wide text-mute">
             {competicion?.nombre ?? equipo.categoria}
           </p>
+          {/* Solo aparece si se está jugando: el resto del tiempo no ocupa */}
+          <DistintivoDirecto equipo={equipo.id} />
         </div>
 
         {fila ? (

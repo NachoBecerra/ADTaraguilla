@@ -1,0 +1,150 @@
+"use client";
+
+import { useCallback, useEffect, useRef, useState } from "react";
+import { minutoEn, plegar } from "@/lib/directo/modelo";
+import type { Registro } from "@/lib/directo/almacen";
+import EscudoImg from "@/components/EscudoImg";
+import Cronologia from "@/components/Cronologia";
+
+/**
+ * El partido en directo, para quien lo sigue desde casa.
+ *
+ * Se pregunta cada pocos segundos en vez de recibir empujones del servidor. En
+ * Vercel las funciones se despliegan como lambdas y no pueden mantener una
+ * conexión abierta ni enterarse de lo que pasó en otra, así que un WebSocket
+ * propio no es posible; y como el reloj lo cuenta el navegador a partir de la
+ * hora del saque, entre pregunta y pregunta nadie ve un número congelado.
+ *
+ * El ETag hace barato preguntar: en hora y media pasan veinte o treinta cosas,
+ * así que casi todas las respuestas son "nada nuevo", sin cuerpo.
+ */
+
+/** Cada cuánto se pregunta mientras se juega. */
+const CADA_MS = 5_000;
+
+/** Y cuando ya terminó: solo por si hay una corrección. */
+const CADA_MS_TERMINADO = 30_000;
+
+export default function Seguimiento({ inicial }: { inicial: Registro }) {
+  const [registro, setRegistro] = useState(inicial);
+  const [ahora, setAhora] = useState(() => Date.now());
+  const etag = useRef<string | null>(null);
+
+  const partido = registro.partido;
+  const estado = plegar(registro.eventos, partido.minutosPorParte);
+  const minuto = minutoEn(estado, ahora);
+  const terminado = estado.fase === "final";
+
+  const preguntar = useCallback(async () => {
+    try {
+      const r = await fetch(`/api/directo/${partido.id}`, {
+        cache: "no-store",
+        headers: etag.current ? { "If-None-Match": etag.current } : {},
+      });
+      if (r.status === 304 || !r.ok) return; // nada nuevo, o un tropiezo pasajero
+
+      etag.current = r.headers.get("etag");
+      setRegistro((await r.json()) as Registro);
+    } catch {
+      // Sin cobertura se sigue viendo lo último; ya llegará la siguiente
+    }
+  }, [partido.id]);
+
+  useEffect(() => {
+    /* Con la pestaña oculta no se pregunta: nadie está mirando */
+    const alVolver = () => {
+      if (!document.hidden) void preguntar();
+    };
+    document.addEventListener("visibilitychange", alVolver);
+
+    const cada = terminado ? CADA_MS_TERMINADO : CADA_MS;
+    const reloj = setInterval(() => {
+      if (!document.hidden) void preguntar();
+    }, cada);
+
+    return () => {
+      document.removeEventListener("visibilitychange", alVolver);
+      clearInterval(reloj);
+    };
+  }, [preguntar, terminado]);
+
+  /* El reloj lo lleva este navegador: no hace falta preguntar para que avance */
+  useEffect(() => {
+    if (terminado) return;
+    const reloj = setInterval(() => setAhora(Date.now()), 1000);
+    return () => clearInterval(reloj);
+  }, [terminado]);
+
+  const estadoTexto =
+    estado.fase === "sin-empezar"
+      ? "Aún no ha empezado"
+      : terminado
+        ? "Final"
+        : estado.fase === "descanso"
+          ? `Descanso · ${minuto.etiqueta}`
+          : estado.fase === "parado"
+            ? `${minuto.etiqueta} · parado`
+            : minuto.etiqueta;
+
+  return (
+    <section className="mx-auto max-w-lg px-4 py-6">
+      <p className="eyebrow">{partido.nombreEquipo}</p>
+      <h1 className="title mt-1 text-3xl text-tinta">
+        {partido.local} · {partido.visitante}
+      </h1>
+      <p className="mt-1 text-xs text-mute">
+        {partido.competicion}
+        {partido.jornada ? ` · ${partido.jornada}` : ""}
+        {partido.campo ? ` · ${partido.campo}` : ""}
+      </p>
+
+      {/* ---------------------------------------------- marcador y reloj */}
+      <div className="mt-4 rounded-2xl bg-club p-5 text-white">
+        <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wide">
+          <span className="inline-flex items-center gap-2 text-club-claro">
+            {!terminado && estado.fase !== "sin-empezar" ? (
+              <span
+                aria-hidden
+                className="inline-block h-2 w-2 animate-pulse rounded-full bg-club-claro"
+              />
+            ) : null}
+            {terminado ? "Terminado" : "En directo"}
+          </span>
+          <span className="tabular-nums">{estadoTexto}</span>
+        </div>
+
+        <div className="mt-4 flex items-center gap-3">
+          <div className="flex min-w-0 flex-1 flex-col items-center gap-2 text-center">
+            <EscudoImg src={partido.escudoLocal} size={52} />
+            <span className="text-sm font-semibold leading-tight">{partido.local}</span>
+          </div>
+
+          <span className="title shrink-0 text-4xl leading-none tabular-nums">
+            {estado.goles.local} - {estado.goles.visitante}
+          </span>
+
+          <div className="flex min-w-0 flex-1 flex-col items-center gap-2 text-center">
+            <EscudoImg src={partido.escudoVisitante} size={52} />
+            <span className="text-sm font-semibold leading-tight">{partido.visitante}</span>
+          </div>
+        </div>
+      </div>
+
+      {/*
+        La regla del club, y va delante de la cronología para que no haya duda:
+        esto lo escribe alguien desde la banda. Los resultados y las
+        clasificaciones de la web salen solo de la RFAF, y el acta es la que
+        manda cuando llega.
+      */}
+      <p className="mt-3 rounded-xl border border-linea bg-panel-2 p-3 text-xs leading-relaxed text-mute">
+        <strong className="font-bold text-tinta">Marcador orientativo.</strong> Lo
+        va apuntando alguien del club desde el campo, así que puede llevar unos
+        segundos de retraso o tener algún error. El resultado oficial es el del
+        acta arbitral, y aparece en la ficha del equipo cuando la RFAF lo publica.
+      </p>
+
+      <h2 className="title mt-6 text-xl text-tinta">Cómo va</h2>
+      <Cronologia linea={estado.linea} partido={partido} />
+    </section>
+  );
+}

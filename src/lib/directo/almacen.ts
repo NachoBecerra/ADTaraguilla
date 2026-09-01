@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { escribirPrivado, hayAlmacenPrivado, leerPrivado } from "@/lib/privado";
+import { escribirPrivado, hayAlmacenPrivado, leerPrivado, listarPrivado } from "@/lib/privado";
 import { MAX_EVENTOS, type Evento } from "@/lib/directo/modelo";
 
 /**
@@ -47,7 +47,8 @@ export type Registro = {
   actualizado: string;
 };
 
-const rutaDe = (id: string) => `directo/${id}.json`;
+const CARPETA = "directo";
+const rutaDe = (id: string) => `${CARPETA}/${id}.json`;
 
 /* ------------------------------------------------------------ almacenamiento */
 
@@ -89,6 +90,25 @@ async function escribir(registro: Registro): Promise<boolean> {
   // El mínimo que admite el almacén. Un partido en directo no se parece en
   // nada a lo que justifica el mes de caché que trae por defecto.
   return escribirPrivado(rutaDe(registro.partido.id), registro, { cacheMaxAge: 60 });
+}
+
+/**
+ * Rutas de todas las retransmisiones guardadas.
+ *
+ * Vive aquí, con el resto del acceso al almacén, y no en quien la usa: si se
+ * llamara a `listarPrivado` desde fuera, el respaldo en disco de desarrollo se
+ * saltaría y en local no se encontraría nunca nada.
+ */
+export async function listarRegistros(): Promise<string[]> {
+  if (enDisco) {
+    try {
+      const nombres = await fs.readdir(CARPETA_LOCAL);
+      return nombres.filter((n) => n.endsWith(".json")).map((n) => `${CARPETA}/${n}`);
+    } catch {
+      return []; // todavía no hay ninguna
+    }
+  }
+  return listarPrivado(`${CARPETA}/`);
 }
 
 /* ------------------------------------------------------------------ lectura */

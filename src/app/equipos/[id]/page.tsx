@@ -19,6 +19,7 @@ import { getGaleriaDeEquipo } from "@/lib/contenido";
 import NavegacionEquipo, { type Bloque } from "@/components/NavegacionEquipo";
 import Galeria from "@/components/Galeria";
 import BotonAvisos from "@/components/BotonAvisos";
+import { BandaDirecto } from "@/components/EnDirecto";
 import { FilaPartido, TarjetaProximoPartido } from "@/components/Partidos";
 import { fechaLarga } from "@/lib/formato";
 import { IconoFlecha, IconoEnlaceExterno } from "@/components/Iconos";
@@ -125,6 +126,13 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
       </section>
 
       <div className="mx-auto max-w-5xl space-y-12 px-5 py-8 pb-28 md:pb-8">
+        {/*
+          Si hay partido ahora mismo, lo primero. No sustituye a nada de lo de
+          abajo: el próximo partido y los resultados siguen siendo los de la
+          RFAF, que es lo único oficial.
+        */}
+        <BandaDirecto equipo={equipo.id} />
+
         {proximo ? <TarjetaProximoPartido partido={proximo} titulo="Próximo partido" /> : null}
 
         {equipo.competiciones.length === 0 ? (
