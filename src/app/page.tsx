@@ -10,6 +10,7 @@ import {
 import { TarjetaNoticia } from "@/components/TarjetaNoticia";
 import { TarjetaProximoPartido } from "@/components/Partidos";
 import ResumenPartido from "@/components/ResumenPartido";
+import { DirectosAhora } from "@/components/EnDirecto";
 import SeccionRedes from "@/components/SeccionRedes";
 import Media from "@/components/Media";
 import { IconoFlecha } from "@/components/Iconos";
@@ -137,6 +138,12 @@ export default function Inicio() {
       </section>
 
       {/* ------------------------------------- próximo partido del primer equipo */}
+      {/*
+        Si hay partido ahora mismo, va lo primero: es lo único de esta página
+        que caduca en noventa minutos. No ocupa nada el resto de la semana.
+      */}
+      <DirectosAhora />
+
       {primerEquipo?.proximo ? (
         <div className="mx-auto max-w-6xl px-5 pt-10">
           <TarjetaProximoPartido

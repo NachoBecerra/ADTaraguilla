@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { resumenEquipos, temporada, urlClubRfaf, actualizado } from "@/lib/competicion";
 import { site } from "@/data/site";
 import TarjetaEquipo from "@/components/TarjetaEquipo";
+import { DirectosAhora } from "@/components/EnDirecto";
 import SeccionRedes from "@/components/SeccionRedes";
 import { fechaLarga } from "@/lib/formato";
 import { IconoEnlaceExterno } from "@/components/Iconos";
@@ -34,6 +35,9 @@ export default function PaginaEquipos() {
           </p>
         </div>
       </section>
+
+      {/* La entrada al directo: las tarjetas solo avisan, no pueden enlazar */}
+      <DirectosAhora />
 
       <section className="mx-auto max-w-6xl px-5 py-8">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

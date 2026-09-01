@@ -127,3 +127,57 @@ export function BandaDirecto({ equipo }: { equipo: string }) {
     </Link>
   );
 }
+
+/**
+ * Todos los partidos que se están jugando ahora, como sección de página.
+ *
+ * Existe porque el distintivo de las tarjetas **no puede ser un enlace**: la
+ * tarjeta entera ya lo es, y un enlace dentro de otro no es HTML válido.
+ * Superponer uno encima sería un apaño frágil, así que la entrada al directo va
+ * arriba de la página, donde además se ve mucho más que una pastilla pequeña.
+ *
+ * No ocupa nada cuando no hay partido: no se pinta.
+ */
+export function DirectosAhora() {
+  const todos = useSyncExternalStore(suscribir, leer, leerEnServidor);
+  if (todos.length === 0) return null;
+
+  return (
+    <section className="mx-auto max-w-6xl px-5 pt-8">
+      <p className="eyebrow">Ahora mismo</p>
+      <h2 className="title mt-1 text-2xl text-tinta">
+        {todos.length === 1 ? "Hay un partido en directo" : `Hay ${todos.length} partidos en directo`}
+      </h2>
+
+      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {todos.map((d) => {
+          const enJuego = d.fase !== "final";
+          return (
+            <Link
+              key={d.id}
+              href={`/directo/${d.id}`}
+              className="flex items-center gap-3 rounded-2xl bg-club p-4 text-white transition-colors hover:bg-club-dark"
+            >
+              <span className="min-w-0 flex-1">
+                <span className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-club-claro">
+                  {enJuego ? (
+                    <span
+                      aria-hidden
+                      className="inline-block h-2 w-2 animate-pulse rounded-full bg-club-claro"
+                    />
+                  ) : null}
+                  {d.nombreEquipo}
+                  {enJuego ? ` · ${d.minuto}` : " · final"}
+                </span>
+                <span className="title mt-1 block truncate text-lg">
+                  {d.local} {marcador(d)} {d.visitante}
+                </span>
+              </span>
+              <IconoFlecha size={18} className="shrink-0" />
+            </Link>
+          );
+        })}
+      </div>
+    </section>
+  );
+}

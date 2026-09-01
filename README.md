@@ -206,6 +206,40 @@ unas horas después. Uno caducado explica que pida otro; uno inventado da 404.
 Se puede volver a pedir cuantas veces haga falta —si al del campo se le muere el
 móvil, sigue otro desde otro teléfono— y **nunca reinicia un partido en curso**.
 
+### Cuándo se enciende y cuándo se apaga
+
+El aviso de "en directo" se enciende al pulsar **Iniciar partido**, y se apaga
+por tres caminos: basta con que se cumpla uno.
+
+1. **Cuando la RFAF publica el resultado.** Es la señal buena de que el partido
+   acabó, y a partir de ahí manda lo oficial.
+2. **Tres horas después del pitido final**, para quien entra justo después y
+   quiere ver cómo quedó.
+3. **Seis horas después del saque**, como red de seguridad. En las
+   eliminatorias de copa la federación muchas veces no publica resultado, y sin
+   esto un partido de copa que nadie cerrara se quedaría marcando
+   "EN DIRECTO 240'" durante días.
+
+El enlace de quien escribe caduca **tres horas después del pitido final**, no
+del saque: un partido que se adelanta o se alarga no tiene por qué perder el
+margen para rematar la cronología. Se decide en el servidor porque al firmar el
+enlace todavía no se sabe cuándo acabará.
+
+### Dónde se entra
+
+El distintivo de las tarjetas de equipo **no puede ser un enlace**: la tarjeta
+entera ya lo es, y uno dentro de otro no es HTML válido. Por eso la entrada al
+directo va como sección propia arriba de la portada y de `/equipos`, donde
+además se ve más que una pastilla. En la ficha del equipo hay una banda que
+lleva al partido.
+
+La cronología se guarda **toda la temporada**: es lo único que la RFAF no da
+—el acta trae el resultado, pero no en qué minuto cayó cada gol—. En la ficha
+del equipo aparece la lista de partidos narrados, y qué partidos la tienen se
+pregunta al abrir, porque la página se generó al compilar y la retransmisión
+ocurrió después. La lista sale del **nombre de los archivos**, sin abrir
+ninguno.
+
 ### Por qué se pregunta en vez de recibir empujones
 
 No hay WebSocket, y no es una elección: en Vercel las funciones se despliegan

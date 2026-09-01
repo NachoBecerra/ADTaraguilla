@@ -19,6 +19,7 @@ import { getEquipo, partidosDe } from "@/lib/competicion";
 export type ResumenDirecto = {
   id: string;
   equipo: string;
+  nombreEquipo: string;
   local: string;
   visitante: string;
   goles: { local: number; visitante: number };
@@ -82,6 +83,7 @@ function resumir(registro: Awaited<ReturnType<typeof leerRegistro>>): ResumenInt
     oficial: hayResultadoOficial(registro.partido.equipo, registro.partido.fecha),
     id: registro.partido.id,
     equipo: registro.partido.equipo,
+    nombreEquipo: registro.partido.nombreEquipo,
     local: registro.partido.local,
     visitante: registro.partido.visitante,
     goles: estado.goles,

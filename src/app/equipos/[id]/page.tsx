@@ -20,6 +20,7 @@ import NavegacionEquipo, { type Bloque } from "@/components/NavegacionEquipo";
 import Galeria from "@/components/Galeria";
 import BotonAvisos from "@/components/BotonAvisos";
 import { BandaDirecto } from "@/components/EnDirecto";
+import DirectosGuardados, { type PartidoNarrable } from "@/components/DirectosGuardados";
 import { FilaPartido, TarjetaProximoPartido } from "@/components/Partidos";
 import { fechaLarga } from "@/lib/formato";
 import { IconoFlecha, IconoEnlaceExterno } from "@/components/Iconos";
@@ -64,6 +65,24 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
     (p) => !p.jugado && (!p.fecha || p.fecha >= hoyIso()),
   );
   const faltanResultados = disputados.some(sinResultado);
+
+  /*
+   * Los partidos ya jugados, por si alguno tiene retransmisión guardada. Cuáles
+   * la tienen no se puede saber aquí: esta página se genera al compilar y una
+   * retransmisión ocurre después. Lo pregunta el navegador al abrirla.
+   */
+  const narrables: PartidoNarrable[] = disputados
+    .filter((p) => p.fecha)
+    .map((p) => ({
+      fecha: p.fecha as string,
+      rival: p.rival,
+      esLocal: p.esLocal,
+      marcador:
+        p.golesLocal === null || p.golesVisitante === null
+          ? null
+          : `${p.golesLocal}-${p.golesVisitante}`,
+    }))
+    .reverse();
 
   // La barra inferior solo enseña los bloques que este equipo tiene: uno
   // recién inscrito no tiene todavía ni resultados ni fotos
@@ -190,6 +209,10 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
               </p>
             ) : null}
           </section>
+        ) : null}
+
+        {narrables.length > 0 ? (
+          <DirectosGuardados equipo={equipo.id} partidos={narrables} />
         ) : null}
 
         {fotos.length > 0 ? (
