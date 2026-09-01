@@ -5,15 +5,14 @@ import { getNoticias, getGaleria } from "@/lib/contenido";
 import {
   resumenEquipos,
   temporada,
-  haEmpezado,
   getEquipos,
 } from "@/lib/competicion";
 import { TarjetaNoticia } from "@/components/TarjetaNoticia";
-import { TarjetaProximoPartido, Marcador } from "@/components/Partidos";
+import { TarjetaProximoPartido } from "@/components/Partidos";
+import ResumenPartido from "@/components/ResumenPartido";
 import SeccionRedes from "@/components/SeccionRedes";
 import Media from "@/components/Media";
 import { IconoFlecha } from "@/components/Iconos";
-import { fechaLarga } from "@/lib/formato";
 
 function TituloSeccion({
   epigrafe,
@@ -53,7 +52,17 @@ export default function Inicio() {
   const primerEquipo = equipos[0];
 
   // En la tira de equipos solo entran los que ya tienen algo que contar
-  const conActividad = equipos.filter((e) => e.proximo || e.ultimo);
+  // Lo que viene primero, y lo ya jugado de más reciente a más antiguo.
+  // Sin fecha van al final: no se puede ordenar lo que no la tiene.
+  const orden = (f?: string | null) => f ?? "9999-99-99";
+
+  const proximos = equipos
+    .filter((e) => e.proximo && !e.proximo.descanso)
+    .sort((a, b) => orden(a.proximo?.fecha).localeCompare(orden(b.proximo?.fecha)));
+
+  const resultados = equipos
+    .filter((e) => e.ultimo)
+    .sort((a, b) => orden(b.ultimo?.fecha).localeCompare(orden(a.ultimo?.fecha)));
 
   const [destacada, ...resto] = noticias;
 
@@ -137,57 +146,35 @@ export default function Inicio() {
         </div>
       ) : null}
 
-      {/* ------------------------------------------------- todos los equipos */}
-      {conActividad.length > 0 ? (
-        <section className="pt-14">
-          <div className="mx-auto max-w-6xl px-5">
-            <TituloSeccion
-              epigrafe="El club al completo"
-              titulo="Todos los equipos"
-              href="/equipos"
-              enlace="Ver todos"
-            />
+      {/* -------------------------------------------- próximos y resultados */}
+      {proximos.length > 0 ? (
+        <section className="mx-auto max-w-6xl px-5 pt-14">
+          <TituloSeccion
+            epigrafe="Lo que viene"
+            titulo="Próximos partidos"
+            href="/equipos"
+            enlace="Todos los equipos"
+          />
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {proximos.map(({ equipo, proximo }) => (
+              <ResumenPartido key={equipo.id} equipo={equipo} partido={proximo!} />
+            ))}
           </div>
+        </section>
+      ) : null}
 
-          {/* Carrusel: en el móvil caben nueve equipos sin hacer scroll eterno */}
-          <div className="rail mt-6 mx-auto max-w-6xl">
-            {conActividad.map(({ equipo, proximo, ultimo, competicion }) => {
-              const fila = haEmpezado(competicion)
-                ? competicion?.clasificacion.find((f) => f.equipo === equipo.nombreRfaf)
-                : null;
-              return (
-                <Link
-                  key={equipo.id}
-                  href={`/equipos/${equipo.id}`}
-                  className="card w-64 p-4 transition-colors hover:border-club"
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <h3 className="title text-xl text-tinta">{equipo.nombre}</h3>
-                    {fila ? (
-                      <span className="shrink-0 rounded-lg bg-panel-2 px-2 py-1 text-xs font-bold text-club">
-                        {fila.posicion}º
-                      </span>
-                    ) : null}
-                  </div>
-
-                  <div className="mt-3 space-y-2 border-t border-linea pt-3 text-sm">
-                    {ultimo ? (
-                      <div className="flex items-center gap-2">
-                        <Marcador partido={ultimo} />
-                        <span className="min-w-0 truncate text-mute">{ultimo.rival}</span>
-                      </div>
-                    ) : null}
-                    {proximo ? (
-                      <p className="truncate text-xs text-mute">
-                        <span className="font-bold uppercase text-club-soft">Próximo</span>{" "}
-                        {proximo.rival}
-                        {proximo.fecha ? ` · ${fechaLarga(proximo.fecha)}` : ""}
-                      </p>
-                    ) : null}
-                  </div>
-                </Link>
-              );
-            })}
+      {resultados.length > 0 ? (
+        <section className="mx-auto max-w-6xl px-5 pt-14">
+          <TituloSeccion
+            epigrafe="Lo último"
+            titulo="Últimos resultados"
+            href="/equipos"
+            enlace="Todos los equipos"
+          />
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {resultados.map(({ equipo, ultimo }) => (
+              <ResumenPartido key={equipo.id} equipo={equipo} partido={ultimo!} />
+            ))}
           </div>
         </section>
       ) : null}
