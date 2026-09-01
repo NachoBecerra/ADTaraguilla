@@ -2,13 +2,13 @@ import type { EventoEnLinea } from "@/lib/directo/modelo";
 import type { FichaPartido } from "@/lib/directo/almacen";
 
 /**
- * Lo que ha ido pasando en el partido.
+ * Lo que ha ido pasando en el partido, con lo último arriba.
  *
- * El orden cambia según quién mire. Quien sigue el partido desde casa quiere lo
- * último arriba, sin tener que bajar hasta el final cada vez que pasa algo.
- * Quien está escribiendo en el campo trabaja al revés: va apuntando hacia
- * abajo, como en un cuaderno, y le cuadra ver la lista en el orden en que la
- * escribió.
+ * Al revés obligaría a bajar hasta el final cada vez que pasa algo, y en un
+ * partido pasan treinta cosas. Vale igual para quien sigue el partido desde
+ * casa y para quien lo escribe desde el campo: el que acaba de apuntar un gol
+ * quiere verlo sin desplazar nada, y de paso la equis para corregirlo le queda
+ * a mano, justo debajo del botón de deshacer.
  *
  * La misma lista la ve el público y quien está escribiendo desde el campo; a
  * este último se le pasa `alAnular` y le aparece la equis para corregir.
@@ -66,13 +66,10 @@ export default function Cronologia({
   linea,
   partido,
   alAnular,
-  recienteArriba = false,
 }: {
   linea: EventoEnLinea[];
   partido: FichaPartido;
   alAnular?: (id: string) => void;
-  /** Lo último, primero. Para quien mira en vez de escribir. */
-  recienteArriba?: boolean;
 }) {
   if (linea.length === 0) {
     return (
@@ -82,11 +79,10 @@ export default function Cronologia({
     );
   }
 
-  const enOrden = recienteArriba ? [...linea].reverse() : linea;
-
+  /* El plegado devuelve los eventos como pasaron; aquí se enseñan al revés */
   return (
     <ol className="mt-3 space-y-1.5">
-      {enOrden.map((evento) => (
+      {[...linea].reverse().map((evento) => (
         <li
           key={evento.id}
           className="flex items-center gap-3 rounded-xl border border-linea bg-panel px-3 py-2.5"
