@@ -16,6 +16,7 @@
 import { plegar, minutoEn } from "../../src/lib/directo/modelo.ts";
 import { minutosPorParte } from "../../src/lib/directo/reglamento.ts";
 import { diasDeLaVentana, idsDeLaVentana } from "../../src/lib/directo/ventana.ts";
+import { seVeEnElPanel } from "../../src/lib/directo/panel.ts";
 
 const T0 = Date.parse("2026-09-06T12:00:00Z");
 const min = (m) => T0 + m * 60_000;
@@ -76,6 +77,22 @@ comprobar(
   ["primer-equipo-2026-09-06", "juvenil-2026-09-06"],
 );
 comprobar("y ninguna si no hay nada de estos dias", idsDeLaVentana(guardadas, ["2026-12-25"]), []);
+
+/* ---------------------------- que sale en el panel de directos */
+
+comprobar("un partido sin abrir se ve", seVeEnElPanel("sin-abrir", "2026-09-06", "2026-09-01"), true);
+comprobar("uno en directo, tambien", seVeEnElPanel("en-directo", "2026-09-01", "2026-09-01"), true);
+comprobar("recien terminado, tambien: aun se puede rematar", seVeEnElPanel("terminada", "2026-09-01", "2026-09-01"), true);
+
+/*
+ * Y la trampa que costo encontrar: si una prueba deja cerrada la retransmision
+ * de un partido que aun no se ha jugado, esconderlo del panel dejaria al club
+ * sin forma de abrirlo el dia del partido.
+ */
+comprobar("cerrada, pero el partido es el sabado: se ve igual", seVeEnElPanel("caducada", "2026-09-06", "2026-09-01"), true);
+comprobar("cerrada y es hoy: se ve, por si hay que rehacerla", seVeEnElPanel("caducada", "2026-09-01", "2026-09-01"), true);
+comprobar("cerrada y el partido ya paso: fuera del panel", seVeEnElPanel("caducada", "2026-08-30", "2026-09-01"), false);
+comprobar("sin fecha no se esconde nunca", seVeEnElPanel("caducada", null, "2026-09-01"), true);
 
 /* ---------------------------- un senior con descuentos en las dos partes */
 

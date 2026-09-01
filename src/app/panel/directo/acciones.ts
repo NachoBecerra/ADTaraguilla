@@ -5,6 +5,7 @@ import { abrirRegistro, leerRegistro, reiniciarRegistro } from "@/lib/directo/al
 import { firmarEnlace } from "@/lib/directo/enlace";
 import { partidosRetransmitibles } from "@/lib/directo/partidos";
 import { plegar } from "@/lib/directo/modelo";
+import { TRAS_EL_FINAL_MS, type EstadoPanel } from "@/lib/directo/panel";
 
 export type Resultado = { ok: boolean; mensaje: string; ruta?: string };
 
@@ -87,20 +88,6 @@ export async function reiniciarRetransmision(id: string): Promise<Resultado> {
     ruta: `/directo/${id}/escribir?t=${encodeURIComponent(token)}`,
   };
 }
-
-/** Lo que se sigue pudiendo escribir después de dar el partido por terminado. */
-const TRAS_EL_FINAL_MS = 180 * 60_000;
-
-export type EstadoPanel =
-  /** Nadie la ha abierto todavía. */
-  | "sin-abrir"
-  /** Abierta pero sin pitar el inicio. */
-  | "abierta"
-  | "en-directo"
-  /** Terminada, pero aún se puede rematar la cronología. */
-  | "terminada"
-  /** Terminada hace horas: ya no se puede escribir y sale del panel. */
-  | "caducada";
 
 /** En qué punto está la retransmisión de cada partido. */
 export async function estadoDeRetransmisiones(

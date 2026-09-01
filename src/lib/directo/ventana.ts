@@ -15,6 +15,9 @@ const enMadrid = (ms: number) =>
     day: "2-digit",
   }).format(new Date(ms));
 
+/** El día de hoy en hora española, no en la del servidor. */
+export const hoyEnMadrid = (ahora: Date = new Date()) => enMadrid(ahora.getTime());
+
 /**
  * Ayer, hoy y mañana en hora española.
  *

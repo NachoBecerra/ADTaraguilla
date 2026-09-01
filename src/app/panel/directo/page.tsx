@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { haySesion } from "@/lib/panel/sesion";
 import { partidosRetransmitibles } from "@/lib/directo/partidos";
+import { hoyEnMadrid } from "@/lib/directo/ventana";
+import { seVeEnElPanel } from "@/lib/directo/panel";
 import { estadoDeRetransmisiones } from "./acciones";
 import Acceso from "../Acceso";
 import Listado, { type Fila } from "./Listado";
@@ -22,12 +24,9 @@ export default async function PanelDirecto() {
   const estados = await estadoDeRetransmisiones(candidatos.map((c) => c.ficha.id));
 
   const partidos: Fila[] = candidatos
-    /*
-     * Un partido cuya retransmisión terminó hace horas ya no se puede escribir,
-     * así que no pinta nada aquí: el panel enseña lo que todavía se puede hacer.
-     * La cronología no se pierde, sigue en la página del partido.
-     */
-    .filter(({ ficha }) => estados[ficha.id] !== "caducada")
+    .filter(({ ficha }) =>
+      seVeEnElPanel(estados[ficha.id] ?? "sin-abrir", ficha.fecha, hoyEnMadrid()),
+    )
     .map(({ ficha }) => ({
       id: ficha.id,
       nombreEquipo: ficha.nombreEquipo,

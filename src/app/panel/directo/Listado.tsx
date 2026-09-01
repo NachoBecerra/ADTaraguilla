@@ -1,11 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import {
-  empezarRetransmision,
-  reiniciarRetransmision,
-  type EstadoPanel,
-} from "./acciones";
+import { empezarRetransmision, reiniciarRetransmision } from "./acciones";
+import type { EstadoPanel } from "@/lib/directo/panel";
 import { fechaPartido } from "@/lib/formato";
 import { IconoFlecha } from "@/components/Iconos";
 
