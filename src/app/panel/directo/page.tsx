@@ -4,7 +4,13 @@ import { haySesion } from "@/lib/panel/sesion";
 import { partidosRetransmitibles } from "@/lib/directo/partidos";
 import { hoyEnMadrid } from "@/lib/directo/ventana";
 import { seVeEnElPanel } from "@/lib/directo/panel";
-import { estadoDeRetransmisiones } from "./acciones";
+import {
+  amistososDelPanel,
+  equiposDelClub,
+  estadoDeRetransmisiones,
+} from "./acciones";
+import NuevoAmistoso from "./NuevoAmistoso";
+import { saqueEnMs } from "@/lib/directo/partidos";
 import Acceso from "../Acceso";
 import Listado, { type Fila } from "./Listado";
 import { IconoFlecha } from "@/components/Iconos";
@@ -20,7 +26,18 @@ export const dynamic = "force-dynamic";
 export default async function PanelDirecto() {
   if (!(await haySesion())) return <Acceso />;
 
-  const candidatos = partidosRetransmitibles();
+  /*
+   * Los del calendario de la RFAF y los que el club haya creado a mano. Los
+   * segundos solo existen en el almacén del directo, así que hay que ir a
+   * buscarlos aparte.
+   */
+  const [amistosos, equipos] = await Promise.all([amistososDelPanel(), equiposDelClub()]);
+
+  const candidatos = [
+    ...partidosRetransmitibles(),
+    ...amistosos.map((ficha) => ({ ficha, saqueMs: saqueEnMs(ficha.fecha ?? "", ficha.hora) })),
+  ].sort((a, b) => a.saqueMs - b.saqueMs);
+
   const estados = await estadoDeRetransmisiones(candidatos.map((c) => c.ficha.id));
 
   const partidos: Fila[] = candidatos
@@ -36,6 +53,7 @@ export default async function PanelDirecto() {
       hora: ficha.hora,
       campo: ficha.campo,
       estado: estados[ficha.id] ?? "sin-abrir",
+      amistoso: ficha.amistoso === true,
     }));
 
   return (
@@ -57,6 +75,8 @@ export default async function PanelDirecto() {
       </p>
 
       <Listado partidos={partidos} />
+
+      <NuevoAmistoso equipos={equipos} />
     </section>
   );
 }

@@ -1,6 +1,12 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { escribirPrivado, hayAlmacenPrivado, leerPrivado, listarPrivado } from "@/lib/privado";
+import {
+  borrarPrivado,
+  escribirPrivado,
+  hayAlmacenPrivado,
+  leerPrivado,
+  listarPrivado,
+} from "@/lib/privado";
 import { MAX_EVENTOS, type Evento } from "@/lib/directo/modelo";
 
 /**
@@ -34,6 +40,14 @@ export type FichaPartido = {
    * como se contó.
    */
   minutosPorParte: number;
+  /**
+   * Un partido que no existe en la RFAF: un amistoso, un torneo de verano.
+   *
+   * Se marca porque hay que decirlo en pantalla —no va a aparecer nunca en
+   * resultados ni en la clasificación— y porque es lo único que el club puede
+   * borrar entero desde el panel. Lo de la federación no se borra: se reinicia.
+   */
+  amistoso?: boolean;
   fecha: string | null;
   hora: string | null;
   campo: string | null;
@@ -117,6 +131,22 @@ export async function listarRegistros(): Promise<string[]> {
 /* ------------------------------------------------------------------ lectura */
 
 export const leerRegistro = leer;
+
+/**
+ * Borra una retransmisión y todo lo que tenga dentro.
+ *
+ * Solo para los partidos que creó el club a mano. Un partido de la RFAF no se
+ * borra nunca desde aquí: se reinicia, que deja la cronología en blanco pero
+ * mantiene el partido. Este sí desaparece sin dejar rastro, que es justo para
+ * lo que se creó.
+ */
+export async function borrarRegistro(id: string): Promise<void> {
+  if (enDisco) {
+    await fs.rm(rutaLocal(id), { force: true });
+    return;
+  }
+  await borrarPrivado(rutaDe(id));
+}
 
 /* ----------------------------------------------------------------- escritura */
 

@@ -1,13 +1,44 @@
 "use server";
 
 import { haySesion } from "@/lib/panel/sesion";
-import { abrirRegistro, leerRegistro, reiniciarRegistro } from "@/lib/directo/almacen";
+import {
+  abrirRegistro,
+  borrarRegistro,
+  leerRegistro,
+  listarRegistros,
+  reiniciarRegistro,
+  type FichaPartido,
+} from "@/lib/directo/almacen";
 import { firmarEnlace } from "@/lib/directo/enlace";
-import { partidosRetransmitibles } from "@/lib/directo/partidos";
+import { partidosRetransmitibles, saqueEnMs } from "@/lib/directo/partidos";
 import { plegar } from "@/lib/directo/modelo";
+import { minutosPorParte } from "@/lib/directo/reglamento";
 import { TRAS_EL_FINAL_MS, type EstadoPanel } from "@/lib/directo/panel";
+import { getEquipo, getEquipos } from "@/lib/competicion";
+import { site } from "@/data/site";
 
 export type Resultado = { ok: boolean; mensaje: string; ruta?: string };
+
+/**
+ * De qué partido estamos hablando.
+ *
+ * Primero el calendario de la RFAF, que es lo normal. Si no está ahí, se mira
+ * si hay una retransmisión ya guardada: son los amistosos y demás partidos que
+ * crea el club a mano, que no existen en la federación pero sí en el almacén.
+ *
+ * La hora del saque se recalcula de la ficha en vez de guardarla, para que un
+ * cambio de horario de la RFAF se recoja al volver a pedir el enlace.
+ */
+async function fichaDe(id: string): Promise<{ ficha: FichaPartido; saqueMs: number } | null> {
+  const enCalendario = partidosRetransmitibles().find((c) => c.ficha.id === id);
+  if (enCalendario) return enCalendario;
+
+  const guardado = await leerRegistro(id);
+  if (!guardado) return null;
+
+  const { ficha } = { ficha: guardado.partido };
+  return { ficha, saqueMs: saqueEnMs(ficha.fecha ?? "", ficha.hora) };
+}
 
 /**
  * Abre la retransmisión de un partido y devuelve el enlace para quien va al
@@ -25,9 +56,9 @@ export async function empezarRetransmision(id: string): Promise<Resultado> {
     return { ok: false, mensaje: "La sesión ha caducado. Vuelve a entrar." };
   }
 
-  const candidato = partidosRetransmitibles().find((c) => c.ficha.id === id);
+  const candidato = await fichaDe(id);
   if (!candidato) {
-    return { ok: false, mensaje: "Ese partido no está en el calendario." };
+    return { ok: false, mensaje: "Ese partido no existe." };
   }
 
   try {
@@ -66,9 +97,9 @@ export async function reiniciarRetransmision(id: string): Promise<Resultado> {
     return { ok: false, mensaje: "La sesión ha caducado. Vuelve a entrar." };
   }
 
-  const candidato = partidosRetransmitibles().find((c) => c.ficha.id === id);
+  const candidato = await fichaDe(id);
   if (!candidato) {
-    return { ok: false, mensaje: "Ese partido no está en el calendario." };
+    return { ok: false, mensaje: "Ese partido no existe." };
   }
 
   if (!(await reiniciarRegistro(candidato.ficha))) {
@@ -87,6 +118,143 @@ export async function reiniciarRetransmision(id: string): Promise<Resultado> {
     mensaje: "Retransmisión reiniciada.",
     ruta: `/directo/${id}/escribir?t=${encodeURIComponent(token)}`,
   };
+}
+
+/* ------------------------------------------------------- partidos amistosos */
+
+export type DatosAmistoso = {
+  equipo: string;
+  rival: string;
+  enCasa: boolean;
+  fecha: string;
+  hora: string;
+  campo: string;
+};
+
+const FECHA = /^\d{4}-\d{2}-\d{2}$/;
+const HORA = /^\d{2}:\d{2}$/;
+
+/**
+ * Crea a mano un partido que no está en la RFAF.
+ *
+ * Sirve para amistosos, torneos de verano o cualquier cosa que la federación no
+ * publique. Vive **solo en el almacén**, no en los datos del repositorio: por
+ * eso se puede borrar después sin dejar rastro ni tocar nada de la competición.
+ *
+ * Y no toca nada de lo oficial: no aparecerá en resultados, ni en el
+ * calendario, ni en la clasificación. Solo existe como retransmisión.
+ */
+export async function crearAmistoso(datos: DatosAmistoso): Promise<Resultado> {
+  if (!(await haySesion())) {
+    return { ok: false, mensaje: "La sesión ha caducado. Vuelve a entrar." };
+  }
+
+  const equipo = getEquipo(datos.equipo);
+  if (!equipo) return { ok: false, mensaje: "Ese equipo no es del club." };
+
+  const rival = datos.rival.trim().slice(0, 60);
+  if (!rival) return { ok: false, mensaje: "Falta el nombre del rival." };
+
+  if (!FECHA.test(datos.fecha)) return { ok: false, mensaje: "La fecha no vale." };
+  if (datos.hora && !HORA.test(datos.hora)) {
+    return { ok: false, mensaje: "La hora no vale." };
+  }
+
+  const id = `${equipo.id}-${datos.fecha}`;
+
+  /*
+   * El identificador es equipo y fecha, así que un amistoso el mismo día que un
+   * partido oficial del mismo equipo se llamaría igual y lo suplantaría. Se
+   * corta aquí: es un choque improbable y de consecuencias feas.
+   */
+  if (partidosRetransmitibles().some((c) => c.ficha.id === id)) {
+    return {
+      ok: false,
+      mensaje: "Ese equipo ya tiene un partido oficial ese día. Elige otra fecha.",
+    };
+  }
+
+  const nuestro = equipo.nombreRfaf ?? site.nombre;
+  const ficha: FichaPartido = {
+    id,
+    equipo: equipo.id,
+    nombreEquipo: equipo.nombre,
+    local: datos.enCasa ? nuestro : rival,
+    visitante: datos.enCasa ? rival : nuestro,
+    escudoLocal: datos.enCasa ? site.escudo : null,
+    escudoVisitante: datos.enCasa ? null : site.escudo,
+    competicion: "Amistoso",
+    jornada: "",
+    // La duración de las partes sale de la categoría, igual que en un oficial
+    minutosPorParte: minutosPorParte(equipo.categoria),
+    fecha: datos.fecha,
+    hora: datos.hora || null,
+    campo: datos.campo.trim().slice(0, 80) || null,
+    amistoso: true,
+  };
+
+  try {
+    await abrirRegistro(ficha);
+  } catch {
+    return { ok: false, mensaje: "No se ha podido crear el partido." };
+  }
+
+  return { ok: true, mensaje: "Amistoso creado." };
+}
+
+/**
+ * Borra un amistoso y su retransmisión, sin dejar rastro.
+ *
+ * Solo los amistosos: un partido de la RFAF no se borra desde aquí, se
+ * reinicia. Confundir las dos cosas sería poder hacer desaparecer un partido
+ * oficial de la temporada por error.
+ */
+export async function eliminarAmistoso(id: string): Promise<Resultado> {
+  if (!(await haySesion())) {
+    return { ok: false, mensaje: "La sesión ha caducado. Vuelve a entrar." };
+  }
+
+  const registro = await leerRegistro(id);
+  if (!registro) return { ok: false, mensaje: "Ese partido ya no existe." };
+  if (!registro.partido.amistoso) {
+    return { ok: false, mensaje: "Los partidos de la RFAF no se borran: se reinician." };
+  }
+
+  await borrarRegistro(id);
+  return { ok: true, mensaje: "Amistoso eliminado." };
+}
+
+/**
+ * Los amistosos guardados que caen en los días que enseña el panel.
+ *
+ * Se filtra por el nombre del archivo antes de abrir ninguno, igual que en el
+ * resto del directo: el identificador acaba en la fecha del partido.
+ */
+export async function amistososDelPanel(): Promise<FichaPartido[]> {
+  if (!(await haySesion())) return [];
+
+  const dia = 86_400_000;
+  const desde = new Date(Date.now() - dia).toISOString().slice(0, 10);
+  const hasta = new Date(Date.now() + 8 * dia).toISOString().slice(0, 10);
+
+  const ids = (await listarRegistros())
+    .map((r) => r.replace(/^directo\//, "").replace(/\.json$/, ""))
+    .filter((id) => {
+      const fecha = id.slice(-10);
+      return FECHA.test(fecha) && fecha >= desde && fecha <= hasta;
+    });
+
+  const fichas = await Promise.all(
+    ids.map((id) => leerRegistro(id).then((r) => r?.partido ?? null)),
+  );
+
+  return fichas.filter((f): f is FichaPartido => f?.amistoso === true);
+}
+
+/** Los equipos del club, para elegir en el formulario del amistoso. */
+export async function equiposDelClub(): Promise<{ id: string; nombre: string }[]> {
+  if (!(await haySesion())) return [];
+  return getEquipos().map((e) => ({ id: e.id, nombre: e.nombre }));
 }
 
 /** En qué punto está la retransmisión de cada partido. */

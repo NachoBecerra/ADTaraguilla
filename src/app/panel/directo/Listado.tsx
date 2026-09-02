@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { empezarRetransmision, reiniciarRetransmision } from "./acciones";
+import {
+  eliminarAmistoso,
+  empezarRetransmision,
+  reiniciarRetransmision,
+} from "./acciones";
 import type { EstadoPanel } from "@/lib/directo/panel";
 import { fechaPartido } from "@/lib/formato";
 import { IconoFlecha } from "@/components/Iconos";
@@ -22,6 +26,8 @@ export type Fila = {
   hora: string | null;
   campo: string | null;
   estado: EstadoPanel;
+  /** Creado a mano por el club: no existe en la RFAF y se puede borrar entero. */
+  amistoso: boolean;
 };
 
 /** Cómo se ve de un vistazo en qué punto está cada partido. */
@@ -94,6 +100,22 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
     setTrabajando(null);
   }
 
+  async function eliminar(id: string) {
+    setTrabajando(id);
+    setErrores((e) => ({ ...e, [id]: "" }));
+
+    const r = await eliminarAmistoso(id);
+    if (r.ok) {
+      // Recargar: el partido ya no existe, no tiene sentido dejar su tarjeta
+      window.location.reload();
+      return;
+    }
+
+    setErrores((e) => ({ ...e, [id]: r.mensaje }));
+    setConfirmando(null);
+    setTrabajando(null);
+  }
+
   async function copiar(id: string) {
     try {
       await navigator.clipboard.writeText(enlaces[id]);
@@ -131,6 +153,11 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
               <p className="title mt-0.5 truncate text-lg text-tinta">
                 {p.local} · {p.visitante}
               </p>
+              {p.amistoso ? (
+                <span className="mt-1 mr-1 inline-block rounded-full border border-linea px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-mute">
+                  Amistoso
+                </span>
+              ) : null}
               {CHIP[p.estado] ? (
                 <span
                   className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${CHIP[p.estado]!.clase}`}
@@ -217,6 +244,10 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
               {/*
                 Empezar de cero. Va aparte y en dos pasos porque borra la
                 cronología del partido, y eso no se guarda en ningún otro sitio.
+
+                Un amistoso además se puede borrar entero: como no existe en la
+                RFAF, borrarlo lo hace desaparecer sin dejar nada. Un partido
+                oficial no se borra nunca desde aquí, solo se reinicia.
               */}
               <div className="mt-3 border-t border-linea pt-3">
                 {confirmando === p.id ? (
@@ -240,14 +271,46 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
                       Cancelar
                     </button>
                   </div>
+                ) : confirmando === `borrar-${p.id}` ? (
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-xs font-semibold text-club">
+                      El amistoso desaparece de la web entera. No se puede deshacer.
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => eliminar(p.id)}
+                      disabled={trabajando === p.id}
+                      className="btn btn-primary px-3 py-1.5 text-xs"
+                    >
+                      {trabajando === p.id ? "Eliminando…" : "Sí, eliminarlo"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setConfirmando(null)}
+                      className="btn btn-ghost px-3 py-1.5 text-xs"
+                    >
+                      Cancelar
+                    </button>
+                  </div>
                 ) : (
-                  <button
-                    type="button"
-                    onClick={() => setConfirmando(p.id)}
-                    className="text-xs font-bold text-mute underline transition-colors hover:text-club"
-                  >
-                    Reiniciar el partido
-                  </button>
+                  <div className="flex flex-wrap gap-4">
+                    <button
+                      type="button"
+                      onClick={() => setConfirmando(p.id)}
+                      className="text-xs font-bold text-mute underline transition-colors hover:text-club"
+                    >
+                      Reiniciar el partido
+                    </button>
+                    {p.amistoso ? (
+                      <button
+                        type="button"
+                        onClick={() => setConfirmando(`borrar-${p.id}`)}
+                        className="text-xs font-bold text-mute underline transition-colors hover:text-club"
+                      >
+                        Eliminar el amistoso
+                      </button>
+                    ) : null}
+                  </div>
                 )}
               </div>
             </div>

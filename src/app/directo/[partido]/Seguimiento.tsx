@@ -139,8 +139,19 @@ export default function Seguimiento({ inicial }: { inicial: Registro }) {
       <p className="mt-3 rounded-xl border border-linea bg-panel-2 p-3 text-xs leading-relaxed text-mute">
         <strong className="font-bold text-tinta">Marcador orientativo.</strong> Lo
         va apuntando alguien del club desde el campo, así que puede llevar unos
-        segundos de retraso o tener algún error. El resultado oficial es el del
-        acta arbitral, y aparece en la ficha del equipo cuando la RFAF lo publica.
+        segundos de retraso o tener algún error.{" "}
+        {partido.amistoso ? (
+          <>
+            Además es un <strong className="font-bold text-tinta">amistoso</strong>:
+            no cuenta para la competición y no aparecerá en los resultados ni en la
+            clasificación.
+          </>
+        ) : (
+          <>
+            El resultado oficial es el del acta arbitral, y aparece en la ficha del
+            equipo cuando la RFAF lo publica.
+          </>
+        )}
       </p>
 
       <h2 className="title mt-6 text-xl text-tinta">Cómo va</h2>
