@@ -354,8 +354,14 @@ export default function Botonera({
           ? null
           : { texto: "Fin de la parte", tipo: "finParte" as const };
 
+  /*
+   * El reloj lo cuenta cada dispositivo con su propia hora, así que el minuto
+   * que pinta el servidor y el que pinta el navegador pueden no coincidir: basta
+   * con que la página se cargue justo en el cambio de minuto. No es un error, es
+   * lo que tiene un reloj; se le dice a React que no compare este texto.
+   */
   const marcador = (
-    <span className="tabular-nums">
+    <span className="tabular-nums" suppressHydrationWarning>
       {fase === "sin-empezar"
         ? "Sin empezar"
         : fase === "final"

@@ -110,7 +110,11 @@ export default function Seguimiento({ inicial }: { inicial: Registro }) {
             ) : null}
             {terminado ? "Terminado" : "En directo"}
           </span>
-          <span className="tabular-nums">{estadoTexto}</span>
+          {/* El minuto lo cuenta este navegador con su hora: no tiene por qué
+              coincidir con el que pintó el servidor, y no es un error */}
+          <span className="tabular-nums" suppressHydrationWarning>
+            {estadoTexto}
+          </span>
         </div>
 
         <div className="mt-4 flex items-center gap-3">
