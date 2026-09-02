@@ -2,11 +2,118 @@
   "_nota": "Editable desde /panel. Cada entrada puede llevar VARIAS fotos y VARIAS etiquetas (equipo, temporada, jugador...). Una foto aparece bajo todas sus etiquetas.",
   "items": [
     {
+      "id": "presentaciones-infantil-b-mtkasxn2",
+      "titulo": "Presentaciones Infantil B",
+      "albumes": [
+        "2025/2026",
+        "Presentaciones"
+      ],
+      "equipos": [
+        "infantil-b"
+      ],
+      "fecha": "2026-09-02",
+      "fotos": [
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-01-ENB3opNwztYnWx1TzOFeXfpIlY9dGt.jpg",
+          "ancho": 1086,
+          "alto": 1448
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-02-lkViplaVarmDfuFjU7so1nOtZhlv5l.jpg",
+          "ancho": 1024,
+          "alto": 1536
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-03-YfraxKRTlJvdCXEOxSlzRcUwtpCZeo.jpg",
+          "ancho": 1086,
+          "alto": 1448
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-04-JXHZKBizjVS9c0XRBpdd9RkJQsaqA2.jpg",
+          "ancho": 1122,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-05-Ng3BspTDVNtYUc8CA5Xgj0PhtxsZdi.jpg",
+          "ancho": 1086,
+          "alto": 1448
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-06-bM1uIMByc0MFsaBs9cNG7S391dZoqr.jpg",
+          "ancho": 1087,
+          "alto": 1447
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-07-m97SpA2b6aBpmIvEiVh3E3LgFeqyXi.jpg",
+          "ancho": 1023,
+          "alto": 1537
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-08-EQxovuZwl4xeRXuLcGyDU4C1g6aO6X.jpg",
+          "ancho": 1127,
+          "alto": 1395
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-09-tzxh256ikr3zNbPebsqQf8idzF5CMk.jpg",
+          "ancho": 1023,
+          "alto": 1537
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-10-cvQ5cHdnpTun5bqfc1ZHl0VODJRhHx.jpg",
+          "ancho": 1023,
+          "alto": 1537
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-11-7A2JwmNohqTIbRJd05pibYMKtzFCwZ.jpg",
+          "ancho": 1122,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-12-KkxeYdDJllq1jbQOviXyPlnZC4bMjn.jpg",
+          "ancho": 1092,
+          "alto": 1440
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-13-EFqvCg6jmokbwS0Z8n1N1B7Ogbv84H.jpg",
+          "ancho": 1023,
+          "alto": 1538
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-14-XghaSQlzNrUnPRoHsVEccyVbOKftCm.jpg",
+          "ancho": 1086,
+          "alto": 1448
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-15-ScQJKpoRCKShRiOCqOXwPD8OleulpG.jpg",
+          "ancho": 1024,
+          "alto": 1536
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-16-5eT0eN2EEOyUJ1Jzu8Pj9h0Sv3gisf.jpg",
+          "ancho": 1024,
+          "alto": 1536
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-17-KOaxUUbLdujAL9ndL76VlaIrctURhH.jpg",
+          "ancho": 1086,
+          "alto": 1448
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-18-JgnNMRtlogGS2ISihinRFIYJGGN7tg.jpg",
+          "ancho": 1086,
+          "alto": 1448
+        }
+      ]
+    },
+    {
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B",
         "2025/2026",
         "Amistosos"
+      ],
+      "equipos": [
+        "infantil-b"
       ],
       "fecha": "2026-08-30",
       "fotos": [
@@ -16,15 +123,15 @@
           "alto": 1537
         }
       ],
-      "id": "001",
-      "equipos": [
-        "infantil-b"
-      ]
+      "id": "001"
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
+      ],
+      "equipos": [
+        "infantil-b"
       ],
       "fecha": "2026-08-30",
       "fotos": [
@@ -34,15 +141,15 @@
           "alto": 1672
         }
       ],
-      "id": "01",
-      "equipos": [
-        "infantil-b"
-      ]
+      "id": "01"
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
+      ],
+      "equipos": [
+        "infantil-b"
       ],
       "fecha": "2026-08-30",
       "fotos": [
@@ -52,15 +159,15 @@
           "alto": 1672
         }
       ],
-      "id": "Amistoso Infantil B - San Roque",
-      "equipos": [
-        "infantil-b"
-      ]
+      "id": "Amistoso Infantil B - San Roque"
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
+      ],
+      "equipos": [
+        "infantil-b"
       ],
       "fecha": "2026-08-30",
       "fotos": [
@@ -70,15 +177,15 @@
           "alto": 1672
         }
       ],
-      "id": "Amistoso Infantil B - San Roque",
-      "equipos": [
-        "infantil-b"
-      ]
+      "id": "Amistoso Infantil B - San Roque"
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
+      ],
+      "equipos": [
+        "infantil-b"
       ],
       "fecha": "2026-08-30",
       "fotos": [
@@ -88,15 +195,15 @@
           "alto": 1672
         }
       ],
-      "id": "amistoso-infantil-b-san-roque-4",
-      "equipos": [
-        "infantil-b"
-      ]
+      "id": "amistoso-infantil-b-san-roque-4"
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
+      ],
+      "equipos": [
+        "infantil-b"
       ],
       "fecha": "2026-08-30",
       "fotos": [
@@ -106,15 +213,15 @@
           "alto": 1672
         }
       ],
-      "id": "amistoso-infantil-b-san-roque-5",
-      "equipos": [
-        "infantil-b"
-      ]
+      "id": "amistoso-infantil-b-san-roque-5"
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
+      ],
+      "equipos": [
+        "infantil-b"
       ],
       "fecha": "2026-08-30",
       "fotos": [
@@ -124,15 +231,15 @@
           "alto": 1537
         }
       ],
-      "id": "amistoso-infantil-b-san-roque-6",
-      "equipos": [
-        "infantil-b"
-      ]
+      "id": "amistoso-infantil-b-san-roque-6"
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
+      ],
+      "equipos": [
+        "infantil-b"
       ],
       "fecha": "2026-08-30",
       "fotos": [
@@ -142,15 +249,15 @@
           "alto": 1672
         }
       ],
-      "id": "amistoso-infantil-b-san-roque-7",
-      "equipos": [
-        "infantil-b"
-      ]
+      "id": "amistoso-infantil-b-san-roque-7"
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
+      ],
+      "equipos": [
+        "infantil-b"
       ],
       "fecha": "2026-08-30",
       "fotos": [
@@ -160,15 +267,15 @@
           "alto": 1672
         }
       ],
-      "id": "amistoso-infantil-b-san-roque-8",
-      "equipos": [
-        "infantil-b"
-      ]
+      "id": "amistoso-infantil-b-san-roque-8"
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
+      ],
+      "equipos": [
+        "infantil-b"
       ],
       "fecha": "2026-08-30",
       "fotos": [
@@ -178,15 +285,15 @@
           "alto": 1672
         }
       ],
-      "id": "amistoso-infantil-b-san-roque-9",
-      "equipos": [
-        "infantil-b"
-      ]
+      "id": "amistoso-infantil-b-san-roque-9"
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
+      ],
+      "equipos": [
+        "infantil-b"
       ],
       "fecha": "2026-08-30",
       "fotos": [
@@ -196,10 +303,7 @@
           "alto": 1672
         }
       ],
-      "id": "amistoso-infantil-b-san-roque-10",
-      "equipos": [
-        "infantil-b"
-      ]
+      "id": "amistoso-infantil-b-san-roque-10"
     }
   ]
 }
