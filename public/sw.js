@@ -14,6 +14,22 @@
 
 const CACHE = "taraguilla-v1";
 
+/**
+ * En local no se guarda nada, y es importante.
+ *
+ * La regla de abajo es "la red primero, pero si tarda más de cinco segundos,
+ * sirvo lo guardado". En producción eso salva la apertura de la aplicación
+ * mientras se despliega. En el ordenador de quien programa hace lo contrario:
+ * el servidor de desarrollo tarda más de cinco segundos cada vez que recompila,
+ * así que se acaba sirviendo la página anterior al último cambio. Se ve código
+ * viejo, se dan por rotos arreglos que funcionan, y hasta salta un error de
+ * hidratación porque el HTML guardado no cuadra con el JavaScript recién
+ * compilado.
+ *
+ * Los avisos al móvil siguen funcionando: eso no pasa por aquí.
+ */
+const ES_LOCAL = ["localhost", "127.0.0.1"].includes(self.location.hostname);
+
 /** Lo que se espera a la red antes de tirar de lo guardado. */
 const ESPERA_MS = 5000;
 
@@ -35,8 +51,11 @@ self.addEventListener("activate", (evento) => {
   evento.waitUntil(
     caches
       .keys()
+      // En local se tira todo: si quedara algo guardado seguiría estorbando
       .then((claves) =>
-        Promise.all(claves.filter((k) => k !== CACHE).map((k) => caches.delete(k))),
+        Promise.all(
+          claves.filter((k) => ES_LOCAL || k !== CACHE).map((k) => caches.delete(k)),
+        ),
       )
       .then(() => self.clients.claim()),
   );
@@ -94,6 +113,8 @@ async function primeroLoGuardado(peticion) {
 }
 
 self.addEventListener("fetch", (evento) => {
+  if (ES_LOCAL) return; // en desarrollo, siempre lo que diga el servidor
+
   const peticion = evento.request;
   if (peticion.method !== "GET") return;
 
