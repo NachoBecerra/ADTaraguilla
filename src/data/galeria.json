@@ -2,7 +2,6 @@
   "_nota": "Editable desde /panel. Cada entrada puede llevar VARIAS fotos y VARIAS etiquetas (equipo, temporada, jugador...). Una foto aparece bajo todas sus etiquetas.",
   "items": [
     {
-      "id": "presentaciones-infantil-b-mtkasxn2",
       "titulo": "Presentaciones Infantil B",
       "albumes": [
         "2025/2026",
@@ -13,11 +12,6 @@
       ],
       "fecha": "2026-09-02",
       "fotos": [
-        {
-          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-01-ENB3opNwztYnWx1TzOFeXfpIlY9dGt.jpg",
-          "ancho": 1086,
-          "alto": 1448
-        },
         {
           "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-02-lkViplaVarmDfuFjU7so1nOtZhlv5l.jpg",
           "ancho": 1024,
@@ -103,7 +97,8 @@
           "ancho": 1086,
           "alto": 1448
         }
-      ]
+      ],
+      "id": "presentaciones-infantil-b-mtkasxn2"
     },
     {
       "titulo": "Amistoso Infantil B - San Roque",
