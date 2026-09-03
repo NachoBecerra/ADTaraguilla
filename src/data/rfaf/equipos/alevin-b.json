@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-02T07:26:54.116Z",
+  "actualizado": "2026-09-03T09:25:45.797Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -2862,7 +2862,7 @@
         {
           "numero": 22,
           "nombre": "Jornada 22",
-          "fecha": "2027-03-06",
+          "fecha": "2027-02-27",
           "partidos": [
             {
               "local": "C.D. ATHLETIC CLUB JIMENA",
@@ -2997,7 +2997,7 @@
         {
           "numero": 23,
           "nombre": "Jornada 23",
-          "fecha": "2027-03-13",
+          "fecha": "2027-03-06",
           "partidos": [
             {
               "local": "Descansa",
@@ -3132,7 +3132,7 @@
         {
           "numero": 24,
           "nombre": "Jornada 24",
-          "fecha": "2027-03-20",
+          "fecha": "2027-03-13",
           "partidos": [
             {
               "local": "C.D. S.M. MIRADOR \"B\"",
