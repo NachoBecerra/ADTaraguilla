@@ -7,6 +7,7 @@ import EscudoImg from "@/components/EscudoImg";
 import { IconoWhatsApp } from "@/components/Iconos";
 import { fechaPartido } from "@/lib/formato";
 import Cronologia from "@/components/Cronologia";
+import ContadorSeguidores from "@/components/ContadorSeguidores";
 
 /**
  * El partido en directo, para quien lo sigue desde casa.
@@ -195,6 +196,9 @@ export default function Seguimiento({
         <IconoWhatsApp size={18} />
         Compartir por WhatsApp
       </a>
+
+      {/* Debajo de compartir: es la cifra que anima a mandarle el enlace a otro */}
+      <ContadorSeguidores partido={partido.id} registrar />
 
       <h2 className="title mt-6 text-xl text-tinta">Cómo va</h2>
       <Cronologia linea={estado.linea} partido={partido} />

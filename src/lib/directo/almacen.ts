@@ -1,13 +1,6 @@
-import fs from "node:fs/promises";
-import path from "node:path";
-import {
-  borrarPrivado,
-  escribirPrivado,
-  hayAlmacenPrivado,
-  leerPrivado,
-  listarPrivado,
-} from "@/lib/privado";
+import { borrarJson, crearJson, escribirJson, leerJson, listarJson } from "@/lib/directo/deposito";
 import { MAX_EVENTOS, type Evento } from "@/lib/directo/modelo";
+import { borrarSeguidores } from "@/lib/directo/seguidores";
 
 /**
  * Dónde vive un partido en directo.
@@ -76,38 +69,12 @@ const rutaDe = (id: string) => `${CARPETA}/${id}.json`;
 /* ------------------------------------------------------------ almacenamiento */
 
 /*
- * En producción manda el almacén privado. Fuera de producción, si no hay token
- * configurado, se guarda en disco dentro de .next/cache para poder desarrollar
- * y probar el directo sin necesitar secretos. El respaldo NUNCA actúa en
- * producción: allí, si falta el token, es un fallo de configuración que hay que
- * ver, no algo que disimular.
+ * Todo pasa por el depósito, que además del almacén privado sabe caer a disco
+ * fuera de producción para poder desarrollar el directo sin secretos.
  */
-const enDisco = !hayAlmacenPrivado && process.env.NODE_ENV !== "production";
-const CARPETA_LOCAL = path.join(process.cwd(), ".next", "cache", "directo");
-
-const rutaLocal = (id: string) => path.join(CARPETA_LOCAL, `${id}.json`);
-
-async function leer(id: string): Promise<Registro | null> {
-  if (enDisco) {
-    try {
-      return JSON.parse(await fs.readFile(rutaLocal(id), "utf8")) as Registro;
-    } catch {
-      return null;
-    }
-  }
-  // Sin caché, como todo lo del almacén privado: aquí se lee para modificar y
-  // volver a guardar cada pocos segundos.
-  return leerPrivado<Registro | null>(rutaDe(id), null);
-}
-
-async function escribir(registro: Registro): Promise<boolean> {
-  if (enDisco) {
-    await fs.mkdir(CARPETA_LOCAL, { recursive: true });
-    await fs.writeFile(rutaLocal(registro.partido.id), JSON.stringify(registro), "utf8");
-    return true;
-  }
-  return escribirPrivado(rutaDe(registro.partido.id), registro);
-}
+const leer = (id: string) => leerJson<Registro | null>(rutaDe(id), null);
+const escribir = (r: Registro) => escribirJson(rutaDe(r.partido.id), r);
+const crear = (r: Registro) => crearJson(rutaDe(r.partido.id), r);
 
 /**
  * Rutas de todas las retransmisiones guardadas.
@@ -117,15 +84,7 @@ async function escribir(registro: Registro): Promise<boolean> {
  * saltaría y en local no se encontraría nunca nada.
  */
 export async function listarRegistros(): Promise<string[]> {
-  if (enDisco) {
-    try {
-      const nombres = await fs.readdir(CARPETA_LOCAL);
-      return nombres.filter((n) => n.endsWith(".json")).map((n) => `${CARPETA}/${n}`);
-    } catch {
-      return []; // todavía no hay ninguna
-    }
-  }
-  return listarPrivado(`${CARPETA}/`);
+  return listarJson(CARPETA);
 }
 
 /* ------------------------------------------------------------------ lectura */
@@ -141,38 +100,12 @@ export const leerRegistro = leer;
  * lo que se creó.
  */
 export async function borrarRegistro(id: string): Promise<void> {
-  if (enDisco) {
-    await fs.rm(rutaLocal(id), { force: true });
-    return;
-  }
-  await borrarPrivado(rutaDe(id));
+  await borrarJson(rutaDe(id));
+  // Y su cuenta de seguidores: borrar un amistoso no puede dejar restos
+  await borrarSeguidores(id);
 }
 
 /* ----------------------------------------------------------------- escritura */
-
-/**
- * Crea el partido **solo si no existe**. Devuelve false si ya estaba.
- *
- * No vale con haber mirado antes: leer devuelve lo mismo cuando el partido no
- * existe que cuando el almacén no contesta, y confundir esas dos cosas
- * significaría arrasar un partido en curso.
- */
-async function crear(registro: Registro): Promise<boolean> {
-  if (enDisco) {
-    await fs.mkdir(CARPETA_LOCAL, { recursive: true });
-    try {
-      // "wx": falla si el archivo ya existe
-      await fs.writeFile(rutaLocal(registro.partido.id), JSON.stringify(registro), {
-        encoding: "utf8",
-        flag: "wx",
-      });
-      return true;
-    } catch {
-      return false;
-    }
-  }
-  return escribirPrivado(rutaDe(registro.partido.id), registro, { sobrescribir: false });
-}
 
 /** Un partido recién abierto: sin nada apuntado todavía. */
 function enBlanco(partido: FichaPartido): Registro {
