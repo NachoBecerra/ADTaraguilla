@@ -2,42 +2,6 @@
   "_nota": "Editable desde /panel. Cada entrada puede llevar VARIAS fotos y VARIAS etiquetas (equipo, temporada, jugador...). Una foto aparece bajo todas sus etiquetas.",
   "items": [
     {
-      "titulo": "Presentaciones Infantil B",
-      "albumes": [],
-      "equipos": [
-        "infantil-a"
-      ],
-      "fecha": "2026-09-03",
-      "fotos": [
-        {
-          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-02-pFbXoMrE8myC0OcOMxUKyDVzijrZg3.jpg",
-          "ancho": 1086,
-          "alto": 1448
-        },
-        {
-          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-03-HGhveEEpu4Pds4L30E3gfcE9eaWcmG.jpg",
-          "ancho": 1122,
-          "alto": 1402
-        },
-        {
-          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-04-9AnZixjcrQ4lVUWqAzriL9MgpX1WRq.jpg",
-          "ancho": 1086,
-          "alto": 1448
-        },
-        {
-          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-05-IlY6bXA16ZMclbjsg8UfKX6VCTwdsE.jpg",
-          "ancho": 1122,
-          "alto": 1402
-        },
-        {
-          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-06-0C4Wmr6T2qBO423MEmJv5LtiL6gNja.jpg",
-          "ancho": 1092,
-          "alto": 1440
-        }
-      ],
-      "id": "presentaciones-infantil-b-mtleghgm"
-    },
-    {
       "titulo": "Presentación Infantil B 26/27",
       "albumes": [
         "Infantil B",
