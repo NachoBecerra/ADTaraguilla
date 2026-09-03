@@ -2,6 +2,111 @@
   "_nota": "Editable desde /panel. Cada entrada puede llevar VARIAS fotos y VARIAS etiquetas (equipo, temporada, jugador...). Una foto aparece bajo todas sus etiquetas.",
   "items": [
     {
+      "id": "noticia-presentacion-infantil-b-26-27-mtlblrsa",
+      "titulo": "Presentación Infantil B 26/27",
+      "albumes": [
+        "Infantil B",
+        "2026/2027",
+        "Presentaciones"
+      ],
+      "equipos": [
+        "infantil-b"
+      ],
+      "fecha": "2026-09-03",
+      "fotos": [
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Aitor-q7cr4xUURp1JSo2wdJkSWs8MdPBy3F.jpg",
+          "ancho": 1086,
+          "alto": 1448
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Antonio-sbR3T0P6MkUY4jpFYMVD0LkyYDa77u.jpg",
+          "ancho": 1024,
+          "alto": 1536
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Curro%20Antonio-FokLee921k4qgv0m6KSXXZbuU3oGaD.jpg",
+          "ancho": 1086,
+          "alto": 1448
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Dani-tyH5qLHmM1okBdzW1Z63k7xGfA4yOZ.jpg",
+          "ancho": 1122,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/David-a87VD3gsdmR8ZHvLdn3z7IiGxyFtW5.jpg",
+          "ancho": 1086,
+          "alto": 1448
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Fran-ubUvl0dERWjj3ejKi5PhuacfZTUvRM.jpg",
+          "ancho": 1087,
+          "alto": 1447
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Francis-7KyFJPCfGywimHTICVbAjRb1bSdoiX.jpg",
+          "ancho": 1023,
+          "alto": 1537
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Gonzalo-wGsX5KkwzkJPXZD2Qwyx0GGv9qA0dl.jpg",
+          "ancho": 1127,
+          "alto": 1395
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Jaime-OBQRKgpTJ3b1JmESBkfdE6fMDtgOJw.jpg",
+          "ancho": 1023,
+          "alto": 1537
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Javi-fHvK3bTxMRa26QkacLXHr6Aq6OCqln.jpg",
+          "ancho": 1023,
+          "alto": 1537
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Juan-8mB9exryXzvkWOROSVlzXZqvzjpaYQ.jpg",
+          "ancho": 1122,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Nata-hl6RZL5ai8eLiIOzoGK3zvDQQQmXAu.jpg",
+          "ancho": 1092,
+          "alto": 1440
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Noah-4IkJsj3Qyb2VElVgLDZbLMcddGy96B.jpg",
+          "ancho": 1023,
+          "alto": 1537
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Pedro-Nx3IcI8OXwmXjLYhQWz7Xyw7g8cEdV.jpg",
+          "ancho": 1086,
+          "alto": 1448
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Puyi-po5uMDu292hxbAskGrpZaIxQSUv2zX.jpg",
+          "ancho": 1024,
+          "alto": 1536
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Santi-cqdNDilH3g1n8N8KrCVAK9HlvqGkP7.jpg",
+          "ancho": 1024,
+          "alto": 1536
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Sira-lqqbIGd28XN4WmCzb7dtR93cvKrDUY.jpg",
+          "ancho": 1086,
+          "alto": 1448
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/Tiago-uDZ9MBWGyPt0TfB3cOGp9OZixs6MdG.jpg",
+          "ancho": 1086,
+          "alto": 1448
+        }
+      ]
+    },
+    {
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B",
