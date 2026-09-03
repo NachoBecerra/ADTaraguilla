@@ -10,6 +10,7 @@ import RegistrarSW from "@/components/RegistrarSW";
 import AvisoDatosNuevos from "@/components/AvisoDatosNuevos";
 import { Analytics } from "@vercel/analytics/next";
 import ContarUso from "@/components/ContarUso";
+import VolverAlDirecto from "@/components/VolverAlDirecto";
 import { actualizado } from "@/lib/competicion";
 
 const display = Barlow_Condensed({
@@ -89,6 +90,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <ClubJsonLd />
         <Cabecera />
+        {/*
+          Va aquí arriba y no flotando abajo: cuando el sistema cierra la
+          aplicación y se vuelve a abrir desde el icono, arranca en la portada, y
+          esto es lo primero que tiene que ver quien estaba retransmitiendo.
+        */}
+        <VolverAlDirecto />
         <main id="contenido" className="flex-1">
           {children}
         </main>

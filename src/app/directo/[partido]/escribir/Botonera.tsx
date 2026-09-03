@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
   plegar,
   minutoEn,
@@ -20,6 +20,7 @@ import {
 import type { Registro } from "@/lib/directo/almacen";
 import Cronologia from "@/components/Cronologia";
 import ContadorSeguidores from "@/components/ContadorSeguidores";
+import { recordarMando } from "@/components/VolverAlDirecto";
 
 /**
  * La pantalla de quien está en el campo.
@@ -91,6 +92,42 @@ function sellar(evento: EventoNuevo): Evento {
  */
 const PREFIJO = "directo-pendientes-";
 
+/**
+ * Si este móvil quiere que la pantalla no se apague, recordado por dispositivo.
+ *
+ * Se lee con `useSyncExternalStore` y no con un efecto porque el almacenamiento
+ * del navegador no existe en el servidor: así React pinta primero lo del
+ * servidor y cambia después, sin dar la página por inconsistente.
+ */
+const CLAVE_PANTALLA = "directo-pantalla-encendida";
+
+const oyentes = new Set<() => void>();
+
+function guardarPreferencia(encendida: boolean) {
+  try {
+    localStorage.setItem(CLAVE_PANTALLA, encendida ? "si" : "no");
+  } catch {
+    // Sin almacenamiento la preferencia dura lo que dure la pantalla abierta
+  }
+  for (const avisar of oyentes) avisar();
+}
+
+const suscribir = (alCambiar: () => void) => {
+  oyentes.add(alCambiar);
+  return () => void oyentes.delete(alCambiar);
+};
+
+const leerPreferencia = () => {
+  try {
+    return localStorage.getItem(CLAVE_PANTALLA);
+  } catch {
+    return null;
+  }
+};
+
+/** Si el móvil sabe mantener la pantalla encendida. En el ordenador, casi nunca. */
+const sabeMantenerla = () => typeof navigator !== "undefined" && "wakeLock" in navigator;
+
 const clave = (partido: string, abierto: string) => `${PREFIJO}${partido}-${abierto}`;
 
 /**
@@ -138,6 +175,20 @@ export default function Botonera({
 
   /* Dar el partido por terminado cierra el directo: se pregunta antes */
   const [confirmandoFinal, setConfirmandoFinal] = useState(false);
+
+  /**
+   * Que el móvil no se apague mientras se apunta el partido.
+   *
+   * Es el arreglo de raíz de un problema que salió en el campo: al bloquearse
+   * la pantalla, el sistema acaba cerrando la aplicación y hay que rehacer todo
+   * el camino. Viene activado porque es lo que quiere quien está retransmitiendo,
+   * y se puede apagar si se prefiere ahorrar batería.
+   */
+  const preferencia = useSyncExternalStore(suscribir, leerPreferencia, () => null);
+  const hayWakeLock = useSyncExternalStore(() => () => {}, sabeMantenerla, () => false);
+  /* Encendida salvo que se haya pedido lo contrario: es lo que quiere quien está
+     retransmitiendo, y apagarla es cosa de un toque */
+  const pantalla = preferencia !== "no";
 
   /* Botones sordos un momento después de cada acción, para el doble toque */
   const [bloqueado, setBloqueado] = useState(false);
@@ -201,6 +252,59 @@ export default function Botonera({
     const reloj = setInterval(() => setAhora(Date.now()), 1000);
     return () => clearInterval(reloj);
   }, []);
+
+  /*
+   * Mantener la pantalla encendida.
+   *
+   * El sistema lo suelta solo al pasar la aplicación a segundo plano, así que
+   * hay que volver a pedirlo cada vez que se vuelve a ella. Si el navegador no
+   * lo admite, no pasa nada: simplemente no se ofrece.
+   */
+  useEffect(() => {
+    if (!("wakeLock" in navigator)) return;
+
+    let permiso: WakeLockSentinel | null = null;
+
+    const pedir = async () => {
+      if (!pantalla || document.hidden) return;
+      try {
+        permiso = await navigator.wakeLock.request("screen");
+      } catch {
+        // Batería baja o pestaña de fondo: el sistema puede negarlo
+      }
+    };
+
+    const soltar = async () => {
+      try {
+        await permiso?.release();
+      } catch {
+        // Ya estaba suelto
+      }
+      permiso = null;
+    };
+
+    if (pantalla) void pedir();
+    else void soltar();
+
+    const alVolver = () => {
+      if (!document.hidden) void pedir();
+    };
+    document.addEventListener("visibilitychange", alVolver);
+
+    return () => {
+      document.removeEventListener("visibilitychange", alVolver);
+      void soltar();
+    };
+  }, [pantalla]);
+
+  /*
+   * Este móvil se queda con el enlace. Si el sistema cierra la aplicación por
+   * estar bloqueada, al volver a abrirla aparece un atajo arriba para seguir
+   * apuntando de un toque, en vez de rehacer el camino por el panel.
+   */
+  useEffect(() => {
+    if (!cierre) recordarMando(partido.id, token);
+  }, [partido.id, token, cierre]);
 
   /**
    * Manda la cola y se queda con lo que el servidor dice que tiene guardado.
@@ -516,6 +620,32 @@ export default function Botonera({
         >
           {faseSiguiente.texto}
         </button>
+      ) : null}
+
+      {/*
+        Con la pantalla encendida el móvil no se bloquea, y sin bloquearse el
+        sistema no cierra la aplicación: es lo que evitaba tener que rehacer todo
+        el camino por el panel a mitad de partido. Solo aparece si el móvil lo
+        admite.
+      */}
+      {hayWakeLock ? (
+        <label className="mt-3 flex items-center justify-between gap-3 rounded-xl bg-panel-2 px-4 py-3">
+          <span className="min-w-0">
+            <span className="block text-sm font-bold text-tinta">
+              Pantalla siempre encendida
+            </span>
+            <span className="block text-xs leading-snug text-mute">
+              Para que el móvil no se bloquee y no haya que volver a entrar. Gasta
+              más batería.
+            </span>
+          </span>
+          <input
+            type="checkbox"
+            checked={pantalla}
+            onChange={(e) => guardarPreferencia(e.target.checked)}
+            className="h-6 w-6 shrink-0 accent-club"
+          />
+        </label>
       ) : null}
 
       {/*
