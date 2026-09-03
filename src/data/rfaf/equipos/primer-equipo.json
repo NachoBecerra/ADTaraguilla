@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-03T09:24:48.324Z",
+  "actualizado": "2026-09-03T11:18:58.350Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -464,6 +464,22 @@
           "fecha": "2026-09-13",
           "partidos": [
             {
+              "local": "REAL BALOMPEDICA LINENSE",
+              "visitante": "ALGAIDA U.D.",
+              "codLocal": "16370635",
+              "codVisitante": "310415",
+              "fecha": "2026-09-12",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "localidad": "La Línea de La Concepción",
+              "campo": "Francisco Pozo",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3349",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
               "local": "BARBATE C.F.",
               "visitante": "TREBUJENA C.F.",
               "codLocal": "308515",
@@ -508,22 +524,6 @@
               "campo": "GUADALCACIN ESTADIO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3036",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
-              "local": "REAL BALOMPEDICA LINENSE",
-              "visitante": "ALGAIDA U.D.",
-              "codLocal": "16370635",
-              "codVisitante": "310415",
-              "fecha": "2026-09-13",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "localidad": "La Línea de La Concepción",
-              "campo": "Francisco Pozo",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3349",
               "urlActa": null,
               "jugado": false
             },
