@@ -75,10 +75,9 @@ const BLOQUEO_MS = 3_000;
  * y no del momento de dibujar la pantalla: son cosas distintas y mezclarlas
  * daría minutos que cambian solos al repintarse.
  */
-function sellar(evento: EventoNuevo): Evento {
-  const ahora = Date.now();
-  const id = `${ahora.toString(36)}${Math.random().toString(36).slice(2, 8)}`;
-  return { ...evento, id, ts: ahora } as Evento;
+function sellar(evento: EventoNuevo, cuando = Date.now()): Evento {
+  const id = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
+  return { ...evento, id, ts: cuando } as Evento;
 }
 
 /**
@@ -420,8 +419,8 @@ export default function Botonera({
   }, [enviar]);
 
   /* Se apunta y se manda ya; si falla, queda en la cola y el reloj lo recoge */
-  const apuntar = (evento: EventoNuevo) => {
-    fijarCola([...cola.current, sellar(evento)]);
+  const apuntar = (evento: EventoNuevo, cuando?: number) => {
+    fijarCola([...cola.current, sellar(evento, cuando)]);
     void enviar();
   };
 
@@ -436,6 +435,20 @@ export default function Botonera({
 
   /** Una corrección. Nunca se bloquea: es justo lo que hay que poder hacer ya. */
   const anular = (id: string) => apuntar({ tipo: "anula", anulado: id });
+
+  /**
+   * Corrige un comentario ya publicado.
+   *
+   * No hay "editar" en el modelo, y no hace falta: se anula el viejo y se pone
+   * el nuevo. Lo importante es que el nuevo lleve **el instante del original**,
+   * porque si no se iría al minuto actual y saltaría al principio de la
+   * cronología como si acabara de escribirse. Con su instante se queda en su
+   * sitio y con su minuto, y quien lo lee solo ve el texto corregido.
+   */
+  const editarTexto = (id: string, cuando: number, mensaje: string) => {
+    anular(id);
+    apuntar({ tipo: "texto", mensaje }, cuando);
+  };
 
   const estado = plegar([...confirmados, ...pendientes], partido.minutosPorParte);
   const minuto = minutoEn(estado, ahora);
@@ -763,6 +776,7 @@ export default function Botonera({
         linea={estado.linea}
         partido={partido}
         alAnular={anular}
+        alEditar={editarTexto}
       />
     </div>
   );
