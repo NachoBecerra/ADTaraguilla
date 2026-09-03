@@ -6,6 +6,7 @@ import { upload } from "@vercel/blob/client";
 import { guardarNoticia, borrarNoticia, type Resultado } from "./acciones";
 import type { NoticiaPanel } from "@/lib/panel/noticias";
 import CampoEtiquetas from "@/components/CampoEtiquetas";
+import SelectorEquipos, { type OpcionEquipo } from "@/components/SelectorEquipos";
 import { IconoCerrar, IconoBuscar, IconoImagen } from "@/components/Iconos";
 import { fechaCorta } from "@/lib/formato";
 
@@ -20,11 +21,17 @@ function normalizar(texto: string): string {
     .replace(/\p{Diacritic}/gu, "");
 }
 
-/** La portada, ya reducida y lista para subirse. */
-type Portada = { archivo: File; vista: string };
+/**
+ * Una foto ya reducida y lista para subirse.
+ *
+ * Lleva las medidas porque las fotos que acompañan a la noticia acaban en la
+ * galería, y allí hacen falta para reservarles el hueco antes de que carguen.
+ * A la portada le sobran, pero tener dos funciones casi iguales sobra más.
+ */
+type FotoElegida = { archivo: File; vista: string; ancho: number; alto: number };
 
-/** Reduce la portada en el navegador, igual que en la galería. */
-function reducir(archivo: File): Promise<Portada> {
+/** Reduce una foto en el navegador, igual que en la galería. */
+function reducir(archivo: File): Promise<FotoElegida> {
   return new Promise((resolver, rechazar) => {
     const lector = new FileReader();
     lector.onerror = () => rechazar(new Error(archivo.name));
@@ -48,6 +55,8 @@ function reducir(archivo: File): Promise<Portada> {
                 type: "image/jpeg",
               }),
               vista: URL.createObjectURL(blob),
+              ancho: lienzo.width,
+              alto: lienzo.height,
             });
           },
           "image/jpeg",
@@ -80,6 +89,7 @@ const VACIA: NoticiaPanel = {
   portada: "",
   autor: "AD Taraguilla",
   destacada: false,
+  galeria: "",
   cuerpo: "",
 };
 
@@ -89,15 +99,23 @@ function Editor({
   noticia,
   categorias,
   sugerencias,
+  albumes,
+  equipos,
   alCerrar,
 }: {
   noticia: NoticiaPanel;
   categorias: readonly string[];
   sugerencias: string[];
+  /** Etiquetas ya usadas en la galería, para sugerirlas en las fotos. */
+  albumes: string[];
+  equipos: OpcionEquipo[];
   alCerrar: () => void;
 }) {
   const esNueva = noticia.archivo === "";
-  const [portadaNueva, setPortadaNueva] = useState<Portada | null>(null);
+  const [portadaNueva, setPortadaNueva] = useState<FotoElegida | null>(null);
+  /* Las fotos que se añaden al final de la noticia y van también a la galería */
+  const [fotos, setFotos] = useState<FotoElegida[]>([]);
+  const [subiendo, setSubiendo] = useState("");
   const [guardado, guardar, guardando] = useActionState<Resultado | null, FormData>(
     async (previo, datos) => {
       // La portada sube directa al almacenamiento; aquí solo viaja su URL
@@ -117,7 +135,36 @@ function Editor({
           return { ok: false, mensaje: `No se ha podido subir la portada: ${(e as Error).message}` };
         }
       }
-      return guardarNoticia(previo, datos);
+
+      /*
+       * Las fotos del cuerpo suben una a una y directas al almacenamiento, igual
+       * que en la galería: por la acción de servidor no caben, hay un límite de
+       * un megabyte por petición y estas son varias de un mega largo cada una.
+       * Aquí solo viajan sus direcciones y sus medidas.
+       */
+      if (fotos.length > 0) {
+        const subidas: { url: string; ancho: number; alto: number }[] = [];
+        try {
+          for (const [i, foto] of fotos.entries()) {
+            setSubiendo(`Subiendo foto ${i + 1} de ${fotos.length}…`);
+            const blob = await upload(`noticias/${foto.archivo.name}`, foto.archivo, {
+              access: "public",
+              handleUploadUrl: "/api/subir",
+            });
+            subidas.push({ url: blob.url, ancho: foto.ancho, alto: foto.alto });
+          }
+        } catch (e) {
+          setSubiendo("");
+          return { ok: false, mensaje: `No se han podido subir las fotos: ${(e as Error).message}` };
+        }
+        setSubiendo("");
+        datos.set("fotos", JSON.stringify(subidas));
+      }
+
+      const guardado = await guardarNoticia(previo, datos);
+      // Ya están en el servidor: dejarlas aquí las volvería a subir al guardar
+      if (guardado.ok) setFotos([]);
+      return guardado;
     },
     null,
   );
@@ -164,6 +211,7 @@ function Editor({
         <form action={guardar} className="grid grid-cols-1 gap-4 p-5">
           <input type="hidden" name="archivo" value={noticia.archivo} />
           <input type="hidden" name="portada" value={noticia.portada} />
+          <input type="hidden" name="galeria" value={noticia.galeria} />
 
           <label className="block">
             <span className="text-xs font-semibold uppercase tracking-wide text-mute">
@@ -280,6 +328,86 @@ function Editor({
             </div>
           </div>
 
+          {/*
+            Fotos del final de la noticia. Van aparte de la portada a propósito:
+            la portada es la que se ve en las tarjetas y la que sale al
+            compartir, y mezclarlas dejaría al azar cuál de las dos hace ese
+            papel. Estas además se publican en la galería.
+          */}
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-wide text-mute">
+              Fotos del final de la noticia
+            </span>
+            <p className="mt-1 text-xs leading-relaxed text-mute">
+              Se enseñan debajo del texto y se publican también en la galería del
+              club. La portada no cambia.
+            </p>
+
+            {fotos.length > 0 ? (
+              <ul className="mt-2 grid grid-cols-4 gap-2 sm:grid-cols-6">
+                {fotos.map((f, i) => (
+                  <li key={f.vista} className="relative">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={f.vista}
+                      alt=""
+                      className="aspect-square w-full rounded-lg border border-linea object-cover"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setFotos((a) => a.filter((_, n) => n !== i))}
+                      aria-label={`Quitar la foto ${i + 1}`}
+                      className="absolute -right-1.5 -top-1.5 grid h-6 w-6 place-items-center rounded-full bg-club text-white"
+                    >
+                      <IconoCerrar size={13} />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+
+            <label className="btn btn-ghost mt-2 cursor-pointer px-4 py-2 text-sm">
+              {fotos.length > 0 ? "Añadir más fotos" : "Elegir fotos"}
+              <input
+                type="file"
+                accept="image/*"
+                multiple
+                className="sr-only"
+                onChange={async (e) => {
+                  const elegidas = [...(e.target.files ?? [])];
+                  e.target.value = ""; // para poder volver a elegir la misma
+                  const reducidas = await Promise.all(elegidas.map(reducir));
+                  setFotos((a) => [...a, ...reducidas]);
+                }}
+              />
+            </label>
+
+            {fotos.length > 0 ? (
+              <div className="mt-3 space-y-3 rounded-xl bg-panel-2 p-3">
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-wide text-mute">
+                    Etiquetas de las fotos
+                  </span>
+                  <div className="mt-1">
+                    <CampoEtiquetas
+                      nombre="fotoEtiquetas"
+                      sugerencias={albumes}
+                      ayuda="Con las que aparecerán en la galería. Si no pones ninguna se usa la categoría de la noticia."
+                    />
+                  </div>
+                </div>
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-wide text-mute">
+                    Equipo
+                  </span>
+                  <div className="mt-1">
+                    <SelectorEquipos nombre="fotoEquipos" equipos={equipos} />
+                  </div>
+                </div>
+              </div>
+            ) : null}
+          </div>
+
           <label className="block">
             <span className="text-xs font-semibold uppercase tracking-wide text-mute">
               Cuerpo de la noticia
@@ -310,7 +438,13 @@ function Editor({
               disabled={guardando}
               className="btn btn-primary px-5 py-2.5 text-sm"
             >
-              {guardando ? "Guardando…" : esNueva ? "Publicar noticia" : "Guardar cambios"}
+              {/* Con varias fotos la subida tarda: mejor decir por dónde va que
+                  dejar un "Guardando…" quieto medio minuto */}
+              {guardando
+                ? subiendo || "Guardando…"
+                : esNueva
+                  ? "Publicar noticia"
+                  : "Guardar cambios"}
             </button>
             <Aviso resultado={guardado} />
           </div>
@@ -342,9 +476,14 @@ function Editor({
 export default function Listado({
   noticias,
   categorias,
+  albumes,
+  equipos,
 }: {
   noticias: NoticiaPanel[];
   categorias: readonly string[];
+  /** Etiquetas y equipos de la galería: las fotos de una noticia acaban allí. */
+  albumes: string[];
+  equipos: OpcionEquipo[];
 }) {
   const [consulta, setConsulta] = useState("");
   const [categoria, setCategoria] = useState("todas");
@@ -471,6 +610,8 @@ export default function Listado({
           noticia={editando}
           categorias={categorias}
           sugerencias={etiquetasUsadas}
+          albumes={albumes}
+          equipos={equipos}
           alCerrar={() => setEditando(null)}
         />
       ) : null}

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getNoticia, getNoticias } from "@/lib/contenido";
+import { getGaleriaDeEntrada, getNoticia, getNoticias } from "@/lib/contenido";
 import { fechaLarga } from "@/lib/formato";
 import { site } from "@/data/site";
 import MediaCompleta from "@/components/MediaCompleta";
 import { TarjetaNoticia } from "@/components/TarjetaNoticia";
 import Compartir from "@/components/Compartir";
+import Galeria from "@/components/Galeria";
 import { NoticiaJsonLd } from "@/components/DatosEstructurados";
 import { IconoFlecha } from "@/components/Iconos";
 
@@ -30,6 +31,14 @@ export async function generateMetadata({
       title: noticia.titulo,
       description: noticia.resumen,
       publishedTime: noticia.fecha,
+      /*
+       * Solo la portada, aunque la noticia lleve diez fotos más.
+       *
+       * WhatsApp y Telegram cogen la primera imagen que encuentran y Facebook
+       * deja elegir entre todas: poniéndolas todas, la foto con la que se
+       * comparte la noticia dejaría de ser la que eligió el club y pasaría a
+       * depender de cada red. La portada existe justo para ser esa foto.
+       */
       images: noticia.portada ? [noticia.portada] : undefined,
     },
   };
@@ -41,6 +50,9 @@ export default async function PaginaNoticia({ params }: PageProps<"/noticias/[sl
   if (!noticia) notFound();
 
   const url = `${site.url}/noticias/${noticia.slug}`;
+
+  /* Las fotos viven en la galería y la noticia solo guarda a cuál mirar */
+  const fotos = getGaleriaDeEntrada(noticia.galeria);
 
   const relacionadas = getNoticias()
     .filter((n) => n.slug !== noticia.slug)
@@ -99,6 +111,16 @@ export default async function PaginaNoticia({ params }: PageProps<"/noticias/[sl
           className="prosa mt-8"
           dangerouslySetInnerHTML={{ __html: noticia.cuerpoHtml }}
         />
+
+        {fotos.length > 0 ? (
+          <section className="mt-10 border-t border-linea pt-6">
+            <p className="eyebrow">Fotos</p>
+            <h2 className="title mt-1 text-2xl text-tinta">
+              {fotos.length} {fotos.length === 1 ? "foto" : "fotos"} de la noticia
+            </h2>
+            <Galeria items={fotos} comoAnexo porTanda={12} />
+          </section>
+        ) : null}
 
         <div className="mt-10 border-t border-linea pt-6">
           <p className="eyebrow mb-3">Compartir</p>

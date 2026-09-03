@@ -56,6 +56,7 @@ export default function Galeria({
   albumInicial = "todos",
   ocultar,
   conBuscador = false,
+  comoAnexo = false,
   porTanda = POR_TANDA,
 }: {
   items: ItemGaleria[];
@@ -69,6 +70,14 @@ export default function Galeria({
    */
   ocultar?: string;
   conBuscador?: boolean;
+  /**
+   * Estas fotos son de la página en la que ya estás, no una galería.
+   *
+   * Dentro de una noticia sobran los filtros por álbum —todas las fotos son de
+   * esa noticia, así que no filtran nada— y sobra el pie de cada foto, que
+   * repetiría el titular tantas veces como fotos haya.
+   */
+  comoAnexo?: boolean;
   /** Fotos por tanda. En la ficha de un equipo conviene menos: es una sección
    *  más dentro de la página, no la página entera. */
   porTanda?: number;
@@ -164,7 +173,7 @@ export default function Galeria({
         </label>
       ) : null}
 
-      {albumes.length > 2 ? (
+      {albumes.length > 2 && !comoAnexo ? (
         <div className="mt-3 flex flex-wrap gap-2">
           {albumes.map((a) => (
             <button
@@ -221,11 +230,13 @@ export default function Galeria({
                   </span>
                 )}
 
-                <span className="pie-foto pointer-events-none absolute inset-x-0 bottom-0 px-3 pb-2.5 pt-7">
-                  <span className="line-clamp-2 text-xs font-semibold leading-snug text-white">
-                    {item.titulo}
+                {comoAnexo ? null : (
+                  <span className="pie-foto pointer-events-none absolute inset-x-0 bottom-0 px-3 pb-2.5 pt-7">
+                    <span className="line-clamp-2 text-xs font-semibold leading-snug text-white">
+                      {item.titulo}
+                    </span>
                   </span>
-                </span>
+                )}
 
               </button>
             ))}

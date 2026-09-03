@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { haySesion } from "@/lib/panel/sesion";
 import { noticiasDelRepositorio, CATEGORIAS } from "@/lib/panel/noticias";
+import { albumesDe, entradasDeGaleria } from "@/lib/panel/galeria";
+import { getEquipos } from "@/lib/competicion";
 import Acceso from "../Acceso";
 import Listado from "./Listado";
 import { IconoFlecha } from "@/components/Iconos";
@@ -17,6 +19,12 @@ export default async function PanelNoticias() {
   // Del repositorio, no de la compilación: así un cambio recién guardado
   // se ve al momento.
   const { noticias, enVivo } = await noticiasDelRepositorio();
+
+  /* Las fotos de una noticia acaban en la galería, así que se ofrecen las
+     mismas etiquetas y equipos que allí: si no, se acabaría con dos
+     vocabularios distintos para las mismas fotos. */
+  const albumes = albumesDe(await entradasDeGaleria());
+  const equipos = getEquipos().map((e) => ({ id: e.id, nombre: e.nombre }));
 
   return (
     <section className="mx-auto max-w-3xl px-5 py-10">
@@ -36,7 +44,12 @@ export default async function PanelNoticias() {
       </p>
 
       {enVivo ? (
-        <Listado noticias={noticias} categorias={CATEGORIAS} />
+        <Listado
+            noticias={noticias}
+            categorias={CATEGORIAS}
+            albumes={albumes}
+            equipos={equipos}
+          />
       ) : (
         <>
           <p className="mt-6 rounded-xl border border-club bg-panel p-4 text-sm leading-relaxed text-tinta">

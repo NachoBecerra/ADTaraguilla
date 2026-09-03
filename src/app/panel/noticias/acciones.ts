@@ -6,6 +6,12 @@ import { revalidatePath } from "next/cache";
 import { haySesion } from "@/lib/panel/sesion";
 import { commitear, leerArchivo } from "@/lib/panel/github";
 import { CARPETA } from "@/lib/panel/noticias";
+import {
+  RUTA_GALERIA,
+  aArchivo,
+  leerGaleria,
+  type Foto,
+} from "@/lib/panel/galeriaDatos";
 
 export type Resultado = { ok: boolean; mensaje: string };
 
@@ -38,6 +44,7 @@ function componerMarkdown(n: {
   portada: string;
   autor: string;
   destacada: boolean;
+  galeria: string;
   cuerpo: string;
 }): string {
   return [
@@ -51,6 +58,7 @@ function componerMarkdown(n: {
     `portada: ${aYaml(n.portada)}`,
     `autor: ${aYaml(n.autor)}`,
     `destacada: ${n.destacada}`,
+    ...(n.galeria ? [`galeria: ${aYaml(n.galeria)}`] : []),
     "---",
     "",
     n.cuerpo.trim(),
@@ -85,6 +93,66 @@ export async function guardarNoticia(
 
   const escribir: { ruta: string; contenido: string; binario?: boolean }[] = [];
 
+  /*
+   * Las fotos que acompañan a la noticia van a la galería, no al Markdown.
+   *
+   * Es lo que pidió el club —que se suban también a la galería— y de paso
+   * resuelve el problema de tenerlas en dos sitios: la noticia solo guarda a
+   * qué entrada mirar. Todo va en el mismo commit que la noticia, así que o se
+   * guardan las dos cosas o no se guarda ninguna.
+   */
+  let galeria = String(datos.get("galeria") ?? "").trim();
+
+  let nuevas: Foto[] = [];
+  try {
+    nuevas = JSON.parse(String(datos.get("fotos") ?? "[]")) as Foto[];
+  } catch {
+    return { ok: false, mensaje: "No se han recibido bien las fotos. Inténtalo otra vez." };
+  }
+
+  if (nuevas.length > 0) {
+    const etiquetasFoto = datos.getAll("fotoEtiquetas").map(String).map((e) => e.trim()).filter(Boolean);
+    const equiposFoto = datos.getAll("fotoEquipos").map(String).map((e) => e.trim()).filter(Boolean);
+
+    try {
+      const galeriaActual = await leerGaleria();
+      const existente = galeria ? galeriaActual.items.find((e) => e.id === galeria) : undefined;
+
+      if (existente) {
+        existente.fotos = [...existente.fotos, ...nuevas];
+        existente.titulo = titulo;
+        if (etiquetasFoto.length > 0) existente.albumes = etiquetasFoto;
+        if (equiposFoto.length > 0) existente.equipos = equiposFoto;
+      } else {
+        galeria = `noticia-${slug}-${Date.now().toString(36)}`;
+        galeriaActual.items = [
+          {
+            id: galeria,
+            titulo,
+            /* Sin etiqueta no se encuentra en la galería, así que si no se pone
+               ninguna se usa la categoría de la noticia como red de seguridad */
+            albumes:
+              etiquetasFoto.length > 0
+                ? etiquetasFoto
+                : [String(datos.get("categoria") ?? "Club")],
+            equipos: equiposFoto,
+            fecha,
+            fotos: nuevas,
+          },
+          ...galeriaActual.items,
+        ];
+      }
+
+      escribir.push({
+        ruta: RUTA_GALERIA,
+        contenido: aArchivo(galeriaActual),
+        binario: false,
+      });
+    } catch (e) {
+      return { ok: false, mensaje: `No se ha podido leer la galería: ${(e as Error).message}` };
+    }
+  }
+
   escribir.push({
     ruta: archivo,
     contenido: componerMarkdown({
@@ -97,6 +165,7 @@ export async function guardarNoticia(
       portada,
       autor: String(datos.get("autor") ?? "AD Taraguilla").trim() || "AD Taraguilla",
       destacada: datos.get("destacada") === "on",
+      galeria,
       cuerpo,
     }),
   });
@@ -121,9 +190,18 @@ export async function guardarNoticia(
 
     revalidatePath("/noticias");
     revalidatePath("/panel/noticias");
+    revalidatePath("/galeria");
     revalidatePath("/");
 
-    return { ok: true, mensaje: anterior ? "Guardada." : "Noticia publicada." };
+    const cuantas = nuevas.length;
+    return {
+      ok: true,
+      mensaje: cuantas
+        ? `Guardada, con ${cuantas} ${cuantas === 1 ? "foto" : "fotos"} añadidas también a la galería.`
+        : anterior
+          ? "Guardada."
+          : "Noticia publicada.",
+    };
   } catch (e) {
     return { ok: false, mensaje: `No se ha podido guardar: ${(e as Error).message}` };
   }

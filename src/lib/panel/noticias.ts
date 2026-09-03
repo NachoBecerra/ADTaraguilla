@@ -24,6 +24,8 @@ export type NoticiaPanel = {
   portada: string;
   autor: string;
   destacada: boolean;
+  /** Entrada de la galería con las fotos que acompañan a la noticia. */
+  galeria: string;
   cuerpo: string;
 };
 
@@ -42,6 +44,7 @@ function deArchivo(nombre: string, crudo: string): NoticiaPanel {
     portada: String(data.portada ?? ""),
     autor: String(data.autor ?? "AD Taraguilla"),
     destacada: Boolean(data.destacada),
+    galeria: String(data.galeria ?? ""),
     cuerpo: content.trim(),
   };
 }
@@ -86,6 +89,7 @@ export async function noticiasDelRepositorio(): Promise<{
       portada: n.portada,
       autor: n.autor,
       destacada: n.destacada,
+      galeria: n.galeria,
       cuerpo: "",
     }));
 

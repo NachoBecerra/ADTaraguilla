@@ -20,6 +20,15 @@ export type Noticia = {
   /** Etiquetas libres, además de la categoría: equipo, temporada, jugador… */
   etiquetas: string[];
   destacada: boolean;
+  /**
+   * Entrada de la galería con las fotos que acompañan a la noticia.
+   *
+   * Se guarda **la referencia y no las fotos**. Así solo hay un sitio donde
+   * viven: si el club borra una foto desde la galería, desaparece también de la
+   * noticia en vez de dejar un hueco roto, y retocar el título o las etiquetas
+   * de la entrada no obliga a tocar la noticia.
+   */
+  galeria: string;
   cuerpoHtml: string;
 };
 
@@ -43,6 +52,7 @@ function parsearNoticia(archivo: string): Noticia {
     categoria: (data.categoria as string) ?? "Club",
     etiquetas: comoLista(data.etiquetas as string[] | string | undefined),
     destacada: Boolean(data.destacada),
+    galeria: (data.galeria as string) ?? "",
     cuerpoHtml: marked.parse(content, { async: false }),
   };
 }
@@ -95,6 +105,8 @@ export type FotoGuardada = { url: string; ancho: number; alto: number };
 /** Una foto suelta, que es lo que se pinta en la galería. */
 export type ItemGaleria = {
   id: string;
+  /** Entrada de la que sale, para poder pedir las fotos de una noticia. */
+  entrada: string;
   titulo: string;
   fecha: string;
   albumes: string[];
@@ -199,6 +211,7 @@ export function getGaleria(): ItemGaleria[] {
         ...entrada,
         albumes: etiquetas,
         equipos,
+        entrada: entrada.id ?? "",
         id: idUnico(entrada.id || `${entrada.titulo}-${entrada.fecha}`),
         src: foto.url,
         ancho: foto.ancho,
@@ -219,6 +232,12 @@ export function getAlbumes(): string[] {
   return [...cuenta.entries()]
     .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "es"))
     .map(([a]) => a);
+}
+
+/** Fotos de una entrada concreta: las que acompañan a una noticia. */
+export function getGaleriaDeEntrada(id: string): ItemGaleria[] {
+  if (!id) return [];
+  return getGaleria().filter((i) => i.entrada === id);
 }
 
 /** Fotos asignadas a un equipo, de la más reciente a la más antigua. */
