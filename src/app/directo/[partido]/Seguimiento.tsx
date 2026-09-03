@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { minutoEn, plegar } from "@/lib/directo/modelo";
 import type { Registro } from "@/lib/directo/almacen";
 import EscudoImg from "@/components/EscudoImg";
+import { IconoWhatsApp } from "@/components/Iconos";
+import { fechaPartido } from "@/lib/formato";
 import Cronologia from "@/components/Cronologia";
 
 /**
@@ -25,7 +27,31 @@ const CADA_MS = 5_000;
 /** Y cuando ya terminó: solo por si hay una corrección. */
 const CADA_MS_TERMINADO = 30_000;
 
-export default function Seguimiento({ inicial }: { inicial: Registro }) {
+/**
+ * Lo que le llega a quien recibe el enlace por WhatsApp.
+ *
+ * El partido y cuándo se juega, y nada más. **Sin el marcador a propósito**: un
+ * mensaje de WhatsApp no se actualiza, así que un "2-1" enviado en el minuto 30
+ * seguiría diciendo 2-1 el martes siguiente. El marcador que se vea que sea el
+ * de la página, que ese sí está vivo.
+ */
+function mensajeDe(partido: Registro["partido"], url: string): string {
+  const cuando = [partido.fecha ? fechaPartido(partido.fecha) : null, partido.hora]
+    .filter(Boolean)
+    .join(", ");
+
+  return [`${partido.local} · ${partido.visitante}`, cuando, "", url]
+    .filter((l) => l !== null)
+    .join("\n");
+}
+
+export default function Seguimiento({
+  inicial,
+  url,
+}: {
+  inicial: Registro;
+  url: string;
+}) {
   const [registro, setRegistro] = useState(inicial);
   const [ahora, setAhora] = useState(() => Date.now());
   const etag = useRef<string | null>(null);
@@ -157,6 +183,18 @@ export default function Seguimiento({ inicial }: { inicial: Registro }) {
           </>
         )}
       </p>
+
+      {/* Compartir va aquí, con el marcador todavía a la vista: es cuando a uno
+          le entran ganas de avisar a alguien, no al final de la cronología. */}
+      <a
+        href={`https://wa.me/?text=${encodeURIComponent(mensajeDe(partido, url))}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn btn-primary mt-3 w-full py-3 text-sm"
+      >
+        <IconoWhatsApp size={18} />
+        Compartir por WhatsApp
+      </a>
 
       <h2 className="title mt-6 text-xl text-tinta">Cómo va</h2>
       <Cronologia linea={estado.linea} partido={partido} />
