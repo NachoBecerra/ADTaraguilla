@@ -2,7 +2,6 @@
   "_nota": "Editable desde /panel. Cada entrada puede llevar VARIAS fotos y VARIAS etiquetas (equipo, temporada, jugador...). Una foto aparece bajo todas sus etiquetas.",
   "items": [
     {
-      "id": "presentaciones-infantil-b-mtleghgm",
       "titulo": "Presentaciones Infantil B",
       "albumes": [],
       "equipos": [
@@ -44,13 +43,9 @@
           "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-07-I9nuXy5Rg08aty0Z9SGcXYPwH7bfRp.jpg",
           "ancho": 1023,
           "alto": 1537
-        },
-        {
-          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/galeria/presentaciones-infantil-b-08-tE4ndHVwWFRAOGFtENv2VSdbBjVVHl.jpg",
-          "ancho": 1086,
-          "alto": 1448
         }
-      ]
+      ],
+      "id": "presentaciones-infantil-b-mtleghgm"
     },
     {
       "titulo": "Presentación Infantil B 26/27",
