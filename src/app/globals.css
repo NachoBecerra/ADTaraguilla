@@ -25,6 +25,12 @@
   --color-amarilla-tarjeta: #f2c200;
   --color-roja-tarjeta: #d3212c;
 
+  /* El punto del directo. Rojo y no verde a propósito: es el código que todo
+     el mundo lee como «esto se está emitiendo ahora», y en una tarjeta llena
+     de verdes del club es lo único que destaca sin pelearse con la marca. */
+  --color-vivo: #d92b2b; /* sobre fondo claro */
+  --color-vivo-claro: #ff8080; /* sobre el verde del club */
+
   /* ------------------------------------------- botones del directo
      El color dice el sentido de la jugada, que es lo que no cabe en la
      etiqueta: verde lo que hace bien ese equipo, gris lo que hace mal.
@@ -240,6 +246,32 @@ body[data-menu-open="true"] {
   padding-left: 1rem;
   font-style: italic;
   color: var(--color-mute);
+}
+
+/*
+ * El latido del punto rojo del directo: crece un poco y se apaga un poco.
+ *
+ * Sutil a propósito. Va en una tarjeta de resultados que la gente mira un rato,
+ * no en un banner: un punto pegando saltos ahí cansa en diez segundos. Ciclo
+ * largo y sin llegar nunca a desaparecer del todo.
+ *
+ * No hace falta apagarlo a mano para quien pide menos movimiento: el bloque de
+ * `prefers-reduced-motion` de aquí abajo ya deja todas las animaciones en nada.
+ */
+@keyframes latido {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.55;
+  }
+}
+
+.late {
+  animation: latido 1.9s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

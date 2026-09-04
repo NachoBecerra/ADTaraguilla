@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import type { ResumenDirecto } from "@/lib/directo/resumen";
+import { idPartido } from "@/lib/directo/idPartido";
 import { IconoFlecha } from "@/components/Iconos";
 
 /**
@@ -67,12 +68,189 @@ function suscribir(alCambiar: () => void) {
 const leer = () => directos;
 const leerEnServidor = () => VACIO;
 
+/**
+ * ¿Está jugando este equipo, sea el partido que sea?
+ *
+ * Vale para los avisos que solo dicen «este equipo está en directo»: el
+ * distintivo de una tarjeta de equipo y la banda de su ficha.
+ */
 function useDirecto(equipo: string): ResumenDirecto | undefined {
   const todos = useSyncExternalStore(suscribir, leer, leerEnServidor);
   return todos.find((d) => d.equipo === equipo);
 }
 
+/**
+ * La retransmisión **de este partido concreto**, o ninguna.
+ *
+ * La tarjeta del próximo partido lleva unos escudos, una competición y una
+ * jornada, así que el marcador que enseñe tiene que ser el de ese partido y no
+ * el de otro del mismo equipo. Con emparejar por equipo bastaba para que un
+ * amistoso, o la retransmisión de la jornada anterior que nadie cerró, pintara
+ * su resultado debajo de los escudos equivocados.
+ *
+ * El identificador de una retransmisión es `<equipo>-<fecha>`, que es lo que
+ * permite comprobarlo sin pedir nada más.
+ */
+function useDirectoDePartido(equipo: string, fecha: string | null): ResumenDirecto | undefined {
+  const todos = useSyncExternalStore(suscribir, leer, leerEnServidor);
+  const id = idPartido(equipo, fecha);
+  return id ? todos.find((d) => d.id === id) : undefined;
+}
+
 const marcador = (d: ResumenDirecto) => `${d.goles.local}-${d.goles.visitante}`;
+
+/**
+ * La hora del navegador, o null mientras se pinta en el servidor.
+ *
+ * Hace falta para saber si la hora del partido ya pasó, y eso no se puede
+ * decidir en el servidor: entre que él pinta la página y el navegador la
+ * hidrata puede cruzarse la hora del saque, y React daría la página por
+ * inconsistente. Devolviendo null en el servidor, la primera pintada es la
+ * misma en los dos lados y el cambio llega después.
+ */
+function useAhora(): number | null {
+  return useSyncExternalStore(
+    (avisar) => {
+      const reloj = setInterval(avisar, 30_000);
+      return () => clearInterval(reloj);
+    },
+    () => Math.floor(Date.now() / 30_000) * 30_000,
+    () => null,
+  );
+}
+
+/** El punto rojo que late mientras se está retransmitiendo. */
+function PuntoVivo({ claro = false }: { claro?: boolean }) {
+  return (
+    <span
+      aria-hidden
+      className={`late inline-block h-2 w-2 shrink-0 rounded-full ${
+        claro ? "bg-vivo-claro" : "bg-vivo"
+      }`}
+    />
+  );
+}
+
+/**
+ * El centro de la tarjeta del próximo partido.
+ *
+ * Con retransmisión abierta enseña el marcador y el minuto; sin ella, el «VS» y
+ * la hora de siempre. Antes esto vivía en una tarjeta verde aparte encima de la
+ * del partido, y con las dos a la vez se leían dos cosas del mismo partido.
+ */
+export function CentroDelPartido({
+  equipo,
+  fecha,
+  hora,
+}: {
+  equipo: string;
+  fecha: string | null;
+  hora: string | null;
+}) {
+  const d = useDirectoDePartido(equipo, fecha);
+
+  if (!d) {
+    return (
+      <>
+        <span className="title text-3xl text-club sm:text-4xl">VS</span>
+        <span
+          className={`mt-1 whitespace-nowrap rounded-full px-3 py-1 font-bold ${
+            hora
+              ? "bg-club text-sm tabular-nums text-white"
+              : "bg-panel-2 text-[10px] uppercase tracking-wide text-mute"
+          }`}
+        >
+          {hora ?? "Hora sin fijar"}
+        </span>
+      </>
+    );
+  }
+
+  const enJuego = d.fase !== "final";
+
+  return (
+    <>
+      <span className="title text-3xl leading-none tabular-nums text-tinta sm:text-4xl">
+        {d.goles.local} - {d.goles.visitante}
+      </span>
+      <span
+        className={`mt-1.5 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide ${
+          enJuego ? "bg-panel-2 text-tinta" : "bg-panel-2 text-mute"
+        }`}
+      >
+        {enJuego ? <PuntoVivo /> : null}
+        {enJuego ? d.minuto : "Final"}
+      </span>
+    </>
+  );
+}
+
+/**
+ * Lo que se dice debajo de la tarjeta, según en qué punto esté el partido.
+ *
+ * Son tres avisos y ninguno sobra:
+ *
+ * - **Retransmitiendo**: el botón para entrar, que es lo que la gente busca.
+ * - **Retransmisión terminada**: el marcador vale, pero es provisional hasta
+ *   que llega el acta. Decirlo evita que alguien lo dé por oficial.
+ * - **Pasó la hora y nadie abrió retransmisión**: es lo más probable un sábado
+ *   cualquiera, y sin decir nada la tarjeta se queda enseñando una hora ya
+ *   pasada como si el partido estuviera por jugarse.
+ */
+export function AvisoDelPartido({
+  equipo,
+  fecha,
+  hora,
+}: {
+  equipo: string;
+  fecha: string | null;
+  hora: string | null;
+}) {
+  const d = useDirectoDePartido(equipo, fecha);
+  const ahora = useAhora();
+
+  if (d) {
+    const enJuego = d.fase !== "final";
+
+    if (enJuego) {
+      return (
+        <Link
+          href={`/directo/${d.id}`}
+          className="btn btn-primary mt-4 w-full gap-2 py-3 text-sm"
+        >
+          <PuntoVivo claro />
+          En directo
+          <IconoFlecha size={16} />
+        </Link>
+      );
+    }
+
+    return (
+      <div className="mt-4">
+        <Link href={`/directo/${d.id}`} className="btn btn-ghost w-full gap-2 py-3 text-sm">
+          Ver cómo fue
+          <IconoFlecha size={16} />
+        </Link>
+        <p className="mt-2 text-center text-xs leading-relaxed text-mute">
+          Partido terminado, resultado provisional. El definitivo llega con el
+          acta de la RFAF.
+        </p>
+      </div>
+    );
+  }
+
+  /* Sin retransmisión: solo se dice algo si la hora del saque ya pasó */
+  if (ahora === null || !fecha || !hora) return null;
+  const saque = Date.parse(`${fecha}T${hora}:00`);
+  if (Number.isNaN(saque) || ahora < saque) return null;
+
+  return (
+    <p className="mt-4 rounded-xl bg-panel-2 p-3 text-center text-xs leading-relaxed text-mute">
+      Este partido empezó a las <strong className="font-bold text-tinta">{hora}</strong>.
+      El resultado se actualizará con el acta oficial de la RFAF.
+    </p>
+  );
+}
 
 /**
  * Distintivo para una tarjeta de equipo.
@@ -100,10 +278,23 @@ export function DistintivoDirecto({ equipo }: { equipo: string }) {
   );
 }
 
-/** Banda en la ficha del equipo, que sí lleva al partido. */
-export function BandaDirecto({ equipo }: { equipo: string }) {
+/**
+ * Banda en la ficha del equipo, que sí lleva al partido.
+ *
+ * Se salta el partido que ya enseña la tarjeta de próximo partido —para no
+ * decir lo mismo dos veces— pero **solo ese**. Un amistoso, o la retransmisión
+ * de otra fecha, se quedaría sin ninguna forma de llegar a él: la tarjeta no lo
+ * enseña porque no es su partido, y esta banda es lo único que queda.
+ */
+export function BandaDirecto({
+  equipo,
+  omitirPartido,
+}: {
+  equipo: string;
+  omitirPartido?: string | null;
+}) {
   const d = useDirecto(equipo);
-  if (!d) return null;
+  if (!d || d.id === omitirPartido) return null;
 
   const enJuego = d.fase !== "final";
 
@@ -138,8 +329,13 @@ export function BandaDirecto({ equipo }: { equipo: string }) {
  *
  * No ocupa nada cuando no hay partido: no se pinta.
  */
-export function DirectosAhora() {
-  const todos = useSyncExternalStore(suscribir, leer, leerEnServidor);
+export function DirectosAhora({ omitir }: { omitir?: string | null } = {}) {
+  const puestos = useSyncExternalStore(suscribir, leer, leerEnServidor);
+
+  /* Se salta el PARTIDO que ya enseña una tarjeta de esta misma página, no
+     todos los del equipo: si no, un amistoso del mismo equipo desaparecería
+     sin que nada lo enseñara en su lugar. */
+  const todos = omitir ? puestos.filter((d) => d.id !== omitir) : puestos;
   if (todos.length === 0) return null;
 
   return (

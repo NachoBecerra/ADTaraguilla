@@ -9,6 +9,7 @@ import {
 } from "@/lib/competicion";
 import { TarjetaNoticia } from "@/components/TarjetaNoticia";
 import { TarjetaProximoPartido } from "@/components/Partidos";
+import { idPartido } from "@/lib/directo/idPartido";
 import ResumenPartido from "@/components/ResumenPartido";
 import { DirectosAhora } from "@/components/EnDirecto";
 import SeccionRedes from "@/components/SeccionRedes";
@@ -142,12 +143,17 @@ export default function Inicio() {
         Si hay partido ahora mismo, va lo primero: es lo único de esta página
         que caduca en noventa minutos. No ocupa nada el resto de la semana.
       */}
-      <DirectosAhora />
+      {/* El primer equipo se salta si su tarjeta de abajo ya lo enseña: el
+          mismo partido dos veces en la misma pantalla sobra */}
+      <DirectosAhora
+        omitir={idPartido(primerEquipo?.equipo.id ?? "", primerEquipo?.proximo?.fecha)}
+      />
 
       {primerEquipo?.proximo ? (
         <div className="mx-auto max-w-6xl px-5 pt-10">
           <TarjetaProximoPartido
             partido={primerEquipo.proximo}
+            equipo={primerEquipo.equipo.id}
             titulo={`${primerEquipo.equipo.nombre} · próximo partido`}
           />
         </div>

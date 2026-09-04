@@ -3,6 +3,7 @@ import { fechaLarga, diaYHora } from "@/lib/formato";
 import { site } from "@/data/site";
 import EscudoClub from "@/components/EscudoClub";
 import { IconoCalendario, IconoUbicacion, IconoEnlaceExterno } from "@/components/Iconos";
+import { AvisoDelPartido, CentroDelPartido } from "@/components/EnDirecto";
 
 const COLOR_RESULTADO = {
   G: "bg-club text-white",
@@ -119,9 +120,19 @@ export function FilaPartido({
 export function TarjetaProximoPartido({
   partido,
   titulo,
+  equipo,
 }: {
   partido: PartidoPropio;
   titulo: string;
+  /**
+   * Identificador del equipo, para saber si tiene retransmisión abierta.
+   *
+   * La tarjeta la pinta el servidor y el directo lo sabe el navegador, así que
+   * los dos trozos que cambian —el centro y el aviso de abajo— son componentes
+   * de cliente metidos aquí dentro. Comparten el mismo sondeo que el resto de
+   * la página: no es una petición más.
+   */
+  equipo: string;
 }) {
   const { dia, hora } = partido.fecha
     ? diaYHora(`${partido.fecha}T${partido.hora ?? "12:00"}:00`)
@@ -154,17 +165,15 @@ export function TarjetaProximoPartido({
       <div className="p-5">
         <div className="flex items-center gap-3">
           {partido.esLocal ? nosotros : rival}
-          <div className="flex flex-col items-center px-1">
-            <span className="title text-3xl text-club sm:text-4xl">VS</span>
-            <span
-              className={`mt-1 whitespace-nowrap rounded-full px-3 py-1 font-bold ${
-                partido.hora
-                  ? "bg-club text-sm tabular-nums text-white"
-                  : "bg-panel-2 text-[10px] uppercase tracking-wide text-mute"
-              }`}
-            >
-              {partido.hora ?? "Hora sin fijar"}
-            </span>
+          <div className="flex min-w-21 flex-col items-center px-1">
+            {/* Sin retransmisión, el «VS» y la hora de siempre; con ella, el
+                marcador y el minuto. El «VS» desaparece en cuanto hay
+                resultado: delante de un marcador no aporta nada. */}
+            <CentroDelPartido
+              equipo={equipo}
+              fecha={partido.fecha ?? null}
+              hora={partido.hora ?? null}
+            />
           </div>
           {partido.esLocal ? rival : nosotros}
         </div>
@@ -198,6 +207,14 @@ export function TarjetaProximoPartido({
             )}
           </div>
         </dl>
+
+        {/* Entrar al directo, o decir en qué punto está el partido cuando no
+            hay retransmisión y la hora del saque ya pasó */}
+        <AvisoDelPartido
+          equipo={equipo}
+          fecha={partido.fecha ?? null}
+          hora={partido.hora ?? null}
+        />
 
         {/*
           La RFAF publica la ficha del partido unos días antes; hasta entonces

@@ -22,6 +22,7 @@ import BotonAvisos from "@/components/BotonAvisos";
 import { BandaDirecto } from "@/components/EnDirecto";
 import DirectosGuardados, { type PartidoNarrable } from "@/components/DirectosGuardados";
 import { FilaPartido, TarjetaProximoPartido } from "@/components/Partidos";
+import { idPartido } from "@/lib/directo/idPartido";
 import { fechaLarga } from "@/lib/formato";
 import { IconoFlecha, IconoEnlaceExterno } from "@/components/Iconos";
 
@@ -150,9 +151,21 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
           abajo: el próximo partido y los resultados siguen siendo los de la
           RFAF, que es lo único oficial.
         */}
-        <BandaDirecto equipo={equipo.id} />
+        {/* La banda se salta el partido que la tarjeta de abajo ya enseña,
+            pero solo ese: un amistoso en directo no sale en ninguna tarjeta y
+            esta banda es lo único que lleva hasta él */}
+        <BandaDirecto
+          equipo={equipo.id}
+          omitirPartido={idPartido(equipo.id, proximo?.fecha)}
+        />
 
-        {proximo ? <TarjetaProximoPartido partido={proximo} titulo="Próximo partido" /> : null}
+        {proximo ? (
+          <TarjetaProximoPartido
+            partido={proximo}
+            equipo={equipo.id}
+            titulo="Próximo partido"
+          />
+        ) : null}
 
         {equipo.competiciones.length === 0 ? (
           <p className="rounded-xl border border-linea bg-panel p-4 text-sm text-mute">
