@@ -12,6 +12,7 @@ import {
   type Entrada,
   type Foto,
 } from "@/lib/panel/galeriaDatos";
+import { aplicarFotos } from "@/lib/panel/fotosDeEntrada";
 
 export type Resultado = { ok: boolean; mensaje: string };
 
@@ -50,6 +51,10 @@ async function guardarGaleria(
 
   revalidatePath("/galeria");
   revalidatePath("/panel/galeria");
+  /* Las fotos de una noticia viven en la galería, así que tocarla cambia
+     también lo que enseña el editor de noticias */
+  revalidatePath("/noticias");
+  revalidatePath("/panel/noticias");
   revalidatePath("/");
 }
 
@@ -148,6 +153,53 @@ export async function guardarEntrada(
   }
 }
 
+/**
+ * Añade fotos a un grupo ya publicado.
+ *
+ * Hasta ahora, una vez subido un grupo lo único que se podía hacer con sus
+ * fotos era quitarlas de una en una: para meter una más había que crear otro
+ * grupo, y el partido acababa repartido en dos sitios.
+ *
+ * Los archivos ya los ha subido el navegador; aquí solo llegan URLs y medidas.
+ */
+export async function anadirFotos(
+  _previo: Resultado | null,
+  datos: FormData,
+): Promise<Resultado> {
+  if (!(await haySesion())) return { ok: false, mensaje: "La sesión ha caducado. Vuelve a entrar." };
+
+  const id = String(datos.get("id") ?? "");
+
+  let nuevas: Foto[] = [];
+  try {
+    nuevas = JSON.parse(String(datos.get("fotos") ?? "[]")) as Foto[];
+  } catch {
+    return { ok: false, mensaje: "No se han recibido bien las fotos. Inténtalo otra vez." };
+  }
+  if (nuevas.length === 0) return { ok: false, mensaje: "No has elegido ninguna foto." };
+
+  try {
+    const galeria = await leerGaleria();
+    const entrada = galeria.items.find((e) => e.id === id);
+    if (!entrada) return { ok: false, mensaje: "Ese grupo ya no existe." };
+
+    const tras = aplicarFotos(galeria.items, id, { anadir: nuevas });
+    if (tras.anadidas === 0) return { ok: true, mensaje: "Esas fotos ya estaban." };
+
+    await guardarGaleria(
+      { items: tras.items },
+      `Galería: ${tras.anadidas} ${tras.anadidas === 1 ? "foto añadida" : "fotos añadidas"} a «${entrada.titulo}»`,
+    );
+
+    return {
+      ok: true,
+      mensaje: `${tras.anadidas} ${tras.anadidas === 1 ? "foto añadida" : "fotos añadidas"}.`,
+    };
+  } catch (e) {
+    return { ok: false, mensaje: `No se ha podido guardar: ${(e as Error).message}` };
+  }
+}
+
 /** Quita una foto suelta de una entrada y borra su archivo. */
 export async function borrarFoto(
   _previo: Resultado | null,
@@ -163,16 +215,16 @@ export async function borrarFoto(
     const entrada = galeria.items.find((e) => e.id === id);
     if (!entrada) return { ok: false, mensaje: "Esa entrada ya no existe." };
 
-    const quitada = entrada.fotos.filter((f) => f.url === url);
-    entrada.fotos = entrada.fotos.filter((f) => f.url !== url);
+    const tras = aplicarFotos(galeria.items, id, { quitar: [url] });
+    const enRepo = await borrarArchivos(
+      entrada.fotos.filter((f: Foto) => tras.huerfanas.includes(f.url)),
+    );
 
-    // Una entrada sin fotos ya no pinta nada en la galería
-    if (entrada.fotos.length === 0) {
-      galeria.items = galeria.items.filter((e) => e.id !== id);
-    }
-
-    const enRepo = await borrarArchivos(quitada);
-    await guardarGaleria(galeria, `Galería: foto eliminada de «${entrada.titulo}»`, enRepo);
+    await guardarGaleria(
+      { items: tras.items },
+      `Galería: foto eliminada de «${entrada.titulo}»`,
+      enRepo,
+    );
     return { ok: true, mensaje: "Foto eliminada." };
   } catch (e) {
     return { ok: false, mensaje: `No se ha podido eliminar: ${(e as Error).message}` };

@@ -12,6 +12,7 @@ import {
   leerGaleria,
   type Foto,
 } from "@/lib/panel/galeriaDatos";
+import { aplicarFotos } from "@/lib/panel/fotosDeEntrada";
 
 export type Resultado = { ok: boolean; mensaje: string };
 
@@ -110,7 +111,22 @@ export async function guardarNoticia(
     return { ok: false, mensaje: "No se han recibido bien las fotos. Inténtalo otra vez." };
   }
 
-  if (nuevas.length > 0) {
+  /*
+   * Las fotos que se quitan viajan con el resto del formulario en vez de
+   * borrarse al pulsar la equis: así quitar una foto y cambiar el texto es un
+   * solo commit, y si al final se cierra sin guardar no se ha perdido nada.
+   */
+  let quitar: string[] = [];
+  try {
+    quitar = JSON.parse(String(datos.get("quitar") ?? "[]")) as string[];
+  } catch {
+    quitar = [];
+  }
+
+  /* Se borran del almacenamiento al final, cuando el commit ya ha ido bien */
+  let huerfanas: string[] = [];
+
+  if (nuevas.length > 0 || quitar.length > 0) {
     const etiquetasFoto = datos.getAll("fotoEtiquetas").map(String).map((e) => e.trim()).filter(Boolean);
     const equiposFoto = datos.getAll("fotoEquipos").map(String).map((e) => e.trim()).filter(Boolean);
 
@@ -119,11 +135,24 @@ export async function guardarNoticia(
       const existente = galeria ? galeriaActual.items.find((e) => e.id === galeria) : undefined;
 
       if (existente) {
-        existente.fotos = [...existente.fotos, ...nuevas];
-        existente.titulo = titulo;
-        if (etiquetasFoto.length > 0) existente.albumes = etiquetasFoto;
-        if (equiposFoto.length > 0) existente.equipos = equiposFoto;
-      } else {
+        /* Quitar y añadir de una vez; si el grupo se queda sin fotos
+           desaparece, y `id` vuelve vacío para que la noticia deje de
+           apuntar a un grupo que ya no existe */
+        const tras = aplicarFotos(galeriaActual.items, existente.id, {
+          anadir: nuevas,
+          quitar,
+        });
+        galeriaActual.items = tras.items;
+        huerfanas = tras.huerfanas;
+        galeria = tras.id;
+
+        const sigue = galeriaActual.items.find((e) => e.id === tras.id);
+        if (sigue) {
+          sigue.titulo = titulo;
+          if (etiquetasFoto.length > 0) sigue.albumes = etiquetasFoto;
+          if (equiposFoto.length > 0) sigue.equipos = equiposFoto;
+        }
+      } else if (nuevas.length > 0) {
         galeria = `noticia-${slug}-${Date.now().toString(36)}`;
         galeriaActual.items = [
           {
@@ -141,13 +170,18 @@ export async function guardarNoticia(
           },
           ...galeriaActual.items,
         ];
+      } else {
+        // Ni grupo al que añadir ni grupo del que quitar: nada que escribir
+        galeria = "";
       }
 
-      escribir.push({
-        ruta: RUTA_GALERIA,
-        contenido: aArchivo(galeriaActual),
-        binario: false,
-      });
+      if (existente || nuevas.length > 0) {
+        escribir.push({
+          ruta: RUTA_GALERIA,
+          contenido: aArchivo(galeriaActual),
+          binario: false,
+        });
+      }
     } catch (e) {
       return { ok: false, mensaje: `No se ha podido leer la galería: ${(e as Error).message}` };
     }
@@ -180,9 +214,12 @@ export async function guardarNoticia(
 
     // La portada que se ha sustituido ya no la usa nadie
     const portadaVieja = String(datos.get("portadaAnterior") ?? "");
-    if (portadaVieja.startsWith("http") && portadaVieja !== portada) {
+    const sobran = huerfanas.filter((u) => u.startsWith("http"));
+    if (portadaVieja.startsWith("http") && portadaVieja !== portada) sobran.push(portadaVieja);
+
+    if (sobran.length > 0) {
       try {
-        await del(portadaVieja);
+        await del(sobran);
       } catch {
         // Un archivo huérfano es molesto, perder el cambio sería peor
       }
@@ -193,11 +230,20 @@ export async function guardarNoticia(
     revalidatePath("/galeria");
     revalidatePath("/");
 
-    const cuantas = nuevas.length;
+    const partes: string[] = [];
+    if (nuevas.length > 0) {
+      partes.push(
+        `${nuevas.length} ${nuevas.length === 1 ? "foto añadida" : "fotos añadidas"} también a la galería`,
+      );
+    }
+    if (huerfanas.length > 0) {
+      partes.push(`${huerfanas.length} ${huerfanas.length === 1 ? "quitada" : "quitadas"}`);
+    }
+
     return {
       ok: true,
-      mensaje: cuantas
-        ? `Guardada, con ${cuantas} ${cuantas === 1 ? "foto" : "fotos"} añadidas también a la galería.`
+      mensaje: partes.length > 0
+        ? `Guardada, con ${partes.join(" y ")}.`
         : anterior
           ? "Guardada."
           : "Noticia publicada.",

@@ -11,29 +11,12 @@ import { leerArchivo } from "@/lib/panel/github";
 
 export const RUTA_GALERIA = "src/data/galeria.json";
 
-/** Una foto guardada: la URL en el almacenamiento y sus medidas reales. */
-export type Foto = { url: string; ancho: number; alto: number };
+import { aSlug, conIdUnico, type Foto, type Entrada } from "@/lib/panel/fotosDeEntrada";
 
-export type Entrada = {
-  id: string;
-  titulo: string;
-  albumes: string[];
-  /** Equipos a los que pertenece, por identificador. */
-  equipos: string[];
-  fecha: string;
-  fotos: Foto[];
-};
+export { aSlug };
 
-export function aSlug(texto: string): string {
-  return (
-    texto
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[̀-ͯ]/g, "")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "") || "foto"
-  );
-}
+export type { Foto, Entrada };
+
 
 /** Admite lista o valor suelto, que es como se guardaba antes. */
 export function comoLista(valor?: string[] | string): string[] {
@@ -69,25 +52,24 @@ export async function leerGaleria(): Promise<{ items: Entrada[] }> {
   const crudo = await leerArchivo(RUTA_GALERIA);
   const datos = crudo ? JSON.parse(crudo) : {};
 
-  const items: Entrada[] = (datos.items ?? []).map(
-    (
-      e: Partial<Entrada> & {
-        fotos?: Foto[] | string[] | string;
-        albumes?: string[] | string;
-        album?: string;
-        equipos?: string[] | string;
-      },
-      i: number,
-    ) => ({
-      titulo: e.titulo ?? "",
-      albumes: etiquetasDe(e),
-      equipos: comoLista(e.equipos),
-      fecha: e.fecha ?? "",
-      fotos: fotosDe(e.fotos),
-      // Los identificadores antiguos podían faltar o repetirse: se aseguran
-      // aquí para poder editar y borrar sin depender de la posición.
-      id: e.id || `${aSlug(e.titulo ?? "foto")}-${i}`,
-    }),
+  const items: Entrada[] = conIdUnico(
+    (datos.items ?? []).map(
+      (
+        e: Partial<Entrada> & {
+          fotos?: Foto[] | string[] | string;
+          albumes?: string[] | string;
+          album?: string;
+          equipos?: string[] | string;
+        },
+      ) => ({
+        id: e.id,
+        titulo: e.titulo ?? "",
+        albumes: etiquetasDe(e),
+        equipos: comoLista(e.equipos),
+        fecha: e.fecha ?? "",
+        fotos: fotosDe(e.fotos),
+      }),
+    ),
   );
 
   return { ...datos, items };

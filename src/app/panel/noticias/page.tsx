@@ -23,7 +23,12 @@ export default async function PanelNoticias() {
   /* Las fotos de una noticia acaban en la galería, así que se ofrecen las
      mismas etiquetas y equipos que allí: si no, se acabaría con dos
      vocabularios distintos para las mismas fotos. */
-  const albumes = albumesDe(await entradasDeGaleria());
+  const entradas = await entradasDeGaleria();
+  const albumes = albumesDe(entradas);
+
+  /* Las fotos que ya lleva cada noticia, para poder quitarlas al editarla:
+     no viven en el Markdown sino en la entrada de galería a la que apunta */
+  const galerias = Object.fromEntries(entradas.map((e) => [e.id, e.fotos]));
   const equipos = getEquipos().map((e) => ({ id: e.id, nombre: e.nombre }));
 
   return (
@@ -49,6 +54,7 @@ export default async function PanelNoticias() {
             categorias={CATEGORIAS}
             albumes={albumes}
             equipos={equipos}
+            galerias={galerias}
           />
       ) : (
         <>

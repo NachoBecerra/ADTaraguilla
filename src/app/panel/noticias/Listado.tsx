@@ -5,68 +5,17 @@ import { useActionState, useEffect, useMemo, useState } from "react";
 import { upload } from "@vercel/blob/client";
 import { guardarNoticia, borrarNoticia, type Resultado } from "./acciones";
 import type { NoticiaPanel } from "@/lib/panel/noticias";
+import { reducir, type FotoElegida, type FotoSubida } from "@/lib/panel/fotos";
 import CampoEtiquetas from "@/components/CampoEtiquetas";
 import SelectorEquipos, { type OpcionEquipo } from "@/components/SelectorEquipos";
 import { IconoCerrar, IconoBuscar, IconoImagen } from "@/components/Iconos";
 import { fechaCorta } from "@/lib/formato";
-
-/** Lado mayor al que se reduce la portada antes de subirla. */
-const LADO_MAXIMO = 1800;
-const CALIDAD = 0.82;
 
 function normalizar(texto: string): string {
   return texto
     .toLowerCase()
     .normalize("NFD")
     .replace(/\p{Diacritic}/gu, "");
-}
-
-/**
- * Una foto ya reducida y lista para subirse.
- *
- * Lleva las medidas porque las fotos que acompañan a la noticia acaban en la
- * galería, y allí hacen falta para reservarles el hueco antes de que carguen.
- * A la portada le sobran, pero tener dos funciones casi iguales sobra más.
- */
-type FotoElegida = { archivo: File; vista: string; ancho: number; alto: number };
-
-/** Reduce una foto en el navegador, igual que en la galería. */
-function reducir(archivo: File): Promise<FotoElegida> {
-  return new Promise((resolver, rechazar) => {
-    const lector = new FileReader();
-    lector.onerror = () => rechazar(new Error(archivo.name));
-    lector.onload = () => {
-      // window.Image, no el Image de next/image que está importado arriba
-      const img = new window.Image();
-      img.onerror = () => rechazar(new Error(archivo.name));
-      img.onload = () => {
-        const escala = Math.min(1, LADO_MAXIMO / Math.max(img.width, img.height));
-        const lienzo = document.createElement("canvas");
-        lienzo.width = Math.round(img.width * escala);
-        lienzo.height = Math.round(img.height * escala);
-        const ctx = lienzo.getContext("2d");
-        if (!ctx) return rechazar(new Error(archivo.name));
-        ctx.drawImage(img, 0, 0, lienzo.width, lienzo.height);
-        lienzo.toBlob(
-          (blob) => {
-            if (!blob) return rechazar(new Error(archivo.name));
-            resolver({
-              archivo: new File([blob], archivo.name.replace(/\.[^.]+$/, "") + ".jpg", {
-                type: "image/jpeg",
-              }),
-              vista: URL.createObjectURL(blob),
-              ancho: lienzo.width,
-              alto: lienzo.height,
-            });
-          },
-          "image/jpeg",
-          CALIDAD,
-        );
-      };
-      img.src = String(lector.result);
-    };
-    lector.readAsDataURL(archivo);
-  });
 }
 
 function Aviso({ resultado }: { resultado: Resultado | null }) {
@@ -101,6 +50,7 @@ function Editor({
   sugerencias,
   albumes,
   equipos,
+  publicadas,
   alCerrar,
 }: {
   noticia: NoticiaPanel;
@@ -109,12 +59,18 @@ function Editor({
   /** Etiquetas ya usadas en la galería, para sugerirlas en las fotos. */
   albumes: string[];
   equipos: OpcionEquipo[];
+  /** Las fotos que la noticia ya tiene publicadas, para poder quitarlas. */
+  publicadas: FotoSubida[];
   alCerrar: () => void;
 }) {
   const esNueva = noticia.archivo === "";
   const [portadaNueva, setPortadaNueva] = useState<FotoElegida | null>(null);
   /* Las fotos que se añaden al final de la noticia y van también a la galería */
   const [fotos, setFotos] = useState<FotoElegida[]>([]);
+  /* Las publicadas que se van a quitar. Se apuntan aquí y se aplican al
+     guardar: así quitar una foto y cambiar el texto es un solo cambio, y
+     cerrar sin guardar no se lleva nada por delante. */
+  const [quitadas, setQuitadas] = useState<string[]>([]);
   const [subiendo, setSubiendo] = useState("");
   const [guardado, guardar, guardando] = useActionState<Resultado | null, FormData>(
     async (previo, datos) => {
@@ -162,8 +118,13 @@ function Editor({
       }
 
       const guardado = await guardarNoticia(previo, datos);
+      datos.set("quitar", JSON.stringify(quitadas));
+
       // Ya están en el servidor: dejarlas aquí las volvería a subir al guardar
-      if (guardado.ok) setFotos([]);
+      if (guardado.ok) {
+        setFotos([]);
+        setQuitadas([]);
+      }
       return guardado;
     },
     null,
@@ -343,6 +304,69 @@ function Editor({
               club. La portada no cambia.
             </p>
 
+            {/*
+              Las que ya están publicadas. Quitarlas aquí solo las tacha: se van
+              de verdad al guardar, en el mismo cambio que el texto. Para
+              sustituir una, se quita y se elige la nueva debajo.
+            */}
+            {publicadas.length > 0 ? (
+              <ul className="mt-2 grid grid-cols-4 gap-2 sm:grid-cols-6">
+                {publicadas.map((f, i) => {
+                  const fuera = quitadas.includes(f.url);
+                  return (
+                    <li key={f.url} className="relative">
+                      <Image
+                        src={f.url}
+                        alt=""
+                        width={120}
+                        height={120}
+                        className={`aspect-square w-full rounded-lg border border-linea object-cover ${
+                          fuera ? "opacity-30 grayscale" : ""
+                        }`}
+                      />
+                      <button
+                        type="button"
+                        aria-label={
+                          fuera ? `Conservar la foto ${i + 1}` : `Quitar la foto ${i + 1}`
+                        }
+                        onClick={() =>
+                          setQuitadas((a) =>
+                            fuera ? a.filter((u) => u !== f.url) : [...a, f.url],
+                          )
+                        }
+                        className={`absolute -right-1.5 -top-1.5 grid h-6 w-6 place-items-center rounded-full text-white ${
+                          fuera ? "bg-mute" : "bg-tinta"
+                        }`}
+                      >
+                        {fuera ? (
+                          <span aria-hidden className="text-xs font-bold">
+                            ↺
+                          </span>
+                        ) : (
+                          <IconoCerrar size={13} />
+                        )}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
+
+            {quitadas.length > 0 ? (
+              <p className="mt-2 text-xs font-semibold text-club">
+                {quitadas.length === 1
+                  ? "1 foto se quitará al guardar."
+                  : `${quitadas.length} fotos se quitarán al guardar.`}{" "}
+                <button
+                  type="button"
+                  onClick={() => setQuitadas([])}
+                  className="underline"
+                >
+                  Deshacer
+                </button>
+              </p>
+            ) : null}
+
             {fotos.length > 0 ? (
               <ul className="mt-2 grid grid-cols-4 gap-2 sm:grid-cols-6">
                 {fotos.map((f, i) => (
@@ -478,12 +502,15 @@ export default function Listado({
   categorias,
   albumes,
   equipos,
+  galerias,
 }: {
   noticias: NoticiaPanel[];
   categorias: readonly string[];
   /** Etiquetas y equipos de la galería: las fotos de una noticia acaban allí. */
   albumes: string[];
   equipos: OpcionEquipo[];
+  /** Fotos de cada entrada de galería, por identificador. */
+  galerias: Record<string, FotoSubida[]>;
 }) {
   const [consulta, setConsulta] = useState("");
   const [categoria, setCategoria] = useState("todas");
@@ -608,6 +635,7 @@ export default function Listado({
         <Editor
           key={editando.archivo || "nueva"}
           noticia={editando}
+          publicadas={galerias[editando.galeria] ?? []}
           categorias={categorias}
           sugerencias={etiquetasUsadas}
           albumes={albumes}

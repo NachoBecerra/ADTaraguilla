@@ -1,5 +1,6 @@
 import { leerArchivo } from "@/lib/panel/github";
 import { getEntradasGaleria, fotosDe, type FotoGuardada } from "@/lib/contenido";
+import { conIdUnico } from "@/lib/panel/fotosDeEntrada";
 
 /**
  * Entradas de la galería tal y como están AHORA en el repositorio.
@@ -34,43 +35,39 @@ function etiquetas(e: { albumes?: string[] | string; album?: string }): string[]
   return lista.length > 0 ? lista : comoLista(e.album);
 }
 
-function aSlug(texto: string): string {
-  return (
-    texto
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[̀-ͯ]/g, "")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "") || "foto"
-  );
-}
-
 export async function entradasDeGaleria(): Promise<EntradaPanel[]> {
   try {
     const crudo = await leerArchivo("src/data/galeria.json");
     if (!crudo) throw new Error("sin datos");
 
     const datos = JSON.parse(crudo);
-    return (datos.items ?? []).map(
-      (
-        e: Partial<EntradaPanel> & {
-          fotos?: FotoGuardada[] | string[] | string;
-          albumes?: string[] | string;
-          album?: string;
-          equipos?: string[] | string;
-        },
-        i: number,
-      ) => ({
-        id: e.id || `${aSlug(e.titulo ?? "foto")}-${i}`,
-        titulo: e.titulo ?? "",
-        albumes: etiquetas(e),
-        equipos: comoLista(e.equipos),
-        fecha: e.fecha ?? "",
-        fotos: fotosDe(e.fotos),
-      }),
+
+    /* El mismo reparto de identificadores que usa quien guarda: si aquí
+       saliera otro, editar contestaría que el grupo ya no existe */
+    return conIdUnico(
+      (datos.items ?? []).map(
+        (
+          e: Partial<EntradaPanel> & {
+            fotos?: FotoGuardada[] | string[] | string;
+            albumes?: string[] | string;
+            album?: string;
+            equipos?: string[] | string;
+          },
+        ) => ({
+          id: e.id,
+          titulo: e.titulo ?? "",
+          albumes: etiquetas(e),
+          equipos: comoLista(e.equipos),
+          fecha: e.fecha ?? "",
+          fotos: fotosDe(e.fotos),
+        }),
+      ),
     );
   } catch {
-    return getEntradasGaleria();
+    /* También aquí: los datos compilados traen los mismos identificadores
+       repetidos, y sin repartirlos el panel enseñaría dos grupos que llevan
+       los dos al mismo sitio */
+    return conIdUnico(getEntradasGaleria());
   }
 }
 

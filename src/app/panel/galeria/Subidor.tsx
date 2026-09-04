@@ -1,86 +1,15 @@
 "use client";
 
 import { useActionState, useRef, useState } from "react";
-import { upload } from "@vercel/blob/client";
 import { subirFotos, type Resultado } from "./acciones";
+import {
+  prepararTanda,
+  subirAlAlmacen,
+  type FotoElegida,
+} from "@/lib/panel/fotos";
 import CampoEtiquetas from "@/components/CampoEtiquetas";
 import SelectorEquipos, { type OpcionEquipo } from "@/components/SelectorEquipos";
 import { IconoImagen, IconoCerrar } from "@/components/Iconos";
-
-/** Lado mayor al que se reducen las fotos antes de subirlas. */
-const LADO_MAXIMO = 1800;
-const CALIDAD = 0.82;
-
-type Elegida = {
-  nombre: string;
-  archivo: File;
-  vista: string;
-  ancho: number;
-  alto: number;
-  kb: number;
-};
-
-/**
- * Reduce la foto en el propio navegador.
- *
- * Las fotos del móvil pesan varios megas y no tiene sentido guardarlas así:
- * ni la web las necesita a ese tamaño, ni hay por qué pagar por almacenarlas.
- *
- * De paso se apuntan las medidas: como la foto ya no vive en el repositorio,
- * nadie podrá leerlas del archivo al compilar, y sin ellas la galería daría
- * saltos al cargar.
- */
-function reducir(original: File): Promise<Elegida> {
-  return new Promise((resolver, rechazar) => {
-    const lector = new FileReader();
-    lector.onerror = () => rechazar(new Error(original.name));
-    lector.onload = () => {
-      const img = new window.Image();
-      img.onerror = () => rechazar(new Error(original.name));
-      img.onload = () => {
-        const escala = Math.min(1, LADO_MAXIMO / Math.max(img.width, img.height));
-        const lienzo = document.createElement("canvas");
-        lienzo.width = Math.round(img.width * escala);
-        lienzo.height = Math.round(img.height * escala);
-
-        const ctx = lienzo.getContext("2d");
-        if (!ctx) return rechazar(new Error(original.name));
-        ctx.drawImage(img, 0, 0, lienzo.width, lienzo.height);
-
-        lienzo.toBlob(
-          (blob) => {
-            if (!blob) return rechazar(new Error(original.name));
-            const nombre = original.name.replace(/\.[^.]+$/, "") + ".jpg";
-            resolver({
-              nombre: original.name,
-              archivo: new File([blob], nombre, { type: "image/jpeg" }),
-              vista: URL.createObjectURL(blob),
-              ancho: lienzo.width,
-              alto: lienzo.height,
-              kb: Math.round(blob.size / 1024),
-            });
-          },
-          "image/jpeg",
-          CALIDAD,
-        );
-      };
-      img.src = String(lector.result);
-    };
-    lector.readAsDataURL(original);
-  });
-}
-
-/** Nombre con el que se guarda la foto en el almacenamiento. */
-function aSlug(texto: string): string {
-  return (
-    texto
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[̀-ͯ]/g, "")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "") || "foto"
-  );
-}
 
 export default function Subidor({
   albumes,
@@ -89,7 +18,7 @@ export default function Subidor({
   albumes: string[];
   equipos: OpcionEquipo[];
 }) {
-  const [elegidas, setElegidas] = useState<Elegida[]>([]);
+  const [elegidas, setElegidas] = useState<FotoElegida[]>([]);
   const [preparando, setPreparando] = useState(false);
   const [aviso, setAviso] = useState<string | null>(null);
   const [progreso, setProgreso] = useState<{ hechas: number; total: number } | null>(null);
@@ -99,24 +28,11 @@ export default function Subidor({
     async (previo, datos) => {
       const titulo = String(datos.get("titulo") ?? "").trim() || "foto";
 
-      /*
-       * Cada foto viaja por su cuenta y directamente al almacenamiento. Antes
-       * iban todas dentro de esta misma petición codificadas en base64, y ahí
-       * chocaban con el límite de 1 MB: cabían dos y la tercera fallaba.
-       */
-      const subidas: { url: string; ancho: number; alto: number }[] = [];
-      setProgreso({ hechas: 0, total: elegidas.length });
-
+      let subidas;
       try {
-        for (const [i, f] of elegidas.entries()) {
-          const numero = String(i + 1).padStart(2, "0");
-          const blob = await upload(`galeria/${aSlug(titulo)}-${numero}.jpg`, f.archivo, {
-            access: "public",
-            handleUploadUrl: "/api/subir",
-          });
-          subidas.push({ url: blob.url, ancho: f.ancho, alto: f.alto });
-          setProgreso({ hechas: i + 1, total: elegidas.length });
-        }
+        subidas = await subirAlAlmacen(elegidas, "galeria", titulo, (hechas, total) =>
+          setProgreso({ hechas, total }),
+        );
       } catch (e) {
         setProgreso(null);
         return { ok: false, mensaje: `No se han podido subir: ${(e as Error).message}` };
@@ -141,17 +57,8 @@ export default function Subidor({
     setPreparando(true);
     setAviso(null);
 
-    const nuevas: Elegida[] = [];
-    const fallos: string[] = [];
-    for (const archivo of Array.from(lista)) {
-      try {
-        nuevas.push(await reducir(archivo));
-      } catch {
-        fallos.push(archivo.name);
-      }
-    }
-
-    setElegidas((antes) => [...antes, ...nuevas]);
+    const { listas, fallos } = await prepararTanda(lista);
+    setElegidas((antes) => [...antes, ...listas]);
     if (fallos.length > 0) setAviso(`No se pudieron preparar: ${fallos.join(", ")}`);
     setPreparando(false);
   }

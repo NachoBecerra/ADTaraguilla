@@ -1,16 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { useActionState, useEffect, useMemo, useState } from "react";
+import { useActionState, useEffect, useMemo, useRef, useState } from "react";
 import {
   guardarEntrada,
+  anadirFotos,
   borrarFoto,
   borrarEntrada,
   type Resultado,
 } from "./acciones";
+import {
+  prepararTanda,
+  subirAlAlmacen,
+  type FotoElegida,
+} from "@/lib/panel/fotos";
 import CampoEtiquetas from "@/components/CampoEtiquetas";
 import SelectorEquipos, { type OpcionEquipo } from "@/components/SelectorEquipos";
-import { IconoCerrar, IconoBuscar } from "@/components/Iconos";
+import { IconoCerrar, IconoBuscar, IconoImagen } from "@/components/Iconos";
 import { fechaCorta } from "@/lib/formato";
 
 export type EntradaPanel = {
@@ -36,6 +42,125 @@ function Aviso({ resultado }: { resultado: Resultado | null }) {
     <p role="status" className="mt-3 text-sm font-semibold text-club">
       {resultado.mensaje}
     </p>
+  );
+}
+
+/* --------------------------------------------------------- añadir fotos */
+
+/**
+ * Meter fotos nuevas en un grupo ya publicado.
+ *
+ * Faltaba: una vez subido el grupo solo se podían quitar fotos, así que para
+ * añadir una había que crear otro grupo y el mismo partido acababa partido en
+ * dos. Se reduce y se sube igual que en la subida normal, y cuando ya están en
+ * el almacenamiento se guarda la entrada con las URLs.
+ */
+function AnadirFotos({ entrada }: { entrada: EntradaPanel }) {
+  const [elegidas, setElegidas] = useState<FotoElegida[]>([]);
+  const [preparando, setPreparando] = useState(false);
+  const [aviso, setAviso] = useState<string | null>(null);
+  const [progreso, setProgreso] = useState<{ hechas: number; total: number } | null>(null);
+  const campo = useRef<HTMLInputElement>(null);
+
+  const [resultado, accion, subiendo] = useActionState<Resultado | null, FormData>(
+    async (previo, datos) => {
+      let subidas;
+      try {
+        subidas = await subirAlAlmacen(elegidas, "galeria", entrada.titulo, (hechas, total) =>
+          setProgreso({ hechas, total }),
+        );
+      } catch (e) {
+        setProgreso(null);
+        return { ok: false, mensaje: `No se han podido subir: ${(e as Error).message}` };
+      }
+      setProgreso(null);
+      datos.set("fotos", JSON.stringify(subidas));
+
+      const r = await anadirFotos(previo, datos);
+      if (r.ok) {
+        // Ya están en el servidor: dejarlas aquí las volvería a subir
+        for (const f of elegidas) URL.revokeObjectURL(f.vista);
+        setElegidas([]);
+        if (campo.current) campo.current.value = "";
+      }
+      return r;
+    },
+    null,
+  );
+
+  async function alElegir(lista: FileList | null) {
+    if (!lista || lista.length === 0) return;
+    setPreparando(true);
+    setAviso(null);
+    const { listas, fallos } = await prepararTanda(lista);
+    setElegidas((antes) => [...antes, ...listas]);
+    if (fallos.length > 0) setAviso(`No se pudieron preparar: ${fallos.join(", ")}`);
+    setPreparando(false);
+  }
+
+  return (
+    <form action={accion} className="mt-2">
+      <input type="hidden" name="id" value={entrada.id} />
+
+      {elegidas.length > 0 ? (
+        <ul className="mb-2 grid grid-cols-3 gap-2 sm:grid-cols-4">
+          {elegidas.map((f, i) => (
+            <li key={f.vista} className="relative">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={f.vista}
+                alt=""
+                className="aspect-square w-full rounded-lg border border-club object-cover"
+              />
+              <button
+                type="button"
+                aria-label={`Quitar ${f.nombre}`}
+                onClick={() => {
+                  URL.revokeObjectURL(f.vista);
+                  setElegidas((a) => a.filter((_, n) => n !== i));
+                }}
+                className="absolute -right-1.5 -top-1.5 grid grid-cols-1 h-6 w-6 place-items-center rounded-full bg-tinta text-white"
+              >
+                <IconoCerrar size={13} />
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+
+      <div className="flex flex-wrap items-center gap-2">
+        <label className="btn btn-ghost cursor-pointer px-4 py-2 text-sm">
+          <IconoImagen size={16} />
+          {elegidas.length > 0 ? "Elegir más" : "Añadir fotos"}
+          <input
+            ref={campo}
+            type="file"
+            accept="image/*"
+            multiple
+            className="hidden"
+            onChange={(e) => alElegir(e.target.files)}
+          />
+        </label>
+
+        {elegidas.length > 0 ? (
+          <button
+            type="submit"
+            disabled={subiendo || preparando}
+            className="btn btn-primary px-4 py-2 text-sm disabled:opacity-50"
+          >
+            {progreso
+              ? `Subiendo ${progreso.hechas} de ${progreso.total}…`
+              : subiendo
+                ? "Guardando…"
+                : `Añadir ${elegidas.length} ${elegidas.length === 1 ? "foto" : "fotos"}`}
+          </button>
+        ) : null}
+      </div>
+
+      {preparando ? <p className="mt-2 text-sm text-mute">Preparando las fotos…</p> : null}
+      {aviso ? <p className="mt-2 text-sm font-semibold text-club">{aviso}</p> : null}
+      <Aviso resultado={resultado} />
+    </form>
   );
 }
 
@@ -165,11 +290,16 @@ function Editor({
             </div>
           </form>
 
+          <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-mute">
+            Fotos de esta entrada
+          </p>
+
+          {/* Encima de las miniaturas: en un grupo de veinte fotos, debajo hay
+              que bajar media pantalla para encontrar el botón */}
+          <AnadirFotos entrada={entrada} />
+
           {entrada.fotos.length > 0 ? (
             <>
-              <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-mute">
-                Fotos de esta entrada
-              </p>
               <ul className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-4">
                 {entrada.fotos.map((foto) => (
                   <li key={foto.url} className="relative">
@@ -196,7 +326,9 @@ function Editor({
               </ul>
               <Aviso resultado={borradoFoto} />
             </>
-          ) : null}
+          ) : (
+            <p className="mt-3 text-sm text-mute">Todavía no tiene ninguna.</p>
+          )}
 
           <form action={quitarEntrada} className="mt-6 border-t border-linea pt-4">
             <input type="hidden" name="id" value={entrada.id} />
