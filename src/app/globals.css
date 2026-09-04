@@ -20,6 +20,11 @@
   --color-tinta: #10180c; /* texto principal (18:1) */
   --color-mute: #55614f; /* texto secundario (6:1) */
 
+  /* Las tarjetas de la cronología: el color ES la información, así que no
+     heredan el del texto como los demás iconos */
+  --color-amarilla-tarjeta: #f2c200;
+  --color-roja-tarjeta: #d3212c;
+
   /* ------------------------------------------- botones del directo
      El color dice el sentido de la jugada, que es lo que no cabe en la
      etiqueta: verde lo que hace bien ese equipo, gris lo que hace mal.

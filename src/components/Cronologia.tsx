@@ -1,16 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import CampoQueCrece from "@/components/CampoQueCrece";
 import { LARGO_TEXTO, type EventoEnLinea, type Jugada } from "@/lib/directo/modelo";
 import {
   IconoAPuerta,
+  IconoComentario,
   IconoCorner,
-  IconoFalta,
   IconoFuera,
   IconoFueraDeJuego,
+  IconoGol,
   IconoLapiz,
   IconoPenalti,
+  IconoSilbato,
+  IconoTarjeta,
   IconoTiroLibre,
 } from "@/components/Iconos";
 import type { FichaPartido } from "@/lib/directo/almacen";
@@ -89,34 +92,45 @@ const DIBUJO_DE_JUGADA = {
   fueraDeJuego: IconoFueraDeJuego,
   disparo: IconoAPuerta,
   disparoFuera: IconoFuera,
-  falta: IconoFalta,
+  falta: IconoSilbato,
   penalti: IconoPenalti,
 } as const;
 
+/**
+ * Los eventos que abren o cierran una parte, o paran el reloj.
+ *
+ * Llevan el mismo silbato que una falta —es el mismo pitido— pero en verde y
+ * sobre fondo tenue: en una lista con treinta faltas, el cambio de parte tiene
+ * que encontrarse sin leer.
+ */
+const FASES = new Set(["inicio", "empezarParte", "finParte", "final", "parar", "reanudar"]);
+
 /** Un icono ayuda a encontrar los goles de un vistazo al bajar por la lista. */
 function icono(evento: EventoEnLinea): React.ReactNode {
+  /* 18 y no 15: estos dibujos llevan más detalle que un trazo suelto, y tres
+     píxeles menos es la diferencia entre ver una portería y ver una mancha */
+  const tam = 18;
+
   switch (evento.tipo) {
     case "gol":
-      return "⚽";
+      return <IconoGol size={tam} className="text-tinta" />;
     case "tarjeta":
-      return evento.color === "amarilla" ? "🟨" : "🟥";
+      return <IconoTarjeta color={evento.color} size={tam} />;
     case "jugada": {
       const Dibujo = DIBUJO_DE_JUGADA[evento.clase];
-      return <Dibujo size={15} className="text-mute" />;
+      return <Dibujo size={tam} className="text-mute" />;
     }
-    case "inicio":
-    case "empezarParte":
-      return "▶";
-    case "finParte":
-    case "final":
-      return "⏹";
-    case "parar":
-      return "⏸";
-    case "reanudar":
-      return "⏵";
     case "texto":
-      return "💬";
+      return <IconoComentario size={tam} className="text-mute" />;
+    default:
+      // Inicio, final, parar y reanudar: todos son el mismo pitido
+      return <IconoSilbato size={tam} className="text-club" />;
   }
+}
+
+/** El encabezado de cada bloque de la cronología. */
+function tituloDeParte(parte: number): string {
+  return parte === 0 ? "Antes del partido" : `${parte}ª parte`;
 }
 
 export default function Cronologia({
@@ -148,11 +162,24 @@ export default function Cronologia({
     );
   }
 
+  const alReves = [...linea].reverse();
+
+  /* Con el partido en marcha hay dos o tres bloques —lo de antes del saque, la
+     primera parte y la segunda—; con uno solo, un encabezado sobra */
+  const hayVariasPartes = new Set(linea.map((e) => e.parte)).size > 1;
+
   /* El plegado devuelve los eventos como pasaron; aquí se enseñan al revés */
   return (
     <ol className="mt-3 space-y-1.5">
-      {[...linea].reverse().map((evento) => {
+      {alReves.map((evento, i) => {
         const enEdicion = editando === evento.id;
+
+        /* Yendo hacia atrás, cada bloque empieza donde cambia la parte. El
+           encabezado nombra lo que viene debajo, que es lo que se lee luego. */
+        const abreBloque =
+          hayVariasPartes && (i === 0 || alReves[i - 1].parte !== evento.parte);
+
+        const esFase = FASES.has(evento.tipo);
 
         /* Solo los comentarios: son lo único escrito a mano */
         const sePuedeEditar = Boolean(alEditar) && evento.tipo === "texto";
@@ -166,12 +193,23 @@ export default function Cronologia({
         };
 
         return (
+        <Fragment key={evento.id}>
+        {abreBloque ? (
+          <li className="flex items-center gap-2.5 pt-2 pb-0.5">
+            <span className="h-px flex-1 bg-linea" />
+            <span className="text-[11px] font-bold uppercase tracking-wider text-mute">
+              {tituloDeParte(evento.parte)}
+            </span>
+            <span className="h-px flex-1 bg-linea" />
+          </li>
+        ) : null}
         <li
-          key={evento.id}
-          className={`rounded-xl border bg-panel px-3 py-2.5 ${
+          className={`rounded-xl border px-3 py-2.5 ${
             enEdicion
-              ? "border-club"
-              : "flex items-center gap-3 border-linea"
+              ? "border-club bg-panel"
+              : `flex items-center gap-3 ${
+                  esFase ? "border-club-claro bg-panel-2" : "border-linea bg-panel"
+                }`
           }`}
         >
           {/*
@@ -228,7 +266,11 @@ export default function Cronologia({
               </span>
               <span
                 className={`min-w-0 flex-1 text-sm ${
-                  evento.tipo === "gol" ? "font-bold text-tinta" : "text-mute"
+                  evento.tipo === "gol"
+                    ? "font-bold text-tinta"
+                    : esFase
+                      ? "font-semibold text-club-soft"
+                      : "text-mute"
                 }`}
               >
                 {describir(evento, partido)}
@@ -261,6 +303,7 @@ export default function Cronologia({
             </>
           )}
         </li>
+        </Fragment>
         );
       })}
     </ol>
