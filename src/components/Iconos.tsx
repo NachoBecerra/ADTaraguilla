@@ -318,6 +318,23 @@ export function IconoAPuerta({ size = 20, className }: Props) {
 }
 
 /**
+ * Disparo fuera: la misma portería, con el balón por encima del larguero.
+ *
+ * Se parece al de tiro a puerta a propósito: son la misma acción y lo único que
+ * cambia es dónde acaba el balón. Provisional, como todos los de aquí: el club
+ * está preparando sus propias ilustraciones para la vista del espectador.
+ */
+export function IconoFuera({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 21v-9h18v9" />
+      <path d="M9 21v-9M15 21v-9M3 16.5h18" strokeWidth="1" />
+      <circle cx="18" cy="5" r="2.4" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+/**
  * Falta: el silbato del árbitro.
  *
  * Se dibuja el silbato y no el balón porque el del tiro libre ya lleva balón, y

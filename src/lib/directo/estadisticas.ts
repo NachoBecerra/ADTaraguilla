@@ -15,6 +15,7 @@ import type { EventoEnLinea, Lado } from "@/lib/directo/modelo";
 export const CUENTAS = [
   "gol",
   "disparo",
+  "disparoFuera",
   "penalti",
   "corner",
   "falta",
@@ -28,7 +29,9 @@ export type Cuenta = (typeof CUENTAS)[number];
 
 export const NOMBRES: Record<Cuenta, string> = {
   gol: "Goles",
-  disparo: "Tiros a puerta",
+  /* «Disparos» y no «tiros», para que la tabla diga lo mismo que el botón */
+  disparo: "Disparos a puerta",
+  disparoFuera: "Disparos fuera",
   penalti: "Penaltis",
   corner: "Córners",
   falta: "Faltas",

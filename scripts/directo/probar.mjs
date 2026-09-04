@@ -330,6 +330,33 @@ console.log("--- Las cuentas del partido ---");
 }
 
 {
+  /* Un disparo fuera es del que remata, aunque falle, y NO cuenta como tiro a
+     puerta: son las dos cuentas que la gente compara */
+  const eventos = [
+    { id: id(), ts: min(0), tipo: "inicio" },
+    { id: id(), ts: min(10), tipo: "jugada", equipo: "local", clase: "disparoFuera" },
+    { id: id(), ts: min(11), tipo: "jugada", equipo: "local", clase: "disparoFuera" },
+    { id: id(), ts: min(12), tipo: "jugada", equipo: "local", clase: "disparo" },
+    { id: id(), ts: min(20), tipo: "gol", equipo: "local" },
+  ];
+  const todo = contar(plegar(eventos, 45).linea);
+  comprobar("los disparos fuera se cuentan aparte", todo.local.disparoFuera, 2);
+  comprobar("y no engordan los de a puerta", todo.local.disparo, 2);
+}
+
+{
+  /* Los tiros libres ya no tienen boton, pero los partidos ya retransmitidos
+     los llevan guardados y tienen que seguir leyendose */
+  const eventos = [
+    { id: id(), ts: min(0), tipo: "inicio" },
+    { id: id(), ts: min(8), tipo: "jugada", equipo: "visitante", clase: "tiroLibre" },
+  ];
+  const { linea } = plegar(eventos, 45);
+  comprobar("un tiro libre viejo sigue en la cronologia", linea.length, 2);
+  comprobar("y sigue contandose", contar(linea).visitante.tiroLibre, 1);
+}
+
+{
   /* Las dos jugadas nuevas */
   const eventos = [
     { id: id(), ts: min(0), tipo: "inicio" },

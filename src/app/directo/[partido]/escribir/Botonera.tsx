@@ -11,14 +11,6 @@ import {
   type Jugada,
   type Lado,
 } from "@/lib/directo/modelo";
-import {
-  IconoAPuerta,
-  IconoCorner,
-  IconoFalta,
-  IconoFueraDeJuego,
-  IconoPenalti,
-  IconoTiroLibre,
-} from "@/components/Iconos";
 import type { Registro } from "@/lib/directo/almacen";
 import CampoQueCrece from "@/components/CampoQueCrece";
 import Cronologia from "@/components/Cronologia";
@@ -133,22 +125,49 @@ const sabeMantenerla = () => typeof navigator !== "undefined" && "wakeLock" in n
 const clave = (partido: string, abierto: string) => `${PREFIJO}${partido}-${abierto}`;
 
 /**
- * Lo que se puede apuntar de cada equipo además de goles y tarjetas.
+ * Los botones de cada equipo, en el orden en que se ven.
  *
- * Con etiqueta y no solo con dibujo: en una columna de móvil los botones son
- * pequeños, y un banderín de córner y uno de fuera de juego se parecen
- * demasiado como para fiarlo todo al icono.
+ * Con texto y sin dibujo. Los iconos ocupaban la mitad del botón para decir
+ * menos que la palabra: a 17 píxeles, un banderín de córner y uno de fuera de
+ * juego son la misma mancha, y quien apunta desde la banda va con prisa.
+ *
+ * **El color dice el sentido**, que es lo que no cabe en la etiqueta: verde lo
+ * que ese equipo hace bien —remata, saca, tira— y gris lo que hace mal. Así no
+ * hay que recordar botón a botón si va a favor o en contra, que era la duda
+ * que traía esto. Las tarjetas van con su color de siempre.
+ *
+ * El orden deja cuatro filas de dos justas debajo del gol, sin ningún botón
+ * suelto al final, y los dos disparos juntos, que es donde se buscan.
  */
-const JUGADAS: { clase: Jugada; texto: string; Dibujo: typeof IconoCorner }[] = [
-  { clase: "corner", texto: "Córner", Dibujo: IconoCorner },
-  { clase: "tiroLibre", texto: "Tiro libre", Dibujo: IconoTiroLibre },
-  { clase: "fueraDeJuego", texto: "Fuera de juego", Dibujo: IconoFueraDeJuego },
-  { clase: "disparo", texto: "Tiro a puerta", Dibujo: IconoAPuerta },
-  /* «Falta» es del que la comete y «Penalti» del que lo tira: la cronología lo
-     dice con todas las letras, que en el botón no cabe */
-  { clase: "falta", texto: "Falta", Dibujo: IconoFalta },
-  { clase: "penalti", texto: "Penalti", Dibujo: IconoPenalti },
+type BotonJugada = {
+  clase: Jugada;
+  texto: string;
+  /** `favor` pinta verde; `contra`, gris. */
+  sentido: "favor" | "contra";
+};
+
+const JUGADAS: BotonJugada[] = [
+  { clase: "falta", texto: "Falta", sentido: "contra" },
+  { clase: "fueraDeJuego", texto: "Fuera de juego", sentido: "contra" },
+  { clase: "disparo", texto: "Disparo a puerta", sentido: "favor" },
+  { clase: "disparoFuera", texto: "Disparo fuera", sentido: "favor" },
+  { clase: "corner", texto: "Córner", sentido: "favor" },
+  { clase: "penalti", texto: "Penalti", sentido: "favor" },
 ];
+
+/* Fondo, borde y tinta de cada sentido. Los colores viven en globals.css */
+const PINTA = {
+  favor: "bg-favor border-favor-linea text-favor-tinta",
+  contra: "bg-contra border-contra-linea text-contra-tinta",
+  amarilla: "bg-amarilla border-amarilla-linea text-amarilla-tinta",
+  roja: "bg-roja border-roja-linea text-roja-tinta",
+} as const;
+
+/** Común a todos: mismo alto, mismo tipo, y hueco para dos líneas. */
+const BOTON_JUGADA =
+  "flex min-h-14 items-center justify-center rounded-xl border px-1.5 py-2" +
+  " text-center font-display text-[13px] font-bold uppercase leading-[1.15]" +
+  " tracking-wide transition-transform active:scale-[.97] disabled:opacity-40";
 
 export default function Botonera({
   inicial,
@@ -590,7 +609,7 @@ export default function Botonera({
               GOL
             </button>
             <div className="mt-2 grid grid-cols-2 gap-2">
-              {/* Las tarjetas con la misma forma que las jugadas: seis botones
+              {/* Las tarjetas con la misma forma que las jugadas: ocho botones
                   iguales se recorren de un vistazo, dos raros no. */}
               {(["amarilla", "roja"] as const).map((color) => (
                 <button
@@ -598,30 +617,26 @@ export default function Botonera({
                   type="button"
                   disabled={!enJuego || sordo}
                   onClick={() => anotar({ tipo: "tarjeta", equipo: lado, color })}
-                  className="btn btn-ghost flex min-h-14 flex-col items-center justify-center gap-1 px-1 py-2 leading-tight disabled:opacity-40"
+                  className={`${BOTON_JUGADA} ${PINTA[color]}`}
                 >
-                  <span aria-hidden className="text-base leading-none">
-                    {color === "amarilla" ? "🟨" : "🟥"}
-                  </span>
-                  <span className="text-[10px] font-bold capitalize">{color}</span>
+                  Tarjeta {color}
                   <span className="sr-only">
-                    Tarjeta {color} para{" "}
-                    {lado === "local" ? partido.local : partido.visitante}
+                    para {lado === "local" ? partido.local : partido.visitante}
                   </span>
                 </button>
               ))}
 
-              {JUGADAS.map(({ clase, texto, Dibujo }) => (
+              {JUGADAS.map(({ clase, texto, sentido }) => (
                 <button
                   key={clase}
                   type="button"
                   disabled={!enJuego || sordo}
                   onClick={() => anotar({ tipo: "jugada", equipo: lado, clase })}
-                  className="btn btn-ghost flex min-h-14 flex-col items-center justify-center gap-1 px-1 py-2 leading-tight disabled:opacity-40"
+                  className={`${BOTON_JUGADA} ${PINTA[sentido]}`}
                 >
-                  <Dibujo size={17} />
-                  <span className="text-[10px] font-bold">{texto}</span>
+                  {texto}
                   <span className="sr-only">
+                    {" "}
                     de {lado === "local" ? partido.local : partido.visitante}
                   </span>
                 </button>

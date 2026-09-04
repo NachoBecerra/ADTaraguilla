@@ -7,6 +7,7 @@ import {
   IconoAPuerta,
   IconoCorner,
   IconoFalta,
+  IconoFuera,
   IconoFueraDeJuego,
   IconoLapiz,
   IconoPenalti,
@@ -44,7 +45,9 @@ function textoDeJugada(clase: Jugada, equipo: string): string {
     case "fueraDeJuego":
       return `Fuera de juego de ${equipo}`;
     case "disparo":
-      return `Tiro a puerta de ${equipo}`;
+      return `Disparo a puerta de ${equipo}`;
+    case "disparoFuera":
+      return `Disparo fuera de ${equipo}`;
     case "falta":
       return `Falta de ${equipo}`;
     case "penalti":
@@ -85,6 +88,7 @@ const DIBUJO_DE_JUGADA = {
   tiroLibre: IconoTiroLibre,
   fueraDeJuego: IconoFueraDeJuego,
   disparo: IconoAPuerta,
+  disparoFuera: IconoFuera,
   falta: IconoFalta,
   penalti: IconoPenalti,
 } as const;

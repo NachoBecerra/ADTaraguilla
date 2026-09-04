@@ -20,6 +20,28 @@
   --color-tinta: #10180c; /* texto principal (18:1) */
   --color-mute: #55614f; /* texto secundario (6:1) */
 
+  /* ------------------------------------------- botones del directo
+     El color dice el sentido de la jugada, que es lo que no cabe en la
+     etiqueta: verde lo que hace bien ese equipo, gris lo que hace mal.
+     Así quien apunta desde la banda no tiene que recordar botón a botón
+     si va a favor o en contra. Amarillo y rojo son las tarjetas, que ya
+     traen su propio código. */
+  --color-favor: #ddeed0;
+  --color-favor-linea: #c2dfae;
+  --color-favor-tinta: #1e4a0c; /* 8.4:1 sobre su fondo */
+
+  --color-contra: #eceeea;
+  --color-contra-linea: #dcdfd8;
+  --color-contra-tinta: #3d453a; /* 8.1:1 */
+
+  --color-amarilla: #fdeeb8;
+  --color-amarilla-linea: #f0d987;
+  --color-amarilla-tinta: #6a4b00; /* 6.6:1 */
+
+  --color-roja: #fadcda;
+  --color-roja-linea: #f0bab6;
+  --color-roja-tinta: #8e1c15; /* 6.5:1 */
+
   --font-display: var(--font-display), "Arial Narrow", sans-serif;
   --font-sans: var(--font-sans-body), system-ui, sans-serif;
 

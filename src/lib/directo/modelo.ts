@@ -30,9 +30,18 @@ export type Lado = "local" | "visitante";
  */
 export type Jugada =
   | "corner"
+  /**
+   * Ya no tiene botón: una falta de un equipo es un tiro libre del otro, y con
+   * los dos botones cada falta obligaba a pulsar dos veces en dos tarjetas
+   * distintas. Se apunta la falta, y los tiros libres a favor salen solos.
+   *
+   * El tipo se queda porque hay partidos ya retransmitidos con estos eventos
+   * guardados, y tienen que seguir leyéndose.
+   */
   | "tiroLibre"
   | "fueraDeJuego"
   | "disparo"
+  | "disparoFuera"
   | "falta"
   | "penalti";
 
@@ -324,6 +333,7 @@ const JUGADAS = new Set<string>([
   "tiroLibre",
   "fueraDeJuego",
   "disparo",
+  "disparoFuera",
   "falta",
   "penalti",
 ]);
