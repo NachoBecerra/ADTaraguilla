@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { minutoEn, plegar } from "@/lib/directo/modelo";
 import type { Registro } from "@/lib/directo/almacen";
 import EscudoImg from "@/components/EscudoImg";
+import EstadisticasDirecto from "@/components/EstadisticasDirecto";
 import { IconoWhatsApp } from "@/components/Iconos";
 import { fechaPartido } from "@/lib/formato";
 import Cronologia from "@/components/Cronologia";
@@ -199,6 +200,10 @@ export default function Seguimiento({
 
       {/* Debajo de compartir: es la cifra que anima a mandarle el enlace a otro */}
       <ContadorSeguidores partido={partido.id} registrar />
+
+      {/* Antes de la cronología: las cuentas resumen lo mismo que la lista, y
+          quien las quiere las quiere en vez de leerse la lista entera */}
+      <EstadisticasDirecto linea={estado.linea} partido={partido} />
 
       <h2 className="title mt-6 text-xl text-tinta">Cómo va</h2>
       <Cronologia linea={estado.linea} partido={partido} />

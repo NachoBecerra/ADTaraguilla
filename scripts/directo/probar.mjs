@@ -14,6 +14,7 @@
  */
 
 import { plegar, minutoEn } from "../../src/lib/directo/modelo.ts";
+import { contar, partesJugadas, hayAlgoQueContar } from "../../src/lib/directo/estadisticas.ts";
 import { minutosPorParte } from "../../src/lib/directo/reglamento.ts";
 import { diasDeLaVentana, idsDeLaVentana } from "../../src/lib/directo/ventana.ts";
 import { seVeEnElPanel } from "../../src/lib/directo/panel.ts";
@@ -223,6 +224,98 @@ const corregido = plegar(
 );
 comprobar("corregir el arranque recoloca los minutos", corregido.linea.at(-1).minuto.etiqueta, "6'");
 comprobar("y el reloj corre desde el saque bueno", minutoEn(corregido, min(20)).etiqueta, "20'");
+
+/* =========================== las estadísticas =========================== */
+console.log("");
+console.log("--- Las cuentas del partido ---");
+{
+  /* Un partido entero, con el descanso en medio: la separacion por partes
+     tiene que salir del plegado, no del minuto ni de la hora */
+  const eventos = [
+    { id: id(), ts: min(0), tipo: "inicio" },
+    { id: id(), ts: min(5), tipo: "jugada", equipo: "local", clase: "corner" },
+    { id: id(), ts: min(7), tipo: "jugada", equipo: "local", clase: "disparo" },
+    { id: id(), ts: min(9), tipo: "jugada", equipo: "visitante", clase: "fueraDeJuego" },
+    { id: id(), ts: min(20), tipo: "gol", equipo: "local" },
+    { id: id(), ts: min(30), tipo: "tarjeta", equipo: "visitante", color: "amarilla" },
+    { id: id(), ts: min(46), tipo: "finParte" },
+    { id: id(), ts: min(61), tipo: "empezarParte" },
+    { id: id(), ts: min(70), tipo: "jugada", equipo: "local", clase: "corner" },
+    { id: id(), ts: min(75), tipo: "jugada", equipo: "visitante", clase: "disparo" },
+    { id: id(), ts: min(80), tipo: "gol", equipo: "visitante" },
+    { id: id(), ts: min(88), tipo: "tarjeta", equipo: "local", color: "roja" },
+    { id: id(), ts: min(90), tipo: "texto", mensaje: "Se lesiona el portero" },
+  ];
+  const { linea } = plegar(eventos, 45);
+
+  comprobar("se han jugado las dos partes", partesJugadas(linea), [1, 2]);
+
+  const todo = contar(linea);
+  comprobar("los corners del local se suman de las dos partes", todo.local.corner, 2);
+  comprobar("los goles cuadran con el marcador", [todo.local.gol, todo.visitante.gol], [1, 1]);
+  comprobar("la roja va a quien la vio", [todo.local.roja, todo.visitante.roja], [1, 0]);
+  comprobar("y la amarilla tambien", [todo.local.amarilla, todo.visitante.amarilla], [0, 1]);
+  comprobar("los disparos se reparten", [todo.local.disparo, todo.visitante.disparo], [1, 1]);
+
+  const primera = contar(linea, 1);
+  comprobar("en la primera parte solo lo de la primera", primera.local.corner, 1);
+  comprobar("el gol del 80 no cuenta en la primera", primera.visitante.gol, 0);
+  comprobar("ni la roja del 88", primera.local.roja, 0);
+  comprobar("el fuera de juego del 9 si", primera.visitante.fueraDeJuego, 1);
+
+  const segunda = contar(linea, 2);
+  comprobar("en la segunda, lo de la segunda", [segunda.local.corner, segunda.visitante.gol], [1, 1]);
+  comprobar("y ningun fuera de juego, que fue en la primera", segunda.visitante.fueraDeJuego, 0);
+
+  /* Lo que de verdad importa: nada se pierde ni se cuenta dos veces */
+  let cuadran = true;
+  for (const c of ["gol", "corner", "disparo", "fueraDeJuego", "amarilla", "roja", "tiroLibre"]) {
+    const porPartes = primera.local[c] + primera.visitante[c] + segunda.local[c] + segunda.visitante[c];
+    if (porPartes !== todo.local[c] + todo.visitante[c]) cuadran = false;
+  }
+  comprobar("sumando las dos partes sale el total, en todas las cuentas", cuadran, true);
+}
+
+{
+  /* El pitido que cierra una parte pertenece a esa parte, y lo que pasa en su
+     descuento tambien. Es donde se equivocaria un reparto hecho por minuto */
+  const eventos = [
+    { id: id(), ts: min(0), tipo: "inicio" },
+    { id: id(), ts: min(47), tipo: "jugada", equipo: "local", clase: "disparo" },
+    { id: id(), ts: min(48), tipo: "finParte" },
+    { id: id(), ts: min(60), tipo: "empezarParte" },
+    { id: id(), ts: min(61), tipo: "jugada", equipo: "local", clase: "disparo" },
+  ];
+  const { linea } = plegar(eventos, 45);
+  comprobar("un disparo en el descuento es de la primera parte", contar(linea, 1).local.disparo, 1);
+  comprobar("y el del minuto siguiente al descanso, de la segunda", contar(linea, 2).local.disparo, 1);
+}
+
+{
+  /* Anular tiene que descontar: si no, corregir un error del campo dejaria la
+     cuenta inflada para siempre */
+  const golMalo = id();
+  const eventos = [
+    { id: id(), ts: min(0), tipo: "inicio" },
+    { id: golMalo, ts: min(10), tipo: "gol", equipo: "local" },
+    { id: id(), ts: min(11), tipo: "anula", anulado: golMalo },
+  ];
+  comprobar("un gol anulado deja de contar", contar(plegar(eventos, 45).linea).local.gol, 0);
+}
+
+{
+  const { linea } = plegar([{ id: id(), ts: min(0), tipo: "inicio" }], 45);
+  comprobar("sin jugadas no hay estadisticas que enseñar", hayAlgoQueContar(linea), false);
+  comprobar("y solo consta la primera parte", partesJugadas(linea), [1]);
+}
+
+{
+  const eventos = [
+    { id: id(), ts: min(0), tipo: "inicio" },
+    { id: id(), ts: min(3), tipo: "texto", mensaje: "Hace frio" },
+  ];
+  comprobar("un comentario no es una estadistica", hayAlgoQueContar(plegar(eventos, 45).linea), false);
+}
 
 console.log(fallos === 0 ? "\nTodo correcto." : `\n${fallos} comprobaciones fallan.`);
 process.exit(fallos === 0 ? 0 : 1);

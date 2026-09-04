@@ -89,8 +89,20 @@ export type Minuto = {
   etiqueta: string;
 };
 
-/** Un evento ya colocado en la cronología, con el minuto que le corresponde. */
-export type EventoEnLinea = Exclude<Evento, { tipo: "anula" }> & { minuto: Minuto };
+/**
+ * Un evento ya colocado en la cronología, con el minuto que le corresponde.
+ *
+ * Lleva también en qué parte pasó. Se sabe al plegar y de ninguna otra manera:
+ * por el minuto no se puede deducir, porque las dos partes comparten
+ * numeración en cuanto hay descuento —el 45+2 de la primera y el 45' de la
+ * segunda—, y el instante tampoco vale, que entre parte y parte hay un
+ * descanso de duración desconocida.
+ */
+export type EventoEnLinea = Exclude<Evento, { tipo: "anula" }> & {
+  minuto: Minuto;
+  /** 1 la primera parte, 2 la segunda. */
+  parte: number;
+};
 
 export type Estado = {
   fase: Fase;
@@ -281,7 +293,13 @@ export function plegar(eventos: Evento[], minutosPorParte: number): Estado {
         break;
     }
 
-    estado.linea.push({ ...evento, minuto: minutoPrevio ?? minutoEn(estado, evento.ts) });
+    /* `estado.parte` vale ya lo que toca: los dos eventos que inauguran una
+       parte acaban de subirla en el switch, y ninguno de los demás la toca */
+    estado.linea.push({
+      ...evento,
+      minuto: minutoPrevio ?? minutoEn(estado, evento.ts),
+      parte: estado.parte,
+    });
   }
 
   return estado;
