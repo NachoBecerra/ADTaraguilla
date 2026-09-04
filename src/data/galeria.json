@@ -2,6 +2,7 @@
   "_nota": "Editable desde /panel. Cada entrada puede llevar VARIAS fotos y VARIAS etiquetas (equipo, temporada, jugador...). Una foto aparece bajo todas sus etiquetas.",
   "items": [
     {
+      "id": "noticia-presentacion-infantil-b-26-27-mtlblrsa",
       "titulo": "Presentación Infantil B 26/27",
       "albumes": [
         "Infantil B",
@@ -98,10 +99,10 @@
           "ancho": 1086,
           "alto": 1448
         }
-      ],
-      "id": "noticia-presentacion-infantil-b-26-27-mtlblrsa"
+      ]
     },
     {
+      "id": "001",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B",
@@ -118,10 +119,10 @@
           "ancho": 1023,
           "alto": 1537
         }
-      ],
-      "id": "001"
+      ]
     },
     {
+      "id": "01",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
@@ -136,10 +137,10 @@
           "ancho": 941,
           "alto": 1672
         }
-      ],
-      "id": "01"
+      ]
     },
     {
+      "id": "Amistoso Infantil B - San Roque",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
@@ -154,10 +155,10 @@
           "ancho": 941,
           "alto": 1672
         }
-      ],
-      "id": "Amistoso Infantil B - San Roque"
+      ]
     },
     {
+      "id": "Amistoso Infantil B - San Roque-2",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
@@ -172,10 +173,10 @@
           "ancho": 941,
           "alto": 1672
         }
-      ],
-      "id": "Amistoso Infantil B - San Roque"
+      ]
     },
     {
+      "id": "amistoso-infantil-b-san-roque-4",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
@@ -190,10 +191,10 @@
           "ancho": 941,
           "alto": 1672
         }
-      ],
-      "id": "amistoso-infantil-b-san-roque-4"
+      ]
     },
     {
+      "id": "amistoso-infantil-b-san-roque-5",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
@@ -208,10 +209,10 @@
           "ancho": 941,
           "alto": 1672
         }
-      ],
-      "id": "amistoso-infantil-b-san-roque-5"
+      ]
     },
     {
+      "id": "amistoso-infantil-b-san-roque-6",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
@@ -226,10 +227,10 @@
           "ancho": 1023,
           "alto": 1537
         }
-      ],
-      "id": "amistoso-infantil-b-san-roque-6"
+      ]
     },
     {
+      "id": "amistoso-infantil-b-san-roque-7",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
@@ -244,10 +245,10 @@
           "ancho": 941,
           "alto": 1672
         }
-      ],
-      "id": "amistoso-infantil-b-san-roque-7"
+      ]
     },
     {
+      "id": "amistoso-infantil-b-san-roque-8",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
@@ -262,10 +263,10 @@
           "ancho": 941,
           "alto": 1672
         }
-      ],
-      "id": "amistoso-infantil-b-san-roque-8"
+      ]
     },
     {
+      "id": "amistoso-infantil-b-san-roque-9",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
@@ -280,10 +281,10 @@
           "ancho": 941,
           "alto": 1672
         }
-      ],
-      "id": "amistoso-infantil-b-san-roque-9"
+      ]
     },
     {
+      "id": "amistoso-infantil-b-san-roque-10",
       "titulo": "Amistoso Infantil B - San Roque",
       "albumes": [
         "Infantil B"
@@ -298,8 +299,7 @@
           "ancho": 941,
           "alto": 1672
         }
-      ],
-      "id": "amistoso-infantil-b-san-roque-10"
+      ]
     }
   ]
 }
