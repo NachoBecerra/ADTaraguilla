@@ -255,7 +255,7 @@ console.log("--- Las cuentas del partido ---");
   comprobar("los goles cuadran con el marcador", [todo.local.gol, todo.visitante.gol], [1, 1]);
   comprobar("la roja va a quien la vio", [todo.local.roja, todo.visitante.roja], [1, 0]);
   comprobar("y la amarilla tambien", [todo.local.amarilla, todo.visitante.amarilla], [0, 1]);
-  comprobar("los disparos se reparten", [todo.local.disparo, todo.visitante.disparo], [1, 1]);
+  comprobar("los disparos se reparten, y cada gol suma el suyo", [todo.local.disparo, todo.visitante.disparo], [2, 2]);
 
   const primera = contar(linea, 1);
   comprobar("en la primera parte solo lo de la primera", primera.local.corner, 1);
@@ -301,6 +301,57 @@ console.log("--- Las cuentas del partido ---");
     { id: id(), ts: min(11), tipo: "anula", anulado: golMalo },
   ];
   comprobar("un gol anulado deja de contar", contar(plegar(eventos, 45).linea).local.gol, 0);
+}
+
+{
+  /* Un gol es un tiro a puerta. Desde la banda se pulsa GOL y nada mas, asi que
+     si no se sumara aqui la cuenta de disparos saldria siempre corta */
+  const eventos = [
+    { id: id(), ts: min(0), tipo: "inicio" },
+    { id: id(), ts: min(10), tipo: "jugada", equipo: "local", clase: "disparo" },
+    { id: id(), ts: min(20), tipo: "gol", equipo: "local" },
+    { id: id(), ts: min(30), tipo: "gol", equipo: "visitante" },
+  ];
+  const todo = contar(plegar(eventos, 45).linea);
+  comprobar("un gol cuenta tambien como tiro a puerta", todo.local.disparo, 2);
+  comprobar("sin dejar de ser un gol", todo.local.gol, 1);
+  comprobar("y al visitante, que solo marco, le cuenta un tiro", todo.visitante.disparo, 1);
+}
+
+{
+  /* Anular el gol no deja el tiro a puerta suelto */
+  const golMalo = id();
+  const eventos = [
+    { id: id(), ts: min(0), tipo: "inicio" },
+    { id: golMalo, ts: min(10), tipo: "gol", equipo: "local" },
+    { id: id(), ts: min(11), tipo: "anula", anulado: golMalo },
+  ];
+  comprobar("anular el gol le quita tambien el tiro a puerta", contar(plegar(eventos, 45).linea).local.disparo, 0);
+}
+
+{
+  /* Las dos jugadas nuevas */
+  const eventos = [
+    { id: id(), ts: min(0), tipo: "inicio" },
+    { id: id(), ts: min(12), tipo: "jugada", equipo: "visitante", clase: "falta" },
+    { id: id(), ts: min(13), tipo: "jugada", equipo: "visitante", clase: "falta" },
+    { id: id(), ts: min(14), tipo: "jugada", equipo: "local", clase: "penalti" },
+  ];
+  const todo = contar(plegar(eventos, 45).linea);
+  comprobar("las faltas se cuentan al que las comete", [todo.local.falta, todo.visitante.falta], [0, 2]);
+  comprobar("y el penalti al que lo tira", [todo.local.penalti, todo.visitante.penalti], [1, 0]);
+  comprobar("un penalti no es por si solo un tiro a puerta", todo.local.disparo, 0);
+}
+
+{
+  /* Un registro de antes de que existieran falta y penalti */
+  const eventos = [
+    { id: id(), ts: min(0), tipo: "inicio" },
+    { id: id(), ts: min(5), tipo: "jugada", equipo: "local", clase: "corner" },
+  ];
+  const todo = contar(plegar(eventos, 45).linea);
+  comprobar("un partido sin faltas apuntadas las cuenta a cero, no las omite", todo.local.falta, 0);
+  comprobar("y los penaltis igual", todo.visitante.penalti, 0);
 }
 
 {

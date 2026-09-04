@@ -15,7 +15,9 @@ import type { EventoEnLinea, Lado } from "@/lib/directo/modelo";
 export const CUENTAS = [
   "gol",
   "disparo",
+  "penalti",
   "corner",
+  "falta",
   "tiroLibre",
   "fueraDeJuego",
   "amarilla",
@@ -27,7 +29,9 @@ export type Cuenta = (typeof CUENTAS)[number];
 export const NOMBRES: Record<Cuenta, string> = {
   gol: "Goles",
   disparo: "Tiros a puerta",
+  penalti: "Penaltis",
   corner: "Córners",
+  falta: "Faltas",
   tiroLibre: "Tiros libres",
   fueraDeJuego: "Fueras de juego",
   amarilla: "Tarjetas amarillas",
@@ -53,8 +57,15 @@ export function contar(
   for (const e of linea) {
     if (parte !== undefined && e.parte !== parte) continue;
 
-    if (e.tipo === "gol") cuentas[e.equipo].gol += 1;
-    else if (e.tipo === "jugada") cuentas[e.equipo][e.clase] += 1;
+    if (e.tipo === "gol") {
+      cuentas[e.equipo].gol += 1;
+      /*
+       * Un gol es un tiro a puerta, y de los buenos. Se suma aquí y no se pide
+       * que desde la banda se pulsen los dos botones: con el partido en marcha
+       * se pulsaría uno solo, y la cuenta saldría siempre corta.
+       */
+      cuentas[e.equipo].disparo += 1;
+    } else if (e.tipo === "jugada") cuentas[e.equipo][e.clase] += 1;
     else if (e.tipo === "tarjeta") cuentas[e.equipo][e.color] += 1;
   }
 

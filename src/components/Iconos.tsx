@@ -317,6 +317,58 @@ export function IconoAPuerta({ size = 20, className }: Props) {
   );
 }
 
+/**
+ * Falta: el silbato del árbitro.
+ *
+ * Se dibuja el silbato y no el balón porque el del tiro libre ya lleva balón, y
+ * los dos botones están en la misma columna. Con dos formas sueltas y no con un
+ * Macizo, y montando un círculo sobre un rectángulo redondeado, en vez de
+ * perfilar la silueta con un arco: tres intentos con arco salieron como una
+ * cápsula vacía, como una llave y como un mordisco hacia dentro. Dos formas
+ * llenas siempre dibujan lo mismo. El agujero va del color del panel porque
+ * este icono solo se usa sobre tarjeta.
+ */
+export function IconoFalta({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <g fill="currentColor" stroke="none">
+        <circle cx="15" cy="12" r="6.6" />
+        <rect x="2" y="8.8" width="9" height="6.4" rx="3.2" />
+      </g>
+      {/* El agujero va arriba, como en un silbato de verdad: centrado, el icono
+          se leía como una llave */}
+      <circle cx="15" cy="9.6" r="1.7" fill="var(--color-panel)" stroke="none" />
+    </svg>
+  );
+}
+
+/**
+ * Penalti: el balón sobre el punto, con el arco del área.
+ *
+ * Sin la portería a propósito: el primer intento la dibujaba y a 20 píxeles era
+ * el mismo icono que el de tiro a puerta, que está en el botón de al lado. El
+ * segundo quitó la portería y dejó el balón sobre el arco del área, y entonces
+ * se leía como una persona: círculo de cabeza y arco de hombros. El punto suelto
+ * debajo, con dos rayas de césped a los lados, es lo que lo arregla: ya no hay
+ * hombros, hay un balón y el punto de penalti.
+ *
+ * El balón ocupa casi todo el alto a propósito. Dibujado pequeño, y aunque el
+ * trazo fuera correcto, al lado de la portería —que sí llena el cuadro— parecía
+ * otra cosa: un diafragma, una letra.
+ *
+ * No tiene que explicarse solo —para eso está la etiqueta del botón—, tiene que
+ * no parecerse a los otros cinco de la misma tarjeta.
+ */
+export function IconoPenalti({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="9.2" r="6.8" />
+      <circle cx="12" cy="20" r="1.7" fill="currentColor" stroke="none" />
+      <path d="M3.5 20h4M16.5 20h4" />
+    </svg>
+  );
+}
+
 /** Lápiz: corregir algo ya escrito. */
 export function IconoLapiz({ size = 16, className }: Props) {
   return (

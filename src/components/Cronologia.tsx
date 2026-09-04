@@ -6,8 +6,10 @@ import { LARGO_TEXTO, type EventoEnLinea, type Jugada } from "@/lib/directo/mode
 import {
   IconoAPuerta,
   IconoCorner,
+  IconoFalta,
   IconoFueraDeJuego,
   IconoLapiz,
+  IconoPenalti,
   IconoTiroLibre,
 } from "@/components/Iconos";
 import type { FichaPartido } from "@/lib/directo/almacen";
@@ -43,6 +45,10 @@ function textoDeJugada(clase: Jugada, equipo: string): string {
       return `Fuera de juego de ${equipo}`;
     case "disparo":
       return `Tiro a puerta de ${equipo}`;
+    case "falta":
+      return `Falta de ${equipo}`;
+    case "penalti":
+      return `Penalti para ${equipo}`;
   }
 }
 
@@ -79,6 +85,8 @@ const DIBUJO_DE_JUGADA = {
   tiroLibre: IconoTiroLibre,
   fueraDeJuego: IconoFueraDeJuego,
   disparo: IconoAPuerta,
+  falta: IconoFalta,
+  penalti: IconoPenalti,
 } as const;
 
 /** Un icono ayuda a encontrar los goles de un vistazo al bajar por la lista. */

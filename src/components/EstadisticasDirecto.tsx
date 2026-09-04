@@ -48,12 +48,6 @@ export default function EstadisticasDirecto({
   const partes = partesJugadas(linea);
   const cuentas = contar(linea, parte === 0 ? undefined : parte);
 
-  /* Una fila de ceros en las dos columnas no dice nada: se calla, salvo que
-     con ese filtro no quede ninguna, y entonces hay que explicar por qué */
-  const filas = CUENTAS.filter(
-    (c) => cuentas.local[c] > 0 || cuentas.visitante[c] > 0,
-  );
-
   return (
     <div className="mt-4">
       <button
@@ -99,71 +93,69 @@ export default function EstadisticasDirecto({
               aria-label="Parte del partido"
               className="mt-3 flex gap-1 rounded-xl bg-panel-2 p-1"
             >
-              {[{ v: 0, t: "Todo" }, ...partes.map((p) => ({ v: p, t: `${p}ª parte` }))].map(
-                ({ v, t }) => (
-                  <button
-                    key={v}
-                    type="button"
-                    role="tab"
-                    aria-selected={parte === v}
-                    onClick={() => setParte(v)}
-                    className={`flex-1 rounded-lg px-2 py-1.5 text-xs font-bold transition-colors ${
-                      parte === v ? "bg-club text-white" : "text-mute"
-                    }`}
-                  >
-                    {t}
-                  </button>
-                ),
-              )}
+              {[
+                { v: 0, t: "Todo" },
+                ...partes.map((p) => ({ v: p, t: `${p}ª parte` })),
+              ].map(({ v, t }) => (
+                <button
+                  key={v}
+                  type="button"
+                  role="tab"
+                  aria-selected={parte === v}
+                  onClick={() => setParte(v)}
+                  className={`flex-1 rounded-lg px-2 py-1.5 text-xs font-bold transition-colors ${
+                    parte === v ? "bg-club text-white" : "text-mute"
+                  }`}
+                >
+                  {t}
+                </button>
+              ))}
             </div>
           ) : null}
 
-          {filas.length > 0 ? (
-            <ul className="mt-3 space-y-3">
-              {filas.map((c) => {
-                const local = cuentas.local[c];
-                const visitante = cuentas.visitante[c];
-                const [izq, der] = reparto(local, visitante);
-                return (
-                  // `data-cuenta` da a cada fila un asidero estable: por el
-                  // texto habría que distinguir "Tiros a puerta" de "Tiros
-                  // libres", y basta con retocar un nombre para romperlo
-                  <li key={c} data-cuenta={c}>
-                    <div className="flex items-baseline justify-between gap-3 text-sm">
-                      <span className="w-6 shrink-0 text-left font-bold tabular-nums text-tinta">
-                        {local}
-                      </span>
-                      <span className="min-w-0 flex-1 truncate text-center text-xs text-mute">
-                        {NOMBRES[c]}
-                      </span>
-                      <span className="w-6 shrink-0 text-right font-bold tabular-nums text-tinta">
-                        {visitante}
-                      </span>
-                    </div>
-                    {/* La barra es lo que se lee de un vistazo; los números
-                        están para quien quiera la cifra exacta */}
-                    <div
-                      aria-hidden
-                      className="mt-1 flex h-1.5 gap-0.5 overflow-hidden rounded-full bg-panel-2"
-                    >
-                      <span
-                        className="rounded-full bg-club transition-[width]"
-                        style={{ width: `${izq}%` }}
-                      />
-                      <span
-                        className="rounded-full bg-club-claro transition-[width]"
-                        style={{ width: `${der}%` }}
-                      />
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            <p className="mt-3 text-center text-sm text-mute">
-              En esta parte todavía no ha pasado nada.
-            </p>
-          )}
+          {/* Están todas siempre, también las que van a cero: «0 y 0» es una
+              respuesta, y una tabla que cambia de filas según la parte que se
+              mire no se deja comparar de un vistazo con la de al lado */}
+          <ul className="mt-3 space-y-3">
+            {CUENTAS.map((c) => {
+              const local = cuentas.local[c];
+              const visitante = cuentas.visitante[c];
+              const [izq, der] = reparto(local, visitante);
+              return (
+                // `data-cuenta` da a cada fila un asidero estable: por el
+                // texto habría que distinguir "Tiros a puerta" de "Tiros
+                // libres", y basta con retocar un nombre para romperlo
+                <li key={c} data-cuenta={c}>
+                  <div className="flex items-baseline justify-between gap-3 text-sm">
+                    <span className="w-6 shrink-0 text-left font-bold tabular-nums text-tinta">
+                      {local}
+                    </span>
+                    <span className="min-w-0 flex-1 truncate text-center text-xs text-mute">
+                      {NOMBRES[c]}
+                    </span>
+                    <span className="w-6 shrink-0 text-right font-bold tabular-nums text-tinta">
+                      {visitante}
+                    </span>
+                  </div>
+                  {/* La barra es lo que se lee de un vistazo; los números
+                      están para quien quiera la cifra exacta */}
+                  <div
+                    aria-hidden
+                    className="mt-1 flex h-1.5 gap-0.5 overflow-hidden rounded-full bg-panel-2"
+                  >
+                    <span
+                      className="rounded-full bg-club transition-[width]"
+                      style={{ width: `${izq}%` }}
+                    />
+                    <span
+                      className="rounded-full bg-club-claro transition-[width]"
+                      style={{ width: `${der}%` }}
+                    />
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       ) : null}
     </div>

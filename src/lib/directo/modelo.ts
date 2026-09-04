@@ -28,7 +28,13 @@ export type Lado = "local" | "visitante";
  * cosa —algo que le ocurre a un equipo y se apunta en la cronología— y así
  * añadir la quinta es escribir una línea.
  */
-export type Jugada = "corner" | "tiroLibre" | "fueraDeJuego" | "disparo";
+export type Jugada =
+  | "corner"
+  | "tiroLibre"
+  | "fueraDeJuego"
+  | "disparo"
+  | "falta"
+  | "penalti";
 
 /**
  * Momento en que ocurrió algo, en milisegundos, según el móvil de quien lo
@@ -313,7 +319,14 @@ const TIPOS = new Set([
   "finParte", "empezarParte", "final", "texto", "anula",
 ]);
 
-const JUGADAS = new Set<string>(["corner", "tiroLibre", "fueraDeJuego", "disparo"]);
+const JUGADAS = new Set<string>([
+  "corner",
+  "tiroLibre",
+  "fueraDeJuego",
+  "disparo",
+  "falta",
+  "penalti",
+]);
 
 const LADOS = new Set<string>(["local", "visitante"]);
 

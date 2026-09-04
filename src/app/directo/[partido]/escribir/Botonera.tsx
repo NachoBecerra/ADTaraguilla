@@ -14,7 +14,9 @@ import {
 import {
   IconoAPuerta,
   IconoCorner,
+  IconoFalta,
   IconoFueraDeJuego,
+  IconoPenalti,
   IconoTiroLibre,
 } from "@/components/Iconos";
 import type { Registro } from "@/lib/directo/almacen";
@@ -142,6 +144,10 @@ const JUGADAS: { clase: Jugada; texto: string; Dibujo: typeof IconoCorner }[] = 
   { clase: "tiroLibre", texto: "Tiro libre", Dibujo: IconoTiroLibre },
   { clase: "fueraDeJuego", texto: "Fuera de juego", Dibujo: IconoFueraDeJuego },
   { clase: "disparo", texto: "Tiro a puerta", Dibujo: IconoAPuerta },
+  /* «Falta» es del que la comete y «Penalti» del que lo tira: la cronología lo
+     dice con todas las letras, que en el botón no cabe */
+  { clase: "falta", texto: "Falta", Dibujo: IconoFalta },
+  { clase: "penalti", texto: "Penalti", Dibujo: IconoPenalti },
 ];
 
 export default function Botonera({
