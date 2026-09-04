@@ -125,6 +125,18 @@ const sabeMantenerla = () => typeof navigator !== "undefined" && "wakeLock" in n
 const clave = (partido: string, abierto: string) => `${PREFIJO}${partido}-${abierto}`;
 
 /**
+ * Minutos de descuento a partir de los cuales se recuerda cerrar la parte.
+ *
+ * Nadie pita veinte minutos de descuento. Cuando el reloj llega ahí es que a
+ * quien apunta se le pasó marcar el final —está mirando el partido, no el
+ * móvil— y mientras tanto la web enseña "45+22" en la portada, que queda fatal
+ * y además es mentira.
+ *
+ * Diez es holgado: un descuento largo de verdad son seis o siete.
+ */
+const DESCUENTO_LARGO = 10;
+
+/**
  * Los botones de cada equipo, en el orden en que se ven.
  *
  * Con texto y sin dibujo. Los iconos ocupaban la mitad del botón para decir
@@ -655,6 +667,18 @@ export default function Botonera({
       >
         {fase === "parado" ? "Reanudar reloj" : "Parar reloj"}
       </button>
+
+      {/* No es un error, es un recordatorio: el reloj sigue corriendo y quien
+          apunta está mirando el campo */}
+      {faseSiguiente?.tipo === "finParte" && minuto.anadido >= DESCUENTO_LARGO ? (
+        <p
+          role="status"
+          className="mt-3 rounded-xl border border-amarilla-linea bg-amarilla p-3 text-center text-sm font-semibold leading-relaxed text-amarilla-tinta"
+        >
+          Llevas {minuto.anadido} minutos de descuento. Si la parte ya ha
+          terminado, márcalo aquí debajo.
+        </p>
+      ) : null}
 
       {faseSiguiente ? (
         <button

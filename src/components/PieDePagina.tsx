@@ -113,6 +113,23 @@ export default function PieDePagina() {
             <span aria-hidden className="hidden sm:inline">
               ·
             </span>
+            {/*
+              Quién ha hecho la web, por si otro club de la comarca la ve y
+              quiere una parecida. Va aquí, en la línea de los créditos, y no en
+              una sección propia: es un dato de quien hizo el trabajo, no del
+              club, y en el pie es donde se busca sin estorbar a nadie.
+            */}
+            <a
+              href="https://impuweb.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 transition-colors hover:text-white"
+            >
+              Web por impuweb.com
+            </a>
+            <span aria-hidden className="hidden sm:inline">
+              ·
+            </span>
             {/* Discreto a propósito: lo que protege el panel es la contraseña,
                 no que su dirección sea difícil de encontrar. */}
             <Link

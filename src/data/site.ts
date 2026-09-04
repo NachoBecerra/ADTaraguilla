@@ -16,7 +16,7 @@ export const site = {
     "Web oficial de la AD Taraguilla, club de fútbol de San Roque (Cádiz): noticias, resultados y clasificaciones de sus nueve equipos, galería de fotos y el histórico del club.",
 
   contacto: {
-    email: "info@adtaraguilla.es", // TODO
+    email: "adtaraguilla@hotmail.es",
     telefono: "", // opcional
     campo: "Campo Municipal Hermanos García Mota",
     direccion: "San Roque (Cádiz)",
