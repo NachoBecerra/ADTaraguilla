@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import CampoQueCrece from "@/components/CampoQueCrece";
 import { LARGO_TEXTO, type EventoEnLinea, type Jugada } from "@/lib/directo/modelo";
 import {
   IconoAPuerta,
@@ -168,16 +169,15 @@ export default function Cronologia({
           */}
           {enEdicion ? (
             <>
-              <input
+              <CampoQueCrece
                 autoFocus
                 value={borrador}
                 maxLength={LARGO_TEXTO}
                 aria-label="Corregir el comentario"
+                enterKeyHint="done"
                 onChange={(e) => setBorrador(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") guardar();
-                  if (e.key === "Escape") setEditando(null);
-                }}
+                alEnviar={guardar}
+                alCancelar={() => setEditando(null)}
                 className="w-full rounded-lg border border-linea bg-panel px-3 py-2 text-base text-tinta focus:border-club focus:outline-none"
               />
               <div className="mt-2 flex items-center gap-2">

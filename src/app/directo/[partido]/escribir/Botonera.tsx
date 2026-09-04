@@ -18,6 +18,7 @@ import {
   IconoTiroLibre,
 } from "@/components/Iconos";
 import type { Registro } from "@/lib/directo/almacen";
+import CampoQueCrece from "@/components/CampoQueCrece";
 import Cronologia from "@/components/Cronologia";
 import ContadorSeguidores from "@/components/ContadorSeguidores";
 import { recordarMando } from "@/components/VolverAlDirecto";
@@ -445,6 +446,16 @@ export default function Botonera({
    * cronología como si acabara de escribirse. Con su instante se queda en su
    * sitio y con su minuto, y quien lo lee solo ve el texto corregido.
    */
+  const publicarComentario = () => {
+    // El Intro del teclado también publica, así que el bloqueo entre eventos
+    // hay que mirarlo aquí y no solo en el botón
+    if (sordo) return;
+    const mensaje = texto.trim();
+    if (!mensaje) return;
+    anotar({ tipo: "texto", mensaje });
+    setTexto("");
+  };
+
   const editarTexto = (id: string, cuando: number, mensaje: string) => {
     anular(id);
     apuntar({ tipo: "texto", mensaje }, cuando);
@@ -720,24 +731,20 @@ export default function Botonera({
 
       {/* ---------------------------------------------------- el comentario */}
       <form
-        className="mt-4 flex gap-2"
+        className="mt-4 flex items-end gap-2"
         onSubmit={(e) => {
           e.preventDefault();
-          // El Intro del teclado envía el formulario aunque el botón esté
-          // deshabilitado, así que el bloqueo hay que mirarlo también aquí
-          if (sordo) return;
-          const mensaje = texto.trim();
-          if (!mensaje) return;
-          anotar({ tipo: "texto", mensaje });
-          setTexto("");
+          publicarComentario();
         }}
       >
-        <input
+        <CampoQueCrece
           value={texto}
           onChange={(e) => setTexto(e.target.value)}
+          alEnviar={publicarComentario}
           maxLength={LARGO_TEXTO}
           placeholder="Comentario…"
           aria-label="Comentario"
+          enterKeyHint="send"
           className="min-w-0 flex-1 rounded-xl border border-linea bg-panel px-3 py-3 text-base text-tinta focus:border-club focus:outline-none"
         />
         <button
