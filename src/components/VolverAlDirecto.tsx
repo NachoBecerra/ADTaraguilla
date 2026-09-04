@@ -14,15 +14,37 @@ import { IconoFlecha } from "@/components/Iconos";
  * está apuntando el partido tenía que entrar al panel, buscar el partido,
  * generar el enlace y abrirlo otra vez. Cinco pasos con el partido en marcha.
  *
- * Así que el móvil que abre la botonera se guarda el enlace, y mientras siga
- * valiendo aparece un aviso arriba de cualquier página para volver de un toque.
+ * Así que el móvil que abre la botonera se guarda el enlace, y durante unas
+ * horas aparece un aviso arriba de cualquier página para volver de un toque.
  *
- * **Solo lo ve ese móvil.** Es lo que guardó él; nadie más tiene nada guardado.
+ * **Solo lo ve ese navegador.** Lo guardado vive en su `localStorage`: no sale
+ * del dispositivo, no viaja al servidor y no está en el HTML de ninguna página.
+ * Un visitante cualquiera no ve nada, y quien lo escribió no lo ve en su otro
+ * navegador. Conviene tenerlo claro porque el aviso habla de retransmitir, y
+ * visto sin contexto asusta.
  */
 
 const CLAVE = "directo-mando";
 
-type Mando = { id: string; token: string };
+/**
+ * Cuánto se sigue ofreciendo el atajo desde que se abrió la botonera.
+ *
+ * No basta con que el enlace siga valiendo: un enlace vale hasta cuatro horas
+ * después del saque, y el club los prepara días antes, así que uno generado el
+ * jueves para el sábado vale casi dos días. Con esa sola condición, el aviso se
+ * quedaba dos días en la pantalla de quien hubiera abierto la botonera una vez.
+ *
+ * El atajo sirve para volver al partido que se está retransmitiendo, y eso dura
+ * una tarde: el desplazamiento, el partido y la vuelta.
+ */
+const VENTANA_MS = 6 * 60 * 60_000;
+
+type Mando = {
+  id: string;
+  token: string;
+  /** Cuándo se abrió la botonera, en milisegundos. */
+  desde: number;
+};
 
 /**
  * Hasta cuándo vale el enlace, leído del propio token.
@@ -40,18 +62,30 @@ function caduca(token: string): number {
 /** Guarda el mando de este partido. Lo llama la botonera al abrirse. */
 export function recordarMando(id: string, token: string): void {
   try {
-    localStorage.setItem(CLAVE, JSON.stringify({ id, token } satisfies Mando));
+    localStorage.setItem(
+      CLAVE,
+      JSON.stringify({ id, token, desde: Date.now() } satisfies Mando),
+    );
   } catch {
     // Sin almacenamiento se pierde el atajo, no la retransmisión
   }
 }
 
-/** Lo guardado, o null si no hay, no se entiende o ya no vale. */
+/**
+ * Lo guardado, o null si no hay, no se entiende o ya no vale.
+ *
+ * Tienen que cumplirse las dos cosas: que el enlace siga sirviendo y que la
+ * botonera se abriera hace poco. Lo guardado sin `desde` es de antes de que
+ * existiera esta ventana y se da por caducado, que es justo lo que hay que
+ * hacer con ello.
+ */
 function leerMando(crudo: string | null): Mando | null {
   if (!crudo) return null;
   try {
     const leido = JSON.parse(crudo) as Mando;
     if (!leido?.id || !leido?.token) return null;
+    if (typeof leido.desde !== "number") return null;
+    if (Date.now() - leido.desde > VENTANA_MS) return null;
     return caduca(leido.token) < Date.now() ? null : leido;
   } catch {
     return null;
