@@ -11,7 +11,7 @@ import {
 } from "@/lib/directo/almacen";
 import { firmarEnlace } from "@/lib/directo/enlace";
 import { partidosRetransmitibles, saqueEnMs } from "@/lib/directo/partidos";
-import { plegar } from "@/lib/directo/modelo";
+import { hayRetransmision, plegar } from "@/lib/directo/modelo";
 import { minutosPorParte } from "@/lib/directo/reglamento";
 import { TRAS_EL_FINAL_MS, type EstadoPanel } from "@/lib/directo/panel";
 import { getEquipo, getEquipos } from "@/lib/competicion";
@@ -267,7 +267,10 @@ export async function estadoDeRetransmisiones(
       if (!registro) return [id, "sin-abrir"];
 
       const estado = plegar(registro.eventos, registro.partido.minutosPorParte);
-      if (estado.fase === "sin-empezar") return [id, "abierta"];
+
+      /* «Abierta» es la que no tiene nada escrito. En cuanto hay algo —aunque
+         sea un aviso antes del saque— la retransmisión ya se ve en la web */
+      if (!hayRetransmision(estado)) return [id, "abierta"];
       if (estado.finMs === null) return [id, "en-directo"];
 
       return [

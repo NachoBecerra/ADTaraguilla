@@ -13,7 +13,7 @@
  * contra casos conocidos, sin depender de nada de fuera.
  */
 
-import { plegar, minutoEn } from "../../src/lib/directo/modelo.ts";
+import { plegar, minutoEn, hayRetransmision } from "../../src/lib/directo/modelo.ts";
 import { contar, partesJugadas, hayAlgoQueContar } from "../../src/lib/directo/estadisticas.ts";
 import { minutosPorParte } from "../../src/lib/directo/reglamento.ts";
 import { diasDeLaVentana, idsDeLaVentana } from "../../src/lib/directo/ventana.ts";
@@ -224,6 +224,36 @@ const corregido = plegar(
 );
 comprobar("corregir el arranque recoloca los minutos", corregido.linea.at(-1).minuto.etiqueta, "6'");
 comprobar("y el reloj corre desde el saque bueno", minutoEn(corregido, min(20)).etiqueta, "20'");
+
+/* ================= cuando se considera que hay retransmision ================ */
+console.log("");
+console.log("--- Cuando empieza la retransmision ---");
+{
+  comprobar("un registro vacio no es retransmision", hayRetransmision(plegar([], 45)), false);
+}
+{
+  /* Lo que motivo el cambio: avisar antes del saque */
+  const eventos = [
+    { id: id(), ts: min(0), tipo: "texto", mensaje: "El partido se retrasa 15 minutos por la lluvia" },
+  ];
+  const { linea } = plegar(eventos, 45);
+  comprobar("un aviso antes del saque ya es retransmision", hayRetransmision(plegar(eventos, 45)), true);
+  comprobar("y el partido sigue sin empezar", plegar(eventos, 45).fase, "sin-empezar");
+  comprobar("ese aviso queda en el bloque de antes del partido", linea[0].parte, 0);
+}
+{
+  /* Y al reves: si se borra lo escrito, la retransmision desaparece */
+  const aviso = id();
+  const eventos = [
+    { id: aviso, ts: min(0), tipo: "texto", mensaje: "Alineaciones" },
+    { id: id(), ts: min(1), tipo: "anula", anulado: aviso },
+  ];
+  comprobar("borrando lo unico escrito, deja de haberla", hayRetransmision(plegar(eventos, 45)), false);
+}
+{
+  const eventos = [{ id: id(), ts: min(0), tipo: "inicio" }];
+  comprobar("pitar el inicio tambien la enciende", hayRetransmision(plegar(eventos, 45)), true);
+}
 
 /* =========================== las estadísticas =========================== */
 console.log("");

@@ -143,6 +143,22 @@ export type Estado = {
 };
 
 /**
+ * ¿Hay retransmisión que enseñar?
+ *
+ * La respuesta es «hay algo en la cronología», y no «se ha pitado el inicio».
+ * Es lo que permite avisar antes del saque —«el partido se retrasa media hora
+ * por la lluvia», o las alineaciones— sin tener que dar el partido por
+ * empezado, que era la única forma de que se viera en la web.
+ *
+ * Y funciona en los dos sentidos: si se borra lo escrito y la cronología se
+ * queda vacía, la retransmisión desaparece de la web como si no se hubiera
+ * abierto.
+ */
+export function hayRetransmision(estado: Estado): boolean {
+  return estado.linea.length > 0;
+}
+
+/**
  * Minuto que marca el reloj en un instante dado.
  *
  * Es lo que permite sondear cada pocos segundos sin que se note: el reloj no lo

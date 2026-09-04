@@ -1,5 +1,5 @@
 import { leerRegistro, listarRegistros } from "@/lib/directo/almacen";
-import { minutoEn, plegar, type Fase } from "@/lib/directo/modelo";
+import { hayRetransmision, minutoEn, plegar, type Fase } from "@/lib/directo/modelo";
 import { diasDeLaVentana, idsDeLaVentana } from "@/lib/directo/ventana";
 import { getEquipo, partidosDe } from "@/lib/competicion";
 
@@ -67,7 +67,8 @@ function hayResultadoOficial(equipoId: string, fecha: string | null): boolean {
 
 type ResumenInterno = ResumenDirecto & {
   terminadoHace: number;
-  desdeElSaque: number;
+  desdeLoPrimero: number;
+  hayQueEnsenar: boolean;
   oficial: boolean;
 };
 
@@ -75,11 +76,16 @@ function resumir(registro: Awaited<ReturnType<typeof leerRegistro>>): ResumenInt
   if (!registro) return null;
 
   const estado = plegar(registro.eventos, registro.partido.minutosPorParte);
-  const saque = estado.linea.find((e) => e.tipo === "inicio")?.ts ?? null;
+
+  /* Desde lo primero que se apuntó y no desde el saque: hay retransmisiones
+     que empiezan con un aviso antes de que el partido arranque, y sin esto un
+     partido que nadie llegara a pitar se quedaría encendido para siempre. */
+  const primero = estado.linea[0]?.ts ?? null;
 
   return {
     terminadoHace: estado.finMs === null ? 0 : Date.now() - estado.finMs,
-    desdeElSaque: saque === null ? 0 : Date.now() - saque,
+    desdeLoPrimero: primero === null ? 0 : Date.now() - primero,
+    hayQueEnsenar: hayRetransmision(estado),
     oficial: hayResultadoOficial(registro.partido.equipo, registro.partido.fecha),
     id: registro.partido.id,
     equipo: registro.partido.equipo,
@@ -104,21 +110,23 @@ export async function directosDeHoy(ahora = new Date()): Promise<ResumenDirecto[
     .filter(
       (r): r is ResumenInterno =>
         r !== null &&
-        // Abierto pero sin empezar no es un directo: no hay nada que enseñar
-        r.fase !== "sin-empezar" &&
+        // Abierto y con la cronología vacía no es un directo: no hay nada que
+        // enseñar. Basta un comentario para que lo sea, aunque no se haya pitado
+        r.hayQueEnsenar &&
         // En cuanto la RFAF publica el resultado, el directo ha cumplido
         !r.oficial &&
         // Lo que terminó hace rato deja paso a lo oficial
         r.terminadoHace < TRAS_EL_FINAL_MS &&
         // Y lo que nadie cerró tampoco puede quedarse encendido para siempre
-        r.desdeElSaque < SIN_CERRAR_MS,
+        r.desdeLoPrimero < SIN_CERRAR_MS,
     )
     // Lo de decidir es de uso interno: no tiene por qué salir a la red
     .map((r) => {
       const resumen: ResumenDirecto = { ...r };
       const interno = resumen as Partial<ResumenInterno>;
       delete interno.terminadoHace;
-      delete interno.desdeElSaque;
+      delete interno.desdeLoPrimero;
+      delete interno.hayQueEnsenar;
       delete interno.oficial;
       return resumen;
     });

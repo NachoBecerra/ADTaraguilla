@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { minutoEn, plegar } from "@/lib/directo/modelo";
+import { hayRetransmision, minutoEn, plegar } from "@/lib/directo/modelo";
 import type { Registro } from "@/lib/directo/almacen";
 import EscudoImg from "@/components/EscudoImg";
 import EstadisticasDirecto from "@/components/EstadisticasDirecto";
@@ -130,7 +130,9 @@ export default function Seguimiento({
       <div className="mt-4 rounded-2xl bg-club p-5 text-white">
         <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wide">
           <span className="inline-flex items-center gap-2 text-club-claro">
-            {!terminado && estado.fase !== "sin-empezar" ? (
+            {/* El punto late mientras se está retransmitiendo, aunque el
+                partido no haya arrancado: alguien está contando algo */}
+            {!terminado && hayRetransmision(estado) ? (
               <span
                 aria-hidden
                 className="inline-block h-2 w-2 animate-pulse rounded-full bg-club-claro"
