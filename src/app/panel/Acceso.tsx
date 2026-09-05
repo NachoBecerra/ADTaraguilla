@@ -19,12 +19,7 @@ export default function Acceso() {
         el panel es la contraseña, no el secreto— y de paso explica por qué la
         web está siempre al día.
       */}
-      <p className="mt-3 text-sm leading-relaxed text-mute">
-        Desde aquí la gente del club mantiene la web al día, sin saber de
-        informática y desde el móvil:
-      </p>
-
-      <ul className="mt-4 space-y-3 text-sm leading-relaxed text-mute">
+      <ul className="mt-5 space-y-3 text-sm leading-relaxed text-mute">
         <li className="border-l-2 border-club-claro pl-3">
           <strong className="font-bold text-tinta">Retransmitir un partido.</strong>{" "}
           Goles, tarjetas y comentarios según pasan, desde la banda. Quien no
@@ -79,8 +74,7 @@ export default function Acceso() {
       {/* Para quien debería tenerla y no la tiene: sin esto, la pantalla es un
           muro sin salida */}
       <p className="mt-5 text-xs leading-relaxed text-mute">
-        Es una sola contraseña para todo el club. Si eres del club y no la
-        tienes, pídesela a la directiva.
+        Contraseñas gestionadas por el club, solicitarla a la directiva.
       </p>
     </section>
   );
