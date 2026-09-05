@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import {
+  anunciarRetransmision,
   eliminarAmistoso,
   empezarRetransmision,
   reiniciarRetransmision,
@@ -26,6 +27,8 @@ export type Fila = {
   hora: string | null;
   campo: string | null;
   estado: EstadoPanel;
+  /** El club ya ha dicho en la portada que este partido se retransmitirá. */
+  anunciado: boolean;
   /** Creado a mano por el club: no existe en la RFAF y se puede borrar entero. */
   amistoso: boolean;
 };
@@ -40,8 +43,13 @@ const CHIP: Record<EstadoPanel, { texto: string; clase: string } | null> = {
   caducada: null,
 };
 
+/** Cuándo se juega, tal y como se escribe en un mensaje. */
+function cuandoDe(p: Fila): string {
+  return [p.fecha ? fechaPartido(p.fecha) : null, p.hora].filter(Boolean).join(", ");
+}
+
 /**
- * Lo que lee quien recibe el mensaje.
+ * Lo que lee quien va a retransmitir.
  *
  * Un enlace pelado en WhatsApp no dice de qué partido es ni qué hay que hacer
  * con él, y quien lo recibe puede tener tres de partidos distintos. Así que va
@@ -49,9 +57,7 @@ const CHIP: Record<EstadoPanel, { texto: string; clase: string } | null> = {
  * no hay que instalar nada ni saber ninguna contraseña.
  */
 function mensajeDe(p: Fila, url: string): string {
-  const cuando = [p.fecha ? fechaPartido(p.fecha) : null, p.hora]
-    .filter(Boolean)
-    .join(", ");
+  const cuando = cuandoDe(p);
 
   return [
     `Panel de retransmisión · ${p.nombreEquipo}`,
@@ -63,11 +69,63 @@ function mensajeDe(p: Fila, url: string): string {
   ].join("\n");
 }
 
+/**
+ * Lo que se publica en Facebook, en X o en el grupo del pueblo.
+ *
+ * **Sin marcador y sin nada que caduque**: una publicación no se actualiza, y
+ * lo que se comparte el jueves se sigue leyendo el martes siguiente. Lo que
+ * cambia está en la página, que esa sí está viva.
+ */
+function mensajePublico(p: Fila, url: string): string {
+  const cuando = cuandoDe(p);
+
+  return [
+    `${p.local} · ${p.visitante}`,
+    `${p.nombreEquipo}${cuando ? ` — ${cuando}` : ""}`,
+    "",
+    "Lo retransmitimos en directo. Sigue el partido minuto a minuto aquí:",
+    url,
+  ].join("\n");
+}
+
+/**
+ * La dirección a la vista, para copiarla a mano.
+ *
+ * Solo aparece cuando el portapapeles falla —hay navegadores que no dejan
+ * copiar, o no sin HTTPS—. Tenerla siempre puesta no le dice nada a quien no es
+ * informático y encima invita a tocarla.
+ */
+function ADedo({ visible, valor }: { visible: boolean; valor: string }) {
+  if (!visible) return null;
+
+  return (
+    <div className="mt-3">
+      <p className="text-xs font-semibold text-club">
+        Este navegador no deja copiar solo. Cópialo a mano:
+      </p>
+      <input
+        readOnly
+        value={valor}
+        onFocus={(e) => e.currentTarget.select()}
+        className="mt-1 w-full rounded-lg border border-linea bg-panel px-3 py-2 text-xs text-tinta"
+      />
+    </div>
+  );
+}
+
 export default function Listado({ partidos }: { partidos: Fila[] }) {
   const [trabajando, setTrabajando] = useState<string | null>(null);
   const [enlaces, setEnlaces] = useState<Record<string, string>>({});
+  /* La página que ve el público, aparte de la de escribir: son dos enlaces
+     distintos y confundirlos es dejar escribir a cualquiera */
+  const [publicos, setPublicos] = useState<Record<string, string>>({});
   const [errores, setErrores] = useState<Record<string, string>>({});
   const [copiado, setCopiado] = useState<string | null>(null);
+  /* Lo marcado se pinta al momento, sin esperar al servidor: una casilla que
+     tarda medio segundo en moverse parece que no ha funcionado */
+  const [anunciados, setAnunciados] = useState<Record<string, boolean>>(() =>
+    Object.fromEntries(partidos.map((p) => [p.id, p.anunciado])),
+  );
   /* Reiniciar borra la cronología: no puede pasar de un solo toque */
   const [confirmando, setConfirmando] = useState<string | null>(null);
   /* La dirección solo se enseña si el portapapeles falla: si no, estorba */
@@ -80,6 +138,7 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
     const r = await empezarRetransmision(id);
     if (r.ok && r.ruta) {
       setEnlaces((e) => ({ ...e, [id]: `${window.location.origin}${r.ruta}` }));
+      setPublicos((e) => ({ ...e, [id]: `${window.location.origin}/directo/${id}` }));
     } else {
       setErrores((e) => ({ ...e, [id]: r.mensaje }));
     }
@@ -93,6 +152,7 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
     const r = await reiniciarRetransmision(id);
     if (r.ok && r.ruta) {
       setEnlaces((e) => ({ ...e, [id]: `${window.location.origin}${r.ruta}` }));
+      setPublicos((e) => ({ ...e, [id]: `${window.location.origin}/directo/${id}` }));
     } else {
       setErrores((e) => ({ ...e, [id]: r.mensaje }));
     }
@@ -116,10 +176,15 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
     setTrabajando(null);
   }
 
-  async function copiar(id: string) {
+  /**
+   * `clave` no es el partido sino el botón: hay dos enlaces por tarjeta y con
+   * el id a secas los dos dirían «Copiado» a la vez, que es justo la duda que
+   * no puede haber aquí.
+   */
+  async function copiar(clave: string, texto: string) {
     try {
-      await navigator.clipboard.writeText(enlaces[id]);
-      setCopiado(id);
+      await navigator.clipboard.writeText(texto);
+      setCopiado(clave);
       setTimeout(() => setCopiado(null), 2500);
     } catch {
       /*
@@ -128,7 +193,25 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
        * siempre a la vista no le dice nada a quien no es informático, y encima
        * invita a tocarla.
        */
-      setAMano(id);
+      setAMano(clave);
+    }
+  }
+
+  /**
+   * Dice si el club anuncia el partido en la portada, o deja de anunciarlo.
+   *
+   * La casilla se mueve antes de preguntar y se vuelve atrás si el servidor
+   * dice que no: el caso normal es que salga bien, y esperar por si acaso hace
+   * que parezca rota.
+   */
+  async function anunciar(id: string, quiere: boolean) {
+    setAnunciados((a) => ({ ...a, [id]: quiere }));
+    setErrores((e) => ({ ...e, [id]: "" }));
+
+    const r = await anunciarRetransmision(id, quiere);
+    if (!r.ok) {
+      setAnunciados((a) => ({ ...a, [id]: !quiere }));
+      setErrores((e) => ({ ...e, [id]: r.mensaje }));
     }
   }
 
@@ -160,9 +243,16 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
               ) : null}
               {CHIP[p.estado] ? (
                 <span
-                  className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${CHIP[p.estado]!.clase}`}
+                  className={`mt-1 mr-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${CHIP[p.estado]!.clase}`}
                 >
                   {CHIP[p.estado]!.texto}
+                </span>
+              ) : null}
+              {/* Se ve sin abrir la tarjeta: lo que hay anunciado en la portada
+                  es lo que el club ha prometido, y conviene tenerlo a la vista */}
+              {anunciados[p.id] ? (
+                <span className="mt-1 inline-block rounded-full border border-club px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-club">
+                  Anunciado
                 </span>
               ) : null}
               <p className="mt-1 text-xs text-mute">
@@ -194,19 +284,29 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
 
           {enlaces[p.id] ? (
             <div className="mt-3 rounded-xl bg-panel-2 p-3">
-              <p className="text-xs leading-relaxed text-mute">
+              {/* ------------------------------- el enlace de quien apunta */}
+              <p className="text-[11px] font-bold uppercase tracking-wide text-club-soft">
+                Para quien va al campo
+              </p>
+              <p className="mt-1 text-xs leading-relaxed text-mute">
                 Manda este enlace a quien vaya al campo. Funciona desde ya, vale
                 solo para este partido y deja de servir unas horas después de
-                acabar.
+                acabar.{" "}
+                {/* Se avisa aquí mismo: los dos enlaces se parecen mucho y
+                    publicar el que no es deja escribir a cualquiera */}
+                <strong className="font-bold text-tinta">
+                  No lo publiques en Facebook ni en grupos
+                </strong>
+                : quien lo abra puede escribir en la retransmisión.
               </p>
 
               <div className="mt-3 flex flex-wrap gap-2">
                 <button
                   type="button"
-                  onClick={() => copiar(p.id)}
+                  onClick={() => copiar(`${p.id}-escribir`, enlaces[p.id])}
                   className="btn btn-primary px-4 py-2 text-sm"
                 >
-                  {copiado === p.id ? "Copiado" : "Copiar enlace"}
+                  {copiado === `${p.id}-escribir` ? "Copiado" : "Copiar enlace"}
                 </button>
                 <a
                   href={`https://wa.me/?text=${encodeURIComponent(mensajeDe(p, enlaces[p.id]))}`}
@@ -227,19 +327,75 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
                 </a>
               </div>
 
-              {aMano === p.id ? (
-                <div className="mt-3">
-                  <p className="text-xs font-semibold text-club">
-                    Este navegador no deja copiar solo. Cópialo a mano:
-                  </p>
-                  <input
-                    readOnly
-                    value={enlaces[p.id]}
-                    onFocus={(e) => e.currentTarget.select()}
-                    className="mt-1 w-full rounded-lg border border-linea bg-panel px-3 py-2 text-xs text-tinta"
-                  />
+              <ADedo visible={aMano === `${p.id}-escribir`} valor={enlaces[p.id]} />
+
+              {/* ------------------------ el enlace que sí se puede publicar */}
+              <div className="mt-4 border-t border-linea pt-3">
+                <p className="text-[11px] font-bold uppercase tracking-wide text-club-soft">
+                  Para compartir con la gente
+                </p>
+                <p className="mt-1 text-xs leading-relaxed text-mute">
+                  Esta es la página que ve el público, y se puede publicar días
+                  antes: hasta que empiece enseña los equipos y la hora, y se va
+                  llenando sola en cuanto se apunte lo primero. Desde aquí nadie
+                  puede escribir nada.
+                </p>
+
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => copiar(`${p.id}-publico`, publicos[p.id])}
+                    className="btn btn-primary px-4 py-2 text-sm"
+                  >
+                    {copiado === `${p.id}-publico` ? "Copiado" : "Copiar enlace público"}
+                  </button>
+                  <a
+                    href={`https://wa.me/?text=${encodeURIComponent(mensajePublico(p, publicos[p.id]))}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary px-4 py-2 text-sm"
+                  >
+                    {/* No se llama igual que el de arriba a proposito: dos
+                        botones con el mismo nombre en la misma tarjeta son dos
+                        oportunidades de mandar el enlace que no era */}
+                    Compartir por WhatsApp
+                  </a>
+                  <a
+                    href={publicos[p.id]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-ghost inline-flex items-center gap-1.5 px-4 py-2 text-sm"
+                  >
+                    Ver la página
+                    <IconoFlecha size={15} />
+                  </a>
                 </div>
-              ) : null}
+
+                <ADedo visible={aMano === `${p.id}-publico`} valor={publicos[p.id]} />
+
+                {/*
+                  Anunciarlo es una decisión aparte y a mano, nunca automática:
+                  el enlace se prepara siempre, pero solo habrá directo si
+                  alguien puede pasarse el partido en la grada apuntando. Un
+                  aviso de un directo que luego no llega sienta peor que no
+                  haber dicho nada.
+                */}
+                <label className="mt-4 flex cursor-pointer items-start gap-2.5">
+                  <input
+                    type="checkbox"
+                    checked={anunciados[p.id] ?? false}
+                    onChange={(e) => anunciar(p.id, e.currentTarget.checked)}
+                    className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--club)]"
+                  />
+                  <span className="text-xs leading-relaxed text-mute">
+                    <strong className="font-bold text-tinta">
+                      Anunciar en la portada que este partido se retransmite.
+                    </strong>{" "}
+                    Márcalo solo si ya sabes que habrá alguien apuntando el
+                    partido. Se puede quitar en cualquier momento.
+                  </span>
+                </label>
+              </div>
 
               {/*
                 Empezar de cero. Va aparte y en dos pasos porque borra la

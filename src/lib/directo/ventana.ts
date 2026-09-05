@@ -31,6 +31,23 @@ export function diasDeLaVentana(ahora: Date = new Date()): string[] {
 }
 
 /**
+ * Los días en los que un partido anunciado ya puede salir en la web.
+ *
+ * Más ancha que la de los directos, y por otro motivo: un directo dura hora y
+ * media, pero anunciarlo se hace en cuanto se sabe quién va a estar en el
+ * campo, y de nada sirve un aviso que aparece la víspera. Con una semana entra
+ * el fin de semana siguiente, que es hasta donde llega el calendario publicado.
+ *
+ * Sigue estando acotada: sin tope, el coste de saber qué hay anunciado crecería
+ * con el historial de toda la temporada.
+ */
+export function diasAnunciables(ahora: Date = new Date(), dias = 8): string[] {
+  return Array.from({ length: dias + 2 }, (_, i) =>
+    enMadrid(ahora.getTime() + (i - 1) * 86_400_000),
+  );
+}
+
+/**
  * De todo lo guardado, qué identificadores caen en esos días.
  *
  * Se decide por el **nombre del archivo**, antes de leer ninguno: el

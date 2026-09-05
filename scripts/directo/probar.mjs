@@ -16,7 +16,7 @@
 import { plegar, minutoEn, hayRetransmision } from "../../src/lib/directo/modelo.ts";
 import { contar, partesJugadas, hayAlgoQueContar } from "../../src/lib/directo/estadisticas.ts";
 import { minutosPorParte } from "../../src/lib/directo/reglamento.ts";
-import { diasDeLaVentana, idsDeLaVentana } from "../../src/lib/directo/ventana.ts";
+import { diasAnunciables, diasDeLaVentana, idsDeLaVentana } from "../../src/lib/directo/ventana.ts";
 import { seVeEnElPanel } from "../../src/lib/directo/panel.ts";
 
 const T0 = Date.parse("2026-09-06T12:00:00Z");
@@ -78,6 +78,25 @@ comprobar(
   ["primer-equipo-2026-09-06", "juvenil-2026-09-06"],
 );
 comprobar("y ninguna si no hay nada de estos dias", idsDeLaVentana(guardadas, ["2026-12-25"]), []);
+
+/*
+ * Los anuncios se ponen con dias de antelacion, asi que su ventana es mas
+ * ancha: un aviso que solo apareciera la vispera no le sirve a nadie.
+ */
+const paraAnunciar = diasAnunciables(new Date("2026-09-06T22:30:00Z"), 8);
+comprobar("la ventana de anuncios llega ocho dias por delante", paraAnunciar.at(-1), "2026-09-15");
+comprobar("y sigue cubriendo ayer", paraAnunciar[0], "2026-09-06");
+comprobar("son diez dias contados", paraAnunciar.length, 10);
+comprobar(
+  "un partido del sabado que viene entra en la de anuncios",
+  idsDeLaVentana(["directo/cadete-2026-09-12.json"], paraAnunciar),
+  ["cadete-2026-09-12"],
+);
+comprobar(
+  "pero no en la de directos",
+  idsDeLaVentana(["directo/cadete-2026-09-12.json"], nocheDelSabado),
+  [],
+);
 
 /* ---------------------------- que sale en el panel de directos */
 

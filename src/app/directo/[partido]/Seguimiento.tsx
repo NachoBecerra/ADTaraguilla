@@ -103,9 +103,21 @@ export default function Seguimiento({
     return () => clearInterval(reloj);
   }, [terminado]);
 
+  /*
+   * Que haya alguien contando el partido no es lo mismo que que el partido haya
+   * empezado. El enlace se comparte días antes, así que hasta que se apunta lo
+   * primero esto decía «En directo · Aún no ha empezado», que es una
+   * contradicción en la misma línea.
+   */
+  const enMarcha = hayRetransmision(estado);
+
   const estadoTexto =
     estado.fase === "sin-empezar"
-      ? "Aún no ha empezado"
+      ? enMarcha
+        ? "Aún no ha empezado"
+        : partido.hora
+          ? `Empieza a las ${partido.hora}`
+          : "Hora sin fijar"
       : terminado
         ? "Final"
         : estado.fase === "descanso"
@@ -132,13 +144,13 @@ export default function Seguimiento({
           <span className="inline-flex items-center gap-2 text-club-claro">
             {/* El punto late mientras se está retransmitiendo, aunque el
                 partido no haya arrancado: alguien está contando algo */}
-            {!terminado && hayRetransmision(estado) ? (
+            {!terminado && enMarcha ? (
               <span
                 aria-hidden
                 className="inline-block h-2 w-2 animate-pulse rounded-full bg-club-claro"
               />
             ) : null}
-            {terminado ? "Terminado" : "En directo"}
+            {terminado ? "Terminado" : enMarcha ? "En directo" : "Se retransmite aquí"}
           </span>
           {/* El minuto lo cuenta este navegador con su hora: no tiene por qué
               coincidir con el que pintó el servidor, y no es un error */}
@@ -153,8 +165,10 @@ export default function Seguimiento({
             <span className="text-sm font-semibold leading-tight">{partido.local}</span>
           </div>
 
+          {/* Antes de que se apunte nada no hay marcador que enseñar: un
+              «0 - 0» se lee como que el partido va empatado */}
           <span className="title shrink-0 text-4xl leading-none tabular-nums">
-            {estado.goles.local} - {estado.goles.visitante}
+            {enMarcha ? `${estado.goles.local} - ${estado.goles.visitante}` : "VS"}
           </span>
 
           <div className="flex min-w-0 flex-1 flex-col items-center gap-2 text-center">
@@ -206,6 +220,17 @@ export default function Seguimiento({
       {/* Antes de la cronología: las cuentas resumen lo mismo que la lista, y
           quien las quiere las quiere en vez de leerse la lista entera */}
       <EstadisticasDirecto linea={estado.linea} partido={partido} />
+
+      {/* Quien llega antes del partido no ve nada y no sabe si se ha
+          equivocado de sitio: se le dice que está en el sitio bueno */}
+      {!enMarcha ? (
+        <p className="mt-3 rounded-xl border border-linea bg-panel-2 p-3 text-xs leading-relaxed text-mute">
+          Todavía no ha empezado.{" "}
+          <strong className="font-bold text-tinta">Guarda esta página</strong>: en
+          cuanto empiece el partido, esto se va actualizando solo sin tener que
+          recargar.
+        </p>
+      ) : null}
 
       <h2 className="title mt-6 text-xl text-tinta">Cómo va</h2>
       <Cronologia linea={estado.linea} partido={partido} />

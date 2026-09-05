@@ -76,7 +76,9 @@ const leerEnServidor = () => VACIO;
  */
 function useDirecto(equipo: string): ResumenDirecto | undefined {
   const todos = useSyncExternalStore(suscribir, leer, leerEnServidor);
-  return todos.find((d) => d.equipo === equipo);
+  /* Solo lo que ya tiene algo escrito: un partido anunciado para el sábado no
+     puede encender un «en directo» el jueves */
+  return todos.find((d) => d.equipo === equipo && d.hayContenido);
 }
 
 /**
@@ -149,7 +151,10 @@ export function CentroDelPartido({
 }) {
   const d = useDirectoDePartido(equipo, fecha);
 
-  if (!d) {
+  /* Anunciado pero sin nada apuntado todavía es un partido por jugar, así que
+     sigue enseñando el VS y la hora: un «0 - 0» el jueves se leería como que el
+     partido va empatado */
+  if (!d || !d.hayContenido) {
     return (
       <>
         <span className="title text-3xl text-club sm:text-4xl">VS</span>
@@ -208,6 +213,27 @@ export function AvisoDelPartido({
 }) {
   const d = useDirectoDePartido(equipo, fecha);
   const ahora = useAhora();
+
+  /*
+   * Anunciado y todavía sin empezar. El enlace ya funciona: enseña los escudos,
+   * la hora y una cronología vacía, y se va llenando solo cuando alguien
+   * empiece a apuntar. Por eso se puede dar antes, y por eso el aviso lleva
+   * enlace en vez de pedir que se vuelva luego.
+   */
+  if (d && !d.hayContenido) {
+    return (
+      <div className="mt-4">
+        {/* Sin el punto rojo, que ese quiere decir «está pasando ahora» */}
+        <Link href={`/directo/${d.id}`} className="btn btn-ghost w-full gap-2 py-3 text-sm">
+          Este partido se retransmite
+          <IconoFlecha size={16} />
+        </Link>
+        <p className="mt-2 text-center text-xs leading-relaxed text-mute">
+          Lo contaremos aquí minuto a minuto. Empieza cuando empiece el partido.
+        </p>
+      </div>
+    );
+  }
 
   if (d) {
     const enJuego = d.fase !== "final";
@@ -330,7 +356,10 @@ export function BandaDirecto({
  * No ocupa nada cuando no hay partido: no se pinta.
  */
 export function DirectosAhora({ omitir }: { omitir?: string | null } = {}) {
-  const puestos = useSyncExternalStore(suscribir, leer, leerEnServidor);
+  const todosLosAvisos = useSyncExternalStore(suscribir, leer, leerEnServidor);
+  /* Aquí solo lo que se está contando ya: los anunciados los enseña la tarjeta
+     de su partido, y esta sección dice «ahora mismo» */
+  const puestos = todosLosAvisos.filter((d) => d.hayContenido);
 
   /* Se salta el PARTIDO que ya enseña una tarjeta de esta misma página, no
      todos los del equipo: si no, un amistoso del mismo equipo desaparecería

@@ -1,6 +1,6 @@
 import { leerRegistro, listarRegistros } from "@/lib/directo/almacen";
 import { hayRetransmision, minutoEn, plegar, type Fase } from "@/lib/directo/modelo";
-import { diasDeLaVentana, idsDeLaVentana } from "@/lib/directo/ventana";
+import { diasAnunciables, diasDeLaVentana, idsDeLaVentana } from "@/lib/directo/ventana";
 import { getEquipo, partidosDe } from "@/lib/competicion";
 
 /**
@@ -26,6 +26,15 @@ export type ResumenDirecto = {
   fase: Fase;
   /** El minuto tal y como se pinta: "37'" o "45+2". */
   minuto: string;
+  /**
+   * ¿Hay algo apuntado ya, o solo está anunciado?
+   *
+   * Separa las dos cosas que la web enseña distinto: «hoy hay directo», que es
+   * una promesa para más tarde, y «en directo», que es un partido en marcha.
+   * No vale mirar la fase: un aviso escrito antes del saque deja la fase en
+   * «sin empezar» y sin embargo eso ya es un directo.
+   */
+  hayContenido: boolean;
   version: number;
 };
 
@@ -69,6 +78,7 @@ type ResumenInterno = ResumenDirecto & {
   terminadoHace: number;
   desdeLoPrimero: number;
   hayQueEnsenar: boolean;
+  anunciado: boolean;
   oficial: boolean;
 };
 
@@ -85,7 +95,10 @@ function resumir(registro: Awaited<ReturnType<typeof leerRegistro>>): ResumenInt
   return {
     terminadoHace: estado.finMs === null ? 0 : Date.now() - estado.finMs,
     desdeLoPrimero: primero === null ? 0 : Date.now() - primero,
-    hayQueEnsenar: hayRetransmision(estado),
+    /* Se enseña si hay algo apuntado o si el club lo ha anunciado a mano */
+    hayQueEnsenar: hayRetransmision(estado) || Boolean(registro.anunciado),
+    hayContenido: hayRetransmision(estado),
+    anunciado: Boolean(registro.anunciado),
     oficial: hayResultadoOficial(registro.partido.equipo, registro.partido.fecha),
     id: registro.partido.id,
     equipo: registro.partido.equipo,
@@ -99,19 +112,41 @@ function resumir(registro: Awaited<ReturnType<typeof leerRegistro>>): ResumenInt
   };
 }
 
-/** Partidos con retransmisión abierta ahora mismo. */
+/**
+ * Partidos con retransmisión abierta ahora mismo, y los que están anunciados.
+ *
+ * Son dos cosas distintas y llegan juntas porque las pinta la misma tarjeta.
+ * Se distinguen por `hayContenido`: lo anunciado todavía no tiene nada escrito
+ * y no puede enseñarse como si se estuviera jugando.
+ */
 export async function directosDeHoy(ahora = new Date()): Promise<ResumenDirecto[]> {
   const rutas = await listarRegistros();
-  const candidatos = idsDeLaVentana(rutas, diasDeLaVentana(ahora));
+
+  /* Un anuncio se pone días antes, así que se mira más lejos que para los
+     directos; pero solo para eso, que lo demás sigue siendo de estos días */
+  const cerca = new Set(idsDeLaVentana(rutas, diasDeLaVentana(ahora)));
+  const candidatos = idsDeLaVentana(rutas, diasAnunciables(ahora));
 
   const resumenes = await Promise.all(candidatos.map((id) => leerRegistro(id).then(resumir)));
 
   return resumenes
+    .filter((r): r is ResumenInterno => {
+      if (r === null) return false;
+
+      /*
+       * De los días que aún no han llegado solo sale el anuncio, y solo si no
+       * tiene nada escrito: una prueba hecha hoy sobre el partido del sábado
+       * que viene no puede aparecer en la portada como un partido en juego.
+       */
+      if (!cerca.has(r.id)) return r.anunciado && !r.hayContenido;
+
+      return true;
+    })
     .filter(
       (r): r is ResumenInterno =>
-        r !== null &&
-        // Abierto y con la cronología vacía no es un directo: no hay nada que
-        // enseñar. Basta un comentario para que lo sea, aunque no se haya pitado
+        // Abierto y con la cronología vacía no es un directo, salvo que el club
+        // lo haya anunciado. Basta un comentario para que lo sea, aunque no se
+        // haya pitado
         r.hayQueEnsenar &&
         // En cuanto la RFAF publica el resultado, el directo ha cumplido
         !r.oficial &&
@@ -127,6 +162,7 @@ export async function directosDeHoy(ahora = new Date()): Promise<ResumenDirecto[
       delete interno.terminadoHace;
       delete interno.desdeLoPrimero;
       delete interno.hayQueEnsenar;
+      delete interno.anunciado;
       delete interno.oficial;
       return resumen;
     });

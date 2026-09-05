@@ -61,6 +61,16 @@ export type Registro = {
    * entero en cuanto pulsara cualquier cosa.
    */
   abierto: string;
+  /**
+   * El club ha dicho en la web que este partido se va a retransmitir.
+   *
+   * Es una decisión aparte de abrir la retransmisión, y a propósito: abrirla
+   * solo prepara el enlace, y muchos partidos se quedan sin retransmitir
+   * porque nadie puede estar en la grada apuntando. Anunciar un directo que
+   * luego no llega es peor que no anunciarlo, así que se marca a mano y solo
+   * cuando ya se sabe que habrá alguien.
+   */
+  anunciado?: boolean;
 };
 
 const CARPETA = "directo";
@@ -108,9 +118,29 @@ export async function borrarRegistro(id: string): Promise<void> {
 /* ----------------------------------------------------------------- escritura */
 
 /** Un partido recién abierto: sin nada apuntado todavía. */
-function enBlanco(partido: FichaPartido): Registro {
+function enBlanco(partido: FichaPartido, anunciado = false): Registro {
   const ahora = new Date().toISOString();
-  return { partido, eventos: [], version: 1, actualizado: ahora, abierto: ahora };
+  return { partido, eventos: [], version: 1, actualizado: ahora, abierto: ahora, anunciado };
+}
+
+/**
+ * Dice si el club anuncia este partido en la web, o deja de anunciarlo.
+ *
+ * Se lee y se vuelve a escribir en vez de escribir a ciegas: aquí puede haber
+ * una retransmisión en marcha, y machacarla con un registro vacío por cambiar
+ * una casilla sería perder el partido entero.
+ */
+export async function marcarAnuncio(id: string, anunciado: boolean): Promise<boolean> {
+  const registro = await leer(id);
+  if (!registro) return false;
+  if (Boolean(registro.anunciado) === anunciado) return true;
+
+  return escribir({
+    ...registro,
+    anunciado,
+    version: registro.version + 1,
+    actualizado: new Date().toISOString(),
+  });
 }
 
 /**
@@ -125,7 +155,13 @@ function enBlanco(partido: FichaPartido): Registro {
  * a mandar todo lo viejo y el reinicio no serviría de nada.
  */
 export async function reiniciarRegistro(partido: FichaPartido): Promise<Registro | null> {
-  const nuevo = enBlanco(partido);
+  /* El anuncio sobrevive al reinicio. No es algo apuntado del partido, es una
+     decisión del club sobre la portada: quien borra una prueba del sábado por
+     la mañana no está diciendo que ya no vaya a haber directo, y que el aviso
+     desapareciera sin avisar sería peor que dejarlo. Para quitarlo está la
+     casilla. */
+  const previo = await leer(partido.id);
+  const nuevo = enBlanco(partido, Boolean(previo?.anunciado));
   return (await escribir(nuevo)) ? nuevo : null;
 }
 

@@ -6,6 +6,7 @@ import {
   borrarRegistro,
   leerRegistro,
   listarRegistros,
+  marcarAnuncio,
   reiniciarRegistro,
   type FichaPartido,
 } from "@/lib/directo/almacen";
@@ -117,6 +118,40 @@ export async function reiniciarRetransmision(id: string): Promise<Resultado> {
     ok: true,
     mensaje: "Retransmisión reiniciada.",
     ruta: `/directo/${id}/escribir?t=${encodeURIComponent(token)}`,
+  };
+}
+
+/**
+ * Anuncia en la web que este partido se va a retransmitir, o retira el anuncio.
+ *
+ * Se marca a mano y nunca solo. Abrir la retransmisión no significa que vaya a
+ * haberla: el enlace se prepara siempre por si acaso, pero estar hora y media
+ * en la grada apuntando goles hace falta que alguien pueda, y en muchos
+ * partidos no habrá nadie. Prometer un directo que luego no llega deja peor
+ * sabor que no haber dicho nada, así que esto solo se activa cuando ya se sabe
+ * quién va a estar.
+ *
+ * Quitarlo tiene que ser igual de fácil: si la persona falla a última hora, se
+ * desmarca y el aviso desaparece de la portada.
+ */
+export async function anunciarRetransmision(
+  id: string,
+  anunciado: boolean,
+): Promise<Resultado> {
+  if (!(await haySesion())) {
+    return { ok: false, mensaje: "La sesión ha caducado. Vuelve a entrar." };
+  }
+
+  if (!(await marcarAnuncio(id, anunciado))) {
+    return {
+      ok: false,
+      mensaje: "No se ha podido guardar. Abre la retransmisión y vuelve a probar.",
+    };
+  }
+
+  return {
+    ok: true,
+    mensaje: anunciado ? "Anunciado en la web." : "Anuncio retirado.",
   };
 }
 
@@ -257,25 +292,32 @@ export async function equiposDelClub(): Promise<{ id: string; nombre: string }[]
   return getEquipos().map((e) => ({ id: e.id, nombre: e.nombre }));
 }
 
+/** Cómo está cada partido en el panel: su punto y si el club lo anuncia. */
+export type SituacionPanel = { estado: EstadoPanel; anunciado: boolean };
+
 /** En qué punto está la retransmisión de cada partido. */
 export async function estadoDeRetransmisiones(
   ids: string[],
-): Promise<Record<string, EstadoPanel>> {
+): Promise<Record<string, SituacionPanel>> {
   const pares = await Promise.all(
-    ids.map(async (id): Promise<[string, EstadoPanel]> => {
+    ids.map(async (id): Promise<[string, SituacionPanel]> => {
       const registro = await leerRegistro(id);
-      if (!registro) return [id, "sin-abrir"];
+      if (!registro) return [id, { estado: "sin-abrir", anunciado: false }];
 
+      const anunciado = Boolean(registro.anunciado);
       const estado = plegar(registro.eventos, registro.partido.minutosPorParte);
 
       /* «Abierta» es la que no tiene nada escrito. En cuanto hay algo —aunque
          sea un aviso antes del saque— la retransmisión ya se ve en la web */
-      if (!hayRetransmision(estado)) return [id, "abierta"];
-      if (estado.finMs === null) return [id, "en-directo"];
+      if (!hayRetransmision(estado)) return [id, { estado: "abierta", anunciado }];
+      if (estado.finMs === null) return [id, { estado: "en-directo", anunciado }];
 
       return [
         id,
-        Date.now() - estado.finMs > TRAS_EL_FINAL_MS ? "caducada" : "terminada",
+        {
+          estado: Date.now() - estado.finMs > TRAS_EL_FINAL_MS ? "caducada" : "terminada",
+          anunciado,
+        },
       ];
     }),
   );

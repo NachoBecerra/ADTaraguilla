@@ -42,7 +42,7 @@ export default async function PanelDirecto() {
 
   const partidos: Fila[] = candidatos
     .filter(({ ficha }) =>
-      seVeEnElPanel(estados[ficha.id] ?? "sin-abrir", ficha.fecha, hoyEnMadrid()),
+      seVeEnElPanel(estados[ficha.id]?.estado ?? "sin-abrir", ficha.fecha, hoyEnMadrid()),
     )
     .map(({ ficha }) => ({
       id: ficha.id,
@@ -52,7 +52,8 @@ export default async function PanelDirecto() {
       fecha: ficha.fecha,
       hora: ficha.hora,
       campo: ficha.campo,
-      estado: estados[ficha.id] ?? "sin-abrir",
+      estado: estados[ficha.id]?.estado ?? "sin-abrir",
+      anunciado: estados[ficha.id]?.anunciado ?? false,
       amistoso: ficha.amistoso === true,
     }));
 
