@@ -1,4 +1,12 @@
-import { borrarJson, crearJson, escribirJson, leerJson, listarJson } from "@/lib/directo/deposito";
+import {
+  almacenEnDisco,
+  borrarJson,
+  crearJson,
+  escribirJson,
+  leerJson,
+  listarJson,
+} from "@/lib/directo/deposito";
+import { revalidateTag, unstable_cache } from "next/cache";
 import { MAX_EVENTOS, type Evento } from "@/lib/directo/modelo";
 import { borrarSeguidores } from "@/lib/directo/seguidores";
 
@@ -92,6 +100,18 @@ export const llaveDe = (registro: { llave?: number } | null | undefined): number
   registro?.llave && registro.llave > 0 ? registro.llave : 1;
 
 const CARPETA = "directo";
+
+/**
+ * Cada cuánto se vuelve a pedir la lista del almacén, como mucho.
+ *
+ * Larga a propósito, porque no es la que manda: la lista se tira en cuanto se
+ * abre o se borra una retransmisión, que son las dos únicas cosas que la
+ * cambian. Esto es solo la red de seguridad por si alguna vez se colara un
+ * cambio por otro sitio.
+ */
+const VIGENCIA_LISTA_S = 4 * 3600;
+
+const ETIQUETA_LISTA = "directo-rutas";
 const rutaDe = (id: string) => `${CARPETA}/${id}.json`;
 
 /* ------------------------------------------------------------ almacenamiento */
@@ -111,8 +131,55 @@ const crear = (r: Registro) => crearJson(rutaDe(r.partido.id), r);
  * llamara a `listarPrivado` desde fuera, el respaldo en disco de desarrollo se
  * saltaría y en local no se encontraría nunca nada.
  */
+const listaCacheada = unstable_cache(() => listarJson(CARPETA), [ETIQUETA_LISTA], {
+  tags: [ETIQUETA_LISTA],
+  revalidate: VIGENCIA_LISTA_S,
+});
+
 export async function listarRegistros(): Promise<string[]> {
-  return listarJson(CARPETA);
+  /* Contra el disco no hay nada que ahorrar, y una caché rompería las pruebas,
+     que borran la carpeta entre suite y suite */
+  return almacenEnDisco ? listarJson(CARPETA) : listaCacheada();
+}
+
+/**
+ * Tira la lista guardada. Se llama al abrir o al borrar una retransmisión.
+ *
+ * Solo puede llamarse desde una acción de servidor o una ruta de API, que es de
+ * donde vienen las dos cosas que cambian la lista.
+ */
+function olvidarLista(): void {
+  /* En disco no hay lista guardada que tirar, y hacerlo igualmente le da un
+     repaso de mas al router de Next en desarrollo */
+  if (almacenEnDisco) return;
+
+  try {
+    /* `expire: 0`: no vale servir la lista vieja mientras se rehace. Un partido
+       que se acaba de abrir tiene que salir ya, y esto pasa cuatro veces por
+       semana, no cuatro veces por minuto */
+    revalidateTag(ETIQUETA_LISTA, { expire: 0 });
+  } catch {
+    // Fuera de una acción no se puede, y tampoco hace falta: caduca sola
+  }
+}
+
+/**
+ * Se asegura de que este partido esté en la lista guardada.
+ *
+ * La lista se tira al abrir una retransmisión, que es cuando cambia. Esto es lo
+ * que pasa si aquello falla: en cuanto se apunta la primera jugada se comprueba
+ * que el partido figura, y si no, se tira la lista.
+ *
+ * Parece de más y no lo es. La lista guardada dura horas, y lo que decide es si
+ * la portada enseña el partido: quedarse fuera significaría un directo que se
+ * está escribiendo y que nadie ve. Comprobarlo no cuesta nada —la lista ya está
+ * guardada— y en el caso normal no hace nada.
+ */
+async function asegurarEnLista(id: string): Promise<void> {
+  if (almacenEnDisco) return;
+
+  const rutas = await listarRegistros();
+  if (!rutas.includes(rutaDe(id))) olvidarLista();
 }
 
 /* ------------------------------------------------------------------ lectura */
@@ -129,6 +196,7 @@ export const leerRegistro = leer;
  */
 export async function borrarRegistro(id: string): Promise<void> {
   await borrarJson(rutaDe(id));
+  olvidarLista();
   // Y su cuenta de seguidores: borrar un amistoso no puede dejar restos
   await borrarSeguidores(id);
 }
@@ -232,7 +300,11 @@ export async function abrirRegistro(partido: FichaPartido): Promise<Registro> {
   if (existente) return existente;
 
   const nuevo = enBlanco(partido);
-  if (await crear(nuevo)) return nuevo;
+  if (await crear(nuevo)) {
+    // Hay un partido más en el almacén: la lista guardada ya no vale
+    olvidarLista();
+    return nuevo;
+  }
 
   /*
    * No se ha podido crear, casi siempre porque ya existía y la lectura de
@@ -287,5 +359,9 @@ export async function anotarEventos(
   };
 
   if (!(await escribir(actualizado))) return null;
+
+  /* Y de paso, que la portada se entere de que este partido existe */
+  await asegurarEnLista(registro.partido.id);
+
   return actualizado;
 }

@@ -27,6 +27,16 @@ import {
 
 const enDisco = !hayAlmacenPrivado && process.env.NODE_ENV !== "production";
 
+/**
+ * Si lo del directo se está guardando en disco en vez de en el almacén.
+ *
+ * Lo mira quien decide si merece la pena cachear: cachear existe para no gastar
+ * operaciones del almacén, y contra el disco no hay nada que ahorrar. Además,
+ * en local las pruebas borran la carpeta a mano entre una y otra, y una caché
+ * les enseñaría partidos que ya no existen.
+ */
+export const almacenEnDisco = enDisco;
+
 const RAIZ_LOCAL = path.join(process.cwd(), ".next", "cache");
 const enLocal = (ruta: string) => path.join(RAIZ_LOCAL, ruta);
 

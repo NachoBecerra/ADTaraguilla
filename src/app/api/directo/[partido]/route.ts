@@ -41,7 +41,24 @@ export async function GET(peticion: Request, { params }: Contexto): Promise<Resp
   }
 
   return Response.json(registro, {
-    headers: { ETag: etag, "Cache-Control": "no-store" },
+    headers: {
+      ETag: etag,
+      /*
+       * Unos segundos de caché de CDN, y son los que sostienen todo lo demás.
+       *
+       * Cada persona que sigue el partido pregunta cada cinco segundos, así que
+       * sin esto el almacén recibía una lectura por espectador y por pregunta:
+       * diez personas mirando eran ciento veinte lecturas por minuto, y el plan
+       * gratuito de Vercel Blob trae diez mil al mes. Con la caché, el almacén
+       * ve unas siete por minuto **haya diez personas o haya trescientas**.
+       *
+       * Lo que se paga a cambio son unos segundos de retraso en los goles. El
+       * reloj no: ese lo cuenta el navegador desde la hora del saque.
+       */
+      "Vercel-CDN-Cache-Control": "public, s-maxage=8, stale-while-revalidate=20",
+      "CDN-Cache-Control": "public, s-maxage=8, stale-while-revalidate=20",
+      "Cache-Control": "no-store",
+    },
   });
 }
 

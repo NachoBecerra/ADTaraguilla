@@ -27,8 +27,8 @@ export async function GET(): Promise<Response> {
          * cualquier otra capa por delante. Al navegador no se le deja guardar
          * nada: quien mira quiere el marcador de ahora.
          */
-        "Vercel-CDN-Cache-Control": "public, s-maxage=15, stale-while-revalidate=30",
-        "CDN-Cache-Control": "public, s-maxage=15, stale-while-revalidate=30",
+        "Vercel-CDN-Cache-Control": "public, s-maxage=30, stale-while-revalidate=60",
+        "CDN-Cache-Control": "public, s-maxage=30, stale-while-revalidate=60",
         "Cache-Control": "no-store",
       },
     },
