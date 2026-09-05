@@ -23,8 +23,15 @@ import ContadorSeguidores from "@/components/ContadorSeguidores";
  * así que casi todas las respuestas son "nada nuevo", sin cuerpo.
  */
 
-/** Cada cuánto se pregunta mientras se juega. */
-const CADA_MS = 5_000;
+/**
+ * Cada cuánto se pregunta mientras se juega.
+ *
+ * Diez segundos, y no menos, porque la respuesta se guarda ocho segundos en la
+ * red de Vercel: preguntar cada cinco no traía nada más reciente, solo el doble
+ * de peticiones. Con doscientas personas siguiendo el partido eso son un cuarto
+ * de millón de peticiones en una tarde, de un millón que trae el plan al mes.
+ */
+const CADA_MS = 10_000;
 
 /** Y cuando ya terminó: solo por si hay una corrección. */
 const CADA_MS_TERMINADO = 30_000;

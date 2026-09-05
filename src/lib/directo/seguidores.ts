@@ -55,6 +55,24 @@ function olvidarCuenta(partido: string): void {
 }
 
 /**
+ * Si se cuentan las visitas.
+ *
+ * **Apagado a propósito, y esto se vuelve a encender.** Anotar una visita
+ * cuesta una escritura en el almacén, y una escritura es de las operaciones que
+ * Vercel cuenta como avanzadas: el plan gratuito trae 2.000 al mes. Un partido
+ * con doscientas personas son doscientas escrituras, y el mes en curso llegó al
+ * 6 de septiembre de 2026 con unas 280 libres. Pasarse no es pagar de más: es
+ * quedarse **treinta días sin almacén**, o sea sin directo, sin panel y sin
+ * fotos.
+ *
+ * Así que la cifra de seguidores se queda fuera del primer partido del senior
+ * para que el partido salga. En cuanto el ciclo se reinicie se pone en `true`:
+ * con el conteo puesto al día por vigencia y no por visita, un partido de
+ * doscientas personas cuesta unas doscientas operaciones, un 10% del mes.
+ */
+const CONTAR_SEGUIDORES = false;
+
+/**
  * Tope de visitas anotadas.
  *
  * Pasado eso el número se queda quieto. Un partido de este club no va a
@@ -88,17 +106,22 @@ export async function cuantosSiguen(partido: string): Promise<number> {
  */
 export async function anotarSeguidor(partido: string, id: string): Promise<number> {
   const antes = await cuantosSiguen(partido);
-  if (antes >= MAXIMO) return antes;
+  if (!CONTAR_SEGUIDORES || antes >= MAXIMO) return antes;
 
   const nueva = await crearJson(`${carpeta(partido)}/${id}.json`, {
     visto: new Date().toISOString(),
   });
   if (!nueva) return antes; // ya estaba: es alguien que recarga
 
-  /* Hay uno más: la cuenta guardada deja de valer y se vuelve a contar en la
-     siguiente pregunta. Pasa una vez por persona, no una por pregunta */
-  olvidarCuenta(partido);
-
+  /*
+   * La cuenta guardada **no** se tira aquí, y es a propósito.
+   *
+   * Tirarla por cada persona que llega significa volver a listar la carpeta por
+   * cada persona que llega, y listar es de las operaciones caras. Se deja que
+   * caduque sola: la cifra va con retraso, y para un «lo siguieron 180
+   * personas» eso no le importa a nadie. Lo que sí importaría es quedarse sin
+   * almacén a mitad de partido.
+   */
   return antes + 1;
 }
 

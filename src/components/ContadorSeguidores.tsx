@@ -15,8 +15,14 @@ import { useEffect, useState } from "react";
  * veces a quien recarga y para nada más. Nada que permita seguir a una persona.
  */
 
-/** Cada cuánto se vuelve a preguntar la cifra mientras la pantalla está abierta. */
-const CADA_MS = 60_000;
+/**
+ * Cada cuánto se vuelve a preguntar la cifra mientras la pantalla está abierta.
+ *
+ * Cinco minutos, no uno: es una cifra que solo sube y que nadie mira fijamente.
+ * Con doscientas personas siguiendo el partido, cada pregunta son doscientas
+ * peticiones más, y de esas el plan gratuito trae un millón al mes.
+ */
+const CADA_MS = 300_000;
 
 const clave = (partido: string) => `directo-visita-${partido}`;
 
