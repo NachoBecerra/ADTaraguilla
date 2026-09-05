@@ -10,8 +10,45 @@ export default function Acceso() {
     <section className="mx-auto max-w-sm px-5 py-16">
       <p className="eyebrow">Panel del club</p>
       <h1 className="title mt-2 text-4xl text-tinta">Acceso</h1>
-      <p className="mt-3 text-sm text-mute">
-        Para publicar noticias y subir fotos a la galería.
+
+      {/*
+        Esta pantalla la ve sobre todo quien NO tiene la contraseña: llega desde
+        el engranaje de la cabecera por curiosidad. Antes solo decía «para
+        publicar noticias y subir fotos», y con eso nadie se hacía una idea de
+        lo que el club lleva desde aquí. Contarlo no cuesta nada —lo que protege
+        el panel es la contraseña, no el secreto— y de paso explica por qué la
+        web está siempre al día.
+      */}
+      <p className="mt-3 text-sm leading-relaxed text-mute">
+        Desde aquí la gente del club mantiene la web al día, sin saber de
+        informática y desde el móvil:
+      </p>
+
+      <ul className="mt-4 space-y-3 text-sm leading-relaxed text-mute">
+        <li className="border-l-2 border-club-claro pl-3">
+          <strong className="font-bold text-tinta">Retransmitir un partido.</strong>{" "}
+          Goles, tarjetas y comentarios según pasan, desde la banda. Quien no
+          puede ir al campo lo sigue al momento.
+        </li>
+        <li className="border-l-2 border-club-claro pl-3">
+          <strong className="font-bold text-tinta">Publicar noticias.</strong>{" "}
+          Con sus fotos, que van también a la galería.
+        </li>
+        <li className="border-l-2 border-club-claro pl-3">
+          <strong className="font-bold text-tinta">Subir fotos.</strong>{" "}
+          De un partido o de una presentación, agrupadas y asignadas a su
+          equipo.
+        </li>
+      </ul>
+
+      {/*
+        Lo que más se malinterpreta: mucha gente da por hecho que alguien copia
+        los resultados a mano, y de ahí que pregunten por qué no está puesto ya.
+      */}
+      <p className="mt-4 rounded-xl bg-panel-2 p-3 text-xs leading-relaxed text-mute">
+        Los resultados, las clasificaciones y el calendario{" "}
+        <strong className="font-semibold text-tinta">no se tocan aquí</strong>:
+        llegan solos desde la RFAF varias veces al día. Nadie los escribe a mano.
       </p>
 
       <form action={accion} className="mt-8">
@@ -38,6 +75,13 @@ export default function Acceso() {
           {enviando ? "Comprobando…" : "Entrar"}
         </button>
       </form>
+
+      {/* Para quien debería tenerla y no la tiene: sin esto, la pantalla es un
+          muro sin salida */}
+      <p className="mt-5 text-xs leading-relaxed text-mute">
+        Es una sola contraseña para todo el club. Si eres del club y no la
+        tienes, pídesela a la directiva.
+      </p>
     </section>
   );
 }
