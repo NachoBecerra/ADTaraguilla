@@ -15,7 +15,7 @@ import type { Registro } from "@/lib/directo/almacen";
 import CampoQueCrece from "@/components/CampoQueCrece";
 import Cronologia from "@/components/Cronologia";
 import ContadorSeguidores from "@/components/ContadorSeguidores";
-import { recordarMando } from "@/components/VolverAlDirecto";
+import { olvidarMando, recordarMando } from "@/components/VolverAlDirecto";
 
 /**
  * La pantalla de quien está en el campo.
@@ -134,6 +134,28 @@ const clave = (partido: string, abierto: string) => `${PREFIJO}${partido}-${abie
  *
  * Diez es holgado: un descuento largo de verdad son seis o siete.
  */
+/**
+ * Por qué esta pantalla ha dejado de servir.
+ *
+ * Se dice el motivo de verdad en cada caso. Quien está en la banda con el móvil
+ * en la mano necesita saber si tiene que recargar, si ya no hay nada que hacer
+ * o si hay un enlace nuevo que pedir; un «error» a secas le deja pulsando.
+ */
+const TITULO_CIERRE = {
+  reiniciado: "Este partido se ha reiniciado.",
+  cerrado: "Este partido ya está cerrado.",
+  revocado: "Este enlace ya no vale.",
+} as const;
+
+const MOTIVO_CIERRE = {
+  reiniciado:
+    "Alguien lo ha empezado de cero desde el panel del club, así que desde aquí ya no se puede apuntar nada. Recarga la página para seguir.",
+  cerrado:
+    "Pasan unas horas desde el final y la retransmisión se cierra sola. La cronología sigue publicada; para cambiar algo, pide un enlace nuevo en el panel del club.",
+  revocado:
+    "El club ha generado un enlace nuevo para este partido. La retransmisión sigue adelante con todo lo apuntado: pide el enlace nuevo y podrás seguir desde donde iba.",
+} as const;
+
 const DESCUENTO_LARGO = 10;
 
 /**
@@ -205,10 +227,10 @@ export default function Botonera({
   const version = useRef(inicial.version);
   const etag = useRef<string | null>(null);
   /**
-   * Motivos por los que esta pantalla deja de servir del todo. En los dos casos
-   * no es un fallo pasajero: no tiene sentido seguir pulsando.
+   * Motivos por los que esta pantalla deja de servir del todo. En los tres
+   * casos no es un fallo pasajero: no tiene sentido seguir pulsando.
    */
-  const [cierre, setCierre] = useState<null | "reiniciado" | "cerrado">(null);
+  const [cierre, setCierre] = useState<null | "reiniciado" | "cerrado" | "revocado">(null);
 
   /* Dar el partido por terminado cierra el directo: se pregunta antes */
   const [confirmandoFinal, setConfirmandoFinal] = useState(false);
@@ -376,6 +398,19 @@ export default function Botonera({
       });
 
       if (r.status === 401) {
+        /*
+         * Caducar y quedarse fuera no es lo mismo, y a quien está en la banda
+         * le cambia mucho: si el club ha repartido un enlace nuevo, esta
+         * pantalla ya no vuelve sola y hay que decirlo, no dejar un aviso que
+         * parece pasajero.
+         */
+        const detalle = (await r.json().catch(() => null)) as { revocado?: boolean } | null;
+        if (detalle?.revocado) {
+          /* Y se tira el atajo de vuelta: lleva a un enlace que ya no escribe */
+          olvidarMando();
+          setCierre("revocado");
+          return;
+        }
         setAviso("El enlace ha caducado. Pide uno nuevo en el panel del club.");
         return;
       }
@@ -570,16 +605,8 @@ export default function Botonera({
           role="alert"
           className="mt-3 rounded-xl border border-club bg-panel p-4 text-sm leading-relaxed text-tinta"
         >
-          <p className="font-bold text-club">
-            {cierre === "reiniciado"
-              ? "Este partido se ha reiniciado."
-              : "Este partido ya está cerrado."}
-          </p>
-          <p className="mt-1">
-            {cierre === "reiniciado"
-              ? "Alguien lo ha empezado de cero desde el panel del club, así que desde aquí ya no se puede apuntar nada. Recarga la página para seguir."
-              : "Pasan unas horas desde el final y la retransmisión se cierra sola. La cronología sigue publicada; para cambiar algo, pide un enlace nuevo en el panel del club."}
-          </p>
+          <p className="font-bold text-club">{TITULO_CIERRE[cierre]}</p>
+          <p className="mt-1">{MOTIVO_CIERRE[cierre]}</p>
           {cierre === "reiniciado" ? (
             <button
               type="button"

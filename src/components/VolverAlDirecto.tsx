@@ -49,13 +49,18 @@ type Mando = {
 /**
  * Hasta cuándo vale el enlace, leído del propio token.
  *
- * El token empieza por su caducidad en milisegundos, así que el navegador puede
- * saber si sigue sirviendo sin preguntar nada. La firma la comprueba el
- * servidor: aquí solo se mira la fecha para no ofrecer un atajo muerto.
+ * El token lleva la fecha a la vista, así que el navegador puede saber si sigue
+ * sirviendo sin preguntar nada. La firma la comprueba el servidor: aquí solo se
+ * mira la fecha para no ofrecer un atajo muerto.
+ *
+ * Son `llave.caducidad.firma`, y `caducidad.firma` los repartidos antes de que
+ * se pudieran generar enlaces nuevos. Se lee a mano y no con lo de
+ * `lib/directo/enlace.ts` porque aquello firma con `node:crypto` y esto corre
+ * en el navegador; si cambia el formato del token, hay que tocar los dos.
  */
 function caduca(token: string): number {
-  const corte = token.indexOf(".");
-  const ms = Number(token.slice(0, corte < 0 ? 0 : corte));
+  const trozos = token.split(".");
+  const ms = Number(trozos.length >= 3 ? trozos[1] : trozos[0]);
   return Number.isFinite(ms) ? ms : 0;
 }
 
@@ -68,6 +73,21 @@ export function recordarMando(id: string, token: string): void {
     );
   } catch {
     // Sin almacenamiento se pierde el atajo, no la retransmisión
+  }
+}
+
+/**
+ * Tira el atajo guardado.
+ *
+ * Lo llama la botonera cuando el club genera un enlace nuevo: el que este móvil
+ * tiene guardado ya no escribe, y un atajo que lleva a «este enlace ya no vale»
+ * es peor que no tener atajo.
+ */
+export function olvidarMando(): void {
+  try {
+    localStorage.removeItem(CLAVE);
+  } catch {
+    // Si no se puede limpiar, el propio aviso se descarta al leerlo
   }
 }
 

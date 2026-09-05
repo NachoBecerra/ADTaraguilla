@@ -43,6 +43,40 @@ function igual(a: string, b: string): boolean {
 }
 
 /**
+ * Separa la parte legible del token de su firma.
+ *
+ * El token es `llave.caduca.firma`. Los dos primeros trozos viajan a la vista
+ * a propósito: no son un secreto —la firma es la que manda— y hacen falta para
+ * poder decirle a quien llega *por qué* su enlace no sirve.
+ *
+ * Los enlaces repartidos antes de que existieran las llaves no las llevan
+ * (`caduca.firma`) y se leen como la primera generación. Sin esto, desplegar
+ * esto un sábado dejaría muda a la persona que estuviera en el campo.
+ */
+function despiezar(token: string): { llave: number; caduca: number; firma: string; carga: string } | null {
+  const trozos = token.split(".");
+
+  if (trozos.length === 3) {
+    const [llave, caduca, firma] = trozos;
+    if (!/^\d+$/.test(llave) || !/^\d+$/.test(caduca)) return null;
+    return {
+      llave: Number(llave),
+      caduca: Number(caduca),
+      firma,
+      carga: `${llave}.${caduca}`,
+    };
+  }
+
+  if (trozos.length === 2) {
+    const [caduca, firma] = trozos;
+    if (!/^\d+$/.test(caduca)) return null;
+    return { llave: 1, caduca: Number(caduca), firma, carga: caduca };
+  }
+
+  return null;
+}
+
+/**
  * Token para escribir en un partido.
  *
  * Vale **desde que se genera**, no desde un rato antes del saque. El club
@@ -53,48 +87,61 @@ function igual(a: string, b: string): boolean {
  * El mínimo de cuatro horas cubre abrir la retransmisión de un partido que ya
  * ha empezado, que es cuando más prisa hay.
  */
-export function firmarEnlace(partido: string, saqueMs: number, ahora = Date.now()): string {
+export function firmarEnlace(
+  partido: string,
+  saqueMs: number,
+  llave = 1,
+  ahora = Date.now(),
+): string {
   const caduca = Math.max(saqueMs + DESPUES_MS, ahora + DESPUES_MS);
-  const carga = `${partido}.${caduca}`;
-  return `${caduca}.${firmar(carga)}`;
+  return `${llave}.${caduca}.${firmar(`${partido}.${llave}.${caduca}`)}`;
 }
 
-export type EstadoEnlace = "valido" | "caducado" | "falso";
+export type EstadoEnlace = "valido" | "caducado" | "revocado" | "falso";
 
 /**
  * Qué le pasa a este token.
  *
- * Se distingue "caducado" de "falso" a propósito: a quien llega al campo con un
- * enlace de la semana pasada hay que decirle que pida otro, no darle un 404 que
- * no explica nada. Un token que nunca fue nuestro sí se trata como inexistente.
+ * Los tres motivos por los que un enlace no sirve se distinguen a propósito, y
+ * cada uno se cuenta distinto:
+ *
+ * - **caducado**: es de la semana pasada. Hay que pedir otro.
+ * - **revocado**: el club ha generado un enlace nuevo para este mismo partido,
+ *   normalmente porque el anterior acabó en un grupo de cuarenta personas. La
+ *   retransmisión sigue viva; lo que ya no vale es este enlace.
+ * - **falso**: nunca fue nuestro. Se trata como inexistente, para no confirmar
+ *   siquiera qué partidos hay a quien vaya probando direcciones.
+ *
+ * Revocado se mira antes que caducado: si son las dos cosas, lo que le sirve a
+ * quien lo abre es enterarse de que hay uno nuevo.
  */
 export function estadoDelEnlace(
   partido: string,
   token: string | undefined,
+  llaveActual = 1,
   ahora = Date.now(),
 ): EstadoEnlace {
   if (!token) return "falso";
 
-  const corte = token.indexOf(".");
-  if (corte < 0) return "falso";
-
-  const caduca = Number(token.slice(0, corte));
-  const firma = token.slice(corte + 1);
-  if (!Number.isFinite(caduca)) return "falso";
+  const partes = despiezar(token);
+  if (!partes) return "falso";
 
   try {
     // Que la firma sea nuestra y que sea de **este** partido, no de otro
-    if (!igual(firma, firmar(`${partido}.${caduca}`))) return "falso";
+    if (!igual(partes.firma, firmar(`${partido}.${partes.carga}`))) return "falso";
   } catch {
     return "falso"; // sin CLAVE_PANEL configurada no hay enlace posible
   }
 
-  return ahora <= caduca ? "valido" : "caducado";
+  if (partes.llave !== llaveActual) return "revocado";
+
+  return ahora <= partes.caduca ? "valido" : "caducado";
 }
 
 /** ¿Este token sirve para escribir en este partido, ahora mismo? */
 export const enlaceValido = (
   partido: string,
   token: string | undefined,
+  llaveActual = 1,
   ahora = Date.now(),
-) => estadoDelEnlace(partido, token, ahora) === "valido";
+) => estadoDelEnlace(partido, token, llaveActual, ahora) === "valido";

@@ -1,5 +1,5 @@
-import { anotarEventos, leerRegistro } from "@/lib/directo/almacen";
-import { enlaceValido } from "@/lib/directo/enlace";
+import { anotarEventos, leerRegistro, llaveDe } from "@/lib/directo/almacen";
+import { estadoDelEnlace } from "@/lib/directo/enlace";
 import { plegar, sanearEventos } from "@/lib/directo/modelo";
 
 /**
@@ -62,9 +62,28 @@ export async function POST(peticion: Request, { params }: Contexto): Promise<Res
     return Response.json({ error: "Petición ilegible" }, { status: 400 });
   }
 
+  /*
+   * El estado del partido hace falta antes de mirar el enlace: la llave que
+   * dice qué enlaces valen se guarda con él. Se lee una sola vez y se reutiliza
+   * más abajo.
+   */
+  const actual = await leerRegistro(partido);
+
   // El enlace autoriza este partido y ninguno más, y solo durante su ventana
-  if (!enlaceValido(partido, cuerpo.token)) {
-    return Response.json({ error: "El enlace no vale o ha caducado" }, { status: 401 });
+  const estado = estadoDelEnlace(partido, cuerpo.token, llaveDe(actual));
+  if (estado !== "valido") {
+    /* Revocado se responde aparte para que la botonera pueda decir la verdad:
+       no es que haya caducado, es que el club ha repartido otro enlace */
+    return Response.json(
+      {
+        error:
+          estado === "revocado"
+            ? "El club ha generado un enlace nuevo"
+            : "El enlace no vale o ha caducado",
+        revocado: estado === "revocado",
+      },
+      { status: 401 },
+    );
   }
 
   const eventos = sanearEventos(cuerpo.eventos, Date.now());
@@ -80,7 +99,6 @@ export async function POST(peticion: Request, { params }: Contexto): Promise<Res
    * Las retransmisiones abiertas antes de que existiera esta marca no traen
    * `abierto`: esas se aceptan, o dejarían de funcionar a media jornada.
    */
-  const actual = await leerRegistro(partido);
   if (actual?.abierto && cuerpo.abierto && cuerpo.abierto !== actual.abierto) {
     return Response.json(
       { error: "La retransmisión se ha reiniciado", reiniciado: true },

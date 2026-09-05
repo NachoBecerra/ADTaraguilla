@@ -6,8 +6,10 @@ import {
   borrarRegistro,
   leerRegistro,
   listarRegistros,
+  llaveDe,
   marcarAnuncio,
   reiniciarRegistro,
+  renovarLlave,
   type FichaPartido,
 } from "@/lib/directo/almacen";
 import { firmarEnlace } from "@/lib/directo/enlace";
@@ -62,15 +64,18 @@ export async function empezarRetransmision(id: string): Promise<Resultado> {
     return { ok: false, mensaje: "Ese partido no existe." };
   }
 
+  let registro;
   try {
-    await abrirRegistro(candidato.ficha);
+    registro = await abrirRegistro(candidato.ficha);
   } catch {
     return { ok: false, mensaje: "No se ha podido abrir la retransmisión." };
   }
 
   let token: string;
   try {
-    token = firmarEnlace(id, candidato.saqueMs);
+    /* Con la llave que tenga ya: si el club generó un enlace nuevo, volver a
+       pedirlo desde el panel tiene que dar ese y no resucitar el viejo */
+    token = firmarEnlace(id, candidato.saqueMs, llaveDe(registro));
   } catch {
     return { ok: false, mensaje: "Falta CLAVE_PANEL en el servidor." };
   }
@@ -103,13 +108,14 @@ export async function reiniciarRetransmision(id: string): Promise<Resultado> {
     return { ok: false, mensaje: "Ese partido no existe." };
   }
 
-  if (!(await reiniciarRegistro(candidato.ficha))) {
+  const reiniciado = await reiniciarRegistro(candidato.ficha);
+  if (!reiniciado) {
     return { ok: false, mensaje: "No se ha podido reiniciar." };
   }
 
   let token: string;
   try {
-    token = firmarEnlace(id, candidato.saqueMs);
+    token = firmarEnlace(id, candidato.saqueMs, llaveDe(reiniciado));
   } catch {
     return { ok: false, mensaje: "Falta CLAVE_PANEL en el servidor." };
   }
@@ -117,6 +123,49 @@ export async function reiniciarRetransmision(id: string): Promise<Resultado> {
   return {
     ok: true,
     mensaje: "Retransmisión reiniciada.",
+    ruta: `/directo/${id}/escribir?t=${encodeURIComponent(token)}`,
+  };
+}
+
+/**
+ * Deja fuera los enlaces de escribir repartidos y devuelve uno nuevo.
+ *
+ * El caso real: el enlace se le manda al entrenador, el entrenador lo reenvía
+ * al grupo de padres y acaba en cuarenta móviles. Empieza el partido y se
+ * apunta cualquier cosa. Desde aquí se corta de golpe, y **sin perder nada**:
+ * la cronología, el marcador y la cuenta de seguidores siguen como estaban, y
+ * quien reciba el enlace nuevo continúa el mismo partido.
+ *
+ * No es reiniciar. Reiniciar borra lo apuntado; esto solo cambia la cerradura.
+ *
+ * El enlace del público tampoco cambia: quien esté siguiendo el partido desde
+ * casa no tiene por qué enterarse de nada.
+ */
+export async function renovarEnlace(id: string): Promise<Resultado> {
+  if (!(await haySesion())) {
+    return { ok: false, mensaje: "La sesión ha caducado. Vuelve a entrar." };
+  }
+
+  const candidato = await fichaDe(id);
+  if (!candidato) {
+    return { ok: false, mensaje: "Ese partido no existe." };
+  }
+
+  const llave = await renovarLlave(id);
+  if (llave === null) {
+    return { ok: false, mensaje: "No se ha podido generar el enlace nuevo." };
+  }
+
+  let token: string;
+  try {
+    token = firmarEnlace(id, candidato.saqueMs, llave);
+  } catch {
+    return { ok: false, mensaje: "Falta CLAVE_PANEL en el servidor." };
+  }
+
+  return {
+    ok: true,
+    mensaje: "Enlace nuevo generado. El anterior ya no vale.",
     ruta: `/directo/${id}/escribir?t=${encodeURIComponent(token)}`,
   };
 }

@@ -71,7 +71,25 @@ export type Registro = {
    * cuando ya se sabe que habrá alguien.
    */
   anunciado?: boolean;
+  /**
+   * Qué generación del enlace de escribir vale ahora mismo.
+   *
+   * El enlace se reenvía: se le manda al entrenador, el entrenador lo pone en
+   * el grupo de padres y de pronto lo tienen cuarenta personas. Si eso se va de
+   * las manos a mitad de partido, subir este número deja fuera de golpe a todos
+   * los enlaces repartidos **sin tocar la retransmisión**: la cronología sigue
+   * donde estaba y se reparte un enlace limpio.
+   *
+   * Sin número es la primera generación. Los enlaces repartidos antes de que
+   * esto existiera siguen valiendo, que si no una retransmisión en marcha se
+   * quedaría muda al desplegar.
+   */
+  llave?: number;
 };
+
+/** La generación de enlace que vale para este partido. */
+export const llaveDe = (registro: { llave?: number } | null | undefined): number =>
+  registro?.llave && registro.llave > 0 ? registro.llave : 1;
 
 const CARPETA = "directo";
 const rutaDe = (id: string) => `${CARPETA}/${id}.json`;
@@ -118,9 +136,43 @@ export async function borrarRegistro(id: string): Promise<void> {
 /* ----------------------------------------------------------------- escritura */
 
 /** Un partido recién abierto: sin nada apuntado todavía. */
-function enBlanco(partido: FichaPartido, anunciado = false): Registro {
+function enBlanco(partido: FichaPartido, anunciado = false, llave = 1): Registro {
   const ahora = new Date().toISOString();
-  return { partido, eventos: [], version: 1, actualizado: ahora, abierto: ahora, anunciado };
+  return {
+    partido,
+    eventos: [],
+    version: 1,
+    actualizado: ahora,
+    abierto: ahora,
+    anunciado,
+    llave,
+  };
+}
+
+/**
+ * Invalida los enlaces de escribir repartidos hasta ahora y devuelve el nuevo.
+ *
+ * Lo que se busca es cortar por lo sano cuando un enlace se reparte más de la
+ * cuenta y empieza a aparecer lo que no debe. **No borra nada**: la cronología,
+ * el marcador y los seguidores se quedan como están, y quien reciba el enlace
+ * nuevo sigue el partido justo donde iba. Es la diferencia con reiniciar.
+ *
+ * El enlace del público no se toca: ese es de solo mirar y no hay nada que
+ * proteger en él.
+ */
+export async function renovarLlave(id: string): Promise<number | null> {
+  const registro = await leer(id);
+  if (!registro) return null;
+
+  const llave = llaveDe(registro) + 1;
+  const guardado = await escribir({
+    ...registro,
+    llave,
+    version: registro.version + 1,
+    actualizado: new Date().toISOString(),
+  });
+
+  return guardado ? llave : null;
 }
 
 /**
@@ -161,7 +213,9 @@ export async function reiniciarRegistro(partido: FichaPartido): Promise<Registro
      desapareciera sin avisar sería peor que dejarlo. Para quitarlo está la
      casilla. */
   const previo = await leer(partido.id);
-  const nuevo = enBlanco(partido, Boolean(previo?.anunciado));
+  /* La llave también se conserva: empezar el partido de cero no tiene por qué
+     revivir los enlaces que el club dejó fuera a propósito */
+  const nuevo = enBlanco(partido, Boolean(previo?.anunciado), llaveDe(previo));
   return (await escribir(nuevo)) ? nuevo : null;
 }
 

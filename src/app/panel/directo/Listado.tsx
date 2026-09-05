@@ -6,6 +6,7 @@ import {
   eliminarAmistoso,
   empezarRetransmision,
   reiniciarRetransmision,
+  renovarEnlace,
 } from "./acciones";
 import type { EstadoPanel } from "@/lib/directo/panel";
 import { fechaPartido } from "@/lib/formato";
@@ -130,6 +131,9 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
   const [confirmando, setConfirmando] = useState<string | null>(null);
   /* La dirección solo se enseña si el portapapeles falla: si no, estorba */
   const [aMano, setAMano] = useState<string | null>(null);
+  /* Que el enlace de la pantalla ya no es el de antes conviene decirlo: los dos
+     se parecen y sin aviso no hay forma de saber si el botón hizo algo */
+  const [renovado, setRenovado] = useState<string | null>(null);
 
   async function abrir(id: string) {
     setTrabajando(id);
@@ -156,6 +160,33 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
     } else {
       setErrores((e) => ({ ...e, [id]: r.mensaje }));
     }
+    setConfirmando(null);
+    setTrabajando(null);
+  }
+
+  /**
+   * Cambia la cerradura del partido: los enlaces repartidos dejan de escribir.
+   *
+   * Para cuando el enlace se le manda al entrenador, el entrenador lo pone en
+   * el grupo de padres y acaba en cuarenta móviles. No se pierde nada de lo
+   * apuntado: es lo que lo diferencia de reiniciar.
+   */
+  async function renovar(id: string) {
+    setTrabajando(id);
+    setErrores((e) => ({ ...e, [id]: "" }));
+
+    const r = await renovarEnlace(id);
+    if (r.ok && r.ruta) {
+      setEnlaces((e) => ({ ...e, [id]: `${window.location.origin}${r.ruta}` }));
+      setRenovado(id);
+      /* El de antes ya no vale, así que tampoco puede quedarse copiado a la
+         vista de la pantalla anterior */
+      setAMano(null);
+      setCopiado(null);
+    } else {
+      setErrores((e) => ({ ...e, [id]: r.mensaje }));
+    }
+
     setConfirmando(null);
     setTrabajando(null);
   }
@@ -328,6 +359,62 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
               </div>
 
               <ADedo visible={aMano === `${p.id}-escribir`} valor={enlaces[p.id]} />
+
+              {renovado === p.id ? (
+                <p className="mt-3 rounded-lg border border-club bg-panel p-2.5 text-xs leading-relaxed text-tinta">
+                  <strong className="font-bold text-club">Enlace nuevo.</strong> El
+                  de antes ha dejado de valer al momento. Manda este a quien tenga
+                  que seguir apuntando: el partido continúa donde iba.
+                </p>
+              ) : null}
+
+              {/*
+                Cambiar la cerradura sin tocar el partido. El caso es siempre el
+                mismo: el enlace se reenvía, acaba en un grupo de cuarenta
+                personas y empieza a aparecer lo que no debe. Va aquí, con el
+                enlace que deja de valer, y no abajo con lo destructivo: esto no
+                borra nada.
+              */}
+              {confirmando === `renovar-${p.id}` ? (
+                <div className="mt-3 rounded-lg border border-club bg-panel p-3">
+                  <p className="text-xs leading-relaxed text-tinta">
+                    <strong className="font-bold text-club">
+                      Quien tenga el enlace de ahora dejará de poder escribir
+                    </strong>
+                    , incluida la persona que esté apuntando el partido en este
+                    momento. Lo apuntado no se toca: sigue todo, y quien reciba el
+                    enlace nuevo continúa desde donde iba.
+                  </p>
+                  <div className="mt-2.5 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={() => renovar(p.id)}
+                      disabled={trabajando === p.id}
+                      className="btn btn-primary px-3 py-1.5 text-xs"
+                    >
+                      {trabajando === p.id ? "Generando…" : "Sí, generar uno nuevo"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setConfirmando(null)}
+                      className="btn btn-ghost px-3 py-1.5 text-xs"
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setRenovado(null);
+                    setConfirmando(`renovar-${p.id}`);
+                  }}
+                  className="mt-3 text-xs font-bold text-mute underline transition-colors hover:text-club"
+                >
+                  Generar un enlace nuevo
+                </button>
+              )}
 
               {/* ------------------------ el enlace que sí se puede publicar */}
               <div className="mt-4 border-t border-linea pt-3">

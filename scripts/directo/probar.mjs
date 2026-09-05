@@ -17,7 +17,12 @@ import { plegar, minutoEn, hayRetransmision } from "../../src/lib/directo/modelo
 import { contar, partesJugadas, hayAlgoQueContar } from "../../src/lib/directo/estadisticas.ts";
 import { minutosPorParte } from "../../src/lib/directo/reglamento.ts";
 import { diasAnunciables, diasDeLaVentana, idsDeLaVentana } from "../../src/lib/directo/ventana.ts";
+import { createHmac } from "node:crypto";
 import { seVeEnElPanel } from "../../src/lib/directo/panel.ts";
+
+/* La firma sale de la contrasena del club; sin ella no hay enlace posible */
+process.env.CLAVE_PANEL = process.env.CLAVE_PANEL ?? "clave-de-prueba";
+const { firmarEnlace, estadoDelEnlace } = await import("../../src/lib/directo/enlace.ts");
 
 const T0 = Date.parse("2026-09-06T12:00:00Z");
 const min = (m) => T0 + m * 60_000;
@@ -97,6 +102,71 @@ comprobar(
   idsDeLaVentana(["directo/cadete-2026-09-12.json"], nocheDelSabado),
   [],
 );
+
+/* --------------- el enlace de escribir, y volver a generarlo */
+
+/*
+ * El caso que esto resuelve: el enlace se le manda al entrenador, el entrenador
+ * lo reenvia al grupo de padres y acaba en cuarenta moviles. Generando uno
+ * nuevo, los repartidos dejan de escribir de golpe y la retransmision sigue.
+ */
+const SAQUE = Date.parse("2026-09-06T17:00:00Z");
+const PARTIDO = "primer-equipo-2026-09-06";
+
+const primero = firmarEnlace(PARTIDO, SAQUE, 1, SAQUE);
+comprobar("el enlace recien hecho vale", estadoDelEnlace(PARTIDO, primero, 1, SAQUE), "valido");
+comprobar("y no sirve para otro partido", estadoDelEnlace("cadete-2026-09-06", primero, 1, SAQUE), "falso");
+comprobar("ni con la firma tocada", estadoDelEnlace(PARTIDO, primero.slice(0, -2) + "xx", 1, SAQUE), "falso");
+comprobar(
+  "cuatro horas despues del saque ya no",
+  estadoDelEnlace(PARTIDO, primero, 1, SAQUE + 4 * 3600_000 + 1000),
+  "caducado",
+);
+
+const segundo = firmarEnlace(PARTIDO, SAQUE, 2, SAQUE);
+comprobar("el enlace nuevo es otro", primero === segundo, false);
+comprobar("y vale", estadoDelEnlace(PARTIDO, segundo, 2, SAQUE), "valido");
+comprobar(
+  "el de antes queda revocado, que no es lo mismo que caducado",
+  estadoDelEnlace(PARTIDO, primero, 2, SAQUE),
+  "revocado",
+);
+comprobar(
+  "y sigue revocado aunque ademas haya caducado",
+  estadoDelEnlace(PARTIDO, primero, 2, SAQUE + 5 * 3600_000),
+  "revocado",
+);
+comprobar(
+  "el nuevo tampoco valdria en un partido que va por la llave 3",
+  estadoDelEnlace(PARTIDO, segundo, 3, SAQUE),
+  "revocado",
+);
+
+/*
+ * Los enlaces repartidos antes de que existieran las llaves no las llevan. Si
+ * dejaran de valer al desplegar, una retransmision en marcha se quedaria muda.
+ */
+const viejoSinLlave = (() => {
+  const caduca = SAQUE + 4 * 3600_000;
+  /* Firmado como se firmaba entonces: partido y caducidad, sin llave */
+  const firma = createHmac("sha256", process.env.CLAVE_PANEL)
+    .update(`directo:${PARTIDO}.${caduca}`)
+    .digest("base64url");
+  return `${caduca}.${firma}`;
+})();
+comprobar(
+  "un enlace de los de antes se lee como la primera llave",
+  estadoDelEnlace(PARTIDO, viejoSinLlave, 1, SAQUE),
+  "valido",
+);
+comprobar(
+  "y tambien se queda fuera al generar uno nuevo",
+  estadoDelEnlace(PARTIDO, viejoSinLlave, 2, SAQUE),
+  "revocado",
+);
+
+comprobar("sin token no hay nada que mirar", estadoDelEnlace(PARTIDO, undefined, 1, SAQUE), "falso");
+comprobar("ni con cualquier cosa", estadoDelEnlace(PARTIDO, "loquesea", 1, SAQUE), "falso");
 
 /* ---------------------------- que sale en el panel de directos */
 
