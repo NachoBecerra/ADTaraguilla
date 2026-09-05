@@ -5,7 +5,13 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { site, redesActivas } from "@/data/site";
-import { IconoMenu, IconoCerrar, IconoFlecha, iconosRed } from "@/components/Iconos";
+import {
+  IconoMenu,
+  IconoCerrar,
+  IconoFlecha,
+  IconoEngranaje,
+  iconosRed,
+} from "@/components/Iconos";
 
 const NAV = [
   { href: "/", texto: "Inicio" },
@@ -92,6 +98,24 @@ export default function Cabecera() {
               })}
             </div>
 
+            {/*
+              El acceso al panel. Se ve, y no pasa nada: lo que lo protege es la
+              contraseña, no esconder el enlace. Estaba solo al final del pie, y
+              quien lo usa —gente del club, muchas veces desde el campo— tenía
+              que bajarse la página entera para llegar.
+
+              Apagado como los iconos de redes, no como un elemento del menú:
+              es una puerta de servicio, no una sección de la web.
+            */}
+            <Link
+              href="/panel"
+              aria-label="Panel del club"
+              title="Panel del club"
+              className="hidden h-9 w-9 place-items-center rounded-full text-mute transition-colors hover:bg-panel-2 hover:text-club sm:grid"
+            >
+              <IconoEngranaje size={19} />
+            </Link>
+
             <button
               type="button"
               onClick={() => setAbierto(true)}
@@ -145,9 +169,10 @@ export default function Cabecera() {
           ))}
         </nav>
 
-        <div className="px-5 pt-8">
-          <p className="eyebrow mb-3">Síguenos</p>
-          <div className="flex flex-wrap gap-2">
+        <div className="flex items-end justify-between gap-4 px-5 pt-8">
+          <div className="min-w-0">
+            <p className="eyebrow mb-3">Síguenos</p>
+            <div className="flex flex-wrap gap-2">
             {redesActivas.map((r) => {
               const Icono = iconosRed[r.id];
               return (
@@ -163,7 +188,20 @@ export default function Cabecera() {
                 </a>
               );
             })}
+            </div>
           </div>
+
+          {/* En la esquina, apartado de las secciones: no es un sitio al que
+              se entre a mirar, es la puerta de servicio del club */}
+          <Link
+            href="/panel"
+            onClick={() => setAbierto(false)}
+            aria-label="Panel del club"
+            title="Panel del club"
+            className="grid grid-cols-1 h-12 w-12 shrink-0 place-items-center rounded-full border border-linea text-mute transition-colors hover:border-club hover:text-club"
+          >
+            <IconoEngranaje size={21} />
+          </Link>
         </div>
       </div>
     </>

@@ -400,6 +400,22 @@ export function IconoComentario({ size = 20, className }: Props) {
   );
 }
 
+/**
+ * Engranaje: el acceso al panel del club.
+ *
+ * El contorno no está dibujado a mano, está calculado: ocho dientes trapeciales
+ * repartidos por igual alrededor del centro, con la punta más estrecha que la
+ * base. A ojo salen desiguales y se nota enseguida en una forma tan regular.
+ */
+export function IconoEngranaje({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round">
+      <path d="M10.31 4.69L10.59 2.00L13.41 2.00L13.69 4.69L15.97 5.64L18.08 3.93L20.07 5.92L18.36 8.03L19.31 10.31L22.00 10.59L22.00 13.41L19.31 13.69L18.36 15.97L20.07 18.08L18.08 20.07L15.97 18.36L13.69 19.31L13.41 22.00L10.59 22.00L10.31 19.31L8.03 18.36L5.92 20.07L3.93 18.08L5.64 15.97L4.69 13.69L2.00 13.41L2.00 10.59L4.69 10.31L5.64 8.03L3.93 5.92L5.92 3.93L8.03 5.64Z" />
+      <circle cx="12" cy="12" r="3.4" />
+    </svg>
+  );
+}
+
 /** Lápiz: corregir algo ya escrito. */
 export function IconoLapiz({ size = 16, className }: Props) {
   return (
