@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-05T13:41:11.890Z",
+  "actualizado": "2026-09-05T14:19:29.817Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -29,22 +29,6 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-12",
           "partidos": [
-            {
-              "local": "C.D. ISLA DE LEON FUTBOL BASE",
-              "visitante": "A.D. LOS BURREÑOS",
-              "codLocal": "331319",
-              "codVisitante": "28679244",
-              "fecha": "2026-09-12",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "localidad": "San Fernando",
-              "campo": "BAZAN CAMPO MUNICIPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3020",
-              "urlActa": null,
-              "jugado": false
-            },
             {
               "local": "A.D. MARIANISTAS C.D.",
               "visitante": "C.D. ESTRELLA PORTUENSE F.C.",
@@ -142,12 +126,28 @@
               "jugado": false
             },
             {
+              "local": "C.D. ISLA DE LEON FUTBOL BASE",
+              "visitante": "A.D. LOS BURREÑOS",
+              "codLocal": "331319",
+              "codVisitante": "28679244",
+              "fecha": "2026-09-12",
+              "hora": "17:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "localidad": "San Fernando",
+              "campo": "BAZAN CAMPO MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3020",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
               "local": "BAHIA SAN FERNANDO C.D.",
               "visitante": "C.D. LA SALLE",
               "codLocal": "355720",
               "codVisitante": "309522",
               "fecha": "2026-09-12",
-              "hora": null,
+              "hora": "17:30",
               "golesLocal": null,
               "golesVisitante": null,
               "localidad": "San Fernando",
