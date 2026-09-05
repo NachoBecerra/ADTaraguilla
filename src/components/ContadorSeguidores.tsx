@@ -18,11 +18,11 @@ import { useEffect, useState } from "react";
 /**
  * Cada cuánto se vuelve a preguntar la cifra mientras la pantalla está abierta.
  *
- * Cinco minutos, no uno: es una cifra que solo sube y que nadie mira fijamente.
- * Con doscientas personas siguiendo el partido, cada pregunta son doscientas
- * peticiones más, y de esas el plan gratuito trae un millón al mes.
+ * Un minuto, que es lo que hace que el número se vea subir mientras la gente
+ * llega. Con doscientas personas son unas veinticinco mil peticiones en toda la
+ * tarde, de diez millones que trae el plan al mes: la red no es aquí el problema.
  */
-const CADA_MS = 300_000;
+const CADA_MS = 60_000;
 
 const clave = (partido: string) => `directo-visita-${partido}`;
 

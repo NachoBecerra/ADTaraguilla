@@ -36,8 +36,19 @@ const carpeta = (partido: string) => `directo/seguidores/${partido}`;
  */
 const etiqueta = (partido: string) => `seguidores-${partido}`;
 
-/** Red de seguridad, por si algún día se colara un cambio sin avisar. */
-const VIGENCIA_S = 30 * 60;
+/**
+ * Cuánto vale la cuenta guardada antes de volver a contar.
+ *
+ * Un minuto. La cifra no se rehace por cada persona que llega —eso era listar
+ * la carpeta doscientas veces en una tarde— sino cada tanto, así que esto es lo
+ * que decide si el número se mueve mientras la gente entra. Y entra toda de
+ * golpe, en cuanto alguien manda el enlace por WhatsApp: con media hora de
+ * vigencia, el día grande se habría visto un 12 durante media hora.
+ *
+ * Cuesta un listado por minuto y por partido que se esté viendo, que en Pro no
+ * es nada. Volviendo al plan gratuito, subirlo es la primera palanca.
+ */
+const VIGENCIA_S = 60;
 
 /**
  * Tira la cuenta guardada de este partido.
@@ -57,20 +68,17 @@ function olvidarCuenta(partido: string): void {
 /**
  * Si se cuentan las visitas.
  *
- * **Apagado a propósito, y esto se vuelve a encender.** Anotar una visita
- * cuesta una escritura en el almacén, y una escritura es de las operaciones que
- * Vercel cuenta como avanzadas: el plan gratuito trae 2.000 al mes. Un partido
- * con doscientas personas son doscientas escrituras, y el mes en curso llegó al
- * 6 de septiembre de 2026 con unas 280 libres. Pasarse no es pagar de más: es
- * quedarse **treinta días sin almacén**, o sea sin directo, sin panel y sin
- * fotos.
+ * Existe porque tiene coste: anotar una visita es una escritura en el almacén, y
+ * las escrituras son de las operaciones que Vercel cuenta como avanzadas. En el
+ * plan gratuito vienen 2.000 al mes, así que un partido con doscientas personas
+ * se lleva un 10% del mes. Estuvo apagado un día por eso: el cupo casi agotado y
+ * el primer partido del senior por delante.
  *
- * Así que la cifra de seguidores se queda fuera del primer partido del senior
- * para que el partido salga. En cuanto el ciclo se reinicie se pone en `true`:
- * con el conteo puesto al día por vigencia y no por visita, un partido de
- * doscientas personas cuesta unas doscientas operaciones, un 10% del mes.
+ * Encendido, porque la cuenta está en Pro y ahí pasarse no cierra el almacén: se
+ * factura por consumo, y a estos números eso son céntimos. Si algún día se
+ * vuelve al plan gratuito, esto es lo primero que hay que mirar.
  */
-const CONTAR_SEGUIDORES = false;
+const CONTAR_SEGUIDORES = true;
 
 /**
  * Tope de visitas anotadas.
