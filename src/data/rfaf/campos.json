@@ -1,11 +1,14 @@
 {
-  "generado": "2026-09-01T07:26:20.098Z",
+  "generado": "2026-09-05T09:21:15.285Z",
   "_nota": "Ubicación de los campos, para enlazar con el mapa.",
   "campos": {
     "3083": {
       "nombre": "ANTONIO LOPEZ PUA ESTADIO MUNICIPAL",
       "lat": 36.0246533,
       "lon": -5.611942399999999
+    },
+    "3172": {
+      "nombre": "ANTONIO REYES"
     },
     "3236": {
       "nombre": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
@@ -16,6 +19,11 @@
       "nombre": "JOSE RAMÓN CISNEROS CIUDAD DEPORTIVA",
       "lat": 37.3527809,
       "lon": -5.938682099999999
+    },
+    "2019274": {
+      "nombre": "LA GRANJA CENTRO DE DEPORTES",
+      "lat": 36.6937317,
+      "lon": -6.1038427
     }
   }
 }

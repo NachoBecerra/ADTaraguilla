@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-04T08:31:06.949Z",
+  "actualizado": "2026-09-05T09:20:58.254Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -41,7 +41,7 @@
               "localidad": "La Línea de La Concepción",
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3172",
               "urlActa": null,
               "jugado": false
             },
@@ -57,7 +57,7 @@
               "localidad": "San Martin del Tesorillo",
               "campo": "MUNICIPAL LA ERA",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3072",
               "urlActa": null,
               "jugado": false
             },
@@ -73,7 +73,7 @@
               "localidad": "San Roque",
               "campo": "ALBERTO UMBRIA",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3079",
               "urlActa": null,
               "jugado": false
             },
@@ -89,7 +89,7 @@
               "localidad": "San Roque",
               "campo": "LA UNION",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3073",
               "urlActa": null,
               "jugado": false
             },
@@ -105,7 +105,7 @@
               "localidad": "La Línea de La Concepción",
               "campo": "VIRGEN DEL CARMEN (LA LINEA)",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "2069065",
               "urlActa": null,
               "jugado": false
             },
@@ -121,7 +121,7 @@
               "localidad": "Barrios (Los)",
               "campo": "POLIDEPORTIVO GABRIEL CLAVIJO GONZÁLEZ JAVI - PALMONES",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3245",
               "urlActa": null,
               "jugado": false
             },
@@ -137,7 +137,7 @@
               "localidad": "San Roque",
               "campo": "LOS OLIVILLOS (VICENTE BLANCA)",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3574",
               "urlActa": null,
               "jugado": false
             },
