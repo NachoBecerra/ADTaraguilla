@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-04T08:30:59.602Z",
+  "actualizado": "2026-09-05T07:21:44.916Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -41,7 +41,7 @@
               "localidad": "Conil De La Frontera",
               "campo": "BURREÑOS",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3459",
               "urlActa": null,
               "jugado": false
             },
@@ -57,7 +57,7 @@
               "localidad": "Jerez De La Frontera",
               "campo": "SANTA FE",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3051",
               "urlActa": null,
               "jugado": false
             },
@@ -73,7 +73,7 @@
               "localidad": "San Roque",
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3236",
               "urlActa": null,
               "jugado": false
             },
@@ -89,7 +89,7 @@
               "localidad": null,
               "campo": "Sanlúcar de Barrameda -Doro Stadium",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3104",
               "urlActa": null,
               "jugado": false
             },
@@ -105,7 +105,7 @@
               "localidad": "La Línea de La Concepción",
               "campo": "VIRGEN DEL CARMEN (LA LINEA)",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "2069065",
               "urlActa": null,
               "jugado": false
             },
@@ -121,7 +121,7 @@
               "localidad": "Arcos De La Frontera",
               "campo": "ANTONIO CAMACHO",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3171",
               "urlActa": null,
               "jugado": false
             },
@@ -137,7 +137,7 @@
               "localidad": "Tarifa",
               "campo": "PARQUE FERIA",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3045",
               "urlActa": null,
               "jugado": false
             },
@@ -153,7 +153,7 @@
               "localidad": "San Fernando",
               "campo": "BAZAN CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3020",
               "urlActa": null,
               "jugado": false
             }
