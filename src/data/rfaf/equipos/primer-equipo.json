@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-05T16:20:22.920Z",
+  "actualizado": "2026-09-05T16:42:14.498Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -512,22 +512,6 @@
               "jugado": false
             },
             {
-              "local": "C.D. GUADALCACIN",
-              "visitante": "C.D. CIUDAD DE CADIZ",
-              "codLocal": "303615",
-              "codVisitante": "20779397",
-              "fecha": "2026-09-13",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "localidad": "Jerez De La Frontera",
-              "campo": "GUADALCACIN ESTADIO MUNICIPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3036",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "CHICLANA IND. C.F.",
               "visitante": "JEREZ INDUSTRIAL C.F.",
               "codLocal": "327715",
@@ -604,6 +588,22 @@
               "campo": "SAN RAFAEL PVO (F11-F7)",
               "superficie": "Hierba Natural",
               "codCampo": "3080",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "C.D. GUADALCACIN",
+              "visitante": "C.D. CIUDAD DE CADIZ",
+              "codLocal": "303615",
+              "codVisitante": "20779397",
+              "fecha": "2026-09-13",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "localidad": "Jerez De La Frontera",
+              "campo": "GUADALCACIN ESTADIO MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3036",
               "urlActa": null,
               "jugado": false
             }
