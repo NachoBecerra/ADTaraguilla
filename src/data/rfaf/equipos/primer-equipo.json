@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-06T21:39:25.359Z",
+  "actualizado": "2026-09-06T22:17:57.464Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -335,14 +335,14 @@
               "codVisitante": "327715",
               "fecha": "2026-09-06",
               "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
+              "golesLocal": 6,
+              "golesVisitante": 2,
               "localidad": "Chiclana De La Frontera",
               "campo": "CHICLANA ESTADIO MUNICIPAL",
               "superficie": "Hierba Natural",
               "codCampo": "2002086",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662382&cod_acta=2662382",
-              "jugado": false
+              "jugado": true
             },
             {
               "local": "C.D. SAN ROQUE",
@@ -351,8 +351,8 @@
               "codVisitante": "307315",
               "fecha": "2026-09-06",
               "hora": "12:00",
-              "golesLocal": 1,
-              "golesVisitante": 2,
+              "golesLocal": 2,
+              "golesVisitante": 0,
               "localidad": "San Roque",
               "campo": "MANOLO MESA CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
@@ -367,14 +367,14 @@
               "codVisitante": "343715",
               "fecha": "2026-09-06",
               "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
+              "golesLocal": 5,
+              "golesVisitante": 3,
               "localidad": "Cádiz",
               "campo": "MANUEL DE IRIGOYEN",
               "superficie": "Hierba Artificial",
               "codCampo": "3439",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662379&cod_acta=2662379",
-              "jugado": false
+              "jugado": true
             },
             {
               "local": "C.D. ROTA",
@@ -383,14 +383,14 @@
               "codVisitante": "339215",
               "fecha": "2026-09-06",
               "hora": "18:30",
-              "golesLocal": null,
-              "golesVisitante": null,
+              "golesLocal": 6,
+              "golesVisitante": 2,
               "localidad": "Rota",
               "campo": "NAVARRO FLORES ESTADIO MUNICIPAL",
               "superficie": "Hierba Natural",
               "codCampo": "3008",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662383&cod_acta=2662383",
-              "jugado": false
+              "jugado": true
             },
             {
               "local": "ALGAIDA U.D.",
@@ -399,14 +399,14 @@
               "codVisitante": "303615",
               "fecha": "2026-09-06",
               "hora": "19:00",
-              "golesLocal": 2,
-              "golesVisitante": 3,
+              "golesLocal": null,
+              "golesVisitante": null,
               "localidad": null,
               "campo": "Sanlúcar de Barrameda -Doro Stadium",
               "superficie": "Hierba Artificial",
               "codCampo": "3104",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662380&cod_acta=2662380",
-              "jugado": true
+              "jugado": false
             },
             {
               "local": "TARIFA U.D.",
@@ -415,7 +415,7 @@
               "codVisitante": "38877699",
               "fecha": "2026-09-06",
               "hora": "19:00",
-              "golesLocal": 0,
+              "golesLocal": 2,
               "golesVisitante": 2,
               "localidad": "Tarifa",
               "campo": "ANTONIO LOPEZ PUA ESTADIO MUNICIPAL",
@@ -431,14 +431,14 @@
               "codVisitante": "308015",
               "fecha": "2026-09-06",
               "hora": "19:30",
-              "golesLocal": 3,
-              "golesVisitante": 4,
+              "golesLocal": null,
+              "golesVisitante": null,
               "localidad": "Trebujena",
               "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
               "superficie": "Hierba Artificial",
               "codCampo": "3011",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662386&cod_acta=2662386",
-              "jugado": true
+              "jugado": false
             },
             {
               "local": "JEREZ INDUSTRIAL C.F.",
@@ -447,14 +447,14 @@
               "codVisitante": "16370635",
               "fecha": "2026-09-06",
               "hora": "20:00",
-              "golesLocal": null,
-              "golesVisitante": null,
+              "golesLocal": 0,
+              "golesVisitante": 4,
               "localidad": null,
               "campo": "Jerez De La Frontera -Municipal Pedro S. Garrido",
               "superficie": "Hierba Natural",
               "codCampo": "3009",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662381&cod_acta=2662381",
-              "jugado": false
+              "jugado": true
             }
           ]
         },
