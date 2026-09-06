@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-06T15:40:05.937Z",
+  "actualizado": "2026-09-06T16:20:07.611Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -319,7 +319,7 @@
               "codVisitante": "308515",
               "fecha": "2026-09-06",
               "hora": "12:00",
-              "golesLocal": 2,
+              "golesLocal": 1,
               "golesVisitante": 12,
               "localidad": "Jerez De La Frontera",
               "campo": "LA GRANJA CENTRO DE DEPORTES",
@@ -351,14 +351,14 @@
               "codVisitante": "307315",
               "fecha": "2026-09-06",
               "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
+              "golesLocal": 2,
+              "golesVisitante": 12,
               "localidad": "San Roque",
               "campo": "MANOLO MESA CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3201",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662537&cod_acta=2662537",
-              "jugado": false
+              "jugado": true
             },
             {
               "local": "C.D. CIUDAD DE CADIZ",

@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-06T15:40:18.316Z",
+  "actualizado": "2026-09-06T16:20:19.921Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -115,7 +115,7 @@
               "codLocal": "2026663",
               "codVisitante": "303130",
               "fecha": "2026-09-12",
-              "hora": null,
+              "hora": "12:30",
               "golesLocal": null,
               "golesVisitante": null,
               "localidad": "Algeciras",
