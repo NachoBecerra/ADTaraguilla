@@ -1,7 +1,12 @@
 {
-  "generado": "2026-09-05T09:21:15.285Z",
+  "generado": "2026-09-06T09:20:20.495Z",
   "_nota": "Ubicación de los campos, para enlazar con el mapa.",
   "campos": {
+    "3008": {
+      "nombre": "NAVARRO FLORES ESTADIO MUNICIPAL",
+      "lat": 36.6327271,
+      "lon": -6.386782600000001
+    },
     "3083": {
       "nombre": "ANTONIO LOPEZ PUA ESTADIO MUNICIPAL",
       "lat": 36.0246533,
