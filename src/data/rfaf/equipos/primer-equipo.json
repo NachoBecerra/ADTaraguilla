@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-06T12:27:21.370Z",
+  "actualizado": "2026-09-06T12:44:28.711Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -319,8 +319,8 @@
               "codVisitante": "308515",
               "fecha": "2026-09-06",
               "hora": "12:00",
-              "golesLocal": 5,
-              "golesVisitante": 12,
+              "golesLocal": 6,
+              "golesVisitante": 1,
               "localidad": "Jerez De La Frontera",
               "campo": "LA GRANJA CENTRO DE DEPORTES",
               "superficie": "Hierba Artificial",
@@ -335,8 +335,8 @@
               "codVisitante": "327715",
               "fecha": "2026-09-06",
               "hora": "12:00",
-              "golesLocal": 4,
-              "golesVisitante": 2,
+              "golesLocal": 2,
+              "golesVisitante": 12,
               "localidad": "Chiclana De La Frontera",
               "campo": "CHICLANA ESTADIO MUNICIPAL",
               "superficie": "Hierba Natural",
@@ -351,14 +351,14 @@
               "codVisitante": "307315",
               "fecha": "2026-09-06",
               "hora": "12:00",
-              "golesLocal": 4,
-              "golesVisitante": 4,
+              "golesLocal": null,
+              "golesVisitante": null,
               "localidad": "San Roque",
               "campo": "MANOLO MESA CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3201",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662537&cod_acta=2662537",
-              "jugado": true
+              "jugado": false
             },
             {
               "local": "C.D. CIUDAD DE CADIZ",
