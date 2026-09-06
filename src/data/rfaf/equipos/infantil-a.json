@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-06T20:19:34.166Z",
+  "actualizado": "2026-09-06T21:39:50.369Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -110,22 +110,6 @@
               "jugado": false
             },
             {
-              "local": "ALGECIRAS C.F., S.A.D.",
-              "visitante": "C.D. ASOC. DVA. NERVION",
-              "codLocal": "300219",
-              "codVisitante": "118920",
-              "fecha": "2026-09-13",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "localidad": "Algeciras",
-              "campo": "Juan Gadiaga Pastores",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3559",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "LUCECOR F.S.",
               "visitante": "REAL BETIS BALOMPIE S.A.D.",
               "codLocal": "9136888",
@@ -154,6 +138,22 @@
               "campo": "DEMETRIO PICHEL CD",
               "superficie": "Hierba Artificial",
               "codCampo": "2315900",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "ALGECIRAS C.F., S.A.D.",
+              "visitante": "C.D. ASOC. DVA. NERVION",
+              "codLocal": "300219",
+              "codVisitante": "118920",
+              "fecha": "2026-09-13",
+              "hora": "16:15",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "localidad": "Algeciras",
+              "campo": "Juan Gadiaga Pastores",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3559",
               "urlActa": null,
               "jugado": false
             }
