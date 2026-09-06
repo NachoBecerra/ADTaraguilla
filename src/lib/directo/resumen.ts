@@ -59,6 +59,21 @@ const TRAS_EL_FINAL_MS = 3 * 60 * 60_000;
 const SIN_CERRAR_MS = 6 * 60 * 60_000;
 
 /**
+ * Cuánto aguanta un directo en marcha frente a un resultado oficial.
+ *
+ * Lo normal es que el acta llegue cuando el partido ya ha acabado, y entonces
+ * el directo se retira sin más. Pero el 6 de septiembre de 2026 la RFAF publicó
+ * el resultado del partido del senior **antes del saque**, y la portada retiró
+ * la retransmisión con el equipo todavía en el campo: la gente que la seguía se
+ * quedó sin forma de volver a entrar.
+ *
+ * Así que mientras alguien está escribiendo el partido, manda el directo. Pasado
+ * este rato ya no: un directo que nadie cerró no puede tapar el acta para
+ * siempre.
+ */
+const CEDER_AL_ACTA_MS = 3 * 60 * 60_000;
+
+/**
  * ¿Ha publicado ya la RFAF el resultado de este partido?
  *
  * Es la señal buena de que el partido acabó: en cuanto llega el acta, el
@@ -148,8 +163,10 @@ export async function directosDeHoy(ahora = new Date()): Promise<ResumenDirecto[
         // lo haya anunciado. Basta un comentario para que lo sea, aunque no se
         // haya pitado
         r.hayQueEnsenar &&
-        // En cuanto la RFAF publica el resultado, el directo ha cumplido
-        !r.oficial &&
+        /* En cuanto la RFAF publica el resultado, el directo ha cumplido...
+           salvo que el partido se esté contando ahora mismo: ahí el acta puede
+           ser un error de la federación y el directo es lo que está pasando */
+        (!r.oficial || (r.fase !== "final" && r.desdeLoPrimero < CEDER_AL_ACTA_MS)) &&
         // Lo que terminó hace rato deja paso a lo oficial
         r.terminadoHace < TRAS_EL_FINAL_MS &&
         // Y lo que nadie cerró tampoco puede quedarse encendido para siempre

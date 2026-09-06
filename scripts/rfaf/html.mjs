@@ -94,9 +94,21 @@ export function hora(texto) {
   return m ? `${m[1].padStart(2, "0")}:${m[2]}` : null;
 }
 
-/** "7 - 3" -> [7, 3]; sin resultado todavía, null. */
+/**
+ * "7 - 3" -> [7, 3]. Cualquier otra cosa, null.
+ *
+ * **Tiene que ser el texto entero, y con los dos números.** Antes bastaba con
+ * encontrar `número - número` en cualquier parte, y eso se comió un domingo
+ * entero: la RFAF publica la celda a medias mientras el acta está en curso —
+ * "5 - 06-09-2026 12:00", con el resultado local puesto y el visitante no— y de
+ * ahí salía un 5-12 juntando el gol con la hora del partido. La web del club
+ * llegó a enseñar un 1-12 y un 0-18 en primera andaluza.
+ *
+ * Media verdad de la federación vale menos que nada: si la celda no trae un
+ * marcador completo, no hay resultado.
+ */
 export function marcador(texto) {
-  const m = /(\d{1,3})\s*-\s*(\d{1,3})/.exec(texto ?? "");
+  const m = /^(\d{1,3})\s*-\s*(\d{1,3})$/.exec((texto ?? "").trim());
   return m ? [Number(m[1]), Number(m[2])] : null;
 }
 

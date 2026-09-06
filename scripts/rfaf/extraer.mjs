@@ -177,7 +177,19 @@ export function extraerJornada(html) {
           .find(Boolean) ?? null)
       : null;
 
-    const goles = marcador(centro.replace(/\d{2}[-/]\d{2}[-/]\d{4}/, ""));
+    /*
+     * La celda del centro es "2 - 1 06-09-2026 19:00": el marcador, la fecha y
+     * la hora, todo junto. Se quitan fecha y hora **antes** de leer el
+     * marcador, y lo que queda tiene que ser un marcador entero.
+     *
+     * Quitar la hora no es un detalle: con la celda a medias ("5 - " y la
+     * fecha), el 12:00 hacía de goles del visitante.
+     */
+    const soloElMarcador = centro
+      .replace(/\d{1,2}[-/]\d{1,2}[-/]\d{2,4}/g, " ")
+      .replace(/\b\d{1,2}:\d{2}\b/g, " ")
+      .trim();
+    const goles = marcador(soloElMarcador);
     // El portal escribe "CodActa" con mayúsculas: sin la /i no encajaba nunca.
     // Solo aparece en los partidos cuyo previo ya ha publicado; en el resto
     // pone "Previo no disponible" y no hay enlace que guardar.

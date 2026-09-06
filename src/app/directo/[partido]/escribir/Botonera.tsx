@@ -542,18 +542,35 @@ export default function Botonera({
   const sordo = bloqueado || cierre !== null;
   const sinMandar = pendientes.length;
 
-  /* Un solo botón de fase: el que toca según dónde esté el partido */
+  /* En la última parte, cerrarla ES terminar el partido */
+  const ultimaParte = estado.parte >= PARTES;
+
+  /*
+   * Un solo botón de fase: el que toca según dónde esté el partido.
+   *
+   * Y en la segunda parte ese botón termina el encuentro, no la parte. Antes
+   * eran dos pasos —«Fin de la parte» y luego, ya en el descanso, «Terminar
+   * partido»— y el primer partido del senior se quedó sin cerrar: quien
+   * apuntaba pulsó el fin de la segunda parte, dio por hecho que había acabado
+   * y se fue. El partido siguió abierto en la web más de una hora.
+   *
+   * Nadie pita el final de la segunda parte y luego, aparte, el final del
+   * partido. Es el mismo pitido.
+   */
   const faseSiguiente =
     fase === "sin-empezar"
       ? { texto: "Iniciar partido", tipo: "inicio" as const }
       : fase === "descanso"
-        ? /* Solo hay dos partes: tras la segunda no queda más que terminar */
-          estado.parte < PARTES
-          ? { texto: `Empezar la ${estado.parte + 1}ª parte`, tipo: "empezarParte" as const }
-          : null
+        ? ultimaParte
+          ? /* Se llega aquí con las retransmisiones de antes de que este botón
+               terminara el partido: hay que dejar salir de ahí */
+            { texto: "Terminar el partido", tipo: "final" as const }
+          : { texto: `Empezar la ${estado.parte + 1}ª parte`, tipo: "empezarParte" as const }
         : fase === "final"
           ? null
-          : { texto: "Fin de la parte", tipo: "finParte" as const };
+          : ultimaParte
+            ? { texto: "Terminar el partido", tipo: "final" as const }
+            : { texto: `Fin de la ${estado.parte}ª parte`, tipo: "finParte" as const };
 
   /*
    * El reloj lo cuenta cada dispositivo con su propia hora, así que el minuto
@@ -697,21 +714,63 @@ export default function Botonera({
 
       {/* No es un error, es un recordatorio: el reloj sigue corriendo y quien
           apunta está mirando el campo */}
-      {faseSiguiente?.tipo === "finParte" && minuto.anadido >= DESCUENTO_LARGO ? (
+      {(faseSiguiente?.tipo === "finParte" || faseSiguiente?.tipo === "final") &&
+      minuto.anadido >= DESCUENTO_LARGO ? (
         <p
           role="status"
           className="mt-3 rounded-xl border border-amarilla-linea bg-amarilla p-3 text-center text-sm font-semibold leading-relaxed text-amarilla-tinta"
         >
-          Llevas {minuto.anadido} minutos de descuento. Si la parte ya ha
-          terminado, márcalo aquí debajo.
+          Llevas {minuto.anadido} minutos de descuento.{" "}
+          {faseSiguiente?.tipo === "final"
+            ? "Si el partido ya ha terminado, márcalo aquí debajo."
+            : "Si la parte ya ha terminado, márcalo aquí debajo."}
         </p>
       ) : null}
 
-      {faseSiguiente ? (
+      {/*
+        Terminar cierra el directo para todo el mundo, así que se pregunta
+        antes. Es la única acción de esta pantalla que no se arregla con un
+        toque: deshacer un final es posible, pero mientras tanto el club entero
+        ha visto el partido como acabado.
+      */}
+      {confirmandoFinal ? (
+        <div className="mt-2 rounded-xl border border-club bg-panel p-4">
+          <p className="font-bold text-club">¿Damos el partido por terminado?</p>
+          <p className="mt-1 text-sm leading-relaxed text-mute">
+            El marcador queda como definitivo y así lo verá todo el mundo. Si te
+            has equivocado todavía podrás corregirlo un rato, pero al cabo de unas
+            horas este enlace deja de funcionar y ya no se puede tocar nada.
+          </p>
+          <div className="mt-3 flex gap-2">
+            <button
+              type="button"
+              disabled={sordo}
+              onClick={() => {
+                setConfirmandoFinal(false);
+                anotar({ tipo: "final" });
+              }}
+              className="btn btn-primary flex-1 py-3 text-sm disabled:opacity-40"
+            >
+              Sí, terminar
+            </button>
+            <button
+              type="button"
+              onClick={() => setConfirmandoFinal(false)}
+              className="btn btn-ghost flex-1 py-3 text-sm"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      ) : faseSiguiente ? (
         <button
           type="button"
           disabled={sordo}
-          onClick={() => anotar({ tipo: faseSiguiente.tipo })}
+          onClick={() =>
+            faseSiguiente.tipo === "final"
+              ? setConfirmandoFinal(true)
+              : anotar({ tipo: faseSiguiente.tipo })
+          }
           className="btn btn-primary mt-2 w-full py-4 text-base disabled:opacity-40"
         >
           {faseSiguiente.texto}
@@ -745,54 +804,19 @@ export default function Botonera({
       ) : null}
 
       {/*
-        Terminar cierra el directo para todo el mundo, así que se pregunta
-        antes. Es la única acción de esta pantalla que no se arregla con un
-        toque: deshacer un final es posible, pero mientras tanto el club entero
-        ha visto el partido como acabado.
+        Un partido que se suspende en el descanso. En la última parte no hace
+        falta: ahí el botón de arriba ya termina el partido, y dos botones que
+        hacen lo mismo son dos formas de dudar.
       */}
-      {fase === "descanso" ? (
-        confirmandoFinal ? (
-          <div className="mt-2 rounded-xl border border-club bg-panel p-4">
-            <p className="font-bold text-club">¿Damos el partido por terminado?</p>
-            <p className="mt-1 text-sm leading-relaxed text-mute">
-              El marcador queda como definitivo y así lo verá todo el mundo. Si
-              te has equivocado todavía podrás corregirlo un rato, pero al cabo
-              de unas horas este enlace deja de funcionar y ya no se puede tocar
-              nada.
-            </p>
-            <div className="mt-3 flex gap-2">
-              <button
-                type="button"
-                disabled={sordo}
-                onClick={() => {
-                  setConfirmandoFinal(false);
-                  anotar({ tipo: "final" });
-                }}
-                className="btn btn-primary flex-1 py-3 text-sm disabled:opacity-40"
-              >
-                Sí, terminar
-              </button>
-              <button
-                type="button"
-                onClick={() => setConfirmandoFinal(false)}
-                className="btn btn-ghost flex-1 py-3 text-sm"
-              >
-                Cancelar
-              </button>
-            </div>
-          </div>
-        ) : (
-          <button
-            type="button"
-            disabled={sordo}
-            onClick={() => setConfirmandoFinal(true)}
-            className={`mt-2 w-full disabled:opacity-40 ${
-              faseSiguiente ? "btn btn-ghost py-3 text-sm" : "btn btn-primary py-4 text-base"
-            }`}
-          >
-            Terminar partido
-          </button>
-        )
+      {fase === "descanso" && !ultimaParte && !confirmandoFinal ? (
+        <button
+          type="button"
+          disabled={sordo}
+          onClick={() => setConfirmandoFinal(true)}
+          className="btn btn-ghost mt-2 w-full py-3 text-sm disabled:opacity-40"
+        >
+          Terminar partido
+        </button>
       ) : null}
 
       {fase === "final" ? (

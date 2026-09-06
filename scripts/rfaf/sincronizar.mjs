@@ -21,6 +21,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { ClienteRfaf, ErrorDeCupo, urlAbsoluta } from "./cliente.mjs";
 import { aSlug, bloquesPorTemporada } from "./html.mjs";
+import { resultadoCreible } from "./reglas.mjs";
 import {
   extraerEquipos,
   extraerCompeticiones,
@@ -78,6 +79,15 @@ const HORAS_FRESCURA_SIN_CALENDARIO = 3;
 
 /** Días hacia atrás que se siguen revisando en busca de resultados. */
 const DIAS_ATRAS = 60;
+
+/**
+ * Días que se sigue mirando una jornada ya completa, por si rectifican un acta.
+ *
+ * Las actas se corrigen: un resultado mal tecleado el domingo aparece bien el
+ * lunes. Sin esto, la primera cifra que publicara la RFAF sería la definitiva
+ * para siempre, porque la jornada ya no se volvía a pedir.
+ */
+const DIAS_DE_RECTIFICACION = 4;
 /** Días hacia delante en los que ya puede haber horario y campo asignados. */
 const DIAS_ADELANTE = 14;
 
@@ -153,21 +163,29 @@ function fusionarJornada(jornada, deLaJornada, previos) {
     const viejo = buscar(previos);
     const fuente = nuevo ?? viejo ?? {};
 
+    const fecha = fuente.fecha ?? jornada.fecha ?? null;
+    /* Un resultado que llega antes de que el partido pueda haber acabado se
+       tira: no es un resultado, es la federación escribiendo el acta */
+    const hayGoles =
+      fuente.golesLocal !== null &&
+      fuente.golesLocal !== undefined &&
+      resultadoCreible(fecha, fuente.hora ?? null);
+
     return {
       local: base.local,
       visitante: base.visitante,
       codLocal: fuente.codLocal ?? null,
       codVisitante: fuente.codVisitante ?? null,
-      fecha: fuente.fecha ?? jornada.fecha ?? null,
+      fecha,
       hora: fuente.hora ?? null,
-      golesLocal: fuente.golesLocal ?? null,
-      golesVisitante: fuente.golesVisitante ?? null,
+      golesLocal: hayGoles ? fuente.golesLocal : null,
+      golesVisitante: hayGoles ? (fuente.golesVisitante ?? null) : null,
       localidad: fuente.localidad ?? null,
       campo: fuente.campo ?? null,
       superficie: fuente.superficie ?? null,
       codCampo: fuente.codCampo ?? null,
       urlActa: fuente.urlActa ? urlAbsoluta(fuente.urlActa) : null,
-      jugado: fuente.golesLocal !== null && fuente.golesLocal !== undefined,
+      jugado: hayGoles,
     };
   });
 }
@@ -183,8 +201,16 @@ function fusionarJornada(jornada, deLaJornada, previos) {
 function hayQueRefrescar(jornada, previa) {
   if (COMPLETO) return true;
 
-  // Jornada cerrada con todos los resultados: ya no cambia.
-  if (previa && previa.partidos.every((p) => p.jugado)) return false;
+  /*
+   * Jornada cerrada con todos los resultados: ya casi no cambia. Pero solo
+   * "casi": un acta se rectifica en los días siguientes, y si dejamos de mirar
+   * en cuanto hay un número, la corrección no llega nunca y la web se queda
+   * para siempre con el resultado equivocado del domingo.
+   */
+  if (previa && previa.partidos.every((p) => p.jugado)) {
+    const dias = diasHasta(jornada.fecha ?? previa?.fecha);
+    if (dias === null || dias <= -DIAS_DE_RECTIFICACION) return false;
+  }
 
   // Sin fecha en el calendario (pasa en las eliminatorias de copa) la única
   // forma de saber si ya se ha jugado es preguntar por la jornada.
