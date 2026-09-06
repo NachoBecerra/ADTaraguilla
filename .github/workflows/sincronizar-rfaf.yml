@@ -101,11 +101,41 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Publicar cambios
+        # Cada publicación reconstruye y redespliega la web entera, así que
+        # solo se publica cuando hay algo que enseñar.
+        #
+        # Y casi nunca lo había: los archivos llevan dentro la hora en que se
+        # comprobaron, así que cada pasada los dejaba "cambiados" aunque el
+        # fútbol fuera exactamente el mismo. Un sábado son treinta despliegues
+        # de los que la mitad no cambian ni una cifra. Peor todavía: la web
+        # avisa de "datos nuevos" comparando esa marca, así que a quien tuviera
+        # el móvil abierto siguiendo el partido se le ofrecía recargar cada
+        # veinte minutos para no ver nada distinto.
+        #
+        # Cuando sí hay algo que publicar, las marcas van con ello: entonces sí
+        # dicen la verdad, que es cuándo cambiaron los datos.
         run: |
           if [ -z "$(git status --porcelain src/data/rfaf)" ]; then
             echo "Sin cambios en los datos de competición."
             exit 0
           fi
+
+          # Un archivo nuevo (un equipo que aparece) siempre es noticia
+          nuevos="$(git ls-files --others --exclude-standard -- src/data/rfaf | head -n 1)"
+
+          # Y del resto, todo lo que no sea una marca de tiempo
+          sustancia="$(git diff -U0 -- src/data/rfaf \
+            | grep -E '^[+-]' \
+            | grep -vE '^(\+\+\+|---)' \
+            | grep -vE '"(actualizado|generado|comprobado)":' \
+            | head -n 1)"
+
+          if [ -z "$nuevos" ] && [ -z "$sustancia" ]; then
+            echo "Solo han cambiado las marcas de tiempo: no se publica nada."
+            git checkout -- src/data/rfaf
+            exit 0
+          fi
+
           git config user.name  "Sincronización RFAF"
           git config user.email "actions@github.com"
           git add src/data/rfaf
