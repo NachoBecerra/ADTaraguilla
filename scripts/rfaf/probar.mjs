@@ -11,7 +11,7 @@ import {
   extraerJornada, extraerClasificacion,
 } from "./extraer.mjs";
 import { marcador } from "./html.mjs";
-import { resultadoCreible, saqueEnMs } from "./reglas.mjs";
+import { resultadoCreible, resultadoPorClasificacion, saqueEnMs } from "./reglas.mjs";
 
 let fallos = 0;
 function comprobar(que, real, esperado) {
@@ -102,6 +102,110 @@ comprobar(
   "y sin fecha no se puede juzgar: pasa",
   resultadoCreible(null, null, Date.now()),
   true,
+);
+
+/* ========== el resultado deducido de la clasificacion ========== */
+
+console.log("");
+
+/*
+ * El caso de verdad: jornada 1 de 1a andaluza senior, 6 de septiembre de 2026.
+ * El Taraguilla gano 0-2 en Tarifa. El marcador de la RFAF decia 4-4, 0-4, 2-2
+ * y 4-0 segun la hora a la que se mirara —son señuelos contra el copiado—, pero
+ * la tabla dice 3 puntos, 1 jugado, 2 a favor y 0 en contra. Con eso sobra.
+ */
+const DESPUES = Date.parse("2026-09-07T10:00:00Z");
+const laTabla = (extra = {}) => [
+  { equipo: "A.D. TARAGUILLA", puntos: 3, jugados: 1, golesFavor: 2, golesContra: 0, ...extra },
+  { equipo: "TARIFA U.D.", puntos: 0, jugados: 1, golesFavor: 0, golesContra: 2 },
+];
+const elCalendario = () => [
+  {
+    numero: 1,
+    fecha: "2026-09-06",
+    partidos: [
+      { local: "XEREZ DEPORTIVO F.C.", visitante: "BARBATE C.F.", fecha: "2026-09-06", hora: "12:00", golesLocal: null, golesVisitante: null },
+      { local: "TARIFA U.D.", visitante: "A.D. TARAGUILLA", fecha: "2026-09-06", hora: "19:00", golesLocal: null, golesVisitante: null },
+    ],
+  },
+  {
+    numero: 2,
+    fecha: "2026-09-13",
+    partidos: [
+      { local: "A.D. TARAGUILLA", visitante: "C.D. GUADIARO", fecha: "2026-09-13", hora: "19:00", golesLocal: null, golesVisitante: null },
+    ],
+  },
+];
+
+const deducir = (clasificacion, jornadas, ahora = DESPUES) =>
+  resultadoPorClasificacion({ nombreRfaf: "A.D. TARAGUILLA", clasificacion, jornadas, ahora });
+
+comprobar(
+  "de 1 jugado y 2-0 a favor sale el 0-2 de Tarifa",
+  deducir(laTabla(), elCalendario()),
+  { jornada: 0, partido: 1, golesLocal: 0, golesVisitante: 2 },
+);
+
+/* Jugando en casa, los mismos numeros van al reves */
+const enCasa = elCalendario();
+enCasa[0].partidos[1] = { local: "A.D. TARAGUILLA", visitante: "TARIFA U.D.", fecha: "2026-09-06", hora: "19:00", golesLocal: null, golesVisitante: null };
+comprobar(
+  "y jugando en casa, 2-0",
+  deducir(laTabla(), enCasa),
+  { jornada: 0, partido: 1, golesLocal: 2, golesVisitante: 0 },
+);
+
+/* Con el resultado ya guardado no hay nada nuevo que deducir */
+const yaPuesto = elCalendario();
+yaPuesto[0].partidos[1].golesLocal = 0;
+yaPuesto[0].partidos[1].golesVisitante = 2;
+comprobar("con el resultado ya puesto, no se toca nada", deducir(laTabla(), yaPuesto), null);
+
+/* La segunda jornada, con la primera ya contada */
+const dosJornadas = elCalendario();
+dosJornadas[0].partidos[1].golesLocal = 0;
+dosJornadas[0].partidos[1].golesVisitante = 2;
+comprobar(
+  "la 2a jornada se deduce descontando la 1a",
+  resultadoPorClasificacion({
+    nombreRfaf: "A.D. TARAGUILLA",
+    clasificacion: [{ equipo: "A.D. TARAGUILLA", puntos: 4, jugados: 2, golesFavor: 3, golesContra: 1 }],
+    jornadas: dosJornadas,
+    ahora: Date.parse("2026-09-14T10:00:00Z"),
+  }),
+  { jornada: 1, partido: 0, golesLocal: 1, golesVisitante: 1 },
+);
+
+/* Y lo que NO se puede deducir, no se inventa */
+comprobar(
+  "con dos partidos pendientes a la vez, no se deduce nada",
+  resultadoPorClasificacion({
+    nombreRfaf: "A.D. TARAGUILLA",
+    clasificacion: [{ equipo: "A.D. TARAGUILLA", puntos: 4, jugados: 2, golesFavor: 3, golesContra: 1 }],
+    jornadas: elCalendario(),
+    ahora: Date.parse("2026-09-14T10:00:00Z"),
+  }),
+  null,
+);
+comprobar(
+  "si la tabla no ha contado el partido todavía, tampoco",
+  deducir([{ equipo: "A.D. TARAGUILLA", puntos: 0, jugados: 0, golesFavor: 0, golesContra: 0 }], elCalendario()),
+  null,
+);
+comprobar(
+  "ni antes de que el partido pueda haber acabado",
+  deducir(laTabla(), elCalendario(), Date.parse("2026-09-06T16:00:00Z")),
+  null,
+);
+comprobar(
+  "sin nuestro equipo en la tabla, no hay nada que hacer",
+  deducir([{ equipo: "OTRO C.F.", puntos: 3, jugados: 1, golesFavor: 2, golesContra: 0 }], elCalendario()),
+  null,
+);
+comprobar(
+  "y una diferencia absurda se descarta antes que publicarla",
+  deducir(laTabla({ golesFavor: 400 }), elCalendario()),
+  null,
 );
 
 console.log("");

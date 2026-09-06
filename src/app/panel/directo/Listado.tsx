@@ -258,7 +258,10 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
   return (
     <ul className="mt-6 space-y-3">
       {partidos.map((p) => (
-        <li key={p.id} className="card p-4">
+        /* El identificador va en el propio elemento: sin esto, una prueba que
+           quiera un partido por jugar tiene que adivinar la fecha leyendo el
+           texto de la tarjeta */
+        <li key={p.id} data-partido={p.id} className="card p-4">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <p className="text-[11px] font-bold uppercase tracking-wide text-club-soft">

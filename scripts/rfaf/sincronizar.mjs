@@ -21,7 +21,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { ClienteRfaf, ErrorDeCupo, urlAbsoluta } from "./cliente.mjs";
 import { aSlug, bloquesPorTemporada } from "./html.mjs";
-import { resultadoCreible } from "./reglas.mjs";
+import { resultadoCreible, resultadoPorClasificacion } from "./reglas.mjs";
 import {
   extraerEquipos,
   extraerCompeticiones,
@@ -77,15 +77,13 @@ const HORAS_FRESCURA = 20;
  */
 const HORAS_FRESCURA_SIN_CALENDARIO = 3;
 
-/** Días hacia atrás que se siguen revisando en busca de resultados. */
-const DIAS_ATRAS = 60;
-
 /**
- * Días que se sigue mirando una jornada ya completa, por si rectifican un acta.
+ * Días que se sigue mirando una jornada ya jugada.
  *
- * Las actas se corrigen: un resultado mal tecleado el domingo aparece bien el
- * lunes. Sin esto, la primera cifra que publicara la RFAF sería la definitiva
- * para siempre, porque la jornada ya no se volvía a pedir.
+ * No es por el resultado —ese sale de la clasificación en cuanto la tabla lo
+ * recoge—, sino porque la RFAF rectifica fechas y campos y publica el acta con
+ * retraso. Antes se miraban sesenta días hacia atrás buscando resultados que
+ * nunca iban a llegar de ahí.
  */
 const DIAS_DE_RECTIFICACION = 4;
 /** Días hacia delante en los que ya puede haber horario y campo asignados. */
@@ -148,11 +146,27 @@ function asignarIdentificadores(equipos, nombres) {
   });
 }
 
+/**
+ * De dónde salió un resultado.
+ *
+ * Por ahora solo hay una procedencia buena: la diferencia en la clasificación.
+ * Se guarda con el partido para poder distinguir lo deducido de lo que se
+ * copió del marcador cuando aún no sabíamos que estaba trucado.
+ */
+const ORIGEN_TABLA = "clasificacion";
+
 /* -------------------------------------------------- fusión calendario/jornada */
 
 /**
  * El calendario da la lista de partidos; la jornada, los detalles.
  * Al fusionar conservamos lo que ya teníamos si la RFAF aún no lo publica.
+ *
+ * **Los goles no salen de aquí.** El portal ofusca los marcadores a propósito
+ * —dígitos señuelo escondidos con CSS, otros puestos desde JavaScript, y
+ * distintos en cada petición— y lo que leíamos eran las trampas: un domingo
+ * entero publicando 1-12 y 0-18 en primera andaluza. De la página de jornada se
+ * cogen la hora, el campo, los códigos y el acta, que van en texto plano y sí
+ * son de fiar. El resultado se deduce después, de la clasificación.
  */
 function fusionarJornada(jornada, deLaJornada, previos) {
   return jornada.partidos.map((base) => {
@@ -164,12 +178,23 @@ function fusionarJornada(jornada, deLaJornada, previos) {
     const fuente = nuevo ?? viejo ?? {};
 
     const fecha = fuente.fecha ?? jornada.fecha ?? null;
-    /* Un resultado que llega antes de que el partido pueda haber acabado se
-       tira: no es un resultado, es la federación escribiendo el acta */
+
+    /*
+     * El resultado se conserva de lo que ya teníamos, **pero solo si sabemos de
+     * dónde salió**. Lo que venga en el marcador de la página de jornada se
+     * ignora: no es un dato, es un señuelo.
+     *
+     * Ese `origen` no es un adorno. Los resultados guardados antes de saber que
+     * el marcador estaba trucado no lo llevan, y hay que tirarlos: si se
+     * quedaran, la cuenta de goles ya contados no cuadraría con la tabla y
+     * todas las deducciones siguientes de esa competición saldrían torcidas.
+     * Al no llevar marca, desaparecen solos en la primera pasada.
+     */
     const hayGoles =
-      fuente.golesLocal !== null &&
-      fuente.golesLocal !== undefined &&
-      resultadoCreible(fecha, fuente.hora ?? null);
+      viejo?.origen === ORIGEN_TABLA &&
+      viejo.golesLocal !== null &&
+      viejo.golesLocal !== undefined &&
+      resultadoCreible(fecha, viejo.hora ?? fuente.hora ?? null);
 
     return {
       local: base.local,
@@ -178,8 +203,9 @@ function fusionarJornada(jornada, deLaJornada, previos) {
       codVisitante: fuente.codVisitante ?? null,
       fecha,
       hora: fuente.hora ?? null,
-      golesLocal: hayGoles ? fuente.golesLocal : null,
-      golesVisitante: hayGoles ? (fuente.golesVisitante ?? null) : null,
+      golesLocal: hayGoles ? viejo.golesLocal : null,
+      golesVisitante: hayGoles ? (viejo.golesVisitante ?? null) : null,
+      origen: hayGoles ? ORIGEN_TABLA : null,
       localidad: fuente.localidad ?? null,
       campo: fuente.campo ?? null,
       superficie: fuente.superficie ?? null,
@@ -201,26 +227,17 @@ function fusionarJornada(jornada, deLaJornada, previos) {
 function hayQueRefrescar(jornada, previa) {
   if (COMPLETO) return true;
 
-  /*
-   * Jornada cerrada con todos los resultados: ya casi no cambia. Pero solo
-   * "casi": un acta se rectifica en los días siguientes, y si dejamos de mirar
-   * en cuanto hay un número, la corrección no llega nunca y la web se queda
-   * para siempre con el resultado equivocado del domingo.
-   */
-  if (previa && previa.partidos.every((p) => p.jugado)) {
-    const dias = diasHasta(jornada.fecha ?? previa?.fecha);
-    if (dias === null || dias <= -DIAS_DE_RECTIFICACION) return false;
-  }
-
   // Sin fecha en el calendario (pasa en las eliminatorias de copa) la única
-  // forma de saber si ya se ha jugado es preguntar por la jornada.
+  // forma de saber cuándo se juega es preguntar por la jornada.
   const dias = diasHasta(jornada.fecha ?? previa?.fecha);
   if (dias === null) return true;
 
-  // Ya jugada pero sin resultados guardados: hay que traerlos.
-  // Más allá de DIAS_ATRAS se da por perdida (aplazamientos sin fecha nueva):
-  // se recupera con --completo.
-  if (dias < 0) return dias >= -DIAS_ATRAS;
+  /*
+   * Ya jugada: se sigue mirando unos días. Lo que se busca aquí no es el
+   * resultado —ese sale de la clasificación— sino que la RFAF rectifique la
+   * fecha, el campo o publique el acta.
+   */
+  if (dias < 0) return dias >= -DIAS_DE_RECTIFICACION;
 
   // Las próximas dos semanas: es cuando se asignan horarios y campos.
   return dias <= DIAS_ADELANTE;
@@ -228,7 +245,7 @@ function hayQueRefrescar(jornada, previa) {
 
 /* ------------------------------------------------------------------ proceso */
 
-async function sincronizarCompeticion(cliente, competicion, previa, escudos) {
+async function sincronizarCompeticion(cliente, competicion, previa, escudos, nombreRfaf) {
   // Los enlaces de la página de grupo no cambian en toda la temporada, así que
   // se reutilizan: es una petición menos por competición y por pasada, que con
   // el cupo que tiene la RFAF se nota.
@@ -318,6 +335,23 @@ async function sincronizarCompeticion(cliente, competicion, previa, escudos) {
       if (e instanceof ErrorDeCupo) throw e;
       aviso(`  clasificación de ${competicion.nombre}: ${e.message}`);
     }
+  }
+
+  /*
+   * Y aquí sale el resultado: de la diferencia en la clasificación, no del
+   * marcador. Se hace al final porque necesita las dos cosas a la vez, las
+   * jornadas y la tabla.
+   */
+  const deducido = resultadoPorClasificacion({ nombreRfaf, clasificacion, jornadas });
+  if (deducido) {
+    const p = jornadas[deducido.jornada].partidos[deducido.partido];
+    p.golesLocal = deducido.golesLocal;
+    p.golesVisitante = deducido.golesVisitante;
+    p.origen = ORIGEN_TABLA;
+    p.jugado = true;
+    log(
+      `    resultado deducido de la clasificación: ${p.local} ${p.golesLocal}-${p.golesVisitante} ${p.visitante}`,
+    );
   }
 
   return {
@@ -416,7 +450,9 @@ async function principal() {
       for (const competicion of competiciones) {
         const previa = previo?.competiciones?.find((c) => c.codGrupo === competicion.codGrupo);
         try {
-          detalladas.push(await sincronizarCompeticion(cliente, competicion, previa, escudos));
+          detalladas.push(
+            await sincronizarCompeticion(cliente, competicion, previa, escudos, equipo.nombreRfaf),
+          );
         } catch (e) {
           if (e instanceof ErrorDeCupo) throw e;
           aviso(`  ${competicion.nombre}: ${e.message} — se conservan los datos anteriores`);
@@ -543,9 +579,20 @@ function yaDeberiaTenerResultado(p) {
   return Date.now() >= fin.getTime();
 }
 
+/**
+ * Solo los partidos de nuestro equipo, que son los únicos que la web enseña.
+ *
+ * Los demás de la jornada están para los escudos y para saber quién juega con
+ * quién; su resultado no se deduce ni se publica, así que esperarlo dejaría al
+ * equipo pidiendo páginas para siempre.
+ */
+const esNuestro = (p, nombreRfaf) => p.local === nombreRfaf || p.visitante === nombreRfaf;
+
 function faltaAlgunResultado(previo) {
   return (previo.competiciones ?? []).some((c) =>
-    (c.jornadas ?? []).some((j) => j.partidos.some(yaDeberiaTenerResultado)),
+    (c.jornadas ?? []).some((j) =>
+      j.partidos.some((p) => esNuestro(p, previo.nombreRfaf) && yaDeberiaTenerResultado(p)),
+    ),
   );
 }
 
@@ -561,6 +608,7 @@ function faltaAlgunHorario(previo) {
   return (previo.competiciones ?? []).some((c) =>
     (c.jornadas ?? []).some((j) =>
       j.partidos.some((p) => {
+        if (!esNuestro(p, previo.nombreRfaf)) return false;
         if (p.jugado || p.hora || !p.fecha) return false;
         const dias = diasHasta(p.fecha);
         return dias !== null && dias >= 0 && dias <= DIAS_HORARIO;

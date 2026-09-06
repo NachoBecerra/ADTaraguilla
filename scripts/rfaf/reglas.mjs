@@ -51,3 +51,97 @@ export function resultadoCreible(fecha, hora, ahora = Date.now()) {
 
   return ahora >= saque + MINIMO_PARA_TENER_RESULTADO_MS;
 }
+
+/* ------------------------------------------ el resultado, por diferencia */
+
+/** Una jornada de descanso no es un partido. */
+const esDescanso = (nombre) => /^\s*descansa\s*$/i.test(nombre ?? "");
+
+/** Goles a favor y en contra de este partido, vistos desde nuestro lado. */
+function comoLoVemos(partido, nombreRfaf) {
+  const somosLocal = partido.local === nombreRfaf;
+  return somosLocal
+    ? { favor: partido.golesLocal, contra: partido.golesVisitante }
+    : { favor: partido.golesVisitante, contra: partido.golesLocal };
+}
+
+/**
+ * Tope de goles que se acepta como creíble en un partido.
+ *
+ * No es por incredulidad: es para no publicar el resultado de una cuenta que
+ * se ha desalineado. Un 14-0 de alevines cabe; un 40-3 es que algo no cuadra.
+ */
+const GOLES_IMPOSIBLES = 30;
+
+/**
+ * El resultado de nuestro último partido, deducido de la clasificación.
+ *
+ * **Por qué no se lee del marcador de la RFAF.** Porque no se puede: el portal
+ * ofusca los resultados a propósito —dígitos señuelo escondidos con CSS, otros
+ * inyectados desde JavaScript, y cambiando en cada petición—, y lo que leíamos
+ * eran las trampas. Un domingo entero publicando 1-12 y 0-18 en primera
+ * andaluza, y un 4-4 donde hubo un 1-0.
+ *
+ * La tabla de clasificación, en cambio, va en texto plano y es correcta. Y para
+ * lo único que esta web necesita —los partidos de **nuestros** equipos— la
+ * tabla basta: cuando a un equipo le sube en uno la cuenta de jugados, la
+ * diferencia de goles a favor y en contra **es** el resultado de ese partido.
+ *
+ * Se deduce solo cuando no hay ninguna duda: exactamente un partido nuevo y
+ * exactamente un candidato sin resultado. Si se aplazan partidos o pasan dos
+ * jornadas sin mirar, se deja en blanco. Un hueco se rellena; una mentira se
+ * queda publicada.
+ *
+ * Los puntos no se usan para comprobar: una sanción los mueve sin tocar los
+ * goles, y no sería justo perder un resultado bueno por eso.
+ */
+export function resultadoPorClasificacion({ nombreRfaf, clasificacion, jornadas, ahora = Date.now() }) {
+  const fila = (clasificacion ?? []).find((c) => c.equipo === nombreRfaf);
+  if (!fila || typeof fila.jugados !== "number") return null;
+
+  let contados = 0;
+  let favorContados = 0;
+  let contraContados = 0;
+  const candidatos = [];
+
+  (jornadas ?? []).forEach((jornada, j) => {
+    (jornada.partidos ?? []).forEach((partido, i) => {
+      const nuestro = partido.local === nombreRfaf || partido.visitante === nombreRfaf;
+      if (!nuestro) return;
+      if (esDescanso(partido.local) || esDescanso(partido.visitante)) return;
+
+      const { favor, contra } = comoLoVemos(partido, nombreRfaf);
+      if (favor !== null && favor !== undefined && contra !== null && contra !== undefined) {
+        contados += 1;
+        favorContados += favor;
+        contraContados += contra;
+        return;
+      }
+
+      /* Solo cuenta como candidato si ya puede haberse jugado: si no, el
+         partido nuevo de la tabla sería otro y le colgaríamos el resultado
+         al que viene */
+      if (resultadoCreible(partido.fecha ?? jornada.fecha ?? null, partido.hora ?? null, ahora)) {
+        candidatos.push({ jornada: j, partido: i, ficha: partido });
+      }
+    });
+  });
+
+  if (fila.jugados - contados !== 1) return null;
+  if (candidatos.length !== 1) return null;
+
+  const favor = fila.golesFavor - favorContados;
+  const contra = fila.golesContra - contraContados;
+  const sano = (n) => Number.isInteger(n) && n >= 0 && n <= GOLES_IMPOSIBLES;
+  if (!sano(favor) || !sano(contra)) return null;
+
+  const { jornada, partido, ficha } = candidatos[0];
+  const somosLocal = ficha.local === nombreRfaf;
+
+  return {
+    jornada,
+    partido,
+    golesLocal: somosLocal ? favor : contra,
+    golesVisitante: somosLocal ? contra : favor,
+  };
+}
