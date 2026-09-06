@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-06T10:39:54.467Z",
+  "actualizado": "2026-09-06T12:27:21.370Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -298,7 +298,7 @@
       "categoria": "1ª ANDALUZA SENIOR",
       "grupo": "UNICO",
       "puntos": 0,
-      "posicion": null,
+      "posicion": 6,
       "codGrupo": "48680165",
       "escudosRecogidos": true,
       "codCompeticion": "48680130",
@@ -319,14 +319,14 @@
               "codVisitante": "308515",
               "fecha": "2026-09-06",
               "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
+              "golesLocal": 5,
+              "golesVisitante": 12,
               "localidad": "Jerez De La Frontera",
               "campo": "LA GRANJA CENTRO DE DEPORTES",
               "superficie": "Hierba Artificial",
               "codCampo": "3298",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662378",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662378&cod_acta=2662378",
+              "jugado": true
             },
             {
               "local": "CHICLANA C.F.",
@@ -335,14 +335,14 @@
               "codVisitante": "327715",
               "fecha": "2026-09-06",
               "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
+              "golesLocal": 4,
+              "golesVisitante": 2,
               "localidad": "Chiclana De La Frontera",
               "campo": "CHICLANA ESTADIO MUNICIPAL",
               "superficie": "Hierba Natural",
               "codCampo": "2002086",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662382",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662382&cod_acta=2662382",
+              "jugado": true
             },
             {
               "local": "C.D. SAN ROQUE",
@@ -351,14 +351,14 @@
               "codVisitante": "307315",
               "fecha": "2026-09-06",
               "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
+              "golesLocal": 4,
+              "golesVisitante": 4,
               "localidad": "San Roque",
               "campo": "MANOLO MESA CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3201",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662537",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662537&cod_acta=2662537",
+              "jugado": true
             },
             {
               "local": "C.D. CIUDAD DE CADIZ",
@@ -5445,6 +5445,76 @@
       "clasificacion": [
         {
           "posicion": 1,
+          "equipo": "XEREZ DEPORTIVO F.C.",
+          "puntos": 3,
+          "jugados": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 3,
+          "golesContra": 1,
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 2,
+          "equipo": "CHICLANA C.F.",
+          "puntos": 1,
+          "jugados": 1,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 2,
+          "golesContra": 2,
+          "racha": [
+            "E"
+          ]
+        },
+        {
+          "posicion": 3,
+          "equipo": "CHICLANA IND. C.F.",
+          "puntos": 1,
+          "jugados": 1,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 2,
+          "golesContra": 2,
+          "racha": [
+            "E"
+          ]
+        },
+        {
+          "posicion": 4,
+          "equipo": "C.D. GUADIARO",
+          "puntos": 1,
+          "jugados": 1,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 1,
+          "golesContra": 1,
+          "racha": [
+            "E"
+          ]
+        },
+        {
+          "posicion": 5,
+          "equipo": "C.D. SAN ROQUE",
+          "puntos": 1,
+          "jugados": 1,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 1,
+          "golesContra": 1,
+          "racha": [
+            "E"
+          ]
+        },
+        {
+          "posicion": 6,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 0,
           "jugados": 0,
@@ -5456,7 +5526,7 @@
           "racha": []
         },
         {
-          "posicion": 2,
+          "posicion": 7,
           "equipo": "ALGAIDA U.D.",
           "puntos": 0,
           "jugados": 0,
@@ -5468,19 +5538,7 @@
           "racha": []
         },
         {
-          "posicion": 3,
-          "equipo": "BARBATE C.F.",
-          "puntos": 0,
-          "jugados": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 4,
+          "posicion": 8,
           "equipo": "C.D. CIUDAD DE CADIZ",
           "puntos": 0,
           "jugados": 0,
@@ -5492,7 +5550,7 @@
           "racha": []
         },
         {
-          "posicion": 5,
+          "posicion": 9,
           "equipo": "C.D. EL TORNO 2009",
           "puntos": 0,
           "jugados": 0,
@@ -5504,7 +5562,7 @@
           "racha": []
         },
         {
-          "posicion": 6,
+          "posicion": 10,
           "equipo": "C.D. GUADALCACIN",
           "puntos": 0,
           "jugados": 0,
@@ -5516,56 +5574,8 @@
           "racha": []
         },
         {
-          "posicion": 7,
-          "equipo": "C.D. GUADIARO",
-          "puntos": 0,
-          "jugados": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 8,
-          "equipo": "C.D. ROTA",
-          "puntos": 0,
-          "jugados": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 9,
-          "equipo": "C.D. SAN ROQUE",
-          "puntos": 0,
-          "jugados": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 10,
-          "equipo": "CHICLANA C.F.",
-          "puntos": 0,
-          "jugados": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
           "posicion": 11,
-          "equipo": "CHICLANA IND. C.F.",
+          "equipo": "C.D. ROTA",
           "puntos": 0,
           "jugados": 0,
           "ganados": 0,
@@ -5649,15 +5659,17 @@
         },
         {
           "posicion": 18,
-          "equipo": "XEREZ DEPORTIVO F.C.",
+          "equipo": "BARBATE C.F.",
           "puntos": 0,
-          "jugados": 0,
+          "jugados": 1,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
+          "perdidos": 1,
+          "golesFavor": 1,
+          "golesContra": 3,
+          "racha": [
+            "P"
+          ]
         }
       ]
     }
