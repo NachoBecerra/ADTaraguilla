@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-06T19:39:03.131Z",
+  "actualizado": "2026-09-06T20:19:09.379Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -319,8 +319,8 @@
               "codVisitante": "308515",
               "fecha": "2026-09-06",
               "hora": "12:00",
-              "golesLocal": 7,
-              "golesVisitante": 5,
+              "golesLocal": 5,
+              "golesVisitante": 0,
               "localidad": "Jerez De La Frontera",
               "campo": "LA GRANJA CENTRO DE DEPORTES",
               "superficie": "Hierba Artificial",
@@ -335,14 +335,14 @@
               "codVisitante": "327715",
               "fecha": "2026-09-06",
               "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
+              "golesLocal": 4,
+              "golesVisitante": 12,
               "localidad": "Chiclana De La Frontera",
               "campo": "CHICLANA ESTADIO MUNICIPAL",
               "superficie": "Hierba Natural",
               "codCampo": "2002086",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662382&cod_acta=2662382",
-              "jugado": false
+              "jugado": true
             },
             {
               "local": "C.D. SAN ROQUE",
@@ -352,7 +352,7 @@
               "fecha": "2026-09-06",
               "hora": "12:00",
               "golesLocal": 1,
-              "golesVisitante": 2,
+              "golesVisitante": 1,
               "localidad": "San Roque",
               "campo": "MANOLO MESA CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
@@ -367,8 +367,8 @@
               "codVisitante": "343715",
               "fecha": "2026-09-06",
               "hora": "18:00",
-              "golesLocal": 1,
-              "golesVisitante": 2,
+              "golesLocal": 2,
+              "golesVisitante": 5,
               "localidad": "Cádiz",
               "campo": "MANUEL DE IRIGOYEN",
               "superficie": "Hierba Artificial",
@@ -383,8 +383,8 @@
               "codVisitante": "339215",
               "fecha": "2026-09-06",
               "hora": "18:30",
-              "golesLocal": 0,
-              "golesVisitante": 6,
+              "golesLocal": 6,
+              "golesVisitante": 2,
               "localidad": "Rota",
               "campo": "NAVARRO FLORES ESTADIO MUNICIPAL",
               "superficie": "Hierba Natural",
@@ -399,8 +399,8 @@
               "codVisitante": "303615",
               "fecha": "2026-09-06",
               "hora": "19:00",
-              "golesLocal": 2,
-              "golesVisitante": 3,
+              "golesLocal": 3,
+              "golesVisitante": 5,
               "localidad": null,
               "campo": "Sanlúcar de Barrameda -Doro Stadium",
               "superficie": "Hierba Artificial",
@@ -415,8 +415,8 @@
               "codVisitante": "38877699",
               "fecha": "2026-09-06",
               "hora": "19:00",
-              "golesLocal": 0,
-              "golesVisitante": 4,
+              "golesLocal": 2,
+              "golesVisitante": 2,
               "localidad": "Tarifa",
               "campo": "ANTONIO LOPEZ PUA ESTADIO MUNICIPAL",
               "superficie": "Hierba Natural",
@@ -431,7 +431,7 @@
               "codVisitante": "308015",
               "fecha": "2026-09-06",
               "hora": "19:30",
-              "golesLocal": 3,
+              "golesLocal": 2,
               "golesVisitante": 0,
               "localidad": "Trebujena",
               "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
@@ -446,14 +446,14 @@
               "codLocal": "300915",
               "codVisitante": "16370635",
               "fecha": "2026-09-06",
-              "hora": "20:55",
-              "golesLocal": 0,
+              "hora": "20:00",
+              "golesLocal": 3,
               "golesVisitante": 0,
               "localidad": null,
               "campo": "Jerez De La Frontera -Municipal Pedro S. Garrido",
               "superficie": "Hierba Natural",
               "codCampo": "3009",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662381&cod_acta=2662381",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662381&cod_acta=2662381",
               "jugado": true
             }
           ]
@@ -5473,6 +5473,20 @@
         },
         {
           "posicion": 3,
+          "equipo": "JEREZ INDUSTRIAL C.F.",
+          "puntos": 3,
+          "jugados": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 2,
+          "golesContra": 0,
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 4,
           "equipo": "C.D. EL TORNO 2009",
           "puntos": 3,
           "jugados": 1,
@@ -5486,7 +5500,7 @@
           ]
         },
         {
-          "posicion": 4,
+          "posicion": 5,
           "equipo": "C.D. GUADALCACIN",
           "puntos": 3,
           "jugados": 1,
@@ -5500,7 +5514,7 @@
           ]
         },
         {
-          "posicion": 5,
+          "posicion": 6,
           "equipo": "TREBUJENA C.F.",
           "puntos": 3,
           "jugados": 1,
@@ -5514,7 +5528,7 @@
           ]
         },
         {
-          "posicion": 6,
+          "posicion": 7,
           "equipo": "C.D. ROTA",
           "puntos": 1,
           "jugados": 1,
@@ -5528,7 +5542,7 @@
           ]
         },
         {
-          "posicion": 7,
+          "posicion": 8,
           "equipo": "CHICLANA C.F.",
           "puntos": 1,
           "jugados": 1,
@@ -5542,7 +5556,7 @@
           ]
         },
         {
-          "posicion": 8,
+          "posicion": 9,
           "equipo": "CHICLANA IND. C.F.",
           "puntos": 1,
           "jugados": 1,
@@ -5556,7 +5570,7 @@
           ]
         },
         {
-          "posicion": 9,
+          "posicion": 10,
           "equipo": "JUVENTUD SANLUQUEÑA A.D.",
           "puntos": 1,
           "jugados": 1,
@@ -5570,7 +5584,7 @@
           ]
         },
         {
-          "posicion": 10,
+          "posicion": 11,
           "equipo": "C.D. GUADIARO",
           "puntos": 1,
           "jugados": 1,
@@ -5584,7 +5598,7 @@
           ]
         },
         {
-          "posicion": 11,
+          "posicion": 12,
           "equipo": "C.D. SAN ROQUE",
           "puntos": 1,
           "jugados": 1,
@@ -5598,35 +5612,7 @@
           ]
         },
         {
-          "posicion": 12,
-          "equipo": "JEREZ INDUSTRIAL C.F.",
-          "puntos": 1,
-          "jugados": 1,
-          "ganados": 0,
-          "empatados": 1,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": [
-            "E"
-          ]
-        },
-        {
           "posicion": 13,
-          "equipo": "REAL BALOMPEDICA LINENSE",
-          "puntos": 1,
-          "jugados": 1,
-          "ganados": 0,
-          "empatados": 1,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": [
-            "E"
-          ]
-        },
-        {
-          "posicion": 14,
           "equipo": "C.D. CIUDAD DE CADIZ",
           "puntos": 0,
           "jugados": 1,
@@ -5640,7 +5626,7 @@
           ]
         },
         {
-          "posicion": 15,
+          "posicion": 14,
           "equipo": "ALGAIDA U.D.",
           "puntos": 0,
           "jugados": 1,
@@ -5654,7 +5640,7 @@
           ]
         },
         {
-          "posicion": 16,
+          "posicion": 15,
           "equipo": "U.D. LOS BARRIOS",
           "puntos": 0,
           "jugados": 1,
@@ -5668,7 +5654,7 @@
           ]
         },
         {
-          "posicion": 17,
+          "posicion": 16,
           "equipo": "BARBATE C.F.",
           "puntos": 0,
           "jugados": 1,
@@ -5677,6 +5663,20 @@
           "perdidos": 1,
           "golesFavor": 1,
           "golesContra": 3,
+          "racha": [
+            "P"
+          ]
+        },
+        {
+          "posicion": 17,
+          "equipo": "REAL BALOMPEDICA LINENSE",
+          "puntos": 0,
+          "jugados": 1,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 0,
+          "golesContra": 2,
           "racha": [
             "P"
           ]
