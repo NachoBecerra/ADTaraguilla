@@ -14,7 +14,6 @@ import {
 import type { Registro } from "@/lib/directo/almacen";
 import CampoQueCrece from "@/components/CampoQueCrece";
 import Cronologia from "@/components/Cronologia";
-import ContadorSeguidores from "@/components/ContadorSeguidores";
 import { olvidarMando, recordarMando } from "@/components/VolverAlDirecto";
 
 /**
@@ -635,10 +634,6 @@ export default function Botonera({
           ) : null}
         </div>
       ) : null}
-
-      {/* Sin `registrar`: quien escribe no es un espectador, y con dos personas
-          apuntando el partido irían dos de más en la cuenta */}
-      <ContadorSeguidores partido={partido.id} />
 
       {aviso ? (
         <p

@@ -8,7 +8,6 @@ import EstadisticasDirecto from "@/components/EstadisticasDirecto";
 import { IconoWhatsApp } from "@/components/Iconos";
 import { fechaPartido } from "@/lib/formato";
 import Cronologia from "@/components/Cronologia";
-import ContadorSeguidores from "@/components/ContadorSeguidores";
 
 /**
  * El partido en directo, para quien lo sigue desde casa.
@@ -220,9 +219,6 @@ export default function Seguimiento({
         <IconoWhatsApp size={18} />
         Compartir por WhatsApp
       </a>
-
-      {/* Debajo de compartir: es la cifra que anima a mandarle el enlace a otro */}
-      <ContadorSeguidores partido={partido.id} registrar />
 
       {/* Antes de la cronología: las cuentas resumen lo mismo que la lista, y
           quien las quiere las quiere en vez de leerse la lista entera */}

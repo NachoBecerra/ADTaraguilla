@@ -19,7 +19,7 @@ import {
  * Vive aparte y todo el directo pasa por aquí porque llamar al almacén privado
  * directamente es un error fácil de cometer y difícil de ver: lo escrito se
  * pierde en silencio y en local parece que la funcionalidad no va. Ha pasado ya
- * con el listado de partidos y con el contador de seguidores.
+ * con el listado de partidos, y con el contador de visitas que hubo un tiempo.
  *
  * El respaldo **nunca actúa en producción**: allí, si falta el token, es un
  * fallo de configuración que hay que ver, no algo que disimular.

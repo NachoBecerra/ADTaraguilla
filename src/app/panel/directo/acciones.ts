@@ -133,8 +133,8 @@ export async function reiniciarRetransmision(id: string): Promise<Resultado> {
  * El caso real: el enlace se le manda al entrenador, el entrenador lo reenvía
  * al grupo de padres y acaba en cuarenta móviles. Empieza el partido y se
  * apunta cualquier cosa. Desde aquí se corta de golpe, y **sin perder nada**:
- * la cronología, el marcador y la cuenta de seguidores siguen como estaban, y
- * quien reciba el enlace nuevo continúa el mismo partido.
+ * la cronología y el marcador siguen como estaban, y quien reciba el enlace
+ * nuevo continúa el mismo partido.
  *
  * No es reiniciar. Reiniciar borra lo apuntado; esto solo cambia la cerradura.
  *

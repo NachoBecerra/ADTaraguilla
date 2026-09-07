@@ -8,7 +8,6 @@ import {
 } from "@/lib/directo/deposito";
 import { revalidateTag, unstable_cache } from "next/cache";
 import { MAX_EVENTOS, type Evento } from "@/lib/directo/modelo";
-import { borrarSeguidores } from "@/lib/directo/seguidores";
 
 /**
  * Dónde vive un partido en directo.
@@ -197,8 +196,6 @@ export const leerRegistro = leer;
 export async function borrarRegistro(id: string): Promise<void> {
   await borrarJson(rutaDe(id));
   olvidarLista();
-  // Y su cuenta de seguidores: borrar un amistoso no puede dejar restos
-  await borrarSeguidores(id);
 }
 
 /* ----------------------------------------------------------------- escritura */
@@ -221,9 +218,9 @@ function enBlanco(partido: FichaPartido, anunciado = false, llave = 1): Registro
  * Invalida los enlaces de escribir repartidos hasta ahora y devuelve el nuevo.
  *
  * Lo que se busca es cortar por lo sano cuando un enlace se reparte más de la
- * cuenta y empieza a aparecer lo que no debe. **No borra nada**: la cronología,
- * el marcador y los seguidores se quedan como están, y quien reciba el enlace
- * nuevo sigue el partido justo donde iba. Es la diferencia con reiniciar.
+ * cuenta y empieza a aparecer lo que no debe. **No borra nada**: la cronología
+ * y el marcador se quedan como están, y quien reciba el enlace nuevo sigue el
+ * partido justo donde iba. Es la diferencia con reiniciar.
  *
  * El enlace del público no se toca: ese es de solo mirar y no hay nada que
  * proteger en él.
