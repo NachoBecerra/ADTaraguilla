@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-06T21:59:37.997Z",
+  "actualizado": "2026-09-07T07:31:31.702Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -64,23 +64,6 @@
               "jugado": false
             },
             {
-              "local": "C.D. SAN BERNARDO",
-              "visitante": "C.D. AD PUEBLO NUEVO LA GRANJA",
-              "codLocal": "307919",
-              "codVisitante": "329826",
-              "fecha": "2026-09-12",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Roque",
-              "campo": "ALBERTO UMBRIA",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3079",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "ATLETICO ZABAL",
               "visitante": "C.D. SALESIANOS ALGECIRAS",
               "codLocal": "326327",
@@ -111,6 +94,23 @@
               "campo": "ANTONIO CAMACHO",
               "superficie": "Hierba Artificial",
               "codCampo": "3171",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "C.D. SAN BERNARDO",
+              "visitante": "C.D. AD PUEBLO NUEVO LA GRANJA",
+              "codLocal": "307919",
+              "codVisitante": "329826",
+              "fecha": "2026-09-12",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Roque",
+              "campo": "ALBERTO UMBRIA",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3079",
               "urlActa": null,
               "jugado": false
             },
