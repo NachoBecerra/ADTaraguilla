@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-07T11:20:36.136Z",
+  "actualizado": "2026-09-07T13:24:04.562Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -145,7 +145,7 @@
               "campo": "BAZAN CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3020",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663710",
               "jugado": false
             },
             {
@@ -162,7 +162,7 @@
               "campo": "BAZAN CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3020",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663717",
               "jugado": false
             }
           ]
