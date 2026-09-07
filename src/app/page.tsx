@@ -160,23 +160,7 @@ export default function Inicio() {
         </div>
       ) : null}
 
-      {/* -------------------------------------------- próximos y resultados */}
-      {proximos.length > 0 ? (
-        <section className="mx-auto max-w-6xl px-5 pt-14">
-          <TituloSeccion
-            epigrafe="Lo que viene"
-            titulo="Próximos partidos"
-            href="/equipos"
-            enlace="Todos los equipos"
-          />
-          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {proximos.map(({ equipo, proximo }) => (
-              <ResumenPartido key={equipo.id} equipo={equipo} partido={proximo!} />
-            ))}
-          </div>
-        </section>
-      ) : null}
-
+      {/* -------------------------------------------- resultados y próximos */}
       {resultados.length > 0 ? (
         <section className="mx-auto max-w-6xl px-5 pt-14">
           <TituloSeccion
@@ -188,6 +172,22 @@ export default function Inicio() {
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {resultados.map(({ equipo, ultimo }) => (
               <TarjetaResultado key={equipo.id} equipo={equipo} partido={ultimo!} conEquipo />
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {proximos.length > 0 ? (
+        <section className="mx-auto max-w-6xl px-5 pt-14">
+          <TituloSeccion
+            epigrafe="Lo que viene"
+            titulo="Próximos partidos"
+            href="/equipos"
+            enlace="Todos los equipos"
+          />
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {proximos.map(({ equipo, proximo }) => (
+              <ResumenPartido key={equipo.id} equipo={equipo} partido={proximo!} />
             ))}
           </div>
         </section>

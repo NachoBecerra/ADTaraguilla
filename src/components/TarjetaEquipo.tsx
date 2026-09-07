@@ -5,7 +5,6 @@ import {
   type Equipo,
   type PartidoPropio,
 } from "@/lib/competicion";
-import { Marcador } from "@/components/Partidos";
 import EscudoClub from "@/components/EscudoClub";
 import IndicadorAvisos from "@/components/IndicadorAvisos";
 import { DistintivoDirecto } from "@/components/EnDirecto";
@@ -19,18 +18,20 @@ import {
 import { fechaPartido } from "@/lib/formato";
 
 /**
- * Ficha resumida de un equipo: dónde está en la clasificación, qué hizo el
- * último fin de semana y a quién se enfrenta el siguiente.
+ * Ficha resumida de un equipo: dónde está en la clasificación y a quién se
+ * enfrenta el fin de semana.
+ *
+ * El último resultado no cabe aquí: se lee en la portada y en la ficha del
+ * equipo, con los dos escudos y su marcador, que es como se entiende. Metido
+ * en una línea junto a un rival ocupaba media tarjeta para decir la mitad.
  */
 export default function TarjetaEquipo({
   equipo,
   proximo,
-  ultimo,
   competicion,
 }: {
   equipo: Equipo;
   proximo: PartidoPropio | null;
-  ultimo: PartidoPropio | null;
   competicion: Competicion | null;
 }) {
   const fila = haEmpezado(competicion)
@@ -64,16 +65,6 @@ export default function TarjetaEquipo({
       </div>
 
       <div className="mt-4 space-y-2.5 border-t border-linea pt-3.5 text-sm">
-        {ultimo ? (
-          <div className="flex items-center gap-2.5">
-            <Marcador partido={ultimo} />
-            <span className="min-w-0 truncate text-mute">
-              <span className="text-tinta">{ultimo.rival}</span>
-              {ultimo.esLocal ? " (casa)" : " (fuera)"}
-            </span>
-          </div>
-        ) : null}
-
         {/*
           El próximo partido es lo que más se consulta, así que se enseña con
           escudo, si se juega en casa o fuera, cuándo y dónde. Antes era una
@@ -151,7 +142,7 @@ export default function TarjetaEquipo({
           )
         ) : null}
 
-        {!ultimo && !proximo ? (
+        {!proximo ? (
           <p className="text-mute">
             {equipo.enCompeticion
               ? "La RFAF aún no ha publicado el calendario."

@@ -20,7 +20,6 @@ import NavegacionEquipo, { type Bloque } from "@/components/NavegacionEquipo";
 import Galeria from "@/components/Galeria";
 import BotonAvisos from "@/components/BotonAvisos";
 import { BandaDirecto } from "@/components/EnDirecto";
-import DirectosGuardados, { type PartidoNarrable } from "@/components/DirectosGuardados";
 import { FilaPartido, TarjetaProximoPartido } from "@/components/Partidos";
 import TarjetaResultado from "@/components/TarjetaResultado";
 import { idPartido } from "@/lib/directo/idPartido";
@@ -68,30 +67,12 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
   );
   const faltanResultados = disputados.some(sinResultado);
 
-  /*
-   * Los partidos ya jugados, por si alguno tiene retransmisión guardada. Cuáles
-   * la tienen no se puede saber aquí: esta página se genera al compilar y una
-   * retransmisión ocurre después. Lo pregunta el navegador al abrirla.
-   */
-  const narrables: PartidoNarrable[] = disputados
-    .filter((p) => p.fecha)
-    .map((p) => ({
-      fecha: p.fecha as string,
-      rival: p.rival,
-      esLocal: p.esLocal,
-      marcador:
-        p.golesLocal === null || p.golesVisitante === null
-          ? null
-          : `${p.golesLocal}-${p.golesVisitante}`,
-    }))
-    .reverse();
-
   // La barra inferior solo enseña los bloques que este equipo tiene: uno
   // recién inscrito no tiene todavía ni resultados ni fotos
   const bloques: Bloque[] = [
+    ...(disputados.length > 0 ? (["resultados"] as const) : []),
     ...(principal ? (["clasificacion"] as const) : []),
     ...(pendientes.length > 0 ? (["calendario"] as const) : []),
-    ...(disputados.length > 0 ? (["resultados"] as const) : []),
     ...(fotos.length > 0 ? (["imagenes"] as const) : []),
   ];
 
@@ -175,6 +156,29 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
           </p>
         ) : null}
 
+        {disputados.length > 0 ? (
+          <section id="resultados" className="scroll-mt-20">
+            <h2 className="title text-3xl text-tinta">Resultados</h2>
+            <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {[...disputados].reverse().map((p, i) => (
+                <li key={`${p.fecha}-${p.rival}-${i}`}>
+                  <TarjetaResultado partido={p} equipo={equipo} />
+                </li>
+              ))}
+            </ul>
+            {faltanResultados ? (
+              <p className="mt-2 text-xs text-mute">
+                «Sin resultado»: la RFAF no lo publica para ese partido. Se puede
+                consultar en su acta oficial.
+              </p>
+            ) : ultimo ? (
+              <p className="mt-2 text-xs text-mute">
+                Último partido disputado: {ultimo.fecha ? fechaLarga(ultimo.fecha) : "—"}
+              </p>
+            ) : null}
+          </section>
+        ) : null}
+
         {principal ? (
           <section id="clasificacion" className="scroll-mt-20">
             <h2 className="title text-3xl text-tinta">Clasificación</h2>
@@ -199,32 +203,6 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
               ))}
             </ul>
           </section>
-        ) : null}
-        {disputados.length > 0 ? (
-          <section id="resultados" className="scroll-mt-20">
-            <h2 className="title text-3xl text-tinta">Resultados</h2>
-            <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {[...disputados].reverse().map((p, i) => (
-                <li key={`${p.fecha}-${p.rival}-${i}`}>
-                  <TarjetaResultado partido={p} equipo={equipo} />
-                </li>
-              ))}
-            </ul>
-            {faltanResultados ? (
-              <p className="mt-2 text-xs text-mute">
-                «Sin resultado»: la RFAF no lo publica para ese partido. Se puede
-                consultar en su acta oficial.
-              </p>
-            ) : ultimo ? (
-              <p className="mt-2 text-xs text-mute">
-                Último partido disputado: {ultimo.fecha ? fechaLarga(ultimo.fecha) : "—"}
-              </p>
-            ) : null}
-          </section>
-        ) : null}
-
-        {narrables.length > 0 ? (
-          <DirectosGuardados equipo={equipo.id} partidos={narrables} />
         ) : null}
 
         {fotos.length > 0 ? (
