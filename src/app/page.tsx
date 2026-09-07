@@ -11,6 +11,7 @@ import { TarjetaNoticia } from "@/components/TarjetaNoticia";
 import { TarjetaProximoPartido } from "@/components/Partidos";
 import { idPartido } from "@/lib/directo/idPartido";
 import ResumenPartido from "@/components/ResumenPartido";
+import TarjetaResultado from "@/components/TarjetaResultado";
 import { DirectosAhora } from "@/components/EnDirecto";
 import SeccionRedes from "@/components/SeccionRedes";
 import Media from "@/components/Media";
@@ -186,7 +187,7 @@ export default function Inicio() {
           />
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {resultados.map(({ equipo, ultimo }) => (
-              <ResumenPartido key={equipo.id} equipo={equipo} partido={ultimo!} />
+              <TarjetaResultado key={equipo.id} equipo={equipo} partido={ultimo!} conEquipo />
             ))}
           </div>
         </section>

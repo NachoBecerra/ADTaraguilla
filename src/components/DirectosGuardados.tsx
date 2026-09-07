@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useRetransmisionesDe } from "@/lib/directo/archivo";
 import { fechaPartido } from "@/lib/formato";
 import { IconoFlecha, IconoCasa, IconoAutobus } from "@/components/Iconos";
 
@@ -33,25 +33,9 @@ export default function DirectosGuardados({
   equipo: string;
   partidos: PartidoNarrable[];
 }) {
-  const [fechas, setFechas] = useState<string[] | null>(null);
-
-  useEffect(() => {
-    let vigente = true;
-
-    fetch(`/api/directo/archivo?equipo=${encodeURIComponent(equipo)}`, { cache: "no-store" })
-      .then((r) => (r.ok ? r.json() : { fechas: [] }))
-      .then((datos: { fechas?: string[] }) => {
-        if (vigente) setFechas(datos.fechas ?? []);
-      })
-      .catch(() => {
-        // Sin respuesta no se enseña la sección, que es un extra
-        if (vigente) setFechas([]);
-      });
-
-    return () => {
-      vigente = false;
-    };
-  }, [equipo]);
+  /* La misma consulta que usan las tarjetas de resultado de esta página: se
+     pregunta una vez y contesta a todas */
+  const fechas = useRetransmisionesDe(equipo);
 
   if (fechas === null) return null; // todavía preguntando
 

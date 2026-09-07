@@ -22,6 +22,7 @@ import BotonAvisos from "@/components/BotonAvisos";
 import { BandaDirecto } from "@/components/EnDirecto";
 import DirectosGuardados, { type PartidoNarrable } from "@/components/DirectosGuardados";
 import { FilaPartido, TarjetaProximoPartido } from "@/components/Partidos";
+import TarjetaResultado from "@/components/TarjetaResultado";
 import { idPartido } from "@/lib/directo/idPartido";
 import { fechaLarga } from "@/lib/formato";
 import { IconoFlecha, IconoEnlaceExterno } from "@/components/Iconos";
@@ -202,19 +203,17 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
         {disputados.length > 0 ? (
           <section id="resultados" className="scroll-mt-20">
             <h2 className="title text-3xl text-tinta">Resultados</h2>
-            <ul className="mt-4 rounded-xl border border-linea bg-panel px-4">
+            <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {[...disputados].reverse().map((p, i) => (
-                <FilaPartido
-                  key={`${p.fecha}-${p.rival}-${i}`}
-                  partido={p}
-                  mostrarCompeticion={equipo.competiciones.length > 1}
-                />
+                <li key={`${p.fecha}-${p.rival}-${i}`}>
+                  <TarjetaResultado partido={p} equipo={equipo} />
+                </li>
               ))}
             </ul>
             {faltanResultados ? (
               <p className="mt-2 text-xs text-mute">
-                «s/r»: la RFAF no publica el resultado de ese partido. Se puede
-                consultar en su ficha oficial.
+                «Sin resultado»: la RFAF no lo publica para ese partido. Se puede
+                consultar en su acta oficial.
               </p>
             ) : ultimo ? (
               <p className="mt-2 text-xs text-mute">
