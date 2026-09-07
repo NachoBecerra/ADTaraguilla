@@ -408,6 +408,9 @@ async function principal() {
     previos.set(equipo.id, await leerJson(path.join(DIR_EQUIPOS, `${equipo.id}.json`)));
   }
 
+  /** Competiciones que no se publican, por código de grupo. */
+  const excluidas = config.competicionesExcluidas ?? {};
+
   /** Lo que ha cambiado en esta pasada y merece un aviso. */
   const novedades = [];
 
@@ -441,7 +444,18 @@ async function principal() {
       // El palmarés sale de esta misma página: ni una petición extra
       await guardarPalmares(equipo, extraerHistorico(html, temporada));
 
-      const competiciones = extraerCompeticiones(html, temporada);
+      /*
+       * Las competiciones apartadas a mano en src/data/equipos.json ni se
+       * piden. Son las que la RFAF deja a medias —una copa de la que no
+       * publica resultados ni clasificación—, y arrastrarlas costaba una
+       * petición por pasada y dejaba al equipo con partidos eternamente sin
+       * resultado, que es justo lo que hace que no se le pueda saltar nunca.
+       */
+      const competiciones = extraerCompeticiones(html, temporada).filter((c) => {
+        const motivo = excluidas[c.codGrupo];
+        if (motivo) log(`  ${c.nombre}: apartada a mano (${motivo})`);
+        return !motivo;
+      });
       if (competiciones.length === 0) {
         aviso(`  sin competiciones asignadas todavía en ${temporada}`);
       }

@@ -40,6 +40,10 @@
       "orden": 9
     }
   },
+  "_competicionesExcluidas": "Competiciones que no se publican, por su código de grupo en la RFAF. Para las que la federación deja a medias: sin resultados ni clasificación, no cuentan para la temporada y solo ensucian los resultados del equipo. El valor es el motivo, para saber por qué se quitó.",
+  "competicionesExcluidas": {
+    "48773660": "Copa Andalucía Senior 2026-2027 (Occidental): la RFAF no publica sus resultados ni clasificación"
+  },
   "_codigosAnteriores": "Códigos que tuvo un equipo en la RFAF antes del actual. La federación cambia el código al cambiar de categoría, y sin esto su historial se corta ahí. La clave es el identificador del equipo en la web.",
   "codigosAnteriores": {
     "primer-equipo": [

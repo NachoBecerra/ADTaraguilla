@@ -17,15 +17,6 @@
       "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
       "competiciones": [
         {
-          "nombre": "Copa Andalucía Senior",
-          "grupo": "Occidental",
-          "estado": "activa",
-          "puntos": null,
-          "posicion": null,
-          "equiposEnGrupo": 0,
-          "jornadas": 6
-        },
-        {
           "nombre": "1ª ANDALUZA SENIOR (CADIZ)",
           "grupo": "UNICO",
           "estado": "activa",
