@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-07T19:17:16.826Z",
+  "actualizado": "2026-09-08T15:22:55.500Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -224,23 +224,6 @@
               "jugado": false
             },
             {
-              "local": "C.D. EL TORNO 2009",
-              "visitante": "XEREZ DEPORTIVO F.C.",
-              "codLocal": "343715",
-              "codVisitante": "12785604",
-              "fecha": "2026-09-13",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Campo de Fútbol Jerez De La Frontera (EL TORNO)",
-              "campo": "POLIDEPORTIVO MUNICIPAL MIGUEL ANGEL MORALES NAVAS",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3019",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "C.D. GUADALCACIN",
               "visitante": "C.D. CIUDAD DE CADIZ",
               "codLocal": "303615",
@@ -271,7 +254,7 @@
               "campo": "EL FONTANAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3602",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662391",
               "jugado": false
             },
             {
@@ -288,7 +271,7 @@
               "campo": "MANOLO MESA CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3201",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662393",
               "jugado": false
             },
             {
@@ -305,7 +288,24 @@
               "campo": "SAN RAFAEL PVO (F11-F7)",
               "superficie": "Hierba Natural",
               "codCampo": "3080",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662395",
+              "jugado": false
+            },
+            {
+              "local": "C.D. EL TORNO 2009",
+              "visitante": "XEREZ DEPORTIVO F.C.",
+              "codLocal": "343715",
+              "codVisitante": "12785604",
+              "fecha": "2026-09-13",
+              "hora": "18:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Campo de Fútbol Jerez De La Frontera (EL TORNO)",
+              "campo": "POLIDEPORTIVO MUNICIPAL MIGUEL ANGEL MORALES NAVAS",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3019",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662388",
               "jugado": false
             },
             {
@@ -322,7 +322,7 @@
               "campo": "EL PICACHO",
               "superficie": "Hierba Natural",
               "codCampo": "3548",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662392",
               "jugado": false
             },
             {
@@ -339,7 +339,7 @@
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662394",
               "jugado": false
             }
           ]
