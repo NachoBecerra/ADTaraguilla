@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-08T13:23:23.594Z",
+  "actualizado": "2026-09-09T09:25:15.232Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -30,23 +30,6 @@
           "fecha": "2026-09-12",
           "partidos": [
             {
-              "local": "ATLETICO ZABAL",
-              "visitante": "C.D. SALESIANOS ALGECIRAS",
-              "codLocal": "326327",
-              "codVisitante": "349221",
-              "fecha": "2026-09-12",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "La Línea de La Concepción",
-              "campo": "VIRGEN DEL CARMEN (LA LINEA)",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2069065",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "A.D. MARIANISTAS C.D.",
               "visitante": "C.D. ESTRELLA PORTUENSE F.C.",
               "codLocal": "343218",
@@ -60,7 +43,7 @@
               "campo": "SANTA FE",
               "superficie": "Hierba Artificial",
               "codCampo": "3051",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663711",
               "jugado": false
             },
             {
@@ -115,6 +98,23 @@
               "jugado": false
             },
             {
+              "local": "ATLETICO ZABAL",
+              "visitante": "C.D. SALESIANOS ALGECIRAS",
+              "codLocal": "326327",
+              "codVisitante": "349221",
+              "fecha": "2026-09-12",
+              "hora": "16:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "La Línea de La Concepción",
+              "campo": "VIRGEN DEL CARMEN (LA LINEA)",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2069065",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663714",
+              "jugado": false
+            },
+            {
               "local": "C.D. ISLA DE LEON FUTBOL BASE",
               "visitante": "A.D. LOS BURREÑOS",
               "codLocal": "331319",
@@ -162,7 +162,7 @@
               "campo": "ANTONIO CAMACHO",
               "superficie": "Hierba Artificial",
               "codCampo": "3171",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663715",
               "jugado": false
             }
           ]
