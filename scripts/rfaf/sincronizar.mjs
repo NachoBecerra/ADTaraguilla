@@ -217,6 +217,20 @@ function fusionarJornada(jornada, deLaJornada, previos) {
 }
 
 /**
+ * Con qué se reconoce una jornada de una pasada a la siguiente.
+ *
+ * Por número, que es lo que la RFAF respeta. Las eliminatorias de copa no lo
+ * llevan, y ahí solo queda el nombre: "Cuartos", "Semifinales".
+ */
+const claveJornada = (j) => j.numero ?? `n:${j.nombre}`;
+
+/** El orden en que se juegan: por número, y sin número, por fecha. */
+function porJornada(a, b) {
+  if (a.numero != null && b.numero != null) return a.numero - b.numero;
+  return (a.fecha ?? "9999-99-99").localeCompare(b.fecha ?? "9999-99-99");
+}
+
+/**
  * ¿Merece la pena volver a pedir esta jornada?
  *
  * El calendario ya nos da fecha y emparejamientos de toda la temporada; la
@@ -287,7 +301,9 @@ async function sincronizarCompeticion(cliente, competicion, previa, escudos, nom
   let faltanEscudos = !previa?.escudosRecogidos;
 
   for (const jornada of calendario) {
-    const previaJ = previa?.jornadas?.find((j) => j.numero === jornada.numero);
+    /* Por la misma clave con la que se rescatan, y no solo por número: las
+       eliminatorias de copa no lo llevan y todas se emparejaban con la primera */
+    const previaJ = previa?.jornadas?.find((j) => claveJornada(j) === claveJornada(jornada));
 
     let partidosJornada = null;
     /*
@@ -326,6 +342,27 @@ async function sincronizarCompeticion(cliente, competicion, previa, escudos, nom
   }
 
   log(`    ${pedidas} jornada(s) consultadas`);
+
+  /*
+   * Una jornada que ya conocíamos no desaparece porque el calendario deje de
+   * listarla.
+   *
+   * Pasó de verdad: el 9 de septiembre de 2026 el calendario de 1ª Andaluza
+   * dejó de traer la jornada 1, y con ella se fue el 0-2 de Tarifa —el único
+   * partido jugado del senior—. La portada se quedó sin "Últimos resultados"
+   * y la ficha del equipo, sin resultados. El calendario manda para lo que
+   * está por venir; para lo ya jugado, lo que tenemos vale más que un hueco.
+   */
+  const enCalendario = new Set(jornadas.map(claveJornada));
+  const olvidadas = (previa?.jornadas ?? []).filter((j) => !enCalendario.has(claveJornada(j)));
+  if (olvidadas.length > 0) {
+    aviso(
+      `  ${competicion.nombre}: el calendario ya no trae ${olvidadas.length} jornada(s) ` +
+        `(${olvidadas.map((j) => j.nombre).join(", ")}); se conservan las que teníamos`,
+    );
+    jornadas.push(...olvidadas);
+    jornadas.sort(porJornada);
+  }
 
   let clasificacion = previa?.clasificacion ?? [];
   if (grupo.urlClasificacion) {
