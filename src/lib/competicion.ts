@@ -178,7 +178,22 @@ export function partidosDe(equipo: Equipo): PartidoPropio[] {
     }
   }
 
-  return partidos.sort((a, b) => (a.fecha ?? "9999").localeCompare(b.fecha ?? "9999"));
+  return partidos.sort((a, b) => cuandoSeJuega(a).localeCompare(cuandoSeJuega(b)));
+}
+
+/**
+ * Con qué se ordenan los partidos: el día y, dentro del día, la hora.
+ *
+ * La hora solo desempata, pero hace falta: un equipo puede jugar dos veces el
+ * mismo día —un torneo de verano, una liga y una copa— y de este orden sale
+ * cuál es "el último resultado", que es el que se enseña en la portada. Sin
+ * ella mandaba el orden en que vinieran los datos.
+ *
+ * Lo que no tiene fecha u hora se va al final: no se puede colocar en el
+ * calendario lo que todavía no se ha fijado.
+ */
+function cuandoSeJuega(p: PartidoPropio): string {
+  return `${p.fecha ?? "9999-99-99"} ${p.hora ?? "99:99"}`;
 }
 
 export const hoyIso = () => new Date().toISOString().slice(0, 10);
