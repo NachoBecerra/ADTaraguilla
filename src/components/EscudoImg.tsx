@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { IconoEscudo } from "@/components/Iconos";
+import formasJson from "@/data/rfaf/formas.json";
 
 /**
  * Pinta un escudo ya resuelto.
@@ -7,54 +8,59 @@ import { IconoEscudo } from "@/components/Iconos";
  * Vive en su propio archivo, sin importar nada de la capa de datos, porque
  * también se usa desde componentes cliente y `competicion.ts` lee del sistema
  * de archivos: bastaría con importarlo para arrastrar `node:fs` al navegador.
+ * Lo de las formas sí puede entrar: es un JSON pelado.
  */
 
-/**
- * Cuánto mide el disco respecto al escudo.
- *
- * Este número está medido, no elegido a ojo. Recortando en círculo, cuanto más
- * llene el escudo más dibujo se lleva la tijera por las esquinas; se probó
- * sobre los 74 escudos que sirve la RFAF, contando qué parte de los píxeles
- * con dibujo caía fuera del disco:
- *
- *     holgura   el escudo llena   peor pérdida   escudos afectados
- *       1,12         89%             10,1%            31 de 74
- *       1,20         83%              5,1%            20 de 74
- *       1,28         78%              2,0%            11 de 74
- *       1,42         70%              0,0%             0 de 74
- *
- * 1,28 es el codo de la curva: no toca ni uno de los quince escudos con fondo
- * transparente, y en los macizos se queda en un 2% que son esquinas de fondo.
- * Apretarlo empieza a comerse letras —hay logotipos con texto hasta el borde—
- * y aflojarlo deja el escudo flotando en una moneda.
- *
- * Un aviso para quien venga a bajar esto porque "nuestro escudo se ve más
- * pequeño que el del rival": lo que pasa es otra cosa. Un escudo con fondo
- * macizo toma prestado el disco como fondo propio y se lee hasta el borde; uno
- * transparente y redondeado deja el blanco a la vista alrededor y parece menor,
- * aunque los dos estén dibujados al mismo tamaño. La holgura no arregla eso:
- * haría falta saber de cada escudo hasta dónde llega su dibujo y escalarlo uno
- * a uno.
- */
+/** Cuánto mide el disco blanco respecto al escudo. */
 const HOLGURA = 1.28;
+
+/**
+ * Hasta dónde llega el dibujo de cada escudo, medido de sus píxeles.
+ *
+ * En anchos de caja: 0,5 es un dibujo que toca el borde por el lado y 0,707
+ * uno que llega a las esquinas. Lo escribe `scripts/rfaf/medirEscudos.mjs`.
+ */
+const FORMAS: Record<string, number> = formasJson.formas;
+
+/**
+ * Tope de agrandado.
+ *
+ * Un escudo diminuto en medio de un lienzo enorme no se puede estirar sin
+ * límite: saldría emborronado. Con los escudos de hoy no llega a aplicarse
+ * ninguno —el que más se agranda va a 1,51— pero mañana puede aparecer uno.
+ */
+const TOPE = 1.6;
+
+/**
+ * A qué tamaño se pinta un escudo para que **su dibujo** llene el disco.
+ *
+ * Aquí está el arreglo de un defecto que se veía y costaba explicar: dos
+ * escudos pintados al mismo tamaño se leían distintos. Uno con fondo macizo
+ * toma prestado el disco blanco como fondo propio y llega hasta el borde;
+ * uno recortado, con el fondo transparente, deja blanco alrededor y parece
+ * más pequeño. El del club salía un 21% más chico que el del rival sin que
+ * nadie hubiera decidido eso.
+ *
+ * Sabiendo de cada escudo dónde acaba su dibujo, cada uno se agranda —o se
+ * encoge— lo justo para tocar el borde del disco. Lo que sobresale es fondo, y
+ * el disco lo recorta: sobre blanco, invisible.
+ *
+ * Sin medida no se toca nada. Pasa con los escudos que sube el club a mano y
+ * con un rival nuevo hasta que se pase el medidor.
+ */
+function escalaDe(src: string): number {
+  const radio = FORMAS[src];
+  if (!radio) return 1;
+  return Math.min(TOPE, HOLGURA / (2 * radio));
+}
 
 /**
  * El disco blanco de detrás, con el borde difuminado hacia fuera.
  *
  * De los 74 escudos que sirve la RFAF, 60 traen el fondo macizo —muchos son
  * JPEG, que ni siquiera sabe guardar transparencia— y sobre el verde del
- * directo se veían como un recuadro blanco recortado a tijera.
- *
- * **Un degradado por sí solo no lo arregla**, y merece la pena dejarlo escrito
- * porque parece que sí: la esquina de un cuadrado está un 41% más lejos del
- * centro que su lado, así que para que las esquinas cayeran dentro de la parte
- * opaca del degradado el disco tendría que ser más del doble de grande que el
- * escudo. Se vería una moneda enorme con un escudo diminuto en medio.
- *
- * Lo que sí funciona es recortar: el disco es blanco y opaco, recorta lo que
- * sobresale —solo esquinas de margen— y el fondo blanco del JPEG se funde con
- * él sin costura. Lo que se difumina es el **exterior** del disco, con un halo
- * que lo separa del verde sin línea dura.
+ * directo se veían como un recuadro blanco recortado a tijera. El disco los
+ * absorbe: su fondo se funde con él y lo que sobresale se recorta.
  *
  * Blanco en los dos temas a propósito. Un disco oscuro en modo noche
  * devolvería el recuadro blanco al centro, que es justo lo que se venía a
@@ -74,6 +80,10 @@ export default function EscudoImg({
   halo?: boolean;
   className?: string;
 }) {
+  /* El agrandado solo tiene sentido con disco: es él quien recorta lo que
+     sobresale. Suelto, un escudo estirado se saldría de su sitio */
+  const lado = halo && src ? Math.round(size * escalaDe(src)) : size;
+
   const escudo = !src ? (
     <span
       aria-hidden
@@ -88,17 +98,17 @@ export default function EscudoImg({
     <Image
       src={src}
       alt=""
-      width={size}
-      height={size}
+      width={lado}
+      height={lado}
       /*
        * Sin esto Next solo ofrece el escudo a 1x y 2x, y en un móvil de 3x
        * se ve blando. Diciéndole a qué tamaño se pinta, el navegador puede
        * pedir el triple de píxeles; si el original no da para tanto, el
        * optimizador devuelve lo que haya y no pasa nada.
        */
-      sizes={`${size}px`}
-      className={`shrink-0 object-contain ${halo ? "" : className}`}
-      style={{ width: size, height: size }}
+      sizes={`${lado}px`}
+      className={`shrink-0 object-contain ${halo ? "max-w-none" : className}`}
+      style={{ width: lado, height: lado }}
     />
   );
 

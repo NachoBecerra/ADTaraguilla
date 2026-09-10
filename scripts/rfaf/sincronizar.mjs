@@ -39,6 +39,7 @@ const DIR_SALIDA = path.join(RAIZ, "src", "data", "rfaf");
 const DIR_EQUIPOS = path.join(DIR_SALIDA, "equipos");
 const CONFIG = path.join(RAIZ, "src", "data", "equipos.json");
 const RUTA_ESCUDOS = path.join(DIR_SALIDA, "escudos.json");
+const RUTA_FORMAS = path.join(DIR_SALIDA, "formas.json");
 const RUTA_CAMPOS = path.join(DIR_SALIDA, "campos.json");
 const DIR_HISTORICO = path.join(DIR_SALIDA, "historico");
 
@@ -228,6 +229,29 @@ const claveJornada = (j) => j.numero ?? `n:${j.nombre}`;
 function porJornada(a, b) {
   if (a.numero != null && b.numero != null) return a.numero - b.numero;
   return (a.fecha ?? "9999-99-99").localeCompare(b.fecha ?? "9999-99-99");
+}
+
+/**
+ * Avisa de los escudos que todavía nadie ha medido.
+ *
+ * La medida dice hasta dónde llega el dibujo de cada escudo, y con ella la web
+ * los pinta a un tamaño parejo dentro de su disco. La toma un script aparte
+ * —`scripts/rfaf/medirEscudos.mjs`— porque hay que descodificar imágenes y
+ * esta pasada corre en GitHub **sin instalar dependencias**, que es lo que la
+ * hace rápida y sin sorpresas.
+ *
+ * Aquí solo se mira y se avisa: un rival nuevo se pintará como se pintaba
+ * antes hasta que alguien pase el medidor. No es un fallo, es un pendiente.
+ */
+async function avisarEscudosSinMedir(escudos) {
+  const formas = (await leerJson(RUTA_FORMAS, { formas: {} }))?.formas ?? {};
+  const sinMedir = [...new Set(escudos.values())].filter((u) => formas[u] === undefined);
+  if (sinMedir.length === 0) return;
+
+  aviso(
+    `${sinMedir.length} escudo(s) sin medir. Para que se pinten al tamaño de los demás:` +
+      ` node scripts/rfaf/medirEscudos.mjs`,
+  );
 }
 
 /**
@@ -547,6 +571,8 @@ async function principal() {
     _nota: "Escudos de los clubes, tal y como los sirve la CDN de la RFAF.",
     escudos: Object.fromEntries([...escudos].sort()),
   });
+
+  await avisarEscudosSinMedir(escudos);
 
   await mandarAvisos(novedades);
 
