@@ -64,7 +64,7 @@ export default function EstadisticasDirecto({
           {/* Qué escudo es cada lado de la barra, que si no hay que adivinarlo */}
           <div className="flex items-center gap-2">
             <span className="flex min-w-0 flex-1 items-center gap-2">
-              <EscudoImg src={partido.escudoLocal} size={22} />
+              <EscudoImg src={partido.escudoLocal} size={22} halo />
               <span
                 aria-hidden
                 className="h-2.5 w-2.5 shrink-0 rounded-full bg-club"
@@ -81,7 +81,7 @@ export default function EstadisticasDirecto({
                 aria-hidden
                 className="h-2.5 w-2.5 shrink-0 rounded-full bg-club-claro"
               />
-              <EscudoImg src={partido.escudoVisitante} size={22} />
+              <EscudoImg src={partido.escudoVisitante} size={22} halo />
             </span>
           </div>
 

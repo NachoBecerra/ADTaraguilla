@@ -137,7 +137,7 @@ export default function SelectorRival({
       <div className="relative">
         <div className="mt-1 flex items-center gap-2 rounded-xl border border-linea bg-panel px-3 focus-within:border-club">
           {elegido ? (
-            <EscudoImg src={elegido.url} size={26} />
+            <EscudoImg src={elegido.url} size={26} halo />
           ) : (
             <IconoBuscar size={18} className="shrink-0 text-mute" />
           )}
@@ -170,7 +170,7 @@ export default function SelectorRival({
                   }}
                   className="flex min-w-0 flex-1 items-center gap-2.5 px-3 py-2 text-left hover:bg-panel-2"
                 >
-                  <EscudoImg src={o.url} size={26} />
+                  <EscudoImg src={o.url} size={26} halo />
                   <span className="min-w-0 flex-1 truncate text-sm text-tinta">{o.nombre}</span>
                   {o.propio ? (
                     <span className="shrink-0 text-[10px] font-bold uppercase tracking-wide text-club-soft">

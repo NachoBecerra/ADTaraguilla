@@ -167,7 +167,7 @@ export default function Seguimiento({
 
         <div className="mt-4 flex items-center gap-3">
           <div className="flex min-w-0 flex-1 flex-col items-center gap-2 text-center">
-            <EscudoImg src={partido.escudoLocal} size={52} />
+            <EscudoImg src={partido.escudoLocal} size={52} halo />
             <span className="text-sm font-semibold leading-tight">{partido.local}</span>
           </div>
 
@@ -178,7 +178,7 @@ export default function Seguimiento({
           </span>
 
           <div className="flex min-w-0 flex-1 flex-col items-center gap-2 text-center">
-            <EscudoImg src={partido.escudoVisitante} size={52} />
+            <EscudoImg src={partido.escudoVisitante} size={52} halo />
             <span className="text-sm font-semibold leading-tight">{partido.visitante}</span>
           </div>
         </div>
