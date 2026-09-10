@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { crearAmistoso } from "./acciones";
+import SelectorRival from "./SelectorRival";
 
 /**
  * Crear a mano un partido que no está en la RFAF.
@@ -34,6 +35,7 @@ export default function NuevoAmistoso({
       fecha: String(datos.get("fecha") ?? ""),
       hora: String(datos.get("hora") ?? ""),
       campo: String(datos.get("campo") ?? ""),
+      escudoRival: String(datos.get("escudoRival") ?? ""),
     });
 
     setGuardando(false);
@@ -67,7 +69,8 @@ export default function NuevoAmistoso({
       <p className="mt-1 text-xs leading-relaxed text-mute">
         Para lo que la RFAF no publica. No aparecerá en resultados ni en la
         clasificación: solo se podrá retransmitir. Se borra cuando quieras y no
-        deja rastro.
+        deja rastro. Un amistoso no se edita: si algo sale mal, se borra y se
+        crea otro.
       </p>
 
       <div className="mt-4 space-y-3">
@@ -84,19 +87,7 @@ export default function NuevoAmistoso({
           </select>
         </div>
 
-        <div>
-          <label htmlFor="rival" className={etiqueta}>
-            Rival
-          </label>
-          <input
-            id="rival"
-            name="rival"
-            required
-            maxLength={60}
-            placeholder="C.D. San García"
-            className={campo}
-          />
-        </div>
+        <SelectorRival claseEtiqueta={etiqueta} />
 
         <div>
           <label htmlFor="donde" className={etiqueta}>

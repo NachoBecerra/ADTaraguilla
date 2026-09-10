@@ -127,3 +127,59 @@ export async function subirAlAlmacen(
 
   return subidas;
 }
+
+/* --------------------------------------------------------------- escudos */
+
+/** Lado mayor de un escudo guardado. A 52 px en pantalla, sobra hasta en 3x. */
+const LADO_ESCUDO = 256;
+
+/**
+ * Prepara un escudo para subirlo: pequeño y **en PNG**.
+ *
+ * En PNG y no en JPEG como las fotos, que es la diferencia que importa: un
+ * escudo casi siempre viene recortado con el fondo transparente, y el JPEG no
+ * sabe guardar transparencia. Convertido, el escudo saldría dentro de un
+ * cuadrado negro sobre la banda verde del directo.
+ *
+ * Tampoco se recorta ni se cuadra: se respeta la proporción que traiga, que
+ * hay escudos altos y escudos anchos y todos se pintan dentro de su caja.
+ */
+export function reducirEscudo(original: File): Promise<{ archivo: File; vista: string }> {
+  return new Promise((resolver, rechazar) => {
+    const lector = new FileReader();
+    lector.onerror = () => rechazar(new Error(original.name));
+    lector.onload = () => {
+      const img = new window.Image();
+      img.onerror = () => rechazar(new Error(original.name));
+      img.onload = () => {
+        const escala = Math.min(1, LADO_ESCUDO / Math.max(img.width, img.height));
+        const lienzo = document.createElement("canvas");
+        lienzo.width = Math.max(1, Math.round(img.width * escala));
+        lienzo.height = Math.max(1, Math.round(img.height * escala));
+
+        const ctx = lienzo.getContext("2d");
+        if (!ctx) return rechazar(new Error(original.name));
+        ctx.drawImage(img, 0, 0, lienzo.width, lienzo.height);
+
+        lienzo.toBlob((blob) => {
+          if (!blob) return rechazar(new Error(original.name));
+          resolver({
+            archivo: new File([blob], "escudo.png", { type: "image/png" }),
+            vista: URL.createObjectURL(blob),
+          });
+        }, "image/png");
+      };
+      img.src = String(lector.result);
+    };
+    lector.readAsDataURL(original);
+  });
+}
+
+/** Sube un escudo ya reducido y devuelve su dirección. */
+export async function subirEscudo(archivo: File, nombre: string): Promise<string> {
+  const blob = await upload(`escudos/${aSlug(nombre)}-${Date.now().toString(36)}.png`, archivo, {
+    access: "public",
+    handleUploadUrl: "/api/subir",
+  });
+  return blob.url;
+}

@@ -288,6 +288,22 @@ function mapaPorNombre(): Map<string, string> {
   return porNombre;
 }
 
+/**
+ * Los clubes de los que conocemos el escudo, con el nombre que usa la RFAF.
+ *
+ * Sale de los calendarios, así que son los rivales de nuestros grupos: justo
+ * la gente contra la que se juega un amistoso. Los nuestros se quedan fuera,
+ * que un equipo del club no puede ser su propio rival.
+ */
+export function clubesConEscudo(): { nombre: string; url: string }[] {
+  const nuestros = new Set(getEquipos().map((e) => e.nombreRfaf).filter(Boolean));
+
+  return [...mapaPorNombre()]
+    .filter(([nombre]) => !nuestros.has(nombre) && !esDescanso(nombre))
+    .map(([nombre, url]) => ({ nombre, url }))
+    .sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+}
+
 /** Escudo de un equipo, por código o por nombre. Null si no lo tenemos. */
 export function escudoDe({ codigo, nombre }: { codigo?: string | null; nombre?: string | null }) {
   if (codigo && porCodigo[codigo]) return porCodigo[codigo];

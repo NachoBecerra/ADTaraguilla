@@ -9,7 +9,8 @@ import {
 } from "@/lib/privado";
 
 /**
- * Dónde guarda sus cosas el directo.
+ * Dónde guarda sus cosas el directo —y, de prestado, la librería de escudos
+ * del panel, que necesita exactamente lo mismo.
  *
  * Es una capa fina sobre el almacén privado con **un respaldo en disco para
  * desarrollo**: sin `BLOB_PRIVADO_READ_WRITE_TOKEN` el almacén no guarda nada y

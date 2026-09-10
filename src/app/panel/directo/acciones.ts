@@ -17,7 +17,15 @@ import { partidosRetransmitibles, saqueEnMs } from "@/lib/directo/partidos";
 import { hayRetransmision, plegar } from "@/lib/directo/modelo";
 import { minutosPorParte } from "@/lib/directo/reglamento";
 import { TRAS_EL_FINAL_MS, type EstadoPanel } from "@/lib/directo/panel";
-import { getEquipo, getEquipos } from "@/lib/competicion";
+import { clubesConEscudo, getEquipo, getEquipos } from "@/lib/competicion";
+import {
+  anadirEscudoPropio,
+  escudosPropios,
+  esEscudoAceptable,
+  quitarEscudoPropio,
+  type EscudoPropio,
+} from "@/lib/panel/escudos";
+import { del } from "@vercel/blob";
 import { site } from "@/data/site";
 
 export type Resultado = { ok: boolean; mensaje: string; ruta?: string };
@@ -213,6 +221,8 @@ export type DatosAmistoso = {
   fecha: string;
   hora: string;
   campo: string;
+  /** Dirección del escudo del rival, elegida de la librería o recién subida. */
+  escudoRival: string;
 };
 
 const FECHA = /^\d{4}-\d{2}-\d{2}$/;
@@ -258,6 +268,15 @@ export async function crearAmistoso(datos: DatosAmistoso): Promise<Resultado> {
     };
   }
 
+  /*
+   * El escudo se comprueba aunque venga de nuestro propio formulario: una
+   * acción de servidor es una dirección pública, y lo que llegue aquí acaba
+   * pintado en la pantalla del directo. Si no cuadra no se falla la creación
+   * —el partido importa más que su escudo—, se deja sin él.
+   */
+  const escudoRival =
+    datos.escudoRival && esEscudoAceptable(datos.escudoRival) ? datos.escudoRival : null;
+
   const nuestro = equipo.nombreRfaf ?? site.nombre;
   const ficha: FichaPartido = {
     id,
@@ -265,8 +284,8 @@ export async function crearAmistoso(datos: DatosAmistoso): Promise<Resultado> {
     nombreEquipo: equipo.nombre,
     local: datos.enCasa ? nuestro : rival,
     visitante: datos.enCasa ? rival : nuestro,
-    escudoLocal: datos.enCasa ? site.escudo : null,
-    escudoVisitante: datos.enCasa ? null : site.escudo,
+    escudoLocal: datos.enCasa ? site.escudo : escudoRival,
+    escudoVisitante: datos.enCasa ? escudoRival : site.escudo,
     competicion: "Amistoso",
     jornada: "",
     // La duración de las partes sale de la categoría, igual que en un oficial
@@ -284,6 +303,80 @@ export async function crearAmistoso(datos: DatosAmistoso): Promise<Resultado> {
   }
 
   return { ok: true, mensaje: "Amistoso creado." };
+}
+
+/* ------------------------------------------------------ librería de escudos */
+
+export type Catalogo = {
+  /** Los clubes de nuestros grupos, con el escudo que sirve la RFAF. */
+  rfaf: { nombre: string; url: string }[];
+  /** Los que ha subido el club para lo que la federación no tiene. */
+  propios: EscudoPropio[];
+};
+
+/**
+ * Los escudos entre los que elegir al crear un amistoso.
+ *
+ * Se pide al abrir el formulario y no con la página: son ciento y pico
+ * nombres con su dirección, y el formulario está plegado casi siempre.
+ */
+export async function catalogoDeEscudos(): Promise<Catalogo> {
+  if (!(await haySesion())) return { rfaf: [], propios: [] };
+  return { rfaf: clubesConEscudo(), propios: await escudosPropios() };
+}
+
+/**
+ * Guarda en la librería un escudo recién subido.
+ *
+ * La imagen ya está en el almacén cuando esto se llama: subió directa desde el
+ * navegador. Aquí solo se apunta con qué nombre, para poder reutilizarla el año
+ * que viene sin volver a buscarla.
+ */
+export async function guardarEscudo(
+  nombre: string,
+  url: string,
+): Promise<{ ok: boolean; mensaje: string; propios: EscudoPropio[] }> {
+  if (!(await haySesion())) {
+    return { ok: false, mensaje: "La sesión ha caducado. Vuelve a entrar.", propios: [] };
+  }
+
+  const limpio = nombre.trim().slice(0, 60);
+  if (!limpio) {
+    return { ok: false, mensaje: "El escudo necesita un nombre.", propios: await escudosPropios() };
+  }
+  if (!esEscudoAceptable(url)) {
+    return { ok: false, mensaje: "Ese escudo no es de un sitio nuestro.", propios: await escudosPropios() };
+  }
+
+  return { ok: true, mensaje: "Escudo guardado.", propios: await anadirEscudoPropio(limpio, url) };
+}
+
+/**
+ * Quita un escudo de la librería y borra la imagen.
+ *
+ * Solo los propios: los de la RFAF no son nuestros y se rehacen solos en cada
+ * sincronización. Los amistosos ya creados con ese escudo no se tocan: su
+ * ficha copió la dirección, así que se quedarían sin imagen, y eso es mejor
+ * que reescribir un partido que ya se jugó.
+ */
+export async function quitarEscudo(
+  id: string,
+): Promise<{ ok: boolean; mensaje: string; propios: EscudoPropio[] }> {
+  if (!(await haySesion())) {
+    return { ok: false, mensaje: "La sesión ha caducado. Vuelve a entrar.", propios: [] };
+  }
+
+  const { escudos, borrado } = await quitarEscudoPropio(id);
+  if (!borrado) return { ok: false, mensaje: "Ese escudo ya no está.", propios: escudos };
+
+  try {
+    await del(borrado.url);
+  } catch {
+    /* Si el archivo no se puede borrar, la entrada se quita igual: es peor
+       dejarlo en la lista que dejar un archivo huérfano en el almacén */
+  }
+
+  return { ok: true, mensaje: "Escudo quitado.", propios: escudos };
 }
 
 /**
