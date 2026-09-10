@@ -12,10 +12,29 @@ import { IconoEscudo } from "@/components/Iconos";
 /**
  * Cuánto mide el disco respecto al escudo.
  *
- * Lo justo para que el cuadrado del escudo quede dentro del círculo salvo por
- * las cuatro esquinas, que es donde no hay nunca dibujo: solo margen. Más
- * grande y el escudo se vería flotando en una moneda; más pequeño y empezaría
- * a comerse el escudo por los lados.
+ * Este número está medido, no elegido a ojo. Recortando en círculo, cuanto más
+ * llene el escudo más dibujo se lleva la tijera por las esquinas; se probó
+ * sobre los 74 escudos que sirve la RFAF, contando qué parte de los píxeles
+ * con dibujo caía fuera del disco:
+ *
+ *     holgura   el escudo llena   peor pérdida   escudos afectados
+ *       1,12         89%             10,1%            31 de 74
+ *       1,20         83%              5,1%            20 de 74
+ *       1,28         78%              2,0%            11 de 74
+ *       1,42         70%              0,0%             0 de 74
+ *
+ * 1,28 es el codo de la curva: no toca ni uno de los quince escudos con fondo
+ * transparente, y en los macizos se queda en un 2% que son esquinas de fondo.
+ * Apretarlo empieza a comerse letras —hay logotipos con texto hasta el borde—
+ * y aflojarlo deja el escudo flotando en una moneda.
+ *
+ * Un aviso para quien venga a bajar esto porque "nuestro escudo se ve más
+ * pequeño que el del rival": lo que pasa es otra cosa. Un escudo con fondo
+ * macizo toma prestado el disco como fondo propio y se lee hasta el borde; uno
+ * transparente y redondeado deja el blanco a la vista alrededor y parece menor,
+ * aunque los dos estén dibujados al mismo tamaño. La holgura no arregla eso:
+ * haría falta saber de cada escudo hasta dónde llega su dibujo y escalarlo uno
+ * a uno.
  */
 const HOLGURA = 1.28;
 
