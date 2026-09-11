@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-10T11:20:22.884Z",
+  "actualizado": "2026-09-11T21:19:54.153Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -43,7 +43,7 @@
               "campo": "DEMETRIO PICHEL CD",
               "superficie": "Hierba Artificial",
               "codCampo": "2315900",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651381",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651381&cod_acta=2651381",
               "jugado": false
             },
             {
@@ -4318,6 +4318,20 @@
       "clasificacion": [
         {
           "posicion": 1,
+          "equipo": "SAN ROQUE BALOMPIE",
+          "puntos": 3,
+          "jugados": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 1,
+          "golesContra": 0,
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 2,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 0,
           "jugados": 0,
@@ -4329,7 +4343,7 @@
           "racha": []
         },
         {
-          "posicion": 2,
+          "posicion": 3,
           "equipo": "ALGECIRAS C.F., S.A.D.",
           "puntos": 0,
           "jugados": 0,
@@ -4341,7 +4355,7 @@
           "racha": []
         },
         {
-          "posicion": 3,
+          "posicion": 4,
           "equipo": "C.D. ASOC. DVA. NERVION",
           "puntos": 0,
           "jugados": 0,
@@ -4353,7 +4367,7 @@
           "racha": []
         },
         {
-          "posicion": 4,
+          "posicion": 5,
           "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
           "puntos": 0,
           "jugados": 0,
@@ -4365,7 +4379,7 @@
           "racha": []
         },
         {
-          "posicion": 5,
+          "posicion": 6,
           "equipo": "C.D. MOSQUITO",
           "puntos": 0,
           "jugados": 0,
@@ -4377,7 +4391,7 @@
           "racha": []
         },
         {
-          "posicion": 6,
+          "posicion": 7,
           "equipo": "C.D. UNION DEPORTIVA ESPERANZA 2019",
           "puntos": 0,
           "jugados": 0,
@@ -4389,7 +4403,7 @@
           "racha": []
         },
         {
-          "posicion": 7,
+          "posicion": 8,
           "equipo": "C.D.C. NUEVO MOLINO CSIF",
           "puntos": 0,
           "jugados": 0,
@@ -4401,20 +4415,8 @@
           "racha": []
         },
         {
-          "posicion": 8,
-          "equipo": "C.F. SAN JOSE OBRERO",
-          "puntos": 0,
-          "jugados": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
           "posicion": 9,
-          "equipo": "JUVENTUD DVA. GINES",
+          "equipo": "C.F. SAN JOSE OBRERO",
           "puntos": 0,
           "jugados": 0,
           "ganados": 0,
@@ -4462,18 +4464,6 @@
         },
         {
           "posicion": 13,
-          "equipo": "SAN ROQUE BALOMPIE",
-          "puntos": 0,
-          "jugados": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 14,
           "equipo": "SENECA C.F.",
           "puntos": 0,
           "jugados": 0,
@@ -4485,7 +4475,7 @@
           "racha": []
         },
         {
-          "posicion": 15,
+          "posicion": 14,
           "equipo": "SEVILLA F.C., S.A.D.",
           "puntos": 0,
           "jugados": 0,
@@ -4497,7 +4487,7 @@
           "racha": []
         },
         {
-          "posicion": 16,
+          "posicion": 15,
           "equipo": "SIEMPRE ALEGRES C.D.",
           "puntos": 0,
           "jugados": 0,
@@ -4507,6 +4497,20 @@
           "golesFavor": 0,
           "golesContra": 0,
           "racha": []
+        },
+        {
+          "posicion": 16,
+          "equipo": "JUVENTUD DVA. GINES",
+          "puntos": 0,
+          "jugados": 1,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 0,
+          "golesContra": 1,
+          "racha": [
+            "P"
+          ]
         }
       ]
     }
