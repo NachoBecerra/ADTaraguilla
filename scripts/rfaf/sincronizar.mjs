@@ -21,7 +21,13 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { ClienteRfaf, ErrorDeCupo, urlAbsoluta } from "./cliente.mjs";
 import { aSlug, bloquesPorTemporada } from "./html.mjs";
-import { resultadoCreible, resultadoPorClasificacion } from "./reglas.mjs";
+import {
+  ORIGEN_TABLA,
+  clavePartido,
+  partidosCongelados,
+  resultadoCreible,
+  resultadoPorClasificacion,
+} from "./reglas.mjs";
 import {
   extraerEquipos,
   extraerCompeticiones,
@@ -147,15 +153,6 @@ function asignarIdentificadores(equipos, nombres) {
   });
 }
 
-/**
- * De dónde salió un resultado.
- *
- * Por ahora solo hay una procedencia buena: la diferencia en la clasificación.
- * Se guarda con el partido para poder distinguir lo deducido de lo que se
- * copió del marcador cuando aún no sabíamos que estaba trucado.
- */
-const ORIGEN_TABLA = "clasificacion";
-
 /* -------------------------------------------------- fusión calendario/jornada */
 
 /**
@@ -170,7 +167,7 @@ const ORIGEN_TABLA = "clasificacion";
  * son de fiar. El resultado se deduce después, de la clasificación.
  */
 function fusionarJornada(jornada, deLaJornada, previos) {
-  return jornada.partidos.map((base) => {
+  const fusionados = jornada.partidos.map((base) => {
     const buscar = (lista) =>
       lista?.find((p) => p.local === base.local && p.visitante === base.visitante);
 
@@ -215,6 +212,30 @@ function fusionarJornada(jornada, deLaJornada, previos) {
       jugado: hayGoles,
     };
   });
+
+  /*
+   * Un partido con resultado no se borra porque el calendario deje de traerlo.
+   *
+   * Pasó dos veces en tres días con la jornada 1 del senior: primero la RFAF
+   * dejó de listar la jornada entera, y cuando volvió lo hizo con un solo
+   * partido de los nueve. Como la lista sale del calendario, el 0-2 de Tarifa
+   * —el único resultado del equipo en toda la temporada— desapareció de la web
+   * las dos veces.
+   *
+   * La regla, entonces: el calendario manda para lo que está por jugarse, y un
+   * partido ya jugado está congelado. No se mueve de jornada ni se cae del
+   * calendario: si ya tiene resultado, es historia y se queda.
+   */
+  const congelados = partidosCongelados(previos, fusionados);
+
+  if (congelados.length > 0) {
+    aviso(
+      `  ${jornada.nombre}: el calendario ya no trae ${congelados.length} partido(s) ya jugado(s);` +
+        ` se conservan (${congelados.map(clavePartido).join(", ")})`,
+    );
+  }
+
+  return [...fusionados, ...congelados];
 }
 
 /**
@@ -229,6 +250,45 @@ const claveJornada = (j) => j.numero ?? `n:${j.nombre}`;
 function porJornada(a, b) {
   if (a.numero != null && b.numero != null) return a.numero - b.numero;
   return (a.fecha ?? "9999-99-99").localeCompare(b.fecha ?? "9999-99-99");
+}
+
+/** Cuántos partidos ya jugados tenemos de este equipo. */
+function cuentaResultados(datos) {
+  let n = 0;
+  for (const c of datos?.competiciones ?? []) {
+    for (const j of c.jornadas ?? []) {
+      for (const p of j.partidos ?? []) {
+        const nuestro = p.local === datos.nombreRfaf || p.visitante === datos.nombreRfaf;
+        if (nuestro && p.jugado) n++;
+      }
+    }
+  }
+  return n;
+}
+
+/**
+ * La red de seguridad: un equipo nunca debería tener menos resultados que ayer.
+ *
+ * Los resultados solo se suman. Si una pasada deja menos que la anterior es que
+ * algo de la RFAF vino a medias y nos lo hemos creído, y eso en la web se ve
+ * enseguida: la portada se queda sin "Últimos resultados". Ha pasado dos veces
+ * con la jornada 1 del senior, las dos en silencio.
+ *
+ * Aquí solo se avisa, bien fuerte, en el resumen de la pasada. Deshacerlo a lo
+ * bruto sería peor: hay bajas y retiradas de equipos en las que un partido
+ * desaparece de verdad, y no se puede decidir eso contando.
+ */
+function avisarSiSePierdenResultados(equipo, previo, ahora) {
+  if (!previo) return;
+
+  const antes = cuentaResultados(previo);
+  const despues = cuentaResultados(ahora);
+  if (despues >= antes) return;
+
+  aviso(
+    `  ¡OJO! ${equipo.nombre} pasa de ${antes} a ${despues} resultado(s). Los resultados no se` +
+      ` pierden solos: revisa qué ha devuelto la RFAF antes de dar por buena esta pasada.`,
+  );
 }
 
 /**
@@ -555,6 +615,7 @@ async function principal() {
 
       // Antes de guardar: qué ha cambiado respecto a lo que había
       novedades.push(...novedadesDe(equipo, previo, datosEquipo));
+      avisarSiSePierdenResultados(equipo, previo, datosEquipo);
       await escribirJson(rutaEquipo, datosEquipo);
     } catch (e) {
       if (!(e instanceof ErrorDeCupo)) throw e;

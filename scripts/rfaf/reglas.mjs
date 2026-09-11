@@ -52,6 +52,43 @@ export function resultadoCreible(fecha, hora, ahora = Date.now()) {
   return ahora >= saque + MINIMO_PARA_TENER_RESULTADO_MS;
 }
 
+/* --------------------------------------------- lo ya jugado no se borra */
+
+/**
+ * De dónde salió un resultado.
+ *
+ * Por ahora solo hay una procedencia buena: la diferencia en la clasificación.
+ * Se guarda con el partido para poder distinguir lo deducido de lo que se
+ * copió del marcador cuando aún no sabíamos que estaba trucado.
+ */
+export const ORIGEN_TABLA = "clasificacion";
+
+/** Un partido se reconoce por quiénes lo juegan. */
+export const clavePartido = (p) => `${p.local}|${p.visitante}`;
+
+/**
+ * Los partidos ya jugados que el calendario nuevo ha dejado de traer.
+ *
+ * Hay que conservarlos, y esto se escribe después de perder dos veces en tres
+ * días el único resultado del primer equipo. La lista de partidos de cada
+ * jornada se arma desde el calendario de la RFAF: primero la federación dejó
+ * de publicar la jornada 1 entera, y cuando volvió lo hizo con uno solo de los
+ * nueve partidos. Las dos veces, el 0-2 de Tarifa se cayó de la web sin que
+ * nadie tocara nada.
+ *
+ * La regla es la que ya seguía el resto del proyecto sin estar dicha: el
+ * calendario manda para lo que está por jugarse; un partido con resultado es
+ * historia y no se mueve. Solo se conserva lo que lleva la marca de haber
+ * salido de la clasificación, que es lo único que damos por bueno.
+ */
+export function partidosCongelados(previos, fusionados) {
+  const listados = new Set((fusionados ?? []).map(clavePartido));
+
+  return (previos ?? []).filter(
+    (p) => p.jugado && p.origen === ORIGEN_TABLA && !listados.has(clavePartido(p)),
+  );
+}
+
 /* ------------------------------------------ el resultado, por diferencia */
 
 /** Una jornada de descanso no es un partido. */

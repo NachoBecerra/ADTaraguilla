@@ -11,7 +11,13 @@ import {
   extraerJornada, extraerClasificacion,
 } from "./extraer.mjs";
 import { marcador } from "./html.mjs";
-import { resultadoCreible, resultadoPorClasificacion, saqueEnMs } from "./reglas.mjs";
+import {
+  ORIGEN_TABLA,
+  partidosCongelados,
+  resultadoCreible,
+  resultadoPorClasificacion,
+  saqueEnMs,
+} from "./reglas.mjs";
 
 let fallos = 0;
 function comprobar(que, real, esperado) {
@@ -207,6 +213,64 @@ comprobar(
   deducir(laTabla({ golesFavor: 400 }), elCalendario()),
   null,
 );
+
+/* --------------------------------------------- lo ya jugado no se borra */
+
+/*
+ * El caso real, dos veces en tres días: la jornada 1 del senior tenía nueve
+ * partidos y el nuestro con su 0-2. La RFAF dejó de publicarla entera, y
+ * cuando volvió lo hizo con uno solo de los nueve. Como la lista de partidos
+ * se arma desde el calendario, el único resultado del equipo desapareció de la
+ * web las dos veces.
+ */
+const tarifa = {
+  local: "TARIFA U.D.",
+  visitante: "A.D. TARAGUILLA",
+  golesLocal: 0,
+  golesVisitante: 2,
+  origen: ORIGEN_TABLA,
+  jugado: true,
+};
+const cadiz = { local: "C.D. CIUDAD DE CADIZ", visitante: "C.D. EL TORNO 2009", jugado: false };
+const guadiaro = { local: "A.D. TARAGUILLA", visitante: "C.D. GUADIARO", jugado: false };
+
+const nombres = (lista) => lista.map((p) => `${p.local}|${p.visitante}`);
+
+comprobar(
+  "un partido jugado que el calendario ya no trae se conserva",
+  nombres(partidosCongelados([tarifa, cadiz], [cadiz])),
+  ["TARIFA U.D.|A.D. TARAGUILLA"],
+);
+
+comprobar(
+  "y si el calendario se queda vacío del todo, igual",
+  nombres(partidosCongelados([tarifa], [])),
+  ["TARIFA U.D.|A.D. TARAGUILLA"],
+);
+
+comprobar(
+  "el que sigue en el calendario no se duplica",
+  partidosCongelados([tarifa, cadiz], [tarifa, cadiz]).length,
+  0,
+);
+
+/* Un partido sin jugar que desaparece del calendario desaparece de verdad: se
+   ha aplazado o se ha movido de jornada, y el calendario es quien manda */
+comprobar(
+  "un partido sin jugar que se cae del calendario no se rescata",
+  partidosCongelados([guadiaro], []).length,
+  0,
+);
+
+/* Los resultados de antes de saber que el marcador estaba trucado no llevan
+   marca de origen, y no se pueden dar por buenos ni para esto */
+comprobar(
+  "un resultado sin saber de dónde salió tampoco se conserva",
+  partidosCongelados([{ ...tarifa, origen: null }], []).length,
+  0,
+);
+
+comprobar("sin nada previo no hay nada que conservar", partidosCongelados(undefined, []).length, 0);
 
 console.log("");
 console.log(fallos === 0 ? "Todo correcto." : fallos + " comprobaciones fallan.");
