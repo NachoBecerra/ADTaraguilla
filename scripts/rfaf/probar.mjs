@@ -14,6 +14,7 @@ import { marcador } from "./html.mjs";
 import {
   ORIGEN_TABLA,
   partidosCongelados,
+  partidosDelCalendario,
   resultadoCreible,
   resultadoPorClasificacion,
   saqueEnMs,
@@ -216,61 +217,97 @@ comprobar(
 
 /* --------------------------------------------- lo ya jugado no se borra */
 
+console.log("");
+
 /*
- * El caso real, dos veces en tres días: la jornada 1 del senior tenía nueve
- * partidos y el nuestro con su 0-2. La RFAF dejó de publicarla entera, y
- * cuando volvió lo hizo con uno solo de los nueve. Como la lista de partidos
- * se arma desde el calendario, el único resultado del equipo desapareció de la
- * web las dos veces.
+ * Los dos casos reales, con tres días de diferencia. La RFAF sirvió el
+ * calendario a medias: la jornada 1 del senior pasó de nueve partidos a uno, y
+ * la del infantil A de ocho a dos. Cada recorte se llevó por delante un
+ * partido de verdad, y la web se quedó sin él.
  */
 const tarifa = {
   local: "TARIFA U.D.",
   visitante: "A.D. TARAGUILLA",
+  fecha: "2026-09-06",
   golesLocal: 0,
   golesVisitante: 2,
   origen: ORIGEN_TABLA,
   jugado: true,
 };
-const cadiz = { local: "C.D. CIUDAD DE CADIZ", visitante: "C.D. EL TORNO 2009", jugado: false };
-const guadiaro = { local: "A.D. TARAGUILLA", visitante: "C.D. GUADIARO", jugado: false };
+/* El del infantil A: jugado esta mañana, con el acta todavía sin cerrar */
+const sevilla = {
+  local: "SEVILLA F.C., S.A.D.",
+  visitante: "A.D. TARAGUILLA",
+  fecha: "2026-09-12",
+  hora: "12:00",
+  golesLocal: null,
+  golesVisitante: null,
+  origen: null,
+  jugado: false,
+};
+const guadiaro = {
+  local: "A.D. TARAGUILLA",
+  visitante: "C.D. GUADIARO",
+  fecha: "2026-09-13",
+  hora: "19:00",
+  jugado: false,
+};
 
+/* Las dos de la tarde del sábado 12: el del infantil A lleva dos horas jugado
+   y el del senior es de mañana */
+const AHORA = saqueEnMs("2026-09-12", "14:00");
+const calendarioCon = (...partidos) => partidosDelCalendario([{ partidos }]);
 const nombres = (lista) => lista.map((p) => `${p.local}|${p.visitante}`);
 
 comprobar(
-  "un partido jugado que el calendario ya no trae se conserva",
-  nombres(partidosCongelados([tarifa, cadiz], [cadiz])),
+  "un partido con resultado que el calendario ya no trae se conserva",
+  nombres(partidosCongelados([tarifa], calendarioCon(guadiaro), AHORA)),
   ["TARIFA U.D.|A.D. TARAGUILLA"],
 );
 
 comprobar(
-  "y si el calendario se queda vacío del todo, igual",
-  nombres(partidosCongelados([tarifa], [])),
-  ["TARIFA U.D.|A.D. TARAGUILLA"],
+  "y uno jugado esta misma mañana, con el acta sin cerrar, también",
+  nombres(partidosCongelados([sevilla], calendarioCon(guadiaro), AHORA)),
+  ["SEVILLA F.C., S.A.D.|A.D. TARAGUILLA"],
 );
 
 comprobar(
   "el que sigue en el calendario no se duplica",
-  partidosCongelados([tarifa, cadiz], [tarifa, cadiz]).length,
+  partidosCongelados([tarifa, guadiaro], calendarioCon(tarifa, guadiaro), AHORA).length,
   0,
 );
 
-/* Un partido sin jugar que desaparece del calendario desaparece de verdad: se
-   ha aplazado o se ha movido de jornada, y el calendario es quien manda */
+/*
+ * Y aquí está la diferencia entre un renuncio de la federación y una noticia:
+ * si el partido reaparece en otra jornada es que lo han aplazado, y entonces
+ * manda el calendario. Sin esto saldría dos veces, en su fecha vieja y en la
+ * nueva.
+ */
 comprobar(
-  "un partido sin jugar que se cae del calendario no se rescata",
-  partidosCongelados([guadiaro], []).length,
+  "un partido recolocado en otra jornada no se rescata en la vieja",
+  partidosCongelados([sevilla], calendarioCon(sevilla), AHORA).length,
   0,
 );
 
-/* Los resultados de antes de saber que el marcador estaba trucado no llevan
-   marca de origen, y no se pueden dar por buenos ni para esto */
 comprobar(
-  "un resultado sin saber de dónde salió tampoco se conserva",
-  partidosCongelados([{ ...tarifa, origen: null }], []).length,
+  "uno que aún no ha empezado y se cae del calendario se ha aplazado: no se rescata",
+  partidosCongelados([guadiaro], calendarioCon(), AHORA).length,
   0,
 );
 
-comprobar("sin nada previo no hay nada que conservar", partidosCongelados(undefined, []).length, 0);
+comprobar(
+  "y si el calendario llega vacío del todo, lo jugado se queda",
+  nombres(partidosCongelados([tarifa, sevilla, guadiaro], calendarioCon(), AHORA)),
+  ["TARIFA U.D.|A.D. TARAGUILLA", "SEVILLA F.C., S.A.D.|A.D. TARAGUILLA"],
+);
+
+comprobar(
+  "y el de esta tarde, que ni ha empezado, tampoco se congela",
+  partidosCongelados([{ ...sevilla, hora: "18:00" }], calendarioCon(), AHORA).length,
+  0,
+);
+
+comprobar("sin nada previo no hay nada que conservar", partidosCongelados(undefined, calendarioCon(), AHORA).length, 0);
 
 console.log("");
 console.log(fallos === 0 ? "Todo correcto." : fallos + " comprobaciones fallan.");

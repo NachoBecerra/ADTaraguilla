@@ -25,6 +25,7 @@ import {
   ORIGEN_TABLA,
   clavePartido,
   partidosCongelados,
+  partidosDelCalendario,
   resultadoCreible,
   resultadoPorClasificacion,
 } from "./reglas.mjs";
@@ -166,7 +167,7 @@ function asignarIdentificadores(equipos, nombres) {
  * cogen la hora, el campo, los códigos y el acta, que van en texto plano y sí
  * son de fiar. El resultado se deduce después, de la clasificación.
  */
-function fusionarJornada(jornada, deLaJornada, previos) {
+function fusionarJornada(jornada, deLaJornada, previos, enElCalendario) {
   const fusionados = jornada.partidos.map((base) => {
     const buscar = (lista) =>
       lista?.find((p) => p.local === base.local && p.visitante === base.visitante);
@@ -226,7 +227,7 @@ function fusionarJornada(jornada, deLaJornada, previos) {
    * partido ya jugado está congelado. No se mueve de jornada ni se cae del
    * calendario: si ya tiene resultado, es historia y se queda.
    */
-  const congelados = partidosCongelados(previos, fusionados);
+  const congelados = partidosCongelados(previos, enElCalendario);
 
   if (congelados.length > 0) {
     aviso(
@@ -377,6 +378,11 @@ async function sincronizarCompeticion(cliente, competicion, previa, escudos, nom
   const calendario = extraerCalendario(await cliente.pedir(grupo.urlCalendario));
   log(`  ${competicion.nombre}: ${calendario.length} jornadas en el calendario`);
 
+  /* Lo que el calendario trae hoy, mirando todas sus jornadas a la vez: es lo
+     que distingue un partido que la RFAF ha dejado de publicar de uno que ha
+     recolocado en otra fecha */
+  const enElCalendario = partidosDelCalendario(calendario);
+
   const jornadas = [];
   let pedidas = 0;
 
@@ -421,7 +427,7 @@ async function sincronizarCompeticion(cliente, competicion, previa, escudos, nom
       numero: jornada.numero,
       nombre: jornada.nombre,
       fecha: jornada.fecha,
-      partidos: fusionarJornada(jornada, partidosJornada, previaJ?.partidos),
+      partidos: fusionarJornada(jornada, partidosJornada, previaJ?.partidos, enElCalendario),
     });
   }
 

@@ -69,24 +69,49 @@ export const clavePartido = (p) => `${p.local}|${p.visitante}`;
 /**
  * Los partidos ya jugados que el calendario nuevo ha dejado de traer.
  *
- * Hay que conservarlos, y esto se escribe después de perder dos veces en tres
- * días el único resultado del primer equipo. La lista de partidos de cada
- * jornada se arma desde el calendario de la RFAF: primero la federación dejó
- * de publicar la jornada 1 entera, y cuando volvió lo hizo con uno solo de los
- * nueve partidos. Las dos veces, el 0-2 de Tarifa se cayó de la web sin que
- * nadie tocara nada.
+ * Hay que conservarlos, y esto se escribe después de ver a la RFAF servir su
+ * calendario a medias tres días seguidos. Primero dejó de publicar la jornada
+ * 1 del senior entera; luego la devolvió con uno solo de sus nueve partidos; y
+ * el sábado siguiente hizo lo mismo con la del infantil A, dejándola en dos de
+ * ocho. Como la lista de partidos de cada jornada se arma desde ese
+ * calendario, cada recorte se llevaba por delante un partido de verdad.
  *
- * La regla es la que ya seguía el resto del proyecto sin estar dicha: el
- * calendario manda para lo que está por jugarse; un partido con resultado es
- * historia y no se mueve. Solo se conserva lo que lleva la marca de haber
- * salido de la clasificación, que es lo único que damos por bueno.
+ * **La regla: lo que ya se jugó es historia y no se toca; de lo que está por
+ * jugarse manda el calendario.** Un partido pasado no cambia de día ni se
+ * cancela; si desaparece del calendario es un renuncio de la federación, no
+ * una noticia. Uno futuro que desaparece sí es una noticia: se ha aplazado.
+ *
+ * No basta con guardar los que ya tienen resultado. El del infantil A se
+ * esfumó dos horas después de jugarse, con el acta todavía sin cerrar, y sin
+ * el partido en su sitio el resultado no habría llegado nunca: se deduce
+ * restando en la clasificación, y para eso hace falta el partido al que
+ * colgárselo.
+ *
+ * Lo que sigue en el calendario **en cualquier jornada** no se rescata, y eso
+ * es lo que evita duplicar un partido aplazado que la RFAF recoloca en otra
+ * fecha: el calendario nuevo ya lo trae, y el suyo es el bueno.
+ *
+ * "Ya se jugó" se mide con la misma vara que el resto del proyecto: una hora
+ * después del saque. No vale comparar días, y costó otra pasada descubrirlo:
+ * el partido del infantil A era de **esa misma mañana**, así que su fecha no
+ * era anterior a hoy y se perdió igual. Los resultados llegan el mismo día en
+ * que se juegan; si la regla no cubre hoy, no cubre nada.
  */
-export function partidosCongelados(previos, fusionados) {
-  const listados = new Set((fusionados ?? []).map(clavePartido));
+export function partidosCongelados(previos, enElCalendario, ahora = Date.now()) {
+  return (previos ?? []).filter((p) => {
+    if (enElCalendario.has(clavePartido(p))) return false;
 
-  return (previos ?? []).filter(
-    (p) => p.jugado && p.origen === ORIGEN_TABLA && !listados.has(clavePartido(p)),
-  );
+    /* Con resultado es historia, aunque su fecha se hubiera quedado en blanco */
+    if (p.jugado && p.origen === ORIGEN_TABLA) return true;
+
+    /* Y sin resultado, basta con que ya pueda haberse jugado */
+    return Boolean(p.fecha) && resultadoCreible(p.fecha, p.hora ?? null, ahora);
+  });
+}
+
+/** Todos los emparejamientos que trae un calendario, en cualquier jornada. */
+export function partidosDelCalendario(calendario) {
+  return new Set((calendario ?? []).flatMap((j) => (j.partidos ?? []).map(clavePartido)));
 }
 
 /* ------------------------------------------ el resultado, por diferencia */
