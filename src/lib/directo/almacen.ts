@@ -113,6 +113,30 @@ const VIGENCIA_LISTA_S = 4 * 3600;
 const ETIQUETA_LISTA = "directo-rutas";
 const rutaDe = (id: string) => `${CARPETA}/${id}.json`;
 
+/**
+ * Dónde se apunta que un partido llegó a contarse de verdad.
+ *
+ * Abrir una retransmisión y narrarla son dos cosas distintas: el enlace se
+ * pide el jueves y a veces no va nadie al campo. Un registro vacío no es una
+ * retransmisión, y enlazarlo desde la web lleva a una página en blanco.
+ *
+ * Saberlo mirando la lista del almacén no se puede —solo trae nombres de
+ * archivo—, y abrir los trescientos registros de una temporada para pintar un
+ * botón sería absurdo. Así que al apuntarse lo primero se deja aquí un
+ * marcador, que sí sale en esa lista y no cuesta ninguna lectura.
+ */
+const CARPETA_NARRADOS = `${CARPETA}/narrados`;
+const rutaNarrado = (id: string) => `${CARPETA_NARRADOS}/${id}.json`;
+
+/** `directo/<id>.json`, y no lo que cuelgue de una subcarpeta. */
+const esRegistro = (ruta: string) =>
+  ruta.startsWith(`${CARPETA}/`) &&
+  ruta.endsWith(".json") &&
+  !ruta.slice(CARPETA.length + 1).includes("/");
+
+const idDeRuta = (ruta: string, carpeta: string) =>
+  ruta.slice(carpeta.length + 1).replace(/\.json$/, "");
+
 /* ------------------------------------------------------------ almacenamiento */
 
 /*
@@ -139,6 +163,59 @@ export async function listarRegistros(): Promise<string[]> {
   /* Contra el disco no hay nada que ahorrar, y una caché rompería las pruebas,
      que borran la carpeta entre suite y suite */
   return almacenEnDisco ? listarJson(CARPETA) : listaCacheada();
+}
+
+/**
+ * Los partidos que de verdad se contaron.
+ *
+ * Casi todo sale de la misma lista que ya se pide: los marcadores están en
+ * ella. Solo se abren los registros que no lo llevan, que son los recién
+ * abiertos —todavía vacíos— y los de antes de que esto existiera. En cuanto
+ * uno se narra, su marcador lo saca de esa cuenta para siempre.
+ *
+ * Un marcador huérfano, de un partido ya borrado, no cuela: se cruza con los
+ * registros que existen ahora mismo.
+ */
+async function calcularNarrados(): Promise<string[]> {
+  const rutas = await listarJson(CARPETA);
+
+  const marcados = new Set(
+    rutas
+      .filter((r) => r.startsWith(`${CARPETA_NARRADOS}/`))
+      .map((r) => idDeRuta(r, CARPETA_NARRADOS)),
+  );
+
+  const ids = rutas.filter(esRegistro).map((r) => idDeRuta(r, CARPETA));
+  const porMirar = ids.filter((id) => !marcados.has(id));
+
+  const leidos = await Promise.all(
+    porMirar.map(async (id) => ({ id, hay: ((await leer(id))?.eventos.length ?? 0) > 0 })),
+  );
+
+  return [...ids.filter((id) => marcados.has(id)), ...leidos.filter((l) => l.hay).map((l) => l.id)];
+}
+
+const narradosCacheado = unstable_cache(calcularNarrados, ["directo-narrados"], {
+  tags: [ETIQUETA_LISTA],
+  revalidate: VIGENCIA_LISTA_S,
+});
+
+export async function partidosNarrados(): Promise<string[]> {
+  return almacenEnDisco ? calcularNarrados() : narradosCacheado();
+}
+
+/** Apunta que este partido ya tiene algo contado. */
+async function marcarNarrado(id: string): Promise<void> {
+  await crearJson(rutaNarrado(id), { desde: new Date().toISOString() });
+  /* El marcador tiene que salir en la lista ya: de él depende que el enlace
+     aparezca en la web mientras se está contando el partido */
+  olvidarLista();
+}
+
+/** Y que ha dejado de tenerlo: se ha reiniciado o se ha borrado. */
+async function olvidarNarrado(id: string): Promise<void> {
+  await borrarJson(rutaNarrado(id));
+  olvidarLista();
 }
 
 /**
@@ -195,6 +272,7 @@ export const leerRegistro = leer;
  */
 export async function borrarRegistro(id: string): Promise<void> {
   await borrarJson(rutaDe(id));
+  await olvidarNarrado(id);
   olvidarLista();
 }
 
@@ -281,7 +359,12 @@ export async function reiniciarRegistro(partido: FichaPartido): Promise<Registro
   /* La llave también se conserva: empezar el partido de cero no tiene por qué
      revivir los enlaces que el club dejó fuera a propósito */
   const nuevo = enBlanco(partido, Boolean(previo?.anunciado), llaveDe(previo));
-  return (await escribir(nuevo)) ? nuevo : null;
+  if (!(await escribir(nuevo))) return null;
+
+  /* Reiniciar deja el partido sin nada contado: su enlace se apaga hasta que
+     se vuelva a apuntar algo */
+  await olvidarNarrado(partido.id);
+  return nuevo;
 }
 
 /**
@@ -356,6 +439,10 @@ export async function anotarEventos(
   };
 
   if (!(await escribir(actualizado))) return null;
+
+  /* Lo primero que se apunta convierte un registro vacío en una retransmisión
+     de verdad, y es lo que enciende su enlace en la web */
+  if (registro.eventos.length === 0) await marcarNarrado(registro.partido.id);
 
   /* Y de paso, que la portada se entere de que este partido existe */
   await asegurarEnLista(registro.partido.id);

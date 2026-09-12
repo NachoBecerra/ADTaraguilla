@@ -1,7 +1,12 @@
-import { listarRegistros } from "@/lib/directo/almacen";
+import { partidosNarrados } from "@/lib/directo/almacen";
 
 /**
- * De qué partidos hay retransmisión guardada.
+ * De qué partidos hay retransmisión que leer.
+ *
+ * Los que se contaron, no los que se abrieron: el enlace se pide el jueves y a
+ * veces no va nadie al campo, y mandar a alguien a una cronología en blanco es
+ * peor que no ofrecer nada. De distinguirlos se encarga el almacén, que lo
+ * apunta al escribirse lo primero.
  *
  * Solo las fechas, y salen **del nombre de los archivos**: el identificador de
  * una retransmisión es `<equipo>-<fecha>`, así que no hay que abrir ninguna. Una
@@ -38,9 +43,7 @@ export async function GET(peticion: Request): Promise<Response> {
     return Response.json({ error: "Equipo no válido" }, { status: 400 });
   }
 
-  const ids = (await listarRegistros()).map((r) =>
-    r.replace(/^directo\//, "").replace(/\.json$/, ""),
-  );
+  const ids = await partidosNarrados();
 
   const porEquipo = Object.fromEntries(
     equipos.map((equipo) => [

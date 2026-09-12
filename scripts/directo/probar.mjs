@@ -388,7 +388,7 @@ console.log("--- Las cuentas del partido ---");
 
   /* Lo que de verdad importa: nada se pierde ni se cuenta dos veces */
   let cuadran = true;
-  for (const c of ["gol", "corner", "disparo", "fueraDeJuego", "amarilla", "roja", "tiroLibre"]) {
+  for (const c of ["gol", "corner", "disparo", "fueraDeJuego", "amarilla", "roja", "falta"]) {
     const porPartes = primera.local[c] + primera.visitante[c] + segunda.local[c] + segunda.visitante[c];
     if (porPartes !== todo.local[c] + todo.visitante[c]) cuadran = false;
   }
@@ -464,15 +464,24 @@ console.log("--- Las cuentas del partido ---");
 }
 
 {
-  /* Los tiros libres ya no tienen boton, pero los partidos ya retransmitidos
-     los llevan guardados y tienen que seguir leyendose */
+  /* Los tiros libres ya no tienen boton ni fila en la tabla: una falta de un
+     equipo es un tiro libre del otro, asi que la fila salia siempre a cero y
+     no contaba nada de un partido. Los que quedaron apuntados en partidos ya
+     retransmitidos tienen que seguir leyendose en la cronologia */
   const eventos = [
     { id: id(), ts: min(0), tipo: "inicio" },
     { id: id(), ts: min(8), tipo: "jugada", equipo: "visitante", clase: "tiroLibre" },
   ];
   const { linea } = plegar(eventos, 45);
   comprobar("un tiro libre viejo sigue en la cronologia", linea.length, 2);
-  comprobar("y sigue contandose", contar(linea).visitante.tiroLibre, 1);
+  comprobar("pero ya no aparece en las cuentas", contar(linea).visitante.tiroLibre, undefined);
+  comprobar("y un partido que solo tuviera tiros libres no ofrece estadisticas", hayAlgoQueContar(linea), false);
+
+  /* Y no se lleva por delante lo que si cuenta */
+  const conFalta = [...eventos, { id: id(), ts: min(9), tipo: "jugada", equipo: "local", clase: "falta" }];
+  const otra = plegar(conFalta, 45).linea;
+  comprobar("una falta al lado si se cuenta", contar(otra).local.falta, 1);
+  comprobar("y entonces si hay estadisticas que enseñar", hayAlgoQueContar(otra), true);
 }
 
 {

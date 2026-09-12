@@ -19,7 +19,6 @@ export const CUENTAS = [
   "penalti",
   "corner",
   "falta",
-  "tiroLibre",
   "fueraDeJuego",
   "amarilla",
   "roja",
@@ -35,13 +34,23 @@ export const NOMBRES: Record<Cuenta, string> = {
   penalti: "Penaltis",
   corner: "Córners",
   falta: "Faltas",
-  tiroLibre: "Tiros libres",
   fueraDeJuego: "Fueras de juego",
   amarilla: "Tarjetas amarillas",
   roja: "Tarjetas rojas",
 };
 
 export type Recuento = Record<Cuenta, number>;
+
+/**
+ * Lo que suma en la tabla.
+ *
+ * No todo lo que hay en la cronología cuenta. El tiro libre se quedó sin botón
+ * hace tiempo —una falta de un equipo es un tiro libre del otro, y pedir dos
+ * pulsaciones por falta era pedir que se apuntara mal—, así que su fila salía
+ * casi siempre a cero y no decía nada de un partido. Los pocos que quedaron
+ * apuntados siguen leyéndose en la cronología; lo que se retira es la cuenta.
+ */
+const SE_CUENTAN: ReadonlySet<string> = new Set(CUENTAS);
 
 const aCero = (): Recuento =>
   Object.fromEntries(CUENTAS.map((c) => [c, 0])) as Recuento;
@@ -68,8 +77,9 @@ export function contar(
        * se pulsaría uno solo, y la cuenta saldría siempre corta.
        */
       cuentas[e.equipo].disparo += 1;
-    } else if (e.tipo === "jugada") cuentas[e.equipo][e.clase] += 1;
-    else if (e.tipo === "tarjeta") cuentas[e.equipo][e.color] += 1;
+    } else if (e.tipo === "jugada") {
+      if (SE_CUENTAN.has(e.clase)) cuentas[e.equipo][e.clase as Cuenta] += 1;
+    } else if (e.tipo === "tarjeta") cuentas[e.equipo][e.color] += 1;
   }
 
   return cuentas;
@@ -89,6 +99,9 @@ export function partesJugadas(linea: EventoEnLinea[]): number[] {
 /** Si no ha pasado nada que contar, no hay estadísticas que enseñar. */
 export function hayAlgoQueContar(linea: EventoEnLinea[]): boolean {
   return linea.some(
-    (e) => e.tipo === "gol" || e.tipo === "jugada" || e.tipo === "tarjeta",
+    (e) =>
+      e.tipo === "gol" ||
+      e.tipo === "tarjeta" ||
+      (e.tipo === "jugada" && SE_CUENTAN.has(e.clase)),
   );
 }
