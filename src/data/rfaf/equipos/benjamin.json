@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-12T15:41:17.106Z",
+  "actualizado": "2026-09-12T17:41:10.112Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -103,7 +103,7 @@
               "codLocal": "48486018",
               "codVisitante": "332820",
               "fecha": "2026-09-12",
-              "hora": "19:00",
+              "hora": "19:28",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -111,7 +111,7 @@
               "campo": "ANTONIO CAMACHO",
               "superficie": "Hierba Artificial",
               "codCampo": "3171",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663715",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663715&cod_acta=2663715",
               "jugado": false
             },
             {
@@ -4360,6 +4360,20 @@
         },
         {
           "posicion": 4,
+          "equipo": "TRASMALLO F.C. C.D.",
+          "puntos": 3,
+          "jugados": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 3,
+          "golesContra": 1,
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 5,
           "equipo": "BAHIA SAN FERNANDO C.D.",
           "puntos": 0,
           "jugados": 0,
@@ -4371,7 +4385,7 @@
           "racha": []
         },
         {
-          "posicion": 5,
+          "posicion": 6,
           "equipo": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
           "puntos": 0,
           "jugados": 0,
@@ -4383,7 +4397,7 @@
           "racha": []
         },
         {
-          "posicion": 6,
+          "posicion": 7,
           "equipo": "A.D. LOS BURREÑOS",
           "puntos": 0,
           "jugados": 0,
@@ -4395,7 +4409,7 @@
           "racha": []
         },
         {
-          "posicion": 7,
+          "posicion": 8,
           "equipo": "A.D. MARIANISTAS C.D.",
           "puntos": 0,
           "jugados": 0,
@@ -4407,20 +4421,8 @@
           "racha": []
         },
         {
-          "posicion": 8,
-          "equipo": "A.D. TARAGUILLA",
-          "puntos": 0,
-          "jugados": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
           "posicion": 9,
-          "equipo": "ARCOS C.F.",
+          "equipo": "A.D. TARAGUILLA",
           "puntos": 0,
           "jugados": 0,
           "ganados": 0,
@@ -4468,18 +4470,6 @@
         },
         {
           "posicion": 13,
-          "equipo": "TRASMALLO F.C. C.D.",
-          "puntos": 0,
-          "jugados": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 14,
           "equipo": "C.D. SAN BERNARDO",
           "puntos": 0,
           "jugados": 1,
@@ -4488,6 +4478,20 @@
           "perdidos": 1,
           "golesFavor": 3,
           "golesContra": 5,
+          "racha": [
+            "P"
+          ]
+        },
+        {
+          "posicion": 14,
+          "equipo": "ARCOS C.F.",
+          "puntos": 0,
+          "jugados": 1,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 1,
+          "golesContra": 3,
           "racha": [
             "P"
           ]
