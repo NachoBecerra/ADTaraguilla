@@ -1,5 +1,5 @@
 {
-  "generado": "2026-09-06T09:20:20.495Z",
+  "generado": "2026-09-12T07:20:59.484Z",
   "_nota": "Ubicación de los campos, para enlazar con el mapa.",
   "campos": {
     "3008": {
@@ -19,6 +19,11 @@
       "nombre": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
       "lat": 36.2029487,
       "lon": -5.4197526
+    },
+    "3582": {
+      "nombre": "QUINTA DE LA PAZ",
+      "lat": 36.7885774,
+      "lon": -6.342234200000001
     },
     "2011471": {
       "nombre": "JOSE RAMÓN CISNEROS CIUDAD DEPORTIVA",
