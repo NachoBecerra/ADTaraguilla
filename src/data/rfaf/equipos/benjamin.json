@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-12T15:18:35.450Z",
+  "actualizado": "2026-09-12T15:41:17.106Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -52,7 +52,7 @@
               "codLocal": "326327",
               "codVisitante": "349221",
               "fecha": "2026-09-12",
-              "hora": "16:32",
+              "hora": "16:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -60,7 +60,7 @@
               "campo": "VIRGEN DEL CARMEN (LA LINEA)",
               "superficie": "Hierba Artificial",
               "codCampo": "2069065",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663714&cod_acta=2663714",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663714&cod_acta=2663714",
               "jugado": false
             },
             {
@@ -4318,6 +4318,20 @@
       "clasificacion": [
         {
           "posicion": 1,
+          "equipo": "ATLETICO ZABAL",
+          "puntos": 3,
+          "jugados": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 6,
+          "golesContra": 2,
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 2,
           "equipo": "C.D. S.M. MIRADOR",
           "puntos": 3,
           "jugados": 1,
@@ -4331,7 +4345,7 @@
           ]
         },
         {
-          "posicion": 2,
+          "posicion": 3,
           "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
           "puntos": 3,
           "jugados": 1,
@@ -4340,20 +4354,6 @@
           "perdidos": 0,
           "golesFavor": 5,
           "golesContra": 3,
-          "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 3,
-          "equipo": "ATLETICO ZABAL",
-          "puntos": 3,
-          "jugados": 1,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 3,
-          "golesContra": 1,
           "racha": [
             "G"
           ]
@@ -4494,20 +4494,6 @@
         },
         {
           "posicion": 15,
-          "equipo": "C.D. SALESIANOS ALGECIRAS",
-          "puntos": 0,
-          "jugados": 1,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 1,
-          "golesContra": 3,
-          "racha": [
-            "P"
-          ]
-        },
-        {
-          "posicion": 16,
           "equipo": "C.F. SAN JOSE OBRERO",
           "puntos": 0,
           "jugados": 1,
@@ -4516,6 +4502,20 @@
           "perdidos": 1,
           "golesFavor": 0,
           "golesContra": 3,
+          "racha": [
+            "P"
+          ]
+        },
+        {
+          "posicion": 16,
+          "equipo": "C.D. SALESIANOS ALGECIRAS",
+          "puntos": 0,
+          "jugados": 1,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 2,
+          "golesContra": 6,
           "racha": [
             "P"
           ]
