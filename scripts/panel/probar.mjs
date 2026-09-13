@@ -10,6 +10,7 @@
  */
 
 import { aplicarFotos, conIdUnico } from "../../src/lib/panel/fotosDeEntrada.ts";
+import { bloqueoRestante, trasUnFallo, MAX_FALLOS, BLOQUEO_MS, VENTANA_FALLOS_MS } from "../../src/lib/panel/bloqueo.ts";
 import galeriaReal from "../../src/data/galeria.json" with { type: "json" };
 
 let fallos = 0;
@@ -143,6 +144,45 @@ console.log("--- Que cada grupo tenga su identificador ---");
   const cada = conIdUnico(galeriaReal.items);
   const encontrados = cada.filter((e) => cada.find((x) => x.id === e.id) === e).length;
   comprobar("y buscando cada uno se encuentra a sí mismo", encontrados, cada.length);
+}
+
+/* ---------------------------------------- freno a quien prueba contraseñas */
+{
+  console.log("");
+  const T = Date.parse("2026-09-13T10:00:00Z");
+  const fallar = (veces, desde = null, paso = 1000) => {
+    let intentos = desde;
+    let bloqueos = 0;
+    for (let i = 0; i < veces; i++) {
+      const r = trasUnFallo(intentos, T + i * paso);
+      intentos = r.intentos;
+      if (r.acabaDeBloquearse) bloqueos++;
+    }
+    return { intentos, bloqueos };
+  };
+
+  comprobar("sin fallos previos se puede intentar", bloqueoRestante(null, T), null);
+  comprobar("equivocarse un par de veces no bloquea", bloqueoRestante(fallar(2).intentos, T + 5000), null);
+
+  const cinco = fallar(MAX_FALLOS);
+  comprobar("al quinto fallo seguido se bloquea", bloqueoRestante(cinco.intentos, T + MAX_FALLOS * 1000) !== null, true);
+  comprobar("y se avisa una sola vez, no en cada intento", cinco.bloqueos, 1);
+  comprobar(
+    "pasado el bloqueo se vuelve a poder intentar",
+    bloqueoRestante(cinco.intentos, cinco.intentos.bloqueadoHasta + 1),
+    null,
+  );
+  comprobar(
+    "y el primer fallo tras el bloqueo empieza la cuenta de cero",
+    trasUnFallo(cinco.intentos, cinco.intentos.bloqueadoHasta + 1).intentos.fallos,
+    1,
+  );
+  comprobar(
+    "fallos muy separados no se suman: no bloquea a quien se equivoca de vez en cuando",
+    bloqueoRestante(fallar(MAX_FALLOS, null, VENTANA_FALLOS_MS + 1000).intentos, T + MAX_FALLOS * (VENTANA_FALLOS_MS + 1000)),
+    null,
+  );
+  comprobar("el bloqueo dura lo que dice", cinco.intentos.bloqueadoHasta - cinco.intentos.ultimoFallo, BLOQUEO_MS);
 }
 
 console.log("");

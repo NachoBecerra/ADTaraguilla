@@ -147,5 +147,10 @@ Hay **tres escritores, y ninguno sabe de los otros**:
   `node --env-file=.env.produccion …` y se borra el archivo al acabar.
 - **Variables**: `CLAVE_PANEL`, `GITHUB_TOKEN`, `GITHUB_REPO`, `GITHUB_RAMA`,
   `BLOB_READ_WRITE_TOKEN` (almacén público), `BLOB_PRIVADO_READ_WRITE_TOKEN`,
-  `AVISOS_SECRETO`, `VAPID_CLAVE_PRIVADA`, `NEXT_PUBLIC_VAPID_CLAVE_PUBLICA`.
+  `AVISOS_SECRETO`, `VAPID_CLAVE_PRIVADA`, `NEXT_PUBLIC_VAPID_CLAVE_PUBLICA`, y
+  para el aviso por correo del panel `RESEND_API_KEY`, `AVISO_CORREO_A` y
+  `AVISO_CORREO_DE` (opcionales: sin ellas el aviso queda solo en el log).
+- **Acceso al panel**: cinco fallos seguidos desde el mismo sitio lo bloquean
+  quince minutos y avisan por correo (`src/lib/panel/bloqueo.ts`). El bloqueo se
+  comprueba antes que la contraseña; si se invierte, deja de proteger.
 - Vercel Blob está en el plan Pro desde el 5 de septiembre de 2026.
