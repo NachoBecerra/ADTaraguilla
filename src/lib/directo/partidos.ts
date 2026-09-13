@@ -35,7 +35,12 @@ export function saqueEnMs(fecha: string, hora: string | null): number {
   return comoSiFueraUtc - desfase;
 }
 
-export type Candidato = { ficha: FichaPartido; saqueMs: number };
+export type Candidato = {
+  ficha: FichaPartido;
+  saqueMs: number;
+  /** La RFAF ya ha publicado su resultado: el partido está jugado y cerrado. */
+  oficial: boolean;
+};
 
 /**
  * Partidos de los próximos días de todos los equipos, para que el club elija
@@ -59,6 +64,7 @@ export function partidosRetransmitibles(ahora = new Date()): Candidato[] {
 
       candidatos.push({
         saqueMs,
+        oficial: p.jugado,
         ficha: {
           id: `${equipo.id}-${p.fecha}`,
           equipo: equipo.id,

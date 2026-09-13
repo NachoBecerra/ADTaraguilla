@@ -96,8 +96,17 @@ export async function borrarJson(ruta: string): Promise<void> {
 export async function listarJson(prefijo: string): Promise<string[]> {
   if (enDisco) {
     try {
-      const nombres = await fs.readdir(enLocal(prefijo));
-      return nombres.filter((n) => n.endsWith(".json")).map((n) => `${prefijo}/${n}`);
+      /*
+       * Recursivo, como el almacén. Listar un prefijo en el almacén trae
+       * también lo de las subcarpetas; en disco, sin esto, no. Esa diferencia
+       * escondió en local el fallo que tumbó la lista de directos en
+       * producción: los marcadores de subcarpeta nunca aparecían aquí.
+       */
+      const nombres = await fs.readdir(enLocal(prefijo), { recursive: true });
+      return nombres
+        .map((n) => String(n).split(path.sep).join("/"))
+        .filter((n) => n.endsWith(".json"))
+        .map((n) => `${prefijo}/${n}`);
     } catch {
       return []; // todavía no hay nada
     }

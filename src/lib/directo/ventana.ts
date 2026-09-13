@@ -59,5 +59,9 @@ export function diasAnunciables(ahora: Date = new Date(), dias = 8): string[] {
 export function idsDeLaVentana(rutas: string[], dias: string[]): string[] {
   return rutas
     .map((r) => r.replace(/^directo\//, "").replace(/\.json$/, ""))
+    /* Un partido es `<equipo>-<fecha>`, sin barras. Lo que lleva barra vive en
+       una subcarpeta —un marcador, por ejemplo— y aunque su nombre acabe en
+       fecha no es un partido: leerlo como tal tumbó la lista de directos */
+    .filter((id) => !id.includes("/"))
     .filter((id) => dias.some((dia) => id.endsWith(dia)));
 }

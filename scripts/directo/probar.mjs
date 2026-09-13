@@ -85,6 +85,21 @@ comprobar(
 comprobar("y ninguna si no hay nada de estos dias", idsDeLaVentana(guardadas, ["2026-12-25"]), []);
 
 /*
+ * El fallo del 12 de septiembre de 2026: el marcador de «narrado» vive en una
+ * subcarpeta y su nombre acaba en fecha, igual que un partido. Se coló en la
+ * lista de directos, se leyó como si fuera un partido y la consulta entera dio
+ * error: la portada no enseñó el amistoso que se estaba contando.
+ */
+comprobar(
+  "un marcador de subcarpeta no es un partido, aunque su nombre acabe en fecha",
+  idsDeLaVentana(
+    ["directo/infantil-b-2026-09-12.json", "directo/narrados/infantil-b-2026-09-12.json"],
+    ["2026-09-12"],
+  ),
+  ["infantil-b-2026-09-12"],
+);
+
+/*
  * Los anuncios se ponen con dias de antelacion, asi que su ventana es mas
  * ancha: un aviso que solo apareciera la vispera no le sirve a nadie.
  */
@@ -183,6 +198,51 @@ comprobar("cerrada, pero el partido es el sabado: se ve igual", seVeEnElPanel("c
 comprobar("cerrada y es hoy: se ve, por si hay que rehacerla", seVeEnElPanel("caducada", "2026-09-01", "2026-09-01"), true);
 comprobar("cerrada y el partido ya paso: fuera del panel", seVeEnElPanel("caducada", "2026-08-30", "2026-09-01"), false);
 comprobar("sin fecha no se esconde nunca", seVeEnElPanel("caducada", null, "2026-09-01"), true);
+
+/*
+ * Lo que ya no se va a usar sale del panel. El 13 de septiembre seguían a la
+ * vista partidos de la víspera con el acta publicada, sin nada escrito,
+ * ofreciéndose para retransmitir.
+ */
+const saqueDelSabado = Date.parse("2026-09-12T10:00:00Z"); // las 12:00 en Madrid
+const horasDespues = (h) => saqueDelSabado + h * 3_600_000;
+const conSaque = (h, oficial = false) => ({ saqueMs: saqueDelSabado, ahora: horasDespues(h), oficial });
+
+comprobar(
+  "sin abrir y con acta de la RFAF: fuera del panel",
+  seVeEnElPanel("sin-abrir", "2026-09-12", "2026-09-13", conSaque(20, true)),
+  false,
+);
+comprobar(
+  "abierta pero vacía, con acta: fuera también",
+  seVeEnElPanel("abierta", "2026-09-12", "2026-09-12", conSaque(4, true)),
+  false,
+);
+comprobar(
+  "sin abrir y acabado hace horas, aunque no haya acta (una copa): fuera",
+  seVeEnElPanel("sin-abrir", "2026-09-12", "2026-09-12", conSaque(4)),
+  false,
+);
+comprobar(
+  "sin abrir y ya empezado, pero a tiempo de abrirlo: dentro",
+  seVeEnElPanel("sin-abrir", "2026-09-12", "2026-09-12", conSaque(1)),
+  true,
+);
+comprobar(
+  "sin abrir y aún por jugarse: dentro",
+  seVeEnElPanel("sin-abrir", "2026-09-12", "2026-09-12", conSaque(-2)),
+  true,
+);
+comprobar(
+  "contándose ahora mismo, aunque la RFAF ya dé acta: dentro",
+  seVeEnElPanel("en-directo", "2026-09-12", "2026-09-12", conSaque(1.5, true)),
+  true,
+);
+comprobar(
+  "recién terminada y con acta: dentro, aún se puede rematar",
+  seVeEnElPanel("terminada", "2026-09-12", "2026-09-12", conSaque(2.5, true)),
+  true,
+);
 
 /* ---------------------------- un senior con descuentos en las dos partes */
 

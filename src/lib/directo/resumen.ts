@@ -98,7 +98,10 @@ type ResumenInterno = ResumenDirecto & {
 };
 
 function resumir(registro: Awaited<ReturnType<typeof leerRegistro>>): ResumenInterno | null {
-  if (!registro) return null;
+  /* Un archivo que no tiene forma de partido se ignora, en vez de romper. La
+     lista de directos se lee entera de una vez, y un solo archivo raro no
+     puede dejar la portada sin ningún directo para todo el mundo */
+  if (!registro?.partido || !Array.isArray(registro.eventos)) return null;
 
   const estado = plegar(registro.eventos, registro.partido.minutosPorParte);
 

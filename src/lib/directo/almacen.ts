@@ -162,7 +162,20 @@ const listaCacheada = unstable_cache(() => listarJson(CARPETA), [ETIQUETA_LISTA]
 export async function listarRegistros(): Promise<string[]> {
   /* Contra el disco no hay nada que ahorrar, y una caché rompería las pruebas,
      que borran la carpeta entre suite y suite */
-  return almacenEnDisco ? listarJson(CARPETA) : listaCacheada();
+  const rutas = almacenEnDisco ? await listarJson(CARPETA) : await listaCacheada();
+
+  /*
+   * Solo registros de partido, nunca lo que cuelgue de una subcarpeta.
+   *
+   * Quien pide esta lista la recorre dando por hecho que cada ruta es un
+   * partido, y la carpeta ya no guarda solo partidos: están los marcadores de
+   * narrado. El 12 de septiembre de 2026 uno de ellos —cuyo nombre acaba en
+   * fecha, como los partidos— se coló en la lista de directos, se leyó como si
+   * fuera un partido y tumbó la consulta entera. La portada se quedó sin
+   * directos en mitad de un amistoso que se estaba contando. Se filtra aquí, en
+   * la fuente, para que ningún consumidor tenga que acordarse.
+   */
+  return rutas.filter(esRegistro);
 }
 
 /**

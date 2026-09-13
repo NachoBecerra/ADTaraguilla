@@ -35,14 +35,22 @@ export default async function PanelDirecto() {
 
   const candidatos = [
     ...partidosRetransmitibles(),
-    ...amistosos.map((ficha) => ({ ficha, saqueMs: saqueEnMs(ficha.fecha ?? "", ficha.hora) })),
+    /* Un amistoso nunca tiene acta de la RFAF: se retira por la hora */
+    ...amistosos.map((ficha) => ({
+      ficha,
+      saqueMs: saqueEnMs(ficha.fecha ?? "", ficha.hora),
+      oficial: false,
+    })),
   ].sort((a, b) => a.saqueMs - b.saqueMs);
 
   const estados = await estadoDeRetransmisiones(candidatos.map((c) => c.ficha.id));
 
   const partidos: Fila[] = candidatos
-    .filter(({ ficha }) =>
-      seVeEnElPanel(estados[ficha.id]?.estado ?? "sin-abrir", ficha.fecha, hoyEnMadrid()),
+    .filter(({ ficha, saqueMs, oficial }) =>
+      seVeEnElPanel(estados[ficha.id]?.estado ?? "sin-abrir", ficha.fecha, hoyEnMadrid(), {
+        saqueMs,
+        oficial,
+      }),
     )
     .map(({ ficha }) => ({
       id: ficha.id,
