@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-13T17:40:27.158Z",
+  "actualizado": "2026-09-13T18:23:34.940Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -246,7 +246,7 @@
               "codLocal": "308015",
               "codVisitante": "308315",
               "fecha": "2026-09-13",
-              "hora": "18:51",
+              "hora": "18:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -254,7 +254,7 @@
               "campo": "SAN RAFAEL PVO (F11-F7)",
               "superficie": "Hierba Natural",
               "codCampo": "3080",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662395&cod_acta=2662395",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662395&cod_acta=2662395",
               "jugado": false
             },
             {
@@ -280,7 +280,7 @@
               "codLocal": "339215",
               "codVisitante": "301516",
               "fecha": "2026-09-13",
-              "hora": "19:00",
+              "hora": "19:54",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -288,7 +288,7 @@
               "campo": "EL PICACHO",
               "superficie": "Hierba Natural",
               "codCampo": "3548",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662392",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662392&cod_acta=2662392",
               "jugado": false
             },
             {
@@ -297,7 +297,7 @@
               "codLocal": "38877699",
               "codVisitante": "307315",
               "fecha": "2026-09-13",
-              "hora": "19:00",
+              "hora": "19:55",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -305,7 +305,7 @@
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662394",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662394&cod_acta=2662394",
               "jugado": false
             },
             {
@@ -314,7 +314,7 @@
               "codLocal": "308515",
               "codVisitante": "2064845",
               "fecha": "2026-09-13",
-              "hora": "19:15",
+              "hora": "20:09",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -322,7 +322,7 @@
               "campo": "Barbate Nuevo Estadio Municipal",
               "superficie": "Hierba Artificial",
               "codCampo": "3085",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662387",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662387&cod_acta=2662387",
               "jugado": false
             },
             {
@@ -5486,32 +5486,34 @@
         {
           "posicion": 2,
           "equipo": "A.D. TARAGUILLA",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 0,
+          "puntos": 6,
+          "jugados": 2,
+          "jugadosCasa": 1,
           "jugadosFuera": 1,
-          "ganados": 1,
+          "ganados": 2,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 2,
+          "golesFavor": 4,
           "golesContra": 0,
           "racha": [
+            "G",
             "G"
           ]
         },
         {
           "posicion": 3,
           "equipo": "TREBUJENA C.F.",
-          "puntos": 3,
-          "jugados": 1,
+          "puntos": 6,
+          "jugados": 2,
           "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
+          "jugadosFuera": 1,
+          "ganados": 2,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 1,
+          "golesFavor": 2,
           "golesContra": 0,
           "racha": [
+            "G",
             "G"
           ]
         },
@@ -5568,6 +5570,23 @@
         },
         {
           "posicion": 7,
+          "equipo": "CHICLANA C.F.",
+          "puntos": 4,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 3,
+          "golesContra": 2,
+          "racha": [
+            "E",
+            "G"
+          ]
+        },
+        {
+          "posicion": 8,
           "equipo": "JEREZ INDUSTRIAL C.F.",
           "puntos": 3,
           "jugados": 2,
@@ -5584,7 +5603,24 @@
           ]
         },
         {
-          "posicion": 8,
+          "posicion": 9,
+          "equipo": "U.D. LOS BARRIOS",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 2,
+          "golesContra": 2,
+          "racha": [
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 10,
           "equipo": "C.D. ROTA",
           "puntos": 2,
           "jugados": 2,
@@ -5601,7 +5637,7 @@
           ]
         },
         {
-          "posicion": 9,
+          "posicion": 11,
           "equipo": "C.D. SAN ROQUE",
           "puntos": 2,
           "jugados": 2,
@@ -5618,51 +5654,20 @@
           ]
         },
         {
-          "posicion": 10,
-          "equipo": "CHICLANA C.F.",
-          "puntos": 1,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 1,
-          "perdidos": 0,
-          "golesFavor": 2,
-          "golesContra": 2,
-          "racha": [
-            "E"
-          ]
-        },
-        {
-          "posicion": 11,
+          "posicion": 12,
           "equipo": "JUVENTUD SANLUQUEÑA A.D.",
           "puntos": 1,
-          "jugados": 1,
-          "jugadosCasa": 0,
+          "jugados": 2,
+          "jugadosCasa": 1,
           "jugadosFuera": 1,
           "ganados": 0,
           "empatados": 1,
-          "perdidos": 0,
+          "perdidos": 1,
           "golesFavor": 2,
-          "golesContra": 2,
+          "golesContra": 3,
           "racha": [
-            "E"
-          ]
-        },
-        {
-          "posicion": 12,
-          "equipo": "C.D. GUADIARO",
-          "puntos": 1,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 1,
-          "perdidos": 0,
-          "golesFavor": 1,
-          "golesContra": 1,
-          "racha": [
-            "E"
+            "E",
+            "P"
           ]
         },
         {
@@ -5684,19 +5689,19 @@
         },
         {
           "posicion": 14,
-          "equipo": "U.D. LOS BARRIOS",
+          "equipo": "C.D. GUADIARO",
           "puntos": 1,
           "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
+          "jugadosCasa": 0,
+          "jugadosFuera": 2,
           "ganados": 0,
           "empatados": 1,
           "perdidos": 1,
           "golesFavor": 1,
-          "golesContra": 2,
+          "golesContra": 3,
           "racha": [
-            "P",
-            "E"
+            "E",
+            "P"
           ]
         },
         {
@@ -5718,34 +5723,35 @@
         },
         {
           "posicion": 16,
-          "equipo": "TARIFA U.D.",
-          "puntos": 1,
+          "equipo": "BARBATE C.F.",
+          "puntos": 0,
           "jugados": 2,
           "jugadosCasa": 1,
           "jugadosFuera": 1,
           "ganados": 0,
-          "empatados": 1,
-          "perdidos": 1,
+          "empatados": 0,
+          "perdidos": 2,
           "golesFavor": 1,
-          "golesContra": 3,
+          "golesContra": 4,
           "racha": [
             "P",
-            "E"
+            "P"
           ]
         },
         {
           "posicion": 17,
-          "equipo": "BARBATE C.F.",
+          "equipo": "TARIFA U.D.",
           "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
+          "jugados": 2,
+          "jugadosCasa": 1,
           "jugadosFuera": 1,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 1,
+          "perdidos": 2,
           "golesFavor": 1,
-          "golesContra": 3,
+          "golesContra": 4,
           "racha": [
+            "P",
             "P"
           ]
         },
