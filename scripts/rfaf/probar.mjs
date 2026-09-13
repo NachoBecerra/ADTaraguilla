@@ -14,6 +14,7 @@ import { marcador } from "./html.mjs";
 import {
   ORIGEN_TABLA,
   atascoDeResultados,
+  equiposAusentes,
   partidosCongelados,
   partidosDelCalendario,
   resultadoCreible,
@@ -424,6 +425,45 @@ comprobar(
 );
 
 comprobar("sin nada previo no hay nada que conservar", partidosCongelados(undefined, calendarioCon(), AHORA).length, 0);
+
+/* ----------------------------------------- un equipo no se cae de golpe */
+
+console.log("");
+
+/*
+ * La ficha del club también llega recortada. Un recorte no puede sacar a un
+ * equipo de la web; una baja de verdad —el prebenjamín, sin inscribir esta
+ * temporada— sí tiene que acabar saliendo.
+ */
+const MEDIODIA = Date.parse("2026-09-13T10:00:00Z");
+const hace = (dias) => new Date(MEDIODIA - dias * 86_400_000).toISOString();
+const indice = [{ id: "primer-equipo" }, { id: "juvenil" }, { id: "cadete" }];
+
+comprobar(
+  "con todos en la ficha, nadie se conserva ni se retira",
+  equiposAusentes(indice, ["primer-equipo", "juvenil", "cadete"], MEDIODIA),
+  { conservados: [], retirados: [] },
+);
+comprobar(
+  "el que falta por primera vez se conserva, apuntando desde cuándo",
+  equiposAusentes(indice, ["primer-equipo", "cadete"], MEDIODIA),
+  { conservados: [{ id: "juvenil", ausenteDesde: new Date(MEDIODIA).toISOString() }], retirados: [] },
+);
+comprobar(
+  "si sigue faltando al día siguiente, se conserva sin mover la fecha",
+  equiposAusentes([...indice.slice(0, 1), { id: "juvenil", ausenteDesde: hace(1) }, indice[2]], ["primer-equipo", "cadete"], MEDIODIA),
+  { conservados: [{ id: "juvenil", ausenteDesde: hace(1) }], retirados: [] },
+);
+comprobar(
+  "pasados los días de gracia, se retira: es una baja de verdad",
+  equiposAusentes([{ id: "prebenjamin", ausenteDesde: hace(4) }], ["primer-equipo"], MEDIODIA),
+  { conservados: [], retirados: ["prebenjamin"] },
+);
+comprobar(
+  "y el que vuelve a salir en la ficha no se toca: se rehace y pierde la marca",
+  equiposAusentes([{ id: "juvenil", ausenteDesde: hace(2) }], ["juvenil"], MEDIODIA),
+  { conservados: [], retirados: [] },
+);
 
 console.log("");
 console.log(fallos === 0 ? "Todo correcto." : fallos + " comprobaciones fallan.");

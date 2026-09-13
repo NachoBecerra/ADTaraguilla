@@ -317,3 +317,44 @@ export function atascoDeResultados({ nombreRfaf, clasificacion, jornadas, ahora 
     candidatos: cuentas.candidatos.map((c) => c.ficha),
   };
 }
+
+/* ----------------------------------------- un equipo no se cae de golpe */
+
+/**
+ * Días que se conserva en la web un equipo que la ficha del club deja de listar.
+ *
+ * La RFAF sirve la ficha del club igual que los calendarios: a veces recortada.
+ * El índice de equipos se rehacía con lo que trajera en cada pasada, así que
+ * una lectura a medias sacaba a un equipo entero de la web hasta la pasada
+ * siguiente. Pero una baja de verdad —el prebenjamín, que no llegó a
+ * inscribirse esta temporada— también tiene que acabar saliendo. Tres días
+ * separan las dos cosas: un recorte se arregla en media hora; una baja no vuelve.
+ */
+export const DIAS_DE_GRACIA_EQUIPO = 3;
+
+/**
+ * Qué hacer con los equipos del índice que no vienen en la ficha de hoy.
+ *
+ * `ausenteDesde` se apunta la primera vez que falta y no se toca después, así
+ * que no cambia en cada pasada ni provoca una publicación cada media hora. Un
+ * equipo que vuelve a salir en la ficha no llega aquí: se rehace como siempre y
+ * la marca desaparece sola.
+ */
+export function equiposAusentes(previos, idsEnLaFicha, ahora = Date.now()) {
+  const vistos = new Set(idsEnLaFicha);
+  const gracia = DIAS_DE_GRACIA_EQUIPO * 86_400_000;
+  const conservados = [];
+  const retirados = [];
+
+  for (const previo of previos ?? []) {
+    if (!previo?.id || vistos.has(previo.id)) continue;
+
+    const desde = Date.parse(previo.ausenteDesde ?? "");
+    const ausenteDesde = Number.isFinite(desde) ? desde : ahora;
+
+    if (ahora - ausenteDesde > gracia) retirados.push(previo.id);
+    else conservados.push({ id: previo.id, ausenteDesde: new Date(ausenteDesde).toISOString() });
+  }
+
+  return { conservados, retirados };
+}

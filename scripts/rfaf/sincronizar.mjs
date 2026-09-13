@@ -28,6 +28,7 @@ import {
   partidosCongelados,
   partidosDelCalendario,
   atascoDeResultados,
+  equiposAusentes,
   resultadoCreible,
   resultadoPorClasificacion,
   yaDeberiaTenerResultado,
@@ -1122,34 +1123,57 @@ async function rellenarHistorico(cliente, equipos, temporadaActual, config) {
 /**
  * club.json se reconstruye siempre a partir de los archivos de equipo que
  * haya en disco, se haya completado la pasada o no.
+ *
+ * Los equipos que la ficha del club no trae hoy no desaparecen de golpe: se
+ * conservan unos días (`equiposAusentes`), porque la RFAF sirve esa ficha
+ * recortada a veces, igual que los calendarios.
  */
 async function recomponerIndices(config, urlClub, temporada, equipos) {
   const resumen = [];
 
+  const entrada = (datos, orden) => ({
+    id: datos.id,
+    nombre: datos.nombre,
+    categoria: datos.categoria,
+    codigo: datos.codigo,
+    orden: datos.orden ?? orden,
+    enCompeticion: datos.enCompeticion,
+    actualizado: datos.actualizado,
+    urlRfaf: datos.urlRfaf,
+    competiciones: (datos.competiciones ?? []).map((c) => ({
+      nombre: c.nombre,
+      grupo: c.grupo,
+      estado: c.estado,
+      puntos: c.puntos,
+      posicion: c.posicion,
+      equiposEnGrupo: c.clasificacion?.length ?? 0,
+      jornadas: c.jornadas?.length ?? 0,
+    })),
+  });
+
   for (const equipo of equipos) {
     const datos = await leerJson(path.join(DIR_EQUIPOS, `${equipo.id}.json`));
     if (!datos) continue;
+    resumen.push(entrada(datos, equipo.orden));
+  }
 
+  const indiceAnterior = await leerJson(path.join(DIR_SALIDA, "club.json"));
+  const { conservados, retirados } = equiposAusentes(
+    indiceAnterior?.equipos ?? [],
+    equipos.map((e) => e.id),
+  );
 
-    resumen.push({
-      id: datos.id,
-      nombre: datos.nombre,
-      categoria: datos.categoria,
-      codigo: datos.codigo,
-      orden: datos.orden ?? equipo.orden,
-      enCompeticion: datos.enCompeticion,
-      actualizado: datos.actualizado,
-      urlRfaf: datos.urlRfaf,
-      competiciones: (datos.competiciones ?? []).map((c) => ({
-        nombre: c.nombre,
-        grupo: c.grupo,
-        estado: c.estado,
-        puntos: c.puntos,
-        posicion: c.posicion,
-        equiposEnGrupo: c.clasificacion?.length ?? 0,
-        jornadas: c.jornadas?.length ?? 0,
-      })),
-    });
+  for (const { id, ausenteDesde } of conservados) {
+    const datos = await leerJson(path.join(DIR_EQUIPOS, `${id}.json`));
+    if (!datos) continue;
+    resumen.push({ ...entrada(datos, 99), ausenteDesde });
+    aviso(
+      `  ${datos.nombre}: la ficha del club no lo trae desde ${ausenteDesde.slice(0, 10)}. ` +
+        `Se conserva unos días por si es un recorte de la RFAF.`,
+    );
+  }
+  for (const id of retirados) {
+    aviso(`  ${id}: lleva días fuera de la ficha del club; se retira de la web.`);
   }
 
   await escribirJson(path.join(DIR_SALIDA, "club.json"), {
@@ -1158,7 +1182,6 @@ async function recomponerIndices(config, urlClub, temporada, equipos) {
     club: { codigo: config.codigoClub, urlRfaf: urlAbsoluta(urlClub) },
     equipos: resumen.sort((a, b) => a.orden - b.orden),
   });
-
 
   log(`Índice: ${resumen.length} equipos`);
 }

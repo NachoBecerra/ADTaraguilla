@@ -43,7 +43,10 @@ Hay **tres escritores, y ninguno sabe de los otros**:
    jornadas enteras y partidos sueltos). Las jornadas conocidas y los partidos
    que ya pudieron jugarse (una hora tras el saque) se conservan aunque el
    calendario deje de traerlos, salvo que reaparezcan en otra jornada, que eso
-   es un aplazamiento. Regla: `partidosCongelados`, con pruebas.
+   es un aplazamiento. Regla: `partidosCongelados`, con pruebas. Lo mismo con
+   los **equipos**: uno que la ficha del club deja de listar se conserva tres
+   días (`ausenteDesde` en `club.json`, regla `equiposAusentes`) antes de
+   retirarse de la web.
 3. **Un resultado solo se deduce con certeza**: exactamente un partido nuevo en
    la tabla y un único candidato. Si hay varios pendientes, desempata el campo:
    la tabla separa lo jugado en casa y fuera, y vale el único pendiente de ese
