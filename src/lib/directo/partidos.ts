@@ -23,8 +23,13 @@ const ZONA = "Europe/Madrid";
  * cambia con el horario de invierno.
  */
 export function saqueEnMs(fecha: string, hora: string | null): number {
-  // Sin hora asignada se toma el mediodía: el enlace abarca la tarde entera
-  const comoSiFueraUtc = Date.parse(`${fecha}T${hora ?? "12:00"}:00Z`);
+  /*
+   * Sin hora asignada, el final del día: la misma regla que usa la
+   * sincronización (`HORA_SIN_FIJAR` en scripts/rfaf/reglas.mjs), y tienen que
+   * coincidir. Con el mediodía de antes, un partido de tarde sin hora salía del
+   * panel a las tres y el enlace para retransmitirlo caducaba a las cuatro.
+   */
+  const comoSiFueraUtc = Date.parse(`${fecha}T${hora ?? "23:59"}:00Z`);
   if (!Number.isFinite(comoSiFueraUtc)) return Number.NaN;
 
   const d = new Date(comoSiFueraUtc);

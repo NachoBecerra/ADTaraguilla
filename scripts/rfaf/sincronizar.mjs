@@ -29,6 +29,7 @@ import {
   partidosDelCalendario,
   resultadoCreible,
   resultadoPorClasificacion,
+  yaDeberiaTenerResultado,
 } from "./reglas.mjs";
 import {
   extraerEquipos,
@@ -131,7 +132,12 @@ async function escribirJson(ruta, datos) {
   await fs.writeFile(ruta, JSON.stringify(datos, null, 2) + "\n", "utf8");
 }
 
-const hoy = () => new Date().toISOString().slice(0, 10);
+/**
+ * Hoy en España, no en el servidor. GitHub va en UTC: de medianoche a las dos
+ * de la madrugada, en verano, para él todavía sería ayer.
+ */
+const hoy = () =>
+  new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Madrid" }).format(new Date());
 
 function diasHasta(fechaIso) {
   if (!fechaIso) return null;
@@ -708,33 +714,6 @@ function sePuedeSaltar(previo) {
   return !faltaAlgunResultado(previo) && !faltaAlgunHorario(previo);
 }
 
-/**
- * ¿Hay algún partido ya terminado del que no tengamos resultado?
- *
- * Se mira la hora, no solo el día: un partido de hoy a las 20:00 no aporta
- * nada si son las once de la mañana, y con una pasada cada media hora eso
- * serían veinte consultas inútiles. Se da por terminado dos horas después del
- * saque, que es cuando el árbitro puede haber cerrado el acta.
- */
-const MINUTOS_DE_PARTIDO = 120;
-
-function yaDeberiaTenerResultado(p) {
-  if (p.jugado || !p.fecha) return false;
-
-  const día = hoy();
-  if (p.fecha < día) return true; // de días anteriores: siempre
-  if (p.fecha > día) return false; // aún no ha llegado
-
-  // Es hoy. Sin hora asignada no sabemos cuándo acaba: se mira igualmente.
-  if (!p.hora) return true;
-
-  const [h, m] = p.hora.split(":").map(Number);
-  const fin = new Date(`${p.fecha}T${p.hora}:00`);
-  if (Number.isNaN(fin.getTime()) || Number.isNaN(h) || Number.isNaN(m)) return true;
-
-  fin.setMinutes(fin.getMinutes() + MINUTOS_DE_PARTIDO);
-  return Date.now() >= fin.getTime();
-}
 
 /**
  * Solo los partidos de nuestro equipo, que son los únicos que la web enseña.

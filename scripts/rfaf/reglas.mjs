@@ -20,7 +20,7 @@ export const MINIMO_PARA_TENER_RESULTADO_MS = 60 * 60_000;
  * un resultado legítimo parecería llegado antes de tiempo toda la tarde.
  */
 export function saqueEnMs(fecha, hora) {
-  const comoSiFueraUtc = Date.parse(`${fecha}T${hora ?? "00:00"}:00Z`);
+  const comoSiFueraUtc = Date.parse(`${fecha}T${hora ?? HORA_SIN_FIJAR}:00Z`);
   if (Number.isNaN(comoSiFueraUtc)) return null;
 
   const referencia = new Date(comoSiFueraUtc);
@@ -50,6 +50,46 @@ export function resultadoCreible(fecha, hora, ahora = Date.now()) {
   if (saque === null) return true;
 
   return ahora >= saque + MINIMO_PARA_TENER_RESULTADO_MS;
+}
+
+/**
+ * Cuándo se da por jugado un partido al que la RFAF aún no ha puesto hora.
+ *
+ * **Al final de su día.** Es lo prudente para todo lo que pregunta «¿ya se ha
+ * jugado?»: un partido sin hora no se hace candidato a resultado de madrugada
+ * —y no le quita el sitio a otro partido del equipo que sí se ha jugado—, no
+ * desaparece del panel a media tarde y el enlace de retransmitir no caduca
+ * antes de un partido de noche.
+ *
+ * Antes cada parte suponía una cosa: la sincronización, la medianoche; la web,
+ * el mediodía. `src/lib/directo/partidos.ts` usa este mismo valor y tienen que
+ * coincidir.
+ */
+export const HORA_SIN_FIJAR = "23:59";
+
+/** Lo que tarda el árbitro en cerrar el acta, contando desde el saque. */
+export const MINUTOS_HASTA_EL_ACTA = 120;
+
+/**
+ * ¿Debería tener ya resultado este partido?
+ *
+ * Es lo que decide si merece la pena volver a pedir un equipo: mientras falte
+ * el resultado de un partido que ya acabó, no se le salta.
+ *
+ * **En hora española.** Esto vivía en la sincronización y calculaba el final
+ * con `new Date("…T19:00:00")`, que se lee en la hora del servidor. GitHub va en
+ * UTC, así que un partido de las 19:00 se daba por terminado a las 23:00: dos
+ * horas cada tarde de partido en las que el equipo se saltaba y su resultado
+ * no se pedía. En local no se veía, porque el ordenador va en hora española.
+ */
+export function yaDeberiaTenerResultado(p, ahora = Date.now()) {
+  if (p.jugado || !p.fecha) return false;
+
+  const saque = saqueEnMs(p.fecha, p.hora ?? null);
+  // Una fecha que no se entiende: mejor mirar de más que quedarse sin resultado
+  if (saque === null) return true;
+
+  return ahora >= saque + MINUTOS_HASTA_EL_ACTA * 60_000;
 }
 
 /* --------------------------------------------- lo ya jugado no se borra */

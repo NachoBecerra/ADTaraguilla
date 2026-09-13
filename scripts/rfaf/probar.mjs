@@ -18,6 +18,7 @@ import {
   resultadoCreible,
   resultadoPorClasificacion,
   saqueEnMs,
+  yaDeberiaTenerResultado,
 } from "./reglas.mjs";
 
 let fallos = 0;
@@ -100,14 +101,55 @@ comprobar(
   resultadoCreible("2026-09-06", "19:00", Date.parse("2026-09-07T10:00:00Z")),
   true,
 );
+/* Sin hora, el partido se da por jugado al acabar su día. Antes se contaba
+   desde la medianoche, y a la una de la madrugada ya competía como candidato a
+   resultado con otro partido del equipo que sí se había jugado */
 comprobar(
-  "sin hora, se cuenta desde la medianoche",
-  resultadoCreible("2026-09-06", null, aLas("02:00")),
+  "sin hora, no se da por jugado en su propio día",
+  resultadoCreible("2026-09-06", null, aLas("20:00")),
+  false,
+);
+comprobar(
+  "y al día siguiente, sí",
+  resultadoCreible("2026-09-06", null, Date.parse("2026-09-07T08:00:00Z")),
   true,
 );
 comprobar(
   "y sin fecha no se puede juzgar: pasa",
   resultadoCreible(null, null, Date.now()),
+  true,
+);
+
+/*
+ * ¿Merece la pena volver a pedir el equipo? El fallo de verdad: calculado en la
+ * hora del servidor, en GitHub —que va en UTC— un partido de las 19:00 se daba
+ * por terminado a las 23:00 españolas, y durante dos horas su resultado no se
+ * pedía. Estas cuentas van en hora española y dan lo mismo en cualquier servidor.
+ */
+const delSabado = (hora) => ({ fecha: "2026-09-06", hora, jugado: false });
+comprobar(
+  "a las 20:30 el partido de las 19:00 aún no tiene acta",
+  yaDeberiaTenerResultado(delSabado("19:00"), aLas("20:30")),
+  false,
+);
+comprobar(
+  "a las 21:05 ya puede tenerla: se vuelve a pedir el equipo",
+  yaDeberiaTenerResultado(delSabado("19:00"), aLas("21:05")),
+  true,
+);
+comprobar(
+  "uno ya jugado no pide nada",
+  yaDeberiaTenerResultado({ ...delSabado("19:00"), jugado: true }, aLas("23:00")),
+  false,
+);
+comprobar(
+  "uno sin hora espera a que acabe su día",
+  yaDeberiaTenerResultado(delSabado(null), aLas("22:00")),
+  false,
+);
+comprobar(
+  "y uno de días anteriores, siempre",
+  yaDeberiaTenerResultado({ fecha: "2026-09-05", hora: "12:00", jugado: false }, aLas("09:00")),
   true,
 );
 

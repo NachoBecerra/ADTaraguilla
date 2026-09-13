@@ -76,6 +76,9 @@ Hay **tres escritores, y ninguno sabe de los otros**:
 10. **"Ya no se juega" es saque + 3 h**, definido una sola vez
    (`src/lib/directo/panel.ts` → `yaNoSeJuega`). Panel y portada tienen que usar
    la misma regla, o un partido desaparece de uno y sigue prometiéndose en el otro.
+   Un partido **sin hora** tiene el saque al final de su día (`HORA_SIN_FIJAR`,
+   en `scripts/rfaf/reglas.mjs` y `src/lib/directo/partidos.ts`: tienen que
+   coincidir).
 11. **El almacén privado se lee sin caché** (`src/lib/privado.ts`). Leer con caché
     para modificar y volver a guardar pierde lo último: pasó con el directo.
 
@@ -84,7 +87,10 @@ Hay **tres escritores, y ninguno sabe de los otros**:
 12. **Local tiene que comportarse como producción.** El respaldo en disco
     (`src/lib/directo/deposito.ts`) lista recursivamente, igual que el almacén.
     Cualquier diferencia entre los dos esconde fallos que solo aparecen en
-    producción.
+    producción. Por lo mismo, **todo lo que compare con la hora de un partido va
+    en hora española** (`saqueEnMs`): `new Date("2026-09-13T19:00:00")` se lee en
+    la hora del servidor, y GitHub y Vercel van en UTC. Así estuvo el bot dos
+    horas tarde en cada resultado de tarde.
 13. Lo que depende de la hora o de datos vivos se decide en el navegador, y en el
     servidor se pinta vacío (`useSyncExternalStore` con valor de servidor fijo).
     Así no hay errores de hidratación.
