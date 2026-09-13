@@ -1,5 +1,5 @@
 {
-  "generado": "2026-09-13T16:25:16.853Z",
+  "generado": "2026-09-13T16:40:46.306Z",
   "_nota": "Ubicación de los campos, para enlazar con el mapa.",
   "campos": {
     "3008": {
@@ -24,6 +24,11 @@
       "nombre": "QUINTA DE LA PAZ",
       "lat": 36.7885774,
       "lon": -6.342234200000001
+    },
+    "2002177": {
+      "nombre": "MANUEL LEON MUNICIPAL",
+      "lat": 36.7046988,
+      "lon": -6.1382176
     },
     "2011471": {
       "nombre": "JOSE RAMÓN CISNEROS CIUDAD DEPORTIVA",
