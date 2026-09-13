@@ -1,6 +1,17 @@
 import { site } from "@/data/site";
 
 /**
+ * Dirección completa de una imagen, sea relativa o no.
+ *
+ * Google exige direcciones completas, y aquí se pegaba el dominio delante de
+ * todo. Las portadas viven en el almacén y ya son completas, así que cada
+ * noticia publicaba `https://ad-taraguilla.eshttps://…blob…jpg`: una imagen
+ * que no existe, y sin imagen válida la noticia no puede salir como resultado
+ * enriquecido.
+ */
+const absoluta = (url: string) => (/^https?:\/\//.test(url) ? url : `${site.url}${url}`);
+
+/**
  * Datos estructurados (JSON-LD).
  *
  * Es la forma de decirle a Google qué es esto en vez de dejar que lo adivine
@@ -14,7 +25,7 @@ export function ClubJsonLd() {
     name: site.nombreLargo,
     alternateName: site.nombre,
     url: site.url,
-    logo: `${site.url}${site.escudo}`,
+    logo: absoluta(site.escudo),
     sport: "Football",
     description: site.descripcion,
     address: {
@@ -68,12 +79,12 @@ export function NoticiaJsonLd({
     description: resumen,
     datePublished: fecha,
     dateModified: fecha,
-    image: portada ? [`${site.url}${portada}`] : [`${site.url}/opengraph-image.png`],
+    image: [absoluta(portada || "/opengraph-image.png")],
     author: { "@type": "Organization", name: autor },
     publisher: {
       "@type": "Organization",
       name: site.nombreLargo,
-      logo: { "@type": "ImageObject", url: `${site.url}${site.escudo}` },
+      logo: { "@type": "ImageObject", url: absoluta(site.escudo) },
     },
     mainEntityOfPage: url,
   };
