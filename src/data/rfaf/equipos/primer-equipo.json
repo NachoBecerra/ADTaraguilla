@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-13T19:15:59.044Z",
+  "actualizado": "2026-09-13T19:40:28.178Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -288,7 +288,7 @@
               "campo": "EL PICACHO",
               "superficie": "Hierba Natural",
               "codCampo": "3548",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662392&cod_acta=2662392",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662392&cod_acta=2662392",
               "jugado": false
             },
             {
