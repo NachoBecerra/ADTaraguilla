@@ -2,6 +2,8 @@ import { leerRegistro, listarRegistros } from "@/lib/directo/almacen";
 import { hayRetransmision, minutoEn, plegar, type Fase } from "@/lib/directo/modelo";
 import { diasAnunciables, diasDeLaVentana, idsDeLaVentana } from "@/lib/directo/ventana";
 import { getEquipo, partidosDe } from "@/lib/competicion";
+import { saqueEnMs } from "@/lib/directo/partidos";
+import { yaNoSeJuega } from "@/lib/directo/panel";
 
 /**
  * Lo justo para encender el "en directo" en una tarjeta.
@@ -35,6 +37,12 @@ export type ResumenDirecto = {
    * «sin empezar» y sin embargo eso ya es un directo.
    */
   hayContenido: boolean;
+  /**
+   * Cuándo se juega. Lo necesita la tarjeta de un partido anunciado, que no
+   * tiene minuto ni marcador que enseñar y sí tiene que decir cuándo empieza.
+   */
+  fecha: string | null;
+  hora: string | null;
   version: number;
 };
 
@@ -126,6 +134,8 @@ function resumir(registro: Awaited<ReturnType<typeof leerRegistro>>): ResumenInt
     goles: estado.goles,
     fase: estado.fase,
     minuto: minutoEn(estado, Date.now()).etiqueta,
+    fecha: registro.partido.fecha,
+    hora: registro.partido.hora,
     version: registro.version,
   };
 }
@@ -166,6 +176,10 @@ export async function directosDeHoy(ahora = new Date()): Promise<ResumenDirecto[
         // lo haya anunciado. Basta un comentario para que lo sea, aunque no se
         // haya pitado
         r.hayQueEnsenar &&
+        /* Un anuncio que nadie llegó a contar caduca cuando el partido ya no
+           puede jugarse. Sin esto, la portada seguiría prometiendo un directo
+           de ayer hasta que el día saliera de la ventana */
+        (r.hayContenido || !yaNoSeJuega(saqueEnMs(r.fecha ?? "", r.hora))) &&
         /* En cuanto la RFAF publica el resultado, el directo ha cumplido...
            salvo que el partido se esté contando ahora mismo: ahí el acta puede
            ser un error de la federación y el directo es lo que está pasando */

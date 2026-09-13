@@ -18,7 +18,7 @@ import { contar, partesJugadas, hayAlgoQueContar } from "../../src/lib/directo/e
 import { minutosPorParte } from "../../src/lib/directo/reglamento.ts";
 import { diasAnunciables, diasDeLaVentana, idsDeLaVentana } from "../../src/lib/directo/ventana.ts";
 import { createHmac } from "node:crypto";
-import { seVeEnElPanel } from "../../src/lib/directo/panel.ts";
+import { seVeEnElPanel, yaNoSeJuega } from "../../src/lib/directo/panel.ts";
 
 /* La firma sale de la contrasena del club; sin ella no hay enlace posible */
 process.env.CLAVE_PANEL = process.env.CLAVE_PANEL ?? "clave-de-prueba";
@@ -243,6 +243,16 @@ comprobar(
   seVeEnElPanel("terminada", "2026-09-12", "2026-09-12", conSaque(2.5, true)),
   true,
 );
+
+/*
+ * La misma regla decide cuándo deja de prometerse un anuncio en la portada.
+ * Si panel y portada contaran distinto, un partido podría desaparecer de uno
+ * y seguir anunciándose en el otro.
+ */
+comprobar("un anuncio de hace cuatro horas ya no se promete", yaNoSeJuega(saqueDelSabado, horasDespues(4)), true);
+comprobar("uno que empezó hace una hora sigue en pie", yaNoSeJuega(saqueDelSabado, horasDespues(1)), false);
+comprobar("y uno de esta tarde, por supuesto", yaNoSeJuega(saqueDelSabado, horasDespues(-5)), false);
+comprobar("sin saque conocido no se da por pasado", yaNoSeJuega(Number.NaN, horasDespues(10)), false);
 
 /* ---------------------------- un senior con descuentos en las dos partes */
 

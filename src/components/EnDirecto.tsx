@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import type { ResumenDirecto } from "@/lib/directo/resumen";
 import { idPartido } from "@/lib/directo/idPartido";
-import { IconoFlecha } from "@/components/Iconos";
+import { diasDeLaVentana } from "@/lib/directo/ventana";
+import { fechaPartido } from "@/lib/formato";
+import { IconoCalendario, IconoFlecha } from "@/components/Iconos";
 
 /**
  * Avisa de que un equipo está jugando ahora mismo.
@@ -355,27 +357,65 @@ export function BandaDirecto({
  *
  * No ocupa nada cuando no hay partido: no se pinta.
  */
+/**
+ * Cuándo se juega un partido anunciado, dicho como lo diría alguien del club:
+ * «hoy a las 19:00», «mañana a las 11:30», «sáb 19 sept a las 10:00».
+ *
+ * Solo se pinta en el navegador —en el servidor la lista llega vacía—, así que
+ * mirar la fecha de hoy aquí no puede descuadrar la hidratación.
+ */
+function cuandoSeJuega(d: ResumenDirecto): string {
+  if (!d.fecha) return "fecha por confirmar";
+  const dias = diasDeLaVentana();
+  const dia = d.fecha === dias[1] ? "hoy" : d.fecha === dias[2] ? "mañana" : fechaPartido(d.fecha);
+  return d.hora ? `${dia} a las ${d.hora}` : dia;
+}
+
+/**
+ * Lo que se está contando ahora mismo, y lo que el club ha anunciado.
+ *
+ * Va encima de la tarjeta del primer equipo. Los anuncios estaban antes solo
+ * dentro de la tarjeta de su propio partido, y esa tarjeta se construye con los
+ * datos de la RFAF: un amistoso no la tiene, así que anunciarlo desde el panel
+ * no lo sacaba en ninguna parte. El 12 de septiembre de 2026 se anunció el del
+ * infantil B y la web no dijo nada en toda la tarde.
+ *
+ * Dos tarjetas de la misma familia y fáciles de distinguir: la del directo en
+ * verde, con el punto que late y el marcador; la del anuncio en verde oscuro,
+ * sin punto —ese quiere decir «está pasando»— y con cuándo empieza.
+ */
 export function DirectosAhora({ omitir }: { omitir?: string | null } = {}) {
   const todosLosAvisos = useSyncExternalStore(suscribir, leer, leerEnServidor);
-  /* Aquí solo lo que se está contando ya: los anunciados los enseña la tarjeta
-     de su partido, y esta sección dice «ahora mismo» */
-  const puestos = todosLosAvisos.filter((d) => d.hayContenido);
 
   /* Se salta el PARTIDO que ya enseña una tarjeta de esta misma página, no
      todos los del equipo: si no, un amistoso del mismo equipo desaparecería
-     sin que nada lo enseñara en su lugar. */
-  const todos = omitir ? puestos.filter((d) => d.id !== omitir) : puestos;
-  if (todos.length === 0) return null;
+     sin que nada lo enseñara en su lugar. Vale igual para el anuncio: el del
+     primer equipo ya lo dice su propia tarjeta. */
+  const todos = omitir ? todosLosAvisos.filter((d) => d.id !== omitir) : todosLosAvisos;
+
+  const enDirecto = todos.filter((d) => d.hayContenido);
+  const anunciados = todos
+    .filter((d) => !d.hayContenido)
+    .sort((a, b) => `${a.fecha} ${a.hora}`.localeCompare(`${b.fecha} ${b.hora}`));
+
+  if (enDirecto.length === 0 && anunciados.length === 0) return null;
+
+  const titulo =
+    enDirecto.length > 0
+      ? enDirecto.length === 1
+        ? "Hay un partido en directo"
+        : `Hay ${enDirecto.length} partidos en directo`
+      : anunciados.length === 1
+        ? "Se retransmite en directo"
+        : `Se retransmiten ${anunciados.length} partidos`;
 
   return (
     <section className="mx-auto max-w-6xl px-5 pt-8">
-      <p className="eyebrow">Ahora mismo</p>
-      <h2 className="title mt-1 text-2xl text-tinta">
-        {todos.length === 1 ? "Hay un partido en directo" : `Hay ${todos.length} partidos en directo`}
-      </h2>
+      <p className="eyebrow">{enDirecto.length > 0 ? "Ahora mismo" : "Atento al directo"}</p>
+      <h2 className="title mt-1 text-2xl text-tinta">{titulo}</h2>
 
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {todos.map((d) => {
+        {enDirecto.map((d) => {
           const enJuego = d.fase !== "final";
           return (
             <Link
@@ -402,6 +442,28 @@ export function DirectosAhora({ omitir }: { omitir?: string | null } = {}) {
             </Link>
           );
         })}
+
+        {anunciados.map((d) => (
+          <Link
+            key={d.id}
+            href={`/directo/${d.id}`}
+            className="flex items-center gap-3 rounded-2xl bg-club-dark p-4 text-white transition-colors hover:bg-club"
+          >
+            <span className="min-w-0 flex-1">
+              <span className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-club-claro">
+                <IconoCalendario size={13} className="shrink-0" />
+                {d.nombreEquipo} · {cuandoSeJuega(d)}
+              </span>
+              <span className="title mt-1 block truncate text-lg">
+                {d.local} VS {d.visitante}
+              </span>
+              <span className="mt-1 block text-xs text-white/75">
+                Se retransmite en directo. Lo contaremos aquí minuto a minuto.
+              </span>
+            </span>
+            <IconoFlecha size={18} className="shrink-0" />
+          </Link>
+        ))}
       </div>
     </section>
   );

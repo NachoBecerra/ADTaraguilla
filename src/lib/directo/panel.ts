@@ -27,6 +27,21 @@ export const TRAS_EL_FINAL_MS = 180 * 60_000;
 export const YA_NO_SE_JUEGA_MS = 3 * 60 * 60_000;
 
 /**
+ * ¿Ha pasado ya el partido, lo contara alguien o no?
+ *
+ * Una sola definición para dos sitios que tienen que decir lo mismo: el panel,
+ * que deja de ofrecer retransmitir lo que ya no se juega, y la portada, que
+ * deja de anunciar lo que nadie llegó a contar. Si cada uno tuviera su cuenta,
+ * un partido podría desaparecer de uno y seguir prometiéndose en el otro.
+ *
+ * Sin saque conocido no se da por pasado: mejor un anuncio de más que borrar
+ * uno bueno por no saber leer la hora.
+ */
+export function yaNoSeJuega(saqueMs: number | undefined, ahora: number = Date.now()): boolean {
+  return saqueMs !== undefined && Number.isFinite(saqueMs) && ahora > saqueMs + YA_NO_SE_JUEGA_MS;
+}
+
+/**
  * ¿Sale este partido en el panel de directos?
  *
  * **El panel enseña lo que todavía se puede hacer.** De ahí salen todas las
@@ -58,10 +73,7 @@ export function seVeEnElPanel(
 
   if (estado === "sin-abrir" || estado === "abierta") {
     if (oficial) return false;
-    if (saqueMs !== undefined && Number.isFinite(saqueMs) && ahora > saqueMs + YA_NO_SE_JUEGA_MS) {
-      return false;
-    }
-    return true;
+    return !yaNoSeJuega(saqueMs, ahora);
   }
 
   return (fecha ?? "9999-99-99") >= hoy;
