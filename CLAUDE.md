@@ -55,34 +55,40 @@ Hay **tres escritores, y ninguno sabe de los otros**:
    `competicionesExcluidas`, por código de grupo. Borrarlas de los datos no
    sirve: la siguiente pasada las vuelve a traer.
 
+6. **Un aviso al móvil solo sale con los datos ya publicados.** La
+   sincronización los deja en un archivo (`AVISOS_A_ARCHIVO`) y el workflow los
+   manda con `scripts/rfaf/avisar.mjs` después de un push que haya salido bien.
+   Mandarlos antes avisaba de resultados que no estaban en la web, y cuando el
+   push fallaba la pasada siguiente los repetía.
+
 ### Directo
 
-6. **Se guardan eventos, no el marcador.** Marcador, reloj y fase se pliegan de
+7. **Se guardan eventos, no el marcador.** Marcador, reloj y fase se pliegan de
    la lista (`src/lib/directo/modelo.ts` → `plegar`). Corregir es añadir un
    evento `anula`. Para reparar un partido que nadie cerró está
    `scripts/directo/corregir.mjs`.
-7. **Un registro abierto no es un directo narrado.** Narrado significa que tiene
+8. **Un registro abierto no es un directo narrado.** Narrado significa que tiene
    eventos, y se marca con `directo/narrados/<id>.json` al apuntarse el primero.
-8. **`listarRegistros()` devuelve solo registros de partido** (`directo/<id>.json`).
+9. **`listarRegistros()` devuelve solo registros de partido** (`directo/<id>.json`).
    La carpeta tiene subcarpetas: quien recorra el almacén por su cuenta tiene que
    filtrar. El 12 de septiembre un marcador de subcarpeta tumbó la lista de
    directos de la portada.
-9. **"Ya no se juega" es saque + 3 h**, definido una sola vez
+10. **"Ya no se juega" es saque + 3 h**, definido una sola vez
    (`src/lib/directo/panel.ts` → `yaNoSeJuega`). Panel y portada tienen que usar
    la misma regla, o un partido desaparece de uno y sigue prometiéndose en el otro.
-10. **El almacén privado se lee sin caché** (`src/lib/privado.ts`). Leer con caché
+11. **El almacén privado se lee sin caché** (`src/lib/privado.ts`). Leer con caché
     para modificar y volver a guardar pierde lo último: pasó con el directo.
 
 ### Web
 
-11. **Local tiene que comportarse como producción.** El respaldo en disco
+12. **Local tiene que comportarse como producción.** El respaldo en disco
     (`src/lib/directo/deposito.ts`) lista recursivamente, igual que el almacén.
     Cualquier diferencia entre los dos esconde fallos que solo aparecen en
     producción.
-12. Lo que depende de la hora o de datos vivos se decide en el navegador, y en el
+13. Lo que depende de la hora o de datos vivos se decide en el navegador, y en el
     servidor se pinta vacío (`useSyncExternalStore` con valor de servidor fijo).
     Así no hay errores de hidratación.
-13. **Escudos**: solo de los sitios permitidos. La lista está en
+14. **Escudos**: solo de los sitios permitidos. La lista está en
     `next.config.ts` y en `src/lib/panel/escudos.ts` → `esEscudoAceptable`, y
     tienen que coincidir. `src/data/rfaf/formas.json` dice cómo escalar cada
     escudo dentro de su disco; se rellena con `node scripts/rfaf/medirEscudos.mjs`
@@ -94,8 +100,9 @@ Hay **tres escritores, y ninguno sabe de los otros**:
   publicados antes del saque, extensiones de imagen que mienten (JPEG llamados
   `.png`) y un cupo de unas 40 peticiones seguidas.
 - **El cron de GitHub**: llega tarde y a veces se salta una pasada.
-- **Los commits a `main` concurren**: el bot y el panel escriben a la vez, y el
-  `git push` del bot puede rechazarse.
+- **Los commits a `main` concurren**: el bot y el panel escriben a la vez. El
+  paso de publicar del workflow integra `main` y reintenta el push; quien toque
+  ese paso tiene que conservarlo, que sin él se perdieron tres pasadas.
 
 ## Antes de cambiar algo
 

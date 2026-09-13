@@ -79,12 +79,11 @@ jobs:
           node-version: 24
 
       - name: Sincronizar
-        # El secreto y la dirección sirven para avisar al móvil de los
-        # resultados y horarios nuevos. Si faltan, la sincronización va
-        # igual y solo deja constancia de que no pudo avisar.
+        # Los avisos al móvil no salen de aquí: se dejan apuntados y los manda
+        # el último paso, cuando los datos ya están publicados.
         env:
-          AVISOS_SECRETO: ${{ secrets.AVISOS_SECRETO }}
-          SITIO_URL: https://ad-taraguilla.es
+          # Los avisos se apuntan aquí y se mandan al final, solo si se publica
+          AVISOS_A_ARCHIVO: avisos-pendientes.json
         run: |
           node scripts/rfaf/sincronizar.mjs \
             ${{ inputs.completo && '--completo' || '' }} \
@@ -101,6 +100,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Publicar cambios
+        id: publicar
         # Cada publicación reconstruye y redespliega la web entera, así que
         # solo se publica cuando hay algo que enseñar.
         #
@@ -140,4 +140,31 @@ jobs:
           git config user.email "actions@github.com"
           git add src/data/rfaf
           git commit -m "Datos de competición actualizados desde la RFAF"
-          git push
+
+          # El panel también commitea a main, y una pasada que espera al cupo
+          # de la RFAF dura cinco minutos: da tiempo a que llegue otro commit.
+          # Pasó el 31 de agosto y el 3 y el 10 de septiembre de 2026, y esas
+          # pasadas se perdieron. Se integra lo que haya y se reintenta.
+          for intento in 1 2 3; do
+            if ! git pull --rebase; then
+              git rebase --abort || true
+              echo "No se ha podido integrar main: se reintenta en la próxima pasada."
+              exit 1
+            fi
+            if git push; then
+              echo "publicado=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "El push ha vuelto a chocar (intento $intento)."
+          done
+          exit 1
+
+      - name: Mandar avisos
+        # Solo con los datos ya publicados. Antes salían antes del push: si este
+        # fallaba, se avisaba de un resultado que no estaba en la web, y la
+        # pasada siguiente, al encontrar la misma novedad, lo avisaba otra vez.
+        if: steps.publicar.outputs.publicado == 'true'
+        env:
+          AVISOS_SECRETO: ${{ secrets.AVISOS_SECRETO }}
+          SITIO_URL: https://ad-taraguilla.es
+        run: node scripts/rfaf/avisar.mjs avisos-pendientes.json

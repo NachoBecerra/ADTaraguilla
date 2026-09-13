@@ -20,6 +20,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { ClienteRfaf, ErrorDeCupo, urlAbsoluta } from "./cliente.mjs";
+import { mandarAvisos } from "./avisos.mjs";
 import { aSlug, bloquesPorTemporada } from "./html.mjs";
 import {
   ORIGEN_TABLA,
@@ -641,7 +642,19 @@ async function principal() {
 
   await avisarEscudosSinMedir(escudos);
 
-  await mandarAvisos(novedades);
+  /*
+   * En producción los avisos no se mandan aquí: se dejan apuntados y el
+   * workflow los manda después de publicar, y solo si la publicación salió
+   * bien. Mandarlos antes avisaba de resultados que no estaban en la web
+   * cuando el push fallaba, y la pasada siguiente los repetía.
+   */
+  const archivoAvisos = process.env.AVISOS_A_ARCHIVO;
+  if (archivoAvisos) {
+    await fs.writeFile(archivoAvisos, JSON.stringify(novedades), "utf8");
+    if (novedades.length > 0) log(`Avisos: ${novedades.length} novedad(es) a la espera de publicar`);
+  } else {
+    await mandarAvisos(novedades, { log, aviso });
+  }
 
   // Con lo que sobre del cupo, se completan campos e histórico
   if (!incompleto) await rellenarCampos(cliente, equipos);
@@ -926,35 +939,6 @@ ${rival}`,
   }
 
   return avisos;
-}
-
-/** Manda los avisos a la web, que es quien tiene las suscripciones. */
-async function mandarAvisos(avisos) {
-  if (avisos.length === 0) return;
-
-  const secreto = process.env.AVISOS_SECRETO;
-  const sitio = process.env.SITIO_URL;
-  if (!secreto || !sitio) {
-    aviso(`${avisos.length} aviso(s) sin mandar: falta AVISOS_SECRETO o SITIO_URL`);
-    return;
-  }
-
-  try {
-    const r = await fetch(`${sitio}/api/avisar`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-avisos-secreto": secreto },
-      body: JSON.stringify({ avisos }),
-    });
-    const cuerpo = await r.json().catch(() => ({}));
-    if (!r.ok) {
-      aviso(`Avisos: la web respondió ${r.status}`);
-      return;
-    }
-    log(`Avisos: ${avisos.length} novedad(es), ${cuerpo.enviados ?? 0} enviado(s)`);
-  } catch (e) {
-    // Que fallen los avisos no debe tumbar la sincronización
-    aviso(`Avisos: no se han podido mandar (${e.message})`);
-  }
 }
 
 /* ------------------------------------------------------------------ campos */
