@@ -5,6 +5,7 @@ import { marked } from "marked";
 import { dimensionesDe } from "@/lib/imagenes";
 import { getEquipos } from "@/lib/competicion";
 import galeriaData from "@/data/galeria.json";
+import { extractoDe } from "@/lib/extracto";
 
 const DIR_NOTICIAS = path.join(process.cwd(), "content", "noticias");
 const AUTOR_POR_DEFECTO = "AD Taraguilla";
@@ -20,6 +21,12 @@ export type Noticia = {
   /** Etiquetas libres, además de la categoría: equipo, temporada, jugador… */
   etiquetas: string[];
   destacada: boolean;
+  /**
+   * Lo que acompaña a la noticia al compartirla: el resumen si lo hay, y si no,
+   * el principio del cuerpo. Ninguna noticia traía resumen y la tarjeta de
+   * Facebook salía sin texto.
+   */
+  extracto: string;
   /**
    * Entrada de la galería con las fotos que acompañan a la noticia.
    *
@@ -46,7 +53,9 @@ function parsearNoticia(archivo: string): Noticia {
     titulo: (data.titulo as string) ?? "Sin título",
     // El CMS guarda la fecha como Date; la normalizamos a ISO para poder ordenar.
     fecha: new Date((data.fecha as string) ?? Date.now()).toISOString(),
-    resumen: (data.resumen as string) ?? "",
+    // Recortado: un resumen de dos espacios pintaba un recuadro vacío
+    resumen: String(data.resumen ?? "").trim(),
+    extracto: extractoDe(String(data.resumen ?? ""), content),
     portada: (data.portada as string) ?? "",
     autor: (data.autor as string) ?? AUTOR_POR_DEFECTO,
     categoria: (data.categoria as string) ?? "Club",

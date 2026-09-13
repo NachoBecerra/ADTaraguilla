@@ -11,6 +11,7 @@
 
 import { aplicarFotos, conIdUnico } from "../../src/lib/panel/fotosDeEntrada.ts";
 import { bloqueoRestante, trasUnFallo, MAX_FALLOS, BLOQUEO_MS, VENTANA_FALLOS_MS } from "../../src/lib/panel/bloqueo.ts";
+import { extractoDe, textoPlano, LARGO_EXTRACTO } from "../../src/lib/extracto.ts";
 import galeriaReal from "../../src/data/galeria.json" with { type: "json" };
 
 let fallos = 0;
@@ -183,6 +184,35 @@ console.log("--- Que cada grupo tenga su identificador ---");
     null,
   );
   comprobar("el bloqueo dura lo que dice", cinco.intentos.bloqueadoHasta - cinco.intentos.ultimoFallo, BLOQUEO_MS);
+}
+
+/* -------------------------------------- lo que acompaña a una noticia */
+{
+  console.log("");
+  /* El cuerpo de verdad de la noticia del Guadiaro: ninguna noticia tenía
+     resumen, y al compartirlas en Facebook solo salía la foto */
+  const guadiaro =
+    "Nueva jornada de nuestro equipo senior y jornada de derbi en el Hnos García Mota donde los nuestros recibirán al CD Guadiaro.\nLos de Rafa Bado buscarán la segunda victoria y la primera frente a nuestra afición.\nVAMOS TARAGUILLA!! 💚🤍";
+
+  comprobar("si hay resumen, manda el resumen", extractoDe("Derbi en casa", guadiaro), "Derbi en casa");
+  comprobar(
+    "sin resumen, sale la primera frase entera del cuerpo",
+    extractoDe("", guadiaro),
+    "Nueva jornada de nuestro equipo senior y jornada de derbi en el Hnos García Mota donde los nuestros recibirán al CD Guadiaro.",
+  );
+  comprobar("un resumen de solo espacios cuenta como vacío", extractoDe("  ", "Corto."), "Corto.");
+  comprobar("un cuerpo corto va entero", extractoDe(null, "Te esperamos en el campo!!"), "Te esperamos en el campo!!");
+
+  const largoSinPuntos = "palabra ".repeat(40);
+  const cortado = extractoDe("", largoSinPuntos);
+  comprobar("sin un punto a mano, se corta en una palabra y con puntos suspensivos", cortado.endsWith("palabra…"), true);
+  comprobar("y nunca pasa del largo", cortado.length <= LARGO_EXTRACTO + 1, true);
+
+  comprobar(
+    "del Markdown solo queda el texto",
+    textoPlano("## Crónica\n**Victoria** en [Tarifa](https://x.y) ![foto](a.jpg)\n- 0-2"),
+    "Crónica Victoria en Tarifa 0-2",
+  );
 }
 
 console.log("");

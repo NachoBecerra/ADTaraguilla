@@ -22,14 +22,26 @@ export async function generateMetadata({
   const noticia = getNoticia(slug);
   if (!noticia) return { title: "Noticia no encontrada" };
 
+  const direccion = `/noticias/${noticia.slug}`;
+  const imagenes = noticia.portada ? [noticia.portada] : undefined;
+
   return {
     title: noticia.titulo,
-    description: noticia.resumen,
-    alternates: { canonical: `/noticias/${noticia.slug}` },
+    description: noticia.extracto,
+    alternates: { canonical: direccion },
+    /*
+     * Entero, no a medias. Next mezcla los metadatos solo por encima: este
+     * `openGraph` sustituye del todo al del layout —nombre del sitio e idioma
+     * incluidos— y, sin un `twitter` propio, X enseñaba el título y la
+     * descripción de la web entera en vez de los de la noticia.
+     */
     openGraph: {
       type: "article",
+      locale: "es_ES",
+      siteName: site.nombre,
+      url: direccion,
       title: noticia.titulo,
-      description: noticia.resumen,
+      description: noticia.extracto,
       publishedTime: noticia.fecha,
       /*
        * Solo la portada, aunque la noticia lleve diez fotos más.
@@ -39,7 +51,13 @@ export async function generateMetadata({
        * comparte la noticia dejaría de ser la que eligió el club y pasaría a
        * depender de cada red. La portada existe justo para ser esa foto.
        */
-      images: noticia.portada ? [noticia.portada] : undefined,
+      images: imagenes,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: noticia.titulo,
+      description: noticia.extracto,
+      images: imagenes,
     },
   };
 }
@@ -62,7 +80,7 @@ export default async function PaginaNoticia({ params }: PageProps<"/noticias/[sl
     <article>
       <NoticiaJsonLd
         titulo={noticia.titulo}
-        resumen={noticia.resumen}
+        resumen={noticia.extracto}
         fecha={noticia.fecha}
         portada={noticia.portada}
         autor={noticia.autor}
@@ -126,7 +144,7 @@ export default async function PaginaNoticia({ params }: PageProps<"/noticias/[sl
           <p className="eyebrow mb-3">Compartir</p>
           <Compartir
             titulo={noticia.titulo}
-            resumen={noticia.resumen}
+            resumen={noticia.extracto}
             url={url}
             portada={noticia.portada}
           />
