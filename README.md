@@ -8,6 +8,9 @@ horarios, resultados, clasificaciones y rivales— se sincroniza solo desde la
 RFAF, y el directo no lo toca: es orientativo mientras se juega y el acta manda
 en cuanto llega.
 
+> Si vas a cambiar código, lee antes `CLAUDE.md`: recoge las reglas que no se
+> pueden romper y lo que no es de fiar. Este README cuenta cómo funciona.
+
 ## Poner en marcha
 
 ```bash
@@ -20,6 +23,8 @@ npm run dev          # http://localhost:3000
 | `npm run build` / `npm start` | Compilar y servir |
 | `npx eslint .` | Revisar el código |
 | `npm run directo:probar` | Comprueba el reloj y el marcador del directo |
+| `node scripts/rfaf/probar.mjs` | Reglas de la sincronización, sin red |
+| `npm run panel:probar` | Galería y freno del panel |
 | `npm run rfaf` | Pasada de sincronización con la RFAF (incremental) |
 | `npm run rfaf:forzar` | Revisa todos los equipos, aunque estén al día |
 | `npm run rfaf:completo` | Recarga además todas las jornadas de la temporada |
@@ -37,17 +42,30 @@ Ficha del club  →  equipos inscritos
    por comp.    →  grupo  →  calendario, jornadas y clasificación
 ```
 
-De ahí salen: rival, fecha, hora de saque, campo, superficie, resultado, enlace
-al acta, tabla de clasificación con puntos, goles y racha, y el directorio de
-clubes rivales.
+De ahí salen: rival, fecha, hora de saque, campo, superficie, enlace al acta,
+tabla de clasificación con puntos, goles y racha, y el escudo de cada club.
+
+**El resultado no se lee del marcador.** La RFAF lo ofusca a propósito —dígitos
+señuelo ocultos con CSS, otros inyectados desde JavaScript, distintos en cada
+petición—, y el acta de cada partido lleva el mismo truco. Lo que va en texto
+plano y es correcto es la clasificación, así que el resultado se **deduce** de
+ella (`scripts/rfaf/reglas.mjs` → `resultadoPorClasificacion`): cuando la tabla
+cuenta un partido más, la diferencia de goles a favor y en contra es su
+resultado. Solo se deduce sin ninguna duda: un partido nuevo y un único
+candidato, o el único del campo —casa o fuera— que ha crecido en la tabla. Ante
+la duda se deja el hueco, y la sincronización lo avisa en su resumen.
+
+Las competiciones que no interesan se apartan en `src/data/equipos.json` →
+`competicionesExcluidas`, por código de grupo.
 
 Se escribe en `src/data/rfaf/`:
 
 ```
 club.json              Índice: temporada y equipos con su posición
 historico/<id>.json    Palmarés y clasificaciones de temporadas pasadas
-rivales.json           Directorio de clubes, para /clubes
 escudos.json           Escudo de cada club, por código de equipo
+formas.json            Hasta dónde llega el dibujo de cada escudo (ver abajo)
+campos.json            Coordenadas de los campos, para abrirlos en el mapa
 equipos/<id>.json      Detalle de cada equipo: competiciones, jornadas, tabla
 ```
 
@@ -58,6 +76,13 @@ descarga y los cachea en el servidor, de modo que el navegador de quien visita l
 web no llega a tocar la CDN de la RFAF: se sirven optimizados desde el propio
 dominio, sin engordar el repositorio con binarios ni tener que reconciliarlos
 cuando un club cambie de escudo.
+
+En el directo cada escudo va sobre un disco blanco, porque la mayoría traen el
+fondo macizo. Para que todos se vean del mismo tamaño dentro del disco se mide
+hasta dónde llega el dibujo de cada uno (`formas.json`). Esa medición necesita
+descodificar imágenes y la sincronización corre sin dependencias, así que va
+aparte: `node scripts/rfaf/medirEscudos.mjs`, a mano, cuando aparece un rival
+nuevo. La sincronización avisa de los que falten.
 
 **Nunca se descargan datos personales.** Las plantillas, los árbitros y la junta
 directiva están en la RFAF, pero no se copian aquí: la web solo enlaza a la ficha
@@ -71,12 +96,12 @@ cómo funciona la competición, no a un reparto uniforme:
 
 | Cuándo (hora española) | Para qué |
 | --- | --- |
-| Lunes a jueves, 10:00 · 15:00 · 20:00 | Los horarios de los partidos se asignan durante la semana, sobre todo de martes a jueves |
+| Lunes a jueves, cada dos horas de 09:00 a 23:00 | Los horarios se asignan durante la semana, a veces de noche |
 | Viernes 10:00, y cada media hora de 16:00 a medianoche | Empiezan a llegar resultados |
 | Sábado 9:00, y cada media hora de 11:00 a medianoche | El día grande: el primer partido es a las 10:00 |
-| Domingo 10:00 · 14:00 · 18:00 · 23:00 | Menos partidos, casi siempre el primer equipo |
+| Domingo 9:00, y cada media hora de 11:00 a medianoche | Juegan el primer equipo, el juvenil y el infantil A |
 
-Son unas 64 pasadas por semana, pero **la frecuencia no es el problema: lo es el
+Son unas 110 pasadas por semana, pero **la frecuencia no es el problema: lo es el
 coste de cada pasada**. Una que no encuentra nada pendiente gasta cinco o seis
 peticiones, porque solo se consultan los equipos cuyo partido **ya ha terminado**
 y sigue sin resultado —se mira la hora de saque, no solo el día, para no
@@ -84,7 +109,10 @@ preguntar veinte veces por un partido que aún no se ha jugado—. La única pas
 cara es la primera de cada día, que revisa todo: unas 32 peticiones.
 
 El resultado no aparece al pitar el final sino cuando el árbitro cierra el acta,
-así que se da por terminado un partido dos horas después del saque.
+así que se da por terminado un partido dos horas después del saque, **en hora
+española**: GitHub corre en UTC, y calcularlo con la hora del servidor retrasaba
+dos horas cada resultado de tarde. Un partido sin hora asignada se da por jugado
+al final de su día.
 
 Un aviso: GitHub no garantiza la puntualidad de estos disparos. Suelen llegar con
 unos minutos de retraso y, si su cola va cargada, alguno puede saltarse. Por eso
@@ -110,8 +138,9 @@ por donde se quedó en vez de empezar de cero. Una pasada incompleta no es un
 fallo: es lo normal el primer día de temporada.
 
 Además solo se piden las jornadas que pueden haber cambiado: las de las próximas
-dos semanas (es cuando se asignan horarios y campos) y las recientes sin
-resultado. Una jornada cerrada no se vuelve a consultar nunca. En régimen normal
+dos semanas (es cuando se asignan horarios y campos) y las de los últimos cuatro
+días, por si la RFAF rectifica fecha, campo o acta. El resultado no sale de ahí,
+sino de la clasificación. Una jornada más vieja no se vuelve a consultar. En régimen normal
 son dos o tres peticiones por competición.
 
 ### El histórico
@@ -146,9 +175,24 @@ npm run rfaf              # ver en qué punto falla
 node scripts/rfaf/probar.mjs <carpeta-con-html>   # probar los extractores sin red
 ```
 
-`scripts/rfaf/probar.mjs` prueba la extracción contra páginas guardadas, sin
-tocar la red. La web mientras tanto sigue mostrando los últimos datos válidos:
-una sincronización fallida nunca borra lo que ya había.
+`scripts/rfaf/probar.mjs` prueba la extracción contra páginas guardadas y las
+reglas de `reglas.mjs`, sin tocar la red.
+
+### Lo que la RFAF sirve a medias no borra lo que ya teníamos
+
+La federación sirve el calendario y la ficha del club recortados a veces: en
+septiembre de 2026 dejó de publicar la jornada 1 del senior, luego la devolvió
+con uno solo de sus nueve partidos, e hizo lo mismo con el infantil A. Por eso:
+
+- Una **jornada** que ya conocíamos no desaparece porque el calendario deje de
+  traerla.
+- Un **partido** que ya pudo jugarse (una hora tras el saque) se conserva aunque
+  el calendario no lo liste, tenga resultado o no. Si reaparece en otra jornada
+  es un aplazamiento, y manda el calendario (`partidosCongelados`).
+- Un **equipo** que la ficha del club deja de listar se conserva tres días antes
+  de retirarse de la web (`equiposAusentes`).
+- Si una pasada deja a un equipo con menos resultados que la anterior, lo avisa
+  en su resumen.
 
 ## Seguimiento en directo
 
@@ -208,8 +252,9 @@ móvil, sigue otro desde otro teléfono— y **nunca reinicia un partido en curs
 
 ### Cuándo se enciende y cuándo se apaga
 
-El aviso de "en directo" se enciende al pulsar **Iniciar partido**, y se apaga
-por tres caminos: basta con que se cumpla uno.
+El aviso de "en directo" se enciende en cuanto hay algo escrito —basta un
+comentario antes del saque—, y se apaga por tres caminos: basta con que se
+cumpla uno.
 
 1. **Cuando la RFAF publica el resultado.** Es la señal buena de que el partido
    acabó, y a partir de ahí manda lo oficial.
@@ -229,16 +274,16 @@ enlace todavía no se sabe cuándo acabará.
 
 El distintivo de las tarjetas de equipo **no puede ser un enlace**: la tarjeta
 entera ya lo es, y uno dentro de otro no es HTML válido. Por eso la entrada al
-directo va como sección propia arriba de la portada y de `/equipos`, donde
-además se ve más que una pastilla. En la ficha del equipo hay una banda que
-lleva al partido.
+directo va como sección propia arriba de la portada y de `/equipos`: una tarjeta
+verde por partido en juego y una verde oscura por partido **anunciado**, con
+cuándo empieza. Un anuncio caduca tres horas después del saque si nadie llegó a
+contar nada. En la ficha del equipo hay una banda que lleva al partido.
 
-La cronología se guarda **toda la temporada**: es lo único que la RFAF no da
-—el acta trae el resultado, pero no en qué minuto cayó cada gol—. En la ficha
-del equipo aparece la lista de partidos narrados, y qué partidos la tienen se
-pregunta al abrir, porque la página se generó al compilar y la retransmisión
-ocurrió después. La lista sale del **nombre de los archivos**, sin abrir
-ninguno.
+La cronología se guarda **toda la temporada**: es lo único que la RFAF no da.
+Cada tarjeta de resultado lleva un botón al directo **solo si ese partido llegó
+a contarse**, porque abrir una retransmisión no es narrarla. Al apuntarse lo
+primero se deja un marcador en `directo/narrados/`, que sale en la misma lista
+del almacén sin abrir ningún registro.
 
 ### Por qué se pregunta en vez de recibir empujones
 
@@ -285,6 +330,10 @@ falta el token, es un fallo que hay que ver.
 | Noticias | Panel `/panel`, o `content/noticias/*.md` |
 | Fotos | Panel `/panel`, o `src/data/galeria.json` |
 | Nombre y orden de los equipos | `src/data/equipos.json` → `nombres` |
+| Competiciones que no se publican | `src/data/equipos.json` → `competicionesExcluidas` |
+| Escudo del rival de un amistoso | Panel `/panel` → Directo, al crear el amistoso |
+| Medir escudos nuevos | `node scripts/rfaf/medirEscudos.mjs` (la sincronización avisa) |
+| Reparar un directo mal cerrado | `scripts/directo/corregir.mjs` |
 | Nombre, lema, contacto, redes | `src/data/site.ts` |
 | Colores del club | `src/app/globals.css` → bloque `@theme` |
 | Escudo | `public/img/escudo.png` |
@@ -307,11 +356,16 @@ src/lib/privado.ts           Acceso al almacén privado
 src/lib/avisos.ts            Suscripciones a las notificaciones
 src/lib/directo/             Partidos en directo: modelo, reloj, almacén y enlace
 scripts/directo/probar.mjs   Prueba del reloj y del marcador, sin red
-scripts/rfaf/                Sincronizador
+scripts/directo/corregir.mjs Repara la cronología de un directo ya guardado
+scripts/rfaf/                Sincronizador; reglas.mjs guarda las decisiones con pruebas
+scripts/rfaf/avisar.mjs      Manda los avisos después de publicar
+scripts/rfaf/medirEscudos.mjs Mide los escudos (necesita las dependencias)
+scripts/panel/probar.mjs     Prueba de la galería y del freno del panel
+src/lib/correo.ts            Aviso por correo (Resend)
 scripts/avisar-prueba.mjs    Aviso manual, para probar las notificaciones
 public/sw.js                 Service worker
 src/app/                     /, /equipos, /noticias, /galeria, /historico, /directo
-src/app/api/                 subir, avisos, avisar, uso, version, directo
+src/app/api/                 subir, avisos, avisar, uso, version, directo, directo/archivo
 ```
 
 ## Aplicación instalable
@@ -341,8 +395,16 @@ Como ya no son archivos locales, nadie puede medirlas al compilar: el navegador
 apunta el ancho y el alto al reducirlas y se guardan en `galeria.json`.
 
 Hay un segundo almacén, **privado**, `datos-privados`, para lo que no puede leer
-cualquiera: el recuento de uso y las suscripciones a los avisos. Se accede con
-`src/lib/privado.ts` y la variable `BLOB_PRIVADO_READ_WRITE_TOKEN`.
+cualquiera: los partidos en directo (`directo/`) y sus marcadores de narrado
+(`directo/narrados/`), las suscripciones a los avisos (`avisos/`), el recuento de
+uso (`uso/`), la lista de escudos que sube el club (`escudos/propios.json`; las
+imágenes van al almacén público) y los intentos fallidos de entrar al panel
+(`panel/intentos/`). Se accede con `src/lib/privado.ts` y la variable
+`BLOB_PRIVADO_READ_WRITE_TOKEN`.
+
+Quien recorra el almacén tiene que contar con esas subcarpetas: el directo lista
+solo `directo/<id>.json` (`listarRegistros`), y un marcador de subcarpeta leído
+como si fuera un partido llegó a tumbar la portada.
 
 ## Avisos al móvil
 
@@ -354,10 +416,13 @@ Se avisa de tres cosas y de ninguna más: el resultado cuando se publica, la hor
 cuando se asigna y la hora cuando cambia. **Nunca** de que un partido sigue sin
 hora, que sería el ruido que hace apagar los avisos.
 
-Lo dispara la propia sincronización, que es quien sabe qué ha cambiado
-(`novedadesDe` en `scripts/rfaf/sincronizar.mjs`), llamando a `/api/avisar` con
-el secreto `AVISOS_SECRETO`. Para probar sin esperar a la RFAF: Actions → «Aviso
-de prueba», que admite un texto para todos o una lista concreta en JSON.
+Los detecta la sincronización, que es quien sabe qué ha cambiado (`novedadesDe`
+en `scripts/rfaf/sincronizar.mjs`), pero **no los manda**: los deja en un
+archivo, y un paso aparte del workflow los envía a `/api/avisar` con el secreto
+`AVISOS_SECRETO` **solo si la publicación salió bien**. Antes salían antes del
+push, y cuando este fallaba se avisaba de un resultado que no estaba en la web y
+la pasada siguiente lo repetía. Para probar sin esperar a la RFAF: Actions →
+«Aviso de prueba», que admite un texto para todos o una lista concreta en JSON.
 
 En iPhone los avisos **solo funcionan con la web instalada** en la pantalla de
 inicio. El botón lo explica en vez de fallar sin decir nada.
@@ -386,8 +451,18 @@ Al subir fotos se **reducen en el propio navegador** antes de enviarlas (lado
 mayor 1800 px) y todas viajan en **un solo commit**, para no encadenar veinte
 despliegues.
 
-Variables necesarias (ver `.env.example`): `CLAVE_PANEL`, `GITHUB_TOKEN`,
-`GITHUB_REPO`.
+**Freno a quien prueba contraseñas**: cinco fallos seguidos desde el mismo sitio
+bloquean el acceso quince minutos y mandan un correo al club con cuándo, desde
+dónde y con qué navegador (`src/lib/panel/bloqueo.ts`). Durante el bloqueo se
+rechaza también la contraseña buena. El correo va por Resend y necesita
+`RESEND_API_KEY` y `AVISO_CORREO_A`; sin ellas el bloqueo funciona igual y el
+aviso queda en el log.
+
+El bot de la RFAF y el panel commitean a `main` a la vez. La publicación del bot
+integra lo que haya y reintenta el push; sin eso se perdían pasadas.
+
+Variables (ver `.env.example`): `CLAVE_PANEL`, `GITHUB_TOKEN`, `GITHUB_REPO`,
+`GITHUB_RAMA`, y las de almacenes, avisos y correo que se listan allí.
 
 
 ## Paleta
@@ -420,10 +495,12 @@ localizar de dónde saca el portal el código de ronda (probablemente un `select
 en la propia página de jornada) y usarlo en `scripts/rfaf/sincronizar.mjs`, donde
 ahora se manda `CodJornada` vacío.
 
+Si una copa no aporta nada, se aparta entera en `competicionesExcluidas`: así se
+hizo con la Copa Andalucía Senior 2026-27.
+
 ## Pendiente de confirmar
 
-- **Contacto**: el correo de `src/data/site.ts` es `info@adtaraguilla.es`, y ese
-  dominio **no existe**: quien escriba recibe un rebote. Falta el correo real del
-  club.
+- **Aviso por correo del panel**: configurar `RESEND_API_KEY` y `AVISO_CORREO_A`
+  en Vercel.
 - **Google Search Console**: dar de alta el dominio y enviar el sitemap.
 - **iPhone**: los avisos y la instalación están probados en Android, no en iOS.
