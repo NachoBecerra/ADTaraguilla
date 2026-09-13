@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-13T16:40:28.941Z",
+  "actualizado": "2026-09-13T17:17:00.516Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -246,7 +246,7 @@
               "codLocal": "308015",
               "codVisitante": "308315",
               "fecha": "2026-09-13",
-              "hora": "18:00",
+              "hora": "18:51",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -254,7 +254,7 @@
               "campo": "SAN RAFAEL PVO (F11-F7)",
               "superficie": "Hierba Natural",
               "codCampo": "3080",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662395",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662395&cod_acta=2662395",
               "jugado": false
             },
             {
@@ -5682,6 +5682,23 @@
         },
         {
           "posicion": 14,
+          "equipo": "U.D. LOS BARRIOS",
+          "puntos": 1,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 1,
+          "golesFavor": 1,
+          "golesContra": 2,
+          "racha": [
+            "P",
+            "E"
+          ]
+        },
+        {
+          "posicion": 15,
           "equipo": "REAL BALOMPEDICA LINENSE",
           "puntos": 1,
           "jugados": 2,
@@ -5698,23 +5715,24 @@
           ]
         },
         {
-          "posicion": 15,
-          "equipo": "U.D. LOS BARRIOS",
-          "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
+          "posicion": 16,
+          "equipo": "TARIFA U.D.",
+          "puntos": 1,
+          "jugados": 2,
+          "jugadosCasa": 1,
           "jugadosFuera": 1,
           "ganados": 0,
-          "empatados": 0,
+          "empatados": 1,
           "perdidos": 1,
-          "golesFavor": 0,
-          "golesContra": 1,
+          "golesFavor": 1,
+          "golesContra": 3,
           "racha": [
-            "P"
+            "P",
+            "E"
           ]
         },
         {
-          "posicion": 16,
+          "posicion": 17,
           "equipo": "BARBATE C.F.",
           "puntos": 0,
           "jugados": 1,
@@ -5725,22 +5743,6 @@
           "perdidos": 1,
           "golesFavor": 1,
           "golesContra": 3,
-          "racha": [
-            "P"
-          ]
-        },
-        {
-          "posicion": 17,
-          "equipo": "TARIFA U.D.",
-          "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 0,
-          "golesContra": 2,
           "racha": [
             "P"
           ]
