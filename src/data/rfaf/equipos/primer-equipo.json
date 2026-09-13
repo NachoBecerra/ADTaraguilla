@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-13T11:17:55.786Z",
+  "actualizado": "2026-09-13T12:27:50.325Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -195,7 +195,7 @@
               "codLocal": "303615",
               "codVisitante": "20779397",
               "fecha": "2026-09-13",
-              "hora": "12:53",
+              "hora": "12:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -203,7 +203,7 @@
               "campo": "GUADALCACIN ESTADIO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3036",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662389&cod_acta=2662389",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662389&cod_acta=2662389",
               "jugado": false
             },
             {
@@ -220,7 +220,7 @@
               "campo": "EL FONTANAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3602",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662391",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662391&cod_acta=2662391",
               "jugado": false
             },
             {
@@ -229,7 +229,7 @@
               "codLocal": "307715",
               "codVisitante": "300815",
               "fecha": "2026-09-13",
-              "hora": "12:54",
+              "hora": "12:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -237,7 +237,7 @@
               "campo": "MANOLO MESA CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3201",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662393&cod_acta=2662393",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662393&cod_acta=2662393",
               "jugado": false
             },
             {
@@ -5468,6 +5468,23 @@
       "clasificacion": [
         {
           "posicion": 1,
+          "equipo": "C.D. GUADALCACIN",
+          "puntos": 6,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 5,
+          "golesContra": 0,
+          "racha": [
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 2,
           "equipo": "XEREZ DEPORTIVO F.C.",
           "puntos": 3,
           "jugados": 1,
@@ -5483,7 +5500,7 @@
           ]
         },
         {
-          "posicion": 2,
+          "posicion": 3,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 3,
           "jugados": 1,
@@ -5499,40 +5516,7 @@
           ]
         },
         {
-          "posicion": 3,
-          "equipo": "C.D. GUADALCACIN",
-          "puntos": 6,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 2,
-          "golesContra": 0,
-          "racha": [
-            "G",
-            "G"
-          ]
-        },
-        {
           "posicion": 4,
-          "equipo": "JEREZ INDUSTRIAL C.F.",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 2,
-          "golesContra": 0,
-          "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 5,
           "equipo": "C.D. EL TORNO 2009",
           "puntos": 3,
           "jugados": 1,
@@ -5548,7 +5532,7 @@
           ]
         },
         {
-          "posicion": 6,
+          "posicion": 5,
           "equipo": "TREBUJENA C.F.",
           "puntos": 3,
           "jugados": 1,
@@ -5564,12 +5548,63 @@
           ]
         },
         {
+          "posicion": 6,
+          "equipo": "CHICLANA IND. C.F.",
+          "puntos": 4,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 4,
+          "golesContra": 3,
+          "racha": [
+            "E",
+            "G"
+          ]
+        },
+        {
           "posicion": 7,
+          "equipo": "JEREZ INDUSTRIAL C.F.",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 3,
+          "golesContra": 2,
+          "racha": [
+            "G",
+            "P"
+          ]
+        },
+        {
+          "posicion": 8,
           "equipo": "C.D. ROTA",
           "puntos": 2,
           "jugados": 2,
           "jugadosCasa": 1,
           "jugadosFuera": 1,
+          "ganados": 0,
+          "empatados": 2,
+          "perdidos": 0,
+          "golesFavor": 4,
+          "golesContra": 4,
+          "racha": [
+            "E",
+            "E"
+          ]
+        },
+        {
+          "posicion": 9,
+          "equipo": "C.D. SAN ROQUE",
+          "puntos": 2,
+          "jugados": 2,
+          "jugadosCasa": 2,
+          "jugadosFuera": 0,
           "ganados": 0,
           "empatados": 2,
           "perdidos": 0,
@@ -5581,45 +5616,12 @@
           ]
         },
         {
-          "posicion": 8,
-          "equipo": "C.D. SAN ROQUE",
-          "puntos": 2,
-          "jugados": 2,
-          "jugadosCasa": 2,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 2,
-          "perdidos": 0,
-          "golesFavor": 2,
-          "golesContra": 2,
-          "racha": [
-            "E",
-            "E"
-          ]
-        },
-        {
-          "posicion": 9,
+          "posicion": 10,
           "equipo": "CHICLANA C.F.",
           "puntos": 1,
           "jugados": 1,
           "jugadosCasa": 1,
           "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 1,
-          "perdidos": 0,
-          "golesFavor": 2,
-          "golesContra": 2,
-          "racha": [
-            "E"
-          ]
-        },
-        {
-          "posicion": 10,
-          "equipo": "CHICLANA IND. C.F.",
-          "puntos": 1,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
           "ganados": 0,
           "empatados": 1,
           "perdidos": 0,
@@ -5729,23 +5731,6 @@
         },
         {
           "posicion": 17,
-          "equipo": "C.D. CIUDAD DE CADIZ",
-          "puntos": 0,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 1,
-          "golesContra": 3,
-          "racha": [
-            "P",
-            "P"
-          ]
-        },
-        {
-          "posicion": 18,
           "equipo": "TARIFA U.D.",
           "puntos": 0,
           "jugados": 1,
@@ -5757,6 +5742,23 @@
           "golesFavor": 0,
           "golesContra": 2,
           "racha": [
+            "P"
+          ]
+        },
+        {
+          "posicion": 18,
+          "equipo": "C.D. CIUDAD DE CADIZ",
+          "puntos": 0,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 1,
+          "golesContra": 6,
+          "racha": [
+            "P",
             "P"
           ]
         }
