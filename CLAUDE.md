@@ -45,8 +45,11 @@ Hay **tres escritores, y ninguno sabe de los otros**:
    calendario deje de traerlos, salvo que reaparezcan en otra jornada, que eso
    es un aplazamiento. Regla: `partidosCongelados`, con pruebas.
 3. **Un resultado solo se deduce con certeza**: exactamente un partido nuevo en
-   la tabla y un único candidato. Ante la duda se deja el hueco; nunca se
-   publica un resultado inventado.
+   la tabla y un único candidato. Si hay varios pendientes, desempata el campo:
+   la tabla separa lo jugado en casa y fuera, y vale el único pendiente de ese
+   campo. Ante la duda se deja el hueco —nunca se publica un resultado
+   inventado— y la sincronización lo avisa en su resumen (`atascoDeResultados`):
+   un partido suspendido que atasca a los demás se aparta a mano.
 4. **La sincronización corre sin `node_modules`**: el workflow no instala
    dependencias. Nada de librerías en `scripts/rfaf/sincronizar.mjs` ni en lo
    que importe. Lo que las necesite va en un script aparte que se lanza a mano

@@ -299,6 +299,13 @@ export function extraerClasificacion(html) {
       equipo: celdas[1],
       puntos: n(3),
       jugados: casa.j + fuera.j,
+      /*
+       * Por campo, además del total. Es lo que deja saber qué partido acaba de
+       * contar la tabla cuando un equipo tiene dos pendientes: si ha crecido
+       * "en casa" y solo uno de los dos es en casa, es ese.
+       */
+      jugadosCasa: casa.j,
+      jugadosFuera: fuera.j,
       ganados: casa.g + fuera.g,
       empatados: casa.e + fuera.e,
       perdidos: casa.p + fuera.p,

@@ -196,12 +196,26 @@ const GOLES_IMPOSIBLES = 30;
  *
  * Los puntos no se usan para comprobar: una sanción los mueve sin tocar los
  * goles, y no sería justo perder un resultado bueno por eso.
+ *
+ * **Con varios pendientes, decide el campo.** Un partido suspendido que nunca
+ * tendrá resultado dejaba al equipo con dos candidatos para siempre, y desde
+ * ahí no se deducía ni un resultado más en toda la temporada. La tabla separa
+ * lo jugado en casa y fuera: si solo ha crecido uno de los dos y solo un
+ * pendiente se jugó en ese campo, es él, sin ninguna duda. Si los dos
+ * pendientes son del mismo campo, sigue sin deducirse: es preferible un hueco
+ * que avisa (`atascoDeResultados`) a un resultado colgado del partido que no es.
  */
-export function resultadoPorClasificacion({ nombreRfaf, clasificacion, jornadas, ahora = Date.now() }) {
+/**
+ * Lo que dice la tabla frente a lo que tenemos: partidos con resultado, goles
+ * ya contados y candidatos a ser el partido que falta, en total y por campo.
+ */
+function cuentasDelEquipo({ nombreRfaf, clasificacion, jornadas, ahora }) {
   const fila = (clasificacion ?? []).find((c) => c.equipo === nombreRfaf);
   if (!fila || typeof fila.jugados !== "number") return null;
 
   let contados = 0;
+  let contadosCasa = 0;
+  let contadosFuera = 0;
   let favorContados = 0;
   let contraContados = 0;
   const candidatos = [];
@@ -212,9 +226,12 @@ export function resultadoPorClasificacion({ nombreRfaf, clasificacion, jornadas,
       if (!nuestro) return;
       if (esDescanso(partido.local) || esDescanso(partido.visitante)) return;
 
+      const enCasa = partido.local === nombreRfaf;
       const { favor, contra } = comoLoVemos(partido, nombreRfaf);
       if (favor !== null && favor !== undefined && contra !== null && contra !== undefined) {
         contados += 1;
+        if (enCasa) contadosCasa += 1;
+        else contadosFuera += 1;
         favorContados += favor;
         contraContados += contra;
         return;
@@ -224,20 +241,51 @@ export function resultadoPorClasificacion({ nombreRfaf, clasificacion, jornadas,
          partido nuevo de la tabla sería otro y le colgaríamos el resultado
          al que viene */
       if (resultadoCreible(partido.fecha ?? jornada.fecha ?? null, partido.hora ?? null, ahora)) {
-        candidatos.push({ jornada: j, partido: i, ficha: partido });
+        candidatos.push({ jornada: j, partido: i, ficha: partido, enCasa });
       }
     });
   });
 
-  if (fila.jugados - contados !== 1) return null;
-  if (candidatos.length !== 1) return null;
+  /* Las tablas guardadas antes de separar por campo no lo traen: entonces no
+     se desempata, y todo funciona como antes */
+  const porCampo = typeof fila.jugadosCasa === "number" && typeof fila.jugadosFuera === "number";
 
-  const favor = fila.golesFavor - favorContados;
-  const contra = fila.golesContra - contraContados;
+  return {
+    fila,
+    favorContados,
+    contraContados,
+    candidatos,
+    nuevos: fila.jugados - contados,
+    nuevosCasa: porCampo ? fila.jugadosCasa - contadosCasa : null,
+    nuevosFuera: porCampo ? fila.jugadosFuera - contadosFuera : null,
+  };
+}
+
+export function resultadoPorClasificacion({ nombreRfaf, clasificacion, jornadas, ahora = Date.now() }) {
+  const cuentas = cuentasDelEquipo({ nombreRfaf, clasificacion, jornadas, ahora });
+  if (!cuentas) return null;
+
+  // Los goles solo se pueden atribuir si la tabla ha contado exactamente uno
+  if (cuentas.nuevos !== 1) return null;
+
+  let posibles = cuentas.candidatos;
+  if (cuentas.nuevosCasa !== null) {
+    const casa = cuentas.nuevosCasa === 1 && cuentas.nuevosFuera === 0;
+    const fuera = cuentas.nuevosCasa === 0 && cuentas.nuevosFuera === 1;
+    // La tabla por campo no cuadra con el total: algo raro, mejor no tocar
+    if (!casa && !fuera) return null;
+    /* Y vale también con un solo candidato: si la tabla dice que fue en casa y
+       el único pendiente es fuera, el partido que ha contado es otro */
+    posibles = posibles.filter((c) => c.enCasa === casa);
+  }
+  if (posibles.length !== 1) return null;
+
+  const favor = cuentas.fila.golesFavor - cuentas.favorContados;
+  const contra = cuentas.fila.golesContra - cuentas.contraContados;
   const sano = (n) => Number.isInteger(n) && n >= 0 && n <= GOLES_IMPOSIBLES;
   if (!sano(favor) || !sano(contra)) return null;
 
-  const { jornada, partido, ficha } = candidatos[0];
+  const { jornada, partido, ficha } = posibles[0];
   const somosLocal = ficha.local === nombreRfaf;
 
   return {
@@ -245,5 +293,27 @@ export function resultadoPorClasificacion({ nombreRfaf, clasificacion, jornadas,
     partido,
     golesLocal: somosLocal ? favor : contra,
     golesVisitante: somosLocal ? contra : favor,
+  };
+}
+
+/**
+ * ¿Cuenta la tabla partidos que no sabemos colocar?
+ *
+ * Es el hueco que la deducción deja a propósito cuando duda. Antes quedaba en
+ * silencio, y un equipo podía pasarse la temporada sin un resultado más sin que
+ * nadie se enterase. Esto no arregla nada: dice qué partidos hay que mirar,
+ * para que alguien lo resuelva a mano.
+ *
+ * Se pregunta después de haber deducido lo que se pudiera: si se ha colocado,
+ * no hay atasco.
+ */
+export function atascoDeResultados({ nombreRfaf, clasificacion, jornadas, ahora = Date.now() }) {
+  const cuentas = cuentasDelEquipo({ nombreRfaf, clasificacion, jornadas, ahora });
+  if (!cuentas || cuentas.nuevos < 1) return null;
+  if (resultadoPorClasificacion({ nombreRfaf, clasificacion, jornadas, ahora })) return null;
+
+  return {
+    sinColocar: cuentas.nuevos,
+    candidatos: cuentas.candidatos.map((c) => c.ficha),
   };
 }

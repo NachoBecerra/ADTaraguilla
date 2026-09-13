@@ -13,6 +13,7 @@ import {
 import { marcador } from "./html.mjs";
 import {
   ORIGEN_TABLA,
+  atascoDeResultados,
   partidosCongelados,
   partidosDelCalendario,
   resultadoCreible,
@@ -254,6 +255,79 @@ comprobar(
 comprobar(
   "y una diferencia absurda se descarta antes que publicarla",
   deducir(laTabla({ golesFavor: 400 }), elCalendario()),
+  null,
+);
+
+/*
+ * El partido suspendido. La jornada 1 en casa se suspende y no tendrá resultado
+ * nunca; la 2 se juega en Tarifa y se gana 0-2. Con dos pendientes, antes no se
+ * deducía nada ese día ni ninguno de los siguientes de la temporada.
+ */
+const conSuspendido = (visitaLaDos = true) => [
+  {
+    numero: 1,
+    fecha: "2026-09-06",
+    partidos: [
+      { local: "A.D. TARAGUILLA", visitante: "C.D. GUADIARO", fecha: "2026-09-06", hora: "12:00", golesLocal: null, golesVisitante: null },
+    ],
+  },
+  {
+    numero: 2,
+    fecha: "2026-09-13",
+    partidos: [
+      visitaLaDos
+        ? { local: "TARIFA U.D.", visitante: "A.D. TARAGUILLA", fecha: "2026-09-13", hora: "19:00", golesLocal: null, golesVisitante: null }
+        : { local: "A.D. TARAGUILLA", visitante: "TARIFA U.D.", fecha: "2026-09-13", hora: "19:00", golesLocal: null, golesVisitante: null },
+    ],
+  },
+];
+const LUNES = Date.parse("2026-09-14T10:00:00Z");
+const tablaTrasLaDos = (porCampo) => [
+  { equipo: "A.D. TARAGUILLA", puntos: 3, jugados: 1, golesFavor: 2, golesContra: 0, ...porCampo },
+];
+const deducirLunes = (tabla, jornadas) =>
+  resultadoPorClasificacion({ nombreRfaf: "A.D. TARAGUILLA", clasificacion: tabla, jornadas, ahora: LUNES });
+const atascoLunes = (tabla, jornadas) =>
+  atascoDeResultados({ nombreRfaf: "A.D. TARAGUILLA", clasificacion: tabla, jornadas, ahora: LUNES });
+
+comprobar(
+  "con un suspendido en casa y la tabla sin separar por campo, se sigue sin deducir",
+  deducirLunes(tablaTrasLaDos({}), conSuspendido()),
+  null,
+);
+comprobar(
+  "pero si la tabla dice que el partido nuevo fue fuera, es el de Tarifa: 0-2",
+  deducirLunes(tablaTrasLaDos({ jugadosCasa: 0, jugadosFuera: 1 }), conSuspendido()),
+  { jornada: 1, partido: 0, golesLocal: 0, golesVisitante: 2 },
+);
+comprobar(
+  "y entonces no hay atasco que avisar",
+  atascoLunes(tablaTrasLaDos({ jugadosCasa: 0, jugadosFuera: 1 }), conSuspendido()),
+  null,
+);
+comprobar(
+  "si los dos pendientes son en casa, el campo no desempata: no se deduce",
+  deducirLunes(tablaTrasLaDos({ jugadosCasa: 1, jugadosFuera: 0 }), conSuspendido(false)),
+  null,
+);
+comprobar(
+  "y se avisa del atasco, con los dos partidos que hay que mirar",
+  atascoLunes(tablaTrasLaDos({ jugadosCasa: 1, jugadosFuera: 0 }), conSuspendido(false))?.candidatos.length,
+  2,
+);
+comprobar(
+  "con un solo pendiente fuera y la tabla contando uno en casa, el que ha contado es otro: nada",
+  deducirLunes(tablaTrasLaDos({ jugadosCasa: 1, jugadosFuera: 0 }), [conSuspendido()[1]]),
+  null,
+);
+comprobar(
+  "una tabla por campo que no cuadra con el total no se toca",
+  deducirLunes(tablaTrasLaDos({ jugadosCasa: 1, jugadosFuera: 1 }), conSuspendido()),
+  null,
+);
+comprobar(
+  "sin nada que la tabla cuente de más, no hay atasco aunque haya pendientes",
+  atascoLunes([{ ...tablaTrasLaDos({ jugadosCasa: 0, jugadosFuera: 0 })[0], jugados: 0, golesFavor: 0 }], conSuspendido()),
   null,
 );
 

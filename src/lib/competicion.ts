@@ -48,6 +48,9 @@ export type FilaClasificacion = {
   golesFavor: number;
   golesContra: number;
   racha: string[];
+  /** Por campo. Las tablas guardadas antes de separarlo no lo traen. */
+  jugadosCasa?: number;
+  jugadosFuera?: number;
 };
 
 export type Competicion = {

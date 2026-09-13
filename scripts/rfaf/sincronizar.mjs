@@ -27,6 +27,7 @@ import {
   clavePartido,
   partidosCongelados,
   partidosDelCalendario,
+  atascoDeResultados,
   resultadoCreible,
   resultadoPorClasificacion,
   yaDeberiaTenerResultado,
@@ -485,6 +486,23 @@ async function sincronizarCompeticion(cliente, competicion, previa, escudos, nom
     p.jugado = true;
     log(
       `    resultado deducido de la clasificación: ${p.local} ${p.golesLocal}-${p.golesVisitante} ${p.visitante}`,
+    );
+  }
+
+  /*
+   * Y si la tabla cuenta algo que no hemos sabido colocar, se dice en voz alta.
+   * Ese hueco es a propósito —antes que un resultado en el partido equivocado—,
+   * pero en silencio podía durar la temporada entera.
+   */
+  const atasco = atascoDeResultados({ nombreRfaf, clasificacion, jornadas });
+  if (atasco) {
+    const lista = atasco.candidatos
+      .map((c) => `${c.fecha ?? "sin fecha"} ${c.local} - ${c.visitante}`)
+      .join("; ");
+    aviso(
+      `    ${competicion.nombre}: la clasificación cuenta ${atasco.sinColocar} partido(s) ` +
+        `de ${nombreRfaf} que no se pueden colocar. Pendientes: ${lista || "ninguno"}. ` +
+        `Hay que mirarlo: un partido suspendido se aparta a mano.`,
     );
   }
 
