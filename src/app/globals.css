@@ -53,6 +53,16 @@
   --color-roja-linea: #f0bab6;
   --color-roja-tinta: #8e1c15; /* 6.5:1 */
 
+  /* ------------------------------------------- lo privado del panel
+     Ámbar para lo que no se puede compartir: el enlace con el que se escribe
+     en un directo. En el panel convivía con el enlace público, los dos del
+     mismo verde, y nada separaba "esto es para quien lo cuenta" de "esto es
+     para la afición". El color avisa antes de leer. */
+  --color-aviso: #fdf3dc;
+  --color-aviso-linea: #f0d9a3;
+  --color-aviso-tinta: #6a4b00; /* 6.9:1 sobre su fondo */
+  --color-aviso-fuerte: #7a5200; /* botón: 6.8:1 con texto blanco */
+
   --font-display: var(--font-display), "Arial Narrow", sans-serif;
   --font-sans: var(--font-sans-body), system-ui, sans-serif;
 

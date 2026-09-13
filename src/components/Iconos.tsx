@@ -425,3 +425,26 @@ export function IconoLapiz({ size = 16, className }: Props) {
     </svg>
   );
 }
+
+/* ------------------------------------------------------------ panel */
+
+/** Lo privado: el enlace con el que se escribe en un directo. */
+export function IconoCandado({ size = 18, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="4.5" y="10.5" width="15" height="10" rx="2" />
+      <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" />
+    </svg>
+  );
+}
+
+/** Lo que se cuenta a todo el mundo. */
+export function IconoMegafono({ size = 18, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3.5 10v4a1 1 0 0 0 1 1H7l7 4.5v-15L7 9H4.5a1 1 0 0 0-1 1Z" />
+      <path d="M17.5 9a4 4 0 0 1 0 6" />
+      <path d="M7 15l1.3 4.5" />
+    </svg>
+  );
+}
