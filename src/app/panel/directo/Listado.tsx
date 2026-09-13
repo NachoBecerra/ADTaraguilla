@@ -195,6 +195,50 @@ function CabeceraDePaso({
   );
 }
 
+/**
+ * Una opción de «Más opciones»: qué hace, en una línea, y un botón que se ve
+ * como botón.
+ *
+ * Antes eran un título y una frase sueltos que también se podían pulsar, y no
+ * lo parecía: nadie toca un texto gris esperando que pase algo. Lo que borra
+ * algo lleva el botón en rojo.
+ */
+function Opcion({
+  titulo,
+  detalle,
+  accion,
+  peligrosa = false,
+  alPulsar,
+}: {
+  titulo: string;
+  detalle: string;
+  accion: string;
+  peligrosa?: boolean;
+  alPulsar: () => void;
+}) {
+  return (
+    <div className="flex items-center gap-3 rounded-lg border border-linea bg-panel px-3 py-2.5">
+      <div className="min-w-0 flex-1">
+        <p className={`text-sm font-bold ${peligrosa ? "text-roja-tinta" : "text-tinta"}`}>
+          {titulo}
+        </p>
+        <p className="text-xs leading-snug text-mute">{detalle}</p>
+      </div>
+      <button
+        type="button"
+        onClick={alPulsar}
+        className={`shrink-0 rounded-full border px-3.5 py-2 text-sm font-bold transition-colors ${
+          peligrosa
+            ? "border-roja-linea bg-roja text-roja-tinta hover:border-roja-tinta"
+            : "border-linea bg-panel-2 text-tinta hover:border-club"
+        }`}
+      >
+        {accion}
+      </button>
+    </div>
+  );
+}
+
 const BOTON_GRANDE =
   "mt-3 flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-base font-bold text-white transition-transform active:scale-[0.98]";
 const BOTON_PEQUENO =
@@ -536,12 +580,18 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
                     Lo que casi nunca hace falta y lo que borra algo, fuera de
                     la vista hasta que se busca. Cada acción peligrosa pide
                     confirmación en dos toques, igual que antes. */}
-                <details className="rounded-xl border border-linea px-3.5 py-2.5">
-                  <summary className="cursor-pointer text-sm font-bold text-mute">
+                <details className="group rounded-xl border border-linea">
+                  {/* Con aspecto de botón y una flecha que dice que se despliega:
+                      el triángulo del navegador, en gris, no se veía */}
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3.5 py-3 text-sm font-bold text-tinta transition-colors hover:bg-panel-2 [&::-webkit-details-marker]:hidden">
                     Más opciones
+                    <IconoFlecha
+                      size={16}
+                      className="shrink-0 rotate-90 text-mute transition-transform group-open:-rotate-90"
+                    />
                   </summary>
 
-                  <div className="mt-3 space-y-3 border-t border-linea pt-3">
+                  <div className="space-y-2 border-t border-linea p-3">
                     {/* Cambiar la cerradura sin tocar el partido: para cuando el
                         enlace privado se ha reenviado a quien no debía */}
                     {confirmando === `renovar-${p.id}` ? (
@@ -571,21 +621,15 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
                         </div>
                       </div>
                     ) : (
-                      <button
-                        type="button"
-                        onClick={() => {
+                      <Opcion
+                        titulo="Cambiar el enlace privado"
+                        detalle="Si se ha reenviado a quien no debía. Lo apuntado se queda."
+                        accion="Cambiar"
+                        alPulsar={() => {
                           setRenovado(null);
                           setConfirmando(`renovar-${p.id}`);
                         }}
-                        className="block text-left"
-                      >
-                        <span className="block text-sm font-bold text-tinta">
-                          Cambiar el enlace privado
-                        </span>
-                        <span className="block text-xs text-mute">
-                          Si se ha reenviado a quien no debía. Lo apuntado se queda.
-                        </span>
-                      </button>
+                      />
                     )}
 
                     {/*
@@ -620,18 +664,13 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
                         </div>
                       </div>
                     ) : (
-                      <button
-                        type="button"
-                        onClick={() => setConfirmando(p.id)}
-                        className="block text-left"
-                      >
-                        <span className="block text-sm font-bold text-roja-tinta">
-                          Reiniciar el partido
-                        </span>
-                        <span className="block text-xs text-mute">
-                          Borra todo lo apuntado y empieza de cero.
-                        </span>
-                      </button>
+                      <Opcion
+                        titulo="Reiniciar el partido"
+                        detalle="Borra todo lo apuntado y empieza de cero."
+                        accion="Reiniciar"
+                        peligrosa
+                        alPulsar={() => setConfirmando(p.id)}
+                      />
                     )}
 
                     {p.amistoso ? (
@@ -659,18 +698,13 @@ export default function Listado({ partidos }: { partidos: Fila[] }) {
                           </div>
                         </div>
                       ) : (
-                        <button
-                          type="button"
-                          onClick={() => setConfirmando(`borrar-${p.id}`)}
-                          className="block text-left"
-                        >
-                          <span className="block text-sm font-bold text-roja-tinta">
-                            Eliminar el amistoso
-                          </span>
-                          <span className="block text-xs text-mute">
-                            Desaparece de la web con todo lo apuntado.
-                          </span>
-                        </button>
+                        <Opcion
+                          titulo="Eliminar el amistoso"
+                          detalle="Desaparece de la web con todo lo apuntado."
+                          accion="Eliminar"
+                          peligrosa
+                          alPulsar={() => setConfirmando(`borrar-${p.id}`)}
+                        />
                       )
                     ) : null}
                   </div>
