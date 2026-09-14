@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-14T11:21:36.493Z",
+  "actualizado": "2026-09-14T17:18:16.411Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -245,8 +245,8 @@
               "visitante": "LUCECOR F.S.",
               "codLocal": "307520",
               "codVisitante": "9136888",
-              "fecha": "2026-09-20",
-              "hora": null,
+              "fecha": "2026-09-19",
+              "hora": "18:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
