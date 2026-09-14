@@ -67,6 +67,13 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
   );
   const faltanResultados = disputados.some(sinResultado);
 
+  // Los resultados oficiales de cada competición en la RFAF. El enlace lo
+  // guarda la sincronización y cambia con la temporada, así que no se monta
+  // aquí a mano
+  const calendariosRfaf = equipo.competiciones.filter((c) =>
+    c.urlCalendario?.startsWith("https://www.rfaf.es/"),
+  );
+
   // La barra inferior solo enseña los bloques que este equipo tiene: uno
   // recién inscrito no tiene todavía ni resultados ni fotos
   const bloques: Bloque[] = [
@@ -158,7 +165,28 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
 
         {disputados.length > 0 ? (
           <section id="resultados" className="scroll-mt-20">
-            <h2 className="title text-3xl text-tinta">Resultados</h2>
+            <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-2">
+              <h2 className="title text-3xl text-tinta">Resultados</h2>
+              {calendariosRfaf.length > 0 ? (
+                <div className="flex flex-wrap gap-2">
+                  {calendariosRfaf.map((c) => (
+                    <a
+                      key={c.codGrupo}
+                      href={c.urlCalendario!}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-linea bg-panel px-3.5 py-1.5 text-sm font-bold text-tinta transition-colors hover:border-club hover:text-club"
+                    >
+                      {/* Con varias competiciones, cada enlace dice cuál es */}
+                      {calendariosRfaf.length > 1
+                        ? `${c.nombre} en ${site.federacion.siglas}`
+                        : `Todos los resultados en ${site.federacion.siglas}`}
+                      <IconoEnlaceExterno size={14} />
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+            </div>
             <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {[...disputados].reverse().map((p, i) => (
                 <li key={`${p.fecha}-${p.rival}-${i}`}>
