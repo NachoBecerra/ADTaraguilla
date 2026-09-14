@@ -107,9 +107,9 @@ export function FilaPartido({
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Acta del partido en la RFAF"
-          className="shrink-0 text-mute transition-colors hover:text-club"
+          className="grid size-8 shrink-0 place-items-center rounded-full bg-rfaf text-white transition-colors hover:bg-rfaf-oscuro"
         >
-          <IconoEnlaceExterno size={15} />
+          <IconoEnlaceExterno size={14} />
         </a>
       ) : null}
     </li>
@@ -225,7 +225,7 @@ export function TarjetaProximoPartido({
             href={partido.urlActa}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-club-soft"
+            className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-rfaf px-3.5 py-2 text-sm font-bold text-white transition-colors hover:bg-rfaf-oscuro"
           >
             Ficha del partido en la RFAF
             <IconoEnlaceExterno size={14} className="shrink-0" />

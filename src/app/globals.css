@@ -63,6 +63,13 @@
   --color-aviso-tinta: #6a4b00; /* 6.9:1 sobre su fondo */
   --color-aviso-fuerte: #7a5200; /* botón: 6.8:1 con texto blanco */
 
+  /* ------------------------------------------- lo que lleva a la RFAF
+     Su verde corporativo, el de la cabecera de rfaf.es. Con nuestro verde
+     esos enlaces parecían de la web; con el suyo se ve antes de pulsar que
+     se sale a la federación. */
+  --color-rfaf: #004519; /* 13:1 con texto blanco */
+  --color-rfaf-oscuro: #002b0f; /* pulsado */
+
   --font-display: var(--font-display), "Arial Narrow", sans-serif;
   --font-sans: var(--font-sans-body), system-ui, sans-serif;
 
@@ -159,6 +166,15 @@ body[data-menu-open="true"] {
   .btn-ghost:hover {
     border-color: var(--color-club);
     color: var(--color-club);
+  }
+
+  /* Enlaces que salen a la RFAF: su verde y letra blanca */
+  .btn-rfaf {
+    background: var(--color-rfaf);
+    color: #fff;
+  }
+  .btn-rfaf:hover {
+    background: var(--color-rfaf-oscuro);
   }
 
   /* Variante para botones sobre fondo verde */

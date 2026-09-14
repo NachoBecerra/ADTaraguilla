@@ -76,7 +76,7 @@ export default function PaginaEquipos() {
             href={urlClubRfaf}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-club-soft underline underline-offset-2"
+            className="inline-flex items-center gap-1 rounded-full bg-rfaf px-2.5 py-1 font-bold text-white transition-colors hover:bg-rfaf-oscuro"
           >
             Ficha oficial del club
             <IconoEnlaceExterno size={12} />

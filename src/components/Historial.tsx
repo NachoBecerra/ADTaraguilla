@@ -139,7 +139,7 @@ export default function Historial({ historico }: { historico: HistoricoEquipo })
                       href={c.urlClasificacion}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-3 text-xs font-bold text-club-soft"
+                      className="m-3 inline-flex items-center gap-1.5 rounded-full bg-rfaf px-3 py-1.5 text-xs font-bold text-white transition-colors hover:bg-rfaf-oscuro"
                     >
                       Ver en la RFAF
                       <IconoEnlaceExterno size={13} />

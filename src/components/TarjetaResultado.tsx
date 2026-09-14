@@ -21,6 +21,10 @@ import { IconoEnlaceExterno } from "@/components/Iconos";
 const BOTON =
   "inline-flex items-center gap-1.5 rounded-lg border border-linea bg-panel-2 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-mute transition-colors hover:border-club hover:text-club";
 
+/** El mismo botón, con el verde de la RFAF: el acta se abre en su web. */
+const BOTON_RFAF =
+  "inline-flex items-center gap-1.5 rounded-lg border border-rfaf bg-rfaf px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-white transition-colors hover:bg-rfaf-oscuro";
+
 function Lado({
   nombre,
   codigo,
@@ -121,7 +125,7 @@ export default function TarjetaResultado({
             href={partido.urlActa}
             target="_blank"
             rel="noopener noreferrer"
-            className={BOTON}
+            className={BOTON_RFAF}
             title={`Acta del partido en la ${site.federacion.siglas}`}
           >
             Acta

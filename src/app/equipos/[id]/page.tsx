@@ -138,7 +138,7 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
             href={equipo.urlRfaf}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-ghost mt-6"
+            className="btn btn-rfaf mt-6"
           >
             Ficha del equipo en {site.federacion.siglas}
             <IconoEnlaceExterno size={15} />
@@ -190,7 +190,7 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full border border-linea bg-panel px-3.5 py-1.5 text-sm font-bold text-tinta transition-colors hover:border-club hover:text-club"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-rfaf px-3.5 py-1.5 text-sm font-bold text-white transition-colors hover:bg-rfaf-oscuro"
                     >
                       {/* Con varias competiciones, cada enlace dice cuál es */}
                       {calendariosRfaf.length > 1
