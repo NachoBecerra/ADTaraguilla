@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-14T09:30:37.226Z",
+  "actualizado": "2026-09-14T11:21:21.521Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-19",
           "partidos": [
+            {
+              "local": "C.D. JUVENTUD PALMONES C.F.",
+              "visitante": "PUENTE MAYORGA RVO \"A\"",
+              "codLocal": "324517",
+              "codVisitante": "323616",
+              "fecha": "2026-09-18",
+              "hora": "17:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Barrios (Los)",
+              "campo": "POLIDEPORTIVO GABRIEL CLAVIJO GONZÁLEZ JAVI - PALMONES",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3245",
+              "urlActa": null,
+              "jugado": false
+            },
             {
               "local": "U.D. TESORILLO C.D.",
               "visitante": "A.D. LOS CORTIJILLOS",
@@ -111,23 +128,6 @@
               "campo": "VIRGEN DEL CARMEN (LA LINEA)",
               "superficie": "Hierba Artificial",
               "codCampo": "2069065",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
-              "local": "C.D. JUVENTUD PALMONES C.F.",
-              "visitante": "PUENTE MAYORGA RVO \"A\"",
-              "codLocal": "324517",
-              "codVisitante": "323616",
-              "fecha": "2026-09-19",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Barrios (Los)",
-              "campo": "POLIDEPORTIVO GABRIEL CLAVIJO GONZÁLEZ JAVI - PALMONES",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3245",
               "urlActa": null,
               "jugado": false
             },
