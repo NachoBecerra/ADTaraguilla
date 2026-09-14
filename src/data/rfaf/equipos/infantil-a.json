@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-14T07:32:54.899Z",
+  "actualizado": "2026-09-14T09:31:01.833Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-13",
           "partidos": [
+            {
+              "local": "SAN ROQUE BALOMPIE",
+              "visitante": "JUVENTUD DVA. GINES",
+              "codLocal": "12792465",
+              "codVisitante": "2071870",
+              "fecha": "2026-09-11",
+              "hora": "21:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Sevilla",
+              "campo": "DEMETRIO PICHEL CD",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2315900",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651381&cod_acta=2651381",
+              "jugado": false
+            },
             {
               "local": "ALGECIRAS C.F., S.A.D.",
               "visitante": "C.D. ASOC. DVA. NERVION",
@@ -61,23 +78,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "2346925",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651385",
-              "jugado": false
-            },
-            {
-              "local": "SAN ROQUE BALOMPIE",
-              "visitante": "JUVENTUD DVA. GINES",
-              "codLocal": "12792465",
-              "codVisitante": "2071870",
-              "fecha": "2026-09-11",
-              "hora": "21:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Sevilla",
-              "campo": "DEMETRIO PICHEL CD",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2315900",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651381&cod_acta=2651381",
               "jugado": false
             },
             {
@@ -207,12 +207,29 @@
               "jugado": false
             },
             {
+              "local": "REAL BETIS BALOMPIE S.A.D.",
+              "visitante": "ALGECIRAS C.F., S.A.D.",
+              "codLocal": "100229",
+              "codVisitante": "300219",
+              "fecha": "2026-09-19",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Dos Hermanas",
+              "campo": "CIUDAD DEPORTIVA RAFAEL GORDILLO",
+              "superficie": "Hierba Artificial",
+              "codCampo": "36948119",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
               "local": "C.D. ASOC. DVA. NERVION",
               "visitante": "R.C.R. HUELVA, S.A.D.",
               "codLocal": "118920",
               "codVisitante": "600122",
               "fecha": "2026-09-19",
-              "hora": "12:00",
+              "hora": "17:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -288,23 +305,6 @@
               "campo": "EL JUNCAL CAMPO MPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3611",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
-              "local": "REAL BETIS BALOMPIE S.A.D.",
-              "visitante": "ALGECIRAS C.F., S.A.D.",
-              "codLocal": "100229",
-              "codVisitante": "300219",
-              "fecha": "2026-09-20",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Dos Hermanas",
-              "campo": "CIUDAD DEPORTIVA RAFAEL GORDILLO",
-              "superficie": "Hierba Artificial",
-              "codCampo": "36948119",
               "urlActa": null,
               "jugado": false
             }
