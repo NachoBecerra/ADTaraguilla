@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-13T20:19:56.847Z",
+  "actualizado": "2026-09-14T07:32:32.367Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -30,6 +30,23 @@
           "fecha": "2026-09-19",
           "partidos": [
             {
+              "local": "U.D. TESORILLO C.D.",
+              "visitante": "A.D. LOS CORTIJILLOS",
+              "codLocal": "307218",
+              "codVisitante": "348018",
+              "fecha": "2026-09-18",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Martin del Tesorillo",
+              "campo": "MUNICIPAL LA ERA",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3072",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
               "local": "C.D. BALON LINENSE C.F.",
               "visitante": "A.D. TARAGUILLA",
               "codLocal": "38917543",
@@ -43,23 +60,6 @@
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
               "codCampo": "3172",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
-              "local": "U.D. TESORILLO C.D.",
-              "visitante": "A.D. LOS CORTIJILLOS",
-              "codLocal": "307218",
-              "codVisitante": "348018",
-              "fecha": "2026-09-19",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Martin del Tesorillo",
-              "campo": "MUNICIPAL LA ERA",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3072",
               "urlActa": null,
               "jugado": false
             },
