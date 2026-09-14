@@ -16,8 +16,19 @@ import { useEffect, useState } from "react";
  * pregunta una vez por página, no una vez por tarjeta.
  */
 
-/** Lo ya pedido en esta visita, por equipo. */
-const cache = new Map<string, Promise<string[]>>();
+/**
+ * Lo ya pedido, por equipo, y cuándo se pidió.
+ *
+ * Con caducidad. Antes valía para toda la visita, y una visita puede durar
+ * días: la aplicación instalada se queda abierta en el móvil y se navega sin
+ * recargar. Quien la tenía abierta desde antes de que se narrara un partido
+ * seguía con la lista de entonces, y la tarjeta del resultado nunca llegaba a
+ * enseñar su botón de directo.
+ */
+const cache = new Map<string, { fechas: Promise<string[]>; pedidoEn: number }>();
+
+/** Pasado esto, la siguiente tarjeta que lo necesite vuelve a preguntar. */
+const VIGENCIA_MS = 60_000;
 
 /** Equipos que esperan a salir en la próxima consulta. */
 let pendientes = new Set<string>();
@@ -60,11 +71,11 @@ function loteAbierto(): Promise<Record<string, string[]>> {
 
 export function fechasConRetransmision(equipo: string): Promise<string[]> {
   const yaPedido = cache.get(equipo);
-  if (yaPedido) return yaPedido;
+  if (yaPedido && Date.now() - yaPedido.pedidoEn < VIGENCIA_MS) return yaPedido.fechas;
 
   pendientes.add(equipo);
   const fechas = loteAbierto().then((porEquipo) => porEquipo[equipo] ?? []);
-  cache.set(equipo, fechas);
+  cache.set(equipo, { fechas, pedidoEn: Date.now() });
   return fechas;
 }
 
