@@ -70,9 +70,24 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
   // Los resultados oficiales de cada competición en la RFAF. El enlace lo
   // guarda la sincronización y cambia con la temporada, así que no se monta
   // aquí a mano
-  const calendariosRfaf = equipo.competiciones.filter((c) =>
-    c.urlCalendario?.startsWith("https://www.rfaf.es/"),
-  );
+  const calendariosRfaf = equipo.competiciones
+    .filter((c) => c.urlCalendario?.startsWith("https://www.rfaf.es/"))
+    .map((c) => {
+      // La página de la RFAF marca cada jornada con `fecha_jornada_org_<número>`:
+      // con ese ancla abre ya en la última jornada jugada, no en la primera.
+      // Sirve la fecha y no nuestro marcador, porque de los demás partidos del
+      // grupo no guardamos resultado y en la RFAF esa jornada ya los tiene
+      const ultimaJugada = Math.max(
+        0,
+        ...c.jornadas
+          .filter((j) => j.numero && j.partidos.some((p) => p.jugado || (p.fecha && p.fecha < hoyIso())))
+          .map((j) => j.numero!),
+      );
+      return {
+        competicion: c,
+        href: ultimaJugada > 0 ? `${c.urlCalendario}#fecha_jornada_org_${ultimaJugada}` : c.urlCalendario!,
+      };
+    });
 
   // La barra inferior solo enseña los bloques que este equipo tiene: uno
   // recién inscrito no tiene todavía ni resultados ni fotos
@@ -169,10 +184,10 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
               <h2 className="title text-3xl text-tinta">Resultados</h2>
               {calendariosRfaf.length > 0 ? (
                 <div className="flex flex-wrap gap-2">
-                  {calendariosRfaf.map((c) => (
+                  {calendariosRfaf.map(({ competicion: c, href }) => (
                     <a
                       key={c.codGrupo}
-                      href={c.urlCalendario!}
+                      href={href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 rounded-full border border-linea bg-panel px-3.5 py-1.5 text-sm font-bold text-tinta transition-colors hover:border-club hover:text-club"
