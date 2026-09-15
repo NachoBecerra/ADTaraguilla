@@ -2,6 +2,121 @@
   "_nota": "Editable desde /panel. Cada entrada puede llevar VARIAS fotos y VARIAS etiquetas (equipo, temporada, jugador...). Una foto aparece bajo todas sus etiquetas.",
   "items": [
     {
+      "id": "noticia-presentacion-infantil-b-26-27-mu313c4x",
+      "titulo": "Presentación Infantil B 26/27",
+      "albumes": [
+        "Infantil B",
+        "2026/2027",
+        "Presentaciones"
+      ],
+      "equipos": [
+        "infantil-b"
+      ],
+      "fecha": "2026-09-15",
+      "fotos": [
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/01%20SIRA-VLObglvFREzQTLhvkIgpNnSz2MUSq5.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/02%20PUYI-pPPVDQHEgWTq9mGcarHt4bRjE6VveQ.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/03%20NOAH-DePtwHGSmlEziWmKjbpkfgBJ5RZHoq.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/04%20THIAGO%20VILLANUEVA-zELBgmooyIgXsFKeX6lgb5BBZaQont.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/04%20THIAGO-59B5gEr4t8pF5ZLoVlDjHTy8QciO4b.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/05%20JAIME%20MONTERO-4h68JjmDOgkh05XMlQB7NgP9JSfPx4.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/05%20JAIME-iTiytUZqb2f2hTHzS5sTJY42paLbCG.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/06%20GONZALO-YGZzY8a99sYfscyTfXShY7wBBiQqIA.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/07%20FRANCIS-RR93S2wxixHNXzAnQK1rKHLraVSQjQ.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/08%20JUANITO-FxQAa1GcEGRCugYsZQKkoKXdQjMika.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/09%20ANTONIO-h95LB5FYdzPiv4iwy8yY4UtYMJoxHg.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/10%20SANTI-qCtIZDAuy79OVed8TPe8KdnxHy3dND.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/11%20AITOR-i2L7VIe0ijRuJBBrwb0rS7LfX5Utbz.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/12%20DAVID-WOczwbN7mywRrP8dbVg9rOU37628CZ.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/13%20FRAN-8XRpBmSdQo064ruACrasJQoQ201Zqw.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/14%20NATA-tGaKZhUwhpfrB2lXPEIM8OSeFuQfbi.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/15%20CURRO%20ANTONIO-35T7KPzSpKJYciS9XyI35YlWUEOywv.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/17%20JAVI-MfwTyMK1iM9qSXs27mWFegdKk8ex7P.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/19%20DANO-wIglm3RMO3kKWv6k0ku6fpZa1ST4Nj.jpg",
+          "ancho": 790,
+          "alto": 1402
+        },
+        {
+          "url": "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/22%20PEDRO-GJ0kCvF8Ouznh8YXMPFS7F7qH6CM7i.jpg",
+          "ancho": 790,
+          "alto": 1402
+        }
+      ]
+    },
+    {
       "id": "noticia-presentacion-infantil-a-26-27-mtx7a1yz",
       "titulo": "Presentación Infantil A 26/27",
       "albumes": [
