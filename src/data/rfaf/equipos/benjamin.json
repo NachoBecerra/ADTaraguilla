@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-15T07:26:17.420Z",
+  "actualizado": "2026-09-16T07:26:25.206Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-12",
           "partidos": [
+            {
+              "local": "ARCOS C.F.",
+              "visitante": "TRASMALLO F.C. C.D.",
+              "codLocal": "48486018",
+              "codVisitante": "332820",
+              "fecha": "2026-09-12",
+              "hora": "19:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Arcos De La Frontera",
+              "campo": "ANTONIO CAMACHO",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3171",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663715&cod_acta=2663715",
+              "jugado": false
+            },
             {
               "local": "A.D. MARIANISTAS C.D.",
               "visitante": "C.D. ESTRELLA PORTUENSE F.C.",
@@ -115,23 +132,6 @@
               "jugado": false
             },
             {
-              "local": "ARCOS C.F.",
-              "visitante": "TRASMALLO F.C. C.D.",
-              "codLocal": "48486018",
-              "codVisitante": "332820",
-              "fecha": "2026-09-12",
-              "hora": "19:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Arcos De La Frontera",
-              "campo": "ANTONIO CAMACHO",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3171",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663715&cod_acta=2663715",
-              "jugado": false
-            },
-            {
               "local": "C.D. SAN BERNARDO",
               "visitante": "C.D. AD PUEBLO NUEVO LA GRANJA",
               "codLocal": "307919",
@@ -186,7 +186,7 @@
               "campo": "CIUDAD DEPORTIVA RAFAEL SANCHEZ",
               "superficie": "Hierba Artificial",
               "codCampo": "3555",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663723",
               "jugado": false
             },
             {
@@ -203,7 +203,7 @@
               "campo": "BURREÑOS",
               "superficie": "Hierba Artificial",
               "codCampo": "3459",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663718",
               "jugado": false
             },
             {
@@ -220,7 +220,7 @@
               "campo": "EL TROVADOR",
               "superficie": "Hierba Artificial",
               "codCampo": "3524",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663720",
               "jugado": false
             },
             {
@@ -237,7 +237,7 @@
               "campo": "EL JUNCAL CAMPO MPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3611",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663719",
               "jugado": false
             },
             {
@@ -271,7 +271,7 @@
               "campo": "PACO GALLEGO",
               "superficie": "Hierba Artificial",
               "codCampo": "3095",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663725",
               "jugado": false
             },
             {
@@ -288,7 +288,7 @@
               "campo": "LA MENACHA JULIO CABELLO",
               "superficie": "Hierba Artificial",
               "codCampo": "28351042",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663722",
               "jugado": false
             },
             {
