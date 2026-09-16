@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-15T13:23:14.190Z",
+  "actualizado": "2026-09-16T09:24:09.759Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -43,7 +43,7 @@
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
               "codCampo": "3172",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709871",
               "jugado": false
             },
             {
@@ -60,7 +60,7 @@
               "campo": "VIRGEN DEL CARMEN (LA LINEA)",
               "superficie": "Hierba Artificial",
               "codCampo": "2069065",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709875",
               "jugado": false
             },
             {
@@ -77,7 +77,7 @@
               "campo": "POLIDEPORTIVO GABRIEL CLAVIJO GONZÁLEZ JAVI - PALMONES",
               "superficie": "Hierba Artificial",
               "codCampo": "3245",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709876",
               "jugado": false
             },
             {
@@ -94,7 +94,7 @@
               "campo": "LOS OLIVILLOS (VICENTE BLANCA)",
               "superficie": "Hierba Artificial",
               "codCampo": "3574",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709877",
               "jugado": false
             },
             {
@@ -111,7 +111,7 @@
               "campo": "MUNICIPAL LA ERA",
               "superficie": "Hierba Artificial",
               "codCampo": "3072",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709872",
               "jugado": false
             },
             {
@@ -145,7 +145,7 @@
               "campo": "ALBERTO UMBRIA",
               "superficie": "Hierba Artificial",
               "codCampo": "3079",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709873",
               "jugado": false
             },
             {
@@ -162,7 +162,7 @@
               "campo": "LA UNION",
               "superficie": "Hierba Artificial",
               "codCampo": "3073",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709874",
               "jugado": false
             }
           ]
