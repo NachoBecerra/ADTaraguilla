@@ -7,7 +7,7 @@ etiquetas: ["Infantil A", "2026/2027", "Presentaciones"]
 resumen: ""
 portada: "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/infantil_A_Completo-U3gW45nOKqZD6blACjOuUm1J7SQD5F.jpg"
 autor: "AD Taraguilla"
-destacada: true
+destacada: false
 galeria: "noticia-presentacion-infantil-a-26-27-mtx7a1yz"
 ---
 
