@@ -7,7 +7,7 @@ etiquetas: ["Senior", "2026/2027"]
 resumen: ""
 portada: "https://8bt1hth5bfh6teat.public.blob.vercel-storage.com/noticias/802988097_18113750660022223_7175678044824473122_n-jfEi33jqi7idgxPqQlNgHiMRg3O5FN.jpg"
 autor: "AD Taraguilla"
-destacada: true
+destacada: false
 ---
 
 Nueva jornada de nuestro equipo senior y jornada de derbi en el Hnos García Mota donde los nuestros recibirán al CD Guadiaro.
