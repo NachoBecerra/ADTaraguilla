@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-16T07:26:34.586Z",
+  "actualizado": "2026-09-17T07:27:03.609Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-06",
           "partidos": [
+            {
+              "local": "TARIFA U.D.",
+              "visitante": "A.D. TARAGUILLA",
+              "codLocal": "308315",
+              "codVisitante": "38877699",
+              "fecha": "2026-09-06",
+              "hora": "19:00",
+              "golesLocal": 0,
+              "golesVisitante": 2,
+              "origen": "clasificacion",
+              "localidad": "Tarifa",
+              "campo": "ANTONIO LOPEZ PUA ESTADIO MUNICIPAL",
+              "superficie": "Hierba Natural",
+              "codCampo": "3083",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662385&cod_acta=2662385",
+              "jugado": true
+            },
             {
               "local": "C.D. ROTA",
               "visitante": "JUVENTUD SANLUQUEÑA A.D.",
@@ -130,23 +147,6 @@
               "codCampo": "3439",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662379&cod_acta=2662379",
               "jugado": false
-            },
-            {
-              "local": "TARIFA U.D.",
-              "visitante": "A.D. TARAGUILLA",
-              "codLocal": "308315",
-              "codVisitante": "38877699",
-              "fecha": "2026-09-06",
-              "hora": "19:00",
-              "golesLocal": 0,
-              "golesVisitante": 2,
-              "origen": "clasificacion",
-              "localidad": "Tarifa",
-              "campo": "ANTONIO LOPEZ PUA ESTADIO MUNICIPAL",
-              "superficie": "Hierba Natural",
-              "codCampo": "3083",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662385&cod_acta=2662385",
-              "jugado": true
             },
             {
               "local": "TREBUJENA C.F.",
