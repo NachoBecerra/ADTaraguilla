@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-18T14:22:51.661Z",
+  "actualizado": "2026-09-18T17:18:21.657Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -36,15 +36,15 @@
               "codVisitante": "28567666",
               "fecha": "2026-09-18",
               "hora": "17:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "golesLocal": 1,
+              "golesVisitante": 11,
+              "origen": "clasificacion",
               "localidad": "La Línea de La Concepción",
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
               "codCampo": "3172",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709871",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709871&cod_acta=2709871",
+              "jugado": true
             },
             {
               "local": "ATLETICO ZABAL \"A\"",
@@ -60,7 +60,7 @@
               "campo": "VIRGEN DEL CARMEN (LA LINEA)",
               "superficie": "Hierba Artificial",
               "codCampo": "2069065",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709875",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709875&cod_acta=2709875",
               "jugado": false
             },
             {
@@ -77,7 +77,7 @@
               "campo": "POLIDEPORTIVO GABRIEL CLAVIJO GONZÁLEZ JAVI - PALMONES",
               "superficie": "Hierba Artificial",
               "codCampo": "3245",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709876",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709876&cod_acta=2709876",
               "jugado": false
             },
             {
@@ -94,7 +94,7 @@
               "campo": "LOS OLIVILLOS (VICENTE BLANCA)",
               "superficie": "Hierba Artificial",
               "codCampo": "3574",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709877",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709877&cod_acta=2709877",
               "jugado": false
             },
             {
@@ -103,7 +103,7 @@
               "codLocal": "307218",
               "codVisitante": "348018",
               "fecha": "2026-09-18",
-              "hora": "18:00",
+              "hora": "18:38",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -111,7 +111,7 @@
               "campo": "MUNICIPAL LA ERA",
               "superficie": "Hierba Artificial",
               "codCampo": "3072",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709872",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709872&cod_acta=2709872",
               "jugado": false
             },
             {
@@ -4318,34 +4318,102 @@
       "clasificacion": [
         {
           "posicion": 1,
-          "equipo": "A.D. LOS CORTIJILLOS",
-          "puntos": 0,
-          "jugados": 0,
+          "equipo": "A.D. TARAGUILLA",
+          "puntos": 3,
+          "jugados": 1,
           "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
+          "jugadosFuera": 1,
+          "ganados": 1,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
+          "golesFavor": 11,
+          "golesContra": 1,
+          "racha": [
+            "G"
+          ]
         },
         {
           "posicion": 2,
-          "equipo": "A.D. TARAGUILLA",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
+          "equipo": "C.D. JUVENTUD PALMONES C.F.",
+          "puntos": 3,
+          "jugados": 1,
+          "jugadosCasa": 1,
           "jugadosFuera": 0,
-          "ganados": 0,
+          "ganados": 1,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
+          "golesFavor": 4,
+          "golesContra": 2,
+          "racha": [
+            "G"
+          ]
         },
         {
           "posicion": 3,
+          "equipo": "C.D. OLIVILLOS 87 \"B\"",
+          "puntos": 3,
+          "jugados": 1,
+          "jugadosCasa": 1,
+          "jugadosFuera": 0,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 3,
+          "golesContra": 2,
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 4,
+          "equipo": "C.D. S.M. MIRADOR \"B\"",
+          "puntos": 3,
+          "jugados": 1,
+          "jugadosCasa": 0,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 3,
+          "golesContra": 2,
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 5,
+          "equipo": "A.D. LOS CORTIJILLOS",
+          "puntos": 1,
+          "jugados": 1,
+          "jugadosCasa": 0,
+          "jugadosFuera": 1,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 2,
+          "golesContra": 2,
+          "racha": [
+            "E"
+          ]
+        },
+        {
+          "posicion": 6,
+          "equipo": "U.D. TESORILLO C.D.",
+          "puntos": 1,
+          "jugados": 1,
+          "jugadosCasa": 1,
+          "jugadosFuera": 0,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 2,
+          "golesContra": 2,
+          "racha": [
+            "E"
+          ]
+        },
+        {
+          "posicion": 7,
           "equipo": "ATLETICO ATUNARA C.D. \"A\"",
           "puntos": 0,
           "jugados": 0,
@@ -4359,21 +4427,7 @@
           "racha": []
         },
         {
-          "posicion": 4,
-          "equipo": "ATLETICO ZABAL \"A\"",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 5,
+          "posicion": 8,
           "equipo": "C.D. ATHLETIC CLUB JIMENA",
           "puntos": 0,
           "jugados": 0,
@@ -4387,21 +4441,7 @@
           "racha": []
         },
         {
-          "posicion": 6,
-          "equipo": "C.D. BALON LINENSE C.F.",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 7,
+          "posicion": 9,
           "equipo": "C.D. GUADIARO",
           "puntos": 0,
           "jugados": 0,
@@ -4415,49 +4455,7 @@
           "racha": []
         },
         {
-          "posicion": 8,
-          "equipo": "C.D. JUVENTUD PALMONES C.F.",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 9,
-          "equipo": "C.D. OLIVILLOS 87 \"B\"",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
           "posicion": 10,
-          "equipo": "C.D. S.M. MIRADOR \"B\"",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 11,
           "equipo": "C.D. SAN BERNARDO",
           "puntos": 0,
           "jugados": 0,
@@ -4471,7 +4469,7 @@
           "racha": []
         },
         {
-          "posicion": 12,
+          "posicion": 11,
           "equipo": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL \"A\"",
           "puntos": 0,
           "jugados": 0,
@@ -4485,46 +4483,68 @@
           "racha": []
         },
         {
-          "posicion": 13,
-          "equipo": "PUENTE MAYORGA RVO \"A\"",
+          "posicion": 12,
+          "equipo": "ATLETICO ZABAL \"A\"",
           "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
+          "jugados": 1,
+          "jugadosCasa": 1,
           "jugadosFuera": 0,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
+          "perdidos": 1,
+          "golesFavor": 2,
+          "golesContra": 3,
+          "racha": [
+            "P"
+          ]
+        },
+        {
+          "posicion": 13,
+          "equipo": "U.D. LOS BARRIOS \"B\"",
+          "puntos": 0,
+          "jugados": 1,
+          "jugadosCasa": 0,
+          "jugadosFuera": 1,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 2,
+          "golesContra": 3,
+          "racha": [
+            "P"
+          ]
         },
         {
           "posicion": 14,
-          "equipo": "U.D. LOS BARRIOS \"B\"",
+          "equipo": "PUENTE MAYORGA RVO \"A\"",
           "puntos": 0,
-          "jugados": 0,
+          "jugados": 1,
           "jugadosCasa": 0,
-          "jugadosFuera": 0,
+          "jugadosFuera": 1,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
+          "perdidos": 1,
+          "golesFavor": 2,
+          "golesContra": 4,
+          "racha": [
+            "P"
+          ]
         },
         {
           "posicion": 15,
-          "equipo": "U.D. TESORILLO C.D.",
+          "equipo": "C.D. BALON LINENSE C.F.",
           "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
+          "jugados": 1,
+          "jugadosCasa": 1,
           "jugadosFuera": 0,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
+          "perdidos": 1,
+          "golesFavor": 1,
+          "golesContra": 11,
+          "racha": [
+            "P"
+          ]
         }
       ]
     }
