@@ -1,5 +1,5 @@
 {
-  "generado": "2026-09-13T16:40:46.306Z",
+  "generado": "2026-09-18T22:20:29.372Z",
   "_nota": "Ubicación de los campos, para enlazar con el mapa.",
   "campos": {
     "3008": {
@@ -19,6 +19,11 @@
       "nombre": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
       "lat": 36.2029487,
       "lon": -5.4197526
+    },
+    "3555": {
+      "nombre": "CIUDAD DEPORTIVA RAFAEL SANCHEZ",
+      "lat": 36.5901034,
+      "lon": -6.232967599999999
     },
     "3582": {
       "nombre": "QUINTA DE LA PAZ",
