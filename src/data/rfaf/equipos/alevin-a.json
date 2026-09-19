@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-19T07:22:26.596Z",
+  "actualizado": "2026-09-19T09:22:01.302Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -270,7 +270,7 @@
               "localidad": "Jerez De La Frontera",
               "campo": "LA GRANJA CENTRO DE DEPORTES",
               "superficie": "Hierba Artificial",
-              "codCampo": "2019274",
+              "codCampo": "2019270",
               "urlActa": null,
               "jugado": false
             },
