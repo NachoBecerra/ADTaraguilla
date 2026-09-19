@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-19T15:18:46.866Z",
+  "actualizado": "2026-09-19T16:21:18.076Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -69,7 +69,7 @@
               "codLocal": "307320",
               "codVisitante": "309618",
               "fecha": "2026-09-19",
-              "hora": "16:45",
+              "hora": "16:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -77,7 +77,7 @@
               "campo": "SAN ENRIQUE",
               "superficie": "Hierba Natural",
               "codCampo": "2020864",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709874&cod_acta=2709874",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709874&cod_acta=2709874",
               "jugado": false
             },
             {
@@ -4318,6 +4318,22 @@
       "clasificacion": [
         {
           "posicion": 1,
+          "equipo": "C.D. GUADIARO",
+          "puntos": 3,
+          "jugados": 1,
+          "jugadosCasa": 1,
+          "jugadosFuera": 0,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 16,
+          "golesContra": 1,
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 2,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 3,
           "jugados": 1,
@@ -4328,22 +4344,6 @@
           "perdidos": 0,
           "golesFavor": 11,
           "golesContra": 1,
-          "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 2,
-          "equipo": "C.D. GUADIARO",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 10,
-          "golesContra": 0,
           "racha": [
             "G"
           ]
@@ -4548,8 +4548,8 @@
           "ganados": 0,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 0,
-          "golesContra": 10,
+          "golesFavor": 1,
+          "golesContra": 16,
           "racha": [
             "P"
           ]
