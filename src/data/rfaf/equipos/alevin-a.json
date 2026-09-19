@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-19T10:41:50.092Z",
+  "actualizado": "2026-09-19T11:18:26.332Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -35,7 +35,7 @@
               "codLocal": "45021237",
               "codVisitante": "309525",
               "fecha": "2026-09-19",
-              "hora": "11:43",
+              "hora": "11:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -43,7 +43,7 @@
               "campo": "BAZAN CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3020",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649947&cod_acta=2649947",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649947&cod_acta=2649947",
               "jugado": false
             },
             {
@@ -52,7 +52,7 @@
               "codLocal": "2065225",
               "codVisitante": "354820",
               "fecha": "2026-09-19",
-              "hora": "12:12",
+              "hora": "11:30",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -60,7 +60,7 @@
               "campo": "Sanlúcar de Barrameda -Doro Stadium",
               "superficie": "Hierba Artificial",
               "codCampo": "3104",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649943&cod_acta=2649943",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649943&cod_acta=2649943",
               "jugado": false
             },
             {
@@ -86,7 +86,7 @@
               "codLocal": "326326",
               "codVisitante": "307726",
               "fecha": "2026-09-19",
-              "hora": "12:30",
+              "hora": "13:08",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -94,7 +94,7 @@
               "campo": "VIRGEN DEL CARMEN (LA LINEA)",
               "superficie": "Hierba Artificial",
               "codCampo": "2069065",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649944",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649944&cod_acta=2649944",
               "jugado": false
             },
             {
@@ -4334,6 +4334,22 @@
         },
         {
           "posicion": 2,
+          "equipo": "ATLETICO ZABAL",
+          "puntos": 3,
+          "jugados": 1,
+          "jugadosCasa": 1,
+          "jugadosFuera": 0,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 8,
+          "golesContra": 0,
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 3,
           "equipo": "C.F. SAN JOSE OBRERO",
           "puntos": 3,
           "jugados": 1,
@@ -4349,7 +4365,39 @@
           ]
         },
         {
-          "posicion": 3,
+          "posicion": 4,
+          "equipo": "C.D. DIVINA PASTORA SANLUQUEÑA",
+          "puntos": 3,
+          "jugados": 1,
+          "jugadosCasa": 0,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 5,
+          "golesContra": 3,
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 5,
+          "equipo": "C.D. LA SALLE",
+          "puntos": 3,
+          "jugados": 1,
+          "jugadosCasa": 0,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 4,
+          "golesContra": 2,
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 6,
           "equipo": "A.D. LOS BURREÑOS",
           "puntos": 3,
           "jugados": 1,
@@ -4362,54 +4410,6 @@
           "golesContra": 3,
           "racha": [
             "G"
-          ]
-        },
-        {
-          "posicion": 4,
-          "equipo": "U.D. LA ALGAIDA",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 1,
-          "golesContra": 0,
-          "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 5,
-          "equipo": "C.D. LA SALLE",
-          "puntos": 1,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 1,
-          "perdidos": 0,
-          "golesFavor": 2,
-          "golesContra": 2,
-          "racha": [
-            "E"
-          ]
-        },
-        {
-          "posicion": 6,
-          "equipo": "C.D. SAN FERNANDO 1940",
-          "puntos": 1,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 1,
-          "perdidos": 0,
-          "golesFavor": 2,
-          "golesContra": 2,
-          "racha": [
-            "E"
           ]
         },
         {
@@ -4442,34 +4442,6 @@
         },
         {
           "posicion": 9,
-          "equipo": "ATLETICO ZABAL",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 10,
-          "equipo": "C.D. SAN ROQUE",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 11,
           "equipo": "CADIZ C.F., S.A.D.",
           "puntos": 0,
           "jugados": 0,
@@ -4483,7 +4455,7 @@
           "racha": []
         },
         {
-          "posicion": 12,
+          "posicion": 10,
           "equipo": "MONITORES FUTBOL DE ALGECIRAS",
           "puntos": 0,
           "jugados": 0,
@@ -4497,7 +4469,7 @@
           "racha": []
         },
         {
-          "posicion": 13,
+          "posicion": 11,
           "equipo": "SPORTING CHICLANA C.D.",
           "puntos": 0,
           "jugados": 1,
@@ -4513,23 +4485,39 @@
           ]
         },
         {
-          "posicion": 14,
-          "equipo": "C.D. DIVINA PASTORA SANLUQUEÑA",
+          "posicion": 12,
+          "equipo": "U.D. LA ALGAIDA",
           "puntos": 0,
           "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
+          "jugadosCasa": 1,
+          "jugadosFuera": 0,
           "ganados": 0,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 0,
-          "golesContra": 1,
+          "golesFavor": 3,
+          "golesContra": 5,
           "racha": [
             "P"
           ]
         },
         {
-          "posicion": 15,
+          "posicion": 13,
+          "equipo": "C.D. SAN FERNANDO 1940",
+          "puntos": 0,
+          "jugados": 1,
+          "jugadosCasa": 1,
+          "jugadosFuera": 0,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 2,
+          "golesContra": 4,
+          "racha": [
+            "P"
+          ]
+        },
+        {
+          "posicion": 14,
           "equipo": "TARIFA U.D.",
           "puntos": 0,
           "jugados": 1,
@@ -4545,7 +4533,7 @@
           ]
         },
         {
-          "posicion": 16,
+          "posicion": 15,
           "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
           "puntos": 0,
           "jugados": 1,
@@ -4556,6 +4544,22 @@
           "perdidos": 1,
           "golesFavor": 1,
           "golesContra": 9,
+          "racha": [
+            "P"
+          ]
+        },
+        {
+          "posicion": 16,
+          "equipo": "C.D. SAN ROQUE",
+          "puntos": 0,
+          "jugados": 1,
+          "jugadosCasa": 0,
+          "jugadosFuera": 1,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 0,
+          "golesContra": 8,
           "racha": [
             "P"
           ]

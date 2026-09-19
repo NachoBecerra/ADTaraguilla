@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-19T10:41:35.233Z",
+  "actualizado": "2026-09-19T11:18:11.512Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -246,7 +246,7 @@
               "codLocal": "309522",
               "codVisitante": "2026663",
               "fecha": "2026-09-19",
-              "hora": "12:30",
+              "hora": "13:07",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -254,7 +254,7 @@
               "campo": "PACO GALLEGO",
               "superficie": "Hierba Artificial",
               "codCampo": "3095",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663725",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663725&cod_acta=2663725",
               "jugado": false
             },
             {
@@ -4369,38 +4369,23 @@
         },
         {
           "posicion": 4,
-          "equipo": "C.D. S.M. MIRADOR",
-          "puntos": 3,
-          "jugados": 1,
+          "equipo": "C.D. LA SALLE",
+          "puntos": 6,
+          "jugados": 2,
           "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
+          "jugadosFuera": 1,
+          "ganados": 2,
           "empatados": 0,
           "perdidos": 0,
           "golesFavor": 4,
-          "golesContra": 2,
+          "golesContra": 1,
           "racha": [
+            "G",
             "G"
           ]
         },
         {
           "posicion": 5,
-          "equipo": "C.D. LA SALLE",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 3,
-          "golesContra": 1,
-          "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 6,
           "equipo": "A.D. LOS BURREÑOS",
           "puntos": 4,
           "jugados": 2,
@@ -4417,7 +4402,7 @@
           ]
         },
         {
-          "posicion": 7,
+          "posicion": 6,
           "equipo": "A.D. MARIANISTAS C.D.",
           "puntos": 3,
           "jugados": 2,
@@ -4434,7 +4419,7 @@
           ]
         },
         {
-          "posicion": 8,
+          "posicion": 7,
           "equipo": "TRASMALLO F.C. C.D.",
           "puntos": 3,
           "jugados": 2,
@@ -4445,6 +4430,23 @@
           "perdidos": 1,
           "golesFavor": 5,
           "golesContra": 4,
+          "racha": [
+            "G",
+            "P"
+          ]
+        },
+        {
+          "posicion": 8,
+          "equipo": "C.D. S.M. MIRADOR",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 4,
+          "golesContra": 3,
           "racha": [
             "G",
             "P"
