@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-19T11:41:44.830Z",
+  "actualizado": "2026-09-19T12:29:15.965Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -77,7 +77,7 @@
               "campo": "SANTA FE",
               "superficie": "Hierba Artificial",
               "codCampo": "3051",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649941",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649941&cod_acta=2649941",
               "jugado": false
             },
             {
@@ -86,7 +86,7 @@
               "codLocal": "326326",
               "codVisitante": "307726",
               "fecha": "2026-09-19",
-              "hora": "13:08",
+              "hora": "12:30",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -94,7 +94,7 @@
               "campo": "VIRGEN DEL CARMEN (LA LINEA)",
               "superficie": "Hierba Artificial",
               "codCampo": "2069065",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649944&cod_acta=2649944",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649944&cod_acta=2649944",
               "jugado": false
             },
             {
@@ -4318,6 +4318,22 @@
       "clasificacion": [
         {
           "posicion": 1,
+          "equipo": "ATLETICO ZABAL",
+          "puntos": 3,
+          "jugados": 1,
+          "jugadosCasa": 1,
+          "jugadosFuera": 0,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 11,
+          "golesContra": 1,
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 2,
           "equipo": "ARCOS C.F.",
           "puntos": 3,
           "jugados": 1,
@@ -4328,22 +4344,6 @@
           "perdidos": 0,
           "golesFavor": 9,
           "golesContra": 1,
-          "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 2,
-          "equipo": "ATLETICO ZABAL",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 8,
-          "golesContra": 0,
           "racha": [
             "G"
           ]
@@ -4414,17 +4414,19 @@
         },
         {
           "posicion": 7,
-          "equipo": "A.D. MARIANISTAS C.D.",
-          "puntos": 0,
-          "jugados": 0,
+          "equipo": "CADIZ C.F., S.A.D.",
+          "puntos": 3,
+          "jugados": 1,
           "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
+          "jugadosFuera": 1,
+          "ganados": 1,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 0,
+          "golesFavor": 1,
           "golesContra": 0,
-          "racha": []
+          "racha": [
+            "G"
+          ]
         },
         {
           "posicion": 8,
@@ -4442,20 +4444,6 @@
         },
         {
           "posicion": 9,
-          "equipo": "CADIZ C.F., S.A.D.",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 10,
           "equipo": "MONITORES FUTBOL DE ALGECIRAS",
           "puntos": 0,
           "jugados": 0,
@@ -4469,7 +4457,7 @@
           "racha": []
         },
         {
-          "posicion": 11,
+          "posicion": 10,
           "equipo": "SPORTING CHICLANA C.D.",
           "puntos": 0,
           "jugados": 1,
@@ -4480,6 +4468,22 @@
           "perdidos": 1,
           "golesFavor": 3,
           "golesContra": 4,
+          "racha": [
+            "P"
+          ]
+        },
+        {
+          "posicion": 11,
+          "equipo": "A.D. MARIANISTAS C.D.",
+          "puntos": 0,
+          "jugados": 1,
+          "jugadosCasa": 1,
+          "jugadosFuera": 0,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 0,
+          "golesContra": 1,
           "racha": [
             "P"
           ]
@@ -4558,8 +4562,8 @@
           "ganados": 0,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 0,
-          "golesContra": 8,
+          "golesFavor": 1,
+          "golesContra": 11,
           "racha": [
             "P"
           ]
