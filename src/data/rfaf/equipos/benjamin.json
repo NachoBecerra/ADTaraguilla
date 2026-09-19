@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-18T22:19:57.039Z",
+  "actualizado": "2026-09-19T07:22:11.599Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -173,20 +173,20 @@
           "fecha": "2026-09-19",
           "partidos": [
             {
-              "local": "A.D. LOS BURREÑOS",
-              "visitante": "BAHIA SAN FERNANDO C.D.",
-              "codLocal": "28679244",
-              "codVisitante": "355720",
+              "local": "TRASMALLO F.C. C.D.",
+              "visitante": "ATLETICO ZABAL",
+              "codLocal": "332820",
+              "codVisitante": "326327",
               "fecha": "2026-09-18",
-              "hora": "20:05",
+              "hora": "18:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
-              "localidad": "Conil De La Frontera",
-              "campo": "BURREÑOS",
+              "localidad": "Puerto De Santa María (El)",
+              "campo": "CIUDAD DEPORTIVA RAFAEL SANCHEZ",
               "superficie": "Hierba Artificial",
-              "codCampo": "3459",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663718&cod_acta=2663718",
+              "codCampo": "3555",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663723&cod_acta=2663723",
               "jugado": false
             },
             {
@@ -292,20 +292,20 @@
               "jugado": false
             },
             {
-              "local": "TRASMALLO F.C. C.D.",
-              "visitante": "ATLETICO ZABAL",
-              "codLocal": "332820",
-              "codVisitante": "326327",
+              "local": "A.D. LOS BURREÑOS",
+              "visitante": "BAHIA SAN FERNANDO C.D.",
+              "codLocal": "28679244",
+              "codVisitante": "355720",
               "fecha": "2026-09-18",
-              "hora": "18:00",
+              "hora": "20:05",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
-              "localidad": "Puerto De Santa María (El)",
-              "campo": "CIUDAD DEPORTIVA RAFAEL SANCHEZ",
+              "localidad": "Conil De La Frontera",
+              "campo": "BURREÑOS",
               "superficie": "Hierba Artificial",
-              "codCampo": "3555",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663723",
+              "codCampo": "3459",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663718&cod_acta=2663718",
               "jugado": false
             }
           ]

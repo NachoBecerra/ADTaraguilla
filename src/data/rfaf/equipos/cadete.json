@@ -7,7 +7,7 @@
   "orden": 3,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-18T08:29:57.145Z",
+  "actualizado": "2026-09-19T07:21:46.566Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
   "competiciones": [
     {
@@ -42,7 +42,7 @@
               "localidad": "La Línea de La Concepción",
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3172",
               "urlActa": null,
               "jugado": false
             },
@@ -59,7 +59,7 @@
               "localidad": "Castellar De La Frontera",
               "campo": "MANUEL LEON MUNICIPAL",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "2002177",
               "urlActa": null,
               "jugado": false
             },
@@ -76,7 +76,7 @@
               "localidad": "Jimena De La Frontera",
               "campo": "ANDRES SARRIAS",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3096",
               "urlActa": null,
               "jugado": false
             },
@@ -93,7 +93,7 @@
               "localidad": "San Roque",
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3236",
               "urlActa": null,
               "jugado": false
             },
@@ -110,7 +110,7 @@
               "localidad": "La Línea de La Concepción",
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3172",
               "urlActa": null,
               "jugado": false
             },
@@ -127,7 +127,7 @@
               "localidad": "San Martin del Tesorillo",
               "campo": "MUNICIPAL LA ERA",
               "superficie": "Hierba Artificial",
-              "codCampo": null,
+              "codCampo": "3072",
               "urlActa": null,
               "jugado": false
             }
