@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-19T16:21:32.575Z",
+  "actualizado": "2026-09-19T17:17:21.864Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -280,7 +280,7 @@
               "codLocal": "303130",
               "codVisitante": "48486018",
               "fecha": "2026-09-19",
-              "hora": "18:30",
+              "hora": "19:05",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -288,7 +288,7 @@
               "campo": "JUAN SIMON",
               "superficie": "Hierba Artificial",
               "codCampo": "3050",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663724",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663724&cod_acta=2663724",
               "jugado": false
             },
             {
@@ -4471,6 +4471,23 @@
         },
         {
           "posicion": 10,
+          "equipo": "C.F. SAN JOSE OBRERO",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 4,
+          "golesContra": 5,
+          "racha": [
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 11,
           "equipo": "BAHIA SAN FERNANDO C.D.",
           "puntos": 1,
           "jugados": 2,
@@ -4487,7 +4504,7 @@
           ]
         },
         {
-          "posicion": 11,
+          "posicion": 12,
           "equipo": "C.D. SAN BERNARDO",
           "puntos": 0,
           "jugados": 1,
@@ -4503,34 +4520,19 @@
           ]
         },
         {
-          "posicion": 12,
+          "posicion": 13,
           "equipo": "ARCOS C.F.",
           "puntos": 0,
-          "jugados": 1,
+          "jugados": 2,
           "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 2,
-          "golesContra": 4,
-          "racha": [
-            "P"
-          ]
-        },
-        {
-          "posicion": 13,
-          "equipo": "C.F. SAN JOSE OBRERO",
-          "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
           "jugadosFuera": 1,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 2,
-          "golesContra": 4,
+          "perdidos": 2,
+          "golesFavor": 3,
+          "golesContra": 6,
           "racha": [
+            "P",
             "P"
           ]
         },
