@@ -36,6 +36,7 @@ export default function PieDePagina() {
                 { href: "/noticias", t: "Noticias" },
                 { href: "/galeria", t: "Galería" },
                 { href: "/historico", t: "Histórico" },
+                { href: "/instalar", t: "Instalar la app" },
               ].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-white/75 transition-colors hover:text-white">

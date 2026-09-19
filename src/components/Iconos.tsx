@@ -267,6 +267,27 @@ export function IconoCompartir({ size = 20, className }: Props) {
   );
 }
 
+/** El «más» dentro de un cuadrado: «Añadir a pantalla de inicio» en el iPhone. */
+export function IconoMas({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+      <path d="M12 8.2v7.6M8.2 12h7.6" />
+    </svg>
+  );
+}
+
+/** Los tres puntos del menú de Chrome y de las apps que abren la web dentro. */
+export function IconoMenuPuntos({ size = 20, className }: Props) {
+  return (
+    <svg {...base(size, className)} fill="currentColor" stroke="none">
+      <circle cx="12" cy="5" r="1.9" />
+      <circle cx="12" cy="12" r="1.9" />
+      <circle cx="12" cy="19" r="1.9" />
+    </svg>
+  );
+}
+
 export function IconoImagen({ size = 20, className }: Props) {
   return (
     <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">

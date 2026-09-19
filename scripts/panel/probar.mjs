@@ -12,6 +12,7 @@
 import { aplicarFotos, conIdUnico } from "../../src/lib/panel/fotosDeEntrada.ts";
 import { bloqueoRestante, trasUnFallo, MAX_FALLOS, BLOQUEO_MS, VENTANA_FALLOS_MS } from "../../src/lib/panel/bloqueo.ts";
 import { extractoDe, textoPlano, LARGO_EXTRACTO } from "../../src/lib/extracto.ts";
+import { entornoDe } from "../../src/lib/instalar.ts";
 import galeriaReal from "../../src/data/galeria.json" with { type: "json" };
 
 let fallos = 0;
@@ -213,6 +214,50 @@ console.log("--- Que cada grupo tenga su identificador ---");
     textoPlano("## Crónica\n**Victoria** en [Tarifa](https://x.y) ![foto](a.jpg)\n- 0-2"),
     "Crónica Victoria en Tarifa 0-2",
   );
+}
+
+/* ------------------------------------ desde dónde se mira, para instalarla */
+{
+  console.log("");
+  const UA = {
+    safariIphone:
+      "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+    instagramIphone:
+      "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 302.0.0.23.113 (iPhone14,3; iOS 17_5; es_ES)",
+    facebookIphone:
+      "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [FBAN/FBIOS;FBDV/iPhone14,3;FBMD/iPhone]",
+    chromeIphone:
+      "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/126.0.6478.54 Mobile/15E148 Safari/604.1",
+    chromeAndroid:
+      "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36",
+    instagramAndroid:
+      "Mozilla/5.0 (Linux; Android 13; SM-A536B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Mobile Safari/537.36 Instagram 302.0.0.23.113 Android",
+    ipadComoMac:
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
+    windows:
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+  };
+
+  const donde = (ua, tactil = false) => entornoDe(ua, tactil).donde;
+
+  comprobar("Safari en iPhone: se instala ahí mismo", donde(UA.safariIphone), "safari");
+  comprobar("y se dice que sí se puede", entornoDe(UA.safariIphone).seInstalaAqui, true);
+
+  /* Lo que traía las quejas: el club comparte por Instagram y Facebook, y
+     dentro de esas apps no existe «Añadir a pantalla de inicio» */
+  comprobar("dentro de Instagram, no", donde(UA.instagramIphone), "dentro-de-una-app");
+  comprobar("y se sabe de qué app es", entornoDe(UA.instagramIphone).app, "Instagram");
+  comprobar("dentro de Facebook tampoco", donde(UA.facebookIphone), "dentro-de-una-app");
+  comprobar("ni en el Instagram de Android", donde(UA.instagramAndroid), "dentro-de-una-app");
+  comprobar("y ahí no se ofrece instalar", entornoDe(UA.instagramAndroid).seInstalaAqui, false);
+
+  comprobar("Chrome en iPhone: hay que pasar por Safari", donde(UA.chromeIphone), "otro-navegador-ios");
+  comprobar("Chrome en Android instala solo", donde(UA.chromeAndroid), "navegador-android");
+
+  /* El iPad se presenta como un Mac: solo lo delata la pantalla táctil */
+  comprobar("un iPad en modo escritorio sigue siendo iOS", entornoDe(UA.ipadComoMac, true).sistema, "ios");
+  comprobar("y un Mac de verdad, no", entornoDe(UA.ipadComoMac, false).sistema, "escritorio");
+  comprobar("en Windows no se ofrece nada", donde(UA.windows), "otro");
 }
 
 console.log("");
