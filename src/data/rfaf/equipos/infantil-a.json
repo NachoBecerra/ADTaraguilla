@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-19T10:41:05.243Z",
+  "actualizado": "2026-09-19T18:23:09.671Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -186,7 +186,7 @@
               "campo": "SAN JOSÉ NUEVO ESTADIO",
               "superficie": "Hierba Artificial",
               "codCampo": "2015044",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651389",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651389&cod_acta=2651389",
               "jugado": false
             },
             {
@@ -203,7 +203,7 @@
               "campo": "La Palma Polideportivo Municipal Nuevo",
               "superficie": "Hierba Artificial",
               "codCampo": "6903",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651392",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651392&cod_acta=2651392",
               "jugado": false
             },
             {
@@ -212,7 +212,7 @@
               "codLocal": "16393952",
               "codVisitante": "303120",
               "fecha": "2026-09-19",
-              "hora": "12:38",
+              "hora": "12:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -220,7 +220,7 @@
               "campo": "Jerez De La Frontera.- PICADUEÑAS",
               "superficie": "Hierba Artificial",
               "codCampo": "2070477",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651393&cod_acta=2651393",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651393&cod_acta=2651393",
               "jugado": false
             },
             {
@@ -237,7 +237,7 @@
               "campo": "CIUDAD DEPORTIVA RAFAEL GORDILLO",
               "superficie": "Hierba Artificial",
               "codCampo": "36948119",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651395",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651395&cod_acta=2651395",
               "jugado": false
             },
             {
@@ -254,7 +254,7 @@
               "campo": "MALASMAÑANAS MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "2015221",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651390",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651390&cod_acta=2651390",
               "jugado": false
             },
             {
@@ -271,7 +271,7 @@
               "campo": "ANTONIO PUERTA IMD",
               "superficie": "Hierba Artificial",
               "codCampo": "2014352",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651394",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651394&cod_acta=2651394",
               "jugado": false
             },
             {
@@ -281,15 +281,15 @@
               "codVisitante": "9136888",
               "fecha": "2026-09-19",
               "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "golesLocal": 8,
+              "golesVisitante": 0,
+              "origen": "clasificacion",
               "localidad": "San Roque",
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651388",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651388&cod_acta=2651388",
+              "jugado": true
             },
             {
               "local": "C.D. ESTRELLA PORTUENSE F.C.",
@@ -305,7 +305,7 @@
               "campo": "EL JUNCAL CAMPO MPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3611",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651391",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651391&cod_acta=2651391",
               "jugado": false
             }
           ]
@@ -4318,119 +4318,58 @@
       "clasificacion": [
         {
           "posicion": 1,
-          "equipo": "C.D.C. NUEVO MOLINO CSIF",
-          "puntos": 3,
-          "jugados": 1,
+          "equipo": "R.C.R. HUELVA, S.A.D.",
+          "puntos": 6,
+          "jugados": 2,
           "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
+          "jugadosFuera": 1,
+          "ganados": 2,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 4,
+          "golesFavor": 5,
           "golesContra": 0,
           "racha": [
+            "G",
             "G"
           ]
         },
         {
           "posicion": 2,
           "equipo": "REAL BETIS BALOMPIE S.A.D.",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 0,
+          "puntos": 6,
+          "jugados": 2,
+          "jugadosCasa": 1,
           "jugadosFuera": 1,
-          "ganados": 1,
+          "ganados": 2,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 4,
-          "golesContra": 2,
+          "golesFavor": 7,
+          "golesContra": 4,
           "racha": [
+            "G",
             "G"
           ]
         },
         {
           "posicion": 3,
-          "equipo": "R.C.R. HUELVA, S.A.D.",
-          "puntos": 3,
-          "jugados": 1,
+          "equipo": "SAN ROQUE BALOMPIE",
+          "puntos": 6,
+          "jugados": 2,
           "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
+          "jugadosFuera": 1,
+          "ganados": 2,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 2,
+          "golesFavor": 3,
           "golesContra": 0,
           "racha": [
+            "G",
             "G"
           ]
         },
         {
           "posicion": 4,
           "equipo": "SENECA C.F.",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 2,
-          "golesContra": 0,
-          "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 5,
-          "equipo": "SEVILLA F.C., S.A.D.",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 2,
-          "golesContra": 0,
-          "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 6,
-          "equipo": "ALGECIRAS C.F., S.A.D.",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 3,
-          "golesContra": 2,
-          "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 7,
-          "equipo": "SAN ROQUE BALOMPIE",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 1,
-          "golesContra": 0,
-          "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 8,
-          "equipo": "C.F. SAN JOSE OBRERO",
           "puntos": 4,
           "jugados": 2,
           "jugadosCasa": 1,
@@ -4438,7 +4377,7 @@
           "ganados": 1,
           "empatados": 1,
           "perdidos": 0,
-          "golesFavor": 5,
+          "golesFavor": 3,
           "golesContra": 1,
           "racha": [
             "G",
@@ -4446,8 +4385,144 @@
           ]
         },
         {
+          "posicion": 5,
+          "equipo": "SEVILLA F.C., S.A.D.",
+          "puntos": 4,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 2,
+          "golesContra": 0,
+          "racha": [
+            "G",
+            "E"
+          ]
+        },
+        {
+          "posicion": 6,
+          "equipo": "A.D. TARAGUILLA",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 8,
+          "golesContra": 2,
+          "racha": [
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 7,
+          "equipo": "C.D.C. NUEVO MOLINO CSIF",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 6,
+          "golesContra": 3,
+          "racha": [
+            "G",
+            "P"
+          ]
+        },
+        {
+          "posicion": 8,
+          "equipo": "C.F. SAN JOSE OBRERO",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 5,
+          "golesContra": 2,
+          "racha": [
+            "G",
+            "P"
+          ]
+        },
+        {
           "posicion": 9,
+          "equipo": "ALGECIRAS C.F., S.A.D.",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 5,
+          "golesContra": 5,
+          "racha": [
+            "G",
+            "P"
+          ]
+        },
+        {
+          "posicion": 10,
+          "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 3,
+          "golesContra": 4,
+          "racha": [
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 11,
           "equipo": "C.D. UNION DEPORTIVA ESPERANZA 2019",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 2,
+          "golesContra": 3,
+          "racha": [
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 12,
+          "equipo": "JUVENTUD DVA. GINES",
+          "puntos": 1,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 1,
+          "golesFavor": 0,
+          "golesContra": 1,
+          "racha": [
+            "P",
+            "E"
+          ]
+        },
+        {
+          "posicion": 13,
+          "equipo": "SIEMPRE ALEGRES C.D.",
           "puntos": 1,
           "jugados": 2,
           "jugadosCasa": 1,
@@ -4456,89 +4531,26 @@
           "empatados": 1,
           "perdidos": 1,
           "golesFavor": 1,
-          "golesContra": 3,
+          "golesContra": 5,
           "racha": [
             "P",
             "E"
           ]
         },
         {
-          "posicion": 10,
+          "posicion": 14,
           "equipo": "C.D. ASOC. DVA. NERVION",
           "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 2,
-          "golesContra": 3,
-          "racha": [
-            "P"
-          ]
-        },
-        {
-          "posicion": 11,
-          "equipo": "JUVENTUD DVA. GINES",
-          "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 0,
-          "golesContra": 1,
-          "racha": [
-            "P"
-          ]
-        },
-        {
-          "posicion": 12,
-          "equipo": "LUCECOR F.S.",
-          "puntos": 0,
-          "jugados": 1,
+          "jugados": 2,
           "jugadosCasa": 1,
-          "jugadosFuera": 0,
+          "jugadosFuera": 1,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 1,
+          "perdidos": 2,
           "golesFavor": 2,
-          "golesContra": 4,
+          "golesContra": 6,
           "racha": [
-            "P"
-          ]
-        },
-        {
-          "posicion": 13,
-          "equipo": "A.D. TARAGUILLA",
-          "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 0,
-          "golesContra": 2,
-          "racha": [
-            "P"
-          ]
-        },
-        {
-          "posicion": 14,
-          "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
-          "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 0,
-          "golesContra": 2,
-          "racha": [
+            "P",
             "P"
           ]
         },
@@ -4546,31 +4558,33 @@
           "posicion": 15,
           "equipo": "C.D. MOSQUITO",
           "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
+          "jugados": 2,
+          "jugadosCasa": 1,
           "jugadosFuera": 1,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 1,
+          "perdidos": 2,
           "golesFavor": 0,
-          "golesContra": 4,
+          "golesContra": 6,
           "racha": [
+            "P",
             "P"
           ]
         },
         {
           "posicion": 16,
-          "equipo": "SIEMPRE ALEGRES C.D.",
+          "equipo": "LUCECOR F.S.",
           "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
+          "jugados": 2,
+          "jugadosCasa": 1,
           "jugadosFuera": 1,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 0,
-          "golesContra": 4,
+          "perdidos": 2,
+          "golesFavor": 2,
+          "golesContra": 12,
           "racha": [
+            "P",
             "P"
           ]
         }
