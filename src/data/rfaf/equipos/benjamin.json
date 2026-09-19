@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-19T09:21:46.469Z",
+  "actualizado": "2026-09-19T10:20:06.960Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -212,7 +212,7 @@
               "codLocal": "353117",
               "codVisitante": "331319",
               "fecha": "2026-09-19",
-              "hora": "10:55",
+              "hora": "10:30",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -220,7 +220,7 @@
               "campo": "EL JUNCAL CAMPO MPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3611",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663719&cod_acta=2663719",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663719&cod_acta=2663719",
               "jugado": false
             },
             {
@@ -4318,6 +4318,23 @@
       "clasificacion": [
         {
           "posicion": 1,
+          "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
+          "puntos": 6,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 15,
+          "golesContra": 2,
+          "racha": [
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 2,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 3,
           "jugados": 1,
@@ -4329,23 +4346,6 @@
           "golesFavor": 11,
           "golesContra": 2,
           "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 2,
-          "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
-          "puntos": 6,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 10,
-          "golesContra": 2,
-          "racha": [
-            "G",
             "G"
           ]
         },
@@ -4574,7 +4574,7 @@
           "empatados": 0,
           "perdidos": 2,
           "golesFavor": 1,
-          "golesContra": 14,
+          "golesContra": 19,
           "racha": [
             "P",
             "P"
