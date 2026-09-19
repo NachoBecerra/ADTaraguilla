@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-18T14:23:04.287Z",
+  "actualizado": "2026-09-19T10:41:05.243Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -15,7 +15,7 @@
       "categoria": "1ª ANDALUZA INFANTIL",
       "grupo": "Grupo 1",
       "puntos": 0,
-      "posicion": 12,
+      "posicion": 13,
       "codGrupo": "48466112",
       "escudosRecogidos": true,
       "codCompeticion": "48466111",
@@ -212,7 +212,7 @@
               "codLocal": "16393952",
               "codVisitante": "303120",
               "fecha": "2026-09-19",
-              "hora": "12:00",
+              "hora": "12:38",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -220,7 +220,7 @@
               "campo": "Jerez De La Frontera.- PICADUEÑAS",
               "superficie": "Hierba Artificial",
               "codCampo": "2070477",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651393",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651393&cod_acta=2651393",
               "jugado": false
             },
             {
@@ -4334,22 +4334,6 @@
         },
         {
           "posicion": 2,
-          "equipo": "C.F. SAN JOSE OBRERO",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 4,
-          "golesContra": 0,
-          "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 3,
           "equipo": "REAL BETIS BALOMPIE S.A.D.",
           "puntos": 3,
           "jugados": 1,
@@ -4365,7 +4349,7 @@
           ]
         },
         {
-          "posicion": 4,
+          "posicion": 3,
           "equipo": "R.C.R. HUELVA, S.A.D.",
           "puntos": 3,
           "jugados": 1,
@@ -4381,7 +4365,7 @@
           ]
         },
         {
-          "posicion": 5,
+          "posicion": 4,
           "equipo": "SENECA C.F.",
           "puntos": 3,
           "jugados": 1,
@@ -4397,7 +4381,7 @@
           ]
         },
         {
-          "posicion": 6,
+          "posicion": 5,
           "equipo": "SEVILLA F.C., S.A.D.",
           "puntos": 3,
           "jugados": 1,
@@ -4413,7 +4397,7 @@
           ]
         },
         {
-          "posicion": 7,
+          "posicion": 6,
           "equipo": "ALGECIRAS C.F., S.A.D.",
           "puntos": 3,
           "jugados": 1,
@@ -4429,7 +4413,7 @@
           ]
         },
         {
-          "posicion": 8,
+          "posicion": 7,
           "equipo": "SAN ROQUE BALOMPIE",
           "puntos": 3,
           "jugados": 1,
@@ -4445,7 +4429,41 @@
           ]
         },
         {
+          "posicion": 8,
+          "equipo": "C.F. SAN JOSE OBRERO",
+          "puntos": 4,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 5,
+          "golesContra": 1,
+          "racha": [
+            "G",
+            "E"
+          ]
+        },
+        {
           "posicion": 9,
+          "equipo": "C.D. UNION DEPORTIVA ESPERANZA 2019",
+          "puntos": 1,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 1,
+          "golesFavor": 1,
+          "golesContra": 3,
+          "racha": [
+            "P",
+            "E"
+          ]
+        },
+        {
+          "posicion": 10,
           "equipo": "C.D. ASOC. DVA. NERVION",
           "puntos": 0,
           "jugados": 1,
@@ -4461,7 +4479,7 @@
           ]
         },
         {
-          "posicion": 10,
+          "posicion": 11,
           "equipo": "JUVENTUD DVA. GINES",
           "puntos": 0,
           "jugados": 1,
@@ -4477,7 +4495,7 @@
           ]
         },
         {
-          "posicion": 11,
+          "posicion": 12,
           "equipo": "LUCECOR F.S.",
           "puntos": 0,
           "jugados": 1,
@@ -4493,7 +4511,7 @@
           ]
         },
         {
-          "posicion": 12,
+          "posicion": 13,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 0,
           "jugados": 1,
@@ -4509,24 +4527,8 @@
           ]
         },
         {
-          "posicion": 13,
-          "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
-          "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 0,
-          "golesContra": 2,
-          "racha": [
-            "P"
-          ]
-        },
-        {
           "posicion": 14,
-          "equipo": "C.D. UNION DEPORTIVA ESPERANZA 2019",
+          "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
           "puntos": 0,
           "jugados": 1,
           "jugadosCasa": 0,
