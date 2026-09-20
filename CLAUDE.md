@@ -149,6 +149,26 @@ Hay **tres escritores, y ninguno sabe de los otros**:
   npx tsc --noEmit && npm run lint && npm run build
   ```
 
+### Cambios peligrosos
+
+Hay cambios que compilan, pasan las tres suites y aun así rompen la web, porque
+lo que tocan no está en el código sino en **cómo se sirve**. Las pruebas corren
+contra funciones sueltas en el ordenador de quien programa; ninguna sabe si la
+web publicada deja escribir.
+
+Antes de subir, `node scripts/despliegue/riesgo.mjs` dice si el cambio toca uno
+de esos sitios: `next.config.ts`, `vercel.json`, middleware, `src/app/api/`,
+`public/sw.js`, el manifiesto, el almacén o el enlace del directo, y las
+dependencias. Si los toca:
+
+1. Se sube en un día sin partido, salvo que sea para arreglar algo roto.
+2. Al terminar el despliegue, `node scripts/despliegue/comprobar.mjs` contra la
+   web de verdad. Eso lo lanza solo el workflow **«Comprobar la web publicada»**
+   al llegar uno de esos archivos a `main`, y avisa por correo si falla.
+3. Lo que esa comprobación mira de verdad es que **una escritura del directo
+   llegue a la API desde los dos dominios**, con y sin `www`. Es lo que se
+   rompió el 20 de septiembre de 2026 y lo que ninguna otra prueba ve.
+
 - Lo que las pruebas no cubren (almacén, rutas de API) se reproduce en local con
   `npx next dev` y registros de mentira en `.next/cache/directo/`. Bórralos al
   terminar.

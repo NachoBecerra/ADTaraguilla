@@ -1,0 +1,51 @@
+name: Comprobar la web publicada
+
+# Solo cuando el cambio toca algo que puede romper la web sin que se note: el
+# dominio, las cabeceras, las rutas de la API, el almacén del directo, el
+# service worker o el manifiesto. Es la misma lista que avisa
+# `scripts/despliegue/riesgo.mjs`.
+#
+# Lo que comprueba de verdad es que **una escritura del directo llegue**, desde
+# el dominio de siempre y desde el de www. El 20 de septiembre de 2026 eso dejó
+# de funcionar por una redirección y no se enteró nadie hasta que un entrenador
+# llamó: había narrado el partido entero para nada.
+on:
+  push:
+    branches: [main]
+    paths:
+      - next.config.ts
+      - vercel.json
+      - src/middleware.ts
+      - src/app/api/**
+      - public/sw.js
+      - src/app/manifest.ts
+      - src/lib/privado.ts
+      - src/lib/directo/almacen.ts
+      - src/lib/directo/deposito.ts
+      - src/lib/directo/enlace.ts
+      - package.json
+      - package-lock.json
+      - .github/workflows/comprobar-despliegue.yml
+  # Y a mano, para poder comprobarlo cuando se quiera
+  workflow_dispatch:
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Espera a que Vercel publique este mismo commit y entonces comprueba.
+      # Sin la espera mediría la versión anterior y diría que todo está bien.
+      - name: Comprobar la web publicada
+        env:
+          SITIO_URL: https://ad-taraguilla.es
+          COMMIT_ESPERADO: ${{ github.sha }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          AVISO_CORREO_A: ${{ secrets.AVISO_CORREO_A }}
+          AVISO_CORREO_DE: ${{ secrets.AVISO_CORREO_DE }}
+        run: node scripts/despliegue/comprobar.mjs
