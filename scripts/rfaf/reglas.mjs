@@ -101,6 +101,36 @@ export function yaDeberiaTenerResultado(p, ahora = Date.now()) {
  * Se guarda con el partido para poder distinguir lo deducido de lo que se
  * copió del marcador cuando aún no sabíamos que estaba trucado.
  */
+/**
+ * ¿Merece un aviso al movil este cambio de hora?
+ *
+ * Solo si todavia sirve para algo: para llegar a tiempo al campo.
+ *
+ * El 20 de septiembre de 2026, con el partido del senior empezado a las 12:00,
+ * la RFAF cambio su hora a las 12:55 —la de comienzo real que apunta el
+ * arbitro en el acta— y a la gente le llego un aviso de "cambio de hora" a una
+ * hora que ya habia pasado, de un partido que se estaba jugando. Un aviso que
+ * llega tarde y ademas no es verdad es la manera mas rapida de que alguien
+ * apague los avisos del club.
+ *
+ * Asi que un horario que ya paso no se avisa, y uno que cambia cuando el
+ * partido ya habia empezado, tampoco: eso no es un cambio de convocatoria, es
+ * la RFAF anotando lo que ocurrio.
+ */
+export function avisaDelHorario(viejo, nuevo, ahora = Date.now()) {
+  if (!nuevo || nuevo.jugado || !nuevo.hora) return false;
+  if (viejo && viejo.hora === nuevo.hora) return false;
+
+  const saqueNuevo = saqueEnMs(nuevo.fecha, nuevo.hora);
+  if (saqueNuevo === null || saqueNuevo <= ahora) return false;
+
+  // Si ya deberia estar rodando la pelota, lo que ha cambiado no es la cita
+  const saqueViejo = viejo?.hora ? saqueEnMs(viejo.fecha ?? nuevo.fecha, viejo.hora) : null;
+  if (saqueViejo !== null && saqueViejo <= ahora) return false;
+
+  return true;
+}
+
 export const ORIGEN_TABLA = "clasificacion";
 
 /** Un partido se reconoce por quiénes lo juegan. */

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { site, redesActivas } from "@/data/site";
+import BotonInstalar from "@/components/BotonInstalar";
 import {
   IconoMenu,
   IconoCerrar,
@@ -80,6 +81,10 @@ export default function Cabecera() {
           </nav>
 
           <div className="flex items-center gap-1.5">
+            {/* Lo primero de la derecha, y no se esconde en ningún tamaño: la
+                web se usa desde el móvil y esto es lo que la pone ahí */}
+            <BotonInstalar />
+
             <div className="hidden items-center gap-1 sm:flex">
               {redesActivas.slice(0, 3).map((r) => {
                 const Icono = iconosRed[r.id];
@@ -169,7 +174,11 @@ export default function Cabecera() {
           ))}
         </nav>
 
-        <div className="flex items-end justify-between gap-4 px-5 pt-8">
+        <div className="px-5 pt-6" onClick={() => setAbierto(false)}>
+          <BotonInstalar />
+        </div>
+
+        <div className="flex items-end justify-between gap-4 px-5 pt-6">
           <div className="min-w-0">
             <p className="eyebrow mb-3">Síguenos</p>
             <div className="flex flex-wrap gap-2">

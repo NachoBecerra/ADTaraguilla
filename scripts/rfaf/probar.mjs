@@ -14,6 +14,7 @@ import { marcador } from "./html.mjs";
 import {
   ORIGEN_TABLA,
   atascoDeResultados,
+  avisaDelHorario,
   equiposAusentes,
   partidosCongelados,
   partidosDelCalendario,
@@ -464,6 +465,42 @@ comprobar(
   equiposAusentes([{ id: "juvenil", ausenteDesde: hace(2) }], ["juvenil"], MEDIODIA),
   { conservados: [], retirados: [] },
 );
+
+
+/* ------------------------------------- avisos de cambio de hora al movil */
+console.log("");
+console.log("--- Cambio de hora: solo si todavia sirve ---");
+{
+  const domingo = (hora) => ({ fecha: "2026-09-20", hora, jugado: false });
+  const ahora = (hora) => saqueEnMs("2026-09-20", hora);
+
+  comprobar(
+    "estrenar hora para un partido que viene: se avisa",
+    avisaDelHorario({ ...domingo(null) }, domingo("12:00"), ahora("09:00")),
+    true,
+  );
+  comprobar(
+    "adelantar o retrasar antes del saque: se avisa",
+    avisaDelHorario(domingo("12:00"), domingo("18:00"), ahora("09:00")),
+    true,
+  );
+  comprobar("la misma hora no es noticia", avisaDelHorario(domingo("12:00"), domingo("12:00"), ahora("09:00")), false);
+
+  /* El caso del 20-9-2026: con el partido ya empezado, la RFAF puso la hora de
+     comienzo real del acta y salio un aviso de cambio de hora a las 12:55 */
+  comprobar(
+    "una hora que ya paso no se avisa nunca",
+    avisaDelHorario(domingo("12:00"), domingo("12:55"), ahora("13:20")),
+    false,
+  );
+  comprobar(
+    "ni aunque la nueva hora sea posterior, si el partido ya habia empezado",
+    avisaDelHorario(domingo("12:00"), domingo("14:00"), ahora("12:30")),
+    false,
+  );
+  comprobar("un partido ya jugado no avisa de horarios", avisaDelHorario(domingo("12:00"), { ...domingo("12:55"), jugado: true }, ahora("09:00")), false);
+  comprobar("y sin hora no hay nada que avisar", avisaDelHorario(domingo("12:00"), domingo(null), ahora("09:00")), false);
+}
 
 console.log("");
 console.log(fallos === 0 ? "Todo correcto." : fallos + " comprobaciones fallan.");

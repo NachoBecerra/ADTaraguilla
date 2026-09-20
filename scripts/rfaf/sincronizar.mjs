@@ -24,6 +24,7 @@ import { mandarAvisos } from "./avisos.mjs";
 import { aSlug, bloquesPorTemporada } from "./html.mjs";
 import {
   ORIGEN_TABLA,
+  avisaDelHorario,
   clavePartido,
   partidosCongelados,
   partidosDelCalendario,
@@ -922,8 +923,9 @@ function novedadesDe(equipo, previo, nuevo) {
 
     if (p.jugado || !p.hora) continue;
 
-    // Estrenar hora y cambiarla se cuentan igual: lo que importa es la que hay
-    if (!viejo.hora || viejo.hora !== p.hora) {
+    // Estrenar hora y cambiarla se cuentan igual: lo que importa es la que hay,
+    // y que todavia sirva para llegar al campo
+    if (avisaDelHorario(viejo, p)) {
       const cuando = fechaCorta(p.fecha);
       avisos.push({
         equipo: equipo.id,
