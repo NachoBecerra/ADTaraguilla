@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { del } from "@vercel/blob";
 import { revalidatePath } from "next/cache";
 import { haySesion } from "@/lib/panel/sesion";
+import { anotar } from "@/lib/bitacora";
 import { commitear, leerArchivo } from "@/lib/panel/github";
 import { CARPETA } from "@/lib/panel/noticias";
 import {
@@ -240,16 +241,22 @@ export async function guardarNoticia(
       partes.push(`${huerfanas.length} ${huerfanas.length === 1 ? "quitada" : "quitadas"}`);
     }
 
-    return {
-      ok: true,
-      mensaje: partes.length > 0
-        ? `Guardada, con ${partes.join(" y ")}.`
-        : anterior
-          ? "Guardada."
-          : "Noticia publicada.",
-    };
+    return anotar(
+      { area: "noticias", accion: anterior ? "Noticia editada" : "Noticia publicada", detalle: titulo },
+      {
+        ok: true,
+        mensaje: partes.length > 0
+          ? `Guardada, con ${partes.join(" y ")}.`
+          : anterior
+            ? "Guardada."
+            : "Noticia publicada.",
+      },
+    );
   } catch (e) {
-    return { ok: false, mensaje: `No se ha podido guardar: ${(e as Error).message}` };
+    return anotar(
+      { area: "noticias", accion: anterior ? "Noticia editada" : "Noticia publicada", detalle: titulo },
+      { ok: false, mensaje: `No se ha podido guardar: ${(e as Error).message}` },
+    );
   }
 }
 
@@ -283,8 +290,14 @@ export async function borrarNoticia(
     revalidatePath("/panel/noticias");
     revalidatePath("/");
 
-    return { ok: true, mensaje: "Noticia eliminada." };
+    return anotar(
+      { area: "noticias", accion: "Noticia eliminada", detalle: archivo.split("/").pop() },
+      { ok: true, mensaje: "Noticia eliminada." },
+    );
   } catch (e) {
-    return { ok: false, mensaje: `No se ha podido eliminar: ${(e as Error).message}` };
+    return anotar(
+      { area: "noticias", accion: "Noticia eliminada", detalle: archivo.split("/").pop() },
+      { ok: false, mensaje: `No se ha podido eliminar: ${(e as Error).message}` },
+    );
   }
 }

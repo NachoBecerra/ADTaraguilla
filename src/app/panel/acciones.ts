@@ -7,6 +7,7 @@ import { claveCorrecta, abrirSesion, cerrarSesion } from "@/lib/panel/sesion";
 import { borrarJson, escribirJson, leerJson } from "@/lib/directo/deposito";
 import { bloqueoRestante, trasUnFallo, BLOQUEO_MS, MAX_FALLOS, type Intentos } from "@/lib/panel/bloqueo";
 import { avisarPorCorreo } from "@/lib/correo";
+import { apuntar } from "@/lib/bitacora";
 
 /**
  * De dónde llega el intento. Vercel pone la dirección real delante; en local
@@ -76,15 +77,24 @@ export async function entrar(_previo: string | null, datos: FormData) {
           "Si no ha sido nadie del club equivocándose, conviene cambiar la contraseña (CLAVE_PANEL en Vercel). Al cambiarla se cierran también todas las sesiones abiertas y los enlaces de retransmitir.",
         ].join("\n"),
       );
+      await apuntar({
+        area: "panel",
+        accion: "Acceso bloqueado por intentos fallidos",
+        detalle: `desde ${ip}`,
+        ok: false,
+        quien: "panel",
+      });
       return `Demasiados intentos fallidos. Vuelve a intentarlo dentro de ${minutos(BLOQUEO_MS)} minutos.`;
     }
 
+    await apuntar({ area: "panel", accion: "Contraseña fallida", ok: false, quien: "panel" });
     return "Contraseña incorrecta.";
   }
 
   // Quien entra bien no arrastra los fallos de antes
   if (previos) await borrarJson(ruta);
 
+  await apuntar({ area: "panel", accion: "Entrada al panel", ok: true, quien: "panel" });
   await abrirSesion();
   redirect("/panel");
 }

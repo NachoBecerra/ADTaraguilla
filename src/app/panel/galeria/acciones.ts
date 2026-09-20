@@ -3,6 +3,7 @@
 import { del } from "@vercel/blob";
 import { revalidatePath } from "next/cache";
 import { haySesion } from "@/lib/panel/sesion";
+import { anotar } from "@/lib/bitacora";
 import { commitear } from "@/lib/panel/github";
 import {
   RUTA_GALERIA,
@@ -110,12 +111,18 @@ export async function subirFotos(
       `Galería: ${titulo} (${fotos.length} ${fotos.length === 1 ? "foto" : "fotos"})`,
     );
 
-    return {
-      ok: true,
-      mensaje: `${fotos.length} ${fotos.length === 1 ? "foto subida" : "fotos subidas"}. La web se actualiza en un par de minutos.`,
-    };
+    return anotar(
+      { area: "galeria", accion: "Fotos subidas", detalle: `${titulo} (${fotos.length})` },
+      {
+        ok: true,
+        mensaje: `${fotos.length} ${fotos.length === 1 ? "foto subida" : "fotos subidas"}. La web se actualiza en un par de minutos.`,
+      },
+    );
   } catch (e) {
-    return { ok: false, mensaje: `No se ha podido guardar: ${(e as Error).message}` };
+    return anotar(
+      { area: "galeria", accion: "Fotos subidas", detalle: titulo },
+      { ok: false, mensaje: `No se ha podido guardar: ${(e as Error).message}` },
+    );
   }
 }
 
@@ -147,9 +154,15 @@ export async function guardarEntrada(
     if (fecha) entrada.fecha = fecha;
 
     await guardarGaleria(galeria, `Galería: cambios en «${titulo}»`);
-    return { ok: true, mensaje: "Guardado." };
+    return anotar(
+      { area: "galeria", accion: "Grupo de fotos editado", detalle: titulo },
+      { ok: true, mensaje: "Guardado." },
+    );
   } catch (e) {
-    return { ok: false, mensaje: `No se ha podido guardar: ${(e as Error).message}` };
+    return anotar(
+      { area: "galeria", accion: "Grupo de fotos editado", detalle: titulo },
+      { ok: false, mensaje: `No se ha podido guardar: ${(e as Error).message}` },
+    );
   }
 }
 
@@ -191,12 +204,18 @@ export async function anadirFotos(
       `Galería: ${tras.anadidas} ${tras.anadidas === 1 ? "foto añadida" : "fotos añadidas"} a «${entrada.titulo}»`,
     );
 
-    return {
-      ok: true,
-      mensaje: `${tras.anadidas} ${tras.anadidas === 1 ? "foto añadida" : "fotos añadidas"}.`,
-    };
+    return anotar(
+      { area: "galeria", accion: "Fotos añadidas", detalle: `${entrada.titulo} (${tras.anadidas})` },
+      {
+        ok: true,
+        mensaje: `${tras.anadidas} ${tras.anadidas === 1 ? "foto añadida" : "fotos añadidas"}.`,
+      },
+    );
   } catch (e) {
-    return { ok: false, mensaje: `No se ha podido guardar: ${(e as Error).message}` };
+    return anotar(
+      { area: "galeria", accion: "Fotos añadidas", detalle: id },
+      { ok: false, mensaje: `No se ha podido guardar: ${(e as Error).message}` },
+    );
   }
 }
 
@@ -225,9 +244,15 @@ export async function borrarFoto(
       `Galería: foto eliminada de «${entrada.titulo}»`,
       enRepo,
     );
-    return { ok: true, mensaje: "Foto eliminada." };
+    return anotar(
+      { area: "galeria", accion: "Foto eliminada", detalle: entrada.titulo },
+      { ok: true, mensaje: "Foto eliminada." },
+    );
   } catch (e) {
-    return { ok: false, mensaje: `No se ha podido eliminar: ${(e as Error).message}` };
+    return anotar(
+      { area: "galeria", accion: "Foto eliminada", detalle: id },
+      { ok: false, mensaje: `No se ha podido eliminar: ${(e as Error).message}` },
+    );
   }
 }
 
@@ -249,8 +274,14 @@ export async function borrarEntrada(
 
     const enRepo = await borrarArchivos(entrada.fotos);
     await guardarGaleria(galeria, `Galería: eliminada «${entrada.titulo}»`, enRepo);
-    return { ok: true, mensaje: `«${entrada.titulo}» eliminada.` };
+    return anotar(
+      { area: "galeria", accion: "Grupo de fotos eliminado", detalle: entrada.titulo },
+      { ok: true, mensaje: `«${entrada.titulo}» eliminada.` },
+    );
   } catch (e) {
-    return { ok: false, mensaje: `No se ha podido eliminar: ${(e as Error).message}` };
+    return anotar(
+      { area: "galeria", accion: "Grupo de fotos eliminado", detalle: id },
+      { ok: false, mensaje: `No se ha podido eliminar: ${(e as Error).message}` },
+    );
   }
 }

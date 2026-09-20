@@ -13,6 +13,7 @@ import { aplicarFotos, conIdUnico } from "../../src/lib/panel/fotosDeEntrada.ts"
 import { bloqueoRestante, trasUnFallo, MAX_FALLOS, BLOQUEO_MS, VENTANA_FALLOS_MS } from "../../src/lib/panel/bloqueo.ts";
 import { extractoDe, textoPlano, LARGO_EXTRACTO } from "../../src/lib/extracto.ts";
 import { entornoDe } from "../../src/lib/instalar.ts";
+import { mesDe, recortar, porDias } from "../../src/lib/bitacoraReglas.ts";
 import galeriaReal from "../../src/data/galeria.json" with { type: "json" };
 
 let fallos = 0;
@@ -261,5 +262,29 @@ console.log("--- Que cada grupo tenga su identificador ---");
 }
 
 console.log("");
+
+/* ------------------------------------------------- el historial del panel */
+{
+  console.log("");
+  const apunte = (ts, ok = true) => ({ ts, area: "panel", accion: "x", ok, quien: "panel" });
+
+  /* Medianoche en Madrid es las 22:00 del dia anterior en UTC: el archivo del
+     mes y el dia del historial se cuentan en hora de aqui, como todo lo demas */
+  comprobar("el mes se cuenta en hora espanola", mesDe(Date.parse("2026-09-30T23:30:00Z")), "2026-10");
+  comprobar("y no se adelanta al mes siguiente por la tarde", mesDe(Date.parse("2026-09-30T15:00:00Z")), "2026-09");
+
+  comprobar("por debajo del tope no se tira nada", recortar([apunte(1), apunte(2)], 5).length, 2);
+  const recortado = recortar([apunte(1), apunte(2), apunte(3)], 2);
+  comprobar("pasado el tope se van los mas viejos", recortado.map((a) => a.ts), [2, 3]);
+
+  const dias = porDias([
+    apunte(Date.parse("2026-09-20T08:00:00Z")),
+    apunte(Date.parse("2026-09-20T10:00:00Z")),
+    apunte(Date.parse("2026-09-19T10:00:00Z")),
+  ]);
+  comprobar("se agrupa por dias, del mas nuevo al mas viejo", dias.map((d) => d.dia), ["2026-09-20", "2026-09-19"]);
+  comprobar("y dentro del dia, lo ultimo primero", dias[0].apuntes[0].ts, Date.parse("2026-09-20T10:00:00Z"));
+}
+
 console.log(fallos === 0 ? "Todo correcto." : fallos + " comprobaciones fallan.");
 process.exit(fallos === 0 ? 0 : 1);

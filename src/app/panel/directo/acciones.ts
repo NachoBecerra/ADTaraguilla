@@ -1,6 +1,7 @@
 "use server";
 
 import { haySesion } from "@/lib/panel/sesion";
+import { anotar } from "@/lib/bitacora";
 import {
   abrirRegistro,
   borrarRegistro,
@@ -88,11 +89,14 @@ export async function empezarRetransmision(id: string): Promise<Resultado> {
     return { ok: false, mensaje: "Falta CLAVE_PANEL en el servidor." };
   }
 
-  return {
-    ok: true,
-    mensaje: "Retransmisión abierta.",
-    ruta: `/directo/${id}/escribir?t=${encodeURIComponent(token)}`,
-  };
+  return anotar(
+    { area: "directo", accion: "Retransmisión abierta", detalle: id },
+    {
+      ok: true,
+      mensaje: "Retransmisión abierta.",
+      ruta: `/directo/${id}/escribir?t=${encodeURIComponent(token)}`,
+    },
+  );
 }
 
 /**
@@ -128,11 +132,14 @@ export async function reiniciarRetransmision(id: string): Promise<Resultado> {
     return { ok: false, mensaje: "Falta CLAVE_PANEL en el servidor." };
   }
 
-  return {
-    ok: true,
-    mensaje: "Retransmisión reiniciada.",
-    ruta: `/directo/${id}/escribir?t=${encodeURIComponent(token)}`,
-  };
+  return anotar(
+    { area: "directo", accion: "Retransmisión reiniciada (se borró lo apuntado)", detalle: id },
+    {
+      ok: true,
+      mensaje: "Retransmisión reiniciada.",
+      ruta: `/directo/${id}/escribir?t=${encodeURIComponent(token)}`,
+    },
+  );
 }
 
 /**
@@ -171,11 +178,14 @@ export async function renovarEnlace(id: string): Promise<Resultado> {
     return { ok: false, mensaje: "Falta CLAVE_PANEL en el servidor." };
   }
 
-  return {
-    ok: true,
-    mensaje: "Enlace nuevo generado. El anterior ya no vale.",
-    ruta: `/directo/${id}/escribir?t=${encodeURIComponent(token)}`,
-  };
+  return anotar(
+    { area: "directo", accion: "Enlace privado renovado", detalle: id },
+    {
+      ok: true,
+      mensaje: "Enlace nuevo generado. El anterior ya no vale.",
+      ruta: `/directo/${id}/escribir?t=${encodeURIComponent(token)}`,
+    },
+  );
 }
 
 /**
@@ -206,10 +216,13 @@ export async function anunciarRetransmision(
     };
   }
 
-  return {
-    ok: true,
-    mensaje: anunciado ? "Anunciado en la web." : "Anuncio retirado.",
-  };
+  return anotar(
+    { area: "directo", accion: anunciado ? "Directo anunciado en la web" : "Anuncio de directo retirado", detalle: id },
+    {
+      ok: true,
+      mensaje: anunciado ? "Anunciado en la web." : "Anuncio retirado.",
+    },
+  );
 }
 
 /* ------------------------------------------------------- partidos amistosos */
@@ -302,7 +315,10 @@ export async function crearAmistoso(datos: DatosAmistoso): Promise<Resultado> {
     return { ok: false, mensaje: "No se ha podido crear el partido." };
   }
 
-  return { ok: true, mensaje: "Amistoso creado." };
+  return anotar(
+    { area: "directo", accion: "Amistoso creado", detalle: `${equipo.nombre} - ${rival} (${datos.fecha})` },
+    { ok: true, mensaje: "Amistoso creado." },
+  );
 }
 
 /* ------------------------------------------------------ librería de escudos */
@@ -348,7 +364,10 @@ export async function guardarEscudo(
     return { ok: false, mensaje: "Ese escudo no es de un sitio nuestro.", propios: await escudosPropios() };
   }
 
-  return { ok: true, mensaje: "Escudo guardado.", propios: await anadirEscudoPropio(limpio, url) };
+  return anotar(
+    { area: "directo", accion: "Escudo añadido a la librería", detalle: limpio },
+    { ok: true, mensaje: "Escudo guardado.", propios: await anadirEscudoPropio(limpio, url) },
+  );
 }
 
 /**
@@ -376,7 +395,10 @@ export async function quitarEscudo(
        dejarlo en la lista que dejar un archivo huérfano en el almacén */
   }
 
-  return { ok: true, mensaje: "Escudo quitado.", propios: escudos };
+  return anotar(
+    { area: "directo", accion: "Escudo quitado de la librería", detalle: borrado.nombre },
+    { ok: true, mensaje: "Escudo quitado.", propios: escudos },
+  );
 }
 
 /**
@@ -398,7 +420,10 @@ export async function eliminarAmistoso(id: string): Promise<Resultado> {
   }
 
   await borrarRegistro(id);
-  return { ok: true, mensaje: "Amistoso eliminado." };
+  return anotar(
+    { area: "directo", accion: "Amistoso eliminado", detalle: id },
+    { ok: true, mensaje: "Amistoso eliminado." },
+  );
 }
 
 /**

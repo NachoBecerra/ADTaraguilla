@@ -121,6 +121,15 @@ Hay **tres escritores, y ninguno sabe de los otros**:
     acepte nada (`src/lib/directo/salud.ts`). Un contador pequeño de "3 sin
     enviar" no lo ve nadie: ya existía el día del partido perdido.
 
+17. **Lo que toca los datos, queda apuntado.** Publicar, borrar, abrir un
+    directo, entrar al panel y lo que falla al intentarlo van a la bitácora
+    (`src/lib/bitacora.ts`, un archivo por mes en el almacén privado) y se leen
+    en `/panel/logs`. El bot lo manda por `/api/bitacora` con el secreto de los
+    avisos. Apuntar no puede tumbar lo que se estaba haciendo: si falla, se
+    queda en el log del servidor. Una acción nueva del panel se envuelve con
+    `anotar(...)`, que saca el `ok` del propio resultado y así no apunta como
+    bueno lo que salió mal.
+
 ## Lo que no es de fiar
 
 - **La RFAF**: calendarios y fichas recortados, marcadores trucados, resultados

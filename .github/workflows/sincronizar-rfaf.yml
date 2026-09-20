@@ -159,6 +159,26 @@ jobs:
           done
           exit 1
 
+      - name: Apuntar en el historial del club
+        # Para que en /panel/logs se vea lo que publica el bot, no solo lo que
+        # hace el club. Nunca hace fallar la pasada.
+        if: always()
+        continue-on-error: true
+        env:
+          AVISOS_SECRETO: ${{ secrets.AVISOS_SECRETO }}
+          SITIO_URL: https://ad-taraguilla.es
+        run: |
+          avisos=0
+          if [ -f avisos-pendientes.json ]; then
+            avisos="$(grep -o '"titulo"' avisos-pendientes.json | wc -l | tr -d ' ')"
+          fi
+
+          if [ "${{ job.status }}" = "failure" ]; then
+            node scripts/rfaf/apuntar.mjs --fallo "La sincronización ha fallado" "Mira la pasada en GitHub Actions"
+          elif [ "${{ steps.publicar.outputs.publicado }}" = "true" ]; then
+            node scripts/rfaf/apuntar.mjs "Datos publicados desde la RFAF" "$avisos novedad(es) para avisar"
+          fi
+
       - name: Mandar avisos
         # Solo con los datos ya publicados. Antes salían antes del push: si este
         # fallaba, se avisaba de un resultado que no estaba en la web, y la
