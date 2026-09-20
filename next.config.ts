@@ -21,6 +21,18 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
+      /*
+       * Con y sin "www" son dos direcciones distintas para los buscadores, y
+       * las dos servían la web entera. La canónica ya apuntaba a la de sin
+       * www, pero con la redirección no hay ni que fiarse de eso: una sola
+       * dirección, y todo lo que se enlace suma en el mismo sitio.
+       */
+      {
+        source: "/:ruta*",
+        has: [{ type: "host", value: "www.ad-taraguilla.es" }],
+        destination: "https://ad-taraguilla.es/:ruta*",
+        permanent: true,
+      },
       { source: "/palmares", destination: "/historico", permanent: true },
       // Hubo un panel de Decap aquí; quien tenga el enlace guardado va al bueno
       { source: "/admin", destination: "/panel", permanent: true },

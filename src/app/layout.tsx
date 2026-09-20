@@ -34,6 +34,14 @@ export const metadata: Metadata = {
   },
   description: site.descripcion,
   applicationName: site.nombre,
+  /*
+   * El código que da Google Search Console para demostrar que la web es
+   * nuestra. Se pone como variable en Vercel y se despliega; sin ella no pasa
+   * nada, solo que hay que verificar por DNS.
+   */
+  verification: process.env.VERIFICACION_GOOGLE
+    ? { google: process.env.VERIFICACION_GOOGLE }
+    : undefined,
   // Sin canónico, una misma página accesible por varias direcciones compite
   // consigo misma en los buscadores
   alternates: { canonical: "/" },
