@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-20T12:46:30.123Z",
+  "actualizado": "2026-09-20T13:19:13.772Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -406,7 +406,7 @@
               "codLocal": "12785604",
               "codVisitante": "303615",
               "fecha": "2026-09-20",
-              "hora": "13:29",
+              "hora": "12:30",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -414,7 +414,7 @@
               "campo": "LA GRANJA CENTRO DE DEPORTES",
               "superficie": "Hierba Artificial",
               "codCampo": "3298",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662397&cod_acta=2662397",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662397&cod_acta=2662397",
               "jugado": false
             },
             {
@@ -5468,16 +5468,16 @@
       "clasificacion": [
         {
           "posicion": 1,
-          "equipo": "C.D. GUADALCACIN",
+          "equipo": "XEREZ DEPORTIVO F.C.",
           "puntos": 9,
           "jugados": 3,
-          "jugadosCasa": 1,
-          "jugadosFuera": 2,
+          "jugadosCasa": 2,
+          "jugadosFuera": 1,
           "ganados": 3,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 7,
-          "golesContra": 0,
+          "golesFavor": 8,
+          "golesContra": 4,
           "racha": [
             "G",
             "G",
@@ -5504,6 +5504,24 @@
         },
         {
           "posicion": 3,
+          "equipo": "C.D. GUADALCACIN",
+          "puntos": 6,
+          "jugados": 3,
+          "jugadosCasa": 1,
+          "jugadosFuera": 2,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 7,
+          "golesContra": 3,
+          "racha": [
+            "G",
+            "G",
+            "P"
+          ]
+        },
+        {
+          "posicion": 4,
           "equipo": "JEREZ INDUSTRIAL C.F.",
           "puntos": 6,
           "jugados": 3,
@@ -5521,7 +5539,7 @@
           ]
         },
         {
-          "posicion": 4,
+          "posicion": 5,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 6,
           "jugados": 3,
@@ -5532,24 +5550,6 @@
           "perdidos": 1,
           "golesFavor": 6,
           "golesContra": 5,
-          "racha": [
-            "G",
-            "G",
-            "P"
-          ]
-        },
-        {
-          "posicion": 5,
-          "equipo": "XEREZ DEPORTIVO F.C.",
-          "puntos": 6,
-          "jugados": 3,
-          "jugadosCasa": 2,
-          "jugadosFuera": 1,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 5,
-          "golesContra": 4,
           "racha": [
             "G",
             "G",
