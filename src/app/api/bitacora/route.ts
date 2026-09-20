@@ -1,4 +1,5 @@
-import { apuntar } from "@/lib/bitacora";
+import { apuntar, leerBitacora } from "@/lib/bitacora";
+import { haySesion } from "@/lib/panel/sesion";
 
 /**
  * Por donde el bot de la RFAF apunta lo suyo en el historial.
@@ -14,6 +15,25 @@ import { apuntar } from "@/lib/bitacora";
  */
 
 export const dynamic = "force-dynamic";
+
+/**
+ * El historial, para la pantalla que lo enseña.
+ *
+ * Se pide desde el navegador y no se pinta en el servidor a propósito: la
+ * pantalla solo lo trae cuando ha comprobado que no está dentro de la
+ * aplicación instalada, y eso solo se sabe ahí. Con la contraseña del panel,
+ * como todo lo demás del panel.
+ */
+export async function GET(): Promise<Response> {
+  if (!(await haySesion())) {
+    return Response.json({ error: "No autorizado" }, { status: 401 });
+  }
+
+  return Response.json(
+    { apuntes: await leerBitacora() },
+    { headers: { "Cache-Control": "no-store" } },
+  );
+}
 
 const LARGO_MAXIMO = 300;
 

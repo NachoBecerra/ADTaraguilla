@@ -35,11 +35,6 @@ export default async function Panel() {
       titulo: "Noticias",
       texto: `${noticias} ${noticias === 1 ? "noticia" : "noticias"} publicadas.`,
     },
-    {
-      href: "/panel/logs",
-      titulo: "Historial",
-      texto: "Qué se ha publicado, borrado o retransmitido, y qué falló al intentarlo.",
-    },
   ];
 
   return (
