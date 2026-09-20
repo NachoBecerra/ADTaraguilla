@@ -7,15 +7,15 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-19T21:18:28.127Z",
+  "actualizado": "2026-09-20T07:22:29.736Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
       "nombre": "2ª ANDALUZA ALEVIN (CADIZ)",
       "categoria": "2ª ANDALUZA ALEVIN",
       "grupo": "GRUPO UNICO",
-      "puntos": 0,
-      "posicion": 4,
+      "puntos": 1,
+      "posicion": 8,
       "codGrupo": "48894181",
       "escudosRecogidos": true,
       "codCompeticion": "48893775",
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-19",
           "partidos": [
+            {
+              "local": "A.D. TARAGUILLA",
+              "visitante": "MONITORES FUTBOL DE ALGECIRAS",
+              "codLocal": "307521",
+              "codVisitante": "5847346",
+              "fecha": "2026-09-19",
+              "hora": "16:30",
+              "golesLocal": 1,
+              "golesVisitante": 1,
+              "origen": "clasificacion",
+              "localidad": "San Roque",
+              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3236",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649942&cod_acta=2649942",
+              "jugado": true
+            },
             {
               "local": "C.D. SAN FERNANDO 1940",
               "visitante": "C.D. LA SALLE",
@@ -96,23 +113,6 @@
               "codCampo": "2069065",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649944&cod_acta=2649944",
               "jugado": false
-            },
-            {
-              "local": "A.D. TARAGUILLA",
-              "visitante": "MONITORES FUTBOL DE ALGECIRAS",
-              "codLocal": "307521",
-              "codVisitante": "5847346",
-              "fecha": "2026-09-19",
-              "hora": "16:30",
-              "golesLocal": 1,
-              "golesVisitante": 1,
-              "origen": "clasificacion",
-              "localidad": "San Roque",
-              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649942&cod_acta=2649942",
-              "jugado": true
             },
             {
               "local": "A.D. LOS BURREÑOS",
@@ -258,23 +258,6 @@
               "jugado": false
             },
             {
-              "local": "C.D. AD PUEBLO NUEVO LA GRANJA",
-              "visitante": "ATLETICO ZABAL",
-              "codLocal": "329822",
-              "codVisitante": "326326",
-              "fecha": "2026-09-26",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Jerez De La Frontera",
-              "campo": "LA GRANJA CENTRO DE DEPORTES",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2019270",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "C.F. SAN JOSE OBRERO",
               "visitante": "ARCOS C.F.",
               "codLocal": "303122",
@@ -305,6 +288,23 @@
               "campo": "PACO GALLEGO",
               "superficie": "Hierba Artificial",
               "codCampo": "3095",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "C.D. AD PUEBLO NUEVO LA GRANJA",
+              "visitante": "ATLETICO ZABAL",
+              "codLocal": "329822",
+              "codVisitante": "326326",
+              "fecha": "2026-09-26",
+              "hora": null,
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Jerez De La Frontera",
+              "campo": "LA GRANJA CENTRO DE DEPORTES",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2019270",
               "urlActa": null,
               "jugado": false
             }
