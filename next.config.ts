@@ -22,17 +22,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       /*
-       * Con y sin "www" son dos direcciones distintas para los buscadores, y
-       * las dos servían la web entera. La canónica ya apuntaba a la de sin
-       * www, pero con la redirección no hay ni que fiarse de eso: una sola
-       * dirección, y todo lo que se enlace suma en el mismo sitio.
+       * NO redirigir de www al dominio pelado (ni al revés).
+       *
+       * Se puso el 19 de septiembre de 2026 por los buscadores y tumbó la
+       * retransmisión del senior al día siguiente: quien narraba tenía la
+       * botonera abierta en www, sus envíos salían a www/api, la redirección
+       * los mandaba al otro dominio y el navegador los bloqueaba por ser otro
+       * origen. Noventa minutos apuntando para nada y sin ningún error a la
+       * vista. Para los buscadores basta la etiqueta canónica, que ya apunta
+       * al dominio bueno desde todas las páginas.
        */
-      {
-        source: "/:ruta*",
-        has: [{ type: "host", value: "www.ad-taraguilla.es" }],
-        destination: "https://ad-taraguilla.es/:ruta*",
-        permanent: true,
-      },
       { source: "/palmares", destination: "/historico", permanent: true },
       // Hubo un panel de Decap aquí; quien tenga el enlace guardado va al bueno
       { source: "/admin", destination: "/panel", permanent: true },

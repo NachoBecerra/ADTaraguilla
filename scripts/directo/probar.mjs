@@ -19,6 +19,7 @@ import { minutosPorParte } from "../../src/lib/directo/reglamento.ts";
 import { diasAnunciables, diasDeLaVentana, idsDeLaVentana } from "../../src/lib/directo/ventana.ts";
 import { createHmac } from "node:crypto";
 import { seVeEnElPanel, yaNoSeJuega } from "../../src/lib/directo/panel.ts";
+import { escrituraAtascada, sinWww, MARGEN_ATASCO_MS } from "../../src/lib/directo/salud.ts";
 
 /* La firma sale de la contrasena del club; sin ella no hay enlace posible */
 process.env.CLAVE_PANEL = process.env.CLAVE_PANEL ?? "clave-de-prueba";
@@ -591,6 +592,33 @@ console.log("--- Las cuentas del partido ---");
     { id: id(), ts: min(3), tipo: "texto", mensaje: "Hace frio" },
   ];
   comprobar("un comentario no es una estadistica", hayAlgoQueContar(plegar(eventos, 45).linea), false);
+}
+
+
+/* ------------------------------------- que no se pierda un partido entero */
+console.log("");
+console.log("--- Avisar cuando lo apuntado no llega a la web ---");
+{
+  const t0 = 1_700_000_000_000;
+
+  comprobar("con todo guardado no se alarma a nadie", escrituraAtascada(0, t0, t0 + 10 * 60_000), false);
+  comprobar("un tropiezo corto de cobertura tampoco", escrituraAtascada(3, t0, t0 + 20_000), false);
+
+  /* El 20-9-2026 se narró el partido entero y no se guardó nada: el aviso de
+     "3 sin enviar" era una línea pequeña y no lo vio nadie */
+  comprobar("pasado el margen, se avisa", escrituraAtascada(3, t0, t0 + MARGEN_ATASCO_MS), true);
+  comprobar("y se sigue avisando mientras dure", escrituraAtascada(29, t0, t0 + 90 * 60_000), true);
+  comprobar("justo en el borde, todavia no", escrituraAtascada(1, t0, t0 + MARGEN_ATASCO_MS - 1), false);
+
+  /* La otra mitad del mismo fallo: la botonera estaba abierta en www y desde
+     ahi los envios salian a otro dominio */
+  comprobar(
+    "se reconoce la direccion con www",
+    sinWww("https://www.ad-taraguilla.es/directo/primer-equipo-2026-09-20/escribir?t=1.2.3"),
+    "https://ad-taraguilla.es/directo/primer-equipo-2026-09-20/escribir?t=1.2.3",
+  );
+  comprobar("la direccion buena no se toca", sinWww("https://ad-taraguilla.es/directo/x/escribir"), null);
+  comprobar("ni en local", sinWww("http://localhost:3000/directo/x/escribir"), null);
 }
 
 console.log(fallos === 0 ? "\nTodo correcto." : `\n${fallos} comprobaciones fallan.`);

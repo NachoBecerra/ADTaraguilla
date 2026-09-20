@@ -106,6 +106,21 @@ Hay **tres escritores, y ninguno sabe de los otros**:
     escudo dentro de su disco; se rellena con `node scripts/rfaf/medirEscudos.mjs`
     cuando aparece un rival nuevo.
 
+15. **El dominio no se toca.** La web responde con y sin `www`, y **ninguna
+    redirección puede llevar de uno a otro**: quien narra desde el campo puede
+    tener la botonera abierta en cualquiera de los dos, y al redirigir su envío
+    a otro dominio el navegador lo bloquea por CORS —preflight `OPTIONS` sin
+    respuesta válida y ni un `POST`—. El 20 de septiembre de 2026 se narró el
+    partido entero del senior y no se guardó **ni un evento**: la pantalla de
+    quien apuntaba lo enseñaba todo, porque la cola local reintenta en
+    silencio. Para los buscadores basta la etiqueta canónica. Si algún día hace
+    falta tocarlo, `/api/` queda fuera de la redirección, y se prueba
+    **escribiendo un evento desde el dominio con www**.
+16. **Lo que no se guarda, se dice a gritos.** La botonera avisa en rojo y a
+    media pantalla cuando lleva más de `MARGEN_ATASCO_MS` sin que el servidor
+    acepte nada (`src/lib/directo/salud.ts`). Un contador pequeño de "3 sin
+    enviar" no lo ve nadie: ya existía el día del partido perdido.
+
 ## Lo que no es de fiar
 
 - **La RFAF**: calendarios y fichas recortados, marcadores trucados, resultados

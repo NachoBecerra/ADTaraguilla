@@ -12,6 +12,7 @@ import {
   type Lado,
 } from "@/lib/directo/modelo";
 import type { Registro } from "@/lib/directo/almacen";
+import { escrituraAtascada, sinWww } from "@/lib/directo/salud";
 import CampoQueCrece from "@/components/CampoQueCrece";
 import Cronologia from "@/components/Cronologia";
 import { olvidarMando, recordarMando } from "@/components/VolverAlDirecto";
@@ -202,6 +203,10 @@ const BOTON_JUGADA =
   " text-center font-display text-[13px] font-bold uppercase leading-[1.15]" +
   " tracking-wide transition-transform active:scale-[.97] disabled:opacity-40";
 
+/** Nada que vigilar: la dirección de la página no cambia sola. */
+const sinSuscripcion = () => () => {};
+const enlaceSinWww = () => sinWww(window.location.href);
+
 export default function Botonera({
   inicial,
   token,
@@ -218,6 +223,8 @@ export default function Botonera({
   const [pendientes, setPendientes] = useState<Evento[]>([]);
   const [texto, setTexto] = useState("");
   const [aviso, setAviso] = useState<string | null>(null);
+  /* Cuándo aceptó el servidor lo último. Al abrir, cuenta como recién guardado */
+  const [ultimoGuardado, setUltimoGuardado] = useState(() => Date.now());
   /* Para que el reloj avance solo entre pulsación y pulsación */
   const [ahora, setAhora] = useState(() => Date.now());
 
@@ -432,6 +439,7 @@ export default function Botonera({
       setConfirmados(registro.eventos);
       fijarCola(cola.current.filter((e) => !guardados.has(e.id)));
       setAviso(null);
+      setUltimoGuardado(Date.now());
     } catch {
       // Sin cobertura: la cola se queda donde está y el reintento la recoge
     } finally {
@@ -541,6 +549,17 @@ export default function Botonera({
   const sordo = bloqueado || cierre !== null;
   const sinMandar = pendientes.length;
 
+  /*
+   * Lo apuntado no llega a la web. Ocupa media pantalla a propósito: el aviso
+   * pequeño de "3 sin enviar" ya existía el día que se perdió un partido
+   * entero, y no lo vio nadie.
+   */
+  const atascado = escrituraAtascada(sinMandar, ultimoGuardado, ahora);
+  const segundosAtascado = Math.round((ahora - ultimoGuardado) / 1000);
+  /* Abierta en www: el envío puede acabar bloqueado sin decir nada. Como todo
+     lo que solo sabe el navegador, en el servidor se pinta vacío */
+  const enlaceBueno = useSyncExternalStore(sinSuscripcion, enlaceSinWww, () => null);
+
   /* En la última parte, cerrarla ES terminar el partido */
   const ultimaParte = estado.parte >= PARTES;
 
@@ -632,6 +651,36 @@ export default function Botonera({
               Recargar
             </button>
           ) : null}
+        </div>
+      ) : null}
+
+      {enlaceBueno ? (
+        <div role="alert" className="mt-3 rounded-xl border-2 border-roja-linea bg-roja p-4">
+          <p className="title text-lg leading-tight text-roja-tinta">
+            Abre esta pantalla con el enlace bueno
+          </p>
+          <p className="mt-1.5 text-sm leading-snug text-roja-tinta">
+            La has abierto con «www» delante. Así, lo que apuntes puede no llegar a
+            publicarse. Toca aquí para seguir en la dirección buena.
+          </p>
+          <a href={enlaceBueno} className="btn btn-primary mt-3 w-full py-3 text-sm">
+            Ir al enlace bueno
+          </a>
+        </div>
+      ) : null}
+
+      {atascado ? (
+        <div role="alert" className="mt-3 rounded-xl border-2 border-roja-linea bg-roja p-4">
+          <p className="title text-lg leading-tight text-roja-tinta">No se está guardando</p>
+          <p className="mt-1.5 text-sm leading-snug text-roja-tinta">
+            Llevas {sinMandar} {sinMandar === 1 ? "cosa apuntada" : "cosas apuntadas"} que no
+            llegan a la web ({segundosAtascado} segundos). En la web del club no se está
+            viendo nada de esto.
+          </p>
+          <p className="mt-1.5 text-sm leading-snug text-roja-tinta">
+            Mira si tienes cobertura o datos. No hace falta que vuelvas a pulsar nada: en
+            cuanto haya conexión se manda solo. Si sigue así, avisa al club.
+          </p>
         </div>
       ) : null}
 
@@ -855,7 +904,7 @@ export default function Botonera({
       {/* ----------------------------------------------------- la cronología */}
       <div className="mt-5 flex items-center justify-between">
         <h2 className="title text-xl text-tinta">Lo que llevamos</h2>
-        <span className="text-xs text-mute">
+        <span className={`text-xs font-bold ${atascado ? "text-roja-tinta" : "text-mute"}`}>
           {sinMandar > 0 ? `${sinMandar} sin enviar` : "Todo guardado"}
         </span>
       </div>
