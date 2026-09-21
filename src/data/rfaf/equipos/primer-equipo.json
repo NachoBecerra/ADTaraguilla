@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-21T13:22:51.446Z",
+  "actualizado": "2026-09-21T15:20:41.400Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-06",
           "partidos": [
+            {
+              "local": "TREBUJENA C.F.",
+              "visitante": "U.D. LOS BARRIOS",
+              "codLocal": "2064845",
+              "codVisitante": "308015",
+              "fecha": "2026-09-06",
+              "hora": "19:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Trebujena",
+              "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3011",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662386&cod_acta=2662386",
+              "jugado": false
+            },
             {
               "local": "CHICLANA C.F.",
               "visitante": "CHICLANA IND. C.F.",
@@ -146,23 +163,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3439",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662379&cod_acta=2662379",
-              "jugado": false
-            },
-            {
-              "local": "TREBUJENA C.F.",
-              "visitante": "U.D. LOS BARRIOS",
-              "codLocal": "2064845",
-              "codVisitante": "308015",
-              "fecha": "2026-09-06",
-              "hora": "19:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Trebujena",
-              "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3011",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662386&cod_acta=2662386",
               "jugado": false
             },
             {
