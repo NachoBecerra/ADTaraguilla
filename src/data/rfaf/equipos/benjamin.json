@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-21T19:18:44.838Z",
+  "actualizado": "2026-09-21T21:19:46.509Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -350,23 +350,6 @@
               "jugado": false
             },
             {
-              "local": "A.D. MARIANISTAS C.D.",
-              "visitante": "C.D. AD PUEBLO NUEVO LA GRANJA",
-              "codLocal": "343218",
-              "codVisitante": "329826",
-              "fecha": "2026-09-26",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Jerez De La Frontera",
-              "campo": "SANTA FE",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3051",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "A.D. TARAGUILLA",
               "visitante": "C.D. SALESIANOS ALGECIRAS",
               "codLocal": "307530",
@@ -384,19 +367,19 @@
               "jugado": false
             },
             {
-              "local": "C.D. ISLA DE LEON FUTBOL BASE",
-              "visitante": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
-              "codLocal": "331319",
-              "codVisitante": "344026",
+              "local": "A.D. MARIANISTAS C.D.",
+              "visitante": "C.D. AD PUEBLO NUEVO LA GRANJA",
+              "codLocal": "343218",
+              "codVisitante": "329826",
               "fecha": "2026-09-26",
-              "hora": "17:30",
+              "hora": "11:30",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
-              "localidad": "San Fernando",
-              "campo": "Bahia Sur ANEXO",
+              "localidad": "Jerez De La Frontera",
+              "campo": "SANTA FE",
               "superficie": "Hierba Artificial",
-              "codCampo": "19722540",
+              "codCampo": "3051",
               "urlActa": null,
               "jugado": false
             },
@@ -448,6 +431,23 @@
               "campo": "VIRGEN DEL CARMEN (LA LINEA)",
               "superficie": "Hierba Artificial",
               "codCampo": "2069065",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "C.D. ISLA DE LEON FUTBOL BASE",
+              "visitante": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
+              "codLocal": "331319",
+              "codVisitante": "344026",
+              "fecha": "2026-09-26",
+              "hora": "17:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Fernando",
+              "campo": "Bahia Sur ANEXO",
+              "superficie": "Hierba Artificial",
+              "codCampo": "19722540",
               "urlActa": null,
               "jugado": false
             }
