@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-20T20:19:31.803Z",
+  "actualizado": "2026-09-21T07:34:02.483Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -15,7 +15,7 @@
       "categoria": "1ª ANDALUZA SENIOR",
       "grupo": "UNICO",
       "puntos": 6,
-      "posicion": 2,
+      "posicion": 6,
       "codGrupo": "48680165",
       "escudosRecogidos": true,
       "codCompeticion": "48680130",
@@ -350,23 +350,6 @@
           "fecha": "2026-09-20",
           "partidos": [
             {
-              "local": "JEREZ INDUSTRIAL C.F.",
-              "visitante": "JUVENTUD SANLUQUEÑA A.D.",
-              "codLocal": "300915",
-              "codVisitante": "339215",
-              "fecha": "2026-09-20",
-              "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": null,
-              "campo": "Jerez De La Frontera -Municipal Pedro S. Garrido",
-              "superficie": "Hierba Natural",
-              "codCampo": "3009",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662400&cod_acta=2662400",
-              "jugado": false
-            },
-            {
               "local": "CHICLANA C.F.",
               "visitante": "C.D. SAN ROQUE",
               "codLocal": "301516",
@@ -381,6 +364,40 @@
               "superficie": "Hierba Natural",
               "codCampo": "2002086",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662401&cod_acta=2662401",
+              "jugado": false
+            },
+            {
+              "local": "BARBATE C.F.",
+              "visitante": "C.D. EL TORNO 2009",
+              "codLocal": "308515",
+              "codVisitante": "343715",
+              "fecha": "2026-09-20",
+              "hora": "19:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Barbate",
+              "campo": "Barbate Nuevo Estadio Municipal",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3085",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662396&cod_acta=2662396",
+              "jugado": false
+            },
+            {
+              "local": "JEREZ INDUSTRIAL C.F.",
+              "visitante": "JUVENTUD SANLUQUEÑA A.D.",
+              "codLocal": "300915",
+              "codVisitante": "339215",
+              "fecha": "2026-09-20",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": null,
+              "campo": "Jerez De La Frontera -Municipal Pedro S. Garrido",
+              "superficie": "Hierba Natural",
+              "codCampo": "3009",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662400&cod_acta=2662400",
               "jugado": false
             },
             {
@@ -466,23 +483,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3011",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662404&cod_acta=2662404",
-              "jugado": false
-            },
-            {
-              "local": "BARBATE C.F.",
-              "visitante": "C.D. EL TORNO 2009",
-              "codLocal": "308515",
-              "codVisitante": "343715",
-              "fecha": "2026-09-20",
-              "hora": "19:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Barbate",
-              "campo": "Barbate Nuevo Estadio Municipal",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3085",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662396&cod_acta=2662396",
               "jugado": false
             },
             {
