@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-21T09:30:40.143Z",
+  "actualizado": "2026-09-21T11:21:13.193Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -173,6 +173,23 @@
           "fecha": "2026-09-20",
           "partidos": [
             {
+              "local": "C.D. ESTRELLA PORTUENSE F.C.",
+              "visitante": "C.D.C. NUEVO MOLINO CSIF",
+              "codLocal": "2064077",
+              "codVisitante": "623017",
+              "fecha": "2026-09-19",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Puerto De Santa María (El)",
+              "campo": "EL JUNCAL CAMPO MPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3611",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651391&cod_acta=2651391",
+              "jugado": false
+            },
+            {
               "local": "JUVENTUD DVA. GINES",
               "visitante": "SEVILLA F.C., S.A.D.",
               "codLocal": "2071870",
@@ -290,23 +307,6 @@
               "codCampo": "3236",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651388&cod_acta=2651388",
               "jugado": true
-            },
-            {
-              "local": "C.D. ESTRELLA PORTUENSE F.C.",
-              "visitante": "C.D.C. NUEVO MOLINO CSIF",
-              "codLocal": "2064077",
-              "codVisitante": "623017",
-              "fecha": "2026-09-19",
-              "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Puerto De Santa María (El)",
-              "campo": "EL JUNCAL CAMPO MPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3611",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651391&cod_acta=2651391",
-              "jugado": false
             }
           ]
         },

@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-21T09:30:55.321Z",
+  "actualizado": "2026-09-21T11:21:28.277Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -297,7 +297,7 @@
               "codLocal": "38866701",
               "codVisitante": "307320",
               "fecha": "2026-09-26",
-              "hora": null,
+              "hora": "13:45",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
