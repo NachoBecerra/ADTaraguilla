@@ -62,7 +62,13 @@ export const metadata: Metadata = {
     description: site.descripcion,
   },
   icons: {
-    icon: site.escudo,
+    /*
+     * Cuadrado y de 192 px, no el escudo tal cual. Google solo enseña en sus
+     * resultados un icono cuadrado y de un tamaño múltiplo de 48, y el escudo
+     * mide 843×836: con él, la web salía en el buscador con el globo gris
+     * genérico en vez del escudo. El favicon.ico lo añade Next por su cuenta.
+     */
+    icon: [{ url: "/icono-192.png", sizes: "192x192", type: "image/png" }],
     // iPhone no lee los iconos del manifest: usa este
     apple: "/apple-icon.png",
   },
