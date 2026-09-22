@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-22T19:18:32.503Z",
+  "actualizado": "2026-09-22T21:18:26.106Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -182,10 +182,10 @@
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
-              "localidad": null,
-              "campo": null,
-              "superficie": null,
-              "codCampo": null,
+              "localidad": "Conil De La Frontera",
+              "campo": "BURREÑOS",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3459",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663718&cod_acta=2663718",
               "jugado": false
             },
