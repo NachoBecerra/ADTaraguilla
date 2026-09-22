@@ -96,7 +96,7 @@ cómo funciona la competición, no a un reparto uniforme:
 
 | Cuándo (hora española) | Para qué |
 | --- | --- |
-| Lunes a jueves, cada dos horas de 09:00 a 23:00 | Los horarios se asignan durante la semana, a veces de noche |
+| Lunes a jueves, cada dos horas de 09:00 a 23:00 | Los clubes locales comunican los horarios durante la semana, a veces de noche |
 | Viernes 10:00, y cada media hora de 16:00 a medianoche | Empiezan a llegar resultados |
 | Sábado 9:00, y cada media hora de 11:00 a medianoche | El día grande: el primer partido es a las 10:00 |
 | Domingo 9:00, y cada media hora de 11:00 a medianoche | Juegan el primer equipo, el juvenil y el infantil A |

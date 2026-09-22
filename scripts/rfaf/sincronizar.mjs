@@ -105,9 +105,12 @@ const DIAS_ADELANTE = 14;
 /**
  * Días dentro de los cuales un partido sin hora es motivo para volver a mirar.
  *
- * La RFAF asigna los horarios durante la semana del partido, casi siempre de
- * martes a jueves, y a veces por la tarde. Un partido a menos de una semana
- * sin hora significa que aún puede aparecer en cualquier momento.
+ * La hora la fija el club que juega en casa —a veces después de hablarlo con el
+ * visitante, aunque no está obligado— y la RFAF la publica cuando se la
+ * comunican: casi siempre durante la semana del partido, de martes a jueves, y
+ * a veces por la tarde. La federación solo pone ella la hora en los partidos
+ * aplazados o cuando los dos clubes no se ponen de acuerdo. Un partido a menos
+ * de una semana sin hora significa que aún puede aparecer en cualquier momento.
  */
 const DIAS_HORARIO = 7;
 
@@ -348,7 +351,7 @@ function hayQueRefrescar(jornada, previa) {
    */
   if (dias < 0) return dias >= -DIAS_DE_RECTIFICACION;
 
-  // Las próximas dos semanas: es cuando se asignan horarios y campos.
+  // Las próximas dos semanas: es cuando los clubes locales comunican horarios y campos.
   return dias <= DIAS_ADELANTE;
 }
 
