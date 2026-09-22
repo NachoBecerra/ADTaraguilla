@@ -6,6 +6,7 @@ import {
   resumenEquipos,
   temporada,
   getEquipos,
+  cuandoSeJuega,
 } from "@/lib/competicion";
 import { TarjetaNoticia } from "@/components/TarjetaNoticia";
 import { TarjetaProximoPartido } from "@/components/Partidos";
@@ -59,9 +60,15 @@ export default function Inicio() {
   // Sin fecha van al final: no se puede ordenar lo que no la tiene.
   const orden = (f?: string | null) => f ?? "9999-99-99";
 
+  /*
+   * Por día y, dentro del día, por hora: el sábado que juegan cinco equipos se
+   * leen en el orden en que se van a jugar, no en el de las categorías. Los que
+   * aún no tienen hora van detrás de los que sí, en su mismo día. Es el mismo
+   * criterio que el calendario de cada equipo.
+   */
   const proximos = equipos
     .filter((e) => e.proximo && !e.proximo.descanso)
-    .sort((a, b) => orden(a.proximo?.fecha).localeCompare(orden(b.proximo?.fecha)));
+    .sort((a, b) => cuandoSeJuega(a.proximo!).localeCompare(cuandoSeJuega(b.proximo!)));
 
   const resultados = equipos
     .filter((e) => e.ultimo)

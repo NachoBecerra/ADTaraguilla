@@ -195,7 +195,7 @@ export function partidosDe(equipo: Equipo): PartidoPropio[] {
  * Lo que no tiene fecha u hora se va al final: no se puede colocar en el
  * calendario lo que todavía no se ha fijado.
  */
-function cuandoSeJuega(p: PartidoPropio): string {
+export function cuandoSeJuega(p: PartidoPropio): string {
   return `${p.fecha ?? "9999-99-99"} ${p.hora ?? "99:99"}`;
 }
 
