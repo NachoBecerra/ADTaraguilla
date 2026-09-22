@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-22T13:22:50.982Z",
+  "actualizado": "2026-09-22T15:21:30.716Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -350,6 +350,23 @@
           "fecha": "2026-09-20",
           "partidos": [
             {
+              "local": "C.D. CIUDAD DE CADIZ",
+              "visitante": "REAL BALOMPEDICA LINENSE",
+              "codLocal": "20779397",
+              "codVisitante": "16370635",
+              "fecha": "2026-09-20",
+              "hora": "18:07",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Cádiz",
+              "campo": "MANUEL DE IRIGOYEN",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3439",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662398&cod_acta=2662398",
+              "jugado": false
+            },
+            {
               "local": "JEREZ INDUSTRIAL C.F.",
               "visitante": "JUVENTUD SANLUQUEÑA A.D.",
               "codLocal": "300915",
@@ -432,23 +449,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3298",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662397&cod_acta=2662397",
-              "jugado": false
-            },
-            {
-              "local": "C.D. CIUDAD DE CADIZ",
-              "visitante": "REAL BALOMPEDICA LINENSE",
-              "codLocal": "20779397",
-              "codVisitante": "16370635",
-              "fecha": "2026-09-20",
-              "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Cádiz",
-              "campo": "MANUEL DE IRIGOYEN",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3439",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662398&cod_acta=2662398",
               "jugado": false
             },
             {
