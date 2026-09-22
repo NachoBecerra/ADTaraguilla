@@ -13,7 +13,7 @@ export const site = {
   escudo: "/img/escudo.png",
   url: "https://ad-taraguilla.es",
   descripcion:
-    "Web oficial de la AD Taraguilla, club de fútbol de San Roque (Cádiz): noticias, resultados y clasificaciones de sus nueve equipos, galería de fotos y el histórico del club.",
+    "Web oficial de la AD Taraguilla, club de fútbol de San Roque (Cádiz): noticias, resultados y clasificaciones de todos sus equipos, galería de fotos y el histórico del club.",
 
   contacto: {
     email: "adtaraguilla@hotmail.es",

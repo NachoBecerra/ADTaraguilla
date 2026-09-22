@@ -43,7 +43,8 @@ export default function Acceso() {
       <p className="mt-4 rounded-xl bg-panel-2 p-3 text-xs leading-relaxed text-mute">
         Los resultados, las clasificaciones y el calendario{" "}
         <strong className="font-semibold text-tinta">no se tocan aquí</strong>:
-        llegan solos desde la RFAF varias veces al día. Nadie los escribe a mano.
+        se actualizan automáticamente con los datos oficiales de la competición, varias veces al día. Nadie
+        los escribe a mano.
       </p>
 
       <form action={accion} className="mt-8">

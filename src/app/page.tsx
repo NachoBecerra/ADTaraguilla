@@ -121,7 +121,7 @@ export default function Inicio() {
 
           <p className="mt-4 max-w-md text-base leading-relaxed text-white/85">
             {site.lema}. Resultados y calendarios de todos nuestros equipos, actualizados
-            directamente desde la {site.federacion.siglas}.
+            automáticamente con los datos oficiales de la competición.
           </p>
 
           <div className="mt-7 flex flex-wrap gap-3">

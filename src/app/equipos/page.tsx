@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { resumenEquipos, temporada, urlClubRfaf, actualizado } from "@/lib/competicion";
-import { site } from "@/data/site";
 import TarjetaEquipo from "@/components/TarjetaEquipo";
 import { DirectosAhora } from "@/components/EnDirecto";
 import SeccionRedes from "@/components/SeccionRedes";
@@ -10,7 +9,7 @@ import { IconoEnlaceExterno } from "@/components/Iconos";
 export const metadata: Metadata = {
   title: "Equipos",
   description:
-    "Todos los equipos de la AD Taraguilla: clasificación, calendario y resultados de cada categoría, actualizados desde la RFAF.",
+    "Todos los equipos de la AD Taraguilla: clasificación, calendario y resultados de cada categoría, con los datos oficiales de la competición.",
   alternates: { canonical: "/equipos" },
 };
 
@@ -31,7 +30,7 @@ export default function PaginaEquipos() {
           </h1>
           <p className="mt-3 max-w-lg text-base leading-relaxed text-mute">
             {equipos.length} equipos del club, del primer equipo a la cantera. Clasificación,
-            calendario y resultados se actualizan solos desde la {site.federacion.nombre}.
+            calendario y resultados se actualizan automáticamente con los datos oficiales de la competición.
           </p>
         </div>
       </section>
@@ -71,7 +70,7 @@ export default function PaginaEquipos() {
         ) : null}
 
         <p className="mt-10 flex flex-wrap items-center gap-x-2 gap-y-1 rounded-xl border border-linea bg-panel p-4 text-xs text-mute">
-          <span>Datos actualizados el {fechaLarga(actualizado)} desde la {site.federacion.siglas}.</span>
+          <span>Datos oficiales de la competición, actualizados el {fechaLarga(actualizado)}.</span>
           <a
             href={urlClubRfaf}
             target="_blank"
