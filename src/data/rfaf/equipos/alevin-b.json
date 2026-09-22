@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-22T09:24:11.251Z",
+  "actualizado": "2026-09-22T11:21:00.598Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -47,23 +47,6 @@
               "jugado": false
             },
             {
-              "local": "ATLETICO ZABAL \"A\"",
-              "visitante": "C.D. S.M. MIRADOR \"B\"",
-              "codLocal": "326319",
-              "codVisitante": "38866701",
-              "fecha": "2026-09-18",
-              "hora": "17:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "La Línea de La Concepción",
-              "campo": "VIRGEN DEL CARMEN (LA LINEA)",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2069065",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709875&cod_acta=2709875",
-              "jugado": false
-            },
-            {
               "local": "C.D. GUADIARO",
               "visitante": "C.D. ATHLETIC CLUB JIMENA",
               "codLocal": "307320",
@@ -78,6 +61,23 @@
               "superficie": "Hierba Natural",
               "codCampo": "2020864",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709874&cod_acta=2709874",
+              "jugado": false
+            },
+            {
+              "local": "ATLETICO ZABAL \"A\"",
+              "visitante": "C.D. S.M. MIRADOR \"B\"",
+              "codLocal": "326319",
+              "codVisitante": "38866701",
+              "fecha": "2026-09-18",
+              "hora": "17:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "La Línea de La Concepción",
+              "campo": "VIRGEN DEL CARMEN (LA LINEA)",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2069065",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709875&cod_acta=2709875",
               "jugado": false
             },
             {
@@ -186,7 +186,7 @@
               "campo": "ANTONIO GAVIRA - LOS CORTIJILLOS",
               "superficie": "Hierba Artificial",
               "codCampo": "3480",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709880",
               "jugado": false
             },
             {
@@ -203,7 +203,7 @@
               "campo": "VIRGEN DEL CARMEN",
               "superficie": "Hierba Artificial",
               "codCampo": "3562",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709881",
               "jugado": false
             },
             {
@@ -220,7 +220,7 @@
               "campo": "MANUEL MATEO",
               "superficie": "Hierba Artificial",
               "codCampo": "3575",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709884",
               "jugado": false
             },
             {
@@ -237,7 +237,7 @@
               "campo": "Miguel Ángel Izaguirre",
               "superficie": null,
               "codCampo": "15302242",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709886",
               "jugado": false
             },
             {
@@ -254,7 +254,7 @@
               "campo": "ANDRES SARRIAS",
               "superficie": "Hierba Artificial",
               "codCampo": "3096",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709882",
               "jugado": false
             },
             {
