@@ -1,11 +1,16 @@
 {
-  "generado": "2026-09-18T22:20:29.372Z",
+  "generado": "2026-09-22T09:24:18.524Z",
   "_nota": "Ubicación de los campos, para enlazar con el mapa.",
   "campos": {
     "3008": {
       "nombre": "NAVARRO FLORES ESTADIO MUNICIPAL",
       "lat": 36.6327271,
       "lon": -6.386782600000001
+    },
+    "3009": {
+      "nombre": "Jerez De La Frontera -Municipal Pedro S. Garrido",
+      "lat": 36.67325599999999,
+      "lon": -6.1384691
     },
     "3083": {
       "nombre": "ANTONIO LOPEZ PUA ESTADIO MUNICIPAL",
@@ -40,10 +45,20 @@
       "lat": 37.3527809,
       "lon": -5.938682099999999
     },
+    "2015221": {
+      "nombre": "MALASMAÑANAS MUNICIPAL",
+      "lat": 37.3480836,
+      "lon": -5.8382904
+    },
     "2019274": {
       "nombre": "LA GRANJA CENTRO DE DEPORTES",
       "lat": 36.6937317,
       "lon": -6.1038427
+    },
+    "18654147": {
+      "nombre": "MANUEL LEON MUNICIPAL (F11-F7)",
+      "lat": 36.7046988,
+      "lon": -6.1382176
     }
   }
 }

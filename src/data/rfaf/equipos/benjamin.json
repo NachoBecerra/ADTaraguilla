@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-21T21:19:46.509Z",
+  "actualizado": "2026-09-22T09:23:21.662Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-12",
           "partidos": [
+            {
+              "local": "A.D. TARAGUILLA",
+              "visitante": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
+              "codLocal": "307530",
+              "codVisitante": "344026",
+              "fecha": "2026-09-12",
+              "hora": "13:00",
+              "golesLocal": 11,
+              "golesVisitante": 2,
+              "origen": "clasificacion",
+              "localidad": "San Roque",
+              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3236",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663712",
+              "jugado": true
+            },
             {
               "local": "C.D. S.M. MIRADOR",
               "visitante": "C.F. SAN JOSE OBRERO",
@@ -79,23 +96,6 @@
               "codCampo": "3051",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663711",
               "jugado": false
-            },
-            {
-              "local": "A.D. TARAGUILLA",
-              "visitante": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
-              "codLocal": "307530",
-              "codVisitante": "344026",
-              "fecha": "2026-09-12",
-              "hora": "13:00",
-              "golesLocal": 11,
-              "golesVisitante": 2,
-              "origen": "clasificacion",
-              "localidad": "San Roque",
-              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663712",
-              "jugado": true
             },
             {
               "local": "C.D. ISLA DE LEON FUTBOL BASE",
@@ -346,7 +346,7 @@
               "campo": "BURREÑOS",
               "superficie": "Hierba Artificial",
               "codCampo": "3459",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663726",
               "jugado": false
             },
             {
@@ -380,7 +380,7 @@
               "campo": "SANTA FE",
               "superficie": "Hierba Artificial",
               "codCampo": "3051",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663728",
               "jugado": false
             },
             {
