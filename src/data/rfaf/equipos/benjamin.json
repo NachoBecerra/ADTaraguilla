@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-22T15:21:18.481Z",
+  "actualizado": "2026-09-22T19:18:32.503Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-12",
           "partidos": [
+            {
+              "local": "BAHIA SAN FERNANDO C.D.",
+              "visitante": "C.D. LA SALLE",
+              "codLocal": "355720",
+              "codVisitante": "309522",
+              "fecha": "2026-09-12",
+              "hora": "17:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Fernando",
+              "campo": "BAZAN CAMPO MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3020",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663717",
+              "jugado": false
+            },
             {
               "local": "A.D. TARAGUILLA",
               "visitante": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
@@ -112,23 +129,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3020",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663710",
-              "jugado": false
-            },
-            {
-              "local": "BAHIA SAN FERNANDO C.D.",
-              "visitante": "C.D. LA SALLE",
-              "codLocal": "355720",
-              "codVisitante": "309522",
-              "fecha": "2026-09-12",
-              "hora": "17:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Fernando",
-              "campo": "BAZAN CAMPO MUNICIPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3020",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663717",
               "jugado": false
             },
             {
@@ -397,7 +397,7 @@
               "campo": "BAZAN CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3020",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663733",
               "jugado": false
             },
             {
@@ -448,7 +448,7 @@
               "campo": "Bahia Sur ANEXO",
               "superficie": "Hierba Artificial",
               "codCampo": "19722540",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663727",
               "jugado": false
             }
           ]
