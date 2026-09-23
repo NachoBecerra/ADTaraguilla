@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-23T11:20:45.849Z",
+  "actualizado": "2026-09-23T15:22:07.995Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-19",
           "partidos": [
+            {
+              "local": "C.D. JUVENTUD PALMONES C.F.",
+              "visitante": "PUENTE MAYORGA RVO \"A\"",
+              "codLocal": "324517",
+              "codVisitante": "323616",
+              "fecha": "2026-09-18",
+              "hora": "17:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Barrios (Los)",
+              "campo": "POLIDEPORTIVO GABRIEL CLAVIJO GONZÁLEZ JAVI - PALMONES",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3245",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709876&cod_acta=2709876",
+              "jugado": false
+            },
             {
               "local": "Descansa",
               "visitante": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL \"A\"",
@@ -113,23 +130,6 @@
               "codCampo": "3172",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709871&cod_acta=2709871",
               "jugado": true
-            },
-            {
-              "local": "C.D. JUVENTUD PALMONES C.F.",
-              "visitante": "PUENTE MAYORGA RVO \"A\"",
-              "codLocal": "324517",
-              "codVisitante": "323616",
-              "fecha": "2026-09-18",
-              "hora": "17:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Barrios (Los)",
-              "campo": "POLIDEPORTIVO GABRIEL CLAVIJO GONZÁLEZ JAVI - PALMONES",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3245",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709876&cod_acta=2709876",
-              "jugado": false
             },
             {
               "local": "C.D. OLIVILLOS 87 \"B\"",
