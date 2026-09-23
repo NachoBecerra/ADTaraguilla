@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-23T07:27:39.348Z",
+  "actualizado": "2026-09-23T09:24:46.936Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -350,6 +350,23 @@
           "fecha": "2026-09-20",
           "partidos": [
             {
+              "local": "CHICLANA C.F.",
+              "visitante": "C.D. SAN ROQUE",
+              "codLocal": "301516",
+              "codVisitante": "307715",
+              "fecha": "2026-09-20",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Chiclana De La Frontera",
+              "campo": "CHICLANA ESTADIO MUNICIPAL",
+              "superficie": "Hierba Natural",
+              "codCampo": "2002086",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662401&cod_acta=2662401",
+              "jugado": false
+            },
+            {
               "local": "C.D. CIUDAD DE CADIZ",
               "visitante": "REAL BALOMPEDICA LINENSE",
               "codLocal": "20779397",
@@ -381,23 +398,6 @@
               "superficie": "Hierba Natural",
               "codCampo": "3009",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662400&cod_acta=2662400",
-              "jugado": false
-            },
-            {
-              "local": "CHICLANA C.F.",
-              "visitante": "C.D. SAN ROQUE",
-              "codLocal": "301516",
-              "codVisitante": "307715",
-              "fecha": "2026-09-20",
-              "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Chiclana De La Frontera",
-              "campo": "CHICLANA ESTADIO MUNICIPAL",
-              "superficie": "Hierba Natural",
-              "codCampo": "2002086",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662401&cod_acta=2662401",
               "jugado": false
             },
             {
