@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-23T17:20:44.708Z",
+  "actualizado": "2026-09-23T21:20:37.649Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -30,23 +30,6 @@
           "fecha": "2026-09-19",
           "partidos": [
             {
-              "local": "C.D. BALON LINENSE C.F.",
-              "visitante": "A.D. TARAGUILLA",
-              "codLocal": "38917543",
-              "codVisitante": "28567666",
-              "fecha": "2026-09-18",
-              "hora": "17:00",
-              "golesLocal": 1,
-              "golesVisitante": 11,
-              "origen": "clasificacion",
-              "localidad": "La Línea de La Concepción",
-              "campo": "ANTONIO REYES",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3172",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709871&cod_acta=2709871",
-              "jugado": true
-            },
-            {
               "local": "Descansa",
               "visitante": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL \"A\"",
               "codLocal": null,
@@ -62,6 +45,40 @@
               "codCampo": null,
               "urlActa": null,
               "jugado": false
+            },
+            {
+              "local": "C.D. SAN BERNARDO",
+              "visitante": "ATLETICO ATUNARA C.D. \"A\"",
+              "codLocal": "44810826",
+              "codVisitante": "356217",
+              "fecha": "2026-09-19",
+              "hora": "12:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Roque",
+              "campo": "ALBERTO UMBRIA",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3079",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709873&cod_acta=2709873",
+              "jugado": false
+            },
+            {
+              "local": "C.D. BALON LINENSE C.F.",
+              "visitante": "A.D. TARAGUILLA",
+              "codLocal": "38917543",
+              "codVisitante": "28567666",
+              "fecha": "2026-09-18",
+              "hora": "17:00",
+              "golesLocal": 1,
+              "golesVisitante": 11,
+              "origen": "clasificacion",
+              "localidad": "La Línea de La Concepción",
+              "campo": "ANTONIO REYES",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3172",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709871&cod_acta=2709871",
+              "jugado": true
             },
             {
               "local": "C.D. JUVENTUD PALMONES C.F.",
@@ -112,23 +129,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "2069065",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709875&cod_acta=2709875",
-              "jugado": false
-            },
-            {
-              "local": "C.D. SAN BERNARDO",
-              "visitante": "ATLETICO ATUNARA C.D. \"A\"",
-              "codLocal": "44810826",
-              "codVisitante": "356217",
-              "fecha": "2026-09-19",
-              "hora": "12:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Roque",
-              "campo": "ALBERTO UMBRIA",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3079",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709873&cod_acta=2709873",
               "jugado": false
             },
             {
