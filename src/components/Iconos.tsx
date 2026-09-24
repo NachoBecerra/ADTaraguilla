@@ -187,37 +187,6 @@ export function IconoCampanaTachada({ size = 20, className }: Props) {
   );
 }
 
-/** Partido en casa. */
-export function IconoCasa({ size = 20, className }: Props) {
-  return (
-    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3.5 10.5 12 3.5l8.5 7" />
-      <path d="M5.5 9.6V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.6" />
-      <path d="M9.8 20.5v-5.2h4.4v5.2" />
-    </svg>
-  );
-}
-
-/**
- * Partido fuera: se viaja.
- *
- * De perfil y no de frente: de frente se confundía con cualquier caja con
- * dos faros.
- */
-export function IconoAutobus({ size = 20, className }: Props) {
-  return (
-    <svg {...base(size, className)} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M2.6 15.6V8.4a1.8 1.8 0 0 1 1.8-1.8h11.4l3.9 3.4a1.8 1.8 0 0 1 .7 1.4v4.2" />
-      <path d="M2.6 12.4h18.8" />
-      {/* Dos ventanas y no tres: a quince píxeles, tres se funden en una mancha */}
-      <path d="M8.6 6.6v5.8M14.2 6.6v5.8" />
-      <path d="M2.6 15.6h1.9M9.1 15.6h5.9M19.6 15.6h1.8" />
-      <circle cx="7" cy="16.6" r="1.9" />
-      <circle cx="17.4" cy="16.6" r="1.9" />
-    </svg>
-  );
-}
-
 /** Clasificación: la tabla de posiciones. */
 export function IconoTabla({ size = 20, className }: Props) {
   return (

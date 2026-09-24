@@ -1,8 +1,7 @@
 import Link from "next/link";
 import EscudoClub from "@/components/EscudoClub";
 import IndicadorAvisos from "@/components/IndicadorAvisos";
-import { Marcador } from "@/components/Partidos";
-import { IconoCasa, IconoAutobus } from "@/components/Iconos";
+import { DondeSeJuega, Marcador } from "@/components/Partidos";
 import { fechaPartido } from "@/lib/formato";
 import type { Equipo, PartidoPropio } from "@/lib/competicion";
 
@@ -32,15 +31,13 @@ export default function ResumenPartido({
       />
 
       <div className="min-w-0 flex-1">
-        <p className="title truncate text-sm leading-tight text-tinta">{equipo.nombre}</p>
-        <p className="mt-0.5 flex items-center gap-1.5 text-xs text-mute">
-          {partido.esLocal ? (
-            <IconoCasa size={14} className="shrink-0 text-club-soft" />
-          ) : (
-            <IconoAutobus size={14} className="shrink-0 text-club-soft" />
-          )}
-          <span className="truncate">{partido.rival}</span>
+        {/* La insignia va con nuestro equipo, no con el rival: ahí no le come
+            sitio al nombre, que es lo que hay que poder leer entero */}
+        <p className="flex items-center gap-2">
+          <span className="title truncate text-sm leading-tight text-tinta">{equipo.nombre}</span>
+          <DondeSeJuega esLocal={partido.esLocal} />
         </p>
+        <p className="mt-0.5 truncate text-xs text-mute">{partido.rival}</p>
       </div>
 
       <div className="shrink-0 text-right">

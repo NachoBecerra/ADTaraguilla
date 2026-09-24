@@ -13,6 +13,26 @@ const COLOR_RESULTADO = {
 
 const TEXTO_RESULTADO = { G: "Victoria", E: "Empate", P: "Derrota" } as const;
 
+/**
+ * Dónde se juega: en casa o fuera.
+ *
+ * Era una casita y un autobús, y en el móvil no se entendían: tan pequeños y
+ * tan sutiles que pasaban desapercibidos. Con dos palabras y un color de fondo
+ * se lee de un vistazo y sin interpretar nada. El verde fuerte del club es el
+ * nuestro, el claro es cuando visitamos.
+ */
+export function DondeSeJuega({ esLocal, className = "" }: { esLocal: boolean; className?: string }) {
+  return (
+    <span
+      className={`inline-block shrink-0 rounded-md px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
+        esLocal ? "bg-club text-white" : "bg-club-claro text-club-dark"
+      } ${className}`}
+    >
+      {esLocal ? "En casa" : "Visitante"}
+    </span>
+  );
+}
+
 /** Marcador o pendiente, en formato de tarjeta de resultado. */
 export function Marcador({ partido }: { partido: PartidoPropio }) {
   if (!partido.jugado) {
@@ -38,81 +58,6 @@ export function Marcador({ partido }: { partido: PartidoPropio }) {
     >
       {partido.golesPropios} – {partido.golesRival}
     </span>
-  );
-}
-
-/** Una línea de partido: fecha, rival, dónde y marcador. */
-export function FilaPartido({
-  partido,
-  mostrarCompeticion = false,
-}: {
-  partido: PartidoPropio;
-  mostrarCompeticion?: boolean;
-}) {
-  const fecha = (
-    <div className="w-14 shrink-0 text-center">
-      <p className="text-[11px] font-bold uppercase tracking-wide text-mute">
-        {partido.jornada.replace(/^Jornada\s*/i, "J")}
-      </p>
-      <p className="text-xs text-mute">
-        {partido.fecha
-          ? new Intl.DateTimeFormat("es-ES", {
-              day: "2-digit",
-              month: "2-digit",
-              timeZone: "Europe/Madrid",
-            }).format(new Date(partido.fecha))
-          : "—"}
-      </p>
-    </div>
-  );
-
-  // Jornada de descanso: no hay rival, campo ni marcador que enseñar
-  if (partido.descanso) {
-    return (
-      <li className="flex items-center gap-3 border-b border-linea py-3 last:border-0">
-        {fecha}
-        <p className="flex-1 text-sm italic text-mute">Jornada de descanso</p>
-      </li>
-    );
-  }
-
-  return (
-    <li className="flex items-center gap-3 border-b border-linea py-3 last:border-0">
-      {fecha}
-
-      <EscudoClub
-        nombre={partido.rival}
-        codigo={partido.esLocal ? partido.codVisitante : partido.codLocal}
-        size={26}
-      />
-
-      <div className="min-w-0 flex-1">
-        <p className="line-clamp-2 font-semibold leading-tight text-tinta">
-          <span className="mr-1.5 text-[11px] font-bold uppercase text-club-soft">
-            {partido.esLocal ? "Casa" : "Fuera"}
-          </span>
-          {partido.rival}
-        </p>
-        <p className="truncate text-xs text-mute">
-          {mostrarCompeticion ? `${partido.competicion} · ` : ""}
-          {partido.campo ?? "Campo por confirmar"}
-        </p>
-      </div>
-
-      <Marcador partido={partido} />
-
-      {partido.urlActa ? (
-        <a
-          href={partido.urlActa}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Acta del partido en la RFAF"
-          className="grid size-8 shrink-0 place-items-center rounded-full bg-rfaf text-white transition-colors hover:bg-rfaf-oscuro"
-        >
-          <IconoEnlaceExterno size={14} />
-        </a>
-      ) : null}
-    </li>
   );
 }
 

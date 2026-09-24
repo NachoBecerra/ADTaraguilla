@@ -6,14 +6,13 @@ import {
   type PartidoPropio,
 } from "@/lib/competicion";
 import EscudoClub from "@/components/EscudoClub";
+import { DondeSeJuega } from "@/components/Partidos";
 import IndicadorAvisos from "@/components/IndicadorAvisos";
 import { DistintivoDirecto } from "@/components/EnDirecto";
 import {
   IconoFlecha,
   IconoCalendario,
   IconoUbicacion,
-  IconoCasa,
-  IconoAutobus,
 } from "@/components/Iconos";
 import { fechaPartido } from "@/lib/formato";
 
@@ -86,14 +85,8 @@ export default function TarjetaEquipo({
                   <p className="truncate font-bold leading-tight text-tinta">
                     {proximo.rival}
                   </p>
-                  {/* Una casa o un autobús se leen antes que la palabra */}
-                  <p className="mt-0.5 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-mute">
-                    {proximo.esLocal ? (
-                      <IconoCasa size={15} className="text-club-soft" />
-                    ) : (
-                      <IconoAutobus size={15} className="text-club-soft" />
-                    )}
-                    {proximo.esLocal ? "En casa" : "Fuera"}
+                  <p className="mt-1">
+                    <DondeSeJuega esLocal={proximo.esLocal} />
                   </p>
                 </div>
 
