@@ -22,6 +22,7 @@ import BotonAvisos from "@/components/BotonAvisos";
 import { BandaDirecto } from "@/components/EnDirecto";
 import { TarjetaProximoPartido } from "@/components/Partidos";
 import TarjetaResultado from "@/components/TarjetaResultado";
+import CalendarioEquipo from "@/components/CalendarioEquipo";
 import { idPartido } from "@/lib/directo/idPartido";
 import { fechaLarga } from "@/lib/formato";
 import { IconoFlecha, IconoEnlaceExterno } from "@/components/Iconos";
@@ -254,32 +255,8 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
             <p className="mb-4 mt-1 text-sm text-mute">
               La temporada entera, jugada y por jugar.
             </p>
-            {/*
-              Las mismas tarjetas que los resultados, y no una lista aparte: el
-              calendario de un equipo son todo partidos suyos, así que repetir
-              la competición en cada fila es ruido, y los ya jugados traen su
-              marcador, su acta y su directo sin tener que buscarlos en otro
-              sitio.
-            */}
-            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {partidos.map((p, i) =>
-                p.descanso ? (
-                  <li
-                    key={`${p.fecha}-descanso-${i}`}
-                    className="card flex items-center justify-between gap-3 p-3.5 text-sm text-mute"
-                  >
-                    <span className="italic">Jornada de descanso</span>
-                    <span className="text-[11px] font-bold uppercase tracking-wide">
-                      {p.jornada.replace(/^Jornada\s*/i, "J")}
-                    </span>
-                  </li>
-                ) : (
-                  <li key={`${p.fecha}-${p.rival}-${i}`}>
-                    <TarjetaResultado partido={p} equipo={equipo} conCompeticion={false} />
-                  </li>
-                ),
-              )}
-            </ul>
+
+            <CalendarioEquipo partidos={partidos} equipo={equipo} />
           </section>
         ) : null}
 
