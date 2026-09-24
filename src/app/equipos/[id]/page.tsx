@@ -20,7 +20,7 @@ import NavegacionEquipo, { type Bloque } from "@/components/NavegacionEquipo";
 import Galeria from "@/components/Galeria";
 import BotonAvisos from "@/components/BotonAvisos";
 import { BandaDirecto } from "@/components/EnDirecto";
-import { FilaPartido, TarjetaProximoPartido } from "@/components/Partidos";
+import { TarjetaProximoPartido } from "@/components/Partidos";
 import TarjetaResultado from "@/components/TarjetaResultado";
 import { idPartido } from "@/lib/directo/idPartido";
 import { fechaLarga } from "@/lib/formato";
@@ -62,9 +62,13 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
   // Un partido con fecha pasada y sin resultado no es "próximo": va con los
   // disputados, marcado como sin resultado publicado.
   const disputados = partidos.filter((p) => p.jugado || sinResultado(p));
-  const pendientes = partidos.filter(
-    (p) => !p.jugado && (!p.fecha || p.fecha >= hoyIso()),
-  );
+  /*
+   * Arriba, solo los dos últimos. A mitad de temporada son treinta tarjetas, y
+   * quien entra a la ficha de un equipo viene a ver cómo quedó el último
+   * partido, no a repasar la temporada. Lo demás está en el calendario, que
+   * ahora los lleva todos.
+   */
+  const ultimosDos = disputados.slice(-2).reverse();
   const faltanResultados = disputados.some(sinResultado);
 
   // Los resultados oficiales de cada competición en la RFAF. El enlace lo
@@ -94,7 +98,7 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
   const bloques: Bloque[] = [
     ...(disputados.length > 0 ? (["resultados"] as const) : []),
     ...(principal ? (["clasificacion"] as const) : []),
-    ...(pendientes.length > 0 ? (["calendario"] as const) : []),
+    ...(partidos.length > 0 ? (["calendario"] as const) : []),
     ...(fotos.length > 0 ? (["imagenes"] as const) : []),
   ];
 
@@ -203,12 +207,23 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
               ) : null}
             </div>
             <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {[...disputados].reverse().map((p, i) => (
+              {ultimosDos.map((p, i) => (
                 <li key={`${p.fecha}-${p.rival}-${i}`}>
                   <TarjetaResultado partido={p} equipo={equipo} />
                 </li>
               ))}
             </ul>
+            {disputados.length > ultimosDos.length ? (
+              <p className="mt-3 text-sm text-mute">
+                Los {disputados.length} partidos jugados, con sus actas y sus directos, están
+                en el{" "}
+                <a href="#calendario" className="font-bold text-club-soft hover:underline">
+                  calendario
+                </a>
+                .
+              </p>
+            ) : null}
+
             {faltanResultados ? (
               <p className="mt-2 text-xs text-mute">
                 «Sin resultado»: la RFAF no lo publica para ese partido. Se puede
@@ -233,17 +248,37 @@ export default async function PaginaEquipo({ params }: PageProps<"/equipos/[id]"
           </section>
         ) : null}
 
-        {pendientes.length > 0 ? (
+        {partidos.length > 0 ? (
           <section id="calendario" className="scroll-mt-20">
             <h2 className="title text-3xl text-tinta">Calendario</h2>
-            <ul className="mt-4 rounded-xl border border-linea bg-panel px-4">
-              {pendientes.map((p, i) => (
-                <FilaPartido
-                  key={`${p.fecha}-${p.rival}-${i}`}
-                  partido={p}
-                  mostrarCompeticion={equipo.competiciones.length > 1}
-                />
-              ))}
+            <p className="mb-4 mt-1 text-sm text-mute">
+              La temporada entera, jugada y por jugar.
+            </p>
+            {/*
+              Las mismas tarjetas que los resultados, y no una lista aparte: el
+              calendario de un equipo son todo partidos suyos, así que repetir
+              la competición en cada fila es ruido, y los ya jugados traen su
+              marcador, su acta y su directo sin tener que buscarlos en otro
+              sitio.
+            */}
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {partidos.map((p, i) =>
+                p.descanso ? (
+                  <li
+                    key={`${p.fecha}-descanso-${i}`}
+                    className="card flex items-center justify-between gap-3 p-3.5 text-sm text-mute"
+                  >
+                    <span className="italic">Jornada de descanso</span>
+                    <span className="text-[11px] font-bold uppercase tracking-wide">
+                      {p.jornada.replace(/^Jornada\s*/i, "J")}
+                    </span>
+                  </li>
+                ) : (
+                  <li key={`${p.fecha}-${p.rival}-${i}`}>
+                    <TarjetaResultado partido={p} equipo={equipo} conCompeticion={false} />
+                  </li>
+                ),
+              )}
             </ul>
           </section>
         ) : null}

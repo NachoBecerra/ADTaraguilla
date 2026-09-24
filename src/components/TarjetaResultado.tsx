@@ -65,11 +65,18 @@ export default function TarjetaResultado({
   partido,
   equipo,
   conEquipo = false,
+  conCompeticion = true,
 }: {
   partido: PartidoPropio;
   equipo: Equipo;
   /** Enseña de qué equipo nuestro es el partido, para las listas mezcladas. */
   conEquipo?: boolean;
+  /**
+   * Enseña en qué competición se juega. Se apaga en el calendario de un
+   * equipo, donde todas las tarjetas son de lo mismo y repetirlo en treinta
+   * filas es ruido.
+   */
+  conCompeticion?: boolean;
 }) {
   const { golesLocal, golesVisitante } = partido;
   const pendiente = golesLocal === null || golesVisitante === null;
@@ -100,8 +107,10 @@ export default function TarjetaResultado({
               {equipo.nombre}
             </Link>
           ) : null}
-          {conEquipo ? " · " : ""}
-          <span className={conEquipo ? "text-mute" : undefined}>{partido.competicion}</span>
+          {conEquipo && conCompeticion ? " · " : ""}
+          {conCompeticion ? (
+            <span className={conEquipo ? "text-mute" : undefined}>{partido.competicion}</span>
+          ) : null}
         </p>
         <p className="ml-auto shrink-0 text-mute">
           {partido.jornada.replace(/^Jornada\s*/i, "J")}
@@ -148,6 +157,10 @@ export default function TarjetaResultado({
 
         <span className="ml-auto shrink-0 text-xs text-mute">
           {partido.fecha ? fechaPartido(partido.fecha) : "Sin fecha"}
+          {/* Lo que se busca de un partido por jugar es a qué hora */}
+          {!partido.jugado && partido.hora ? (
+            <span className="ml-1.5 font-bold text-tinta">{partido.hora}</span>
+          ) : null}
         </span>
       </div>
 
