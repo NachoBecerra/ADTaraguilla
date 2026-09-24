@@ -1,10 +1,19 @@
 import { haEmpezado, type Competicion, type Equipo } from "@/lib/competicion";
 import EscudoClub from "@/components/EscudoClub";
 
+/*
+ * Los tres resultados, con el código de color de toda la vida: verde, amarillo
+ * y rojo. En tono pastel, que son cinco cuadraditos por fila y treinta filas;
+ * con colores fuertes la tabla se convierte en un semáforo. La letra va en el
+ * mismo tono pero oscura, y se lee bien: entre 6,5 y 8,4 de contraste.
+ *
+ * Son los mismos colores que la botonera del directo, así que un verde quiere
+ * decir lo mismo en toda la web.
+ */
 const COLOR_RACHA = {
-  G: "bg-club text-white",
-  E: "bg-panel-2 text-mute",
-  P: "bg-tinta/70 text-white",
+  G: "bg-favor text-favor-tinta",
+  E: "bg-amarilla text-amarilla-tinta",
+  P: "bg-roja text-roja-tinta",
 } as const;
 
 function Racha({ racha }: { racha: string[] }) {
@@ -15,7 +24,7 @@ function Racha({ racha }: { racha: string[] }) {
         <span
           key={i}
           title={r === "G" ? "Ganado" : r === "E" ? "Empatado" : "Perdido"}
-          className={`grid h-4 w-4 place-items-center rounded-sm text-[9px] font-bold ${
+          className={`grid h-4.5 w-4.5 place-items-center rounded-sm text-[10px] font-bold ${
             COLOR_RACHA[r as keyof typeof COLOR_RACHA] ?? "bg-panel-2"
           }`}
         >
