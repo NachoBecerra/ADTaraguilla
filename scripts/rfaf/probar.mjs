@@ -15,6 +15,7 @@ import {
   ORIGEN_TABLA,
   atascoDeResultados,
   avisaDelHorario,
+  urlDeJornada,
   equiposAusentes,
   partidosCongelados,
   partidosDelCalendario,
@@ -501,6 +502,31 @@ console.log("--- Cambio de hora: solo si todavia sirve ---");
   comprobar("un partido ya jugado no avisa de horarios", avisaDelHorario(domingo("12:00"), { ...domingo("12:55"), jugado: true }, ahora("09:00")), false);
   comprobar("y sin hora no hay nada que avisar", avisaDelHorario(domingo("12:00"), domingo(null), ahora("09:00")), false);
 }
+
+
+/* --------------------------- la direccion de una jornada, sin datos de mentira */
+console.log("");
+console.log("--- Pedir una jornada: lo que no se sabe, no se manda ---");
+{
+  const base = { codCompeticion: "49145109", codGrupo: "49151230", numero: 1 };
+
+  comprobar(
+    "con temporada, va en la direccion",
+    urlDeJornada({ ...base, codTemporada: "22" }),
+    "/pnfg/NPcd/NFG_CmpJornada?cod_primaria=1000120&CodCompeticion=49145109&CodGrupo=49151230&CodTemporada=22&CodJornada=1",
+  );
+
+  /* El fallo del 24-9-2026: con codTemporada nulo se mandaba el texto "null" y
+     la RFAF devolvia los partidos sin hora, sin protestar */
+  const sinTemporada =
+    "/pnfg/NPcd/NFG_CmpJornada?cod_primaria=1000120&CodCompeticion=49145109&CodGrupo=49151230&CodJornada=1";
+  comprobar("sin temporada, no se manda el parametro", urlDeJornada({ ...base, codTemporada: null }), sinTemporada);
+  comprobar("ni cuando no viene", urlDeJornada(base), sinTemporada);
+  comprobar("ni vacia", urlDeJornada({ ...base, codTemporada: "" }), sinTemporada);
+  comprobar("ni con el texto null", urlDeJornada({ ...base, codTemporada: "null" }), sinTemporada);
+  comprobar("ni con el texto undefined", urlDeJornada({ ...base, codTemporada: "undefined" }), sinTemporada);
+}
+
 
 console.log("");
 console.log(fallos === 0 ? "Todo correcto." : fallos + " comprobaciones fallan.");

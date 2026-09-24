@@ -21,10 +21,11 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { ClienteRfaf, ErrorDeCupo, urlAbsoluta } from "./cliente.mjs";
 import { mandarAvisos } from "./avisos.mjs";
-import { aSlug, bloquesPorTemporada } from "./html.mjs";
+import { aSlug, bloquesPorTemporada, parametro } from "./html.mjs";
 import {
   ORIGEN_TABLA,
   avisaDelHorario,
+  urlDeJornada,
   clavePartido,
   partidosCongelados,
   partidosDelCalendario,
@@ -367,7 +368,13 @@ async function sincronizarCompeticion(cliente, competicion, previa, escudos, nom
       urlCalendario: previa.urlCalendario,
       urlClasificacion: previa.urlClasificacion,
       codCompeticion: previa.codCompeticion,
-      codTemporada: previa.codTemporada ?? null,
+      /*
+       * Si falta, se saca de la propia direccion del calendario, que la lleva
+       * dentro. Sin esto el hueco era para siempre: la pagina del grupo solo se
+       * pide la primera vez, asi que un `codTemporada` nulo se arrastraba
+       * temporada entera y las jornadas venian sin horas.
+       */
+      codTemporada: previa.codTemporada ?? parametro(previa.urlCalendario, "codtemporada"),
     };
   } else {
     grupo = extraerGrupo(
@@ -418,10 +425,12 @@ async function sincronizarCompeticion(cliente, competicion, previa, escudos, nom
     const sePuedePedir = jornada.numero !== null && jornada.numero !== undefined;
 
     if (sePuedePedir && (hayQueRefrescar(jornada, previaJ) || faltanEscudos)) {
-      const url =
-        `/pnfg/NPcd/NFG_CmpJornada?cod_primaria=1000120` +
-        `&CodCompeticion=${grupo.codCompeticion}&CodGrupo=${competicion.codGrupo}` +
-        `&CodTemporada=${grupo.codTemporada}&CodJornada=${jornada.numero ?? ""}`;
+      const url = urlDeJornada({
+        codCompeticion: grupo.codCompeticion,
+        codGrupo: competicion.codGrupo,
+        codTemporada: grupo.codTemporada,
+        numero: jornada.numero,
+      });
       try {
         partidosJornada = extraerJornada(await cliente.pedir(url));
         pedidas++;

@@ -131,6 +131,34 @@ export function avisaDelHorario(viejo, nuevo, ahora = Date.now()) {
   return true;
 }
 
+/**
+ * La direccion de la pagina de una jornada.
+ *
+ * Existe por un fallo que costo las horas de casi todos los partidos. El
+ * `codTemporada` se guarda con la competicion, y en siete de las ocho estaba
+ * nulo; al componer la direccion con una plantilla, ese nulo se convertia en el
+ * texto "null" y se mandaba tal cual. La RFAF no protesta: devuelve los mismos
+ * partidos **pero sin horas**. Resultado: la web decia "sin hora" de partidos
+ * que llevaban dias con hora puesta.
+ *
+ * Asi que lo que no se sabe **no se manda**. Sin `CodTemporada` la pagina
+ * responde con las horas igual; con un valor invalido, no.
+ */
+export function urlDeJornada({ codCompeticion, codGrupo, codTemporada, numero }) {
+  const util = (v) =>
+    v !== null && v !== undefined && v !== "" && v !== "null" && v !== "undefined";
+
+  const partes = [
+    "cod_primaria=1000120",
+    `CodCompeticion=${codCompeticion}`,
+    `CodGrupo=${codGrupo}`,
+    ...(util(codTemporada) ? [`CodTemporada=${codTemporada}`] : []),
+    `CodJornada=${numero}`,
+  ];
+
+  return `/pnfg/NPcd/NFG_CmpJornada?${partes.join("&")}`;
+}
+
 export const ORIGEN_TABLA = "clasificacion";
 
 /** Un partido se reconoce por quiénes lo juegan. */
