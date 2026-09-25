@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-25T16:26:24.389Z",
+  "actualizado": "2026-09-25T16:46:29.216Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -178,7 +178,7 @@
               "codLocal": "348018",
               "codVisitante": "38917543",
               "fecha": "2026-09-25",
-              "hora": "17:39",
+              "hora": "17:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -186,7 +186,7 @@
               "campo": "ANTONIO GAVIRA - LOS CORTIJILLOS",
               "superficie": "Hierba Artificial",
               "codCampo": "3480",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709880&cod_acta=2709880",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709880&cod_acta=2709880",
               "jugado": false
             },
             {
@@ -195,7 +195,7 @@
               "codLocal": "356217",
               "codVisitante": "307218",
               "fecha": "2026-09-25",
-              "hora": "17:46",
+              "hora": "17:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -203,7 +203,7 @@
               "campo": "VIRGEN DEL CARMEN",
               "superficie": "Hierba Artificial",
               "codCampo": "3562",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709881&cod_acta=2709881",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709881&cod_acta=2709881",
               "jugado": false
             },
             {
@@ -212,7 +212,7 @@
               "codLocal": "323616",
               "codVisitante": "326319",
               "fecha": "2026-09-25",
-              "hora": "17:42",
+              "hora": "17:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -220,7 +220,7 @@
               "campo": "MANUEL MATEO",
               "superficie": "Hierba Artificial",
               "codCampo": "3575",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709884&cod_acta=2709884",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709884&cod_acta=2709884",
               "jugado": false
             },
             {
@@ -229,7 +229,7 @@
               "codLocal": "33452313",
               "codVisitante": "48903033",
               "fecha": "2026-09-25",
-              "hora": "17:39",
+              "hora": "17:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -237,7 +237,7 @@
               "campo": "Miguel Ángel Izaguirre",
               "superficie": null,
               "codCampo": "15302242",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709886&cod_acta=2709886",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709886&cod_acta=2709886",
               "jugado": false
             },
             {
@@ -246,7 +246,7 @@
               "codLocal": "309618",
               "codVisitante": "44810826",
               "fecha": "2026-09-25",
-              "hora": "18:00",
+              "hora": "18:41",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -254,7 +254,7 @@
               "campo": "ANDRES SARRIAS",
               "superficie": "Hierba Artificial",
               "codCampo": "3096",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709882",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709882&cod_acta=2709882",
               "jugado": false
             },
             {
@@ -4358,8 +4358,8 @@
           "ganados": 2,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 5,
-          "golesContra": 1,
+          "golesFavor": 10,
+          "golesContra": 2,
           "racha": [
             "G",
             "G"
@@ -4375,8 +4375,8 @@
           "ganados": 1,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 4,
-          "golesContra": 1,
+          "golesFavor": 6,
+          "golesContra": 2,
           "racha": [
             "G"
           ]
@@ -4423,8 +4423,8 @@
           "ganados": 1,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 14,
-          "golesContra": 6,
+          "golesFavor": 17,
+          "golesContra": 8,
           "racha": [
             "P",
             "G"
@@ -4432,6 +4432,23 @@
         },
         {
           "posicion": 8,
+          "equipo": "C.D. SAN BERNARDO",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 7,
+          "golesContra": 2,
+          "racha": [
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 9,
           "equipo": "ATLETICO ZABAL \"A\"",
           "puntos": 3,
           "jugados": 2,
@@ -4440,28 +4457,11 @@
           "ganados": 1,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 6,
-          "golesContra": 5,
+          "golesFavor": 8,
+          "golesContra": 7,
           "racha": [
             "P",
             "G"
-          ]
-        },
-        {
-          "posicion": 9,
-          "equipo": "U.D. TESORILLO C.D.",
-          "puntos": 3,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 5,
-          "golesContra": 7,
-          "racha": [
-            "G",
-            "P"
           ]
         },
         {
@@ -4474,8 +4474,8 @@
           "ganados": 1,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 4,
-          "golesContra": 6,
+          "golesFavor": 5,
+          "golesContra": 8,
           "racha": [
             "G",
             "P"
@@ -4483,6 +4483,23 @@
         },
         {
           "posicion": 11,
+          "equipo": "U.D. TESORILLO C.D.",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 6,
+          "golesContra": 12,
+          "racha": [
+            "G",
+            "P"
+          ]
+        },
+        {
+          "posicion": 12,
           "equipo": "U.D. LOS BARRIOS \"B\"",
           "puntos": 0,
           "jugados": 1,
@@ -4498,22 +4515,6 @@
           ]
         },
         {
-          "posicion": 12,
-          "equipo": "C.D. SAN BERNARDO",
-          "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 1,
-          "golesContra": 2,
-          "racha": [
-            "P"
-          ]
-        },
-        {
           "posicion": 13,
           "equipo": "PUENTE MAYORGA RVO \"A\"",
           "puntos": 0,
@@ -4523,8 +4524,8 @@
           "ganados": 0,
           "empatados": 0,
           "perdidos": 2,
-          "golesFavor": 4,
-          "golesContra": 8,
+          "golesFavor": 6,
+          "golesContra": 10,
           "racha": [
             "P",
             "P"
@@ -4534,15 +4535,16 @@
           "posicion": 14,
           "equipo": "C.D. ATHLETIC CLUB JIMENA",
           "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
+          "jugados": 2,
+          "jugadosCasa": 1,
           "jugadosFuera": 1,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 1,
+          "perdidos": 2,
           "golesFavor": 1,
-          "golesContra": 11,
+          "golesContra": 17,
           "racha": [
+            "P",
             "P"
           ]
         },
@@ -4556,8 +4558,8 @@
           "ganados": 0,
           "empatados": 0,
           "perdidos": 2,
-          "golesFavor": 2,
-          "golesContra": 21,
+          "golesFavor": 4,
+          "golesContra": 24,
           "racha": [
             "P",
             "P"
