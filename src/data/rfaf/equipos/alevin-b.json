@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-24T13:46:20.058Z",
+  "actualizado": "2026-09-25T08:32:19.394Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -15,7 +15,7 @@
       "categoria": "3ª ANDALUZA ALEVIN",
       "grupo": "Grupo 4º",
       "puntos": 3,
-      "posicion": 2,
+      "posicion": 1,
       "codGrupo": "49286942",
       "escudosRecogidos": true,
       "codCompeticion": "49286744",
@@ -4318,15 +4318,15 @@
       "clasificacion": [
         {
           "posicion": 1,
-          "equipo": "C.D. GUADIARO",
+          "equipo": "A.D. TARAGUILLA",
           "puntos": 3,
           "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
+          "jugadosCasa": 0,
+          "jugadosFuera": 1,
           "ganados": 1,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 16,
+          "golesFavor": 11,
           "golesContra": 1,
           "racha": [
             "G"
@@ -4334,11 +4334,11 @@
         },
         {
           "posicion": 2,
-          "equipo": "A.D. TARAGUILLA",
+          "equipo": "C.D. GUADIARO",
           "puntos": 3,
           "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
+          "jugadosCasa": 1,
+          "jugadosFuera": 0,
           "ganados": 1,
           "empatados": 0,
           "perdidos": 0,
@@ -4524,11 +4524,11 @@
         },
         {
           "posicion": 14,
-          "equipo": "C.D. BALON LINENSE C.F.",
+          "equipo": "C.D. ATHLETIC CLUB JIMENA",
           "puntos": 0,
           "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
+          "jugadosCasa": 0,
+          "jugadosFuera": 1,
           "ganados": 0,
           "empatados": 0,
           "perdidos": 1,
@@ -4540,16 +4540,16 @@
         },
         {
           "posicion": 15,
-          "equipo": "C.D. ATHLETIC CLUB JIMENA",
+          "equipo": "C.D. BALON LINENSE C.F.",
           "puntos": 0,
           "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
+          "jugadosCasa": 1,
+          "jugadosFuera": 0,
           "ganados": 0,
           "empatados": 0,
           "perdidos": 1,
           "golesFavor": 1,
-          "golesContra": 16,
+          "golesContra": 11,
           "racha": [
             "P"
           ]
