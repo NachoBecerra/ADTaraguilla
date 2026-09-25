@@ -7,15 +7,15 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-25T08:31:54.377Z",
+  "actualizado": "2026-09-25T17:44:01.730Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
       "nombre": "2ª ANDALUZA BENJAMIN (CADIZ)",
       "categoria": "2ª ANDALUZA BENJAMIN",
       "grupo": "GRUPO UNICO",
-      "puntos": 6,
-      "posicion": 2,
+      "puntos": 9,
+      "posicion": 1,
       "codGrupo": "48909586",
       "escudosRecogidos": true,
       "codCompeticion": "48909542",
@@ -29,23 +29,6 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-12",
           "partidos": [
-            {
-              "local": "A.D. MARIANISTAS C.D.",
-              "visitante": "C.D. ESTRELLA PORTUENSE F.C.",
-              "codLocal": "343218",
-              "codVisitante": "353117",
-              "fecha": "2026-09-12",
-              "hora": "10:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Jerez De La Frontera",
-              "campo": "SANTA FE",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3051",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663711",
-              "jugado": false
-            },
             {
               "local": "BAHIA SAN FERNANDO C.D.",
               "visitante": "C.D. LA SALLE",
@@ -61,6 +44,23 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3020",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663717",
+              "jugado": false
+            },
+            {
+              "local": "A.D. MARIANISTAS C.D.",
+              "visitante": "C.D. ESTRELLA PORTUENSE F.C.",
+              "codLocal": "343218",
+              "codVisitante": "353117",
+              "fecha": "2026-09-12",
+              "hora": "10:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Jerez De La Frontera",
+              "campo": "SANTA FE",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3051",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663711",
               "jugado": false
             },
             {
@@ -322,15 +322,15 @@
               "codVisitante": "349221",
               "fecha": "2026-09-25",
               "hora": "17:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "golesLocal": 6,
+              "golesVisitante": 1,
+              "origen": "clasificacion",
               "localidad": "San Roque",
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663729",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663729&cod_acta=2663729",
+              "jugado": true
             },
             {
               "local": "ARCOS C.F.",
@@ -346,7 +346,7 @@
               "campo": "EL SANTISCAL",
               "superficie": "Hierba Artificial",
               "codCampo": "7129883",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663732",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663732&cod_acta=2663732",
               "jugado": false
             },
             {
@@ -476,23 +476,6 @@
               "jugado": false
             },
             {
-              "local": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
-              "visitante": "A.D. LOS BURREÑOS",
-              "codLocal": "344026",
-              "codVisitante": "28679244",
-              "fecha": "2026-10-03",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Chiclana De La Frontera",
-              "campo": "EL TROVADOR",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3524",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "C.D. AD PUEBLO NUEVO LA GRANJA",
               "visitante": "C.D. ISLA DE LEON FUTBOL BASE",
               "codLocal": "329826",
@@ -591,6 +574,23 @@
               "campo": "Sergio Martín",
               "superficie": "Hierba Artificial",
               "codCampo": "2019422",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
+              "visitante": "A.D. LOS BURREÑOS",
+              "codLocal": "344026",
+              "codVisitante": "28679244",
+              "fecha": "2026-10-03",
+              "hora": null,
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Chiclana De La Frontera",
+              "campo": "EL TROVADOR",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3524",
               "urlActa": null,
               "jugado": false
             }
@@ -4318,6 +4318,24 @@
       "clasificacion": [
         {
           "posicion": 1,
+          "equipo": "A.D. TARAGUILLA",
+          "puntos": 9,
+          "jugados": 3,
+          "jugadosCasa": 2,
+          "jugadosFuera": 1,
+          "ganados": 3,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 21,
+          "golesContra": 4,
+          "racha": [
+            "G",
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 2,
           "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
           "puntos": 6,
           "jugados": 2,
@@ -4328,23 +4346,6 @@
           "perdidos": 0,
           "golesFavor": 15,
           "golesContra": 2,
-          "racha": [
-            "G",
-            "G"
-          ]
-        },
-        {
-          "posicion": 2,
-          "equipo": "A.D. TARAGUILLA",
-          "puntos": 6,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 15,
-          "golesContra": 3,
           "racha": [
             "G",
             "G"
@@ -4370,16 +4371,17 @@
         {
           "posicion": 4,
           "equipo": "C.D. LA SALLE",
-          "puntos": 6,
-          "jugados": 2,
+          "puntos": 9,
+          "jugados": 3,
           "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 2,
+          "jugadosFuera": 2,
+          "ganados": 3,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 5,
-          "golesContra": 1,
+          "golesFavor": 8,
+          "golesContra": 3,
           "racha": [
+            "G",
             "G",
             "G"
           ]
@@ -4403,23 +4405,6 @@
         },
         {
           "posicion": 6,
-          "equipo": "ARCOS C.F.",
-          "puntos": 3,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 7,
-          "golesContra": 6,
-          "racha": [
-            "P",
-            "G"
-          ]
-        },
-        {
-          "posicion": 7,
           "equipo": "A.D. MARIANISTAS C.D.",
           "puntos": 3,
           "jugados": 2,
@@ -4436,7 +4421,7 @@
           ]
         },
         {
-          "posicion": 8,
+          "posicion": 7,
           "equipo": "TRASMALLO F.C. C.D.",
           "puntos": 3,
           "jugados": 2,
@@ -4453,7 +4438,7 @@
           ]
         },
         {
-          "posicion": 9,
+          "posicion": 8,
           "equipo": "C.D. S.M. MIRADOR",
           "puntos": 3,
           "jugados": 2,
@@ -4470,7 +4455,7 @@
           ]
         },
         {
-          "posicion": 10,
+          "posicion": 9,
           "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
           "puntos": 3,
           "jugados": 2,
@@ -4487,20 +4472,39 @@
           ]
         },
         {
-          "posicion": 11,
-          "equipo": "C.D. SALESIANOS ALGECIRAS",
+          "posicion": 10,
+          "equipo": "ARCOS C.F.",
           "puntos": 3,
-          "jugados": 2,
-          "jugadosCasa": 1,
+          "jugados": 3,
+          "jugadosCasa": 2,
           "jugadosFuera": 1,
           "ganados": 1,
           "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 5,
-          "golesContra": 6,
+          "perdidos": 2,
+          "golesFavor": 9,
+          "golesContra": 9,
           "racha": [
             "P",
-            "G"
+            "G",
+            "P"
+          ]
+        },
+        {
+          "posicion": 11,
+          "equipo": "C.D. SALESIANOS ALGECIRAS",
+          "puntos": 3,
+          "jugados": 3,
+          "jugadosCasa": 1,
+          "jugadosFuera": 2,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 6,
+          "golesContra": 12,
+          "racha": [
+            "P",
+            "G",
+            "P"
           ]
         },
         {

@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-25T16:46:29.216Z",
+  "actualizado": "2026-09-25T17:44:14.362Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -246,7 +246,7 @@
               "codLocal": "309618",
               "codVisitante": "44810826",
               "fecha": "2026-09-25",
-              "hora": "18:41",
+              "hora": "18:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -254,7 +254,7 @@
               "campo": "ANDRES SARRIAS",
               "superficie": "Hierba Artificial",
               "codCampo": "3096",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709882&cod_acta=2709882",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709882&cod_acta=2709882",
               "jugado": false
             },
             {
@@ -4440,8 +4440,8 @@
           "ganados": 1,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 7,
-          "golesContra": 2,
+          "golesFavor": 11,
+          "golesContra": 3,
           "racha": [
             "P",
             "G"
@@ -4541,8 +4541,8 @@
           "ganados": 0,
           "empatados": 0,
           "perdidos": 2,
-          "golesFavor": 1,
-          "golesContra": 17,
+          "golesFavor": 2,
+          "golesContra": 21,
           "racha": [
             "P",
             "P"

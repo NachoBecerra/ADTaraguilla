@@ -1,5 +1,5 @@
 {
-  "generado": "2026-09-25T16:46:29.233Z",
+  "generado": "2026-09-25T17:44:14.380Z",
   "temporada": "2026-2027",
   "club": {
     "codigo": "3075",
@@ -139,7 +139,7 @@
       "codigo": "28567666",
       "orden": 7,
       "enCompeticion": true,
-      "actualizado": "2026-09-25T16:46:29.216Z",
+      "actualizado": "2026-09-25T17:44:14.362Z",
       "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
       "competiciones": [
         {
@@ -160,15 +160,15 @@
       "codigo": "307530",
       "orden": 8,
       "enCompeticion": true,
-      "actualizado": "2026-09-25T08:31:54.377Z",
+      "actualizado": "2026-09-25T17:44:01.730Z",
       "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
       "competiciones": [
         {
           "nombre": "2ª ANDALUZA BENJAMIN (CADIZ)",
           "grupo": "GRUPO UNICO",
           "estado": "activa",
-          "puntos": 6,
-          "posicion": 2,
+          "puntos": 9,
+          "posicion": 1,
           "equiposEnGrupo": 16,
           "jornadas": 30
         }
