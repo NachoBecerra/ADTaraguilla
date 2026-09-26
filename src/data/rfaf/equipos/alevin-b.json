@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-26T11:42:16.653Z",
+  "actualizado": "2026-09-26T12:30:14.561Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -195,7 +195,7 @@
               "codLocal": "48525745",
               "codVisitante": "324517",
               "fecha": "2026-09-26",
-              "hora": "12:55",
+              "hora": "12:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -203,7 +203,7 @@
               "campo": "SAN RAFAEL PVO (F11-F7)",
               "superficie": "Hierba Natural",
               "codCampo": "3080",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709885&cod_acta=2709885",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709885&cod_acta=2709885",
               "jugado": false
             },
             {
@@ -212,7 +212,7 @@
               "codLocal": "38866701",
               "codVisitante": "307320",
               "fecha": "2026-09-26",
-              "hora": "13:45",
+              "hora": "14:24",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -220,7 +220,7 @@
               "campo": "Sergio Martín",
               "superficie": "Hierba Artificial",
               "codCampo": "2019422",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709883",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709883&cod_acta=2709883",
               "jugado": false
             },
             {
@@ -4334,22 +4334,6 @@
         },
         {
           "posicion": 2,
-          "equipo": "C.D. GUADIARO",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 11,
-          "golesContra": 1,
-          "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 3,
           "equipo": "ATLETICO ATUNARA C.D. \"A\"",
           "puntos": 6,
           "jugados": 2,
@@ -4366,6 +4350,23 @@
           ]
         },
         {
+          "posicion": 3,
+          "equipo": "C.D. S.M. MIRADOR \"B\"",
+          "puntos": 6,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 8,
+          "golesContra": 2,
+          "racha": [
+            "G",
+            "G"
+          ]
+        },
+        {
           "posicion": 4,
           "equipo": "C.D. JUVENTUD PALMONES C.F.",
           "puntos": 6,
@@ -4375,8 +4376,8 @@
           "ganados": 2,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 7,
-          "golesContra": 3,
+          "golesFavor": 9,
+          "golesContra": 5,
           "racha": [
             "G",
             "G"
@@ -4400,22 +4401,6 @@
         },
         {
           "posicion": 6,
-          "equipo": "C.D. S.M. MIRADOR \"B\"",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 3,
-          "golesContra": 2,
-          "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 7,
           "equipo": "A.D. LOS CORTIJILLOS",
           "puntos": 3,
           "jugados": 2,
@@ -4432,7 +4417,7 @@
           ]
         },
         {
-          "posicion": 8,
+          "posicion": 7,
           "equipo": "C.D. SAN BERNARDO",
           "puntos": 3,
           "jugados": 2,
@@ -4446,6 +4431,23 @@
           "racha": [
             "P",
             "G"
+          ]
+        },
+        {
+          "posicion": 8,
+          "equipo": "C.D. GUADIARO",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 11,
+          "golesContra": 6,
+          "racha": [
+            "G",
+            "P"
           ]
         },
         {
@@ -4509,8 +4511,8 @@
           "ganados": 0,
           "empatados": 0,
           "perdidos": 2,
-          "golesFavor": 3,
-          "golesContra": 6,
+          "golesFavor": 5,
+          "golesContra": 8,
           "racha": [
             "P",
             "P"
