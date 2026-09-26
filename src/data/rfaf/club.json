@@ -1,5 +1,5 @@
 {
-  "generado": "2026-09-25T22:26:22.071Z",
+  "generado": "2026-09-26T07:27:35.179Z",
   "temporada": "2026-2027",
   "club": {
     "codigo": "3075",
@@ -13,7 +13,7 @@
       "codigo": "38877699",
       "orden": 1,
       "enCompeticion": true,
-      "actualizado": "2026-09-25T08:32:07.020Z",
+      "actualizado": "2026-09-26T07:22:46.268Z",
       "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
       "competiciones": [
         {
@@ -55,7 +55,7 @@
       "codigo": "307517",
       "orden": 3,
       "enCompeticion": true,
-      "actualizado": "2026-09-25T22:21:21.317Z",
+      "actualizado": "2026-09-26T07:22:58.884Z",
       "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
       "competiciones": [
         {
@@ -76,7 +76,7 @@
       "codigo": "307520",
       "orden": 4,
       "enCompeticion": true,
-      "actualizado": "2026-09-25T08:31:41.891Z",
+      "actualizado": "2026-09-26T07:22:33.714Z",
       "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
       "competiciones": [
         {
@@ -97,7 +97,7 @@
       "codigo": "307528",
       "orden": 5,
       "enCompeticion": true,
-      "actualizado": "2026-09-25T22:21:33.504Z",
+      "actualizado": "2026-09-26T07:23:11.376Z",
       "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307528",
       "competiciones": [
         {
@@ -118,7 +118,7 @@
       "codigo": "307521",
       "orden": 6,
       "enCompeticion": true,
-      "actualizado": "2026-09-25T22:21:48.423Z",
+      "actualizado": "2026-09-26T07:23:26.424Z",
       "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
       "competiciones": [
         {

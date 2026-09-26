@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-25T08:31:41.891Z",
+  "actualizado": "2026-09-26T07:22:33.714Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-13",
           "partidos": [
+            {
+              "local": "SEVILLA F.C., S.A.D.",
+              "visitante": "A.D. TARAGUILLA",
+              "codLocal": "100136",
+              "codVisitante": "307520",
+              "fecha": "2026-09-12",
+              "hora": "12:00",
+              "golesLocal": 2,
+              "golesVisitante": 0,
+              "origen": "clasificacion",
+              "localidad": "Dos Hermanas",
+              "campo": "JOSE RAMÓN CISNEROS CIUDAD DEPORTIVA",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2011471",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651380",
+              "jugado": true
+            },
             {
               "local": "R.C.R. HUELVA, S.A.D.",
               "visitante": "C.D. UNION DEPORTIVA ESPERANZA 2019",
@@ -62,23 +79,6 @@
               "codCampo": "2315900",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651381&cod_acta=2651381",
               "jugado": false
-            },
-            {
-              "local": "SEVILLA F.C., S.A.D.",
-              "visitante": "A.D. TARAGUILLA",
-              "codLocal": "100136",
-              "codVisitante": "307520",
-              "fecha": "2026-09-12",
-              "hora": "12:00",
-              "golesLocal": 2,
-              "golesVisitante": 0,
-              "origen": "clasificacion",
-              "localidad": "Dos Hermanas",
-              "campo": "JOSE RAMÓN CISNEROS CIUDAD DEPORTIVA",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2011471",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651380",
-              "jugado": true
             },
             {
               "local": "SENECA C.F.",
@@ -472,7 +472,7 @@
               "campo": "CIUDAD DEPORTIVA RAFAEL GORDILLO",
               "superficie": "Hierba Artificial",
               "codCampo": "36948119",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651410",
               "jugado": false
             },
             {
@@ -489,6 +489,23 @@
               "campo": "Jerez De La Frontera.- PICADUEÑAS",
               "superficie": "Hierba Artificial",
               "codCampo": "2070477",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "SIEMPRE ALEGRES C.D.",
+              "visitante": "SAN ROQUE BALOMPIE",
+              "codLocal": "2064503",
+              "codVisitante": "12792465",
+              "fecha": "2026-10-03",
+              "hora": null,
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": null,
+              "campo": "La Palma Polideportivo Municipal Nuevo",
+              "superficie": "Hierba Artificial",
+              "codCampo": "6903",
               "urlActa": null,
               "jugado": false
             },
@@ -540,23 +557,6 @@
               "campo": "EL JUNCAL CAMPO MPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3611",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
-              "local": "SIEMPRE ALEGRES C.D.",
-              "visitante": "SAN ROQUE BALOMPIE",
-              "codLocal": "2064503",
-              "codVisitante": "12792465",
-              "fecha": "2026-10-04",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": null,
-              "campo": "La Palma Polideportivo Municipal Nuevo",
-              "superficie": "Hierba Artificial",
-              "codCampo": "6903",
               "urlActa": null,
               "jugado": false
             },
