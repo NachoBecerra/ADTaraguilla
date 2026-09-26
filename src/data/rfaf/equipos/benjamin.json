@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-26T09:22:01.091Z",
+  "actualizado": "2026-09-26T10:20:13.011Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -321,7 +321,7 @@
               "codLocal": "343218",
               "codVisitante": "329826",
               "fecha": "2026-09-26",
-              "hora": "11:30",
+              "hora": "12:01",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -329,7 +329,7 @@
               "campo": "SANTA FE",
               "superficie": "Hierba Artificial",
               "codCampo": "3051",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663728",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663728&cod_acta=2663728",
               "jugado": false
             },
             {
@@ -338,7 +338,7 @@
               "codLocal": "355720",
               "codVisitante": "2026663",
               "fecha": "2026-09-26",
-              "hora": "11:30",
+              "hora": "12:07",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -346,7 +346,7 @@
               "campo": "BAZAN CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3020",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663733",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663733&cod_acta=2663733",
               "jugado": false
             },
             {
@@ -4408,17 +4408,18 @@
         {
           "posicion": 6,
           "equipo": "A.D. MARIANISTAS C.D.",
-          "puntos": 3,
-          "jugados": 2,
-          "jugadosCasa": 1,
+          "puntos": 6,
+          "jugados": 3,
+          "jugadosCasa": 2,
           "jugadosFuera": 1,
-          "ganados": 1,
+          "ganados": 2,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 5,
-          "golesContra": 4,
+          "golesFavor": 7,
+          "golesContra": 5,
           "racha": [
             "P",
+            "G",
             "G"
           ]
         },
@@ -4441,40 +4442,24 @@
         },
         {
           "posicion": 8,
-          "equipo": "C.D. S.M. MIRADOR",
-          "puntos": 3,
-          "jugados": 2,
-          "jugadosCasa": 1,
+          "equipo": "BAHIA SAN FERNANDO C.D.",
+          "puntos": 4,
+          "jugados": 3,
+          "jugadosCasa": 2,
           "jugadosFuera": 1,
           "ganados": 1,
-          "empatados": 0,
+          "empatados": 1,
           "perdidos": 1,
-          "golesFavor": 4,
+          "golesFavor": 3,
           "golesContra": 4,
           "racha": [
-            "G",
-            "P"
+            "P",
+            "E",
+            "G"
           ]
         },
         {
           "posicion": 9,
-          "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
-          "puntos": 3,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 6,
-          "golesContra": 7,
-          "racha": [
-            "G",
-            "P"
-          ]
-        },
-        {
-          "posicion": 10,
           "equipo": "ARCOS C.F.",
           "puntos": 3,
           "jugados": 3,
@@ -4492,7 +4477,43 @@
           ]
         },
         {
+          "posicion": 10,
+          "equipo": "C.D. S.M. MIRADOR",
+          "puntos": 3,
+          "jugados": 3,
+          "jugadosCasa": 1,
+          "jugadosFuera": 2,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 4,
+          "golesContra": 5,
+          "racha": [
+            "G",
+            "P",
+            "P"
+          ]
+        },
+        {
           "posicion": 11,
+          "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
+          "puntos": 3,
+          "jugados": 3,
+          "jugadosCasa": 1,
+          "jugadosFuera": 2,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 7,
+          "golesContra": 9,
+          "racha": [
+            "G",
+            "P",
+            "P"
+          ]
+        },
+        {
+          "posicion": 12,
           "equipo": "C.D. SALESIANOS ALGECIRAS",
           "puntos": 3,
           "jugados": 3,
@@ -4507,23 +4528,6 @@
             "P",
             "G",
             "P"
-          ]
-        },
-        {
-          "posicion": 12,
-          "equipo": "BAHIA SAN FERNANDO C.D.",
-          "puntos": 1,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 1,
-          "perdidos": 1,
-          "golesFavor": 2,
-          "golesContra": 4,
-          "racha": [
-            "P",
-            "E"
           ]
         },
         {
