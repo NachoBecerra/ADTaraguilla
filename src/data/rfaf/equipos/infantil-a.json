@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-27T11:58:22.156Z",
+  "actualizado": "2026-09-27T18:46:00.969Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -329,7 +329,7 @@
               "campo": "JOSE RAMÓN CISNEROS CIUDAD DEPORTIVA",
               "superficie": "Hierba Artificial",
               "codCampo": "2011471",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651397",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651397&cod_acta=2651397",
               "jugado": false
             },
             {
@@ -4372,6 +4372,24 @@
         },
         {
           "posicion": 4,
+          "equipo": "SEVILLA F.C., S.A.D.",
+          "puntos": 7,
+          "jugados": 3,
+          "jugadosCasa": 2,
+          "jugadosFuera": 1,
+          "ganados": 2,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 4,
+          "golesContra": 1,
+          "racha": [
+            "G",
+            "E",
+            "G"
+          ]
+        },
+        {
+          "posicion": 5,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 6,
           "jugados": 3,
@@ -4389,7 +4407,7 @@
           ]
         },
         {
-          "posicion": 5,
+          "posicion": 6,
           "equipo": "C.D.C. NUEVO MOLINO CSIF",
           "puntos": 6,
           "jugados": 3,
@@ -4407,7 +4425,7 @@
           ]
         },
         {
-          "posicion": 6,
+          "posicion": 7,
           "equipo": "C.F. SAN JOSE OBRERO",
           "puntos": 6,
           "jugados": 3,
@@ -4425,7 +4443,7 @@
           ]
         },
         {
-          "posicion": 7,
+          "posicion": 8,
           "equipo": "R.C.R. HUELVA, S.A.D.",
           "puntos": 6,
           "jugados": 3,
@@ -4440,23 +4458,6 @@
             "G",
             "G",
             "P"
-          ]
-        },
-        {
-          "posicion": 8,
-          "equipo": "SEVILLA F.C., S.A.D.",
-          "puntos": 4,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 1,
-          "perdidos": 0,
-          "golesFavor": 2,
-          "golesContra": 0,
-          "racha": [
-            "G",
-            "E"
           ]
         },
         {
@@ -4589,15 +4590,16 @@
           "posicion": 16,
           "equipo": "C.D. MOSQUITO",
           "puntos": 0,
-          "jugados": 2,
+          "jugados": 3,
           "jugadosCasa": 1,
-          "jugadosFuera": 1,
+          "jugadosFuera": 2,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 0,
-          "golesContra": 6,
+          "perdidos": 3,
+          "golesFavor": 1,
+          "golesContra": 8,
           "racha": [
+            "P",
             "P",
             "P"
           ]
