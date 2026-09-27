@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-27T11:18:39.839Z",
+  "actualizado": "2026-09-27T18:25:02.392Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -480,7 +480,7 @@
               "visitante": "C.D. ISLA DE LEON FUTBOL BASE",
               "codLocal": "329826",
               "codVisitante": "331319",
-              "fecha": "2026-10-03",
+              "fecha": "2026-10-04",
               "hora": null,
               "golesLocal": null,
               "golesVisitante": null,
