@@ -30,6 +30,8 @@ import {
   partidosCongelados,
   partidosDelCalendario,
   atascoDeResultados,
+  correccionPorClasificacion,
+  descuadreDeResultados,
   equiposAusentes,
   resultadoCreible,
   resultadoPorClasificacion,
@@ -500,6 +502,37 @@ async function sincronizarCompeticion(cliente, competicion, previa, escudos, nom
     p.jugado = true;
     log(
       `    resultado deducido de la clasificación: ${p.local} ${p.golesLocal}-${p.golesVisitante} ${p.visitante}`,
+    );
+  }
+
+  /*
+   * Y lo contrario: un resultado que ya publicamos y que la tabla ya no
+   * respalda. Pasó el 26 de septiembre de 2026 con el infantil A: ganó 4-0, el
+   * árbitro subió un 3-0 provisional al descanso, lo dedujimos en ese hueco y
+   * ahí se quedó. La deducción no lo revisa, porque solo mira los partidos que
+   * la tabla cuenta como nuevos.
+   */
+  const correccion = correccionPorClasificacion({ nombreRfaf, clasificacion, jornadas });
+  if (correccion) {
+    const p = jornadas[correccion.jornada].partidos[correccion.partido];
+    p.golesLocal = correccion.golesLocal;
+    p.golesVisitante = correccion.golesVisitante;
+    p.origen = ORIGEN_TABLA;
+    p.jugado = true;
+    log(
+      `    resultado corregido: ${p.local} ${correccion.antesLocal}-${correccion.antesVisitante} ${p.visitante}` +
+        ` pasa a ${correccion.golesLocal}-${correccion.golesVisitante}`,
+    );
+  }
+
+  /* Y si no se ha podido corregir, que no quede en silencio: hay un resultado
+     publicado que no suma lo que dice la tabla */
+  const descuadre = descuadreDeResultados({ nombreRfaf, clasificacion, jornadas });
+  if (descuadre) {
+    aviso(
+      `  ${competicion.nombre}: lo publicado no cuadra con la tabla ` +
+        `(nosotros ${descuadre.contadosFavor}-${descuadre.contadosContra}, la tabla ` +
+        `${descuadre.tabla.golesFavor}-${descuadre.tabla.golesContra}); hay que mirarlo a mano`,
     );
   }
 

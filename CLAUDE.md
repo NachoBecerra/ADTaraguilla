@@ -47,21 +47,34 @@ Hay **tres escritores, y ninguno sabe de los otros**:
    los **equipos**: uno que la ficha del club deja de listar se conserva tres
    días (`ausenteDesde` en `club.json`, regla `equiposAusentes`) antes de
    retirarse de la web.
-3. **Un resultado solo se deduce con certeza**: exactamente un partido nuevo en
+3. **Lo publicado tiene que cuadrar con la tabla.** La suma de nuestros goles
+   debe dar los goles a favor y en contra que dice la clasificación; si no da,
+   lo que está mal es lo nuestro. El árbitro sube a veces un resultado
+   provisional —el 26 de septiembre de 2026 el infantil A ganó 4-0 y la tabla
+   contó 3-0 al descanso— y la deducción no lo revisa, porque solo mira los
+   partidos que la tabla cuenta como **nuevos**. Regla:
+   `correccionPorClasificacion` corrige el último partido deducido si es
+   reciente, los goles son creíbles y el signo del partido sigue cuadrando; si
+   no puede, `descuadreDeResultados` lo dice en el resumen.
+4. **Un partido que ya ha empezado no se cae del calendario.** Se mide desde el
+   saque, no una hora después: esa hora de más se llevó el juvenil del 26 de
+   septiembre de 2026, que la RFAF quitó del calendario con el partido en
+   juego. Regla: `partidosCongelados` con `yaEmpezo`.
+5. **Un resultado solo se deduce con certeza**: exactamente un partido nuevo en
    la tabla y un único candidato. Si hay varios pendientes, desempata el campo:
    la tabla separa lo jugado en casa y fuera, y vale el único pendiente de ese
    campo. Ante la duda se deja el hueco —nunca se publica un resultado
    inventado— y la sincronización lo avisa en su resumen (`atascoDeResultados`):
    un partido suspendido que atasca a los demás se aparta a mano.
-4. **La sincronización corre sin `node_modules`**: el workflow no instala
+6. **La sincronización corre sin `node_modules`**: el workflow no instala
    dependencias. Nada de librerías en `scripts/rfaf/sincronizar.mjs` ni en lo
    que importe. Lo que las necesite va en un script aparte que se lanza a mano
    (`scripts/rfaf/medirEscudos.mjs`).
-5. Las competiciones que no se publican se apartan en `src/data/equipos.json` →
+7. Las competiciones que no se publican se apartan en `src/data/equipos.json` →
    `competicionesExcluidas`, por código de grupo. Borrarlas de los datos no
    sirve: la siguiente pasada las vuelve a traer.
 
-6. **Un aviso al móvil solo sale con los datos ya publicados.** La
+8. **Un aviso al móvil solo sale con los datos ya publicados.** La
    sincronización los deja en un archivo (`AVISOS_A_ARCHIVO`) y el workflow los
    manda con `scripts/rfaf/avisar.mjs` después de un push que haya salido bien.
    Mandarlos antes avisaba de resultados que no estaban en la web, y cuando el
@@ -69,44 +82,44 @@ Hay **tres escritores, y ninguno sabe de los otros**:
 
 ### Directo
 
-7. **Se guardan eventos, no el marcador.** Marcador, reloj y fase se pliegan de
+9. **Se guardan eventos, no el marcador.** Marcador, reloj y fase se pliegan de
    la lista (`src/lib/directo/modelo.ts` → `plegar`). Corregir es añadir un
    evento `anula`. Para reparar un partido que nadie cerró está
    `scripts/directo/corregir.mjs`.
-8. **Un registro abierto no es un directo narrado.** Narrado significa que tiene
+10. **Un registro abierto no es un directo narrado.** Narrado significa que tiene
    eventos, y se marca con `directo/narrados/<id>.json` al apuntarse el primero.
-9. **`listarRegistros()` devuelve solo registros de partido** (`directo/<id>.json`).
+11. **`listarRegistros()` devuelve solo registros de partido** (`directo/<id>.json`).
    La carpeta tiene subcarpetas: quien recorra el almacén por su cuenta tiene que
    filtrar. El 12 de septiembre un marcador de subcarpeta tumbó la lista de
    directos de la portada.
-10. **"Ya no se juega" es saque + 3 h**, definido una sola vez
+12. **"Ya no se juega" es saque + 3 h**, definido una sola vez
    (`src/lib/directo/panel.ts` → `yaNoSeJuega`). Panel y portada tienen que usar
    la misma regla, o un partido desaparece de uno y sigue prometiéndose en el otro.
    Un partido **sin hora** tiene el saque al final de su día (`HORA_SIN_FIJAR`,
    en `scripts/rfaf/reglas.mjs` y `src/lib/directo/partidos.ts`: tienen que
    coincidir).
-11. **El almacén privado se lee sin caché** (`src/lib/privado.ts`). Leer con caché
+13. **El almacén privado se lee sin caché** (`src/lib/privado.ts`). Leer con caché
     para modificar y volver a guardar pierde lo último: pasó con el directo.
 
 ### Web
 
-12. **Local tiene que comportarse como producción.** El respaldo en disco
+14. **Local tiene que comportarse como producción.** El respaldo en disco
     (`src/lib/directo/deposito.ts`) lista recursivamente, igual que el almacén.
     Cualquier diferencia entre los dos esconde fallos que solo aparecen en
     producción. Por lo mismo, **todo lo que compare con la hora de un partido va
     en hora española** (`saqueEnMs`): `new Date("2026-09-13T19:00:00")` se lee en
     la hora del servidor, y GitHub y Vercel van en UTC. Así estuvo el bot dos
     horas tarde en cada resultado de tarde.
-13. Lo que depende de la hora o de datos vivos se decide en el navegador, y en el
+15. Lo que depende de la hora o de datos vivos se decide en el navegador, y en el
     servidor se pinta vacío (`useSyncExternalStore` con valor de servidor fijo).
     Así no hay errores de hidratación.
-14. **Escudos**: solo de los sitios permitidos. La lista está en
+16. **Escudos**: solo de los sitios permitidos. La lista está en
     `next.config.ts` y en `src/lib/panel/escudos.ts` → `esEscudoAceptable`, y
     tienen que coincidir. `src/data/rfaf/formas.json` dice cómo escalar cada
     escudo dentro de su disco; se rellena con `node scripts/rfaf/medirEscudos.mjs`
     cuando aparece un rival nuevo.
 
-15. **El dominio no se toca.** La web responde con y sin `www`, y **ninguna
+17. **El dominio no se toca.** La web responde con y sin `www`, y **ninguna
     redirección puede llevar de uno a otro**: quien narra desde el campo puede
     tener la botonera abierta en cualquiera de los dos, y al redirigir su envío
     a otro dominio el navegador lo bloquea por CORS —preflight `OPTIONS` sin
@@ -116,12 +129,12 @@ Hay **tres escritores, y ninguno sabe de los otros**:
     silencio. Para los buscadores basta la etiqueta canónica. Si algún día hace
     falta tocarlo, `/api/` queda fuera de la redirección, y se prueba
     **escribiendo un evento desde el dominio con www**.
-16. **Lo que no se guarda, se dice a gritos.** La botonera avisa en rojo y a
+18. **Lo que no se guarda, se dice a gritos.** La botonera avisa en rojo y a
     media pantalla cuando lleva más de `MARGEN_ATASCO_MS` sin que el servidor
     acepte nada (`src/lib/directo/salud.ts`). Un contador pequeño de "3 sin
     enviar" no lo ve nadie: ya existía el día del partido perdido.
 
-17. **Lo que toca los datos, queda apuntado.** Publicar, borrar, abrir un
+19. **Lo que toca los datos, queda apuntado.** Publicar, borrar, abrir un
     directo, entrar al panel y lo que falla al intentarlo van a la bitácora
     (`src/lib/bitacora.ts`, un archivo por mes en el almacén privado) y se leen
     en `/panel/logs`. El bot lo manda por `/api/bitacora` con el secreto de los

@@ -14,10 +14,13 @@ import { marcador } from "./html.mjs";
 import {
   ORIGEN_TABLA,
   atascoDeResultados,
+  correccionPorClasificacion,
+  descuadreDeResultados,
   avisaDelHorario,
   urlDeJornada,
   equiposAusentes,
   partidosCongelados,
+  yaEmpezo,
   partidosDelCalendario,
   resultadoCreible,
   resultadoPorClasificacion,
@@ -525,6 +528,107 @@ console.log("--- Pedir una jornada: lo que no se sabe, no se manda ---");
   comprobar("ni vacia", urlDeJornada({ ...base, codTemporada: "" }), sinTemporada);
   comprobar("ni con el texto null", urlDeJornada({ ...base, codTemporada: "null" }), sinTemporada);
   comprobar("ni con el texto undefined", urlDeJornada({ ...base, codTemporada: "undefined" }), sinTemporada);
+}
+
+
+
+/* ------------- un resultado publicado que la tabla ya no respalda */
+console.log("");
+console.log("--- Corregir un resultado que ya no cuadra con la tabla ---");
+{
+  const N = "A.D. TARAGUILLA";
+  const conGoles = (local, visitante, gl, gv, fecha) => ({
+    local, visitante, golesLocal: gl, golesVisitante: gv, fecha, hora: "12:00",
+    jugado: gl !== null, origen: gl === null ? null : "clasificacion",
+  });
+
+  /* El caso real del 26-9-2026: el infantil A gano 4-0, el arbitro subio un
+     3-0 provisional al descanso y la tabla lo conto asi. Lo dedujimos en ese
+     hueco y se quedo publicado, porque la deduccion solo mira los partidos
+     nuevos y ese ya tenia resultado. */
+  const jornadas = [
+    { numero: 1, nombre: "Jornada 1", fecha: "2026-09-12", partidos: [conGoles("SEVILLA F.C.", N, 2, 0, "2026-09-12")] },
+    { numero: 2, nombre: "Jornada 2", fecha: "2026-09-19", partidos: [conGoles(N, "LUCECOR F.S.", 8, 0, "2026-09-19")] },
+    { numero: 3, nombre: "Jornada 3", fecha: "2026-09-26", partidos: [conGoles(N, "JUVENTUD DVA. GINES", 3, 0, "2026-09-26")] },
+  ];
+  const tabla = (favor, ganados = 2) => [{
+    equipo: N, jugados: 3, ganados, empatados: 0, perdidos: 3 - ganados,
+    golesFavor: favor, golesContra: 2, puntos: ganados * 3,
+  }];
+  const dosDiasDespues = saqueEnMs("2026-09-28", "12:00");
+
+  const c = correccionPorClasificacion({ nombreRfaf: N, clasificacion: tabla(12), jornadas, ahora: dosDiasDespues });
+  comprobar("se corrige el ultimo partido", c && [c.jornada, c.partido], [2, 0]);
+  comprobar("y queda el resultado bueno", c && [c.golesLocal, c.golesVisitante], [4, 0]);
+  comprobar("diciendo lo que habia antes", c && [c.antesLocal, c.antesVisitante], [3, 0]);
+
+  comprobar(
+    "si todo cuadra no se toca nada",
+    correccionPorClasificacion({ nombreRfaf: N, clasificacion: tabla(11), jornadas, ahora: dosDiasDespues }),
+    null,
+  );
+
+  /* Con un partido por colocar manda la deduccion, no esto */
+  const conPendiente = [...jornadas, { numero: 4, nombre: "Jornada 4", fecha: "2026-10-03", partidos: [conGoles(N, "OTRO C.F.", null, null, "2026-10-03")] }];
+  const tablaCuatro = [{ equipo: N, jugados: 4, ganados: 3, empatados: 0, perdidos: 1, golesFavor: 15, golesContra: 2, puntos: 9 }];
+  comprobar(
+    "con partidos por colocar, no se corrige",
+    correccionPorClasificacion({ nombreRfaf: N, clasificacion: tablaCuatro, jornadas: conPendiente, ahora: saqueEnMs("2026-10-04", "12:00") }),
+    null,
+  );
+
+  /* Un descuadre que aparece meses despues no es de este partido */
+  comprobar(
+    "pasada la vigilancia, no se toca",
+    correccionPorClasificacion({ nombreRfaf: N, clasificacion: tabla(12), jornadas, ahora: saqueEnMs("2026-11-15", "12:00") }),
+    null,
+  );
+  comprobar(
+    "pero se dice en voz alta",
+    !!descuadreDeResultados({ nombreRfaf: N, clasificacion: tabla(12), jornadas, ahora: saqueEnMs("2026-11-15", "12:00") }),
+    true,
+  );
+
+  /* Si el cambio contradijera a la tabla en ganados y perdidos, no se toca:
+     ahi ya no sabemos que partido esta mal */
+  comprobar(
+    "un cambio que cambiaria el signo del partido no se aplica",
+    correccionPorClasificacion({ nombreRfaf: N, clasificacion: tabla(8, 1), jornadas, ahora: dosDiasDespues }),
+    null,
+  );
+  comprobar(
+    "ni deja goles negativos",
+    correccionPorClasificacion({ nombreRfaf: N, clasificacion: tabla(7), jornadas, ahora: dosDiasDespues }),
+    null,
+  );
+}
+
+
+
+/* ------------- un partido en juego no se cae del calendario */
+console.log("");
+console.log("--- Mientras rueda el balon, el partido no se pierde ---");
+{
+  const enJuego = { local: "U.D. CASTELLAR C.F.", visitante: "A.D. TARAGUILLA", fecha: "2026-09-26", hora: "12:00", jugado: false, origen: null };
+  const futuro = { local: "A.D. TARAGUILLA", visitante: "OTRO C.F.", fecha: "2026-10-03", hora: "12:00", jugado: false, origen: null };
+  const vacio = new Set();
+
+  /* El caso real: la RFAF lo quito del calendario con el partido empezado y la
+     pasada de las 12:47 lo borro, porque no habia pasado una hora del saque */
+  const alrato = saqueEnMs("2026-09-26", "12:47");
+  comprobar(
+    "empezado hace 47 minutos: se conserva",
+    partidosCongelados([enJuego], vacio, alrato).length,
+    1,
+  );
+  comprobar("y uno que aun no ha empezado, no", partidosCongelados([futuro], vacio, alrato).length, 0);
+  comprobar(
+    "justo antes del saque tampoco",
+    partidosCongelados([enJuego], vacio, saqueEnMs("2026-09-26", "11:59")).length,
+    0,
+  );
+  comprobar("yaEmpezo mide por el saque", yaEmpezo("2026-09-26", "12:00", saqueEnMs("2026-09-26", "12:01")), true);
+  comprobar("y sin fecha no empieza nada", yaEmpezo(null, "12:00", Date.now()), false);
 }
 
 

@@ -43,6 +43,13 @@ export function saqueEnMs(fecha, hora) {
  * descarta: no tener resultado es un hueco que se rellena en la siguiente
  * pasada; tener uno falso es publicar una mentira.
  */
+/** ¿Ha empezado ya este partido? Se mide por el saque, en hora española. */
+export function yaEmpezo(fecha, hora, ahora = Date.now()) {
+  if (!fecha) return false;
+  const saque = saqueEnMs(fecha, hora);
+  return saque !== null && ahora >= saque;
+}
+
 export function resultadoCreible(fecha, hora, ahora = Date.now()) {
   if (!fecha) return true; // sin fecha no hay forma de juzgar; que pase
 
@@ -189,11 +196,17 @@ export const clavePartido = (p) => `${p.local}|${p.visitante}`;
  * es lo que evita duplicar un partido aplazado que la RFAF recoloca en otra
  * fecha: el calendario nuevo ya lo trae, y el suyo es el bueno.
  *
- * "Ya se jugó" se mide con la misma vara que el resto del proyecto: una hora
- * después del saque. No vale comparar días, y costó otra pasada descubrirlo:
- * el partido del infantil A era de **esa misma mañana**, así que su fecha no
- * era anterior a hoy y se perdió igual. Los resultados llegan el mismo día en
- * que se juegan; si la regla no cubre hoy, no cubre nada.
+ * "Ya se jugó" se mide por el saque, no por el día. No vale comparar fechas, y
+ * costó otra pasada descubrirlo: el partido del infantil A era de **esa misma
+ * mañana**, así que su fecha no era anterior a hoy y se perdió igual.
+ *
+ * Y se mide **desde el saque**, no una hora después. Esa hora de más dejaba una
+ * ventana por la que se perdió el juvenil el 26 de septiembre de 2026: empezaba
+ * a las 12:00, la RFAF lo quitó del calendario, y la pasada de las 12:47 lo
+ * encontró fuera estando el partido en juego. Como todavía no habían pasado
+ * sesenta minutos, no se conservó, y con él se fue el 2-7 que nunca llegó a
+ * publicarse. Mientras rueda el balón, un partido ya no es una noticia del
+ * calendario: es historia a medio escribir.
  */
 export function partidosCongelados(previos, enElCalendario, ahora = Date.now()) {
   return (previos ?? []).filter((p) => {
@@ -202,8 +215,8 @@ export function partidosCongelados(previos, enElCalendario, ahora = Date.now()) 
     /* Con resultado es historia, aunque su fecha se hubiera quedado en blanco */
     if (p.jugado && p.origen === ORIGEN_TABLA) return true;
 
-    /* Y sin resultado, basta con que ya pueda haberse jugado */
-    return Boolean(p.fecha) && resultadoCreible(p.fecha, p.hora ?? null, ahora);
+    /* Y sin resultado, basta con que ya haya empezado */
+    return yaEmpezo(p.fecha, p.hora ?? null, ahora);
   });
 }
 
@@ -277,6 +290,8 @@ function cuentasDelEquipo({ nombreRfaf, clasificacion, jornadas, ahora }) {
   let favorContados = 0;
   let contraContados = 0;
   const candidatos = [];
+  /** Los que ya tienen resultado puesto por nosotros, en orden de jornada. */
+  const deducidos = [];
 
   (jornadas ?? []).forEach((jornada, j) => {
     (jornada.partidos ?? []).forEach((partido, i) => {
@@ -292,6 +307,9 @@ function cuentasDelEquipo({ nombreRfaf, clasificacion, jornadas, ahora }) {
         else contadosFuera += 1;
         favorContados += favor;
         contraContados += contra;
+        if (partido.origen === ORIGEN_TABLA) {
+          deducidos.push({ jornada: j, partido: i, ficha: partido, favor, contra, enCasa });
+        }
         return;
       }
 
@@ -316,6 +334,7 @@ function cuentasDelEquipo({ nombreRfaf, clasificacion, jornadas, ahora }) {
     nuevos: fila.jugados - contados,
     nuevosCasa: porCampo ? fila.jugadosCasa - contadosCasa : null,
     nuevosFuera: porCampo ? fila.jugadosFuera - contadosFuera : null,
+    deducidos,
   };
 }
 
@@ -352,6 +371,111 @@ export function resultadoPorClasificacion({ nombreRfaf, clasificacion, jornadas,
     golesLocal: somosLocal ? favor : contra,
     golesVisitante: somosLocal ? contra : favor,
   };
+}
+
+/**
+ * Cuántos días se sigue vigilando un resultado ya publicado.
+ *
+ * El árbitro cierra el acta un rato después del partido, y a veces sube antes
+ * un resultado provisional: el 26 de septiembre de 2026 el infantil A ganó 4-0
+ * y la tabla contó 3-0 un rato —el marcador del descanso—. Nosotros lo
+ * dedujimos en ese hueco y lo dimos por bueno para siempre.
+ */
+export const DIAS_VIGILANDO_RESULTADO = 7;
+
+/** Lo que nuestros partidos dicen frente a lo que dice la tabla. */
+function descuadre(cuentas) {
+  return {
+    favor: cuentas.fila.golesFavor - cuentas.favorContados,
+    contra: cuentas.fila.golesContra - cuentas.contraContados,
+  };
+}
+
+/** Ganados, empatados y perdidos según lo que tenemos guardado. */
+function balance(deducidos, cambio) {
+  let g = 0, e = 0, p = 0;
+  for (const d of deducidos) {
+    const favor = cambio && cambio.jornada === d.jornada && cambio.partido === d.partido ? cambio.favor : d.favor;
+    const contra = cambio && cambio.jornada === d.jornada && cambio.partido === d.partido ? cambio.contra : d.contra;
+    if (favor > contra) g += 1;
+    else if (favor === contra) e += 1;
+    else p += 1;
+  }
+  return { g, e, p };
+}
+
+/**
+ * El resultado que teníamos guardado ya no cuadra con la tabla: se corrige.
+ *
+ * La tabla es la fuente, y **la suma de nuestros goles tiene que dar lo que
+ * ella dice**. Si no da, lo que está mal es lo nuestro. Hasta ahora eso no lo
+ * miraba nadie: un resultado deducido se quedaba como estaba aunque la
+ * federación lo rectificara media hora después, porque la deducción solo se
+ * dispara cuando la tabla cuenta un partido **nuevo**.
+ *
+ * Se corrige el último partido deducido, que es al que pertenece la diferencia
+ * en el caso real —el acta que se cierra después—, y solo con todas estas
+ * condiciones: no hay ningún partido pendiente de colocar, el partido es
+ * reciente, los goles resultantes son creíbles y, tras el cambio, los ganados,
+ * empatados y perdidos siguen cuadrando con la tabla. Si algo no encaja no se
+ * toca nada: lo dice `descuadreDeResultados` y se mira a mano.
+ */
+export function correccionPorClasificacion({ nombreRfaf, clasificacion, jornadas, ahora = Date.now() }) {
+  const cuentas = cuentasDelEquipo({ nombreRfaf, clasificacion, jornadas, ahora });
+  if (!cuentas) return null;
+
+  // Con partidos por colocar, de eso se encargan la deducción y el atasco
+  if (cuentas.nuevos !== 0) return null;
+
+  const { favor: faltanFavor, contra: faltanContra } = descuadre(cuentas);
+  if (faltanFavor === 0 && faltanContra === 0) return null;
+
+  const ultimo = cuentas.deducidos.at(-1);
+  if (!ultimo) return null;
+
+  // Solo lo reciente: una diferencia que aparece meses después no es de este partido
+  const saque = saqueEnMs(ultimo.ficha.fecha ?? "", ultimo.ficha.hora ?? null);
+  if (saque === null || ahora - saque > DIAS_VIGILANDO_RESULTADO * 24 * 60 * 60_000) return null;
+
+  const favor = ultimo.favor + faltanFavor;
+  const contra = ultimo.contra + faltanContra;
+  const sano = (n) => Number.isInteger(n) && n >= 0 && n <= GOLES_IMPOSIBLES;
+  if (!sano(favor) || !sano(contra)) return null;
+
+  /* Y que el cambio no contradiga a la tabla en lo otro que sí sabemos */
+  const fila = cuentas.fila;
+  if (typeof fila.ganados === "number") {
+    const tras = balance(cuentas.deducidos, { jornada: ultimo.jornada, partido: ultimo.partido, favor, contra });
+    if (tras.g !== fila.ganados || tras.e !== fila.empatados || tras.p !== fila.perdidos) return null;
+  }
+
+  const somosLocal = ultimo.ficha.local === nombreRfaf;
+
+  return {
+    jornada: ultimo.jornada,
+    partido: ultimo.partido,
+    golesLocal: somosLocal ? favor : contra,
+    golesVisitante: somosLocal ? contra : favor,
+    antesLocal: ultimo.ficha.golesLocal,
+    antesVisitante: ultimo.ficha.golesVisitante,
+  };
+}
+
+/**
+ * Lo guardado no suma lo que dice la tabla y no se ha podido corregir solo.
+ *
+ * Se dice en voz alta en el resumen de la pasada: es un resultado publicado que
+ * no cuadra, y eso se mira a mano antes de que lo vea el club.
+ */
+export function descuadreDeResultados({ nombreRfaf, clasificacion, jornadas, ahora = Date.now() }) {
+  const cuentas = cuentasDelEquipo({ nombreRfaf, clasificacion, jornadas, ahora });
+  if (!cuentas || cuentas.nuevos !== 0) return null;
+
+  const { favor, contra } = descuadre(cuentas);
+  if (favor === 0 && contra === 0) return null;
+  if (correccionPorClasificacion({ nombreRfaf, clasificacion, jornadas, ahora })) return null;
+
+  return { favor, contra, tabla: cuentas.fila, contadosFavor: cuentas.favorContados, contadosContra: cuentas.contraContados };
 }
 
 /**
