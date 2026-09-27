@@ -7,15 +7,15 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-26T22:20:27.116Z",
+  "actualizado": "2026-09-27T07:24:54.302Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
       "nombre": "1ª ANDALUZA SENIOR (CADIZ)",
       "categoria": "1ª ANDALUZA SENIOR",
       "grupo": "UNICO",
-      "puntos": 6,
-      "posicion": 6,
+      "puntos": 9,
+      "posicion": 3,
       "codGrupo": "48680165",
       "escudosRecogidos": true,
       "codCompeticion": "48680130",
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-06",
           "partidos": [
+            {
+              "local": "C.D. CIUDAD DE CADIZ",
+              "visitante": "C.D. EL TORNO 2009",
+              "codLocal": "20779397",
+              "codVisitante": "343715",
+              "fecha": "2026-09-06",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Cádiz",
+              "campo": "MANUEL DE IRIGOYEN",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3439",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662379&cod_acta=2662379",
+              "jugado": false
+            },
             {
               "local": "TREBUJENA C.F.",
               "visitante": "U.D. LOS BARRIOS",
@@ -146,23 +163,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3201",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662537&cod_acta=2662537",
-              "jugado": false
-            },
-            {
-              "local": "C.D. CIUDAD DE CADIZ",
-              "visitante": "C.D. EL TORNO 2009",
-              "codLocal": "20779397",
-              "codVisitante": "343715",
-              "fecha": "2026-09-06",
-              "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Cádiz",
-              "campo": "MANUEL DE IRIGOYEN",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3439",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662379&cod_acta=2662379",
               "jugado": false
             },
             {
@@ -510,23 +510,6 @@
           "fecha": "2026-09-27",
           "partidos": [
             {
-              "local": "A.D. TARAGUILLA",
-              "visitante": "CHICLANA C.F.",
-              "codLocal": "38877699",
-              "codVisitante": "301516",
-              "fecha": "2026-09-26",
-              "hora": "19:30",
-              "golesLocal": 2,
-              "golesVisitante": 0,
-              "origen": "clasificacion",
-              "localidad": "San Roque",
-              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662411&cod_acta=2662411",
-              "jugado": true
-            },
-            {
               "local": "REAL BALOMPEDICA LINENSE",
               "visitante": "XEREZ DEPORTIVO F.C.",
               "codLocal": "16370635",
@@ -661,6 +644,23 @@
               "codCampo": "3080",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662412",
               "jugado": false
+            },
+            {
+              "local": "A.D. TARAGUILLA",
+              "visitante": "CHICLANA C.F.",
+              "codLocal": "38877699",
+              "codVisitante": "301516",
+              "fecha": "2026-09-26",
+              "hora": "19:30",
+              "golesLocal": 2,
+              "golesVisitante": 0,
+              "origen": "clasificacion",
+              "localidad": "San Roque",
+              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3236",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662411&cod_acta=2662411",
+              "jugado": true
             }
           ]
         },
