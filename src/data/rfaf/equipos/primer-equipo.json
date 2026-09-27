@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-27T07:24:54.302Z",
+  "actualizado": "2026-09-27T10:20:10.493Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -523,7 +523,7 @@
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
               "codCampo": "3172",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662407",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662407&cod_acta=2662407",
               "jugado": false
             },
             {
@@ -5469,16 +5469,17 @@
         {
           "posicion": 1,
           "equipo": "XEREZ DEPORTIVO F.C.",
-          "puntos": 9,
-          "jugados": 3,
+          "puntos": 12,
+          "jugados": 4,
           "jugadosCasa": 2,
-          "jugadosFuera": 1,
-          "ganados": 3,
+          "jugadosFuera": 2,
+          "ganados": 4,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 8,
+          "golesFavor": 13,
           "golesContra": 4,
           "racha": [
+            "G",
             "G",
             "G",
             "G"
@@ -5740,24 +5741,6 @@
         },
         {
           "posicion": 16,
-          "equipo": "REAL BALOMPEDICA LINENSE",
-          "puntos": 1,
-          "jugados": 3,
-          "jugadosCasa": 1,
-          "jugadosFuera": 2,
-          "ganados": 0,
-          "empatados": 1,
-          "perdidos": 2,
-          "golesFavor": 2,
-          "golesContra": 5,
-          "racha": [
-            "P",
-            "E",
-            "P"
-          ]
-        },
-        {
-          "posicion": 17,
           "equipo": "TARIFA U.D.",
           "puntos": 1,
           "jugados": 3,
@@ -5775,7 +5758,7 @@
           ]
         },
         {
-          "posicion": 18,
+          "posicion": 17,
           "equipo": "C.D. GUADIARO",
           "puntos": 1,
           "jugados": 3,
@@ -5787,6 +5770,25 @@
           "golesFavor": 3,
           "golesContra": 7,
           "racha": [
+            "E",
+            "P",
+            "P"
+          ]
+        },
+        {
+          "posicion": 18,
+          "equipo": "REAL BALOMPEDICA LINENSE",
+          "puntos": 1,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 3,
+          "golesFavor": 2,
+          "golesContra": 10,
+          "racha": [
+            "P",
             "E",
             "P",
             "P"
