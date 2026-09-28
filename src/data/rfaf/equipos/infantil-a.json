@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-28T09:36:10.276Z",
+  "actualizado": "2026-09-28T13:27:22.572Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -476,6 +476,23 @@
               "jugado": false
             },
             {
+              "local": "JUVENTUD DVA. GINES",
+              "visitante": "LUCECOR F.S.",
+              "codLocal": "2071870",
+              "codVisitante": "9136888",
+              "fecha": "2026-10-03",
+              "hora": null,
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Gines",
+              "campo": "SAN JOSÉ NUEVO ESTADIO",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2015044",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
               "local": "C.D. UNION DEPORTIVA ESPERANZA 2019",
               "visitante": "C.D.C. NUEVO MOLINO CSIF",
               "codLocal": "16393952",
@@ -493,6 +510,23 @@
               "jugado": false
             },
             {
+              "local": "C.D. ASOC. DVA. NERVION",
+              "visitante": "SENECA C.F.",
+              "codLocal": "118920",
+              "codVisitante": "403820",
+              "fecha": "2026-10-03",
+              "hora": null,
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Sevilla",
+              "campo": "ANTONIO PUERTA IMD",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2014352",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
               "local": "SIEMPRE ALEGRES C.D.",
               "visitante": "SAN ROQUE BALOMPIE",
               "codLocal": "2064503",
@@ -506,23 +540,6 @@
               "campo": "La Palma Polideportivo Municipal Nuevo",
               "superficie": "Hierba Artificial",
               "codCampo": "6903",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
-              "local": "JUVENTUD DVA. GINES",
-              "visitante": "LUCECOR F.S.",
-              "codLocal": "2071870",
-              "codVisitante": "9136888",
-              "fecha": "2026-10-04",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Gines",
-              "campo": "SAN JOSÉ NUEVO ESTADIO",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2015044",
               "urlActa": null,
               "jugado": false
             },
@@ -557,23 +574,6 @@
               "campo": "EL JUNCAL CAMPO MPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3611",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
-              "local": "C.D. ASOC. DVA. NERVION",
-              "visitante": "SENECA C.F.",
-              "codLocal": "118920",
-              "codVisitante": "403820",
-              "fecha": "2026-10-04",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Sevilla",
-              "campo": "ANTONIO PUERTA IMD",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2014352",
               "urlActa": null,
               "jugado": false
             },
