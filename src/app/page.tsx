@@ -14,6 +14,7 @@ import { idPartido } from "@/lib/directo/idPartido";
 import ResumenPartido from "@/components/ResumenPartido";
 import TarjetaResultado from "@/components/TarjetaResultado";
 import { DirectosAhora } from "@/components/EnDirecto";
+import IrALaSeccion from "@/components/IrALaSeccion";
 import SeccionRedes from "@/components/SeccionRedes";
 import Media from "@/components/Media";
 import { IconoFlecha } from "@/components/Iconos";
@@ -153,6 +154,9 @@ export default function Inicio() {
       */}
       {/* El primer equipo se salta si su tarjeta de abajo ya lo enseña: el
           mismo partido dos veces en la misma pantalla sobra */}
+      {/* Coloca la portada en el bloque que pida la dirección compartida */}
+      <IrALaSeccion />
+
       <DirectosAhora
         omitir={idPartido(primerEquipo?.equipo.id ?? "", primerEquipo?.proximo?.fecha)}
       />
@@ -169,12 +173,12 @@ export default function Inicio() {
 
       {/* -------------------------------------------- resultados y próximos */}
       {resultados.length > 0 ? (
-        <section className="mx-auto max-w-6xl px-5 pt-14">
+        <section id="resultados" className="mx-auto max-w-6xl px-5 pt-14 scroll-mt-20">
           <TituloSeccion
             epigrafe="Lo último"
             titulo="Últimos resultados"
-            href="/equipos"
-            enlace="Todos los equipos"
+            href="/resultados"
+            enlace="Ver y compartir"
           />
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {resultados.map(({ equipo, ultimo }) => (
@@ -185,12 +189,12 @@ export default function Inicio() {
       ) : null}
 
       {proximos.length > 0 ? (
-        <section className="mx-auto max-w-6xl px-5 pt-14">
+        <section id="proximos" className="mx-auto max-w-6xl px-5 pt-14 scroll-mt-20">
           <TituloSeccion
             epigrafe="Lo que viene"
             titulo="Próximos partidos"
-            href="/equipos"
-            enlace="Todos los equipos"
+            href="/proximos"
+            enlace="Ver y compartir"
           />
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {proximos.map(({ equipo, proximo }) => (
@@ -202,7 +206,7 @@ export default function Inicio() {
 
       {/* ---------------------------------------------------------- noticias */}
       {destacada ? (
-        <section className="mx-auto max-w-6xl px-5 pt-14">
+        <section id="noticias" className="mx-auto max-w-6xl px-5 pt-14 scroll-mt-20">
           <TituloSeccion
             epigrafe="Actualidad"
             titulo="Noticias del club"
@@ -225,7 +229,7 @@ export default function Inicio() {
 
       {/* ----------------------------------------------------------- galería */}
       {galeria.length > 0 ? (
-        <section className="pt-14">
+        <section id="galeria" className="pt-14 scroll-mt-20">
           <div className="mx-auto max-w-6xl px-5">
             <TituloSeccion epigrafe="Fotos y vídeos" titulo="La galería" href="/galeria" />
           </div>

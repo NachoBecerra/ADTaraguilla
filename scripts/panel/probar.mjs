@@ -14,6 +14,7 @@ import { bloqueoRestante, trasUnFallo, MAX_FALLOS, BLOQUEO_MS, VENTANA_FALLOS_MS
 import { extractoDe, textoPlano, LARGO_EXTRACTO } from "../../src/lib/extracto.ts";
 import { entornoDe } from "../../src/lib/instalar.ts";
 import { mesDe, recortar, porDias } from "../../src/lib/bitacoraReglas.ts";
+import { seccionDesdeUrl, seccionPorNombre } from "../../src/lib/seccionesInicio.ts";
 import galeriaReal from "../../src/data/galeria.json" with { type: "json" };
 
 let fallos = 0;
@@ -285,6 +286,25 @@ console.log("");
   comprobar("se agrupa por dias, del mas nuevo al mas viejo", dias.map((d) => d.dia), ["2026-09-20", "2026-09-19"]);
   comprobar("y dentro del dia, lo ultimo primero", dias[0].apuntes[0].ts, Date.parse("2026-09-20T10:00:00Z"));
 }
+/* ------------------------- enlazar un bloque concreto de la portada */
+{
+  console.log("");
+  comprobar("con almohadilla", seccionDesdeUrl("", "#resultados"), "resultados");
+  comprobar("con el nombre suelto tras la interrogacion", seccionDesdeUrl("?resultados", ""), "resultados");
+  comprobar("y con seccion=", seccionDesdeUrl("?seccion=ultimos-resultados", ""), "resultados");
+
+  /* Como lo escribiria cualquiera al compartirlo */
+  comprobar("sinonimos de proximos", seccionDesdeUrl("?horarios", ""), "proximos");
+  comprobar("mayusculas y tildes dan igual", seccionPorNombre("Galería"), "galeria");
+  comprobar("y los espacios", seccionPorNombre("proximos partidos"), "proximos");
+
+  /* Lo que no es nuestro no rompe nada: abre la portada de siempre */
+  comprobar("un parametro cualquiera se ignora", seccionDesdeUrl("?utm_source=facebook", ""), null);
+  comprobar("y una direccion limpia tambien", seccionDesdeUrl("", ""), null);
+  comprobar("la almohadilla manda sobre el parametro", seccionDesdeUrl("?noticias", "#galeria"), "galeria");
+}
+
+
 
 console.log(fallos === 0 ? "Todo correcto." : fallos + " comprobaciones fallan.");
 process.exit(fallos === 0 ? 0 : 1);
