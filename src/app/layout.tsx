@@ -69,6 +69,12 @@ export const metadata: Metadata = {
      * genérico en vez del escudo. El favicon.ico lo añade Next por su cuenta.
      */
     icon: [{ url: "/icono-192.png", sizes: "192x192", type: "image/png" }],
+    /*
+     * El .ico se declara aparte y ya no lo pone Next por su cuenta: el suyo
+     * salía como 256×256 y Google solo mira iconos cuadrados de un tamaño
+     * múltiplo de 48. Este trae 48, 32 y 16 dentro.
+     */
+    shortcut: "/favicon.ico",
     // iPhone no lee los iconos del manifest: usa este
     apple: "/apple-icon.png",
   },
