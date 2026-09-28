@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-27T18:46:25.653Z",
+  "actualizado": "2026-09-28T09:36:37.774Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -476,23 +476,6 @@
               "jugado": false
             },
             {
-              "local": "C.D. AD PUEBLO NUEVO LA GRANJA",
-              "visitante": "C.D. ISLA DE LEON FUTBOL BASE",
-              "codLocal": "329826",
-              "codVisitante": "331319",
-              "fecha": "2026-10-04",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Jerez De La Frontera",
-              "campo": "LA GRANJA CENTRO DE DEPORTES",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2019274",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "C.D. SALESIANOS ALGECIRAS",
               "visitante": "A.D. MARIANISTAS C.D.",
               "codLocal": "349221",
@@ -544,6 +527,23 @@
               "jugado": false
             },
             {
+              "local": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
+              "visitante": "A.D. LOS BURREÑOS",
+              "codLocal": "344026",
+              "codVisitante": "28679244",
+              "fecha": "2026-10-03",
+              "hora": null,
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Chiclana De La Frontera",
+              "campo": "EL TROVADOR",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3524",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
               "local": "C.D. LA SALLE",
               "visitante": "ATLETICO ZABAL",
               "codLocal": "309522",
@@ -578,19 +578,19 @@
               "jugado": false
             },
             {
-              "local": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
-              "visitante": "A.D. LOS BURREÑOS",
-              "codLocal": "344026",
-              "codVisitante": "28679244",
-              "fecha": "2026-10-03",
+              "local": "C.D. AD PUEBLO NUEVO LA GRANJA",
+              "visitante": "C.D. ISLA DE LEON FUTBOL BASE",
+              "codLocal": "329826",
+              "codVisitante": "331319",
+              "fecha": "2026-10-04",
               "hora": null,
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
-              "localidad": "Chiclana De La Frontera",
-              "campo": "EL TROVADOR",
+              "localidad": "Jerez De La Frontera",
+              "campo": "LA GRANJA CENTRO DE DEPORTES",
               "superficie": "Hierba Artificial",
-              "codCampo": "3524",
+              "codCampo": "2019274",
               "urlActa": null,
               "jugado": false
             }
