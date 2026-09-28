@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-28T17:22:15.322Z",
+  "actualizado": "2026-09-28T21:21:11.649Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -30,23 +30,6 @@
           "fecha": "2026-09-12",
           "partidos": [
             {
-              "local": "BAHIA SAN FERNANDO C.D.",
-              "visitante": "C.D. LA SALLE",
-              "codLocal": "355720",
-              "codVisitante": "309522",
-              "fecha": "2026-09-12",
-              "hora": "17:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Fernando",
-              "campo": "BAZAN CAMPO MUNICIPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3020",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663717",
-              "jugado": false
-            },
-            {
               "local": "C.D. SAN BERNARDO",
               "visitante": "C.D. AD PUEBLO NUEVO LA GRANJA",
               "codLocal": "307919",
@@ -61,6 +44,23 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3079",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663713",
+              "jugado": false
+            },
+            {
+              "local": "BAHIA SAN FERNANDO C.D.",
+              "visitante": "C.D. LA SALLE",
+              "codLocal": "355720",
+              "codVisitante": "309522",
+              "fecha": "2026-09-12",
+              "hora": "17:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Fernando",
+              "campo": "BAZAN CAMPO MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3020",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663717",
               "jugado": false
             },
             {
@@ -190,6 +190,23 @@
               "jugado": false
             },
             {
+              "local": "C.D. SALESIANOS ALGECIRAS",
+              "visitante": "C.D. SAN BERNARDO",
+              "codLocal": "349221",
+              "codVisitante": "307919",
+              "fecha": "2026-09-19",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Algeciras",
+              "campo": "LA MENACHA JULIO CABELLO",
+              "superficie": "Hierba Artificial",
+              "codCampo": "28351042",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663722&cod_acta=2663722",
+              "jugado": false
+            },
+            {
               "local": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
               "visitante": "A.D. MARIANISTAS C.D.",
               "codLocal": "344026",
@@ -275,23 +292,6 @@
               "jugado": false
             },
             {
-              "local": "C.D. SALESIANOS ALGECIRAS",
-              "visitante": "C.D. SAN BERNARDO",
-              "codLocal": "349221",
-              "codVisitante": "307919",
-              "fecha": "2026-09-19",
-              "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Algeciras",
-              "campo": "LA MENACHA JULIO CABELLO",
-              "superficie": "Hierba Artificial",
-              "codCampo": "28351042",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663722&cod_acta=2663722",
-              "jugado": false
-            },
-            {
               "local": "C.F. SAN JOSE OBRERO",
               "visitante": "ARCOS C.F.",
               "codLocal": "303130",
@@ -315,6 +315,40 @@
           "nombre": "Jornada 3",
           "fecha": "2026-09-26",
           "partidos": [
+            {
+              "local": "ARCOS C.F.",
+              "visitante": "C.D. LA SALLE",
+              "codLocal": "48486018",
+              "codVisitante": "309522",
+              "fecha": "2026-09-25",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Arcos De La Frontera",
+              "campo": "EL SANTISCAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "7129883",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663732&cod_acta=2663732",
+              "jugado": false
+            },
+            {
+              "local": "C.D. ISLA DE LEON FUTBOL BASE",
+              "visitante": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
+              "codLocal": "331319",
+              "codVisitante": "344026",
+              "fecha": "2026-09-26",
+              "hora": "17:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Fernando",
+              "campo": "Bahia Sur ANEXO",
+              "superficie": "Hierba Artificial",
+              "codCampo": "19722540",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663727&cod_acta=2663727",
+              "jugado": false
+            },
             {
               "local": "ATLETICO ZABAL",
               "visitante": "C.F. SAN JOSE OBRERO",
@@ -384,23 +418,6 @@
               "jugado": false
             },
             {
-              "local": "C.D. ISLA DE LEON FUTBOL BASE",
-              "visitante": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
-              "codLocal": "331319",
-              "codVisitante": "344026",
-              "fecha": "2026-09-26",
-              "hora": "17:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Fernando",
-              "campo": "Bahia Sur ANEXO",
-              "superficie": "Hierba Artificial",
-              "codCampo": "19722540",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663727&cod_acta=2663727",
-              "jugado": false
-            },
-            {
               "local": "A.D. TARAGUILLA",
               "visitante": "C.D. SALESIANOS ALGECIRAS",
               "codLocal": "307530",
@@ -416,23 +433,6 @@
               "codCampo": "3236",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663729&cod_acta=2663729",
               "jugado": true
-            },
-            {
-              "local": "ARCOS C.F.",
-              "visitante": "C.D. LA SALLE",
-              "codLocal": "48486018",
-              "codVisitante": "309522",
-              "fecha": "2026-09-25",
-              "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Arcos De La Frontera",
-              "campo": "EL SANTISCAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "7129883",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663732&cod_acta=2663732",
-              "jugado": false
             },
             {
               "local": "A.D. LOS BURREÑOS",
@@ -458,23 +458,6 @@
           "nombre": "Jornada 4",
           "fecha": "2026-10-03",
           "partidos": [
-            {
-              "local": "C.D. ESTRELLA PORTUENSE F.C.",
-              "visitante": "BAHIA SAN FERNANDO C.D.",
-              "codLocal": "353117",
-              "codVisitante": "355720",
-              "fecha": "2026-10-03",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Puerto De Santa María (El)",
-              "campo": "EL JUNCAL CAMPO MPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3611",
-              "urlActa": null,
-              "jugado": false
-            },
             {
               "local": "TRASMALLO F.C. C.D.",
               "visitante": "A.D. TARAGUILLA",
@@ -506,6 +489,23 @@
               "campo": "JUAN SIMON",
               "superficie": "Hierba Artificial",
               "codCampo": "3050",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "C.D. ESTRELLA PORTUENSE F.C.",
+              "visitante": "BAHIA SAN FERNANDO C.D.",
+              "codLocal": "353117",
+              "codVisitante": "355720",
+              "fecha": "2026-10-03",
+              "hora": "11:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Puerto De Santa María (El)",
+              "campo": "EL JUNCAL CAMPO MPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3611",
               "urlActa": null,
               "jugado": false
             },
