@@ -7,7 +7,7 @@
   "orden": 3,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-28T13:27:59.869Z",
+  "actualizado": "2026-09-29T11:21:49.578Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
   "competiciones": [
     {
@@ -30,23 +30,6 @@
           "fecha": "2026-10-03",
           "partidos": [
             {
-              "local": "U.D. TESORILLO C.D.",
-              "visitante": "C.D. EPRO CAMPO DE GIBRALTAR",
-              "codLocal": "307217",
-              "codVisitante": "45125368",
-              "fecha": "2026-10-03",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Martin del Tesorillo",
-              "campo": "MUNICIPAL LA ERA",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3072",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "C.D. PUERTO DE LA LINEA",
               "visitante": "U.D. LOS BARRIOS \"B\"",
               "codLocal": "5822048",
@@ -60,6 +43,23 @@
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
               "codCampo": "3172",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "U.D. TESORILLO C.D.",
+              "visitante": "C.D. EPRO CAMPO DE GIBRALTAR",
+              "codLocal": "307217",
+              "codVisitante": "45125368",
+              "fecha": "2026-10-03",
+              "hora": "10:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Martin del Tesorillo",
+              "campo": "MUNICIPAL LA ERA",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3072",
               "urlActa": null,
               "jugado": false
             },
@@ -94,7 +94,7 @@
               "campo": "MANUEL LEON MUNICIPAL (F11-F7)",
               "superficie": "Hierba Natural",
               "codCampo": "18654147",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694104",
               "jugado": false
             },
             {
