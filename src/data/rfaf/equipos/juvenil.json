@@ -7,7 +7,7 @@
   "orden": 2,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-29T11:22:04.650Z",
+  "actualizado": "2026-09-29T13:28:18.429Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307516",
   "competiciones": [
     {
@@ -161,7 +161,7 @@
               "codLocal": "320715",
               "codVisitante": "48485997",
               "fecha": "2026-10-03",
-              "hora": null,
+              "hora": "18:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -178,7 +178,7 @@
               "codLocal": "342516",
               "codVisitante": "44851359",
               "fecha": "2026-10-03",
-              "hora": null,
+              "hora": "18:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -186,7 +186,7 @@
               "campo": "SAN GARCIA",
               "superficie": "Hierba Artificial",
               "codCampo": "3127",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2683612",
               "jugado": false
             },
             {
@@ -195,7 +195,7 @@
               "codLocal": "9029542",
               "codVisitante": "13033680",
               "fecha": "2026-10-03",
-              "hora": null,
+              "hora": "19:15",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -203,7 +203,7 @@
               "campo": "IGNACIO VILLAVERDE",
               "superficie": "Hierba Artificial",
               "codCampo": "3608",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2683606",
               "jugado": false
             },
             {
@@ -212,7 +212,7 @@
               "codLocal": "307516",
               "codVisitante": "33452112",
               "fecha": "2026-10-03",
-              "hora": null,
+              "hora": "19:30",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -220,7 +220,7 @@
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2683608",
               "jugado": false
             },
             {
@@ -263,7 +263,7 @@
               "codLocal": "16370621",
               "codVisitante": "2064329",
               "fecha": "2026-10-04",
-              "hora": null,
+              "hora": "10:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
