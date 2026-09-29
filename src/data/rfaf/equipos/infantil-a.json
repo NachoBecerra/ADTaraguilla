@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-28T21:21:39.127Z",
+  "actualizado": "2026-09-29T09:27:32.252Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -173,6 +173,23 @@
           "fecha": "2026-09-20",
           "partidos": [
             {
+              "local": "REAL BETIS BALOMPIE S.A.D.",
+              "visitante": "ALGECIRAS C.F., S.A.D.",
+              "codLocal": "100229",
+              "codVisitante": "300219",
+              "fecha": "2026-09-19",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Dos Hermanas",
+              "campo": "CIUDAD DEPORTIVA RAFAEL GORDILLO",
+              "superficie": "Hierba Artificial",
+              "codCampo": "36948119",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651395&cod_acta=2651395",
+              "jugado": false
+            },
+            {
               "local": "SIEMPRE ALEGRES C.D.",
               "visitante": "SENECA C.F.",
               "codLocal": "2064503",
@@ -272,23 +289,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "2015044",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651389&cod_acta=2651389",
-              "jugado": false
-            },
-            {
-              "local": "REAL BETIS BALOMPIE S.A.D.",
-              "visitante": "ALGECIRAS C.F., S.A.D.",
-              "codLocal": "100229",
-              "codVisitante": "300219",
-              "fecha": "2026-09-19",
-              "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Dos Hermanas",
-              "campo": "CIUDAD DEPORTIVA RAFAEL GORDILLO",
-              "superficie": "Hierba Artificial",
-              "codCampo": "36948119",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651395&cod_acta=2651395",
               "jugado": false
             },
             {

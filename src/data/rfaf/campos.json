@@ -1,5 +1,5 @@
 {
-  "generado": "2026-09-28T17:26:19.489Z",
+  "generado": "2026-09-29T09:27:54.504Z",
   "_nota": "Ubicación de los campos, para enlazar con el mapa.",
   "campos": {
     "3008": {
@@ -11,6 +11,11 @@
       "nombre": "Jerez De La Frontera -Municipal Pedro S. Garrido",
       "lat": 36.67325599999999,
       "lon": -6.1384691
+    },
+    "3080": {
+      "nombre": "SAN RAFAEL PVO (F11-F7)",
+      "lat": 36.1852823,
+      "lon": -5.4880346
     },
     "3083": {
       "nombre": "ANTONIO LOPEZ PUA ESTADIO MUNICIPAL",
@@ -25,10 +30,23 @@
       "lat": 36.2029487,
       "lon": -5.4197526
     },
+    "3439": {
+      "nombre": "MANUEL DE IRIGOYEN"
+    },
     "3555": {
       "nombre": "CIUDAD DEPORTIVA RAFAEL SANCHEZ",
       "lat": 36.5901034,
       "lon": -6.232967599999999
+    },
+    "3562": {
+      "nombre": "VIRGEN DEL CARMEN",
+      "lat": 36.1710802,
+      "lon": -5.3468563
+    },
+    "3574": {
+      "nombre": "LOS OLIVILLOS (VICENTE BLANCA)",
+      "lat": 36.2132988,
+      "lon": -5.3853972
     },
     "3582": {
       "nombre": "QUINTA DE LA PAZ",
