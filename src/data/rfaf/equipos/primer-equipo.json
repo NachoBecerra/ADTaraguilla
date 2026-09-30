@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-29T11:22:32.408Z",
+  "actualizado": "2026-09-30T09:26:31.585Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-06",
           "partidos": [
+            {
+              "local": "C.D. CIUDAD DE CADIZ",
+              "visitante": "C.D. EL TORNO 2009",
+              "codLocal": "20779397",
+              "codVisitante": "343715",
+              "fecha": "2026-09-06",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Cádiz",
+              "campo": "MANUEL DE IRIGOYEN",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3439",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662379&cod_acta=2662379",
+              "jugado": false
+            },
             {
               "local": "JEREZ INDUSTRIAL C.F.",
               "visitante": "REAL BALOMPEDICA LINENSE",
@@ -61,23 +78,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3104",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662380&cod_acta=2662380",
-              "jugado": false
-            },
-            {
-              "local": "C.D. CIUDAD DE CADIZ",
-              "visitante": "C.D. EL TORNO 2009",
-              "codLocal": "20779397",
-              "codVisitante": "343715",
-              "fecha": "2026-09-06",
-              "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Cádiz",
-              "campo": "MANUEL DE IRIGOYEN",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3439",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662379&cod_acta=2662379",
               "jugado": false
             },
             {
@@ -350,6 +350,23 @@
           "fecha": "2026-09-20",
           "partidos": [
             {
+              "local": "CHICLANA C.F.",
+              "visitante": "C.D. SAN ROQUE",
+              "codLocal": "301516",
+              "codVisitante": "307715",
+              "fecha": "2026-09-20",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Chiclana De La Frontera",
+              "campo": "CHICLANA ESTADIO MUNICIPAL",
+              "superficie": "Hierba Natural",
+              "codCampo": "2002086",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662401&cod_acta=2662401",
+              "jugado": false
+            },
+            {
               "local": "JEREZ INDUSTRIAL C.F.",
               "visitante": "JUVENTUD SANLUQUEÑA A.D.",
               "codLocal": "300915",
@@ -399,23 +416,6 @@
               "codCampo": "3008",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662402&cod_acta=2662402",
               "jugado": true
-            },
-            {
-              "local": "CHICLANA C.F.",
-              "visitante": "C.D. SAN ROQUE",
-              "codLocal": "301516",
-              "codVisitante": "307715",
-              "fecha": "2026-09-20",
-              "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Chiclana De La Frontera",
-              "campo": "CHICLANA ESTADIO MUNICIPAL",
-              "superficie": "Hierba Natural",
-              "codCampo": "2002086",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662401&cod_acta=2662401",
-              "jugado": false
             },
             {
               "local": "C.D. CIUDAD DE CADIZ",
