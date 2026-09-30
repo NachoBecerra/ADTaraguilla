@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-29T07:31:36.467Z",
+  "actualizado": "2026-09-30T07:31:48.984Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-12",
           "partidos": [
+            {
+              "local": "C.D. ISLA DE LEON FUTBOL BASE",
+              "visitante": "A.D. LOS BURREÑOS",
+              "codLocal": "331319",
+              "codVisitante": "28679244",
+              "fecha": "2026-09-12",
+              "hora": "17:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Fernando",
+              "campo": "BAZAN CAMPO MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3020",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663710",
+              "jugado": false
+            },
             {
               "local": "C.D. SAN BERNARDO",
               "visitante": "C.D. AD PUEBLO NUEVO LA GRANJA",
@@ -129,23 +146,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3171",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663715&cod_acta=2663715",
-              "jugado": false
-            },
-            {
-              "local": "C.D. ISLA DE LEON FUTBOL BASE",
-              "visitante": "A.D. LOS BURREÑOS",
-              "codLocal": "331319",
-              "codVisitante": "28679244",
-              "fecha": "2026-09-12",
-              "hora": "17:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Fernando",
-              "campo": "BAZAN CAMPO MUNICIPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3020",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663710",
               "jugado": false
             },
             {
@@ -472,7 +472,7 @@
               "campo": "CIUDAD DEPORTIVA RAFAEL SANCHEZ",
               "superficie": "Hierba Artificial",
               "codCampo": "3555",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663738",
               "jugado": false
             },
             {
@@ -489,7 +489,7 @@
               "campo": "EL JUNCAL CAMPO MPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3611",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663734",
               "jugado": false
             },
             {
@@ -523,7 +523,7 @@
               "campo": "LA MENACHA JULIO CABELLO",
               "superficie": "Hierba Artificial",
               "codCampo": "28351042",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663737",
               "jugado": false
             },
             {
@@ -540,7 +540,7 @@
               "campo": "JUAN SIMON",
               "superficie": "Hierba Artificial",
               "codCampo": "3050",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663739",
               "jugado": false
             },
             {
@@ -557,7 +557,7 @@
               "campo": "PACO GALLEGO",
               "superficie": "Hierba Artificial",
               "codCampo": "3095",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663740",
               "jugado": false
             },
             {
@@ -574,7 +574,7 @@
               "campo": "Sergio Martín",
               "superficie": "Hierba Artificial",
               "codCampo": "2019422",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663741",
               "jugado": false
             },
             {
