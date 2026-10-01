@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-30T09:26:19.122Z",
+  "actualizado": "2026-10-01T09:28:27.066Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -540,7 +540,7 @@
               "campo": "La Palma Polideportivo Municipal Nuevo",
               "superficie": "Hierba Artificial",
               "codCampo": "6903",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651407",
               "jugado": false
             },
             {
@@ -2315,7 +2315,7 @@
         {
           "numero": 17,
           "nombre": "Jornada 17",
-          "fecha": "2027-01-24",
+          "fecha": "2027-01-17",
           "partidos": [
             {
               "local": "LUCECOR F.S.",
@@ -2458,7 +2458,7 @@
         {
           "numero": 18,
           "nombre": "Jornada 18",
-          "fecha": "2027-01-31",
+          "fecha": "2027-01-24",
           "partidos": [
             {
               "local": "JUVENTUD DVA. GINES",
@@ -3030,7 +3030,7 @@
         {
           "numero": 22,
           "nombre": "Jornada 22",
-          "fecha": "2027-03-07",
+          "fecha": "2027-03-14",
           "partidos": [
             {
               "local": "C.D. ESTRELLA PORTUENSE F.C.",
