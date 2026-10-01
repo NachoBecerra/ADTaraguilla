@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-09-30T17:21:57.596Z",
+  "actualizado": "2026-10-01T07:31:40.019Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-19",
           "partidos": [
+            {
+              "local": "U.D. TESORILLO C.D.",
+              "visitante": "A.D. LOS CORTIJILLOS",
+              "codLocal": "307218",
+              "codVisitante": "348018",
+              "fecha": "2026-09-18",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Martin del Tesorillo",
+              "campo": "MUNICIPAL LA ERA",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3072",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709872&cod_acta=2709872",
+              "jugado": false
+            },
             {
               "local": "Descansa",
               "visitante": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL \"A\"",
@@ -147,23 +164,6 @@
               "codCampo": "3574",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709877&cod_acta=2709877",
               "jugado": false
-            },
-            {
-              "local": "U.D. TESORILLO C.D.",
-              "visitante": "A.D. LOS CORTIJILLOS",
-              "codLocal": "307218",
-              "codVisitante": "348018",
-              "fecha": "2026-09-18",
-              "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Martin del Tesorillo",
-              "campo": "MUNICIPAL LA ERA",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3072",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709872&cod_acta=2709872",
-              "jugado": false
             }
           ]
         },
@@ -187,6 +187,23 @@
               "superficie": null,
               "codCampo": null,
               "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "C.D. S.M. MIRADOR \"B\"",
+              "visitante": "C.D. GUADIARO",
+              "codLocal": "38866701",
+              "codVisitante": "307320",
+              "fecha": "2026-09-26",
+              "hora": "13:45",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Algeciras",
+              "campo": "Sergio Martín",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2019422",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709883&cod_acta=2709883",
               "jugado": false
             },
             {
@@ -255,23 +272,6 @@
               "superficie": "Hierba Natural",
               "codCampo": "3080",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709885&cod_acta=2709885",
-              "jugado": false
-            },
-            {
-              "local": "C.D. S.M. MIRADOR \"B\"",
-              "visitante": "C.D. GUADIARO",
-              "codLocal": "38866701",
-              "codVisitante": "307320",
-              "fecha": "2026-09-26",
-              "hora": "13:45",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Algeciras",
-              "campo": "Sergio Martín",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2019422",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709883&cod_acta=2709883",
               "jugado": false
             },
             {
