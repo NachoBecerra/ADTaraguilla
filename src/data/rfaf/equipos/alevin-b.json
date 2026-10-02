@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-02T15:46:28.088Z",
+  "actualizado": "2026-10-02T16:47:30.101Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -321,7 +321,7 @@
               "codLocal": "38917543",
               "codVisitante": "356217",
               "fecha": "2026-10-02",
-              "hora": "17:33",
+              "hora": "17:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -329,7 +329,7 @@
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
               "codCampo": "3172",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709888&cod_acta=2709888",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709888&cod_acta=2709888",
               "jugado": false
             },
             {
@@ -372,7 +372,7 @@
               "codLocal": "326319",
               "codVisitante": "48525745",
               "fecha": "2026-10-02",
-              "hora": "18:00",
+              "hora": "18:40",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -380,7 +380,7 @@
               "campo": "VIRGEN DEL CARMEN (LA LINEA)",
               "superficie": "Hierba Artificial",
               "codCampo": "2069065",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709892",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709892&cod_acta=2709892",
               "jugado": false
             },
             {
@@ -4326,8 +4326,8 @@
           "ganados": 3,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 20,
-          "golesContra": 2,
+          "golesFavor": 22,
+          "golesContra": 4,
           "racha": [
             "G",
             "G",
@@ -4402,6 +4402,24 @@
         },
         {
           "posicion": 6,
+          "equipo": "ATLETICO ZABAL \"A\"",
+          "puntos": 6,
+          "jugados": 3,
+          "jugadosCasa": 2,
+          "jugadosFuera": 1,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 11,
+          "golesContra": 8,
+          "racha": [
+            "P",
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 7,
           "equipo": "A.D. LOS CORTIJILLOS",
           "puntos": 3,
           "jugados": 2,
@@ -4418,7 +4436,7 @@
           ]
         },
         {
-          "posicion": 7,
+          "posicion": 8,
           "equipo": "C.D. SAN BERNARDO",
           "puntos": 3,
           "jugados": 2,
@@ -4429,23 +4447,6 @@
           "perdidos": 1,
           "golesFavor": 11,
           "golesContra": 3,
-          "racha": [
-            "P",
-            "G"
-          ]
-        },
-        {
-          "posicion": 8,
-          "equipo": "ATLETICO ZABAL \"A\"",
-          "puntos": 3,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 8,
-          "golesContra": 7,
           "racha": [
             "P",
             "G"
@@ -4504,23 +4505,6 @@
         },
         {
           "posicion": 12,
-          "equipo": "U.D. LOS BARRIOS \"B\"",
-          "puntos": 0,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 5,
-          "golesContra": 8,
-          "racha": [
-            "P",
-            "P"
-          ]
-        },
-        {
-          "posicion": 13,
           "equipo": "PUENTE MAYORGA RVO \"A\"",
           "puntos": 0,
           "jugados": 2,
@@ -4532,6 +4516,24 @@
           "golesFavor": 6,
           "golesContra": 10,
           "racha": [
+            "P",
+            "P"
+          ]
+        },
+        {
+          "posicion": 13,
+          "equipo": "U.D. LOS BARRIOS \"B\"",
+          "puntos": 0,
+          "jugados": 3,
+          "jugadosCasa": 1,
+          "jugadosFuera": 2,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 3,
+          "golesFavor": 6,
+          "golesContra": 11,
+          "racha": [
+            "P",
             "P",
             "P"
           ]
@@ -4563,8 +4565,8 @@
           "ganados": 0,
           "empatados": 0,
           "perdidos": 3,
-          "golesFavor": 4,
-          "golesContra": 34,
+          "golesFavor": 6,
+          "golesContra": 36,
           "racha": [
             "P",
             "P",
