@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-02T14:26:18.233Z",
+  "actualizado": "2026-10-02T15:46:28.088Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -321,7 +321,7 @@
               "codLocal": "38917543",
               "codVisitante": "356217",
               "fecha": "2026-10-02",
-              "hora": "17:00",
+              "hora": "17:33",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -329,7 +329,7 @@
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
               "codCampo": "3172",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709888",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709888&cod_acta=2709888",
               "jugado": false
             },
             {
@@ -4318,6 +4318,24 @@
       "clasificacion": [
         {
           "posicion": 1,
+          "equipo": "ATLETICO ATUNARA C.D. \"A\"",
+          "puntos": 9,
+          "jugados": 3,
+          "jugadosCasa": 1,
+          "jugadosFuera": 2,
+          "ganados": 3,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 20,
+          "golesContra": 2,
+          "racha": [
+            "G",
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 2,
           "equipo": "C.D. S.M. MIRADOR \"B\"",
           "puntos": 6,
           "jugados": 2,
@@ -4334,7 +4352,7 @@
           ]
         },
         {
-          "posicion": 2,
+          "posicion": 3,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 3,
           "jugados": 1,
@@ -4346,23 +4364,6 @@
           "golesFavor": 11,
           "golesContra": 1,
           "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 3,
-          "equipo": "ATLETICO ATUNARA C.D. \"A\"",
-          "puntos": 6,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 10,
-          "golesContra": 2,
-          "racha": [
-            "G",
             "G"
           ]
         },
@@ -4556,15 +4557,16 @@
           "posicion": 15,
           "equipo": "C.D. BALON LINENSE C.F.",
           "puntos": 0,
-          "jugados": 2,
-          "jugadosCasa": 1,
+          "jugados": 3,
+          "jugadosCasa": 2,
           "jugadosFuera": 1,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 2,
+          "perdidos": 3,
           "golesFavor": 4,
-          "golesContra": 24,
+          "golesContra": 34,
           "racha": [
+            "P",
             "P",
             "P"
           ]
