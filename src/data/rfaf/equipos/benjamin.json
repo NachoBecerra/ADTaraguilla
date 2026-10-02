@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-02T08:32:51.344Z",
+  "actualizado": "2026-10-02T18:49:06.095Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -459,23 +459,6 @@
           "fecha": "2026-10-03",
           "partidos": [
             {
-              "local": "TRASMALLO F.C. C.D.",
-              "visitante": "A.D. TARAGUILLA",
-              "codLocal": "332820",
-              "codVisitante": "307530",
-              "fecha": "2026-10-02",
-              "hora": "18:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Puerto De Santa María (El)",
-              "campo": "CIUDAD DEPORTIVA RAFAEL SANCHEZ",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3555",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663738",
-              "jugado": false
-            },
-            {
               "local": "C.D. ESTRELLA PORTUENSE F.C.",
               "visitante": "BAHIA SAN FERNANDO C.D.",
               "codLocal": "353117",
@@ -593,6 +576,23 @@
               "codCampo": "2019274",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663736",
               "jugado": false
+            },
+            {
+              "local": "TRASMALLO F.C. C.D.",
+              "visitante": "A.D. TARAGUILLA",
+              "codLocal": "332820",
+              "codVisitante": "307530",
+              "fecha": "2026-10-02",
+              "hora": "18:30",
+              "golesLocal": 0,
+              "golesVisitante": 4,
+              "origen": "clasificacion",
+              "localidad": "Puerto De Santa María (El)",
+              "campo": "CIUDAD DEPORTIVA RAFAEL SANCHEZ",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3555",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663738",
+              "jugado": true
             }
           ]
         },
@@ -4319,16 +4319,17 @@
         {
           "posicion": 1,
           "equipo": "A.D. TARAGUILLA",
-          "puntos": 9,
-          "jugados": 3,
+          "puntos": 12,
+          "jugados": 4,
           "jugadosCasa": 2,
-          "jugadosFuera": 1,
-          "ganados": 3,
+          "jugadosFuera": 2,
+          "ganados": 4,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 21,
+          "golesFavor": 25,
           "golesContra": 4,
           "racha": [
+            "G",
             "G",
             "G",
             "G"
@@ -4426,24 +4427,6 @@
         },
         {
           "posicion": 7,
-          "equipo": "TRASMALLO F.C. C.D.",
-          "puntos": 4,
-          "jugados": 3,
-          "jugadosCasa": 1,
-          "jugadosFuera": 2,
-          "ganados": 1,
-          "empatados": 1,
-          "perdidos": 1,
-          "golesFavor": 6,
-          "golesContra": 5,
-          "racha": [
-            "G",
-            "P",
-            "E"
-          ]
-        },
-        {
-          "posicion": 8,
           "equipo": "BAHIA SAN FERNANDO C.D.",
           "puntos": 4,
           "jugados": 3,
@@ -4461,7 +4444,7 @@
           ]
         },
         {
-          "posicion": 9,
+          "posicion": 8,
           "equipo": "ARCOS C.F.",
           "puntos": 3,
           "jugados": 3,
@@ -4479,7 +4462,7 @@
           ]
         },
         {
-          "posicion": 10,
+          "posicion": 9,
           "equipo": "C.D. S.M. MIRADOR",
           "puntos": 3,
           "jugados": 3,
@@ -4493,6 +4476,25 @@
           "racha": [
             "G",
             "P",
+            "P"
+          ]
+        },
+        {
+          "posicion": 10,
+          "equipo": "TRASMALLO F.C. C.D.",
+          "puntos": 4,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 1,
+          "empatados": 1,
+          "perdidos": 2,
+          "golesFavor": 6,
+          "golesContra": 9,
+          "racha": [
+            "G",
+            "P",
+            "E",
             "P"
           ]
         },
