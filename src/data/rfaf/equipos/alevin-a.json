@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-03T13:54:13.040Z",
+  "actualizado": "2026-10-03T16:56:35.497Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -424,15 +424,15 @@
               "codVisitante": "307726",
               "fecha": "2026-10-03",
               "hora": "16:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "golesLocal": 2,
+              "golesVisitante": 1,
+              "origen": "clasificacion",
               "localidad": "San Roque",
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649959",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649959&cod_acta=2649959",
+              "jugado": true
             },
             {
               "local": "A.D. LOS BURREÑOS",
@@ -4372,6 +4372,24 @@
         },
         {
           "posicion": 4,
+          "equipo": "A.D. TARAGUILLA",
+          "puntos": 7,
+          "jugados": 3,
+          "jugadosCasa": 2,
+          "jugadosFuera": 1,
+          "ganados": 2,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 10,
+          "golesContra": 4,
+          "racha": [
+            "E",
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 5,
           "equipo": "A.D. MARIANISTAS C.D.",
           "puntos": 6,
           "jugados": 3,
@@ -4385,23 +4403,6 @@
           "racha": [
             "P",
             "G",
-            "G"
-          ]
-        },
-        {
-          "posicion": 5,
-          "equipo": "A.D. TARAGUILLA",
-          "puntos": 4,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 1,
-          "perdidos": 0,
-          "golesFavor": 8,
-          "golesContra": 3,
-          "racha": [
-            "E",
             "G"
           ]
         },
@@ -4460,23 +4461,6 @@
         },
         {
           "posicion": 9,
-          "equipo": "C.D. SAN ROQUE",
-          "puntos": 3,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 5,
-          "golesContra": 13,
-          "racha": [
-            "P",
-            "G"
-          ]
-        },
-        {
-          "posicion": 10,
           "equipo": "ARCOS C.F.",
           "puntos": 3,
           "jugados": 3,
@@ -4494,7 +4478,7 @@
           ]
         },
         {
-          "posicion": 11,
+          "posicion": 10,
           "equipo": "C.D. DIVINA PASTORA SANLUQUEÑA",
           "puntos": 3,
           "jugados": 3,
@@ -4508,6 +4492,24 @@
           "racha": [
             "G",
             "P",
+            "P"
+          ]
+        },
+        {
+          "posicion": 11,
+          "equipo": "C.D. SAN ROQUE",
+          "puntos": 3,
+          "jugados": 3,
+          "jugadosCasa": 1,
+          "jugadosFuera": 2,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 6,
+          "golesContra": 15,
+          "racha": [
+            "P",
+            "G",
             "P"
           ]
         },

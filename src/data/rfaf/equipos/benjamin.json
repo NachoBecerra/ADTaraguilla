@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-03T12:02:31.647Z",
+  "actualizado": "2026-10-03T16:56:50.525Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -540,7 +540,7 @@
               "campo": "PACO GALLEGO",
               "superficie": "Hierba Artificial",
               "codCampo": "3095",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663740",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663740&cod_acta=2663740",
               "jugado": false
             },
             {
@@ -557,7 +557,7 @@
               "campo": "Sergio Martín",
               "superficie": "Hierba Artificial",
               "codCampo": "2019422",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663741",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663741&cod_acta=2663741",
               "jugado": false
             },
             {
@@ -4337,42 +4337,6 @@
         },
         {
           "posicion": 2,
-          "equipo": "ATLETICO ZABAL",
-          "puntos": 9,
-          "jugados": 3,
-          "jugadosCasa": 2,
-          "jugadosFuera": 1,
-          "ganados": 3,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 15,
-          "golesContra": 6,
-          "racha": [
-            "G",
-            "G",
-            "G"
-          ]
-        },
-        {
-          "posicion": 3,
-          "equipo": "C.D. LA SALLE",
-          "puntos": 9,
-          "jugados": 3,
-          "jugadosCasa": 1,
-          "jugadosFuera": 2,
-          "ganados": 3,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 8,
-          "golesContra": 3,
-          "racha": [
-            "G",
-            "G",
-            "G"
-          ]
-        },
-        {
-          "posicion": 4,
           "equipo": "A.D. LOS BURREÑOS",
           "puntos": 10,
           "jugados": 4,
@@ -4388,6 +4352,44 @@
             "E",
             "G",
             "G"
+          ]
+        },
+        {
+          "posicion": 3,
+          "equipo": "ATLETICO ZABAL",
+          "puntos": 10,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 3,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 16,
+          "golesContra": 7,
+          "racha": [
+            "G",
+            "G",
+            "G",
+            "E"
+          ]
+        },
+        {
+          "posicion": 4,
+          "equipo": "C.D. LA SALLE",
+          "puntos": 10,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 3,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 9,
+          "golesContra": 4,
+          "racha": [
+            "G",
+            "G",
+            "G",
+            "E"
           ]
         },
         {
@@ -4449,6 +4451,25 @@
         },
         {
           "posicion": 8,
+          "equipo": "C.D. S.M. MIRADOR",
+          "puntos": 6,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 12,
+          "golesContra": 10,
+          "racha": [
+            "G",
+            "P",
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 9,
           "equipo": "C.D. SALESIANOS ALGECIRAS",
           "puntos": 6,
           "jugados": 4,
@@ -4467,43 +4488,7 @@
           ]
         },
         {
-          "posicion": 9,
-          "equipo": "ARCOS C.F.",
-          "puntos": 3,
-          "jugados": 3,
-          "jugadosCasa": 2,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 9,
-          "golesContra": 9,
-          "racha": [
-            "P",
-            "G",
-            "P"
-          ]
-        },
-        {
           "posicion": 10,
-          "equipo": "C.D. S.M. MIRADOR",
-          "puntos": 3,
-          "jugados": 3,
-          "jugadosCasa": 1,
-          "jugadosFuera": 2,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 6,
-          "golesContra": 8,
-          "racha": [
-            "G",
-            "P",
-            "P"
-          ]
-        },
-        {
-          "posicion": 11,
           "equipo": "TRASMALLO F.C. C.D.",
           "puntos": 4,
           "jugados": 4,
@@ -4522,7 +4507,7 @@
           ]
         },
         {
-          "posicion": 12,
+          "posicion": 11,
           "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
           "puntos": 3,
           "jugados": 3,
@@ -4540,7 +4525,7 @@
           ]
         },
         {
-          "posicion": 13,
+          "posicion": 12,
           "equipo": "C.D. ISLA DE LEON FUTBOL BASE",
           "puntos": 3,
           "jugados": 3,
@@ -4555,6 +4540,25 @@
             "P",
             "P",
             "G"
+          ]
+        },
+        {
+          "posicion": 13,
+          "equipo": "ARCOS C.F.",
+          "puntos": 3,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 3,
+          "golesFavor": 11,
+          "golesContra": 15,
+          "racha": [
+            "P",
+            "G",
+            "P",
+            "P"
           ]
         },
         {
