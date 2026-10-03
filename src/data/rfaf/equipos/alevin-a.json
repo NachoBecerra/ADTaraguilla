@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-03T09:24:14.737Z",
+  "actualizado": "2026-10-03T09:45:20.507Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -321,7 +321,7 @@
               "codLocal": "343216",
               "codVisitante": "354820",
               "fecha": "2026-10-03",
-              "hora": "11:00",
+              "hora": "11:38",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -329,7 +329,7 @@
               "campo": "SANTA FE",
               "superficie": "Hierba Artificial",
               "codCampo": "3051",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649958",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649958&cod_acta=2649958",
               "jugado": false
             },
             {
@@ -4386,6 +4386,24 @@
         },
         {
           "posicion": 5,
+          "equipo": "A.D. MARIANISTAS C.D.",
+          "puntos": 6,
+          "jugados": 3,
+          "jugadosCasa": 2,
+          "jugadosFuera": 1,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 11,
+          "golesContra": 2,
+          "racha": [
+            "P",
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 6,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 4,
           "jugados": 2,
@@ -4398,23 +4416,6 @@
           "golesContra": 3,
           "racha": [
             "E",
-            "G"
-          ]
-        },
-        {
-          "posicion": 6,
-          "equipo": "A.D. MARIANISTAS C.D.",
-          "puntos": 3,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 10,
-          "golesContra": 2,
-          "racha": [
-            "P",
             "G"
           ]
         },
@@ -4454,23 +4455,6 @@
         },
         {
           "posicion": 9,
-          "equipo": "C.D. DIVINA PASTORA SANLUQUEÑA",
-          "puntos": 3,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 7,
-          "golesContra": 10,
-          "racha": [
-            "G",
-            "P"
-          ]
-        },
-        {
-          "posicion": 10,
           "equipo": "A.D. LOS BURREÑOS",
           "puntos": 3,
           "jugados": 2,
@@ -4487,7 +4471,7 @@
           ]
         },
         {
-          "posicion": 11,
+          "posicion": 10,
           "equipo": "C.D. SAN ROQUE",
           "puntos": 3,
           "jugados": 2,
@@ -4501,6 +4485,24 @@
           "racha": [
             "P",
             "G"
+          ]
+        },
+        {
+          "posicion": 11,
+          "equipo": "C.D. DIVINA PASTORA SANLUQUEÑA",
+          "puntos": 3,
+          "jugados": 3,
+          "jugadosCasa": 1,
+          "jugadosFuera": 2,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 7,
+          "golesContra": 11,
+          "racha": [
+            "G",
+            "P",
+            "P"
           ]
         },
         {
