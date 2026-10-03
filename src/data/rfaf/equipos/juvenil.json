@@ -7,7 +7,7 @@
   "orden": 2,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-03T10:56:53.995Z",
+  "actualizado": "2026-10-03T19:32:18.495Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307516",
   "competiciones": [
     {
@@ -169,7 +169,7 @@
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
               "codCampo": "3172",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2683611",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683611&cod_acta=2683611",
               "jugado": false
             },
             {
@@ -186,7 +186,7 @@
               "campo": "SAN GARCIA",
               "superficie": "Hierba Artificial",
               "codCampo": "3127",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2683612",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683612&cod_acta=2683612",
               "jugado": false
             },
             {
@@ -195,7 +195,7 @@
               "codLocal": "9029542",
               "codVisitante": "13033680",
               "fecha": "2026-10-03",
-              "hora": "19:15",
+              "hora": "20:16",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -203,7 +203,7 @@
               "campo": "IGNACIO VILLAVERDE",
               "superficie": "Hierba Artificial",
               "codCampo": "3608",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2683606",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2683606&cod_acta=2683606",
               "jugado": false
             },
             {
@@ -213,15 +213,15 @@
               "codVisitante": "33452112",
               "fecha": "2026-10-03",
               "hora": "19:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "golesLocal": 0,
+              "golesVisitante": 0,
+              "origen": "clasificacion",
               "localidad": "San Roque",
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2683608",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683608&cod_acta=2683608",
+              "jugado": true
             },
             {
               "local": "C.D. ATLETICO PASTORES ALGECIRAS \"B\"",
@@ -3305,32 +3305,34 @@
         {
           "posicion": 1,
           "equipo": "C.D. RACING DEPORTIVO ALGECIRAS",
-          "puntos": 3,
-          "jugados": 1,
+          "puntos": 6,
+          "jugados": 2,
           "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
+          "jugadosFuera": 1,
+          "ganados": 2,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 12,
-          "golesContra": 0,
+          "golesFavor": 19,
+          "golesContra": 1,
           "racha": [
+            "G",
             "G"
           ]
         },
         {
           "posicion": 2,
-          "equipo": "C.D. JUAN SEBASTIAN ELCANO",
-          "puntos": 3,
-          "jugados": 1,
+          "equipo": "C.D. TARIFA FUTBOL ACADEMY",
+          "puntos": 6,
+          "jugados": 2,
           "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
+          "jugadosFuera": 1,
+          "ganados": 2,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 7,
-          "golesContra": 0,
+          "golesFavor": 15,
+          "golesContra": 1,
           "racha": [
+            "G",
             "G"
           ]
         },
@@ -3352,22 +3354,6 @@
         },
         {
           "posicion": 4,
-          "equipo": "C.D. TARIFA FUTBOL ACADEMY",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 4,
-          "golesContra": 1,
-          "racha": [
-            "G"
-          ]
-        },
-        {
-          "posicion": 5,
           "equipo": "C.D. ATLETICO PASTORES ALGECIRAS \"B\"",
           "puntos": 3,
           "jugados": 1,
@@ -3383,21 +3369,74 @@
           ]
         },
         {
-          "posicion": 6,
+          "posicion": 5,
           "equipo": "CLUB RVO. BAHIA DE ALGECIRAS",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
+          "puntos": 3,
+          "jugados": 1,
+          "jugadosCasa": 1,
           "jugadosFuera": 0,
-          "ganados": 0,
+          "ganados": 1,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 0,
+          "golesFavor": 1,
           "golesContra": 0,
-          "racha": []
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 6,
+          "equipo": "C.D. JUAN SEBASTIAN ELCANO",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 7,
+          "golesContra": 1,
+          "racha": [
+            "G",
+            "P"
+          ]
         },
         {
           "posicion": 7,
+          "equipo": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
+          "puntos": 1,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 1,
+          "golesFavor": 1,
+          "golesContra": 3,
+          "racha": [
+            "P",
+            "E"
+          ]
+        },
+        {
+          "posicion": 8,
+          "equipo": "A.D. TARAGUILLA",
+          "puntos": 1,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 1,
+          "golesFavor": 2,
+          "golesContra": 7,
+          "racha": [
+            "P",
+            "E"
+          ]
+        },
+        {
+          "posicion": 9,
           "equipo": "CUESTA DEL RAYO VETERANOS C.F.",
           "puntos": 0,
           "jugados": 0,
@@ -3411,71 +3450,24 @@
           "racha": []
         },
         {
-          "posicion": 8,
-          "equipo": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
-          "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 1,
-          "golesContra": 3,
-          "racha": [
-            "P"
-          ]
-        },
-        {
-          "posicion": 9,
+          "posicion": 10,
           "equipo": "C.D. BALON LINENSE C.F.",
           "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
+          "jugados": 2,
+          "jugadosCasa": 1,
           "jugadosFuera": 1,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 1,
-          "golesContra": 4,
-          "racha": [
-            "P"
-          ]
-        },
-        {
-          "posicion": 10,
-          "equipo": "A.D. TARAGUILLA",
-          "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
+          "perdidos": 2,
           "golesFavor": 2,
-          "golesContra": 7,
+          "golesContra": 11,
           "racha": [
+            "P",
             "P"
           ]
         },
         {
           "posicion": 11,
-          "equipo": "C.D. A.D. SAN GARCIA",
-          "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 0,
-          "golesContra": 7,
-          "racha": [
-            "P"
-          ]
-        },
-        {
-          "posicion": 12,
           "equipo": "PEÑA MADRIDISTA LINENSE \"A\"",
           "puntos": 0,
           "jugados": 1,
@@ -3487,6 +3479,23 @@
           "golesFavor": 0,
           "golesContra": 12,
           "racha": [
+            "P"
+          ]
+        },
+        {
+          "posicion": 12,
+          "equipo": "C.D. A.D. SAN GARCIA",
+          "puntos": 0,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 0,
+          "golesContra": 18,
+          "racha": [
+            "P",
             "P"
           ]
         }
