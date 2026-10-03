@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-03T10:57:24.065Z",
+  "actualizado": "2026-10-03T13:54:13.040Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -338,7 +338,7 @@
               "codLocal": "326326",
               "codVisitante": "303122",
               "fecha": "2026-10-03",
-              "hora": "12:07",
+              "hora": "11:30",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -346,7 +346,7 @@
               "campo": "VIRGEN DEL CARMEN (LA LINEA)",
               "superficie": "Hierba Artificial",
               "codCampo": "2069065",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649961&cod_acta=2649961",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649961&cod_acta=2649961",
               "jugado": false
             },
             {
@@ -363,7 +363,7 @@
               "campo": "BAZAN CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3020",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649963",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649963&cod_acta=2649963",
               "jugado": false
             },
             {
@@ -380,7 +380,7 @@
               "campo": "Chiclana De La Frontera.- Isabel la Catolica",
               "superficie": "Hierba Artificial",
               "codCampo": "10877769",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649956",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649956&cod_acta=2649956",
               "jugado": false
             },
             {
@@ -397,7 +397,7 @@
               "campo": "ANTONIO CAMACHO",
               "superficie": "Hierba Artificial",
               "codCampo": "3171",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649962",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649962&cod_acta=2649962",
               "jugado": false
             },
             {
@@ -406,7 +406,7 @@
               "codLocal": "2065225",
               "codVisitante": "329822",
               "fecha": "2026-10-03",
-              "hora": "12:45",
+              "hora": "13:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -414,7 +414,7 @@
               "campo": "Sanlúcar de Barrameda -Doro Stadium",
               "superficie": "Hierba Artificial",
               "codCampo": "3104",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649960",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649960&cod_acta=2649960",
               "jugado": false
             },
             {
@@ -4326,7 +4326,7 @@
           "ganados": 3,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 16,
+          "golesFavor": 20,
           "golesContra": 2,
           "racha": [
             "G",
@@ -4337,16 +4337,17 @@
         {
           "posicion": 2,
           "equipo": "C.D. LA SALLE",
-          "puntos": 6,
-          "jugados": 2,
+          "puntos": 9,
+          "jugados": 3,
           "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 2,
+          "jugadosFuera": 2,
+          "ganados": 3,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 11,
-          "golesContra": 2,
+          "golesFavor": 19,
+          "golesContra": 5,
           "racha": [
+            "G",
             "G",
             "G"
           ]
@@ -4354,16 +4355,17 @@
         {
           "posicion": 3,
           "equipo": "CADIZ C.F., S.A.D.",
-          "puntos": 6,
-          "jugados": 2,
+          "puntos": 9,
+          "jugados": 3,
           "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 2,
+          "jugadosFuera": 2,
+          "ganados": 3,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 5,
-          "golesContra": 0,
+          "golesFavor": 11,
+          "golesContra": 1,
           "racha": [
+            "G",
             "G",
             "G"
           ]
@@ -4405,6 +4407,24 @@
         },
         {
           "posicion": 6,
+          "equipo": "C.D. SAN FERNANDO 1940",
+          "puntos": 6,
+          "jugados": 3,
+          "jugadosCasa": 2,
+          "jugadosFuera": 1,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 10,
+          "golesContra": 6,
+          "racha": [
+            "P",
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 7,
           "equipo": "C.F. SAN JOSE OBRERO",
           "puntos": 6,
           "jugados": 3,
@@ -4414,49 +4434,15 @@
           "empatados": 0,
           "perdidos": 1,
           "golesFavor": 9,
-          "golesContra": 6,
+          "golesContra": 10,
           "racha": [
             "G",
-            "G",
-            "P"
-          ]
-        },
-        {
-          "posicion": 7,
-          "equipo": "ARCOS C.F.",
-          "puntos": 3,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 11,
-          "golesContra": 4,
-          "racha": [
             "G",
             "P"
           ]
         },
         {
           "posicion": 8,
-          "equipo": "C.D. SAN FERNANDO 1940",
-          "puntos": 3,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 5,
-          "golesContra": 5,
-          "racha": [
-            "P",
-            "G"
-          ]
-        },
-        {
-          "posicion": 9,
           "equipo": "A.D. LOS BURREÑOS",
           "puntos": 3,
           "jugados": 2,
@@ -4473,7 +4459,7 @@
           ]
         },
         {
-          "posicion": 10,
+          "posicion": 9,
           "equipo": "C.D. SAN ROQUE",
           "puntos": 3,
           "jugados": 2,
@@ -4487,6 +4473,24 @@
           "racha": [
             "P",
             "G"
+          ]
+        },
+        {
+          "posicion": 10,
+          "equipo": "ARCOS C.F.",
+          "puntos": 3,
+          "jugados": 3,
+          "jugadosCasa": 2,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 14,
+          "golesContra": 12,
+          "racha": [
+            "G",
+            "P",
+            "P"
           ]
         },
         {
@@ -4526,51 +4530,54 @@
         },
         {
           "posicion": 13,
-          "equipo": "SPORTING CHICLANA C.D.",
-          "puntos": 0,
-          "jugados": 2,
-          "jugadosCasa": 1,
+          "equipo": "U.D. LA ALGAIDA",
+          "puntos": 1,
+          "jugados": 3,
+          "jugadosCasa": 2,
           "jugadosFuera": 1,
           "ganados": 0,
-          "empatados": 0,
+          "empatados": 1,
           "perdidos": 2,
-          "golesFavor": 4,
-          "golesContra": 7,
+          "golesFavor": 8,
+          "golesContra": 12,
           "racha": [
             "P",
-            "P"
+            "P",
+            "E"
           ]
         },
         {
           "posicion": 14,
-          "equipo": "U.D. LA ALGAIDA",
-          "puntos": 0,
-          "jugados": 2,
+          "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
+          "puntos": 1,
+          "jugados": 3,
           "jugadosCasa": 1,
-          "jugadosFuera": 1,
+          "jugadosFuera": 2,
           "ganados": 0,
-          "empatados": 0,
+          "empatados": 1,
           "perdidos": 2,
           "golesFavor": 5,
-          "golesContra": 9,
+          "golesContra": 15,
           "racha": [
             "P",
-            "P"
+            "P",
+            "E"
           ]
         },
         {
           "posicion": 15,
-          "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
+          "equipo": "SPORTING CHICLANA C.D.",
           "puntos": 0,
-          "jugados": 2,
-          "jugadosCasa": 1,
+          "jugados": 3,
+          "jugadosCasa": 2,
           "jugadosFuera": 1,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 2,
-          "golesContra": 12,
+          "perdidos": 3,
+          "golesFavor": 5,
+          "golesContra": 13,
           "racha": [
+            "P",
             "P",
             "P"
           ]
@@ -4579,15 +4586,16 @@
           "posicion": 16,
           "equipo": "TARIFA U.D.",
           "puntos": 0,
-          "jugados": 2,
+          "jugados": 3,
           "jugadosCasa": 1,
-          "jugadosFuera": 1,
+          "jugadosFuera": 2,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 2,
-          "golesContra": 13,
+          "perdidos": 3,
+          "golesFavor": 3,
+          "golesContra": 18,
           "racha": [
+            "P",
             "P",
             "P"
           ]

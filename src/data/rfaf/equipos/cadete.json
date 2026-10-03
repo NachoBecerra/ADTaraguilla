@@ -7,7 +7,7 @@
   "orden": 3,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-03T12:02:01.663Z",
+  "actualizado": "2026-10-03T13:54:28.182Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
   "competiciones": [
     {
@@ -69,15 +69,15 @@
               "codLocal": "307517",
               "codVisitante": "307318",
               "fecha": "2026-10-03",
-              "hora": "12:50",
-              "golesLocal": 1,
-              "golesVisitante": 3,
+              "hora": "12:00",
+              "golesLocal": 4,
+              "golesVisitante": 5,
               "origen": "clasificacion",
               "localidad": "San Roque",
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694106&cod_acta=2694106",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2694106&cod_acta=2694106",
               "jugado": true
             },
             {
@@ -94,7 +94,7 @@
               "campo": "MANUEL LEON MUNICIPAL (F11-F7)",
               "superficie": "Hierba Natural",
               "codCampo": "18654147",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694104",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2694104&cod_acta=2694104",
               "jugado": false
             },
             {
@@ -2426,6 +2426,22 @@
       "clasificacion": [
         {
           "posicion": 1,
+          "equipo": "C.D. SAN ROQUE \"A\"",
+          "puntos": 3,
+          "jugados": 1,
+          "jugadosCasa": 0,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 7,
+          "golesContra": 0,
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 2,
           "equipo": "C.D. PUERTO DE LA LINEA",
           "puntos": 3,
           "jugados": 1,
@@ -2441,7 +2457,7 @@
           ]
         },
         {
-          "posicion": 2,
+          "posicion": 3,
           "equipo": "U.D. TESORILLO C.D.",
           "puntos": 3,
           "jugados": 1,
@@ -2457,7 +2473,7 @@
           ]
         },
         {
-          "posicion": 3,
+          "posicion": 4,
           "equipo": "C.D. GUADIARO",
           "puntos": 3,
           "jugados": 1,
@@ -2466,14 +2482,14 @@
           "ganados": 1,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 3,
-          "golesContra": 1,
+          "golesFavor": 5,
+          "golesContra": 4,
           "racha": [
             "G"
           ]
         },
         {
-          "posicion": 4,
+          "posicion": 5,
           "equipo": "ATLETICO ZABAL",
           "puntos": 0,
           "jugados": 0,
@@ -2487,7 +2503,7 @@
           "racha": []
         },
         {
-          "posicion": 5,
+          "posicion": 6,
           "equipo": "C.D. ATHLETIC CLUB JIMENA",
           "puntos": 0,
           "jugados": 0,
@@ -2501,22 +2517,8 @@
           "racha": []
         },
         {
-          "posicion": 6,
-          "equipo": "C.D. BALON LINENSE C.F. \"A\"",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
           "posicion": 7,
-          "equipo": "C.D. SAN ROQUE \"A\"",
+          "equipo": "C.D. BALON LINENSE C.F. \"A\"",
           "puntos": 0,
           "jugados": 0,
           "jugadosCasa": 0,
@@ -2544,20 +2546,6 @@
         },
         {
           "posicion": 9,
-          "equipo": "U.D. CASTELLAR C.F.",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 10,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 0,
           "jugados": 1,
@@ -2566,14 +2554,14 @@
           "ganados": 0,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 1,
-          "golesContra": 3,
+          "golesFavor": 4,
+          "golesContra": 5,
           "racha": [
             "P"
           ]
         },
         {
-          "posicion": 11,
+          "posicion": 10,
           "equipo": "U.D. LOS BARRIOS \"B\"",
           "puntos": 0,
           "jugados": 1,
@@ -2589,7 +2577,7 @@
           ]
         },
         {
-          "posicion": 12,
+          "posicion": 11,
           "equipo": "C.D. EPRO CAMPO DE GIBRALTAR",
           "puntos": 0,
           "jugados": 1,
@@ -2600,6 +2588,22 @@
           "perdidos": 1,
           "golesFavor": 1,
           "golesContra": 5,
+          "racha": [
+            "P"
+          ]
+        },
+        {
+          "posicion": 12,
+          "equipo": "U.D. CASTELLAR C.F.",
+          "puntos": 0,
+          "jugados": 1,
+          "jugadosCasa": 1,
+          "jugadosFuera": 0,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 0,
+          "golesContra": 7,
           "racha": [
             "P"
           ]
