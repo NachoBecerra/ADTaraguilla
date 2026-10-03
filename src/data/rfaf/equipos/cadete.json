@@ -7,7 +7,7 @@
   "orden": 3,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-03T13:54:28.182Z",
+  "actualizado": "2026-10-03T18:18:24.951Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
   "competiciones": [
     {
@@ -111,7 +111,7 @@
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
               "codCampo": "3172",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694103",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2694103&cod_acta=2694103",
               "jugado": false
             },
             {
@@ -120,7 +120,7 @@
               "codLocal": "309616",
               "codVisitante": "326324",
               "fecha": "2026-10-03",
-              "hora": "19:00",
+              "hora": "19:46",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -128,7 +128,7 @@
               "campo": "ANDRES SARRIAS",
               "superficie": "Hierba Artificial",
               "codCampo": "3096",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694105",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694105&cod_acta=2694105",
               "jugado": false
             }
           ]
@@ -2474,6 +2474,22 @@
         },
         {
           "posicion": 4,
+          "equipo": "ATLETICO ZABAL",
+          "puntos": 3,
+          "jugados": 1,
+          "jugadosCasa": 0,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 0,
+          "golesFavor": 2,
+          "golesContra": 0,
+          "racha": [
+            "G"
+          ]
+        },
+        {
+          "posicion": 5,
           "equipo": "C.D. GUADIARO",
           "puntos": 3,
           "jugados": 1,
@@ -2489,63 +2505,23 @@
           ]
         },
         {
-          "posicion": 5,
-          "equipo": "ATLETICO ZABAL",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
           "posicion": 6,
-          "equipo": "C.D. ATHLETIC CLUB JIMENA",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
+          "equipo": "C.D. BALON LINENSE C.F. \"A\"",
+          "puntos": 3,
+          "jugados": 1,
+          "jugadosCasa": 1,
           "jugadosFuera": 0,
-          "ganados": 0,
+          "ganados": 1,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
+          "golesFavor": 4,
+          "golesContra": 3,
+          "racha": [
+            "G"
+          ]
         },
         {
           "posicion": 7,
-          "equipo": "C.D. BALON LINENSE C.F. \"A\"",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 8,
-          "equipo": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 9,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 0,
           "jugados": 1,
@@ -2556,6 +2532,38 @@
           "perdidos": 1,
           "golesFavor": 4,
           "golesContra": 5,
+          "racha": [
+            "P"
+          ]
+        },
+        {
+          "posicion": 8,
+          "equipo": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
+          "puntos": 0,
+          "jugados": 1,
+          "jugadosCasa": 0,
+          "jugadosFuera": 1,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 3,
+          "golesContra": 4,
+          "racha": [
+            "P"
+          ]
+        },
+        {
+          "posicion": 9,
+          "equipo": "C.D. ATHLETIC CLUB JIMENA",
+          "puntos": 0,
+          "jugados": 1,
+          "jugadosCasa": 1,
+          "jugadosFuera": 0,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 0,
+          "golesContra": 2,
           "racha": [
             "P"
           ]
