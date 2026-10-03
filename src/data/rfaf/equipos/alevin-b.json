@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-03T10:56:30.113Z",
+  "actualizado": "2026-10-03T12:02:17.110Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -423,7 +423,7 @@
               "codLocal": "44810826",
               "codVisitante": "38866701",
               "fecha": "2026-10-03",
-              "hora": "12:09",
+              "hora": "11:30",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -431,7 +431,7 @@
               "campo": "ALBERTO UMBRIA",
               "superficie": "Hierba Artificial",
               "codCampo": "3079",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709890&cod_acta=2709890",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709890&cod_acta=2709890",
               "jugado": false
             },
             {
@@ -4344,7 +4344,7 @@
           "ganados": 3,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 19,
+          "golesFavor": 20,
           "golesContra": 3,
           "racha": [
             "G",
@@ -4503,7 +4503,7 @@
           "empatados": 0,
           "perdidos": 2,
           "golesFavor": 11,
-          "golesContra": 8,
+          "golesContra": 9,
           "racha": [
             "P",
             "G",

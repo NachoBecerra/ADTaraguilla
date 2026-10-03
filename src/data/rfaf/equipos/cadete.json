@@ -7,7 +7,7 @@
   "orden": 3,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-03T10:21:17.937Z",
+  "actualizado": "2026-10-03T12:02:01.663Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
   "competiciones": [
     {
@@ -69,16 +69,16 @@
               "codLocal": "307517",
               "codVisitante": "307318",
               "fecha": "2026-10-03",
-              "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "hora": "12:50",
+              "golesLocal": 1,
+              "golesVisitante": 3,
+              "origen": "clasificacion",
               "localidad": "San Roque",
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694106",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694106&cod_acta=2694106",
+              "jugado": true
             },
             {
               "local": "U.D. CASTELLAR C.F.",
@@ -2458,17 +2458,19 @@
         },
         {
           "posicion": 3,
-          "equipo": "A.D. TARAGUILLA",
-          "puntos": 0,
-          "jugados": 0,
+          "equipo": "C.D. GUADIARO",
+          "puntos": 3,
+          "jugados": 1,
           "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
+          "jugadosFuera": 1,
+          "ganados": 1,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
+          "golesFavor": 3,
+          "golesContra": 1,
+          "racha": [
+            "G"
+          ]
         },
         {
           "posicion": 4,
@@ -2514,20 +2516,6 @@
         },
         {
           "posicion": 7,
-          "equipo": "C.D. GUADIARO",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 8,
           "equipo": "C.D. SAN ROQUE \"A\"",
           "puntos": 0,
           "jugados": 0,
@@ -2541,7 +2529,7 @@
           "racha": []
         },
         {
-          "posicion": 9,
+          "posicion": 8,
           "equipo": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
           "puntos": 0,
           "jugados": 0,
@@ -2555,7 +2543,7 @@
           "racha": []
         },
         {
-          "posicion": 10,
+          "posicion": 9,
           "equipo": "U.D. CASTELLAR C.F.",
           "puntos": 0,
           "jugados": 0,
@@ -2567,6 +2555,22 @@
           "golesFavor": 0,
           "golesContra": 0,
           "racha": []
+        },
+        {
+          "posicion": 10,
+          "equipo": "A.D. TARAGUILLA",
+          "puntos": 0,
+          "jugados": 1,
+          "jugadosCasa": 1,
+          "jugadosFuera": 0,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 1,
+          "golesContra": 3,
+          "racha": [
+            "P"
+          ]
         },
         {
           "posicion": 11,
