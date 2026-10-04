@@ -7,7 +7,7 @@
   "orden": 5,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-03T19:33:15.856Z",
+  "actualizado": "2026-10-04T13:03:20.191Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307528",
   "competiciones": [
     {
@@ -111,7 +111,7 @@
               "campo": "VIRGEN DEL CARMEN",
               "superficie": "Hierba Artificial",
               "codCampo": "3562",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2696396",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2696396&cod_acta=2696396",
               "jugado": false
             },
             {
@@ -2491,34 +2491,38 @@
         {
           "posicion": 5,
           "equipo": "ATLETICO ZABAL",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
+          "puntos": 1,
+          "jugados": 1,
+          "jugadosCasa": 1,
           "jugadosFuera": 0,
           "ganados": 0,
-          "empatados": 0,
+          "empatados": 1,
           "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
+          "golesFavor": 1,
+          "golesContra": 1,
+          "racha": [
+            "E"
+          ]
         },
         {
           "posicion": 6,
-          "equipo": "C.D. ATHLETIC CLUB JIMENA",
-          "puntos": 0,
-          "jugados": 0,
+          "equipo": "C.D. SAN ROQUE \"A\"",
+          "puntos": 1,
+          "jugados": 1,
           "jugadosCasa": 0,
-          "jugadosFuera": 0,
+          "jugadosFuera": 1,
           "ganados": 0,
-          "empatados": 0,
+          "empatados": 1,
           "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
+          "golesFavor": 1,
+          "golesContra": 1,
+          "racha": [
+            "E"
+          ]
         },
         {
           "posicion": 7,
-          "equipo": "C.D. SAN ROQUE \"A\"",
+          "equipo": "C.D. ATHLETIC CLUB JIMENA",
           "puntos": 0,
           "jugados": 0,
           "jugadosCasa": 0,

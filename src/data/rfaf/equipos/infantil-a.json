@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-03T23:05:27.886Z",
+  "actualizado": "2026-10-04T13:02:50.611Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -550,15 +550,15 @@
               "codVisitante": "307520",
               "fecha": "2026-10-04",
               "hora": "13:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "golesLocal": 2,
+              "golesVisitante": 1,
+              "origen": "clasificacion",
               "localidad": "Alcalá De Guadaíra",
               "campo": "MALASMAÑANAS MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "2015221",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651405",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651405&cod_acta=2651405",
+              "jugado": true
             },
             {
               "local": "ALGECIRAS C.F., S.A.D.",
@@ -566,7 +566,7 @@
               "codLocal": "300219",
               "codVisitante": "600122",
               "fecha": "2026-10-04",
-              "hora": "14:00",
+              "hora": "14:41",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -574,7 +574,7 @@
               "campo": "Juan Gadiaga Pastores",
               "superficie": "Hierba Artificial",
               "codCampo": "3559",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651411",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651411&cod_acta=2651411",
               "jugado": false
             },
             {
@@ -4413,42 +4413,25 @@
         },
         {
           "posicion": 6,
-          "equipo": "A.D. TARAGUILLA",
-          "puntos": 6,
-          "jugados": 3,
+          "equipo": "R.C.R. HUELVA, S.A.D.",
+          "puntos": 9,
+          "jugados": 4,
           "jugadosCasa": 2,
-          "jugadosFuera": 1,
-          "ganados": 2,
+          "jugadosFuera": 2,
+          "ganados": 3,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 12,
-          "golesContra": 2,
+          "golesFavor": 7,
+          "golesContra": 3,
           "racha": [
-            "P",
             "G",
+            "G",
+            "P",
             "G"
           ]
         },
         {
           "posicion": 7,
-          "equipo": "R.C.R. HUELVA, S.A.D.",
-          "puntos": 6,
-          "jugados": 3,
-          "jugadosCasa": 2,
-          "jugadosFuera": 1,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 6,
-          "golesContra": 3,
-          "racha": [
-            "G",
-            "G",
-            "P"
-          ]
-        },
-        {
-          "posicion": 8,
           "equipo": "SEVILLA F.C., S.A.D.",
           "puntos": 7,
           "jugados": 4,
@@ -4462,6 +4445,25 @@
           "racha": [
             "G",
             "E",
+            "G",
+            "P"
+          ]
+        },
+        {
+          "posicion": 8,
+          "equipo": "A.D. TARAGUILLA",
+          "puntos": 6,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 13,
+          "golesContra": 4,
+          "racha": [
+            "P",
+            "G",
             "G",
             "P"
           ]
@@ -4487,24 +4489,6 @@
         },
         {
           "posicion": 10,
-          "equipo": "ALGECIRAS C.F., S.A.D.",
-          "puntos": 3,
-          "jugados": 3,
-          "jugadosCasa": 1,
-          "jugadosFuera": 2,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 5,
-          "golesContra": 7,
-          "racha": [
-            "G",
-            "P",
-            "P"
-          ]
-        },
-        {
-          "posicion": 11,
           "equipo": "LUCECOR F.S.",
           "puntos": 4,
           "jugados": 4,
@@ -4520,6 +4504,25 @@
             "P",
             "G",
             "E"
+          ]
+        },
+        {
+          "posicion": 11,
+          "equipo": "ALGECIRAS C.F., S.A.D.",
+          "puntos": 3,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 3,
+          "golesFavor": 5,
+          "golesContra": 8,
+          "racha": [
+            "G",
+            "P",
+            "P",
+            "P"
           ]
         },
         {
@@ -4543,6 +4546,25 @@
         },
         {
           "posicion": 13,
+          "equipo": "C.D. MOSQUITO",
+          "puntos": 3,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 3,
+          "golesFavor": 3,
+          "golesContra": 9,
+          "racha": [
+            "P",
+            "P",
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 14,
           "equipo": "JUVENTUD DVA. GINES",
           "puntos": 2,
           "jugados": 4,
@@ -4561,7 +4583,7 @@
           ]
         },
         {
-          "posicion": 14,
+          "posicion": 15,
           "equipo": "SIEMPRE ALEGRES C.D.",
           "puntos": 2,
           "jugados": 4,
@@ -4580,7 +4602,7 @@
           ]
         },
         {
-          "posicion": 15,
+          "posicion": 16,
           "equipo": "C.D. ASOC. DVA. NERVION",
           "puntos": 0,
           "jugados": 4,
@@ -4593,24 +4615,6 @@
           "golesContra": 11,
           "racha": [
             "P",
-            "P",
-            "P",
-            "P"
-          ]
-        },
-        {
-          "posicion": 16,
-          "equipo": "C.D. MOSQUITO",
-          "puntos": 0,
-          "jugados": 3,
-          "jugadosCasa": 1,
-          "jugadosFuera": 2,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 3,
-          "golesFavor": 1,
-          "golesContra": 8,
-          "racha": [
             "P",
             "P",
             "P"
