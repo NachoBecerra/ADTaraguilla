@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-04T13:03:05.372Z",
+  "actualizado": "2026-10-04T16:39:38.520Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -743,7 +743,7 @@
               "codLocal": "2064845",
               "codVisitante": "307315",
               "fecha": "2026-10-04",
-              "hora": "17:00",
+              "hora": "17:54",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -751,7 +751,7 @@
               "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
               "superficie": "Hierba Artificial",
               "codCampo": "3011",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662422",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662422&cod_acta=2662422",
               "jugado": false
             },
             {
@@ -5527,25 +5527,6 @@
         },
         {
           "posicion": 4,
-          "equipo": "TREBUJENA C.F.",
-          "puntos": 8,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 2,
-          "empatados": 2,
-          "perdidos": 0,
-          "golesFavor": 6,
-          "golesContra": 4,
-          "racha": [
-            "G",
-            "E",
-            "E",
-            "G"
-          ]
-        },
-        {
-          "posicion": 5,
           "equipo": "JEREZ INDUSTRIAL C.F.",
           "puntos": 9,
           "jugados": 5,
@@ -5565,7 +5546,7 @@
           ]
         },
         {
-          "posicion": 6,
+          "posicion": 5,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 9,
           "jugados": 5,
@@ -5585,7 +5566,7 @@
           ]
         },
         {
-          "posicion": 7,
+          "posicion": 6,
           "equipo": "C.D. GUADALCACIN",
           "puntos": 7,
           "jugados": 4,
@@ -5601,6 +5582,26 @@
             "G",
             "P",
             "E"
+          ]
+        },
+        {
+          "posicion": 7,
+          "equipo": "TREBUJENA C.F.",
+          "puntos": 8,
+          "jugados": 5,
+          "jugadosCasa": 3,
+          "jugadosFuera": 2,
+          "ganados": 2,
+          "empatados": 2,
+          "perdidos": 1,
+          "golesFavor": 7,
+          "golesContra": 6,
+          "racha": [
+            "G",
+            "E",
+            "E",
+            "G",
+            "P"
           ]
         },
         {
@@ -5624,6 +5625,26 @@
         },
         {
           "posicion": 9,
+          "equipo": "C.D. GUADIARO",
+          "puntos": 7,
+          "jugados": 5,
+          "jugadosCasa": 0,
+          "jugadosFuera": 5,
+          "ganados": 2,
+          "empatados": 1,
+          "perdidos": 2,
+          "golesFavor": 10,
+          "golesContra": 9,
+          "racha": [
+            "E",
+            "P",
+            "P",
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 10,
           "equipo": "CHICLANA IND. C.F.",
           "puntos": 7,
           "jugados": 5,
@@ -5643,7 +5664,7 @@
           ]
         },
         {
-          "posicion": 10,
+          "posicion": 11,
           "equipo": "BARBATE C.F.",
           "puntos": 5,
           "jugados": 4,
@@ -5662,7 +5683,7 @@
           ]
         },
         {
-          "posicion": 11,
+          "posicion": 12,
           "equipo": "U.D. LOS BARRIOS",
           "puntos": 6,
           "jugados": 5,
@@ -5679,25 +5700,6 @@
             "G",
             "P",
             "P"
-          ]
-        },
-        {
-          "posicion": 12,
-          "equipo": "C.D. GUADIARO",
-          "puntos": 4,
-          "jugados": 4,
-          "jugadosCasa": 0,
-          "jugadosFuera": 4,
-          "ganados": 1,
-          "empatados": 1,
-          "perdidos": 2,
-          "golesFavor": 8,
-          "golesContra": 8,
-          "racha": [
-            "E",
-            "P",
-            "P",
-            "G"
           ]
         },
         {

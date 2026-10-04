@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-04T13:02:50.611Z",
+  "actualizado": "2026-10-04T16:39:22.714Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -566,7 +566,7 @@
               "codLocal": "300219",
               "codVisitante": "600122",
               "fecha": "2026-10-04",
-              "hora": "14:41",
+              "hora": "14:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -574,7 +574,7 @@
               "campo": "Juan Gadiaga Pastores",
               "superficie": "Hierba Artificial",
               "codCampo": "3559",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651411&cod_acta=2651411",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651411&cod_acta=2651411",
               "jugado": false
             },
             {
@@ -4375,6 +4375,25 @@
         },
         {
           "posicion": 4,
+          "equipo": "R.C.R. HUELVA, S.A.D.",
+          "puntos": 9,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 3,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 9,
+          "golesContra": 3,
+          "racha": [
+            "G",
+            "G",
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 5,
           "equipo": "C.F. SAN JOSE OBRERO",
           "puntos": 9,
           "jugados": 4,
@@ -4393,7 +4412,7 @@
           ]
         },
         {
-          "posicion": 5,
+          "posicion": 6,
           "equipo": "REAL BETIS BALOMPIE S.A.D.",
           "puntos": 9,
           "jugados": 4,
@@ -4409,25 +4428,6 @@
             "G",
             "G",
             "P"
-          ]
-        },
-        {
-          "posicion": 6,
-          "equipo": "R.C.R. HUELVA, S.A.D.",
-          "puntos": 9,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 3,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 7,
-          "golesContra": 3,
-          "racha": [
-            "G",
-            "G",
-            "P",
-            "G"
           ]
         },
         {
@@ -4517,7 +4517,7 @@
           "empatados": 0,
           "perdidos": 3,
           "golesFavor": 5,
-          "golesContra": 8,
+          "golesContra": 10,
           "racha": [
             "G",
             "P",
