@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-05T15:26:03.671Z",
+  "actualizado": "2026-10-05T17:21:44.835Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -173,6 +173,40 @@
           "fecha": "2026-09-19",
           "partidos": [
             {
+              "local": "TRASMALLO F.C. C.D.",
+              "visitante": "ATLETICO ZABAL",
+              "codLocal": "332820",
+              "codVisitante": "326327",
+              "fecha": "2026-09-18",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Puerto De Santa María (El)",
+              "campo": "CIUDAD DEPORTIVA RAFAEL SANCHEZ",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3555",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663723&cod_acta=2663723",
+              "jugado": false
+            },
+            {
+              "local": "C.D. ESTRELLA PORTUENSE F.C.",
+              "visitante": "C.D. ISLA DE LEON FUTBOL BASE",
+              "codLocal": "353117",
+              "codVisitante": "331319",
+              "fecha": "2026-09-19",
+              "hora": "10:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Puerto De Santa María (El)",
+              "campo": "EL JUNCAL CAMPO MPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3611",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663719&cod_acta=2663719",
+              "jugado": false
+            },
+            {
               "local": "A.D. LOS BURREÑOS",
               "visitante": "BAHIA SAN FERNANDO C.D.",
               "codLocal": "28679244",
@@ -207,23 +241,6 @@
               "jugado": false
             },
             {
-              "local": "C.D. ESTRELLA PORTUENSE F.C.",
-              "visitante": "C.D. ISLA DE LEON FUTBOL BASE",
-              "codLocal": "353117",
-              "codVisitante": "331319",
-              "fecha": "2026-09-19",
-              "hora": "10:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Puerto De Santa María (El)",
-              "campo": "EL JUNCAL CAMPO MPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3611",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663719&cod_acta=2663719",
-              "jugado": false
-            },
-            {
               "local": "C.D. SALESIANOS ALGECIRAS",
               "visitante": "C.D. SAN BERNARDO",
               "codLocal": "349221",
@@ -255,23 +272,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3524",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663720&cod_acta=2663720",
-              "jugado": false
-            },
-            {
-              "local": "TRASMALLO F.C. C.D.",
-              "visitante": "ATLETICO ZABAL",
-              "codLocal": "332820",
-              "codVisitante": "326327",
-              "fecha": "2026-09-18",
-              "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Puerto De Santa María (El)",
-              "campo": "CIUDAD DEPORTIVA RAFAEL SANCHEZ",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3555",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663723&cod_acta=2663723",
               "jugado": false
             },
             {
@@ -615,7 +615,7 @@
               "campo": "BAZAN CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3020",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663749",
               "jugado": false
             },
             {
@@ -624,7 +624,7 @@
               "codLocal": "307919",
               "codVisitante": "309522",
               "fecha": "2026-10-09",
-              "hora": "18:30",
+              "hora": "19:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -666,23 +666,6 @@
               "campo": "SANTA FE",
               "superficie": "Hierba Artificial",
               "codCampo": "3051",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
-              "local": "A.D. TARAGUILLA",
-              "visitante": "C.F. SAN JOSE OBRERO",
-              "codLocal": "307530",
-              "codVisitante": "303130",
-              "fecha": "2026-10-10",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Roque",
-              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3236",
               "urlActa": null,
               "jugado": false
             },
@@ -734,6 +717,23 @@
               "campo": "BAZAN CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3020",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "A.D. TARAGUILLA",
+              "visitante": "C.F. SAN JOSE OBRERO",
+              "codLocal": "307530",
+              "codVisitante": "303130",
+              "fecha": "2026-10-10",
+              "hora": "16:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Roque",
+              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3236",
               "urlActa": null,
               "jugado": false
             }

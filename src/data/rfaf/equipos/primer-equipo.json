@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-05T13:32:23.869Z",
+  "actualizado": "2026-10-05T17:21:32.389Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -510,23 +510,6 @@
           "fecha": "2026-09-27",
           "partidos": [
             {
-              "local": "C.D. GUADALCACIN",
-              "visitante": "BARBATE C.F.",
-              "codLocal": "303615",
-              "codVisitante": "308515",
-              "fecha": "2026-09-27",
-              "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Jerez De La Frontera",
-              "campo": "GUADALCACIN ESTADIO MUNICIPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3036",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662406&cod_acta=2662406",
-              "jugado": false
-            },
-            {
               "local": "C.D. EL TORNO 2009",
               "visitante": "TREBUJENA C.F.",
               "codLocal": "343715",
@@ -541,6 +524,23 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3019",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662405&cod_acta=2662405",
+              "jugado": false
+            },
+            {
+              "local": "C.D. GUADALCACIN",
+              "visitante": "BARBATE C.F.",
+              "codLocal": "303615",
+              "codVisitante": "308515",
+              "fecha": "2026-09-27",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Jerez De La Frontera",
+              "campo": "GUADALCACIN ESTADIO MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3036",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662406&cod_acta=2662406",
               "jugado": false
             },
             {
@@ -674,8 +674,8 @@
               "visitante": "REAL BALOMPEDICA LINENSE",
               "codLocal": "308515",
               "codVisitante": "16370635",
-              "fecha": "2026-10-04",
-              "hora": "18:00",
+              "fecha": "2026-10-21",
+              "hora": "20:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -1041,23 +1041,6 @@
               "jugado": false
             },
             {
-              "local": "ALGAIDA U.D.",
-              "visitante": "U.D. LOS BARRIOS",
-              "codLocal": "310415",
-              "codVisitante": "308015",
-              "fecha": "2026-10-12",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": null,
-              "campo": "Sanlúcar de Barrameda -Doro Stadium",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3104",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "JEREZ INDUSTRIAL C.F.",
               "visitante": "TARIFA U.D.",
               "codLocal": "300915",
@@ -1122,6 +1105,23 @@
               "campo": "POLIDEPORTIVO MUNICIPAL MIGUEL ANGEL MORALES NAVAS",
               "superficie": "Hierba Artificial",
               "codCampo": "3019",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "ALGAIDA U.D.",
+              "visitante": "U.D. LOS BARRIOS",
+              "codLocal": "310415",
+              "codVisitante": "308015",
+              "fecha": "2026-10-12",
+              "hora": null,
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": null,
+              "campo": "Sanlúcar de Barrameda -Doro Stadium",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3104",
               "urlActa": null,
               "jugado": false
             },
