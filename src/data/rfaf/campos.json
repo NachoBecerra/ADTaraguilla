@@ -1,5 +1,5 @@
 {
-  "generado": "2026-10-05T17:25:48.099Z",
+  "generado": "2026-10-05T21:22:43.451Z",
   "_nota": "Ubicación de los campos, para enlazar con el mapa.",
   "campos": {
     "3008": {
@@ -22,8 +22,18 @@
       "lat": 36.0246533,
       "lon": -5.611942399999999
     },
+    "3095": {
+      "nombre": "PACO GALLEGO",
+      "lat": 36.533469,
+      "lon": -6.1853282
+    },
     "3172": {
       "nombre": "ANTONIO REYES"
+    },
+    "3201": {
+      "nombre": "MANOLO MESA CAMPO MUNICIPAL",
+      "lat": 36.2097731,
+      "lon": -5.392334700000001
     },
     "3236": {
       "nombre": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
@@ -52,6 +62,11 @@
       "nombre": "QUINTA DE LA PAZ",
       "lat": 36.7885774,
       "lon": -6.342234200000001
+    },
+    "6903": {
+      "nombre": "La Palma Polideportivo Municipal Nuevo",
+      "lat": 37.3842331,
+      "lon": -6.554258417
     },
     "2002177": {
       "nombre": "MANUEL LEON MUNICIPAL",
