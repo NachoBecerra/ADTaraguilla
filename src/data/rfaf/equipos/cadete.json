@@ -7,7 +7,7 @@
   "orden": 3,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-05T07:46:57.326Z",
+  "actualizado": "2026-10-05T11:23:20.522Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-10-03",
           "partidos": [
+            {
+              "local": "U.D. CASTELLAR C.F.",
+              "visitante": "C.D. SAN ROQUE \"A\"",
+              "codLocal": "20318425",
+              "codVisitante": "307717",
+              "fecha": "2026-10-03",
+              "hora": "12:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Castellar De La Frontera",
+              "campo": "MANUEL LEON MUNICIPAL (F11-F7)",
+              "superficie": "Hierba Natural",
+              "codCampo": "18654147",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2694104&cod_acta=2694104",
+              "jugado": false
+            },
             {
               "local": "C.D. PUERTO DE LA LINEA",
               "visitante": "U.D. LOS BARRIOS \"B\"",
@@ -79,23 +96,6 @@
               "codCampo": "3236",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2694106&cod_acta=2694106",
               "jugado": true
-            },
-            {
-              "local": "U.D. CASTELLAR C.F.",
-              "visitante": "C.D. SAN ROQUE \"A\"",
-              "codLocal": "20318425",
-              "codVisitante": "307717",
-              "fecha": "2026-10-03",
-              "hora": "12:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Castellar De La Frontera",
-              "campo": "MANUEL LEON MUNICIPAL (F11-F7)",
-              "superficie": "Hierba Natural",
-              "codCampo": "18654147",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2694104&cod_acta=2694104",
-              "jugado": false
             },
             {
               "local": "C.D. BALON LINENSE C.F. \"A\"",
