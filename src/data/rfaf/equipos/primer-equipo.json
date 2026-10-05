@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-04T16:39:38.520Z",
+  "actualizado": "2026-10-05T09:38:08.282Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -15,7 +15,7 @@
       "categoria": "1ª ANDALUZA SENIOR",
       "grupo": "UNICO",
       "puntos": 9,
-      "posicion": 2,
+      "posicion": 5,
       "codGrupo": "48680165",
       "escudosRecogidos": true,
       "codCompeticion": "48680130",
@@ -670,6 +670,23 @@
           "fecha": "2026-10-04",
           "partidos": [
             {
+              "local": "BARBATE C.F.",
+              "visitante": "REAL BALOMPEDICA LINENSE",
+              "codLocal": "308515",
+              "codVisitante": "16370635",
+              "fecha": "2026-10-04",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Barbate",
+              "campo": "Barbate Nuevo Estadio Municipal",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3085",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
               "local": "XEREZ DEPORTIVO F.C.",
               "visitante": "CHICLANA IND. C.F.",
               "codLocal": "12785604",
@@ -769,23 +786,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3019",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662414",
-              "jugado": false
-            },
-            {
-              "local": "BARBATE C.F.",
-              "visitante": "REAL BALOMPEDICA LINENSE",
-              "codLocal": "308515",
-              "codVisitante": "16370635",
-              "fecha": "2026-10-04",
-              "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Barbate",
-              "campo": "Barbate Nuevo Estadio Municipal",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3085",
-              "urlActa": null,
               "jugado": false
             },
             {
@@ -1024,23 +1024,6 @@
               "jugado": false
             },
             {
-              "local": "BARBATE C.F.",
-              "visitante": "JUVENTUD SANLUQUEÑA A.D.",
-              "codLocal": "308515",
-              "codVisitante": "339215",
-              "fecha": "2026-10-12",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Barbate",
-              "campo": "Barbate Nuevo Estadio Municipal",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3085",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "XEREZ DEPORTIVO F.C.",
               "visitante": "C.D. SAN ROQUE",
               "codLocal": "12785604",
@@ -1139,6 +1122,23 @@
               "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
               "superficie": "Hierba Artificial",
               "codCampo": "3011",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "BARBATE C.F.",
+              "visitante": "JUVENTUD SANLUQUEÑA A.D.",
+              "codLocal": "308515",
+              "codVisitante": "339215",
+              "fecha": "2026-10-12",
+              "hora": null,
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Barbate",
+              "campo": "Barbate Nuevo Estadio Municipal",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3085",
               "urlActa": null,
               "jugado": false
             }
@@ -5508,20 +5508,21 @@
         },
         {
           "posicion": 3,
-          "equipo": "C.D. SAN ROQUE",
-          "puntos": 8,
-          "jugados": 4,
-          "jugadosCasa": 3,
-          "jugadosFuera": 1,
-          "ganados": 2,
-          "empatados": 2,
-          "perdidos": 0,
+          "equipo": "C.D. GUADALCACIN",
+          "puntos": 10,
+          "jugados": 5,
+          "jugadosCasa": 2,
+          "jugadosFuera": 3,
+          "ganados": 3,
+          "empatados": 1,
+          "perdidos": 1,
           "golesFavor": 10,
-          "golesContra": 5,
+          "golesContra": 4,
           "racha": [
-            "E",
-            "E",
             "G",
+            "G",
+            "P",
+            "E",
             "G"
           ]
         },
@@ -5567,25 +5568,46 @@
         },
         {
           "posicion": 6,
-          "equipo": "C.D. GUADALCACIN",
-          "puntos": 7,
-          "jugados": 4,
-          "jugadosCasa": 2,
+          "equipo": "C.D. CIUDAD DE CADIZ",
+          "puntos": 9,
+          "jugados": 5,
+          "jugadosCasa": 3,
           "jugadosFuera": 2,
-          "ganados": 2,
-          "empatados": 1,
-          "perdidos": 1,
-          "golesFavor": 8,
-          "golesContra": 4,
+          "ganados": 3,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 7,
+          "golesContra": 7,
           "racha": [
-            "G",
-            "G",
             "P",
-            "E"
+            "P",
+            "G",
+            "G",
+            "G"
           ]
         },
         {
           "posicion": 7,
+          "equipo": "C.D. SAN ROQUE",
+          "puntos": 8,
+          "jugados": 5,
+          "jugadosCasa": 3,
+          "jugadosFuera": 2,
+          "ganados": 2,
+          "empatados": 2,
+          "perdidos": 1,
+          "golesFavor": 10,
+          "golesContra": 6,
+          "racha": [
+            "E",
+            "E",
+            "G",
+            "G",
+            "P"
+          ]
+        },
+        {
+          "posicion": 8,
           "equipo": "TREBUJENA C.F.",
           "puntos": 8,
           "jugados": 5,
@@ -5594,33 +5616,14 @@
           "ganados": 2,
           "empatados": 2,
           "perdidos": 1,
-          "golesFavor": 7,
-          "golesContra": 6,
+          "golesFavor": 8,
+          "golesContra": 7,
           "racha": [
             "G",
             "E",
             "E",
             "G",
             "P"
-          ]
-        },
-        {
-          "posicion": 8,
-          "equipo": "C.D. CIUDAD DE CADIZ",
-          "puntos": 6,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 6,
-          "golesContra": 7,
-          "racha": [
-            "P",
-            "P",
-            "G",
-            "G"
           ]
         },
         {
@@ -5633,8 +5636,8 @@
           "ganados": 2,
           "empatados": 1,
           "perdidos": 2,
-          "golesFavor": 10,
-          "golesContra": 9,
+          "golesFavor": 11,
+          "golesContra": 10,
           "racha": [
             "E",
             "P",
@@ -5704,6 +5707,26 @@
         },
         {
           "posicion": 13,
+          "equipo": "ALGAIDA U.D.",
+          "puntos": 5,
+          "jugados": 5,
+          "jugadosCasa": 3,
+          "jugadosFuera": 2,
+          "ganados": 1,
+          "empatados": 2,
+          "perdidos": 2,
+          "golesFavor": 4,
+          "golesContra": 5,
+          "racha": [
+            "P",
+            "E",
+            "P",
+            "E",
+            "G"
+          ]
+        },
+        {
+          "posicion": 14,
           "equipo": "CHICLANA C.F.",
           "puntos": 5,
           "jugados": 5,
@@ -5723,60 +5746,43 @@
           ]
         },
         {
-          "posicion": 14,
+          "posicion": 15,
           "equipo": "JUVENTUD SANLUQUEÑA A.D.",
           "puntos": 3,
-          "jugados": 4,
+          "jugados": 5,
           "jugadosCasa": 2,
-          "jugadosFuera": 2,
+          "jugadosFuera": 3,
           "ganados": 0,
           "empatados": 3,
-          "perdidos": 1,
-          "golesFavor": 5,
-          "golesContra": 6,
-          "racha": [
-            "E",
-            "E",
-            "P",
-            "E"
-          ]
-        },
-        {
-          "posicion": 15,
-          "equipo": "C.D. EL TORNO 2009",
-          "puntos": 3,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 3,
+          "perdidos": 2,
           "golesFavor": 5,
           "golesContra": 7,
           "racha": [
-            "G",
+            "E",
+            "E",
             "P",
-            "P",
+            "E",
             "P"
           ]
         },
         {
           "posicion": 16,
-          "equipo": "ALGAIDA U.D.",
-          "puntos": 2,
-          "jugados": 4,
-          "jugadosCasa": 2,
+          "equipo": "C.D. EL TORNO 2009",
+          "puntos": 3,
+          "jugados": 5,
+          "jugadosCasa": 3,
           "jugadosFuera": 2,
-          "ganados": 0,
-          "empatados": 2,
-          "perdidos": 2,
-          "golesFavor": 3,
-          "golesContra": 5,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 4,
+          "golesFavor": 5,
+          "golesContra": 9,
           "racha": [
+            "G",
             "P",
-            "E",
             "P",
-            "E"
+            "P",
+            "P"
           ]
         },
         {
