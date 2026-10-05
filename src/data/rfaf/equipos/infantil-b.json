@@ -7,7 +7,7 @@
   "orden": 5,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-05T11:23:05.505Z",
+  "actualizado": "2026-10-05T15:25:33.617Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307528",
   "competiciones": [
     {
@@ -47,23 +47,6 @@
               "jugado": false
             },
             {
-              "local": "BALON LINENSE C.F. C.D.",
-              "visitante": "C.D. GUADIARO",
-              "codLocal": "5725181",
-              "codVisitante": "307319",
-              "fecha": "2026-10-02",
-              "hora": "18:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "La Línea de La Concepción",
-              "campo": "ANTONIO REYES",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3172",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2696393&cod_acta=2696393",
-              "jugado": false
-            },
-            {
               "local": "LOS CORTIJILLOS A.D.",
               "visitante": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
               "codLocal": "24078390",
@@ -78,6 +61,40 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3480",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2696398&cod_acta=2696398",
+              "jugado": false
+            },
+            {
+              "local": "ATLETICO ZABAL",
+              "visitante": "C.D. SAN ROQUE \"A\"",
+              "codLocal": "326318",
+              "codVisitante": "307718",
+              "fecha": "2026-10-04",
+              "hora": "12:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "La Línea de La Concepción",
+              "campo": "VIRGEN DEL CARMEN",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3562",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2696396&cod_acta=2696396",
+              "jugado": false
+            },
+            {
+              "local": "BALON LINENSE C.F. C.D.",
+              "visitante": "C.D. GUADIARO",
+              "codLocal": "5725181",
+              "codVisitante": "307319",
+              "fecha": "2026-10-02",
+              "hora": "18:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "La Línea de La Concepción",
+              "campo": "ANTONIO REYES",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3172",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2696393&cod_acta=2696393",
               "jugado": false
             },
             {
@@ -113,23 +130,6 @@
               "codCampo": "3236",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2696395&cod_acta=2696395",
               "jugado": true
-            },
-            {
-              "local": "ATLETICO ZABAL",
-              "visitante": "C.D. SAN ROQUE \"A\"",
-              "codLocal": "326318",
-              "codVisitante": "307718",
-              "fecha": "2026-10-04",
-              "hora": "12:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "La Línea de La Concepción",
-              "campo": "VIRGEN DEL CARMEN",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3562",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2696396&cod_acta=2696396",
-              "jugado": false
             }
           ]
         },
@@ -143,8 +143,8 @@
               "visitante": "LOS CORTIJILLOS A.D.",
               "codLocal": "307319",
               "codVisitante": "24078390",
-              "fecha": "2026-10-10",
-              "hora": null,
+              "fecha": "2026-10-09",
+              "hora": "17:30",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -190,23 +190,6 @@
               "jugado": false
             },
             {
-              "local": "C.D. SAN ROQUE \"A\"",
-              "visitante": "A.D. TARAGUILLA",
-              "codLocal": "307718",
-              "codVisitante": "307528",
-              "fecha": "2026-10-10",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Roque",
-              "campo": "LOS OLIVILLOS (VICENTE BLANCA)",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3574",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "Descansa",
               "visitante": "ATLETICO ZABAL",
               "codLocal": null,
@@ -237,6 +220,23 @@
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
               "codCampo": "3172",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "C.D. SAN ROQUE \"A\"",
+              "visitante": "A.D. TARAGUILLA",
+              "codLocal": "307718",
+              "codVisitante": "307528",
+              "fecha": "2026-10-10",
+              "hora": "10:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Roque",
+              "campo": "MANOLO MESA CAMPO MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3201",
               "urlActa": null,
               "jugado": false
             }

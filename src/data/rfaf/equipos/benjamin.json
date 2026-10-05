@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-05T13:31:40.803Z",
+  "actualizado": "2026-10-05T15:26:03.671Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -459,6 +459,23 @@
           "fecha": "2026-10-03",
           "partidos": [
             {
+              "local": "C.D. SALESIANOS ALGECIRAS",
+              "visitante": "A.D. MARIANISTAS C.D.",
+              "codLocal": "349221",
+              "codVisitante": "343218",
+              "fecha": "2026-10-03",
+              "hora": "11:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Algeciras",
+              "campo": "LA MENACHA JULIO CABELLO",
+              "superficie": "Hierba Artificial",
+              "codCampo": "28351042",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663737&cod_acta=2663737",
+              "jugado": false
+            },
+            {
               "local": "C.D. ESTRELLA PORTUENSE F.C.",
               "visitante": "BAHIA SAN FERNANDO C.D.",
               "codLocal": "353117",
@@ -490,23 +507,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3524",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663735&cod_acta=2663735",
-              "jugado": false
-            },
-            {
-              "local": "C.D. SALESIANOS ALGECIRAS",
-              "visitante": "A.D. MARIANISTAS C.D.",
-              "codLocal": "349221",
-              "codVisitante": "343218",
-              "fecha": "2026-10-03",
-              "hora": "11:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Algeciras",
-              "campo": "LA MENACHA JULIO CABELLO",
-              "superficie": "Hierba Artificial",
-              "codCampo": "28351042",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663737&cod_acta=2663737",
               "jugado": false
             },
             {
