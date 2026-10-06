@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-06T19:20:08.811Z",
+  "actualizado": "2026-10-06T21:21:49.572Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -670,6 +670,23 @@
           "fecha": "2026-10-04",
           "partidos": [
             {
+              "local": "CHICLANA C.F.",
+              "visitante": "U.D. LOS BARRIOS",
+              "codLocal": "301516",
+              "codVisitante": "308015",
+              "fecha": "2026-10-04",
+              "hora": "12:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Chiclana De La Frontera",
+              "campo": "HUERTA MATA",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2002448",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662420&cod_acta=2662420",
+              "jugado": false
+            },
+            {
               "local": "BARBATE C.F.",
               "visitante": "REAL BALOMPEDICA LINENSE",
               "codLocal": "308515",
@@ -753,23 +770,6 @@
               "codCampo": "3009",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662419&cod_acta=2662419",
               "jugado": true
-            },
-            {
-              "local": "CHICLANA C.F.",
-              "visitante": "U.D. LOS BARRIOS",
-              "codLocal": "301516",
-              "codVisitante": "308015",
-              "fecha": "2026-10-04",
-              "hora": "12:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Chiclana De La Frontera",
-              "campo": "HUERTA MATA",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2002448",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662420&cod_acta=2662420",
-              "jugado": false
             },
             {
               "local": "C.D. EL TORNO 2009",
