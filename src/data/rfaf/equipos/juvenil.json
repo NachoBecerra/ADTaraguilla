@@ -7,7 +7,7 @@
   "orden": 2,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-05T21:22:08.943Z",
+  "actualizado": "2026-10-06T07:30:29.845Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307516",
   "competiciones": [
     {
@@ -29,23 +29,6 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-27",
           "partidos": [
-            {
-              "local": "C.D. RACING DEPORTIVO ALGECIRAS",
-              "visitante": "PEÑA MADRIDISTA LINENSE \"A\"",
-              "codLocal": "48485997",
-              "codVisitante": "16370621",
-              "fecha": "2026-09-26",
-              "hora": "21:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Algeciras",
-              "campo": "JUAN SEBASTIAN ELCANO - PULE",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3118",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683603&cod_acta=2683603",
-              "jugado": false
-            },
             {
               "local": "Descansa",
               "visitante": "CLUB RVO. BAHIA DE ALGECIRAS",
@@ -78,6 +61,23 @@
               "superficie": "Tierra",
               "codCampo": "2003239",
               "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "C.D. RACING DEPORTIVO ALGECIRAS",
+              "visitante": "PEÑA MADRIDISTA LINENSE \"A\"",
+              "codLocal": "48485997",
+              "codVisitante": "16370621",
+              "fecha": "2026-09-26",
+              "hora": "21:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Algeciras",
+              "campo": "JUAN SEBASTIAN ELCANO - PULE",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3118",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683603&cod_acta=2683603",
               "jugado": false
             },
             {
@@ -155,6 +155,23 @@
           "nombre": "Jornada 2",
           "fecha": "2026-10-04",
           "partidos": [
+            {
+              "local": "A.D. TARAGUILLA",
+              "visitante": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
+              "codLocal": "307516",
+              "codVisitante": "33452112",
+              "fecha": "2026-10-03",
+              "hora": "19:30",
+              "golesLocal": 0,
+              "golesVisitante": 0,
+              "origen": "clasificacion",
+              "localidad": "San Roque",
+              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3236",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683608&cod_acta=2683608",
+              "jugado": true
+            },
             {
               "local": "C.D. ATLETICO PASTORES ALGECIRAS \"B\"",
               "visitante": "Descansa",
@@ -239,23 +256,6 @@
               "codCampo": "3608",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683606&cod_acta=2683606",
               "jugado": false
-            },
-            {
-              "local": "A.D. TARAGUILLA",
-              "visitante": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
-              "codLocal": "307516",
-              "codVisitante": "33452112",
-              "fecha": "2026-10-03",
-              "hora": "19:30",
-              "golesLocal": 0,
-              "golesVisitante": 0,
-              "origen": "clasificacion",
-              "localidad": "San Roque",
-              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683608&cod_acta=2683608",
-              "jugado": true
             },
             {
               "local": "PEÑA MADRIDISTA LINENSE \"A\"",
