@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-06T07:30:42.660Z",
+  "actualizado": "2026-10-06T09:27:46.226Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -173,6 +173,23 @@
           "fecha": "2026-09-20",
           "partidos": [
             {
+              "local": "JUVENTUD DVA. GINES",
+              "visitante": "SEVILLA F.C., S.A.D.",
+              "codLocal": "2071870",
+              "codVisitante": "100136",
+              "fecha": "2026-09-19",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Gines",
+              "campo": "SAN JOSÉ NUEVO ESTADIO",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2015044",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651389&cod_acta=2651389",
+              "jugado": false
+            },
+            {
               "local": "C.D. ASOC. DVA. NERVION",
               "visitante": "R.C.R. HUELVA, S.A.D.",
               "codLocal": "118920",
@@ -272,23 +289,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3611",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651391&cod_acta=2651391",
-              "jugado": false
-            },
-            {
-              "local": "JUVENTUD DVA. GINES",
-              "visitante": "SEVILLA F.C., S.A.D.",
-              "codLocal": "2071870",
-              "codVisitante": "100136",
-              "fecha": "2026-09-19",
-              "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Gines",
-              "campo": "SAN JOSÉ NUEVO ESTADIO",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2015044",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651389&cod_acta=2651389",
               "jugado": false
             },
             {
