@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-06T11:21:25.487Z",
+  "actualizado": "2026-10-06T13:25:48.801Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -44,6 +44,23 @@
               "superficie": null,
               "codCampo": null,
               "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "C.D. SAN BERNARDO",
+              "visitante": "ATLETICO ATUNARA C.D. \"A\"",
+              "codLocal": "44810826",
+              "codVisitante": "356217",
+              "fecha": "2026-09-19",
+              "hora": "12:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Roque",
+              "campo": "ALBERTO UMBRIA",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3079",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709873&cod_acta=2709873",
               "jugado": false
             },
             {
@@ -130,23 +147,6 @@
               "codCampo": "3172",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709871&cod_acta=2709871",
               "jugado": true
-            },
-            {
-              "local": "C.D. SAN BERNARDO",
-              "visitante": "ATLETICO ATUNARA C.D. \"A\"",
-              "codLocal": "44810826",
-              "codVisitante": "356217",
-              "fecha": "2026-09-19",
-              "hora": "12:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Roque",
-              "campo": "ALBERTO UMBRIA",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3079",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709873&cod_acta=2709873",
-              "jugado": false
             },
             {
               "local": "C.D. OLIVILLOS 87 \"B\"",
@@ -333,6 +333,23 @@
               "jugado": false
             },
             {
+              "local": "C.D. GUADIARO",
+              "visitante": "PUENTE MAYORGA RVO \"A\"",
+              "codLocal": "307320",
+              "codVisitante": "323616",
+              "fecha": "2026-10-03",
+              "hora": "17:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Roque",
+              "campo": "SAN ENRIQUE",
+              "superficie": "Hierba Natural",
+              "codCampo": "2020864",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709891&cod_acta=2709891",
+              "jugado": false
+            },
+            {
               "local": "U.D. TESORILLO C.D.",
               "visitante": "C.D. ATHLETIC CLUB JIMENA",
               "codLocal": "307218",
@@ -433,23 +450,6 @@
               "codCampo": "3079",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709890&cod_acta=2709890",
               "jugado": false
-            },
-            {
-              "local": "C.D. GUADIARO",
-              "visitante": "PUENTE MAYORGA RVO \"A\"",
-              "codLocal": "307320",
-              "codVisitante": "323616",
-              "fecha": "2026-10-03",
-              "hora": "17:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Roque",
-              "campo": "SAN ENRIQUE",
-              "superficie": "Hierba Natural",
-              "codCampo": "2020864",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709891&cod_acta=2709891",
-              "jugado": false
             }
           ]
         },
@@ -472,7 +472,7 @@
               "campo": "Francisco Pozo",
               "superficie": "Hierba Artificial",
               "codCampo": "3349",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709901",
               "jugado": false
             },
             {
@@ -489,7 +489,7 @@
               "campo": "SAN RAFAEL PVO (F11-F7)",
               "superficie": "Hierba Natural",
               "codCampo": "3080",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709900",
               "jugado": false
             },
             {
@@ -506,7 +506,7 @@
               "campo": "VIRGEN DEL CARMEN",
               "superficie": "Hierba Artificial",
               "codCampo": "3562",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709896",
               "jugado": false
             },
             {
@@ -523,7 +523,7 @@
               "campo": "ANDRES SARRIAS",
               "superficie": "Hierba Artificial",
               "codCampo": "3096",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709897",
               "jugado": false
             },
             {
@@ -591,7 +591,7 @@
               "campo": "MANUEL MATEO",
               "superficie": "Hierba Artificial",
               "codCampo": "3575",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709899",
               "jugado": false
             }
           ]
