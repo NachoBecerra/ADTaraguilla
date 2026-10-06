@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-06T13:26:43.543Z",
+  "actualizado": "2026-10-06T15:23:04.390Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -350,6 +350,23 @@
           "fecha": "2026-09-20",
           "partidos": [
             {
+              "local": "XEREZ DEPORTIVO F.C.",
+              "visitante": "C.D. GUADALCACIN",
+              "codLocal": "12785604",
+              "codVisitante": "303615",
+              "fecha": "2026-09-20",
+              "hora": "12:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Jerez De La Frontera",
+              "campo": "LA GRANJA CENTRO DE DEPORTES",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3298",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662397&cod_acta=2662397",
+              "jugado": false
+            },
+            {
               "local": "CHICLANA C.F.",
               "visitante": "C.D. SAN ROQUE",
               "codLocal": "301516",
@@ -449,23 +466,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3085",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662396&cod_acta=2662396",
-              "jugado": false
-            },
-            {
-              "local": "XEREZ DEPORTIVO F.C.",
-              "visitante": "C.D. GUADALCACIN",
-              "codLocal": "12785604",
-              "codVisitante": "303615",
-              "fecha": "2026-09-20",
-              "hora": "12:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Jerez De La Frontera",
-              "campo": "LA GRANJA CENTRO DE DEPORTES",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3298",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662397&cod_acta=2662397",
               "jugado": false
             },
             {
