@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-06T09:27:18.833Z",
+  "actualizado": "2026-10-06T11:21:40.335Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-06",
           "partidos": [
+            {
+              "local": "CHICLANA C.F.",
+              "visitante": "CHICLANA IND. C.F.",
+              "codLocal": "301516",
+              "codVisitante": "327715",
+              "fecha": "2026-09-06",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Chiclana De La Frontera",
+              "campo": "CHICLANA ESTADIO MUNICIPAL",
+              "superficie": "Hierba Natural",
+              "codCampo": "2002086",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662382&cod_acta=2662382",
+              "jugado": false
+            },
             {
               "local": "C.D. CIUDAD DE CADIZ",
               "visitante": "C.D. EL TORNO 2009",
@@ -95,23 +112,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3011",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662386&cod_acta=2662386",
-              "jugado": false
-            },
-            {
-              "local": "CHICLANA C.F.",
-              "visitante": "CHICLANA IND. C.F.",
-              "codLocal": "301516",
-              "codVisitante": "327715",
-              "fecha": "2026-09-06",
-              "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Chiclana De La Frontera",
-              "campo": "CHICLANA ESTADIO MUNICIPAL",
-              "superficie": "Hierba Natural",
-              "codCampo": "2002086",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662382&cod_acta=2662382",
               "jugado": false
             },
             {
@@ -670,20 +670,20 @@
           "fecha": "2026-10-04",
           "partidos": [
             {
-              "local": "C.D. ROTA",
-              "visitante": "TARIFA U.D.",
-              "codLocal": "300815",
-              "codVisitante": "308315",
+              "local": "TREBUJENA C.F.",
+              "visitante": "C.D. GUADIARO",
+              "codLocal": "2064845",
+              "codVisitante": "307315",
               "fecha": "2026-10-04",
-              "hora": "12:00",
+              "hora": "17:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
-              "localidad": "Rota",
-              "campo": "NAVARRO FLORES ESTADIO MUNICIPAL",
-              "superficie": "Hierba Natural",
-              "codCampo": "3008",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662421&cod_acta=2662421",
+              "localidad": "Trebujena",
+              "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3011",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662422&cod_acta=2662422",
               "jugado": false
             },
             {
@@ -701,6 +701,23 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3085",
               "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "C.D. ROTA",
+              "visitante": "TARIFA U.D.",
+              "codLocal": "300815",
+              "codVisitante": "308315",
+              "fecha": "2026-10-04",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Rota",
+              "campo": "NAVARRO FLORES ESTADIO MUNICIPAL",
+              "superficie": "Hierba Natural",
+              "codCampo": "3008",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662421&cod_acta=2662421",
               "jugado": false
             },
             {
@@ -752,23 +769,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "2002448",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662420&cod_acta=2662420",
-              "jugado": false
-            },
-            {
-              "local": "TREBUJENA C.F.",
-              "visitante": "C.D. GUADIARO",
-              "codLocal": "2064845",
-              "codVisitante": "307315",
-              "fecha": "2026-10-04",
-              "hora": "17:54",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Trebujena",
-              "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3011",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662422&cod_acta=2662422",
               "jugado": false
             },
             {
@@ -844,23 +844,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3036",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662423",
-              "jugado": false
-            },
-            {
-              "local": "CHICLANA IND. C.F.",
-              "visitante": "BARBATE C.F.",
-              "codLocal": "327715",
-              "codVisitante": "308515",
-              "fecha": "2026-10-09",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Chiclana De La Frontera",
-              "campo": "EL FONTANAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3602",
-              "urlActa": null,
               "jugado": false
             },
             {
@@ -963,6 +946,23 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3575",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662431",
+              "jugado": false
+            },
+            {
+              "local": "CHICLANA IND. C.F.",
+              "visitante": "BARBATE C.F.",
+              "codLocal": "327715",
+              "codVisitante": "308515",
+              "fecha": "2026-10-09",
+              "hora": "20:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Chiclana De La Frontera",
+              "campo": "EL FONTANAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3602",
+              "urlActa": null,
               "jugado": false
             },
             {
