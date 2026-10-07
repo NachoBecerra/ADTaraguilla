@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-07T11:22:47.118Z",
+  "actualizado": "2026-10-07T13:27:06.417Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -173,23 +173,6 @@
           "fecha": "2026-09-26",
           "partidos": [
             {
-              "local": "A.D. LOS CORTIJILLOS",
-              "visitante": "C.D. BALON LINENSE C.F.",
-              "codLocal": "348018",
-              "codVisitante": "38917543",
-              "fecha": "2026-09-25",
-              "hora": "17:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Barrios (Los)",
-              "campo": "ANTONIO GAVIRA - LOS CORTIJILLOS",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3480",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709880&cod_acta=2709880",
-              "jugado": false
-            },
-            {
               "local": "A.D. TARAGUILLA",
               "visitante": "Descansa",
               "codLocal": null,
@@ -204,6 +187,23 @@
               "superficie": null,
               "codCampo": null,
               "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "A.D. LOS CORTIJILLOS",
+              "visitante": "C.D. BALON LINENSE C.F.",
+              "codLocal": "348018",
+              "codVisitante": "38917543",
+              "fecha": "2026-09-25",
+              "hora": "17:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Barrios (Los)",
+              "campo": "ANTONIO GAVIRA - LOS CORTIJILLOS",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3480",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709880&cod_acta=2709880",
               "jugado": false
             },
             {
