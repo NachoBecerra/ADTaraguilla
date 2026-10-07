@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-06T07:30:14.826Z",
+  "actualizado": "2026-10-07T07:31:32.490Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -472,7 +472,24 @@
               "campo": "LOS OLIVILLOS (VICENTE BLANCA)",
               "superficie": "Hierba Artificial",
               "codCampo": "3574",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649967",
+              "jugado": false
+            },
+            {
+              "local": "CADIZ C.F., S.A.D.",
+              "visitante": "C.D. SAN FERNANDO 1940",
+              "codLocal": "28636857",
+              "codVisitante": "45021237",
+              "fecha": "2026-10-09",
+              "hora": "18:45",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Puerto Real",
+              "campo": "PROVINCIA DE CADIZ",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2017342",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649964",
               "jugado": false
             },
             {
@@ -523,7 +540,7 @@
               "campo": "QUINTA DE LA PAZ",
               "superficie": "Hierba Artificial",
               "codCampo": "3582",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649966",
               "jugado": false
             },
             {
@@ -540,23 +557,6 @@
               "campo": "PACO GALLEGO",
               "superficie": "Hierba Artificial",
               "codCampo": "3095",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
-              "local": "CADIZ C.F., S.A.D.",
-              "visitante": "C.D. SAN FERNANDO 1940",
-              "codLocal": "28636857",
-              "codVisitante": "45021237",
-              "fecha": "2026-10-10",
-              "hora": "12:45",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Puerto Real",
-              "campo": "PROVINCIA DE CADIZ",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2017342",
               "urlActa": null,
               "jugado": false
             },
@@ -591,7 +591,7 @@
               "campo": "LA MENACHA JULIO CABELLO",
               "superficie": "Hierba Artificial",
               "codCampo": "28351042",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649965",
               "jugado": false
             }
           ]

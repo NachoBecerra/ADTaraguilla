@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-06T11:22:10.348Z",
+  "actualizado": "2026-10-07T07:31:45.010Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -615,7 +615,7 @@
               "campo": "SAN JOSÉ NUEVO ESTADIO",
               "superficie": "Hierba Artificial",
               "codCampo": "2015044",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651412",
               "jugado": false
             },
             {
@@ -632,7 +632,7 @@
               "campo": "LUCENA CIUDAD DEPORTIVA",
               "superficie": "Hierba Artificial",
               "codCampo": "2022987",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651419",
               "jugado": false
             },
             {
@@ -666,7 +666,7 @@
               "campo": "DEMETRIO PICHEL CD",
               "superficie": "Hierba Artificial",
               "codCampo": "2315900",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651415",
               "jugado": false
             },
             {
@@ -683,7 +683,7 @@
               "campo": "ENRIQUE PUGA I.M.D.",
               "superficie": "Hierba Artificial",
               "codCampo": "4105",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651417",
               "jugado": false
             },
             {
@@ -734,7 +734,7 @@
               "campo": "JOSE RAMÓN CISNEROS CIUDAD DEPORTIVA",
               "superficie": "Hierba Artificial",
               "codCampo": "2011471",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651414",
               "jugado": false
             }
           ]
