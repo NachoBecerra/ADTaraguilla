@@ -7,7 +7,7 @@
   "orden": 5,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-06T13:26:03.714Z",
+  "actualizado": "2026-10-07T09:28:03.242Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307528",
   "competiciones": [
     {
@@ -152,7 +152,7 @@
               "campo": "PUYOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3423",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2696400",
               "jugado": false
             },
             {
@@ -169,7 +169,7 @@
               "campo": "SAN ENRIQUE",
               "superficie": "Hierba Natural",
               "codCampo": "2020864",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2696399",
+              "urlActa": null,
               "jugado": false
             },
             {
