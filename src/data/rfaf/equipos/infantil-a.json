@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-07T07:31:45.010Z",
+  "actualizado": "2026-10-08T07:32:55.533Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-13",
           "partidos": [
+            {
+              "local": "SEVILLA F.C., S.A.D.",
+              "visitante": "A.D. TARAGUILLA",
+              "codLocal": "100136",
+              "codVisitante": "307520",
+              "fecha": "2026-09-12",
+              "hora": "12:00",
+              "golesLocal": 2,
+              "golesVisitante": 0,
+              "origen": "clasificacion",
+              "localidad": "Dos Hermanas",
+              "campo": "JOSE RAMÓN CISNEROS CIUDAD DEPORTIVA",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2011471",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651380",
+              "jugado": true
+            },
             {
               "local": "SAN ROQUE BALOMPIE",
               "visitante": "JUVENTUD DVA. GINES",
@@ -96,23 +113,6 @@
               "codCampo": "2022987",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651387",
               "jugado": false
-            },
-            {
-              "local": "SEVILLA F.C., S.A.D.",
-              "visitante": "A.D. TARAGUILLA",
-              "codLocal": "100136",
-              "codVisitante": "307520",
-              "fecha": "2026-09-12",
-              "hora": "12:00",
-              "golesLocal": 2,
-              "golesVisitante": 0,
-              "origen": "clasificacion",
-              "localidad": "Dos Hermanas",
-              "campo": "JOSE RAMÓN CISNEROS CIUDAD DEPORTIVA",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2011471",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651380",
-              "jugado": true
             },
             {
               "local": "R.C.R. HUELVA, S.A.D.",
@@ -649,7 +649,7 @@
               "campo": "POLID MUN PEPE SAN ANDRÉS",
               "superficie": "Hierba Artificial",
               "codCampo": "6058",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651416",
               "jugado": false
             },
             {
@@ -717,7 +717,7 @@
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651413",
               "jugado": false
             },
             {
