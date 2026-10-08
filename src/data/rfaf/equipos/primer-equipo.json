@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-07T11:23:16.960Z",
+  "actualizado": "2026-10-08T09:28:30.296Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -350,6 +350,40 @@
           "fecha": "2026-09-20",
           "partidos": [
             {
+              "local": "ALGAIDA U.D.",
+              "visitante": "CHICLANA IND. C.F.",
+              "codLocal": "310415",
+              "codVisitante": "327715",
+              "fecha": "2026-09-19",
+              "hora": "19:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": null,
+              "campo": "Sanlúcar de Barrameda -Doro Stadium",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3104",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662399&cod_acta=2662399",
+              "jugado": false
+            },
+            {
+              "local": "TREBUJENA C.F.",
+              "visitante": "TARIFA U.D.",
+              "codLocal": "2064845",
+              "codVisitante": "308315",
+              "fecha": "2026-09-20",
+              "hora": "18:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Trebujena",
+              "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3011",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662404&cod_acta=2662404",
+              "jugado": false
+            },
+            {
               "local": "XEREZ DEPORTIVO F.C.",
               "visitante": "C.D. GUADALCACIN",
               "codLocal": "12785604",
@@ -398,23 +432,6 @@
               "superficie": "Hierba Natural",
               "codCampo": "3009",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662400&cod_acta=2662400",
-              "jugado": false
-            },
-            {
-              "local": "TREBUJENA C.F.",
-              "visitante": "TARIFA U.D.",
-              "codLocal": "2064845",
-              "codVisitante": "308315",
-              "fecha": "2026-09-20",
-              "hora": "18:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Trebujena",
-              "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3011",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662404&cod_acta=2662404",
               "jugado": false
             },
             {
@@ -483,23 +500,6 @@
               "superficie": "Hierba Natural",
               "codCampo": "3080",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662556&cod_acta=2662556",
-              "jugado": false
-            },
-            {
-              "local": "ALGAIDA U.D.",
-              "visitante": "CHICLANA IND. C.F.",
-              "codLocal": "310415",
-              "codVisitante": "327715",
-              "fecha": "2026-09-19",
-              "hora": "19:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": null,
-              "campo": "Sanlúcar de Barrameda -Doro Stadium",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3104",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662399&cod_acta=2662399",
               "jugado": false
             }
           ]
@@ -1012,32 +1012,15 @@
               "codLocal": "300915",
               "codVisitante": "308315",
               "fecha": "2026-10-12",
-              "hora": null,
+              "hora": "12:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
-              "localidad": null,
-              "campo": "Jerez De La Frontera -Municipal Pedro S. Garrido",
-              "superficie": "Hierba Natural",
-              "codCampo": "3009",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
-              "local": "TREBUJENA C.F.",
-              "visitante": "C.D. ROTA",
-              "codLocal": "2064845",
-              "codVisitante": "300815",
-              "fecha": "2026-10-12",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Trebujena",
-              "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
+              "localidad": "Jerez De La Frontera",
+              "campo": "LA GRANJA CENTRO DE DEPORTES",
               "superficie": "Hierba Artificial",
-              "codCampo": "3011",
-              "urlActa": null,
+              "codCampo": "3298",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662438",
               "jugado": false
             },
             {
@@ -1088,7 +1071,7 @@
               "campo": "LA GRANJA CENTRO DE DEPORTES",
               "superficie": "Hierba Artificial",
               "codCampo": "3298",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662435",
               "jugado": false
             },
             {
@@ -1123,6 +1106,23 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3104",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662437",
+              "jugado": false
+            },
+            {
+              "local": "TREBUJENA C.F.",
+              "visitante": "C.D. ROTA",
+              "codLocal": "2064845",
+              "codVisitante": "300815",
+              "fecha": "2026-10-12",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Trebujena",
+              "campo": "ANTONIO TEMBLADOR BARRIOS MPAL.",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3011",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662440",
               "jugado": false
             },
             {
