@@ -7,7 +7,7 @@
   "orden": 2,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-08T13:28:22.147Z",
+  "actualizado": "2026-10-08T15:24:15.499Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307516",
   "competiciones": [
     {
@@ -156,23 +156,6 @@
           "fecha": "2026-10-04",
           "partidos": [
             {
-              "local": "C.D. A.D. SAN GARCIA",
-              "visitante": "C.D. TARIFA FUTBOL ACADEMY",
-              "codLocal": "342516",
-              "codVisitante": "44851359",
-              "fecha": "2026-10-03",
-              "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Algeciras",
-              "campo": "SAN GARCIA",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3127",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683612&cod_acta=2683612",
-              "jugado": false
-            },
-            {
               "local": "C.D. ATLETICO PASTORES ALGECIRAS \"B\"",
               "visitante": "Descansa",
               "codLocal": null,
@@ -204,6 +187,23 @@
               "superficie": null,
               "codCampo": null,
               "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "C.D. A.D. SAN GARCIA",
+              "visitante": "C.D. TARIFA FUTBOL ACADEMY",
+              "codLocal": "342516",
+              "codVisitante": "44851359",
+              "fecha": "2026-10-03",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Algeciras",
+              "campo": "SAN GARCIA",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3127",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683612&cod_acta=2683612",
               "jugado": false
             },
             {

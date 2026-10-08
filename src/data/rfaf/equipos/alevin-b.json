@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-08T13:28:07.172Z",
+  "actualizado": "2026-10-08T15:24:00.993Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -30,23 +30,6 @@
           "fecha": "2026-09-19",
           "partidos": [
             {
-              "local": "C.D. BALON LINENSE C.F.",
-              "visitante": "A.D. TARAGUILLA",
-              "codLocal": "38917543",
-              "codVisitante": "28567666",
-              "fecha": "2026-09-18",
-              "hora": "17:00",
-              "golesLocal": 1,
-              "golesVisitante": 11,
-              "origen": "clasificacion",
-              "localidad": "La Línea de La Concepción",
-              "campo": "ANTONIO REYES",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3172",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709871&cod_acta=2709871",
-              "jugado": true
-            },
-            {
               "local": "Descansa",
               "visitante": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL \"A\"",
               "codLocal": null,
@@ -62,6 +45,23 @@
               "codCampo": null,
               "urlActa": null,
               "jugado": false
+            },
+            {
+              "local": "C.D. BALON LINENSE C.F.",
+              "visitante": "A.D. TARAGUILLA",
+              "codLocal": "38917543",
+              "codVisitante": "28567666",
+              "fecha": "2026-09-18",
+              "hora": "17:00",
+              "golesLocal": 1,
+              "golesVisitante": 11,
+              "origen": "clasificacion",
+              "localidad": "La Línea de La Concepción",
+              "campo": "ANTONIO REYES",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3172",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709871&cod_acta=2709871",
+              "jugado": true
             },
             {
               "local": "C.D. OLIVILLOS 87 \"B\"",
@@ -173,23 +173,6 @@
           "fecha": "2026-09-26",
           "partidos": [
             {
-              "local": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL \"A\"",
-              "visitante": "C.D. OLIVILLOS 87 \"B\"",
-              "codLocal": "33452313",
-              "codVisitante": "48903033",
-              "fecha": "2026-09-25",
-              "hora": "17:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "La Línea de La Concepción",
-              "campo": "Miguel Ángel Izaguirre",
-              "superficie": null,
-              "codCampo": "15302242",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709886&cod_acta=2709886",
-              "jugado": false
-            },
-            {
               "local": "A.D. TARAGUILLA",
               "visitante": "Descansa",
               "codLocal": null,
@@ -204,6 +187,23 @@
               "superficie": null,
               "codCampo": null,
               "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL \"A\"",
+              "visitante": "C.D. OLIVILLOS 87 \"B\"",
+              "codLocal": "33452313",
+              "codVisitante": "48903033",
+              "fecha": "2026-09-25",
+              "hora": "17:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "La Línea de La Concepción",
+              "campo": "Miguel Ángel Izaguirre",
+              "superficie": null,
+              "codCampo": "15302242",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709886&cod_acta=2709886",
               "jugado": false
             },
             {
@@ -316,23 +316,6 @@
           "fecha": "2026-10-03",
           "partidos": [
             {
-              "local": "A.D. TARAGUILLA",
-              "visitante": "A.D. LOS CORTIJILLOS",
-              "codLocal": "28567666",
-              "codVisitante": "348018",
-              "fecha": "2026-10-02",
-              "hora": "17:30",
-              "golesLocal": 8,
-              "golesVisitante": 5,
-              "origen": "clasificacion",
-              "localidad": "San Roque",
-              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709887&cod_acta=2709887",
-              "jugado": true
-            },
-            {
               "local": "Descansa",
               "visitante": "C.D. OLIVILLOS 87 \"B\"",
               "codLocal": null,
@@ -348,6 +331,23 @@
               "codCampo": null,
               "urlActa": null,
               "jugado": false
+            },
+            {
+              "local": "A.D. TARAGUILLA",
+              "visitante": "A.D. LOS CORTIJILLOS",
+              "codLocal": "28567666",
+              "codVisitante": "348018",
+              "fecha": "2026-10-02",
+              "hora": "17:30",
+              "golesLocal": 8,
+              "golesVisitante": 5,
+              "origen": "clasificacion",
+              "localidad": "San Roque",
+              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3236",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709887&cod_acta=2709887",
+              "jugado": true
             },
             {
               "local": "C.D. GUADIARO",
