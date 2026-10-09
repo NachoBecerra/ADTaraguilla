@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-09T17:21:08.702Z",
+  "actualizado": "2026-10-09T17:46:02.250Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -4525,8 +4525,8 @@
           "ganados": 1,
           "empatados": 0,
           "perdidos": 3,
-          "golesFavor": 10,
-          "golesContra": 34,
+          "golesFavor": 14,
+          "golesContra": 35,
           "racha": [
             "P",
             "P",
@@ -4563,8 +4563,8 @@
           "ganados": 0,
           "empatados": 0,
           "perdidos": 4,
-          "golesFavor": 7,
-          "golesContra": 40,
+          "golesFavor": 8,
+          "golesContra": 44,
           "racha": [
             "P",
             "P",
