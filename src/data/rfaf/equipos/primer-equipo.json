@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-09T20:55:47.491Z",
+  "actualizado": "2026-10-09T21:22:14.749Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -15,7 +15,7 @@
       "categoria": "1ª ANDALUZA SENIOR",
       "grupo": "UNICO",
       "puntos": 9,
-      "posicion": 9,
+      "posicion": 7,
       "codGrupo": "48680165",
       "escudosRecogidos": true,
       "codCompeticion": "48680130",
@@ -830,6 +830,23 @@
           "fecha": "2026-10-09",
           "partidos": [
             {
+              "local": "C.D. GUADALCACIN",
+              "visitante": "TREBUJENA C.F.",
+              "codLocal": "303615",
+              "codVisitante": "2064845",
+              "fecha": "2026-10-08",
+              "hora": "20:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Jerez De La Frontera",
+              "campo": "GUADALCACIN ESTADIO MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3036",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662423&cod_acta=2662423",
+              "jugado": false
+            },
+            {
               "local": "C.D. SAN ROQUE",
               "visitante": "C.D. CIUDAD DE CADIZ",
               "codLocal": "307715",
@@ -963,23 +980,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3079",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662430",
-              "jugado": false
-            },
-            {
-              "local": "C.D. GUADALCACIN",
-              "visitante": "TREBUJENA C.F.",
-              "codLocal": "303615",
-              "codVisitante": "2064845",
-              "fecha": "2026-10-08",
-              "hora": "20:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Jerez De La Frontera",
-              "campo": "GUADALCACIN ESTADIO MUNICIPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3036",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662423",
               "jugado": false
             }
           ]
