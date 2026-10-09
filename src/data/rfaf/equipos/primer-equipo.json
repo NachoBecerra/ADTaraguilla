@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-08T09:28:30.296Z",
+  "actualizado": "2026-10-09T14:29:26.224Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -670,6 +670,23 @@
           "fecha": "2026-10-04",
           "partidos": [
             {
+              "local": "C.D. EL TORNO 2009",
+              "visitante": "C.D. GUADALCACIN",
+              "codLocal": "343715",
+              "codVisitante": "303615",
+              "fecha": "2026-10-04",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Campo de Fútbol Jerez De La Frontera (EL TORNO)",
+              "campo": "POLIDEPORTIVO MUNICIPAL MIGUEL ANGEL MORALES NAVAS",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3019",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662414",
+              "jugado": false
+            },
+            {
               "local": "BARBATE C.F.",
               "visitante": "REAL BALOMPEDICA LINENSE",
               "codLocal": "308515",
@@ -772,23 +789,6 @@
               "jugado": true
             },
             {
-              "local": "C.D. EL TORNO 2009",
-              "visitante": "C.D. GUADALCACIN",
-              "codLocal": "343715",
-              "codVisitante": "303615",
-              "fecha": "2026-10-04",
-              "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Campo de Fútbol Jerez De La Frontera (EL TORNO)",
-              "campo": "POLIDEPORTIVO MUNICIPAL MIGUEL ANGEL MORALES NAVAS",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3019",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662414",
-              "jugado": false
-            },
-            {
               "local": "C.D. CIUDAD DE CADIZ",
               "visitante": "JUVENTUD SANLUQUEÑA A.D.",
               "codLocal": "20779397",
@@ -829,23 +829,6 @@
           "nombre": "Jornada 6",
           "fecha": "2026-10-09",
           "partidos": [
-            {
-              "local": "C.D. GUADALCACIN",
-              "visitante": "TREBUJENA C.F.",
-              "codLocal": "303615",
-              "codVisitante": "2064845",
-              "fecha": "2026-10-08",
-              "hora": "20:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Jerez De La Frontera",
-              "campo": "GUADALCACIN ESTADIO MUNICIPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3036",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662423",
-              "jugado": false
-            },
             {
               "local": "C.D. SAN ROQUE",
               "visitante": "C.D. CIUDAD DE CADIZ",
@@ -980,6 +963,23 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3079",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662430",
+              "jugado": false
+            },
+            {
+              "local": "C.D. GUADALCACIN",
+              "visitante": "TREBUJENA C.F.",
+              "codLocal": "303615",
+              "codVisitante": "2064845",
+              "fecha": "2026-10-08",
+              "hora": "20:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Jerez De La Frontera",
+              "campo": "GUADALCACIN ESTADIO MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3036",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662423",
               "jugado": false
             }
           ]
@@ -1139,7 +1139,7 @@
               "campo": "Barbate Nuevo Estadio Municipal",
               "superficie": "Hierba Artificial",
               "codCampo": "3085",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662434",
               "jugado": false
             }
           ]
@@ -5508,21 +5508,21 @@
         },
         {
           "posicion": 3,
-          "equipo": "C.D. GUADALCACIN",
-          "puntos": 10,
-          "jugados": 5,
-          "jugadosCasa": 2,
+          "equipo": "TREBUJENA C.F.",
+          "puntos": 11,
+          "jugados": 6,
+          "jugadosCasa": 3,
           "jugadosFuera": 3,
           "ganados": 3,
-          "empatados": 1,
+          "empatados": 2,
           "perdidos": 1,
           "golesFavor": 10,
-          "golesContra": 4,
+          "golesContra": 8,
           "racha": [
-            "G",
+            "E",
+            "E",
             "G",
             "P",
-            "E",
             "G"
           ]
         },
@@ -5588,6 +5588,26 @@
         },
         {
           "posicion": 7,
+          "equipo": "C.D. GUADALCACIN",
+          "puntos": 10,
+          "jugados": 6,
+          "jugadosCasa": 3,
+          "jugadosFuera": 3,
+          "ganados": 3,
+          "empatados": 1,
+          "perdidos": 2,
+          "golesFavor": 11,
+          "golesContra": 6,
+          "racha": [
+            "G",
+            "P",
+            "E",
+            "G",
+            "P"
+          ]
+        },
+        {
+          "posicion": 8,
           "equipo": "C.D. SAN ROQUE",
           "puntos": 8,
           "jugados": 5,
@@ -5602,26 +5622,6 @@
             "E",
             "E",
             "G",
-            "G",
-            "P"
-          ]
-        },
-        {
-          "posicion": 8,
-          "equipo": "TREBUJENA C.F.",
-          "puntos": 8,
-          "jugados": 5,
-          "jugadosCasa": 3,
-          "jugadosFuera": 2,
-          "ganados": 2,
-          "empatados": 2,
-          "perdidos": 1,
-          "golesFavor": 8,
-          "golesContra": 7,
-          "racha": [
-            "G",
-            "E",
-            "E",
             "G",
             "P"
           ]
