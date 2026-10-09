@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-09T17:46:02.250Z",
+  "actualizado": "2026-10-09T18:28:20.160Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -465,15 +465,15 @@
               "codVisitante": "28567666",
               "fecha": "2026-10-09",
               "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "golesLocal": 2,
+              "golesVisitante": 6,
+              "origen": "clasificacion",
               "localidad": "La Línea de La Concepción",
               "campo": "VIRGEN DEL CARMEN",
               "superficie": "Hierba Artificial",
               "codCampo": "3562",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709896",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709896&cod_acta=2709896",
+              "jugado": true
             },
             {
               "local": "C.D. S.M. MIRADOR \"B\"",
@@ -489,7 +489,7 @@
               "campo": "Sergio Martín",
               "superficie": "Hierba Artificial",
               "codCampo": "2019422",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709898",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709898&cod_acta=2709898",
               "jugado": false
             },
             {
@@ -4301,17 +4301,18 @@
       "clasificacion": [
         {
           "posicion": 1,
-          "equipo": "ATLETICO ATUNARA C.D. \"A\"",
-          "puntos": 9,
-          "jugados": 3,
-          "jugadosCasa": 1,
+          "equipo": "C.D. S.M. MIRADOR \"B\"",
+          "puntos": 12,
+          "jugados": 4,
+          "jugadosCasa": 2,
           "jugadosFuera": 2,
-          "ganados": 3,
+          "ganados": 4,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 22,
+          "golesFavor": 25,
           "golesContra": 4,
           "racha": [
+            "G",
             "G",
             "G",
             "G"
@@ -4319,7 +4320,7 @@
         },
         {
           "posicion": 2,
-          "equipo": "C.D. S.M. MIRADOR \"B\"",
+          "equipo": "A.D. TARAGUILLA",
           "puntos": 9,
           "jugados": 3,
           "jugadosCasa": 1,
@@ -4327,8 +4328,8 @@
           "ganados": 3,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 20,
-          "golesContra": 3,
+          "golesFavor": 25,
+          "golesContra": 8,
           "racha": [
             "G",
             "G",
@@ -4337,23 +4338,6 @@
         },
         {
           "posicion": 3,
-          "equipo": "A.D. TARAGUILLA",
-          "puntos": 6,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 19,
-          "golesContra": 6,
-          "racha": [
-            "G",
-            "G"
-          ]
-        },
-        {
-          "posicion": 4,
           "equipo": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL \"A\"",
           "puntos": 9,
           "jugados": 3,
@@ -4371,25 +4355,26 @@
           ]
         },
         {
-          "posicion": 5,
-          "equipo": "U.D. TESORILLO C.D.",
-          "puntos": 6,
-          "jugados": 3,
+          "posicion": 4,
+          "equipo": "ATLETICO ATUNARA C.D. \"A\"",
+          "puntos": 9,
+          "jugados": 4,
           "jugadosCasa": 2,
-          "jugadosFuera": 1,
-          "ganados": 2,
+          "jugadosFuera": 2,
+          "ganados": 3,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 18,
-          "golesContra": 16,
+          "golesFavor": 24,
+          "golesContra": 10,
           "racha": [
             "G",
-            "P",
-            "G"
+            "G",
+            "G",
+            "P"
           ]
         },
         {
-          "posicion": 6,
+          "posicion": 5,
           "equipo": "C.D. JUVENTUD PALMONES C.F.",
           "puntos": 6,
           "jugados": 3,
@@ -4407,7 +4392,7 @@
           ]
         },
         {
-          "posicion": 7,
+          "posicion": 6,
           "equipo": "C.D. GUADIARO",
           "puntos": 6,
           "jugados": 4,
@@ -4426,7 +4411,7 @@
           ]
         },
         {
-          "posicion": 8,
+          "posicion": 7,
           "equipo": "ATLETICO ZABAL \"A\"",
           "puntos": 6,
           "jugados": 4,
@@ -4440,6 +4425,25 @@
           "racha": [
             "P",
             "G",
+            "G",
+            "P"
+          ]
+        },
+        {
+          "posicion": 8,
+          "equipo": "U.D. TESORILLO C.D.",
+          "puntos": 6,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 19,
+          "golesContra": 21,
+          "racha": [
+            "G",
+            "P",
             "G",
             "P"
           ]
