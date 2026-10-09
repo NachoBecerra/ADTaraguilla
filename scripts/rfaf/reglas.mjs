@@ -99,6 +99,45 @@ export function yaDeberiaTenerResultado(p, ahora = Date.now()) {
   return ahora >= saque + MINUTOS_HASTA_EL_ACTA * 60_000;
 }
 
+/**
+ * Horas que un resultado ya deducido se sigue vigilando.
+ *
+ * El resultado se deduce de la tabla, y la tabla a veces cuenta un provisional:
+ * el árbitro sube el marcador del descanso y lo cierra más tarde. El 9 de
+ * octubre de 2026 el primer equipo perdió 2-3 con el Algaida y la web publicó
+ * un 0-3 que era el descanso; el acta se cerró hora y media después.
+ *
+ * Cinco horas desde el saque: el acta cae sobre las dos (MINUTOS_HASTA_EL_ACTA)
+ * y así sobra margen para una tarde con el acta retrasada, sin dejar al equipo
+ * pidiendo páginas el resto de la semana.
+ */
+export const HORAS_CONFIRMANDO_RESULTADO = 5;
+
+/**
+ * ¿Hay que seguir mirando este partido aunque ya tenga resultado?
+ *
+ * Un resultado deducido no es definitivo: mientras el partido sea de hace un
+ * rato, la tabla todavía puede moverse y `correccionPorClasificacion` tiene que
+ * poder enterarse.
+ *
+ * Sin esto la corrección no llegaba a ejecutarse nunca. En cuanto un equipo
+ * tenía todos sus resultados se daba por «al día» y no se volvía a pedir en
+ * veinte horas (HORAS_FRESCURA), que son justo las veinte horas en las que el
+ * árbitro cierra el acta y la tabla se rectifica. La regla existía y el equipo
+ * no pasaba por ella.
+ *
+ * **En hora española**, como todo lo que compara con la hora de un partido.
+ */
+export function resultadoSinConfirmar(p, ahora = Date.now()) {
+  if (!p.jugado || p.origen !== ORIGEN_TABLA || !p.fecha) return false;
+
+  const saque = saqueEnMs(p.fecha, p.hora ?? null);
+  if (saque === null) return false;
+
+  const desdeElSaque = ahora - saque;
+  return desdeElSaque >= 0 && desdeElSaque < HORAS_CONFIRMANDO_RESULTADO * 3_600_000;
+}
+
 /* --------------------------------------------- lo ya jugado no se borra */
 
 /**

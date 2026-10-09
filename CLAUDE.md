@@ -56,6 +56,14 @@ Hay **tres escritores, y ninguno sabe de los otros**:
    `correccionPorClasificacion` corrige el último partido deducido si es
    reciente, los goles son creíbles y el signo del partido sigue cuadrando; si
    no puede, `descuadreDeResultados` lo dice en el resumen.
+   **Y para que esa regla llegue a ejecutarse, un resultado recién deducido
+   mantiene al equipo en vigilancia** cinco horas desde el saque
+   (`resultadoSinConfirmar`, usada por `sePuedeSaltar`). Sin eso, un equipo con
+   todos sus resultados se daba por «al día» y no se volvía a pedir en veinte
+   horas —justo las veinte horas en las que el árbitro cierra el acta—: el 9 de
+   octubre de 2026 el primer equipo perdió 2-3 con el Algaida y la web publicó
+   toda la noche el 0-3 del descanso. La corrección existía y el equipo no
+   pasaba por ella.
 4. **Un partido que ya ha empezado no se cae del calendario.** Se mide desde el
    saque, no una hora después: esa hora de más se llevó el juvenil del 26 de
    septiembre de 2026, que la RFAF quitó del calendario con el partido en

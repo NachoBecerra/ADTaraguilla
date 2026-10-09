@@ -24,6 +24,7 @@ import {
   partidosDelCalendario,
   resultadoCreible,
   resultadoPorClasificacion,
+  resultadoSinConfirmar,
   saqueEnMs,
   yaDeberiaTenerResultado,
 } from "./reglas.mjs";
@@ -603,6 +604,54 @@ console.log("--- Corregir un resultado que ya no cuadra con la tabla ---");
   );
 }
 
+
+
+/* ------------- un resultado recien deducido se sigue vigilando */
+console.log("");
+console.log("--- Un provisional no cierra la puerta ---");
+{
+  const N = "A.D. TARAGUILLA";
+  const saque = saqueEnMs("2026-10-09", "19:30");
+  const horas = (n) => saque + n * 3_600_000;
+
+  const deducido = {
+    local: N, visitante: "ALGAIDA U.D.", fecha: "2026-10-09", hora: "19:30",
+    golesLocal: 0, golesVisitante: 3, jugado: true, origen: ORIGEN_TABLA,
+  };
+
+  /* El fallo del 9-10-2026: a las dos horas y cuarto del saque la tabla aun
+     contaba el 0-3 del descanso, se publico, y el equipo quedo "al dia". */
+  comprobar("recien acabado se vigila", resultadoSinConfirmar(deducido, horas(2.25)), true);
+  comprobar("y un rato despues tambien", resultadoSinConfirmar(deducido, horas(4)), true);
+  comprobar("pasadas las horas de vigilancia, se deja", resultadoSinConfirmar(deducido, horas(6)), false);
+  comprobar("al dia siguiente, menos aun", resultadoSinConfirmar(deducido, horas(26)), false);
+
+  /* Antes del saque no hay nada que confirmar: eso es un resultado publicado
+     antes del partido, y de eso se encarga resultadoCreible */
+  comprobar("antes del saque, no", resultadoSinConfirmar(deducido, horas(-1)), false);
+
+  comprobar(
+    "un partido sin jugar no se vigila por esto",
+    resultadoSinConfirmar({ ...deducido, jugado: false, golesLocal: null, golesVisitante: null, origen: null }, horas(2)),
+    false,
+  );
+  comprobar(
+    "ni uno cuyo resultado no salio de la tabla",
+    resultadoSinConfirmar({ ...deducido, origen: null }, horas(2)),
+    false,
+  );
+  comprobar(
+    "ni uno sin fecha",
+    resultadoSinConfirmar({ ...deducido, fecha: null }, horas(2)),
+    false,
+  );
+
+  /* Sin hora el saque es al final del dia: a esa hora no se ha jugado todavia,
+     asi que la vigilancia empieza entonces y no de madrugada */
+  const sinHora = { ...deducido, hora: null };
+  comprobar("sin hora, al final de su dia", resultadoSinConfirmar(sinHora, saqueEnMs("2026-10-09", "23:59") + 3_600_000), true);
+  comprobar("y no a mediodia", resultadoSinConfirmar(sinHora, saqueEnMs("2026-10-09", "12:00")), false);
+}
 
 
 /* ------------- un partido en juego no se cae del calendario */

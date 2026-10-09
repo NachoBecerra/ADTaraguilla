@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-09T19:45:02.822Z",
+  "actualizado": "2026-10-09T20:55:47.491Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -843,7 +843,7 @@
               "campo": "MANOLO MESA CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3201",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662427",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662427&cod_acta=2662427",
               "jugado": false
             },
             {
@@ -853,7 +853,7 @@
               "codVisitante": "310415",
               "fecha": "2026-10-09",
               "hora": "19:30",
-              "golesLocal": 0,
+              "golesLocal": 2,
               "golesVisitante": 3,
               "origen": "clasificacion",
               "localidad": "San Roque",
@@ -5476,8 +5476,8 @@
           "ganados": 5,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 16,
-          "golesContra": 7,
+          "golesFavor": 17,
+          "golesContra": 11,
           "racha": [
             "G",
             "G",
@@ -5488,6 +5488,26 @@
         },
         {
           "posicion": 2,
+          "equipo": "C.D. ROTA",
+          "puntos": 12,
+          "jugados": 6,
+          "jugadosCasa": 3,
+          "jugadosFuera": 3,
+          "ganados": 3,
+          "empatados": 3,
+          "perdidos": 0,
+          "golesFavor": 14,
+          "golesContra": 8,
+          "racha": [
+            "E",
+            "G",
+            "G",
+            "G",
+            "E"
+          ]
+        },
+        {
+          "posicion": 3,
           "equipo": "JEREZ INDUSTRIAL C.F.",
           "puntos": 12,
           "jugados": 6,
@@ -5496,8 +5516,8 @@
           "ganados": 4,
           "empatados": 0,
           "perdidos": 2,
-          "golesFavor": 8,
-          "golesContra": 5,
+          "golesFavor": 10,
+          "golesContra": 6,
           "racha": [
             "P",
             "G",
@@ -5507,27 +5527,27 @@
           ]
         },
         {
-          "posicion": 3,
-          "equipo": "C.D. ROTA",
-          "puntos": 11,
+          "posicion": 4,
+          "equipo": "C.D. CIUDAD DE CADIZ",
+          "puntos": 12,
           "jugados": 6,
           "jugadosCasa": 3,
           "jugadosFuera": 3,
-          "ganados": 3,
-          "empatados": 2,
-          "perdidos": 1,
-          "golesFavor": 12,
+          "ganados": 4,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 8,
           "golesContra": 7,
           "racha": [
-            "E",
+            "P",
             "G",
             "G",
             "G",
-            "P"
+            "G"
           ]
         },
         {
-          "posicion": 4,
+          "posicion": 5,
           "equipo": "TREBUJENA C.F.",
           "puntos": 11,
           "jugados": 6,
@@ -5543,26 +5563,6 @@
             "E",
             "G",
             "P",
-            "G"
-          ]
-        },
-        {
-          "posicion": 5,
-          "equipo": "C.D. CIUDAD DE CADIZ",
-          "puntos": 9,
-          "jugados": 5,
-          "jugadosCasa": 3,
-          "jugadosFuera": 2,
-          "ganados": 3,
-          "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 7,
-          "golesContra": 7,
-          "racha": [
-            "P",
-            "P",
-            "G",
-            "G",
             "G"
           ]
         },
@@ -5588,46 +5588,6 @@
         },
         {
           "posicion": 7,
-          "equipo": "C.D. GUADIARO",
-          "puntos": 10,
-          "jugados": 6,
-          "jugadosCasa": 1,
-          "jugadosFuera": 5,
-          "ganados": 3,
-          "empatados": 1,
-          "perdidos": 2,
-          "golesFavor": 12,
-          "golesContra": 10,
-          "racha": [
-            "P",
-            "P",
-            "G",
-            "G",
-            "G"
-          ]
-        },
-        {
-          "posicion": 8,
-          "equipo": "C.D. SAN ROQUE",
-          "puntos": 8,
-          "jugados": 5,
-          "jugadosCasa": 3,
-          "jugadosFuera": 2,
-          "ganados": 2,
-          "empatados": 2,
-          "perdidos": 1,
-          "golesFavor": 10,
-          "golesContra": 6,
-          "racha": [
-            "E",
-            "E",
-            "G",
-            "G",
-            "P"
-          ]
-        },
-        {
-          "posicion": 9,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 9,
           "jugados": 6,
@@ -5636,7 +5596,7 @@
           "ganados": 3,
           "empatados": 0,
           "perdidos": 3,
-          "golesFavor": 8,
+          "golesFavor": 10,
           "golesContra": 10,
           "racha": [
             "G",
@@ -5644,6 +5604,46 @@
             "G",
             "P",
             "P"
+          ]
+        },
+        {
+          "posicion": 8,
+          "equipo": "C.D. SAN ROQUE",
+          "puntos": 8,
+          "jugados": 6,
+          "jugadosCasa": 4,
+          "jugadosFuera": 2,
+          "ganados": 2,
+          "empatados": 2,
+          "perdidos": 2,
+          "golesFavor": 10,
+          "golesContra": 7,
+          "racha": [
+            "E",
+            "G",
+            "G",
+            "P",
+            "P"
+          ]
+        },
+        {
+          "posicion": 9,
+          "equipo": "C.D. GUADIARO",
+          "puntos": 8,
+          "jugados": 6,
+          "jugadosCasa": 1,
+          "jugadosFuera": 5,
+          "ganados": 2,
+          "empatados": 2,
+          "perdidos": 2,
+          "golesFavor": 13,
+          "golesContra": 12,
+          "racha": [
+            "P",
+            "P",
+            "G",
+            "G",
+            "E"
           ]
         },
         {
@@ -5657,7 +5657,7 @@
           "empatados": 2,
           "perdidos": 2,
           "golesFavor": 7,
-          "golesContra": 5,
+          "golesContra": 7,
           "racha": [
             "E",
             "P",
@@ -5688,26 +5688,6 @@
         },
         {
           "posicion": 12,
-          "equipo": "CHICLANA C.F.",
-          "puntos": 8,
-          "jugados": 6,
-          "jugadosCasa": 3,
-          "jugadosFuera": 3,
-          "ganados": 2,
-          "empatados": 2,
-          "perdidos": 2,
-          "golesFavor": 9,
-          "golesContra": 12,
-          "racha": [
-            "E",
-            "P",
-            "P",
-            "G",
-            "G"
-          ]
-        },
-        {
-          "posicion": 13,
           "equipo": "BARBATE C.F.",
           "puntos": 6,
           "jugados": 5,
@@ -5727,6 +5707,26 @@
           ]
         },
         {
+          "posicion": 13,
+          "equipo": "JUVENTUD SANLUQUEÑA A.D.",
+          "puntos": 6,
+          "jugados": 6,
+          "jugadosCasa": 3,
+          "jugadosFuera": 3,
+          "ganados": 1,
+          "empatados": 3,
+          "perdidos": 2,
+          "golesFavor": 10,
+          "golesContra": 8,
+          "racha": [
+            "E",
+            "P",
+            "E",
+            "P",
+            "G"
+          ]
+        },
+        {
           "posicion": 14,
           "equipo": "U.D. LOS BARRIOS",
           "puntos": 6,
@@ -5736,8 +5736,8 @@
           "ganados": 2,
           "empatados": 0,
           "perdidos": 4,
-          "golesFavor": 7,
-          "golesContra": 7,
+          "golesFavor": 8,
+          "golesContra": 9,
           "racha": [
             "G",
             "G",
@@ -5748,22 +5748,22 @@
         },
         {
           "posicion": 15,
-          "equipo": "JUVENTUD SANLUQUEÑA A.D.",
-          "puntos": 6,
+          "equipo": "CHICLANA C.F.",
+          "puntos": 5,
           "jugados": 6,
           "jugadosCasa": 3,
           "jugadosFuera": 3,
           "ganados": 1,
-          "empatados": 3,
-          "perdidos": 2,
-          "golesFavor": 6,
-          "golesContra": 7,
+          "empatados": 2,
+          "perdidos": 3,
+          "golesFavor": 9,
+          "golesContra": 14,
           "racha": [
             "E",
             "P",
-            "E",
             "P",
-            "G"
+            "G",
+            "P"
           ]
         },
         {
@@ -5776,8 +5776,8 @@
           "ganados": 1,
           "empatados": 1,
           "perdidos": 4,
-          "golesFavor": 7,
-          "golesContra": 11,
+          "golesFavor": 9,
+          "golesContra": 13,
           "racha": [
             "P",
             "P",
@@ -5788,6 +5788,26 @@
         },
         {
           "posicion": 17,
+          "equipo": "TARIFA U.D.",
+          "puntos": 4,
+          "jugados": 6,
+          "jugadosCasa": 3,
+          "jugadosFuera": 3,
+          "ganados": 1,
+          "empatados": 1,
+          "perdidos": 4,
+          "golesFavor": 6,
+          "golesContra": 15,
+          "racha": [
+            "P",
+            "E",
+            "P",
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 18,
           "equipo": "REAL BALOMPEDICA LINENSE",
           "puntos": 2,
           "jugados": 5,
@@ -5796,34 +5816,14 @@
           "ganados": 0,
           "empatados": 2,
           "perdidos": 3,
-          "golesFavor": 4,
-          "golesContra": 12,
+          "golesFavor": 6,
+          "golesContra": 14,
           "racha": [
             "P",
             "E",
             "P",
             "P",
             "E"
-          ]
-        },
-        {
-          "posicion": 18,
-          "equipo": "TARIFA U.D.",
-          "puntos": 1,
-          "jugados": 6,
-          "jugadosCasa": 3,
-          "jugadosFuera": 3,
-          "ganados": 0,
-          "empatados": 1,
-          "perdidos": 5,
-          "golesFavor": 4,
-          "golesContra": 15,
-          "racha": [
-            "P",
-            "E",
-            "P",
-            "P",
-            "P"
           ]
         }
       ]

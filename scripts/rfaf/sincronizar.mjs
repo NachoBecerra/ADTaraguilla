@@ -35,6 +35,7 @@ import {
   equiposAusentes,
   resultadoCreible,
   resultadoPorClasificacion,
+  resultadoSinConfirmar,
   yaDeberiaTenerResultado,
 } from "./reglas.mjs";
 import {
@@ -616,7 +617,8 @@ async function principal() {
   const porAtender = [...equipos].sort((a, b) => {
     const pa = previos.get(a.id);
     const pb = previos.get(b.id);
-    const urgente = (p) => (p && faltaAlgunResultado(p) ? 0 : 1);
+    const urgente = (p) =>
+      p && (faltaAlgunResultado(p) || faltaConfirmarAlgunResultado(p)) ? 0 : 1;
     if (urgente(pa) !== urgente(pb)) return urgente(pa) - urgente(pb);
     return (pa?.actualizado ?? "").localeCompare(pb?.actualizado ?? "");
   });
@@ -776,7 +778,14 @@ function sePuedeSaltar(previo) {
   // el día siguiente, que es justo lo que la gente viene a ver.
   // Falta un resultado de un partido ya jugado, o la hora de uno inminente:
   // en los dos casos el dato puede aparecer en cualquier momento
-  return !faltaAlgunResultado(previo) && !faltaAlgunHorario(previo);
+  //
+  // Y un resultado recién deducido tampoco es motivo para dejar de mirar: la
+  // tabla de la que salió puede estar contando un provisional del descanso.
+  return (
+    !faltaAlgunResultado(previo) &&
+    !faltaAlgunHorario(previo) &&
+    !faltaConfirmarAlgunResultado(previo)
+  );
 }
 
 
@@ -793,6 +802,21 @@ function faltaAlgunResultado(previo) {
   return (previo.competiciones ?? []).some((c) =>
     (c.jornadas ?? []).some((j) =>
       j.partidos.some((p) => esNuestro(p, previo.nombreRfaf) && yaDeberiaTenerResultado(p)),
+    ),
+  );
+}
+
+/**
+ * ¿Hay algún resultado publicado hace un rato que la tabla aún puede rectificar?
+ *
+ * Es la otra cara de `faltaAlgunResultado`: no falta el dato, falta confirmarlo.
+ * Mientras siga en vigilancia, el equipo se pide igual y la clasificación pasa
+ * por `correccionPorClasificacion`, que es quien repara un provisional.
+ */
+function faltaConfirmarAlgunResultado(previo) {
+  return (previo.competiciones ?? []).some((c) =>
+    (c.jornadas ?? []).some((j) =>
+      j.partidos.some((p) => esNuestro(p, previo.nombreRfaf) && resultadoSinConfirmar(p)),
     ),
   );
 }
