@@ -7,7 +7,7 @@
   "orden": 5,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-08T07:33:08.010Z",
+  "actualizado": "2026-10-09T08:36:04.044Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307528",
   "competiciones": [
     {
@@ -47,23 +47,6 @@
               "jugado": false
             },
             {
-              "local": "LOS CORTIJILLOS A.D.",
-              "visitante": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
-              "codLocal": "24078390",
-              "codVisitante": "33451843",
-              "fecha": "2026-10-03",
-              "hora": "11:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Barrios (Los)",
-              "campo": "ANTONIO GAVIRA - LOS CORTIJILLOS",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3480",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2696398&cod_acta=2696398",
-              "jugado": false
-            },
-            {
               "local": "ATLETICO ZABAL",
               "visitante": "C.D. SAN ROQUE \"A\"",
               "codLocal": "326318",
@@ -78,6 +61,23 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3562",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2696396&cod_acta=2696396",
+              "jugado": false
+            },
+            {
+              "local": "LOS CORTIJILLOS A.D.",
+              "visitante": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
+              "codLocal": "24078390",
+              "codVisitante": "33451843",
+              "fecha": "2026-10-03",
+              "hora": "11:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Barrios (Los)",
+              "campo": "ANTONIO GAVIRA - LOS CORTIJILLOS",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3480",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2696398&cod_acta=2696398",
               "jugado": false
             },
             {
@@ -169,7 +169,7 @@
               "campo": "SAN ENRIQUE",
               "superficie": "Hierba Natural",
               "codCampo": "2020864",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2696399",
               "jugado": false
             },
             {
