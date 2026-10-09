@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-09T15:23:09.707Z",
+  "actualizado": "2026-10-09T16:48:47.533Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -472,7 +472,7 @@
               "campo": "Francisco Pozo",
               "superficie": "Hierba Artificial",
               "codCampo": "3349",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709901",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709901&cod_acta=2709901",
               "jugado": false
             },
             {
@@ -4355,40 +4355,23 @@
         {
           "posicion": 4,
           "equipo": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL \"A\"",
-          "puntos": 6,
-          "jugados": 2,
-          "jugadosCasa": 1,
+          "puntos": 9,
+          "jugados": 3,
+          "jugadosCasa": 2,
           "jugadosFuera": 1,
-          "ganados": 2,
+          "ganados": 3,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 11,
-          "golesContra": 4,
+          "golesFavor": 17,
+          "golesContra": 7,
           "racha": [
+            "G",
             "G",
             "G"
           ]
         },
         {
           "posicion": 5,
-          "equipo": "ATLETICO ZABAL \"A\"",
-          "puntos": 6,
-          "jugados": 3,
-          "jugadosCasa": 2,
-          "jugadosFuera": 1,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 13,
-          "golesContra": 8,
-          "racha": [
-            "P",
-            "G",
-            "G"
-          ]
-        },
-        {
-          "posicion": 6,
           "equipo": "U.D. TESORILLO C.D.",
           "puntos": 6,
           "jugados": 3,
@@ -4406,7 +4389,7 @@
           ]
         },
         {
-          "posicion": 7,
+          "posicion": 6,
           "equipo": "C.D. JUVENTUD PALMONES C.F.",
           "puntos": 6,
           "jugados": 3,
@@ -4418,6 +4401,25 @@
           "golesFavor": 11,
           "golesContra": 10,
           "racha": [
+            "G",
+            "G",
+            "P"
+          ]
+        },
+        {
+          "posicion": 7,
+          "equipo": "ATLETICO ZABAL \"A\"",
+          "puntos": 6,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 16,
+          "golesContra": 14,
+          "racha": [
+            "P",
             "G",
             "G",
             "P"
@@ -4514,6 +4516,25 @@
         },
         {
           "posicion": 13,
+          "equipo": "C.D. ATHLETIC CLUB JIMENA",
+          "puntos": 3,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 3,
+          "golesFavor": 10,
+          "golesContra": 34,
+          "racha": [
+            "P",
+            "P",
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 14,
           "equipo": "U.D. LOS BARRIOS \"B\"",
           "puntos": 0,
           "jugados": 3,
@@ -4531,36 +4552,19 @@
           ]
         },
         {
-          "posicion": 14,
-          "equipo": "C.D. ATHLETIC CLUB JIMENA",
-          "puntos": 0,
-          "jugados": 3,
-          "jugadosCasa": 1,
-          "jugadosFuera": 2,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 3,
-          "golesFavor": 6,
-          "golesContra": 33,
-          "racha": [
-            "P",
-            "P",
-            "P"
-          ]
-        },
-        {
           "posicion": 15,
           "equipo": "C.D. BALON LINENSE C.F.",
           "puntos": 0,
-          "jugados": 3,
+          "jugados": 4,
           "jugadosCasa": 2,
-          "jugadosFuera": 1,
+          "jugadosFuera": 2,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 3,
-          "golesFavor": 6,
-          "golesContra": 36,
+          "perdidos": 4,
+          "golesFavor": 7,
+          "golesContra": 40,
           "racha": [
+            "P",
             "P",
             "P",
             "P"
