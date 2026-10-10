@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-10T07:27:42.049Z",
+  "actualizado": "2026-10-10T09:46:39.783Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -632,7 +632,7 @@
               "campo": "EL JUNCAL CAMPO MPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3611",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663742",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663742&cod_acta=2663742",
               "jugado": false
             },
             {
@@ -4416,20 +4416,21 @@
         {
           "posicion": 6,
           "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
-          "puntos": 6,
-          "jugados": 4,
-          "jugadosCasa": 2,
+          "puntos": 9,
+          "jugados": 5,
+          "jugadosCasa": 3,
           "jugadosFuera": 2,
-          "ganados": 2,
+          "ganados": 3,
           "empatados": 0,
           "perdidos": 2,
-          "golesFavor": 18,
+          "golesFavor": 23,
           "golesContra": 9,
           "racha": [
             "G",
             "G",
             "P",
-            "P"
+            "P",
+            "G"
           ]
         },
         {
@@ -4609,15 +4610,16 @@
           "posicion": 16,
           "equipo": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
           "puntos": 0,
-          "jugados": 4,
+          "jugados": 5,
           "jugadosCasa": 2,
-          "jugadosFuera": 2,
+          "jugadosFuera": 3,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 4,
+          "perdidos": 5,
           "golesFavor": 3,
-          "golesContra": 20,
+          "golesContra": 25,
           "racha": [
+            "P",
             "P",
             "P",
             "P",
