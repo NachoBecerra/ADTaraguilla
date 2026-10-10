@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-10T09:46:54.534Z",
+  "actualizado": "2026-10-10T11:21:06.690Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -472,7 +472,7 @@
               "campo": "QUINTA DE LA PAZ",
               "superficie": "Hierba Artificial",
               "codCampo": "3582",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649966",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649966&cod_acta=2649966",
               "jugado": false
             },
             {
@@ -481,7 +481,7 @@
               "codLocal": "309525",
               "codVisitante": "326326",
               "fecha": "2026-10-10",
-              "hora": "12:30",
+              "hora": "13:07",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -489,7 +489,7 @@
               "campo": "PACO GALLEGO",
               "superficie": "Hierba Artificial",
               "codCampo": "3095",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649970",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649970&cod_acta=2649970",
               "jugado": false
             },
             {
@@ -4318,17 +4318,18 @@
       "clasificacion": [
         {
           "posicion": 1,
-          "equipo": "ATLETICO ZABAL",
-          "puntos": 9,
-          "jugados": 3,
+          "equipo": "C.D. LA SALLE",
+          "puntos": 12,
+          "jugados": 4,
           "jugadosCasa": 2,
-          "jugadosFuera": 1,
-          "ganados": 3,
+          "jugadosFuera": 2,
+          "ganados": 4,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 20,
-          "golesContra": 2,
+          "golesFavor": 22,
+          "golesContra": 5,
           "racha": [
+            "G",
             "G",
             "G",
             "G"
@@ -4336,24 +4337,6 @@
         },
         {
           "posicion": 2,
-          "equipo": "C.D. LA SALLE",
-          "puntos": 9,
-          "jugados": 3,
-          "jugadosCasa": 1,
-          "jugadosFuera": 2,
-          "ganados": 3,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 19,
-          "golesContra": 5,
-          "racha": [
-            "G",
-            "G",
-            "G"
-          ]
-        },
-        {
-          "posicion": 3,
           "equipo": "CADIZ C.F., S.A.D.",
           "puntos": 12,
           "jugados": 4,
@@ -4372,7 +4355,7 @@
           ]
         },
         {
-          "posicion": 4,
+          "posicion": 3,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 10,
           "jugados": 4,
@@ -4388,6 +4371,25 @@
             "G",
             "G",
             "G"
+          ]
+        },
+        {
+          "posicion": 4,
+          "equipo": "ATLETICO ZABAL",
+          "puntos": 9,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 3,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 20,
+          "golesContra": 5,
+          "racha": [
+            "G",
+            "G",
+            "G",
+            "P"
           ]
         },
         {
@@ -4411,24 +4413,6 @@
         },
         {
           "posicion": 6,
-          "equipo": "A.D. LOS BURREÑOS",
-          "puntos": 6,
-          "jugados": 3,
-          "jugadosCasa": 2,
-          "jugadosFuera": 1,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 8,
-          "golesContra": 7,
-          "racha": [
-            "G",
-            "P",
-            "G"
-          ]
-        },
-        {
-          "posicion": 7,
           "equipo": "C.F. SAN JOSE OBRERO",
           "puntos": 6,
           "jugados": 3,
@@ -4446,7 +4430,7 @@
           ]
         },
         {
-          "posicion": 8,
+          "posicion": 7,
           "equipo": "ARCOS C.F.",
           "puntos": 6,
           "jugados": 4,
@@ -4465,7 +4449,7 @@
           ]
         },
         {
-          "posicion": 9,
+          "posicion": 8,
           "equipo": "C.D. SAN FERNANDO 1940",
           "puntos": 6,
           "jugados": 4,
@@ -4484,21 +4468,41 @@
           ]
         },
         {
-          "posicion": 10,
-          "equipo": "C.D. DIVINA PASTORA SANLUQUEÑA",
-          "puntos": 3,
-          "jugados": 3,
-          "jugadosCasa": 1,
+          "posicion": 9,
+          "equipo": "A.D. LOS BURREÑOS",
+          "puntos": 6,
+          "jugados": 4,
+          "jugadosCasa": 2,
           "jugadosFuera": 2,
-          "ganados": 1,
+          "ganados": 2,
           "empatados": 0,
           "perdidos": 2,
-          "golesFavor": 7,
-          "golesContra": 12,
+          "golesFavor": 9,
+          "golesContra": 10,
           "racha": [
             "G",
             "P",
+            "G",
             "P"
+          ]
+        },
+        {
+          "posicion": 10,
+          "equipo": "C.D. DIVINA PASTORA SANLUQUEÑA",
+          "puntos": 6,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 10,
+          "golesContra": 13,
+          "racha": [
+            "G",
+            "P",
+            "P",
+            "G"
           ]
         },
         {
