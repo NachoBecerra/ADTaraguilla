@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-10T13:22:06.600Z",
+  "actualizado": "2026-10-10T15:21:42.520Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -692,7 +692,7 @@
               "codLocal": "307530",
               "codVisitante": "303130",
               "fecha": "2026-10-10",
-              "hora": "16:30",
+              "hora": "17:05",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -700,7 +700,7 @@
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663746",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663746&cod_acta=2663746",
               "jugado": false
             },
             {
@@ -4319,16 +4319,17 @@
         {
           "posicion": 1,
           "equipo": "A.D. TARAGUILLA",
-          "puntos": 12,
-          "jugados": 4,
-          "jugadosCasa": 2,
+          "puntos": 15,
+          "jugados": 5,
+          "jugadosCasa": 3,
           "jugadosFuera": 2,
-          "ganados": 4,
+          "ganados": 5,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 25,
-          "golesContra": 4,
+          "golesFavor": 28,
+          "golesContra": 6,
           "racha": [
+            "G",
             "G",
             "G",
             "G",
@@ -4537,19 +4538,20 @@
           "posicion": 12,
           "equipo": "C.F. SAN JOSE OBRERO",
           "puntos": 3,
-          "jugados": 4,
+          "jugados": 5,
           "jugadosCasa": 2,
-          "jugadosFuera": 2,
+          "jugadosFuera": 3,
           "ganados": 1,
           "empatados": 0,
-          "perdidos": 3,
-          "golesFavor": 11,
-          "golesContra": 17,
+          "perdidos": 4,
+          "golesFavor": 13,
+          "golesContra": 20,
           "racha": [
             "P",
             "P",
             "P",
-            "G"
+            "G",
+            "P"
           ]
         },
         {
