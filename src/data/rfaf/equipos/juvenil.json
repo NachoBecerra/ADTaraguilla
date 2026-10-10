@@ -7,7 +7,7 @@
   "orden": 2,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-10T13:44:36.655Z",
+  "actualizado": "2026-10-10T15:45:34.534Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307516",
   "competiciones": [
     {
@@ -287,7 +287,7 @@
               "codLocal": "2064329",
               "codVisitante": "320715",
               "fecha": "2026-10-10",
-              "hora": "16:30",
+              "hora": "17:27",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -295,7 +295,7 @@
               "campo": "SALADILLO",
               "superficie": "Tierra",
               "codCampo": "2003239",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2683617",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2683617&cod_acta=2683617",
               "jugado": false
             },
             {
@@ -3386,6 +3386,23 @@
         },
         {
           "posicion": 6,
+          "equipo": "CUESTA DEL RAYO VETERANOS C.F.",
+          "puntos": 4,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 2,
+          "golesContra": 1,
+          "racha": [
+            "E",
+            "G"
+          ]
+        },
+        {
+          "posicion": 7,
           "equipo": "C.D. JUAN SEBASTIAN ELCANO",
           "puntos": 3,
           "jugados": 2,
@@ -3399,22 +3416,6 @@
           "racha": [
             "G",
             "P"
-          ]
-        },
-        {
-          "posicion": 7,
-          "equipo": "CUESTA DEL RAYO VETERANOS C.F.",
-          "puntos": 1,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 1,
-          "perdidos": 0,
-          "golesFavor": 1,
-          "golesContra": 1,
-          "racha": [
-            "E"
           ]
         },
         {
@@ -3472,15 +3473,16 @@
           "posicion": 11,
           "equipo": "C.D. BALON LINENSE C.F.",
           "puntos": 0,
-          "jugados": 2,
+          "jugados": 3,
           "jugadosCasa": 1,
-          "jugadosFuera": 1,
+          "jugadosFuera": 2,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 2,
+          "perdidos": 3,
           "golesFavor": 2,
-          "golesContra": 11,
+          "golesContra": 12,
           "racha": [
+            "P",
             "P",
             "P"
           ]
