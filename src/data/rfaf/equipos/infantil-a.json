@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-10T16:47:18.906Z",
+  "actualizado": "2026-10-10T17:45:03.137Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -700,7 +700,7 @@
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651413",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651413&cod_acta=2651413",
               "jugado": false
             },
             {
@@ -4388,6 +4388,20 @@
         },
         {
           "posicion": 6,
+          "equipo": "A.D. TARAGUILLA",
+          "puntos": 3,
+          "jugados": 3,
+          "jugadosCasa": 3,
+          "jugadosFuera": 0,
+          "ganados": 0,
+          "empatados": 2,
+          "perdidos": 18,
+          "golesFavor": 6,
+          "golesContra": 0,
+          "racha": []
+        },
+        {
+          "posicion": 7,
           "equipo": "REAL BETIS BALOMPIE S.A.D.",
           "puntos": 2,
           "jugados": 3,
@@ -4401,7 +4415,7 @@
           "racha": []
         },
         {
-          "posicion": 7,
+          "posicion": 8,
           "equipo": "SEVILLA F.C., S.A.D.",
           "puntos": 2,
           "jugados": 2,
@@ -4415,20 +4429,6 @@
           "racha": []
         },
         {
-          "posicion": 8,
-          "equipo": "A.D. TARAGUILLA",
-          "puntos": 2,
-          "jugados": 2,
-          "jugadosCasa": 2,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 2,
-          "perdidos": 15,
-          "golesFavor": 4,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
           "posicion": 9,
           "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
           "puntos": 2,
@@ -4436,9 +4436,9 @@
           "jugadosCasa": 2,
           "jugadosFuera": 0,
           "ganados": 0,
-          "empatados": 2,
-          "perdidos": 10,
-          "golesFavor": 10,
+          "empatados": 3,
+          "perdidos": 13,
+          "golesFavor": 13,
           "golesContra": 0,
           "racha": []
         },
