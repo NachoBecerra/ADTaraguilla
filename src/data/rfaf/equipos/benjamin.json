@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-10T15:21:42.520Z",
+  "actualizado": "2026-10-10T16:24:19.516Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -692,16 +692,16 @@
               "codLocal": "307530",
               "codVisitante": "303130",
               "fecha": "2026-10-10",
-              "hora": "17:05",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "hora": "16:30",
+              "golesLocal": 4,
+              "golesVisitante": 4,
+              "origen": "clasificacion",
               "localidad": "San Roque",
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663746&cod_acta=2663746",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663746&cod_acta=2663746",
+              "jugado": true
             },
             {
               "local": "BAHIA SAN FERNANDO C.D.",
@@ -4319,21 +4319,21 @@
         {
           "posicion": 1,
           "equipo": "A.D. TARAGUILLA",
-          "puntos": 15,
+          "puntos": 13,
           "jugados": 5,
           "jugadosCasa": 3,
           "jugadosFuera": 2,
-          "ganados": 5,
-          "empatados": 0,
+          "ganados": 4,
+          "empatados": 1,
           "perdidos": 0,
-          "golesFavor": 28,
-          "golesContra": 6,
+          "golesFavor": 29,
+          "golesContra": 8,
           "racha": [
             "G",
             "G",
             "G",
             "G",
-            "G"
+            "E"
           ]
         },
         {
@@ -4537,21 +4537,21 @@
         {
           "posicion": 12,
           "equipo": "C.F. SAN JOSE OBRERO",
-          "puntos": 3,
+          "puntos": 4,
           "jugados": 5,
           "jugadosCasa": 2,
           "jugadosFuera": 3,
           "ganados": 1,
-          "empatados": 0,
-          "perdidos": 4,
-          "golesFavor": 13,
-          "golesContra": 20,
+          "empatados": 1,
+          "perdidos": 3,
+          "golesFavor": 15,
+          "golesContra": 21,
           "racha": [
             "P",
             "P",
             "P",
             "G",
-            "P"
+            "E"
           ]
         },
         {
