@@ -7,7 +7,7 @@
   "orden": 2,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-10T15:45:34.534Z",
+  "actualizado": "2026-10-10T16:47:06.417Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307516",
   "competiciones": [
     {
@@ -287,7 +287,7 @@
               "codLocal": "2064329",
               "codVisitante": "320715",
               "fecha": "2026-10-10",
-              "hora": "17:27",
+              "hora": "16:30",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -295,7 +295,7 @@
               "campo": "SALADILLO",
               "superficie": "Tierra",
               "codCampo": "2003239",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2683617&cod_acta=2683617",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683617&cod_acta=2683617",
               "jugado": false
             },
             {
@@ -3394,8 +3394,8 @@
           "ganados": 1,
           "empatados": 1,
           "perdidos": 0,
-          "golesFavor": 2,
-          "golesContra": 1,
+          "golesFavor": 3,
+          "golesContra": 2,
           "racha": [
             "E",
             "G"
@@ -3479,8 +3479,8 @@
           "ganados": 0,
           "empatados": 0,
           "perdidos": 3,
-          "golesFavor": 2,
-          "golesContra": 12,
+          "golesFavor": 3,
+          "golesContra": 13,
           "racha": [
             "P",
             "P",
