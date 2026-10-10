@@ -7,7 +7,7 @@
   "orden": 3,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-10T17:20:07.734Z",
+  "actualizado": "2026-10-10T18:27:29.207Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
   "competiciones": [
     {
@@ -213,15 +213,15 @@
               "codVisitante": "307517",
               "fecha": "2026-10-10",
               "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "golesLocal": 0,
+              "golesVisitante": 12,
+              "origen": "clasificacion",
               "localidad": "Barrios (Los)",
               "campo": "SAN RAFAEL PVO (F11-F7)",
               "superficie": "Hierba Natural",
               "codCampo": "3080",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694113",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2694113&cod_acta=2694113",
+              "jugado": true
             },
             {
               "local": "C.D. EPRO CAMPO DE GIBRALTAR",
@@ -2494,6 +2494,23 @@
         },
         {
           "posicion": 5,
+          "equipo": "A.D. TARAGUILLA",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 16,
+          "golesContra": 5,
+          "racha": [
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 6,
           "equipo": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
           "puntos": 3,
           "jugados": 2,
@@ -2510,7 +2527,7 @@
           ]
         },
         {
-          "posicion": 6,
+          "posicion": 7,
           "equipo": "U.D. TESORILLO C.D.",
           "puntos": 3,
           "jugados": 2,
@@ -2527,7 +2544,7 @@
           ]
         },
         {
-          "posicion": 7,
+          "posicion": 8,
           "equipo": "C.D. BALON LINENSE C.F. \"A\"",
           "puntos": 3,
           "jugados": 2,
@@ -2544,7 +2561,7 @@
           ]
         },
         {
-          "posicion": 8,
+          "posicion": 9,
           "equipo": "C.D. EPRO CAMPO DE GIBRALTAR",
           "puntos": 1,
           "jugados": 2,
@@ -2561,7 +2578,7 @@
           ]
         },
         {
-          "posicion": 9,
+          "posicion": 10,
           "equipo": "C.D. ATHLETIC CLUB JIMENA",
           "puntos": 1,
           "jugados": 2,
@@ -2578,39 +2595,7 @@
           ]
         },
         {
-          "posicion": 10,
-          "equipo": "A.D. TARAGUILLA",
-          "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 1,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 4,
-          "golesContra": 5,
-          "racha": [
-            "P"
-          ]
-        },
-        {
           "posicion": 11,
-          "equipo": "U.D. LOS BARRIOS \"B\"",
-          "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 3,
-          "golesContra": 7,
-          "racha": [
-            "P"
-          ]
-        },
-        {
-          "posicion": 12,
           "equipo": "U.D. CASTELLAR C.F.",
           "puntos": 0,
           "jugados": 2,
@@ -2621,6 +2606,23 @@
           "perdidos": 2,
           "golesFavor": 0,
           "golesContra": 14,
+          "racha": [
+            "P",
+            "P"
+          ]
+        },
+        {
+          "posicion": 12,
+          "equipo": "U.D. LOS BARRIOS \"B\"",
+          "puntos": 0,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 3,
+          "golesContra": 19,
           "racha": [
             "P",
             "P"
