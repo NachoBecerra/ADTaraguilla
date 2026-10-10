@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-10T09:46:39.783Z",
+  "actualizado": "2026-10-10T10:45:43.425Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -649,7 +649,7 @@
               "campo": "BURREÑOS",
               "superficie": "Hierba Artificial",
               "codCampo": "3459",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663743",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663743&cod_acta=2663743",
               "jugado": false
             },
             {
@@ -658,7 +658,7 @@
               "codLocal": "331319",
               "codVisitante": "349221",
               "fecha": "2026-10-10",
-              "hora": "11:30",
+              "hora": "12:17",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -666,7 +666,7 @@
               "campo": "BAZAN CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3020",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663744",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663744&cod_acta=2663744",
               "jugado": false
             },
             {
@@ -4337,6 +4337,26 @@
         },
         {
           "posicion": 2,
+          "equipo": "A.D. LOS BURREÑOS",
+          "puntos": 13,
+          "jugados": 5,
+          "jugadosCasa": 3,
+          "jugadosFuera": 2,
+          "ganados": 4,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 21,
+          "golesContra": 1,
+          "racha": [
+            "G",
+            "E",
+            "G",
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 3,
           "equipo": "C.D. LA SALLE",
           "puntos": 13,
           "jugados": 5,
@@ -4352,25 +4372,6 @@
             "G",
             "G",
             "E",
-            "G"
-          ]
-        },
-        {
-          "posicion": 3,
-          "equipo": "A.D. LOS BURREÑOS",
-          "puntos": 10,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 3,
-          "empatados": 1,
-          "perdidos": 0,
-          "golesFavor": 14,
-          "golesContra": 1,
-          "racha": [
-            "G",
-            "E",
-            "G",
             "G"
           ]
         },
@@ -4435,6 +4436,26 @@
         },
         {
           "posicion": 7,
+          "equipo": "C.D. SALESIANOS ALGECIRAS",
+          "puntos": 9,
+          "jugados": 5,
+          "jugadosCasa": 2,
+          "jugadosFuera": 3,
+          "ganados": 3,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 14,
+          "golesContra": 17,
+          "racha": [
+            "P",
+            "G",
+            "P",
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 8,
           "equipo": "A.D. MARIANISTAS C.D.",
           "puntos": 6,
           "jugados": 4,
@@ -4453,7 +4474,7 @@
           ]
         },
         {
-          "posicion": 8,
+          "posicion": 9,
           "equipo": "C.D. S.M. MIRADOR",
           "puntos": 6,
           "jugados": 4,
@@ -4472,41 +4493,23 @@
           ]
         },
         {
-          "posicion": 9,
+          "posicion": 10,
           "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
           "puntos": 6,
-          "jugados": 4,
+          "jugados": 5,
           "jugadosCasa": 2,
-          "jugadosFuera": 2,
+          "jugadosFuera": 3,
           "ganados": 2,
           "empatados": 0,
-          "perdidos": 2,
+          "perdidos": 3,
           "golesFavor": 12,
-          "golesContra": 16,
+          "golesContra": 23,
           "racha": [
             "G",
             "P",
             "P",
-            "G"
-          ]
-        },
-        {
-          "posicion": 10,
-          "equipo": "C.D. SALESIANOS ALGECIRAS",
-          "puntos": 6,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 11,
-          "golesContra": 15,
-          "racha": [
-            "P",
             "G",
-            "P",
-            "G"
+            "P"
           ]
         },
         {
@@ -4549,25 +4552,6 @@
         },
         {
           "posicion": 13,
-          "equipo": "C.D. ISLA DE LEON FUTBOL BASE",
-          "puntos": 3,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 3,
-          "golesFavor": 5,
-          "golesContra": 24,
-          "racha": [
-            "P",
-            "P",
-            "G",
-            "P"
-          ]
-        },
-        {
-          "posicion": 14,
           "equipo": "ARCOS C.F.",
           "puntos": 3,
           "jugados": 5,
@@ -4582,6 +4566,26 @@
             "P",
             "G",
             "P",
+            "P",
+            "P"
+          ]
+        },
+        {
+          "posicion": 14,
+          "equipo": "C.D. ISLA DE LEON FUTBOL BASE",
+          "puntos": 3,
+          "jugados": 5,
+          "jugadosCasa": 3,
+          "jugadosFuera": 2,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 4,
+          "golesFavor": 7,
+          "golesContra": 27,
+          "racha": [
+            "P",
+            "P",
+            "G",
             "P",
             "P"
           ]

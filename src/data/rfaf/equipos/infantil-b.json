@@ -7,7 +7,7 @@
   "orden": 5,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-10T10:22:53.952Z",
+  "actualizado": "2026-10-10T10:45:13.228Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307528",
   "competiciones": [
     {
@@ -178,7 +178,7 @@
               "codLocal": "33451843",
               "codVisitante": "309617",
               "fecha": "2026-10-10",
-              "hora": "12:00",
+              "hora": "12:43",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -186,7 +186,7 @@
               "campo": "Francisco Pozo",
               "superficie": "Hierba Artificial",
               "codCampo": "3349",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2696404",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2696404&cod_acta=2696404",
               "jugado": false
             },
             {
@@ -2494,6 +2494,23 @@
         },
         {
           "posicion": 5,
+          "equipo": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
+          "puntos": 3,
+          "jugados": 2,
+          "jugadosCasa": 1,
+          "jugadosFuera": 1,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 8,
+          "golesContra": 4,
+          "racha": [
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 6,
           "equipo": "BALON LINENSE C.F. C.D.",
           "puntos": 3,
           "jugados": 2,
@@ -2510,7 +2527,7 @@
           ]
         },
         {
-          "posicion": 6,
+          "posicion": 7,
           "equipo": "ATLETICO ZABAL",
           "puntos": 1,
           "jugados": 1,
@@ -2526,7 +2543,7 @@
           ]
         },
         {
-          "posicion": 7,
+          "posicion": 8,
           "equipo": "C.D. GUADIARO",
           "puntos": 1,
           "jugados": 2,
@@ -2543,37 +2560,7 @@
           ]
         },
         {
-          "posicion": 8,
-          "equipo": "C.D. ATHLETIC CLUB JIMENA",
-          "puntos": 0,
-          "jugados": 0,
-          "jugadosCasa": 0,
-          "jugadosFuera": 0,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 0,
-          "golesFavor": 0,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
           "posicion": 9,
-          "equipo": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
-          "puntos": 0,
-          "jugados": 1,
-          "jugadosCasa": 0,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 2,
-          "golesContra": 3,
-          "racha": [
-            "P"
-          ]
-        },
-        {
-          "posicion": 10,
           "equipo": "U.D. TESORILLO C.D.",
           "puntos": 0,
           "jugados": 1,
@@ -2584,6 +2571,22 @@
           "perdidos": 1,
           "golesFavor": 0,
           "golesContra": 1,
+          "racha": [
+            "P"
+          ]
+        },
+        {
+          "posicion": 10,
+          "equipo": "C.D. ATHLETIC CLUB JIMENA",
+          "puntos": 0,
+          "jugados": 1,
+          "jugadosCasa": 0,
+          "jugadosFuera": 1,
+          "ganados": 0,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 1,
+          "golesContra": 6,
           "racha": [
             "P"
           ]
