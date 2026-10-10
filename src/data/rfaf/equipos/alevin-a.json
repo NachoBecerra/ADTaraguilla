@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-10T16:24:34.336Z",
+  "actualizado": "2026-10-10T17:20:22.786Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -506,7 +506,7 @@
               "campo": "JUAN SIMON",
               "superficie": "Hierba Artificial",
               "codCampo": "3050",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649969",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649969&cod_acta=2649969",
               "jugado": false
             },
             {
@@ -4414,19 +4414,20 @@
         {
           "posicion": 6,
           "equipo": "C.F. SAN JOSE OBRERO",
-          "puntos": 6,
-          "jugados": 3,
-          "jugadosCasa": 1,
+          "puntos": 9,
+          "jugados": 4,
+          "jugadosCasa": 2,
           "jugadosFuera": 2,
-          "ganados": 2,
+          "ganados": 3,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 9,
-          "golesContra": 10,
+          "golesFavor": 15,
+          "golesContra": 12,
           "racha": [
             "G",
             "G",
-            "P"
+            "P",
+            "G"
           ]
         },
         {
@@ -4526,24 +4527,6 @@
         },
         {
           "posicion": 12,
-          "equipo": "U.D. LA ALGAIDA",
-          "puntos": 1,
-          "jugados": 3,
-          "jugadosCasa": 2,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 1,
-          "perdidos": 2,
-          "golesFavor": 8,
-          "golesContra": 12,
-          "racha": [
-            "P",
-            "P",
-            "E"
-          ]
-        },
-        {
-          "posicion": 13,
           "equipo": "MONITORES FUTBOL DE ALGECIRAS",
           "puntos": 1,
           "jugados": 3,
@@ -4557,6 +4540,25 @@
           "racha": [
             "E",
             "P",
+            "P"
+          ]
+        },
+        {
+          "posicion": 13,
+          "equipo": "U.D. LA ALGAIDA",
+          "puntos": 1,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 3,
+          "golesFavor": 10,
+          "golesContra": 18,
+          "racha": [
+            "P",
+            "P",
+            "E",
             "P"
           ]
         },
