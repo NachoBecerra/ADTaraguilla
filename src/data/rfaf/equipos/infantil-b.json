@@ -7,7 +7,7 @@
   "orden": 5,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-10T11:45:16.910Z",
+  "actualizado": "2026-10-10T12:32:10.526Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307528",
   "competiciones": [
     {
@@ -178,7 +178,7 @@
               "codLocal": "33451843",
               "codVisitante": "309617",
               "fecha": "2026-10-10",
-              "hora": "12:43",
+              "hora": "12:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -186,7 +186,7 @@
               "campo": "Francisco Pozo",
               "superficie": "Hierba Artificial",
               "codCampo": "3349",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2696404&cod_acta=2696404",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2696404&cod_acta=2696404",
               "jugado": false
             },
             {
@@ -2502,7 +2502,7 @@
           "ganados": 1,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 8,
+          "golesFavor": 12,
           "golesContra": 4,
           "racha": [
             "P",
@@ -2586,7 +2586,7 @@
           "empatados": 0,
           "perdidos": 1,
           "golesFavor": 1,
-          "golesContra": 6,
+          "golesContra": 10,
           "racha": [
             "P"
           ]

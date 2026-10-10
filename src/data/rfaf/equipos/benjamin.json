@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-10T10:45:43.425Z",
+  "actualizado": "2026-10-10T12:32:25.588Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -658,7 +658,7 @@
               "codLocal": "331319",
               "codVisitante": "349221",
               "fecha": "2026-10-10",
-              "hora": "12:17",
+              "hora": "11:30",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -666,7 +666,7 @@
               "campo": "BAZAN CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3020",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663744&cod_acta=2663744",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663744&cod_acta=2663744",
               "jugado": false
             },
             {
@@ -683,7 +683,7 @@
               "campo": "SANTA FE",
               "superficie": "Hierba Artificial",
               "codCampo": "3051",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663745",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663745&cod_acta=2663745",
               "jugado": false
             },
             {
@@ -4436,6 +4436,26 @@
         },
         {
           "posicion": 7,
+          "equipo": "A.D. MARIANISTAS C.D.",
+          "puntos": 9,
+          "jugados": 5,
+          "jugadosCasa": 3,
+          "jugadosFuera": 2,
+          "ganados": 3,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 19,
+          "golesContra": 14,
+          "racha": [
+            "P",
+            "G",
+            "G",
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 8,
           "equipo": "C.D. SALESIANOS ALGECIRAS",
           "puntos": 9,
           "jugados": 5,
@@ -4444,7 +4464,7 @@
           "ganados": 3,
           "empatados": 0,
           "perdidos": 2,
-          "golesFavor": 14,
+          "golesFavor": 16,
           "golesContra": 17,
           "racha": [
             "P",
@@ -4452,25 +4472,6 @@
             "P",
             "G",
             "G"
-          ]
-        },
-        {
-          "posicion": 8,
-          "equipo": "A.D. MARIANISTAS C.D.",
-          "puntos": 6,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 15,
-          "golesContra": 11,
-          "racha": [
-            "P",
-            "G",
-            "G",
-            "P"
           ]
         },
         {
@@ -4516,18 +4517,19 @@
           "posicion": 11,
           "equipo": "TRASMALLO F.C. C.D.",
           "puntos": 4,
-          "jugados": 4,
+          "jugados": 5,
           "jugadosCasa": 2,
-          "jugadosFuera": 2,
+          "jugadosFuera": 3,
           "ganados": 1,
           "empatados": 1,
-          "perdidos": 2,
-          "golesFavor": 6,
-          "golesContra": 9,
+          "perdidos": 3,
+          "golesFavor": 9,
+          "golesContra": 13,
           "racha": [
             "G",
             "P",
             "E",
+            "P",
             "P"
           ]
         },
@@ -4581,7 +4583,7 @@
           "empatados": 0,
           "perdidos": 4,
           "golesFavor": 7,
-          "golesContra": 27,
+          "golesContra": 29,
           "racha": [
             "P",
             "P",

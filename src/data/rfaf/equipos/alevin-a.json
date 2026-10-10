@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-10T11:21:06.690Z",
+  "actualizado": "2026-10-10T12:32:40.406Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -481,7 +481,7 @@
               "codLocal": "309525",
               "codVisitante": "326326",
               "fecha": "2026-10-10",
-              "hora": "13:07",
+              "hora": "12:30",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -489,7 +489,7 @@
               "campo": "PACO GALLEGO",
               "superficie": "Hierba Artificial",
               "codCampo": "3095",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649970&cod_acta=2649970",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649970&cod_acta=2649970",
               "jugado": false
             },
             {
@@ -4326,8 +4326,8 @@
           "ganados": 4,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 22,
-          "golesContra": 5,
+          "golesFavor": 24,
+          "golesContra": 7,
           "racha": [
             "G",
             "G",
@@ -4383,8 +4383,8 @@
           "ganados": 3,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 20,
-          "golesContra": 5,
+          "golesFavor": 22,
+          "golesContra": 7,
           "racha": [
             "G",
             "G",
