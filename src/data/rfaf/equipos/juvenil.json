@@ -7,7 +7,7 @@
   "orden": 2,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-11T10:44:35.493Z",
+  "actualizado": "2026-10-11T12:32:26.833Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307516",
   "competiciones": [
     {
@@ -397,7 +397,7 @@
               "campo": "MANUEL LEON MUNICIPAL (F11-F7)",
               "superficie": "Hierba Natural",
               "codCampo": "18654147",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2683616",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683616&cod_acta=2683616",
               "jugado": false
             }
           ]
@@ -3323,16 +3323,17 @@
         {
           "posicion": 2,
           "equipo": "U.D. CASTELLAR C.F.",
-          "puntos": 3,
-          "jugados": 1,
-          "jugadosCasa": 1,
+          "puntos": 6,
+          "jugados": 2,
+          "jugadosCasa": 2,
           "jugadosFuera": 0,
-          "ganados": 1,
+          "ganados": 2,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 7,
+          "golesFavor": 17,
           "golesContra": 2,
           "racha": [
+            "G",
             "G"
           ]
         },
@@ -3459,17 +3460,18 @@
           "posicion": 10,
           "equipo": "PEÑA MADRIDISTA LINENSE \"A\"",
           "puntos": 1,
-          "jugados": 2,
+          "jugados": 3,
           "jugadosCasa": 1,
-          "jugadosFuera": 1,
+          "jugadosFuera": 2,
           "ganados": 0,
           "empatados": 1,
-          "perdidos": 1,
+          "perdidos": 2,
           "golesFavor": 1,
-          "golesContra": 13,
+          "golesContra": 23,
           "racha": [
             "P",
-            "E"
+            "E",
+            "P"
           ]
         },
         {

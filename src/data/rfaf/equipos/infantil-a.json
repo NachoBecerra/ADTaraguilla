@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-11T11:43:17.384Z",
+  "actualizado": "2026-10-11T12:31:56.839Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -717,7 +717,7 @@
               "campo": "JOSE RAMÓN CISNEROS CIUDAD DEPORTIVA",
               "superficie": "Hierba Artificial",
               "codCampo": "2011471",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651414",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651414&cod_acta=2651414",
               "jugado": false
             },
             {
@@ -4388,6 +4388,20 @@
         },
         {
           "posicion": 6,
+          "equipo": "SEVILLA F.C., S.A.D.",
+          "puntos": 3,
+          "jugados": 3,
+          "jugadosCasa": 3,
+          "jugadosFuera": 0,
+          "ganados": 1,
+          "empatados": 1,
+          "perdidos": 12,
+          "golesFavor": 5,
+          "golesContra": 0,
+          "racha": []
+        },
+        {
+          "posicion": 7,
           "equipo": "A.D. TARAGUILLA",
           "puntos": 3,
           "jugados": 3,
@@ -4401,7 +4415,7 @@
           "racha": []
         },
         {
-          "posicion": 7,
+          "posicion": 8,
           "equipo": "REAL BETIS BALOMPIE S.A.D.",
           "puntos": 2,
           "jugados": 3,
@@ -4411,20 +4425,6 @@
           "empatados": 2,
           "perdidos": 15,
           "golesFavor": 9,
-          "golesContra": 0,
-          "racha": []
-        },
-        {
-          "posicion": 8,
-          "equipo": "SEVILLA F.C., S.A.D.",
-          "puntos": 2,
-          "jugados": 2,
-          "jugadosCasa": 2,
-          "jugadosFuera": 0,
-          "ganados": 1,
-          "empatados": 1,
-          "perdidos": 9,
-          "golesFavor": 5,
           "golesContra": 0,
           "racha": []
         },
@@ -4520,9 +4520,9 @@
           "jugadosCasa": 0,
           "jugadosFuera": 0,
           "ganados": 2,
-          "empatados": 2,
-          "perdidos": 5,
-          "golesFavor": 10,
+          "empatados": 3,
+          "perdidos": 6,
+          "golesFavor": 13,
           "golesContra": 0,
           "racha": []
         },
