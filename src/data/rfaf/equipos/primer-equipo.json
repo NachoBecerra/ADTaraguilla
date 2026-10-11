@@ -7,7 +7,7 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-11T11:43:32.625Z",
+  "actualizado": "2026-10-11T19:18:52.454Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
@@ -1003,7 +1003,7 @@
               "campo": "GUADALCACIN ESTADIO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3036",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662432",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662432&cod_acta=2662432",
               "jugado": false
             },
             {
@@ -1088,7 +1088,7 @@
               "campo": "POLIDEPORTIVO MUNICIPAL MIGUEL ANGEL MORALES NAVAS",
               "superficie": "Hierba Artificial",
               "codCampo": "3019",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662433",
               "jugado": false
             },
             {
@@ -5548,6 +5548,26 @@
         },
         {
           "posicion": 5,
+          "equipo": "C.D. GUADALCACIN",
+          "puntos": 13,
+          "jugados": 7,
+          "jugadosCasa": 4,
+          "jugadosFuera": 3,
+          "ganados": 4,
+          "empatados": 1,
+          "perdidos": 2,
+          "golesFavor": 18,
+          "golesContra": 7,
+          "racha": [
+            "P",
+            "E",
+            "G",
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 6,
           "equipo": "TREBUJENA C.F.",
           "puntos": 11,
           "jugados": 6,
@@ -5564,26 +5584,6 @@
             "G",
             "P",
             "G"
-          ]
-        },
-        {
-          "posicion": 6,
-          "equipo": "C.D. GUADALCACIN",
-          "puntos": 10,
-          "jugados": 6,
-          "jugadosCasa": 3,
-          "jugadosFuera": 3,
-          "ganados": 3,
-          "empatados": 1,
-          "perdidos": 2,
-          "golesFavor": 11,
-          "golesContra": 6,
-          "racha": [
-            "G",
-            "P",
-            "E",
-            "G",
-            "P"
           ]
         },
         {
@@ -5810,20 +5810,20 @@
           "posicion": 18,
           "equipo": "REAL BALOMPEDICA LINENSE",
           "puntos": 2,
-          "jugados": 5,
+          "jugados": 6,
           "jugadosCasa": 3,
-          "jugadosFuera": 2,
+          "jugadosFuera": 3,
           "ganados": 0,
           "empatados": 2,
-          "perdidos": 3,
-          "golesFavor": 6,
-          "golesContra": 14,
+          "perdidos": 4,
+          "golesFavor": 7,
+          "golesContra": 21,
           "racha": [
-            "P",
             "E",
             "P",
             "P",
-            "E"
+            "E",
+            "P"
           ]
         }
       ]
