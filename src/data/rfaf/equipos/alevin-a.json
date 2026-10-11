@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-11T10:22:05.574Z",
+  "actualizado": "2026-10-11T11:43:47.733Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -523,7 +523,7 @@
               "campo": "LA MENACHA JULIO CABELLO",
               "superficie": "Hierba Artificial",
               "codCampo": "28351042",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649965",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649965&cod_acta=2649965",
               "jugado": false
             },
             {
@@ -4508,6 +4508,25 @@
         },
         {
           "posicion": 11,
+          "equipo": "SPORTING CHICLANA C.D.",
+          "puntos": 3,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 3,
+          "golesFavor": 8,
+          "golesContra": 15,
+          "racha": [
+            "P",
+            "P",
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 12,
           "equipo": "C.D. SAN ROQUE",
           "puntos": 3,
           "jugados": 4,
@@ -4521,24 +4540,6 @@
           "racha": [
             "P",
             "G",
-            "P",
-            "P"
-          ]
-        },
-        {
-          "posicion": 12,
-          "equipo": "MONITORES FUTBOL DE ALGECIRAS",
-          "puntos": 1,
-          "jugados": 3,
-          "jugadosCasa": 1,
-          "jugadosFuera": 2,
-          "ganados": 0,
-          "empatados": 1,
-          "perdidos": 2,
-          "golesFavor": 2,
-          "golesContra": 15,
-          "racha": [
-            "E",
             "P",
             "P"
           ]
@@ -4564,6 +4565,25 @@
         },
         {
           "posicion": 14,
+          "equipo": "MONITORES FUTBOL DE ALGECIRAS",
+          "puntos": 1,
+          "jugados": 4,
+          "jugadosCasa": 2,
+          "jugadosFuera": 2,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 3,
+          "golesFavor": 4,
+          "golesContra": 18,
+          "racha": [
+            "E",
+            "P",
+            "P",
+            "P"
+          ]
+        },
+        {
+          "posicion": 15,
           "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
           "puntos": 1,
           "jugados": 4,
@@ -4578,24 +4598,6 @@
             "P",
             "P",
             "E",
-            "P"
-          ]
-        },
-        {
-          "posicion": 15,
-          "equipo": "SPORTING CHICLANA C.D.",
-          "puntos": 0,
-          "jugados": 3,
-          "jugadosCasa": 2,
-          "jugadosFuera": 1,
-          "ganados": 0,
-          "empatados": 0,
-          "perdidos": 3,
-          "golesFavor": 5,
-          "golesContra": 13,
-          "racha": [
-            "P",
-            "P",
             "P"
           ]
         },
