@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-12T17:23:08.195Z",
+  "actualizado": "2026-10-12T19:20:19.886Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -459,6 +459,23 @@
           "fecha": "2026-10-04",
           "partidos": [
             {
+              "local": "SIEMPRE ALEGRES C.D.",
+              "visitante": "SAN ROQUE BALOMPIE",
+              "codLocal": "2064503",
+              "codVisitante": "12792465",
+              "fecha": "2026-10-03",
+              "hora": "17:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": null,
+              "campo": "La Palma Polideportivo Municipal Nuevo",
+              "superficie": "Hierba Artificial",
+              "codCampo": "6903",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651407&cod_acta=2651407",
+              "jugado": false
+            },
+            {
               "local": "C.D. ASOC. DVA. NERVION",
               "visitante": "SENECA C.F.",
               "codLocal": "118920",
@@ -541,23 +558,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3611",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651406&cod_acta=2651406",
-              "jugado": false
-            },
-            {
-              "local": "SIEMPRE ALEGRES C.D.",
-              "visitante": "SAN ROQUE BALOMPIE",
-              "codLocal": "2064503",
-              "codVisitante": "12792465",
-              "fecha": "2026-10-03",
-              "hora": "17:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": null,
-              "campo": "La Palma Polideportivo Municipal Nuevo",
-              "superficie": "Hierba Artificial",
-              "codCampo": "6903",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651407&cod_acta=2651407",
               "jugado": false
             },
             {
