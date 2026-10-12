@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-11T19:19:07.292Z",
+  "actualizado": "2026-10-12T11:25:45.827Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -15,7 +15,7 @@
       "categoria": "2ª ANDALUZA ALEVIN",
       "grupo": "GRUPO UNICO",
       "puntos": 10,
-      "posicion": 4,
+      "posicion": 3,
       "codGrupo": "48894181",
       "escudosRecogidos": true,
       "codCompeticion": "48893775",
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-19",
           "partidos": [
+            {
+              "local": "C.D. SAN FERNANDO 1940",
+              "visitante": "C.D. LA SALLE",
+              "codLocal": "45021237",
+              "codVisitante": "309525",
+              "fecha": "2026-09-19",
+              "hora": "11:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Fernando",
+              "campo": "BAZAN CAMPO MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3020",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649947&cod_acta=2649947",
+              "jugado": false
+            },
             {
               "local": "TARIFA U.D.",
               "visitante": "C.F. SAN JOSE OBRERO",
@@ -96,23 +113,6 @@
               "codCampo": "3236",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649942&cod_acta=2649942",
               "jugado": true
-            },
-            {
-              "local": "C.D. SAN FERNANDO 1940",
-              "visitante": "C.D. LA SALLE",
-              "codLocal": "45021237",
-              "codVisitante": "309525",
-              "fecha": "2026-09-19",
-              "hora": "11:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Fernando",
-              "campo": "BAZAN CAMPO MUNICIPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3020",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649947&cod_acta=2649947",
-              "jugado": false
             },
             {
               "local": "U.D. LA ALGAIDA",
@@ -726,7 +726,7 @@
               "codLocal": "45021237",
               "codVisitante": "48486015",
               "fecha": "2026-10-17",
-              "hora": null,
+              "hora": "11:30",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
