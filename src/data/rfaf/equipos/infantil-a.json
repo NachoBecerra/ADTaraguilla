@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-12T11:25:05.820Z",
+  "actualizado": "2026-10-12T13:43:25.351Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -173,6 +173,23 @@
           "fecha": "2026-09-20",
           "partidos": [
             {
+              "local": "REAL BETIS BALOMPIE S.A.D.",
+              "visitante": "ALGECIRAS C.F., S.A.D.",
+              "codLocal": "100229",
+              "codVisitante": "300219",
+              "fecha": "2026-09-19",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Dos Hermanas",
+              "campo": "CIUDAD DEPORTIVA RAFAEL GORDILLO",
+              "superficie": "Hierba Artificial",
+              "codCampo": "36948119",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651395&cod_acta=2651395",
+              "jugado": false
+            },
+            {
               "local": "A.D. TARAGUILLA",
               "visitante": "LUCECOR F.S.",
               "codLocal": "307520",
@@ -258,23 +275,6 @@
               "jugado": false
             },
             {
-              "local": "REAL BETIS BALOMPIE S.A.D.",
-              "visitante": "ALGECIRAS C.F., S.A.D.",
-              "codLocal": "100229",
-              "codVisitante": "300219",
-              "fecha": "2026-09-19",
-              "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Dos Hermanas",
-              "campo": "CIUDAD DEPORTIVA RAFAEL GORDILLO",
-              "superficie": "Hierba Artificial",
-              "codCampo": "36948119",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651395&cod_acta=2651395",
-              "jugado": false
-            },
-            {
               "local": "C.D. ESTRELLA PORTUENSE F.C.",
               "visitante": "C.D.C. NUEVO MOLINO CSIF",
               "codLocal": "2064077",
@@ -315,6 +315,40 @@
           "nombre": "Jornada 3",
           "fecha": "2026-09-27",
           "partidos": [
+            {
+              "local": "LUCECOR F.S.",
+              "visitante": "ALGECIRAS C.F., S.A.D.",
+              "codLocal": "9136888",
+              "codVisitante": "300219",
+              "fecha": "2026-09-26",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Lucena",
+              "campo": "LUCENA CIUDAD DEPORTIVA",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2022987",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651403&cod_acta=2651403",
+              "jugado": false
+            },
+            {
+              "local": "SAN ROQUE BALOMPIE",
+              "visitante": "C.D. ESTRELLA PORTUENSE F.C.",
+              "codLocal": "12792465",
+              "codVisitante": "2064077",
+              "fecha": "2026-09-26",
+              "hora": "18:05",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Sevilla",
+              "campo": "DEMETRIO PICHEL CD",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2315900",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651398&cod_acta=2651398",
+              "jugado": false
+            },
             {
               "local": "C.D.C. NUEVO MOLINO CSIF",
               "visitante": "SIEMPRE ALEGRES C.D.",
@@ -401,23 +435,6 @@
               "jugado": false
             },
             {
-              "local": "LUCECOR F.S.",
-              "visitante": "ALGECIRAS C.F., S.A.D.",
-              "codLocal": "9136888",
-              "codVisitante": "300219",
-              "fecha": "2026-09-26",
-              "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Lucena",
-              "campo": "LUCENA CIUDAD DEPORTIVA",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2022987",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651403&cod_acta=2651403",
-              "jugado": false
-            },
-            {
               "local": "C.F. SAN JOSE OBRERO",
               "visitante": "C.D. ASOC. DVA. NERVION",
               "codLocal": "303120",
@@ -432,23 +449,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3050",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651401&cod_acta=2651401",
-              "jugado": false
-            },
-            {
-              "local": "SAN ROQUE BALOMPIE",
-              "visitante": "C.D. ESTRELLA PORTUENSE F.C.",
-              "codLocal": "12792465",
-              "codVisitante": "2064077",
-              "fecha": "2026-09-26",
-              "hora": "18:05",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Sevilla",
-              "campo": "DEMETRIO PICHEL CD",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2315900",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651398&cod_acta=2651398",
               "jugado": false
             }
           ]
@@ -830,23 +830,6 @@
               "jugado": false
             },
             {
-              "local": "C.D. UNION DEPORTIVA ESPERANZA 2019",
-              "visitante": "SEVILLA F.C., S.A.D.",
-              "codLocal": "16393952",
-              "codVisitante": "100136",
-              "fecha": "2026-10-18",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": null,
-              "campo": "Jerez De La Frontera.- PICADUEÑAS",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2070477",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
               "local": "ALGECIRAS C.F., S.A.D.",
               "visitante": "SENECA C.F.",
               "codLocal": "300219",
@@ -860,6 +843,23 @@
               "campo": "Juan Gadiaga Pastores",
               "superficie": "Hierba Artificial",
               "codCampo": "3559",
+              "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "C.D. UNION DEPORTIVA ESPERANZA 2019",
+              "visitante": "SEVILLA F.C., S.A.D.",
+              "codLocal": "16393952",
+              "codVisitante": "100136",
+              "fecha": "2026-10-18",
+              "hora": null,
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": null,
+              "campo": "Jerez De La Frontera.- PICADUEÑAS",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2070477",
               "urlActa": null,
               "jugado": false
             },

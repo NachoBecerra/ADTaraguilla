@@ -7,15 +7,15 @@
   "orden": 1,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-12T11:25:33.500Z",
+  "actualizado": "2026-10-12T13:43:55.230Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=38877699",
   "competiciones": [
     {
       "nombre": "1ª ANDALUZA SENIOR (CADIZ)",
       "categoria": "1ª ANDALUZA SENIOR",
       "grupo": "UNICO",
-      "puntos": 9,
-      "posicion": 7,
+      "puntos": 12,
+      "posicion": 6,
       "codGrupo": "48680165",
       "escudosRecogidos": true,
       "codCompeticion": "48680130",
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-06",
           "partidos": [
+            {
+              "local": "C.D. ROTA",
+              "visitante": "JUVENTUD SANLUQUEÑA A.D.",
+              "codLocal": "300815",
+              "codVisitante": "339215",
+              "fecha": "2026-09-06",
+              "hora": "18:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Rota",
+              "campo": "NAVARRO FLORES ESTADIO MUNICIPAL",
+              "superficie": "Hierba Natural",
+              "codCampo": "3008",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662383&cod_acta=2662383",
+              "jugado": false
+            },
             {
               "local": "C.D. SAN ROQUE",
               "visitante": "C.D. GUADIARO",
@@ -129,23 +146,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3011",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662386&cod_acta=2662386",
-              "jugado": false
-            },
-            {
-              "local": "C.D. ROTA",
-              "visitante": "JUVENTUD SANLUQUEÑA A.D.",
-              "codLocal": "300815",
-              "codVisitante": "339215",
-              "fecha": "2026-09-06",
-              "hora": "18:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Rota",
-              "campo": "NAVARRO FLORES ESTADIO MUNICIPAL",
-              "superficie": "Hierba Natural",
-              "codCampo": "3008",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662383&cod_acta=2662383",
               "jugado": false
             },
             {
@@ -367,6 +367,23 @@
               "jugado": false
             },
             {
+              "local": "U.D. LOS BARRIOS",
+              "visitante": "C.D. GUADIARO",
+              "codLocal": "308015",
+              "codVisitante": "307315",
+              "fecha": "2026-09-20",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Barrios (Los)",
+              "campo": "SAN RAFAEL PVO (F11-F7)",
+              "superficie": "Hierba Natural",
+              "codCampo": "3080",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662556&cod_acta=2662556",
+              "jugado": false
+            },
+            {
               "local": "TREBUJENA C.F.",
               "visitante": "TARIFA U.D.",
               "codLocal": "2064845",
@@ -484,23 +501,6 @@
               "codCampo": "3085",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662396&cod_acta=2662396",
               "jugado": false
-            },
-            {
-              "local": "U.D. LOS BARRIOS",
-              "visitante": "C.D. GUADIARO",
-              "codLocal": "308015",
-              "codVisitante": "307315",
-              "fecha": "2026-09-20",
-              "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Barrios (Los)",
-              "campo": "SAN RAFAEL PVO (F11-F7)",
-              "superficie": "Hierba Natural",
-              "codCampo": "3080",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662556&cod_acta=2662556",
-              "jugado": false
             }
           ]
         },
@@ -510,21 +510,21 @@
           "fecha": "2026-09-27",
           "partidos": [
             {
-              "local": "CHICLANA IND. C.F.",
-              "visitante": "C.D. CIUDAD DE CADIZ",
-              "codLocal": "327715",
-              "codVisitante": "20779397",
-              "fecha": "2026-09-27",
-              "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Chiclana De La Frontera",
-              "campo": "EL FONTANAL",
+              "local": "A.D. TARAGUILLA",
+              "visitante": "CHICLANA C.F.",
+              "codLocal": "38877699",
+              "codVisitante": "301516",
+              "fecha": "2026-09-26",
+              "hora": "19:30",
+              "golesLocal": 2,
+              "golesVisitante": 0,
+              "origen": "clasificacion",
+              "localidad": "San Roque",
+              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
-              "codCampo": "3602",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662408&cod_acta=2662408",
-              "jugado": false
+              "codCampo": "3236",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662411&cod_acta=2662411",
+              "jugado": true
             },
             {
               "local": "U.D. LOS BARRIOS",
@@ -541,6 +541,23 @@
               "superficie": "Hierba Natural",
               "codCampo": "3080",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662412&cod_acta=2662412",
+              "jugado": false
+            },
+            {
+              "local": "CHICLANA IND. C.F.",
+              "visitante": "C.D. CIUDAD DE CADIZ",
+              "codLocal": "327715",
+              "codVisitante": "20779397",
+              "fecha": "2026-09-27",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Chiclana De La Frontera",
+              "campo": "EL FONTANAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3602",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662408&cod_acta=2662408",
               "jugado": false
             },
             {
@@ -644,23 +661,6 @@
               "codCampo": "3548",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662409&cod_acta=2662409",
               "jugado": false
-            },
-            {
-              "local": "A.D. TARAGUILLA",
-              "visitante": "CHICLANA C.F.",
-              "codLocal": "38877699",
-              "codVisitante": "301516",
-              "fecha": "2026-09-26",
-              "hora": "19:30",
-              "golesLocal": 2,
-              "golesVisitante": 0,
-              "origen": "clasificacion",
-              "localidad": "San Roque",
-              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662411&cod_acta=2662411",
-              "jugado": true
             }
           ]
         },
@@ -830,6 +830,23 @@
           "fecha": "2026-10-09",
           "partidos": [
             {
+              "local": "C.D. GUADIARO",
+              "visitante": "C.D. ROTA",
+              "codLocal": "307315",
+              "codVisitante": "300815",
+              "fecha": "2026-10-09",
+              "hora": "20:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Roque",
+              "campo": "MANUEL MATEO",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3575",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2662431&cod_acta=2662431",
+              "jugado": false
+            },
+            {
               "local": "C.D. GUADALCACIN",
               "visitante": "TREBUJENA C.F.",
               "codLocal": "303615",
@@ -915,23 +932,6 @@
               "jugado": false
             },
             {
-              "local": "C.D. GUADIARO",
-              "visitante": "C.D. ROTA",
-              "codLocal": "307315",
-              "codVisitante": "300815",
-              "fecha": "2026-10-09",
-              "hora": "20:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Roque",
-              "campo": "MANUEL MATEO",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3575",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662431",
-              "jugado": false
-            },
-            {
               "local": "CHICLANA IND. C.F.",
               "visitante": "BARBATE C.F.",
               "codLocal": "327715",
@@ -989,23 +989,6 @@
           "nombre": "Jornada 7",
           "fecha": "2026-10-12",
           "partidos": [
-            {
-              "local": "C.D. CIUDAD DE CADIZ",
-              "visitante": "A.D. TARAGUILLA",
-              "codLocal": "20779397",
-              "codVisitante": "38877699",
-              "fecha": "2026-10-12",
-              "hora": "12:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Cádiz",
-              "campo": "MANUEL DE IRIGOYEN",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3439",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662436",
-              "jugado": false
-            },
             {
               "local": "XEREZ DEPORTIVO F.C.",
               "visitante": "C.D. SAN ROQUE",
@@ -1090,6 +1073,23 @@
               "codCampo": "3085",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662434",
               "jugado": false
+            },
+            {
+              "local": "C.D. CIUDAD DE CADIZ",
+              "visitante": "A.D. TARAGUILLA",
+              "codLocal": "20779397",
+              "codVisitante": "38877699",
+              "fecha": "2026-10-12",
+              "hora": "12:30",
+              "golesLocal": 0,
+              "golesVisitante": 1,
+              "origen": "clasificacion",
+              "localidad": "Cádiz",
+              "campo": "MANUEL DE IRIGOYEN",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3439",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2662436",
+              "jugado": true
             },
             {
               "local": "C.D. GUADALCACIN",
@@ -5488,6 +5488,26 @@
         },
         {
           "posicion": 2,
+          "equipo": "JEREZ INDUSTRIAL C.F.",
+          "puntos": 15,
+          "jugados": 7,
+          "jugadosCasa": 4,
+          "jugadosFuera": 3,
+          "ganados": 5,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 14,
+          "golesContra": 7,
+          "racha": [
+            "G",
+            "P",
+            "G",
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 3,
           "equipo": "C.D. ROTA",
           "puntos": 12,
           "jugados": 6,
@@ -5504,26 +5524,6 @@
             "G",
             "G",
             "E"
-          ]
-        },
-        {
-          "posicion": 3,
-          "equipo": "C.D. CIUDAD DE CADIZ",
-          "puntos": 12,
-          "jugados": 6,
-          "jugadosCasa": 3,
-          "jugadosFuera": 3,
-          "ganados": 4,
-          "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 8,
-          "golesContra": 7,
-          "racha": [
-            "P",
-            "G",
-            "G",
-            "G",
-            "G"
           ]
         },
         {
@@ -5568,7 +5568,27 @@
         },
         {
           "posicion": 6,
-          "equipo": "JEREZ INDUSTRIAL C.F.",
+          "equipo": "A.D. TARAGUILLA",
+          "puntos": 12,
+          "jugados": 7,
+          "jugadosCasa": 3,
+          "jugadosFuera": 4,
+          "ganados": 4,
+          "empatados": 0,
+          "perdidos": 3,
+          "golesFavor": 11,
+          "golesContra": 10,
+          "racha": [
+            "P",
+            "G",
+            "P",
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 7,
+          "equipo": "C.D. CIUDAD DE CADIZ",
           "puntos": 12,
           "jugados": 7,
           "jugadosCasa": 4,
@@ -5576,33 +5596,13 @@
           "ganados": 4,
           "empatados": 0,
           "perdidos": 3,
-          "golesFavor": 10,
-          "golesContra": 7,
+          "golesFavor": 8,
+          "golesContra": 8,
           "racha": [
             "G",
-            "P",
             "G",
             "G",
-            "P"
-          ]
-        },
-        {
-          "posicion": 7,
-          "equipo": "A.D. TARAGUILLA",
-          "puntos": 9,
-          "jugados": 6,
-          "jugadosCasa": 3,
-          "jugadosFuera": 3,
-          "ganados": 3,
-          "empatados": 0,
-          "perdidos": 3,
-          "golesFavor": 10,
-          "golesContra": 10,
-          "racha": [
             "G",
-            "P",
-            "G",
-            "P",
             "P"
           ]
         },
@@ -5668,26 +5668,6 @@
         },
         {
           "posicion": 11,
-          "equipo": "C.D. GUADIARO",
-          "puntos": 9,
-          "jugados": 7,
-          "jugadosCasa": 1,
-          "jugadosFuera": 6,
-          "ganados": 2,
-          "empatados": 3,
-          "perdidos": 2,
-          "golesFavor": 13,
-          "golesContra": 12,
-          "racha": [
-            "P",
-            "G",
-            "G",
-            "E",
-            "E"
-          ]
-        },
-        {
-          "posicion": 12,
           "equipo": "BARBATE C.F.",
           "puntos": 6,
           "jugados": 5,
@@ -5707,7 +5687,47 @@
           ]
         },
         {
+          "posicion": 12,
+          "equipo": "C.D. GUADIARO",
+          "puntos": 8,
+          "jugados": 7,
+          "jugadosCasa": 1,
+          "jugadosFuera": 6,
+          "ganados": 2,
+          "empatados": 2,
+          "perdidos": 3,
+          "golesFavor": 14,
+          "golesContra": 14,
+          "racha": [
+            "P",
+            "G",
+            "G",
+            "E",
+            "P"
+          ]
+        },
+        {
           "posicion": 13,
+          "equipo": "CHICLANA C.F.",
+          "puntos": 8,
+          "jugados": 7,
+          "jugadosCasa": 4,
+          "jugadosFuera": 3,
+          "ganados": 2,
+          "empatados": 2,
+          "perdidos": 3,
+          "golesFavor": 11,
+          "golesContra": 15,
+          "racha": [
+            "P",
+            "P",
+            "G",
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 14,
           "equipo": "JUVENTUD SANLUQUEÑA A.D.",
           "puntos": 6,
           "jugados": 6,
@@ -5727,7 +5747,7 @@
           ]
         },
         {
-          "posicion": 14,
+          "posicion": 15,
           "equipo": "U.D. LOS BARRIOS",
           "puntos": 6,
           "jugados": 6,
@@ -5747,47 +5767,7 @@
           ]
         },
         {
-          "posicion": 15,
-          "equipo": "TARIFA U.D.",
-          "puntos": 7,
-          "jugados": 7,
-          "jugadosCasa": 3,
-          "jugadosFuera": 4,
-          "ganados": 2,
-          "empatados": 1,
-          "perdidos": 4,
-          "golesFavor": 7,
-          "golesContra": 15,
-          "racha": [
-            "E",
-            "P",
-            "P",
-            "G",
-            "G"
-          ]
-        },
-        {
           "posicion": 16,
-          "equipo": "CHICLANA C.F.",
-          "puntos": 6,
-          "jugados": 7,
-          "jugadosCasa": 4,
-          "jugadosFuera": 3,
-          "ganados": 1,
-          "empatados": 3,
-          "perdidos": 3,
-          "golesFavor": 9,
-          "golesContra": 14,
-          "racha": [
-            "P",
-            "P",
-            "G",
-            "P",
-            "E"
-          ]
-        },
-        {
-          "posicion": 17,
           "equipo": "C.D. EL TORNO 2009",
           "puntos": 4,
           "jugados": 6,
@@ -5804,6 +5784,26 @@
             "P",
             "P",
             "E"
+          ]
+        },
+        {
+          "posicion": 17,
+          "equipo": "TARIFA U.D.",
+          "puntos": 4,
+          "jugados": 7,
+          "jugadosCasa": 3,
+          "jugadosFuera": 4,
+          "ganados": 1,
+          "empatados": 1,
+          "perdidos": 5,
+          "golesFavor": 7,
+          "golesContra": 19,
+          "racha": [
+            "E",
+            "P",
+            "P",
+            "G",
+            "P"
           ]
         },
         {
