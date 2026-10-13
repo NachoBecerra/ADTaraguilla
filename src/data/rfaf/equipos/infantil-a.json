@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-13T13:31:54.191Z",
+  "actualizado": "2026-10-13T15:25:42.560Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -316,6 +316,23 @@
           "fecha": "2026-09-27",
           "partidos": [
             {
+              "local": "SEVILLA F.C., S.A.D.",
+              "visitante": "C.D. MOSQUITO",
+              "codLocal": "100136",
+              "codVisitante": "122718",
+              "fecha": "2026-09-27",
+              "hora": "12:15",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Dos Hermanas",
+              "campo": "JOSE RAMÓN CISNEROS CIUDAD DEPORTIVA",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2011471",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651397&cod_acta=2651397",
+              "jugado": false
+            },
+            {
               "local": "R.C.R. HUELVA, S.A.D.",
               "visitante": "REAL BETIS BALOMPIE S.A.D.",
               "codLocal": "600122",
@@ -416,23 +433,6 @@
               "codCampo": "3236",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651396&cod_acta=2651396",
               "jugado": true
-            },
-            {
-              "local": "SEVILLA F.C., S.A.D.",
-              "visitante": "C.D. MOSQUITO",
-              "codLocal": "100136",
-              "codVisitante": "122718",
-              "fecha": "2026-09-27",
-              "hora": "12:15",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Dos Hermanas",
-              "campo": "JOSE RAMÓN CISNEROS CIUDAD DEPORTIVA",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2011471",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651397&cod_acta=2651397",
-              "jugado": false
             },
             {
               "local": "C.F. SAN JOSE OBRERO",
@@ -602,6 +602,23 @@
           "fecha": "2026-10-11",
           "partidos": [
             {
+              "local": "C.F. SAN JOSE OBRERO",
+              "visitante": "ALGECIRAS C.F., S.A.D.",
+              "codLocal": "303120",
+              "codVisitante": "300219",
+              "fecha": "2026-10-10",
+              "hora": "13:45",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Jerez De La Frontera",
+              "campo": "JUAN SIMON",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3050",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651418&cod_acta=2651418",
+              "jugado": false
+            },
+            {
               "local": "SAN ROQUE BALOMPIE",
               "visitante": "C.D. UNION DEPORTIVA ESPERANZA 2019",
               "codLocal": "12792465",
@@ -684,23 +701,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "4105",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651417&cod_acta=2651417",
-              "jugado": false
-            },
-            {
-              "local": "C.F. SAN JOSE OBRERO",
-              "visitante": "ALGECIRAS C.F., S.A.D.",
-              "codLocal": "303120",
-              "codVisitante": "300219",
-              "fecha": "2026-10-10",
-              "hora": "13:45",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Jerez De La Frontera",
-              "campo": "JUAN SIMON",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3050",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651418&cod_acta=2651418",
               "jugado": false
             },
             {

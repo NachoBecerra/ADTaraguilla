@@ -7,7 +7,7 @@
   "orden": 3,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-12T19:20:47.096Z",
+  "actualizado": "2026-10-13T15:26:09.670Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
   "competiciones": [
     {
@@ -252,8 +252,8 @@
               "visitante": "U.D. LOS BARRIOS \"B\"",
               "codLocal": "309616",
               "codVisitante": "24159307",
-              "fecha": "2026-10-17",
-              "hora": null,
+              "fecha": "2026-10-16",
+              "hora": "18:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -261,7 +261,7 @@
               "campo": "ANDRES SARRIAS",
               "superficie": "Hierba Artificial",
               "codCampo": "3096",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694118",
               "jugado": false
             },
             {
@@ -346,7 +346,7 @@
               "campo": "Francisco Pozo",
               "superficie": "Hierba Artificial",
               "codCampo": "3349",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694115",
               "jugado": false
             }
           ]

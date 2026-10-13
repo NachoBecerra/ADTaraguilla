@@ -7,7 +7,7 @@
   "orden": 2,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-13T13:32:08.966Z",
+  "actualizado": "2026-10-13T15:25:57.154Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307516",
   "competiciones": [
     {
@@ -29,23 +29,6 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-27",
           "partidos": [
-            {
-              "local": "C.D. JUAN SEBASTIAN ELCANO",
-              "visitante": "C.D. A.D. SAN GARCIA",
-              "codLocal": "13033680",
-              "codVisitante": "342516",
-              "fecha": "2026-09-26",
-              "hora": "19:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Algeciras",
-              "campo": "JUAN SEBASTIAN ELCANO - PULE",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3118",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683605&cod_acta=2683605",
-              "jugado": false
-            },
             {
               "local": "Descansa",
               "visitante": "CLUB RVO. BAHIA DE ALGECIRAS",
@@ -78,6 +61,23 @@
               "superficie": "Tierra",
               "codCampo": "2003239",
               "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "C.D. JUAN SEBASTIAN ELCANO",
+              "visitante": "C.D. A.D. SAN GARCIA",
+              "codLocal": "13033680",
+              "codVisitante": "342516",
+              "fecha": "2026-09-26",
+              "hora": "19:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Algeciras",
+              "campo": "JUAN SEBASTIAN ELCANO - PULE",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3118",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683605&cod_acta=2683605",
               "jugado": false
             },
             {
@@ -155,6 +155,23 @@
           "nombre": "Jornada 2",
           "fecha": "2026-10-04",
           "partidos": [
+            {
+              "local": "CLUB RVO. BAHIA DE ALGECIRAS",
+              "visitante": "C.D. JUAN SEBASTIAN ELCANO",
+              "codLocal": "9029542",
+              "codVisitante": "13033680",
+              "fecha": "2026-10-03",
+              "hora": "19:15",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Algeciras",
+              "campo": "IGNACIO VILLAVERDE",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3608",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683606&cod_acta=2683606",
+              "jugado": false
+            },
             {
               "local": "C.D. ATLETICO PASTORES ALGECIRAS \"B\"",
               "visitante": "Descansa",
@@ -255,23 +272,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3127",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683612&cod_acta=2683612",
-              "jugado": false
-            },
-            {
-              "local": "CLUB RVO. BAHIA DE ALGECIRAS",
-              "visitante": "C.D. JUAN SEBASTIAN ELCANO",
-              "codLocal": "9029542",
-              "codVisitante": "13033680",
-              "fecha": "2026-10-03",
-              "hora": "19:15",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Algeciras",
-              "campo": "IGNACIO VILLAVERDE",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3608",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683606&cod_acta=2683606",
               "jugado": false
             }
           ]
@@ -506,7 +506,7 @@
               "campo": "JUAN SEBASTIAN ELCANO - PULE",
               "superficie": "Hierba Artificial",
               "codCampo": "3118",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2683717",
               "jugado": false
             },
             {
