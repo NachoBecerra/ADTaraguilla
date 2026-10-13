@@ -1,5 +1,5 @@
 {
-  "generado": "2026-10-13T11:28:55.914Z",
+  "generado": "2026-10-13T13:32:31.245Z",
   "_nota": "Ubicación de los campos, para enlazar con el mapa.",
   "campos": {
     "3008": {
@@ -21,6 +21,11 @@
       "nombre": "ANTONIO LOPEZ PUA ESTADIO MUNICIPAL",
       "lat": 36.0246533,
       "lon": -5.611942399999999
+    },
+    "3085": {
+      "nombre": "Barbate Nuevo Estadio Municipal",
+      "lat": 36.1949525,
+      "lon": -5.9134259
     },
     "3095": {
       "nombre": "PACO GALLEGO",
@@ -47,6 +52,11 @@
       "nombre": "CIUDAD DEPORTIVA RAFAEL SANCHEZ",
       "lat": 36.5901034,
       "lon": -6.232967599999999
+    },
+    "3559": {
+      "nombre": "Juan Gadiaga Pastores",
+      "lat": 36.1117526,
+      "lon": -5.4593972
     },
     "3562": {
       "nombre": "VIRGEN DEL CARMEN",
@@ -87,6 +97,11 @@
       "nombre": "LA GRANJA CENTRO DE DEPORTES",
       "lat": 36.6937317,
       "lon": -6.1038427
+    },
+    "2019422": {
+      "nombre": "Sergio Martín",
+      "lat": 36.1405873,
+      "lon": -5.4679115
     },
     "18654147": {
       "nombre": "MANUEL LEON MUNICIPAL (F11-F7)",

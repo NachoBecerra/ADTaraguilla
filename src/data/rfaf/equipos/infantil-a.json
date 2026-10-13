@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-13T11:24:09.973Z",
+  "actualizado": "2026-10-13T13:31:54.191Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-13",
           "partidos": [
+            {
+              "local": "LUCECOR F.S.",
+              "visitante": "REAL BETIS BALOMPIE S.A.D.",
+              "codLocal": "9136888",
+              "codVisitante": "100229",
+              "fecha": "2026-09-12",
+              "hora": "12:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Lucena",
+              "campo": "LUCENA CIUDAD DEPORTIVA",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2022987",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651387",
+              "jugado": false
+            },
             {
               "local": "SAN ROQUE BALOMPIE",
               "visitante": "JUVENTUD DVA. GINES",
@@ -78,23 +95,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3050",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651384&cod_acta=2651384",
-              "jugado": false
-            },
-            {
-              "local": "LUCECOR F.S.",
-              "visitante": "REAL BETIS BALOMPIE S.A.D.",
-              "codLocal": "9136888",
-              "codVisitante": "100229",
-              "fecha": "2026-09-12",
-              "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Lucena",
-              "campo": "LUCENA CIUDAD DEPORTIVA",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2022987",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651387",
               "jugado": false
             },
             {
@@ -459,6 +459,23 @@
           "fecha": "2026-10-04",
           "partidos": [
             {
+              "local": "C.D. MOSQUITO",
+              "visitante": "A.D. TARAGUILLA",
+              "codLocal": "122718",
+              "codVisitante": "307520",
+              "fecha": "2026-10-04",
+              "hora": "13:00",
+              "golesLocal": 2,
+              "golesVisitante": 1,
+              "origen": "clasificacion",
+              "localidad": "Alcalá De Guadaíra",
+              "campo": "MALASMAÑANAS MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2015221",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651405&cod_acta=2651405",
+              "jugado": true
+            },
+            {
               "local": "ALGECIRAS C.F., S.A.D.",
               "visitante": "R.C.R. HUELVA, S.A.D.",
               "codLocal": "300219",
@@ -576,23 +593,6 @@
               "codCampo": "3611",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651406&cod_acta=2651406",
               "jugado": false
-            },
-            {
-              "local": "C.D. MOSQUITO",
-              "visitante": "A.D. TARAGUILLA",
-              "codLocal": "122718",
-              "codVisitante": "307520",
-              "fecha": "2026-10-04",
-              "hora": "13:00",
-              "golesLocal": 2,
-              "golesVisitante": 1,
-              "origen": "clasificacion",
-              "localidad": "Alcalá De Guadaíra",
-              "campo": "MALASMAÑANAS MUNICIPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2015221",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651405&cod_acta=2651405",
-              "jugado": true
             }
           ]
         },
