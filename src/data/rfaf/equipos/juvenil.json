@@ -7,7 +7,7 @@
   "orden": 2,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-13T15:25:57.154Z",
+  "actualizado": "2026-10-13T17:22:45.437Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307516",
   "competiciones": [
     {
@@ -156,23 +156,6 @@
           "fecha": "2026-10-04",
           "partidos": [
             {
-              "local": "CLUB RVO. BAHIA DE ALGECIRAS",
-              "visitante": "C.D. JUAN SEBASTIAN ELCANO",
-              "codLocal": "9029542",
-              "codVisitante": "13033680",
-              "fecha": "2026-10-03",
-              "hora": "19:15",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Algeciras",
-              "campo": "IGNACIO VILLAVERDE",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3608",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683606&cod_acta=2683606",
-              "jugado": false
-            },
-            {
               "local": "C.D. ATLETICO PASTORES ALGECIRAS \"B\"",
               "visitante": "Descansa",
               "codLocal": null,
@@ -221,6 +204,23 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3423",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683610&cod_acta=2683610",
+              "jugado": false
+            },
+            {
+              "local": "CLUB RVO. BAHIA DE ALGECIRAS",
+              "visitante": "C.D. JUAN SEBASTIAN ELCANO",
+              "codLocal": "9029542",
+              "codVisitante": "13033680",
+              "fecha": "2026-10-03",
+              "hora": "19:15",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Algeciras",
+              "campo": "IGNACIO VILLAVERDE",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3608",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683606&cod_acta=2683606",
               "jugado": false
             },
             {
