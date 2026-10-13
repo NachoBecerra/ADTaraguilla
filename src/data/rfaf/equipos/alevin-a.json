@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-12T21:21:05.413Z",
+  "actualizado": "2026-10-13T19:19:51.688Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-19",
           "partidos": [
+            {
+              "local": "ATLETICO ZABAL",
+              "visitante": "C.D. SAN ROQUE",
+              "codLocal": "326326",
+              "codVisitante": "307726",
+              "fecha": "2026-09-19",
+              "hora": "12:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "La Línea de La Concepción",
+              "campo": "VIRGEN DEL CARMEN (LA LINEA)",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2069065",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649944&cod_acta=2649944",
+              "jugado": false
+            },
             {
               "local": "C.D. SAN FERNANDO 1940",
               "visitante": "C.D. LA SALLE",
@@ -78,23 +95,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3051",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649941&cod_acta=2649941",
-              "jugado": false
-            },
-            {
-              "local": "ATLETICO ZABAL",
-              "visitante": "C.D. SAN ROQUE",
-              "codLocal": "326326",
-              "codVisitante": "307726",
-              "fecha": "2026-09-19",
-              "hora": "12:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "La Línea de La Concepción",
-              "campo": "VIRGEN DEL CARMEN (LA LINEA)",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2069065",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649944&cod_acta=2649944",
               "jugado": false
             },
             {
@@ -459,23 +459,6 @@
           "fecha": "2026-10-10",
           "partidos": [
             {
-              "local": "C.D. DIVINA PASTORA SANLUQUEÑA",
-              "visitante": "A.D. LOS BURREÑOS",
-              "codLocal": "354820",
-              "codVisitante": "38886689",
-              "fecha": "2026-10-10",
-              "hora": "11:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Sanlúcar de Barrameda",
-              "campo": "QUINTA DE LA PAZ",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3582",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649966&cod_acta=2649966",
-              "jugado": false
-            },
-            {
               "local": "C.D. LA SALLE",
               "visitante": "ATLETICO ZABAL",
               "codLocal": "309525",
@@ -490,6 +473,23 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3095",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649970&cod_acta=2649970",
+              "jugado": false
+            },
+            {
+              "local": "C.D. DIVINA PASTORA SANLUQUEÑA",
+              "visitante": "A.D. LOS BURREÑOS",
+              "codLocal": "354820",
+              "codVisitante": "38886689",
+              "fecha": "2026-10-10",
+              "hora": "11:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Sanlúcar de Barrameda",
+              "campo": "QUINTA DE LA PAZ",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3582",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649966&cod_acta=2649966",
               "jugado": false
             },
             {
@@ -734,7 +734,7 @@
               "campo": "Sanlúcar de Barrameda -Doro Stadium",
               "superficie": "Hierba Artificial",
               "codCampo": "3104",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649977",
               "jugado": false
             }
           ]
