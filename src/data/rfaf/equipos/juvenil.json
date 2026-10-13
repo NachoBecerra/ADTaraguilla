@@ -7,7 +7,7 @@
   "orden": 2,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-13T09:30:29.267Z",
+  "actualizado": "2026-10-13T11:24:24.931Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307516",
   "competiciones": [
     {
@@ -30,12 +30,12 @@
           "fecha": "2026-09-27",
           "partidos": [
             {
-              "local": "C.D. JUAN SEBASTIAN ELCANO",
-              "visitante": "C.D. A.D. SAN GARCIA",
-              "codLocal": "13033680",
-              "codVisitante": "342516",
+              "local": "C.D. RACING DEPORTIVO ALGECIRAS",
+              "visitante": "PEÑA MADRIDISTA LINENSE \"A\"",
+              "codLocal": "48485997",
+              "codVisitante": "16370621",
               "fecha": "2026-09-26",
-              "hora": "19:00",
+              "hora": "21:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -43,7 +43,7 @@
               "campo": "JUAN SEBASTIAN ELCANO - PULE",
               "superficie": "Hierba Artificial",
               "codCampo": "3118",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683605&cod_acta=2683605",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683603&cod_acta=2683603",
               "jugado": false
             },
             {
@@ -81,12 +81,12 @@
               "jugado": false
             },
             {
-              "local": "C.D. RACING DEPORTIVO ALGECIRAS",
-              "visitante": "PEÑA MADRIDISTA LINENSE \"A\"",
-              "codLocal": "48485997",
-              "codVisitante": "16370621",
+              "local": "C.D. JUAN SEBASTIAN ELCANO",
+              "visitante": "C.D. A.D. SAN GARCIA",
+              "codLocal": "13033680",
+              "codVisitante": "342516",
               "fecha": "2026-09-26",
-              "hora": "21:00",
+              "hora": "19:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -94,7 +94,7 @@
               "campo": "JUAN SEBASTIAN ELCANO - PULE",
               "superficie": "Hierba Artificial",
               "codCampo": "3118",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683603&cod_acta=2683603",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683605&cod_acta=2683605",
               "jugado": false
             },
             {
@@ -156,23 +156,6 @@
           "fecha": "2026-10-04",
           "partidos": [
             {
-              "local": "A.D. TARAGUILLA",
-              "visitante": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
-              "codLocal": "307516",
-              "codVisitante": "33452112",
-              "fecha": "2026-10-03",
-              "hora": "19:30",
-              "golesLocal": 0,
-              "golesVisitante": 0,
-              "origen": "clasificacion",
-              "localidad": "San Roque",
-              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683608&cod_acta=2683608",
-              "jugado": true
-            },
-            {
               "local": "C.D. ATLETICO PASTORES ALGECIRAS \"B\"",
               "visitante": "Descansa",
               "codLocal": null,
@@ -205,6 +188,23 @@
               "codCampo": null,
               "urlActa": null,
               "jugado": false
+            },
+            {
+              "local": "A.D. TARAGUILLA",
+              "visitante": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
+              "codLocal": "307516",
+              "codVisitante": "33452112",
+              "fecha": "2026-10-03",
+              "hora": "19:30",
+              "golesLocal": 0,
+              "golesVisitante": 0,
+              "origen": "clasificacion",
+              "localidad": "San Roque",
+              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3236",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2683608&cod_acta=2683608",
+              "jugado": true
             },
             {
               "local": "C.D. BALON LINENSE C.F.",
@@ -413,7 +413,7 @@
               "codLocal": "342516",
               "codVisitante": "2064329",
               "fecha": "2026-10-17",
-              "hora": null,
+              "hora": "16:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -430,7 +430,7 @@
               "codLocal": "48496991",
               "codVisitante": "13033680",
               "fecha": "2026-10-17",
-              "hora": null,
+              "hora": "17:45",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -498,7 +498,7 @@
               "codLocal": "16370621",
               "codVisitante": "33452112",
               "fecha": "2026-10-18",
-              "hora": null,
+              "hora": "10:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -515,7 +515,7 @@
               "codLocal": "320715",
               "codVisitante": "9227758",
               "fecha": "2026-10-18",
-              "hora": null,
+              "hora": "12:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
