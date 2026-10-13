@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-13T19:19:21.681Z",
+  "actualizado": "2026-10-13T21:18:01.051Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -173,23 +173,6 @@
           "fecha": "2026-09-20",
           "partidos": [
             {
-              "local": "C.D. MOSQUITO",
-              "visitante": "SAN ROQUE BALOMPIE",
-              "codLocal": "122718",
-              "codVisitante": "12792465",
-              "fecha": "2026-09-19",
-              "hora": "13:15",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Alcalá De Guadaíra",
-              "campo": "MALASMAÑANAS MUNICIPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2015221",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651390&cod_acta=2651390",
-              "jugado": false
-            },
-            {
               "local": "REAL BETIS BALOMPIE S.A.D.",
               "visitante": "ALGECIRAS C.F., S.A.D.",
               "codLocal": "100229",
@@ -204,6 +187,23 @@
               "superficie": "Hierba Artificial",
               "codCampo": "36948119",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651395&cod_acta=2651395",
+              "jugado": false
+            },
+            {
+              "local": "C.D. MOSQUITO",
+              "visitante": "SAN ROQUE BALOMPIE",
+              "codLocal": "122718",
+              "codVisitante": "12792465",
+              "fecha": "2026-09-19",
+              "hora": "13:15",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Alcalá De Guadaíra",
+              "campo": "MALASMAÑANAS MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2015221",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651390&cod_acta=2651390",
               "jugado": false
             },
             {
@@ -316,6 +316,23 @@
           "fecha": "2026-09-27",
           "partidos": [
             {
+              "local": "SAN ROQUE BALOMPIE",
+              "visitante": "C.D. ESTRELLA PORTUENSE F.C.",
+              "codLocal": "12792465",
+              "codVisitante": "2064077",
+              "fecha": "2026-09-26",
+              "hora": "18:05",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Sevilla",
+              "campo": "DEMETRIO PICHEL CD",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2315900",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651398&cod_acta=2651398",
+              "jugado": false
+            },
+            {
               "local": "SEVILLA F.C., S.A.D.",
               "visitante": "C.D. MOSQUITO",
               "codLocal": "100136",
@@ -364,23 +381,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "2022987",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651403&cod_acta=2651403",
-              "jugado": false
-            },
-            {
-              "local": "SAN ROQUE BALOMPIE",
-              "visitante": "C.D. ESTRELLA PORTUENSE F.C.",
-              "codLocal": "12792465",
-              "codVisitante": "2064077",
-              "fecha": "2026-09-26",
-              "hora": "18:05",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Sevilla",
-              "campo": "DEMETRIO PICHEL CD",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2315900",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651398&cod_acta=2651398",
               "jugado": false
             },
             {
@@ -459,23 +459,6 @@
           "fecha": "2026-10-04",
           "partidos": [
             {
-              "local": "C.D. MOSQUITO",
-              "visitante": "A.D. TARAGUILLA",
-              "codLocal": "122718",
-              "codVisitante": "307520",
-              "fecha": "2026-10-04",
-              "hora": "13:00",
-              "golesLocal": 2,
-              "golesVisitante": 1,
-              "origen": "clasificacion",
-              "localidad": "Alcalá De Guadaíra",
-              "campo": "MALASMAÑANAS MUNICIPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2015221",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651405&cod_acta=2651405",
-              "jugado": true
-            },
-            {
               "local": "ALGECIRAS C.F., S.A.D.",
               "visitante": "R.C.R. HUELVA, S.A.D.",
               "codLocal": "300219",
@@ -491,6 +474,23 @@
               "codCampo": "3559",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651411&cod_acta=2651411",
               "jugado": false
+            },
+            {
+              "local": "C.D. MOSQUITO",
+              "visitante": "A.D. TARAGUILLA",
+              "codLocal": "122718",
+              "codVisitante": "307520",
+              "fecha": "2026-10-04",
+              "hora": "13:00",
+              "golesLocal": 2,
+              "golesVisitante": 1,
+              "origen": "clasificacion",
+              "localidad": "Alcalá De Guadaíra",
+              "campo": "MALASMAÑANAS MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2015221",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651405&cod_acta=2651405",
+              "jugado": true
             },
             {
               "local": "SIEMPRE ALEGRES C.D.",
@@ -775,7 +775,7 @@
               "campo": "CIUDAD DEPORTIVA RAFAEL GORDILLO",
               "superficie": "Hierba Artificial",
               "codCampo": "36948119",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651425",
               "jugado": false
             },
             {
@@ -843,7 +843,7 @@
               "campo": "MALASMAÑANAS MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "2015221",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651420",
               "jugado": false
             },
             {
@@ -877,7 +877,7 @@
               "campo": "ANTONIO PUERTA IMD",
               "superficie": "Hierba Artificial",
               "codCampo": "2014352",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651424",
               "jugado": false
             }
           ]
