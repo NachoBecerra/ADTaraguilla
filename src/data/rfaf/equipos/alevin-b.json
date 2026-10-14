@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-13T21:17:48.590Z",
+  "actualizado": "2026-10-14T04:45:15.655Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -459,6 +459,23 @@
           "fecha": "2026-10-10",
           "partidos": [
             {
+              "local": "C.D. S.M. MIRADOR \"B\"",
+              "visitante": "U.D. TESORILLO C.D.",
+              "codLocal": "38866701",
+              "codVisitante": "307218",
+              "fecha": "2026-10-09",
+              "hora": "18:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Algeciras",
+              "campo": "Sergio Martín",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2019422",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709898&cod_acta=2709898",
+              "jugado": false
+            },
+            {
               "local": "A.D. LOS CORTIJILLOS",
               "visitante": "Descansa",
               "codLocal": null,
@@ -525,23 +542,6 @@
               "codCampo": "3562",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709896&cod_acta=2709896",
               "jugado": true
-            },
-            {
-              "local": "C.D. S.M. MIRADOR \"B\"",
-              "visitante": "U.D. TESORILLO C.D.",
-              "codLocal": "38866701",
-              "codVisitante": "307218",
-              "fecha": "2026-10-09",
-              "hora": "18:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Algeciras",
-              "campo": "Sergio Martín",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2019422",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709898&cod_acta=2709898",
-              "jugado": false
             },
             {
               "local": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL \"A\"",

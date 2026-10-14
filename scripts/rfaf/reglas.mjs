@@ -74,6 +74,9 @@ export function resultadoCreible(fecha, hora, ahora = Date.now()) {
  */
 export const HORA_SIN_FIJAR = "23:59";
 
+/** Una jornada de descanso no es un partido. */
+export const esDescanso = (nombre) => /^\s*descansa\s*$/i.test(nombre ?? "");
+
 /** Lo que tarda el árbitro en cerrar el acta, contando desde el saque. */
 export const MINUTOS_HASTA_EL_ACTA = 120;
 
@@ -91,6 +94,15 @@ export const MINUTOS_HASTA_EL_ACTA = 120;
  */
 export function yaDeberiaTenerResultado(p, ahora = Date.now()) {
   if (p.jugado || !p.fecha) return false;
+
+  /*
+   * Un descanso no es un partido y nunca va a tener resultado. Sin esto, el
+   * equipo que descansa queda reclamando ese resultado el resto de la
+   * temporada: nunca se le puede saltar, se le piden sus páginas en cada
+   * pasada y el cupo de la RFAF se gasta en nada. El 14 de octubre de 2026 le
+   * pasaba al alevín B y al juvenil a la vez.
+   */
+  if (esDescanso(p.local) || esDescanso(p.visitante)) return false;
 
   const saque = saqueEnMs(p.fecha, p.hora ?? null);
   // Una fecha que no se entiende: mejor mirar de más que quedarse sin resultado
@@ -265,9 +277,6 @@ export function partidosDelCalendario(calendario) {
 }
 
 /* ------------------------------------------ el resultado, por diferencia */
-
-/** Una jornada de descanso no es un partido. */
-const esDescanso = (nombre) => /^\s*descansa\s*$/i.test(nombre ?? "");
 
 /** Goles a favor y en contra de este partido, vistos desde nuestro lado. */
 function comoLoVemos(partido, nombreRfaf) {
@@ -515,6 +524,70 @@ export function descuadreDeResultados({ nombreRfaf, clasificacion, jornadas, aho
   if (correccionPorClasificacion({ nombreRfaf, clasificacion, jornadas, ahora })) return null;
 
   return { favor, contra, tabla: cuentas.fila, contadosFavor: cuentas.favorContados, contadosContra: cuentas.contraContados };
+}
+
+/* ------------------------------------- una tabla que no se sostiene no vale */
+
+/**
+ * ¿Los números de esta fila se sostienen solos?
+ *
+ * Ganados más empatados más perdidos tiene que dar los partidos jugados. Es
+ * aritmética de la propia RFAF: no hay competición, sanción ni retirada que la
+ * rompa. Si no da, lo que está mal es nuestra lectura.
+ */
+export function filaCuadra(fila) {
+  const entero = (v) => Number.isInteger(v) && v >= 0;
+
+  if (!fila) return false;
+  for (const v of [fila.jugados, fila.ganados, fila.empatados, fila.perdidos, fila.golesFavor, fila.golesContra]) {
+    if (!entero(v)) return false;
+  }
+
+  return fila.ganados + fila.empatados + fila.perdidos === fila.jugados;
+}
+
+/**
+ * ¿Se puede publicar esta clasificación?
+ *
+ * Solo si **todas** sus filas cuadran. Un grupo entero con las cuentas mal no
+ * es un equipo raro: es que hemos leído la tabla por el sitio equivocado, y
+ * entonces no hay una fila buena, están todas corridas.
+ *
+ * Esta es la red que faltaba el 4 de octubre de 2026. La RFAF quitó una
+ * columna del infantil A, la lectura se desplazó, y la web estuvo diez días
+ * enseñando «3 puntos, 3 jugados, 0 ganados, 2 empatados y 19 perdidos» sin
+ * que nada protestara. La cabecera evita ese desplazamiento; esto evita el
+ * siguiente, venga de donde venga.
+ *
+ * Una tabla vacía no es poco fiable: es que todavía no hay. Eso se trata
+ * aparte, conservando lo que hubiera.
+ */
+export function clasificacionFiable(clasificacion) {
+  if (!Array.isArray(clasificacion) || clasificacion.length === 0) return true;
+  return clasificacion.every(filaCuadra);
+}
+
+/**
+ * ¿Publicamos más partidos de los que la tabla cuenta?
+ *
+ * Al revés que el atasco. La tabla es la verdad: si dice que hemos jugado tres
+ * y la web enseña cuatro, uno de los cuatro no debería estar —un resultado
+ * colgado del partido equivocado, una jornada anulada, una lectura corrida—.
+ *
+ * Esto no se arregla solo, se dice. Era el punto ciego: `descuadreDeResultados`
+ * calla cuando la tabla y nosotros no contamos los mismos partidos, así que el
+ * infantil A estuvo diez días publicando cuatro partidos contra una tabla que
+ * decía tres, y la pasada no abrió la boca ni una vez.
+ */
+export function resultadosDeMas({ nombreRfaf, clasificacion, jornadas, ahora = Date.now() }) {
+  const cuentas = cuentasDelEquipo({ nombreRfaf, clasificacion, jornadas, ahora });
+  if (!cuentas || cuentas.nuevos >= 0) return null;
+
+  return {
+    deMas: -cuentas.nuevos,
+    publicados: cuentas.fila.jugados - cuentas.nuevos,
+    enLaTabla: cuentas.fila.jugados,
+  };
 }
 
 /**

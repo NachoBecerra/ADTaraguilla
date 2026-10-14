@@ -14,7 +14,10 @@ import { marcador } from "./html.mjs";
 import {
   ORIGEN_TABLA,
   atascoDeResultados,
+  clasificacionFiable,
   correccionPorClasificacion,
+  esDescanso,
+  filaCuadra,
   descuadreDeResultados,
   avisaDelHorario,
   urlDeJornada,
@@ -23,6 +26,7 @@ import {
   yaEmpezo,
   partidosDelCalendario,
   resultadoCreible,
+  resultadosDeMas,
   resultadoPorClasificacion,
   resultadoSinConfirmar,
   saqueEnMs,
@@ -678,6 +682,140 @@ console.log("--- Mientras rueda el balon, el partido no se pierde ---");
   );
   comprobar("yaEmpezo mide por el saque", yaEmpezo("2026-09-26", "12:00", saqueEnMs("2026-09-26", "12:01")), true);
   comprobar("y sin fecha no empieza nada", yaEmpezo(null, "12:00", Date.now()), false);
+}
+
+
+/* ------------- la clasificacion se lee por la cabecera, no por la columna */
+console.log("");
+console.log("--- La tabla se lee por lo que dice su cabecera ---");
+{
+  /*
+   * Las dos formas que servia la RFAF el 12 de octubre de 2026, a la vez: el
+   * senior con la columna "Pts/PJ" y el infantil A sin ella. Esa columna solo
+   * sale cuando los equipos del grupo llevan distinto numero de partidos, asi
+   * que una jornada que los iguala la quita y la tabla adelgaza sola.
+   */
+  const fila = (celdas) => `<tr>${celdas.map((c) => `<td>${c}</td>`).join("")}</tr>`;
+  const tabla = (cabecera, datos) =>
+    `<table>${fila(cabecera)}${datos.map(fila).join("")}</table>`;
+
+  const SIN_PTS_PJ = ["Ordenar por", "Pts", "J", "G", "E", "P", "J", "G", "E", "P", "F", "C", "Puntos"];
+  const CON_PTS_PJ = ["Ordenar por", "Pts/PJ", "Pts", "J", "G", "E", "P", "J", "G", "E", "P", "F", "C", "Puntos"];
+
+  /* La fila de verdad del infantil A: 9 puntos, 5 jugados, 3-0-2, 17 a favor
+     y 6 en contra. Leida por numero de columna salia "0-2-19" y "6:0". */
+  const estrecha = extraerClasificacion(
+    tabla(SIN_PTS_PJ, [["7", "A.D. TARAGUILLA", "9", "3", "3", "0", "0", "2", "0", "0", "2", "17", "6", "P G G P G", "0"]]),
+  );
+  comprobar("sin Pts/PJ, los puntos son los puntos", estrecha[0]?.puntos, 9);
+  comprobar("y los partidos, los partidos", [estrecha[0]?.jugados, estrecha[0]?.jugadosCasa, estrecha[0]?.jugadosFuera], [5, 3, 2]);
+  comprobar("y el balance", [estrecha[0]?.ganados, estrecha[0]?.empatados, estrecha[0]?.perdidos], [3, 0, 2]);
+  comprobar("y los goles", [estrecha[0]?.golesFavor, estrecha[0]?.golesContra], [17, 6]);
+  comprobar("y la racha", estrecha[0]?.racha, ["P", "G", "G", "P", "G"]);
+
+  /* La misma fila con la columna de adorno delante tiene que dar lo mismo */
+  const ancha = extraerClasificacion(
+    tabla(CON_PTS_PJ, [["7", "A.D. TARAGUILLA", "1,8000", "9", "3", "3", "0", "0", "2", "0", "0", "2", "17", "6", "P G G P G", "0"]]),
+  );
+  comprobar("con Pts/PJ sale exactamente lo mismo", ancha, estrecha);
+
+  /* Sin cabecera reconocible no se inventa nada */
+  comprobar(
+    "sin cabecera no hay tabla",
+    extraerClasificacion(tabla(["Equipo", "Cosas"], [["1", "A.D. TARAGUILLA", "9", "5"]])),
+    [],
+  );
+
+  /* Debajo la RFAF repite una tabla resumida, mas estrecha: no es esta */
+  const conResumen =
+    tabla(SIN_PTS_PJ, [["7", "A.D. TARAGUILLA", "9", "3", "3", "0", "0", "2", "0", "0", "2", "17", "6", "P G G P G", "0"]]) +
+    tabla(["Ordenar por", "Pts", "J", "G", "E", "P", "Puntos"], [["7", "A.D. TARAGUILLA", "9", "5", "3", "0", "2", "P G G P G", "0"]]);
+  comprobar("la tabla resumida de debajo no cuenta", extraerClasificacion(conResumen).length, 1);
+}
+
+
+/* ------------- una tabla que no se sostiene no se publica */
+console.log("");
+console.log("--- Una tabla que no cuadra no sale a la web ---");
+{
+  const buena = { jugados: 5, ganados: 3, empatados: 0, perdidos: 2, golesFavor: 17, golesContra: 6 };
+
+  comprobar("una fila que cuadra, cuadra", filaCuadra(buena), true);
+  comprobar("ganados mas empatados mas perdidos tiene que dar los jugados", filaCuadra({ ...buena, perdidos: 19 }), false);
+  comprobar("ni numeros negativos", filaCuadra({ ...buena, golesContra: -1 }), false);
+  comprobar("ni a medias", filaCuadra({ ...buena, jugados: null }), false);
+  comprobar("ni nada", filaCuadra(null), false);
+
+  comprobar("una tabla entera que cuadra se publica", clasificacionFiable([buena, { ...buena, jugados: 4, perdidos: 1 }]), true);
+  comprobar("con una fila corrida, no se publica", clasificacionFiable([buena, { ...buena, perdidos: 19 }]), false);
+
+  /* Todavia sin jornada jugada no hay nada que desconfiar */
+  comprobar("una tabla vacia no es una tabla mala", clasificacionFiable([]), true);
+}
+
+
+/* ------------- un descanso no es un partido que falte */
+console.log("");
+console.log("--- Una jornada de descanso no reclama resultado ---");
+{
+  const jugado = { local: "A.D. TARAGUILLA", visitante: "C.D. GUADIARO", fecha: "2026-09-13", hora: "19:00", jugado: false };
+  const ahora = saqueEnMs("2026-10-14", "12:00");
+
+  comprobar("un partido jugado y sin resultado se reclama", yaDeberiaTenerResultado(jugado, ahora), true);
+
+  /* Y este no llega nunca: el alevin B y el juvenil llevaban semanas pidiendo
+     sus paginas en cada pasada por un descanso, y el cupo se iba en eso */
+  comprobar(
+    "un descanso de visitante, no",
+    yaDeberiaTenerResultado({ ...jugado, visitante: "Descansa" }, ahora),
+    false,
+  );
+  comprobar(
+    "ni de local",
+    yaDeberiaTenerResultado({ ...jugado, local: "Descansa" }, ahora),
+    false,
+  );
+  comprobar("se escriba como se escriba", esDescanso("  DESCANSA "), true);
+  comprobar("y un equipo de verdad no lo es", esDescanso("C.D. GUADIARO"), false);
+}
+
+
+/* ------------- la web no puede enseñar mas partidos de los que hay */
+console.log("");
+console.log("--- Publicar mas partidos de los que cuenta la tabla ---");
+{
+  const N = "A.D. TARAGUILLA";
+  const con = (local, visitante, gl, gv, fecha) => ({
+    local, visitante, golesLocal: gl, golesVisitante: gv, fecha, hora: "12:00",
+    jugado: gl !== null, origen: gl === null ? null : ORIGEN_TABLA,
+  });
+  const jornadas = [
+    { numero: 1, fecha: "2026-09-12", partidos: [con("SEVILLA F.C.", N, 2, 0, "2026-09-12")] },
+    { numero: 2, fecha: "2026-09-19", partidos: [con(N, "LUCECOR F.S.", 8, 0, "2026-09-19")] },
+    { numero: 3, fecha: "2026-09-26", partidos: [con(N, "JUVENTUD DVA. GINES", 4, 0, "2026-09-26")] },
+  ];
+  const ahora = saqueEnMs("2026-10-14", "12:00");
+  const tabla = (jugados, ganados, perdidos) => [{
+    equipo: N, jugados, ganados, empatados: 0, perdidos,
+    golesFavor: 12, golesContra: 2, puntos: ganados * 3,
+  }];
+
+  comprobar(
+    "si la tabla cuenta los mismos, no hay nada que decir",
+    resultadosDeMas({ nombreRfaf: N, clasificacion: tabla(3, 2, 1), jornadas, ahora }),
+    null,
+  );
+
+  /* El punto ciego del infantil A: tres en la tabla, cuatro en la web, y la
+     pasada callada diez dias */
+  const sobra = resultadosDeMas({ nombreRfaf: N, clasificacion: tabla(2, 1, 1), jornadas, ahora });
+  comprobar("si publicamos de mas, se dice", sobra && [sobra.publicados, sobra.enLaTabla, sobra.deMas], [3, 2, 1]);
+
+  comprobar(
+    "y si falta por colocar, de eso se encarga el atasco",
+    resultadosDeMas({ nombreRfaf: N, clasificacion: tabla(4, 3, 1), jornadas, ahora }),
+    null,
+  );
 }
 
 

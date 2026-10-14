@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-13T17:23:00.616Z",
+  "actualizado": "2026-10-14T04:44:33.150Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -173,6 +173,23 @@
           "fecha": "2026-09-19",
           "partidos": [
             {
+              "local": "TRASMALLO F.C. C.D.",
+              "visitante": "ATLETICO ZABAL",
+              "codLocal": "332820",
+              "codVisitante": "326327",
+              "fecha": "2026-09-18",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Puerto De Santa María (El)",
+              "campo": "CIUDAD DEPORTIVA RAFAEL SANCHEZ",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3555",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663723&cod_acta=2663723",
+              "jugado": false
+            },
+            {
               "local": "C.D. AD PUEBLO NUEVO LA GRANJA",
               "visitante": "A.D. TARAGUILLA",
               "codLocal": "329826",
@@ -221,23 +238,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3050",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663724&cod_acta=2663724",
-              "jugado": false
-            },
-            {
-              "local": "TRASMALLO F.C. C.D.",
-              "visitante": "ATLETICO ZABAL",
-              "codLocal": "332820",
-              "codVisitante": "326327",
-              "fecha": "2026-09-18",
-              "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Puerto De Santa María (El)",
-              "campo": "CIUDAD DEPORTIVA RAFAEL SANCHEZ",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3555",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663723&cod_acta=2663723",
               "jugado": false
             },
             {

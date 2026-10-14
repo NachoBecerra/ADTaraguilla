@@ -274,14 +274,68 @@ export function extraerCoordenadas(html) {
 /* ----------------------------------------------------------- clasificación */
 
 /**
- * Tabla de clasificación. Las columnas son, por orden:
- * pos | equipo | pts/pj | pts | casa J G E P | fuera J G E P | GF | GC | racha | sanción
+ * Dónde está cada dato dentro de una fila de la clasificación.
+ *
+ * **No se cuentan columnas: se lee la cabecera.** La RFAF no sirve siempre la
+ * misma tabla. Hay una columna «Pts/PJ» (puntos por partido jugado) que solo
+ * aparece cuando los equipos del grupo llevan distinto número de partidos, y
+ * cuando una jornada los iguala, desaparece. La misma competición cambia de
+ * ancho de una semana a otra.
+ *
+ * Esto se leía por número de columna, y el 4 de octubre de 2026 el infantil A
+ * igualó partidos con su grupo, la columna se cayó y todo se corrió un sitio:
+ * la web publicó 3 puntos en 3 partidos con 0 ganados, 2 empatados y 19
+ * perdidos. Números que no existen, publicados sin que nada protestara.
+ *
+ * La cabecera dice «Pts J G E P J G E P F C». A partir de ahí, cada dato está
+ * donde la cabecera lo pone, haya o no columnas de adorno antes.
+ */
+function columnasDeClasificacion(celdas) {
+  if (!celdas) return null;
+
+  const etiqueta = (c) => (c ?? "").trim().toUpperCase();
+
+  // "PTS" a secas: "PTS/PJ" es la columna que va y viene, no la de puntos
+  const pts = celdas.findIndex((c) => etiqueta(c) === "PTS");
+  if (pts < 0) return null;
+
+  // Casa, fuera y goles, en este orden. Si no está tal cual, no es la cabecera
+  const esperado = ["J", "G", "E", "P", "J", "G", "E", "P", "F", "C"];
+  if (esperado.some((e, i) => etiqueta(celdas[pts + 1 + i]) !== e)) return null;
+
+  /*
+   * La fila de datos lleva delante la posición y el nombre del equipo; la
+   * cabecera, una sola celda ("Ordenar por"). De ahí el desplazamiento de uno.
+   */
+  const donde = (salto) => pts + 1 + salto;
+
+  return {
+    puntos: donde(0),
+    casa: { j: donde(1), g: donde(2), e: donde(3), p: donde(4) },
+    fuera: { j: donde(5), g: donde(6), e: donde(7), p: donde(8) },
+    golesFavor: donde(9),
+    golesContra: donde(10),
+    racha: donde(11),
+  };
+}
+
+/**
+ * Tabla de clasificación.
+ *
+ * Sin cabecera reconocible no hay tabla: se devuelve vacía y quien la pidió se
+ * queda con la que ya tenía. Inventar columnas es lo que publicó aquel 0-2-19.
  */
 export function extraerClasificacion(html) {
+  const todas = filas(html);
+
+  const col = todas.map(({ celdas }) => columnasDeClasificacion(celdas)).find(Boolean);
+  if (!col) return [];
+
   const tabla = [];
 
-  for (const { celdas } of filas(html)) {
-    if (celdas.length < 14) continue;
+  for (const { celdas } of todas) {
+    // La misma página trae debajo una tabla resumida, más estrecha: no es esta
+    if (celdas.length <= col.racha) continue;
 
     const posicion = Number(celdas[0]);
     if (!Number.isInteger(posicion) || posicion < 1) continue;
@@ -291,13 +345,13 @@ export function extraerClasificacion(html) {
       return Number.isFinite(v) ? v : 0;
     };
 
-    const casa = { j: n(4), g: n(5), e: n(6), p: n(7) };
-    const fuera = { j: n(8), g: n(9), e: n(10), p: n(11) };
+    const casa = { j: n(col.casa.j), g: n(col.casa.g), e: n(col.casa.e), p: n(col.casa.p) };
+    const fuera = { j: n(col.fuera.j), g: n(col.fuera.g), e: n(col.fuera.e), p: n(col.fuera.p) };
 
     tabla.push({
       posicion,
       equipo: celdas[1],
-      puntos: n(3),
+      puntos: n(col.puntos),
       jugados: casa.j + fuera.j,
       /*
        * Por campo, además del total. Es lo que deja saber qué partido acaba de
@@ -309,10 +363,10 @@ export function extraerClasificacion(html) {
       ganados: casa.g + fuera.g,
       empatados: casa.e + fuera.e,
       perdidos: casa.p + fuera.p,
-      golesFavor: n(12),
-      golesContra: n(13),
-      // "G P G P P" -> ["G","P","G","P","P"], del más reciente al más antiguo
-      racha: (celdas[14] ?? "").split(/\s+/).filter((r) => /^[GEP]$/.test(r)),
+      golesFavor: n(col.golesFavor),
+      golesContra: n(col.golesContra),
+      // "G P G P P" -> ["G","P","G","P","P"]
+      racha: (celdas[col.racha] ?? "").split(/\s+/).filter((r) => /^[GEP]$/.test(r)),
     });
   }
 

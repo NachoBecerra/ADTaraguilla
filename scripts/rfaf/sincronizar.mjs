@@ -30,10 +30,13 @@ import {
   partidosCongelados,
   partidosDelCalendario,
   atascoDeResultados,
+  clasificacionFiable,
   correccionPorClasificacion,
+  esDescanso,
   descuadreDeResultados,
   equiposAusentes,
   resultadoCreible,
+  resultadosDeMas,
   resultadoPorClasificacion,
   resultadoSinConfirmar,
   yaDeberiaTenerResultado,
@@ -118,11 +121,6 @@ const DIAS_ADELANTE = 14;
  */
 const DIAS_HORARIO = 7;
 
-/**
- * En los grupos impares una jornada la descansa un equipo, y la RFAF lo
- * escribe en el calendario como si fuese el rival.
- */
-export const esDescanso = (nombre) => /^\s*descansa\s*$/i.test(nombre ?? "");
 
 const log = (...a) => console.log("·", ...a);
 const aviso = (...a) => console.warn("⚠", ...a);
@@ -482,11 +480,36 @@ async function sincronizarCompeticion(cliente, competicion, previa, escudos, nom
   let clasificacion = previa?.clasificacion ?? [];
   if (grupo.urlClasificacion) {
     try {
-      clasificacion = extraerClasificacion(await cliente.pedir(grupo.urlClasificacion));
+      const leida = extraerClasificacion(await cliente.pedir(grupo.urlClasificacion));
+
+      /*
+       * Una tabla cuyas cuentas no se sostienen no se publica ni se usa para
+       * deducir: se deja la que había y se dice en voz alta. Es lo que faltó
+       * cuando la RFAF quitó una columna del infantil A y la lectura se corrió
+       * un sitio: diez días de "0 ganados, 2 empatados y 19 perdidos" en la web.
+       */
+      if (clasificacionFiable(leida)) {
+        clasificacion = leida;
+      } else {
+        aviso(
+          `  clasificación de ${competicion.nombre}: las cuentas no cuadran ` +
+            `(${leida.length} equipos); se conserva la anterior y NO se deduce nada`,
+        );
+      }
     } catch (e) {
       if (e instanceof ErrorDeCupo) throw e;
       aviso(`  clasificación de ${competicion.nombre}: ${e.message}`);
     }
+  }
+
+  /*
+   * Y si la que teníamos guardada tampoco cuadra —se publicó antes de que esto
+   * existiera—, se tira. Mejor un equipo sin tabla que un equipo con una tabla
+   * falsa: lo primero se ve y se arregla, lo segundo se lo cree el club.
+   */
+  if (!clasificacionFiable(clasificacion)) {
+    aviso(`  clasificación de ${competicion.nombre}: la guardada tampoco cuadra; se descarta`);
+    clasificacion = [];
   }
 
   /*
@@ -534,6 +557,15 @@ async function sincronizarCompeticion(cliente, competicion, previa, escudos, nom
       `  ${competicion.nombre}: lo publicado no cuadra con la tabla ` +
         `(nosotros ${descuadre.contadosFavor}-${descuadre.contadosContra}, la tabla ` +
         `${descuadre.tabla.golesFavor}-${descuadre.tabla.golesContra}); hay que mirarlo a mano`,
+    );
+  }
+
+  /* Y al revés: la web enseñando partidos que la tabla no cuenta */
+  const deMas = resultadosDeMas({ nombreRfaf, clasificacion, jornadas });
+  if (deMas) {
+    aviso(
+      `  ${competicion.nombre}: publicamos ${deMas.publicados} partidos y la tabla ` +
+        `solo cuenta ${deMas.enLaTabla}; sobra(n) ${deMas.deMas} y hay que mirarlo a mano`,
     );
   }
 
