@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-14T04:45:15.655Z",
+  "actualizado": "2026-10-15T09:25:03.708Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -173,6 +173,23 @@
           "fecha": "2026-09-26",
           "partidos": [
             {
+              "local": "C.D. ATHLETIC CLUB JIMENA",
+              "visitante": "C.D. SAN BERNARDO",
+              "codLocal": "309618",
+              "codVisitante": "44810826",
+              "fecha": "2026-09-25",
+              "hora": "18:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Jimena De La Frontera",
+              "campo": "ANDRES SARRIAS",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3096",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709882&cod_acta=2709882",
+              "jugado": false
+            },
+            {
               "local": "A.D. TARAGUILLA",
               "visitante": "Descansa",
               "codLocal": null,
@@ -255,23 +272,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3575",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709884&cod_acta=2709884",
-              "jugado": false
-            },
-            {
-              "local": "C.D. ATHLETIC CLUB JIMENA",
-              "visitante": "C.D. SAN BERNARDO",
-              "codLocal": "309618",
-              "codVisitante": "44810826",
-              "fecha": "2026-09-25",
-              "hora": "18:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Jimena De La Frontera",
-              "campo": "ANDRES SARRIAS",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3096",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709882&cod_acta=2709882",
               "jugado": false
             },
             {
@@ -459,20 +459,20 @@
           "fecha": "2026-10-10",
           "partidos": [
             {
-              "local": "C.D. S.M. MIRADOR \"B\"",
-              "visitante": "U.D. TESORILLO C.D.",
-              "codLocal": "38866701",
-              "codVisitante": "307218",
-              "fecha": "2026-10-09",
-              "hora": "18:30",
+              "local": "C.D. ATHLETIC CLUB JIMENA",
+              "visitante": "C.D. BALON LINENSE C.F.",
+              "codLocal": null,
+              "codVisitante": null,
+              "fecha": "2026-10-10",
+              "hora": null,
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
-              "localidad": "Algeciras",
-              "campo": "Sergio Martín",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2019422",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709898&cod_acta=2709898",
+              "localidad": null,
+              "campo": null,
+              "superficie": null,
+              "codCampo": null,
+              "urlActa": null,
               "jugado": false
             },
             {
@@ -490,6 +490,23 @@
               "superficie": null,
               "codCampo": null,
               "urlActa": null,
+              "jugado": false
+            },
+            {
+              "local": "C.D. S.M. MIRADOR \"B\"",
+              "visitante": "U.D. TESORILLO C.D.",
+              "codLocal": "38866701",
+              "codVisitante": "307218",
+              "fecha": "2026-10-09",
+              "hora": "18:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Algeciras",
+              "campo": "Sergio Martín",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2019422",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709898&cod_acta=2709898",
               "jugado": false
             },
             {
@@ -666,7 +683,7 @@
               "campo": "ALBERTO UMBRIA",
               "superficie": "Hierba Artificial",
               "codCampo": "3079",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709907",
               "jugado": false
             },
             {
@@ -683,7 +700,7 @@
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709904",
               "jugado": false
             },
             {
@@ -700,7 +717,7 @@
               "campo": "SAN ENRIQUE",
               "superficie": "Hierba Natural",
               "codCampo": "2020864",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709908",
               "jugado": false
             },
             {
@@ -717,7 +734,7 @@
               "campo": "MUNICIPAL LA ERA",
               "superficie": "Hierba Artificial",
               "codCampo": "3072",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709906",
               "jugado": false
             }
           ]
