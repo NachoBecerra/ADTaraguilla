@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-14T04:44:45.570Z",
+  "actualizado": "2026-10-15T07:27:09.775Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-19",
           "partidos": [
+            {
+              "local": "A.D. TARAGUILLA",
+              "visitante": "MONITORES FUTBOL DE ALGECIRAS",
+              "codLocal": "307521",
+              "codVisitante": "5847346",
+              "fecha": "2026-09-19",
+              "hora": "16:30",
+              "golesLocal": 1,
+              "golesVisitante": 1,
+              "origen": "clasificacion",
+              "localidad": "San Roque",
+              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3236",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649942&cod_acta=2649942",
+              "jugado": true
+            },
             {
               "local": "ARCOS C.F.",
               "visitante": "C.D. AD PUEBLO NUEVO LA GRANJA",
@@ -113,23 +130,6 @@
               "codCampo": "3051",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649941&cod_acta=2649941",
               "jugado": false
-            },
-            {
-              "local": "A.D. TARAGUILLA",
-              "visitante": "MONITORES FUTBOL DE ALGECIRAS",
-              "codLocal": "307521",
-              "codVisitante": "5847346",
-              "fecha": "2026-09-19",
-              "hora": "16:30",
-              "golesLocal": 1,
-              "golesVisitante": 1,
-              "origen": "clasificacion",
-              "localidad": "San Roque",
-              "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649942&cod_acta=2649942",
-              "jugado": true
             },
             {
               "local": "U.D. LA ALGAIDA",
@@ -316,6 +316,23 @@
           "fecha": "2026-10-03",
           "partidos": [
             {
+              "local": "ARCOS C.F.",
+              "visitante": "C.D. LA SALLE",
+              "codLocal": "48486015",
+              "codVisitante": "309525",
+              "fecha": "2026-10-03",
+              "hora": "12:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Arcos De La Frontera",
+              "campo": "ANTONIO CAMACHO",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3171",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649962&cod_acta=2649962",
+              "jugado": false
+            },
+            {
               "local": "ATLETICO ZABAL",
               "visitante": "C.F. SAN JOSE OBRERO",
               "codLocal": "326326",
@@ -398,23 +415,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "10877769",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649956&cod_acta=2649956",
-              "jugado": false
-            },
-            {
-              "local": "ARCOS C.F.",
-              "visitante": "C.D. LA SALLE",
-              "codLocal": "48486015",
-              "codVisitante": "309525",
-              "fecha": "2026-10-03",
-              "hora": "12:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Arcos De La Frontera",
-              "campo": "ANTONIO CAMACHO",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3171",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649962&cod_acta=2649962",
               "jugado": false
             },
             {
@@ -606,8 +606,8 @@
               "visitante": "MONITORES FUTBOL DE ALGECIRAS",
               "codLocal": "28636857",
               "codVisitante": "5847346",
-              "fecha": "2026-10-17",
-              "hora": null,
+              "fecha": "2026-10-15",
+              "hora": "19:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -615,7 +615,24 @@
               "campo": "PROVINCIA DE CADIZ",
               "superficie": "Hierba Artificial",
               "codCampo": "2017342",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649972",
+              "jugado": false
+            },
+            {
+              "local": "U.D. LA ALGAIDA",
+              "visitante": "C.D. LA SALLE",
+              "codLocal": "2065225",
+              "codVisitante": "309525",
+              "fecha": "2026-10-16",
+              "hora": "17:15",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": null,
+              "campo": "Sanlúcar de Barrameda -Doro Stadium",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3104",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649977",
               "jugado": false
             },
             {
@@ -632,7 +649,7 @@
               "campo": "Chiclana De La Frontera.- Isabel la Catolica",
               "superficie": "Hierba Artificial",
               "codCampo": "10877769",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649973",
               "jugado": false
             },
             {
@@ -649,7 +666,7 @@
               "campo": "BURREÑOS",
               "superficie": "Hierba Artificial",
               "codCampo": "3459",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649974",
               "jugado": false
             },
             {
@@ -666,7 +683,7 @@
               "campo": "BAZAN CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3020",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649979",
               "jugado": false
             },
             {
@@ -700,7 +717,7 @@
               "campo": "VIRGEN DEL CARMEN (LA LINEA)",
               "superficie": "Hierba Artificial",
               "codCampo": "2069065",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649978",
               "jugado": false
             },
             {
@@ -717,24 +734,7 @@
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": null,
-              "jugado": false
-            },
-            {
-              "local": "U.D. LA ALGAIDA",
-              "visitante": "C.D. LA SALLE",
-              "codLocal": "2065225",
-              "codVisitante": "309525",
-              "fecha": "2026-10-18",
-              "hora": "11:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": null,
-              "campo": "Sanlúcar de Barrameda -Doro Stadium",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3104",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649977",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649976",
               "jugado": false
             }
           ]

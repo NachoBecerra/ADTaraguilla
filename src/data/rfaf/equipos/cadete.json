@@ -7,7 +7,7 @@
   "orden": 3,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-14T04:38:17.807Z",
+  "actualizado": "2026-10-15T07:26:44.940Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
   "competiciones": [
     {
@@ -278,7 +278,7 @@
               "campo": "MANUEL LEON MUNICIPAL (F11-F7)",
               "superficie": "Hierba Natural",
               "codCampo": "18654147",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694117",
               "jugado": false
             },
             {
@@ -295,7 +295,7 @@
               "campo": "ANTONIO REYES",
               "superficie": "Hierba Artificial",
               "codCampo": "3172",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694116",
               "jugado": false
             },
             {
@@ -312,7 +312,7 @@
               "campo": "MUNICIPAL LA ERA",
               "superficie": "Hierba Artificial",
               "codCampo": "3072",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694120",
               "jugado": false
             },
             {
@@ -329,7 +329,7 @@
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694119",
               "jugado": false
             },
             {

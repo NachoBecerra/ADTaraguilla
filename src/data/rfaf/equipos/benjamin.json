@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-14T04:44:33.150Z",
+  "actualizado": "2026-10-15T07:26:57.306Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-12",
           "partidos": [
+            {
+              "local": "BAHIA SAN FERNANDO C.D.",
+              "visitante": "C.D. LA SALLE",
+              "codLocal": "355720",
+              "codVisitante": "309522",
+              "fecha": "2026-09-12",
+              "hora": "17:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Fernando",
+              "campo": "BAZAN CAMPO MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3020",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663717",
+              "jugado": false
+            },
             {
               "local": "C.D. ISLA DE LEON FUTBOL BASE",
               "visitante": "A.D. LOS BURREÑOS",
@@ -95,23 +112,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3079",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663713",
-              "jugado": false
-            },
-            {
-              "local": "BAHIA SAN FERNANDO C.D.",
-              "visitante": "C.D. LA SALLE",
-              "codLocal": "355720",
-              "codVisitante": "309522",
-              "fecha": "2026-09-12",
-              "hora": "17:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Fernando",
-              "campo": "BAZAN CAMPO MUNICIPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3020",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663717",
               "jugado": false
             },
             {
@@ -316,6 +316,40 @@
           "fecha": "2026-09-26",
           "partidos": [
             {
+              "local": "BAHIA SAN FERNANDO C.D.",
+              "visitante": "C.D. S.M. MIRADOR",
+              "codLocal": "355720",
+              "codVisitante": "2026663",
+              "fecha": "2026-09-26",
+              "hora": "11:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Fernando",
+              "campo": "BAZAN CAMPO MUNICIPAL",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3020",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663733&cod_acta=2663733",
+              "jugado": false
+            },
+            {
+              "local": "C.D. ISLA DE LEON FUTBOL BASE",
+              "visitante": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
+              "codLocal": "331319",
+              "codVisitante": "344026",
+              "fecha": "2026-09-26",
+              "hora": "17:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Fernando",
+              "campo": "Bahia Sur ANEXO",
+              "superficie": "Hierba Artificial",
+              "codCampo": "19722540",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663727&cod_acta=2663727",
+              "jugado": false
+            },
+            {
               "local": "A.D. TARAGUILLA",
               "visitante": "C.D. SALESIANOS ALGECIRAS",
               "codLocal": "307530",
@@ -350,23 +384,6 @@
               "jugado": false
             },
             {
-              "local": "C.D. ISLA DE LEON FUTBOL BASE",
-              "visitante": "A.D. A.P.A. SANCTI PETRI FÚTBOL CHICLANA C.F.",
-              "codLocal": "331319",
-              "codVisitante": "344026",
-              "fecha": "2026-09-26",
-              "hora": "17:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Fernando",
-              "campo": "Bahia Sur ANEXO",
-              "superficie": "Hierba Artificial",
-              "codCampo": "19722540",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663727&cod_acta=2663727",
-              "jugado": false
-            },
-            {
               "local": "ATLETICO ZABAL",
               "visitante": "C.F. SAN JOSE OBRERO",
               "codLocal": "326327",
@@ -398,23 +415,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3051",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663728&cod_acta=2663728",
-              "jugado": false
-            },
-            {
-              "local": "BAHIA SAN FERNANDO C.D.",
-              "visitante": "C.D. S.M. MIRADOR",
-              "codLocal": "355720",
-              "codVisitante": "2026663",
-              "fecha": "2026-09-26",
-              "hora": "11:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Fernando",
-              "campo": "BAZAN CAMPO MUNICIPAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3020",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663733&cod_acta=2663733",
               "jugado": false
             },
             {
@@ -775,7 +775,7 @@
               "campo": "EL TROVADOR",
               "superficie": "Hierba Artificial",
               "codCampo": "3524",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663750",
               "jugado": false
             },
             {
@@ -793,23 +793,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "2019274",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663751",
-              "jugado": false
-            },
-            {
-              "local": "ARCOS C.F.",
-              "visitante": "ATLETICO ZABAL",
-              "codLocal": "48486018",
-              "codVisitante": "326327",
-              "fecha": "2026-10-17",
-              "hora": "11:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Arcos De La Frontera",
-              "campo": "EL SANTISCAL",
-              "superficie": "Hierba Artificial",
-              "codCampo": "7129883",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663757",
               "jugado": false
             },
             {
@@ -843,7 +826,24 @@
               "campo": "PACO GALLEGO",
               "superficie": "Hierba Artificial",
               "codCampo": "3095",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663755",
+              "jugado": false
+            },
+            {
+              "local": "ARCOS C.F.",
+              "visitante": "ATLETICO ZABAL",
+              "codLocal": "48486018",
+              "codVisitante": "326327",
+              "fecha": "2026-10-17",
+              "hora": "16:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Arcos De La Frontera",
+              "campo": "ANTONIO CAMACHO",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3171",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663757",
               "jugado": false
             },
             {

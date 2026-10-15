@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-14T04:37:40.098Z",
+  "actualizado": "2026-10-15T07:26:22.289Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-09-13",
           "partidos": [
+            {
+              "local": "ALGECIRAS C.F., S.A.D.",
+              "visitante": "C.D. ASOC. DVA. NERVION",
+              "codLocal": "300219",
+              "codVisitante": "118920",
+              "fecha": "2026-09-13",
+              "hora": "16:15",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Algeciras",
+              "campo": "Juan Gadiaga Pastores",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3559",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651386&cod_acta=2651386",
+              "jugado": false
+            },
             {
               "local": "LUCECOR F.S.",
               "visitante": "REAL BETIS BALOMPIE S.A.D.",
@@ -129,23 +146,6 @@
               "superficie": "Hierba Artificial",
               "codCampo": "2346925",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651385&cod_acta=2651385",
-              "jugado": false
-            },
-            {
-              "local": "ALGECIRAS C.F., S.A.D.",
-              "visitante": "C.D. ASOC. DVA. NERVION",
-              "codLocal": "300219",
-              "codVisitante": "118920",
-              "fecha": "2026-09-13",
-              "hora": "16:15",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Algeciras",
-              "campo": "Juan Gadiaga Pastores",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3559",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651386&cod_acta=2651386",
               "jugado": false
             },
             {
@@ -758,7 +758,7 @@
               "campo": "La Palma Polideportivo Municipal Nuevo",
               "superficie": "Hierba Artificial",
               "codCampo": "6903",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651422",
               "jugado": false
             },
             {
@@ -792,7 +792,7 @@
               "campo": "Juan Gadiaga Pastores",
               "superficie": "Hierba Artificial",
               "codCampo": "3559",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651426",
               "jugado": false
             },
             {
@@ -809,7 +809,7 @@
               "campo": "CIUDAD DVA. FRANCISCO MENDOZA.",
               "superficie": "Hierba Artificial",
               "codCampo": "2346925",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651427",
               "jugado": false
             },
             {
@@ -826,7 +826,7 @@
               "campo": "EL JUNCAL CAMPO MPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3611",
-              "urlActa": null,
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651421",
               "jugado": false
             },
             {
@@ -847,23 +847,6 @@
               "jugado": false
             },
             {
-              "local": "C.D. UNION DEPORTIVA ESPERANZA 2019",
-              "visitante": "SEVILLA F.C., S.A.D.",
-              "codLocal": "16393952",
-              "codVisitante": "100136",
-              "fecha": "2026-10-18",
-              "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": null,
-              "campo": "Jerez De La Frontera.- PICADUEÑAS",
-              "superficie": "Hierba Artificial",
-              "codCampo": "2070477",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651423",
-              "jugado": false
-            },
-            {
               "local": "C.D. ASOC. DVA. NERVION",
               "visitante": "SAN ROQUE BALOMPIE",
               "codLocal": "118920",
@@ -878,6 +861,23 @@
               "superficie": "Hierba Artificial",
               "codCampo": "2014352",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651424",
+              "jugado": false
+            },
+            {
+              "local": "C.D. UNION DEPORTIVA ESPERANZA 2019",
+              "visitante": "SEVILLA F.C., S.A.D.",
+              "codLocal": "16393952",
+              "codVisitante": "100136",
+              "fecha": "2026-10-18",
+              "hora": "19:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": null,
+              "campo": "Jerez De La Frontera.- PICADUEÑAS",
+              "superficie": "Hierba Artificial",
+              "codCampo": "2070477",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651423",
               "jugado": false
             }
           ]
@@ -1031,6 +1031,23 @@
           "fecha": "2026-11-01",
           "partidos": [
             {
+              "local": "REAL BETIS BALOMPIE S.A.D.",
+              "visitante": "SEVILLA F.C., S.A.D.",
+              "codLocal": null,
+              "codVisitante": null,
+              "fecha": "2026-11-01",
+              "hora": null,
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": null,
+              "campo": null,
+              "superficie": null,
+              "codCampo": null,
+              "urlActa": null,
+              "jugado": false
+            },
+            {
               "local": "SIEMPRE ALEGRES C.D.",
               "visitante": "C.D. MOSQUITO",
               "codLocal": null,
@@ -1084,23 +1101,6 @@
             {
               "local": "C.D. ASOC. DVA. NERVION",
               "visitante": "A.D. TARAGUILLA",
-              "codLocal": null,
-              "codVisitante": null,
-              "fecha": "2026-11-01",
-              "hora": null,
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": null,
-              "campo": null,
-              "superficie": null,
-              "codCampo": null,
-              "urlActa": null,
-              "jugado": false
-            },
-            {
-              "local": "REAL BETIS BALOMPIE S.A.D.",
-              "visitante": "SEVILLA F.C., S.A.D.",
               "codLocal": null,
               "codVisitante": null,
               "fecha": "2026-11-01",
