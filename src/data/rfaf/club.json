@@ -1,5 +1,5 @@
 {
-  "generado": "2026-10-16T20:21:52.548Z",
+  "generado": "2026-10-16T21:42:35.999Z",
   "temporada": "2026-2027",
   "club": {
     "codigo": "3075",
@@ -97,7 +97,7 @@
       "codigo": "307528",
       "orden": 5,
       "enCompeticion": true,
-      "actualizado": "2026-10-16T20:21:52.530Z",
+      "actualizado": "2026-10-16T21:42:35.978Z",
       "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307528",
       "competiciones": [
         {
@@ -105,7 +105,7 @@
           "grupo": "Grupo 5º",
           "estado": "activa",
           "puntos": 3,
-          "posicion": 4,
+          "posicion": 5,
           "equiposEnGrupo": 11,
           "jornadas": 22
         }
