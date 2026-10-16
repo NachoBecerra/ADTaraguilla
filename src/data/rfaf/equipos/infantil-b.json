@@ -7,7 +7,7 @@
   "orden": 5,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-16T14:24:35.835Z",
+  "actualizado": "2026-10-16T15:20:40.269Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307528",
   "competiciones": [
     {
@@ -156,23 +156,6 @@
               "jugado": false
             },
             {
-              "local": "C.D. GUADIARO",
-              "visitante": "LOS CORTIJILLOS A.D.",
-              "codLocal": "307319",
-              "codVisitante": "24078390",
-              "fecha": "2026-10-09",
-              "hora": "17:30",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "San Roque",
-              "campo": "SAN ENRIQUE",
-              "superficie": "Hierba Natural",
-              "codCampo": "2020864",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2696399",
-              "jugado": false
-            },
-            {
               "local": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
               "visitante": "C.D. ATHLETIC CLUB JIMENA",
               "codLocal": "33451843",
@@ -187,6 +170,23 @@
               "superficie": "Hierba Artificial",
               "codCampo": "3349",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2696404&cod_acta=2696404",
+              "jugado": false
+            },
+            {
+              "local": "C.D. GUADIARO",
+              "visitante": "LOS CORTIJILLOS A.D.",
+              "codLocal": "307319",
+              "codVisitante": "24078390",
+              "fecha": "2026-10-09",
+              "hora": "17:30",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "San Roque",
+              "campo": "SAN ENRIQUE",
+              "superficie": "Hierba Natural",
+              "codCampo": "2020864",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2696399",
               "jugado": false
             },
             {
