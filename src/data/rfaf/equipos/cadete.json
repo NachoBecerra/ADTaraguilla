@@ -7,7 +7,7 @@
   "orden": 3,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-15T07:26:44.940Z",
+  "actualizado": "2026-10-16T08:30:11.055Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
   "competiciones": [
     {
@@ -29,6 +29,23 @@
           "nombre": "Jornada 1",
           "fecha": "2026-10-03",
           "partidos": [
+            {
+              "local": "C.D. ATHLETIC CLUB JIMENA",
+              "visitante": "ATLETICO ZABAL",
+              "codLocal": "309616",
+              "codVisitante": "326324",
+              "fecha": "2026-10-03",
+              "hora": "19:00",
+              "golesLocal": null,
+              "golesVisitante": null,
+              "origen": null,
+              "localidad": "Jimena De La Frontera",
+              "campo": "ANDRES SARRIAS",
+              "superficie": "Hierba Artificial",
+              "codCampo": "3096",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2694105&cod_acta=2694105",
+              "jugado": false
+            },
             {
               "local": "C.D. BALON LINENSE C.F. \"A\"",
               "visitante": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
@@ -113,23 +130,6 @@
               "codCampo": "3236",
               "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2694106&cod_acta=2694106",
               "jugado": true
-            },
-            {
-              "local": "C.D. ATHLETIC CLUB JIMENA",
-              "visitante": "ATLETICO ZABAL",
-              "codLocal": "309616",
-              "codVisitante": "326324",
-              "fecha": "2026-10-03",
-              "hora": "19:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
-              "localidad": "Jimena De La Frontera",
-              "campo": "ANDRES SARRIAS",
-              "superficie": "Hierba Artificial",
-              "codCampo": "3096",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2694105&cod_acta=2694105",
-              "jugado": false
             }
           ]
         },
