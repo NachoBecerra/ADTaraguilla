@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T13:42:36.096Z",
+  "actualizado": "2026-10-17T14:19:50.339Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -683,7 +683,7 @@
               "campo": "MUNICIPAL LA ERA",
               "superficie": "Hierba Artificial",
               "codCampo": "3072",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709906",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709906&cod_acta=2709906",
               "jugado": false
             },
             {
@@ -4444,13 +4444,14 @@
           "ganados": 3,
           "empatados": 0,
           "perdidos": 2,
-          "golesFavor": 22,
-          "golesContra": 22,
+          "golesFavor": 25,
+          "golesContra": 25,
           "racha": [
             "G",
             "P",
             "G",
-            "P"
+            "P",
+            "G"
           ]
         },
         {
@@ -4540,12 +4541,13 @@
           "ganados": 1,
           "empatados": 0,
           "perdidos": 4,
-          "golesFavor": 13,
-          "golesContra": 28,
+          "golesFavor": 16,
+          "golesContra": 31,
           "racha": [
             "P",
             "P",
             "G",
+            "P",
             "P"
           ]
         },

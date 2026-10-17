@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T13:42:06.090Z",
+  "actualizado": "2026-10-17T14:19:35.129Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -792,7 +792,7 @@
               "campo": "JUAN SIMON",
               "superficie": "Hierba Artificial",
               "codCampo": "3050",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663754",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663754&cod_acta=2663754",
               "jugado": false
             },
             {
