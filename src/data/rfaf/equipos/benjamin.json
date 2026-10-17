@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T14:19:35.129Z",
+  "actualizado": "2026-10-17T14:42:19.556Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -4438,20 +4438,20 @@
         {
           "posicion": 7,
           "equipo": "A.D. MARIANISTAS C.D.",
-          "puntos": 9,
-          "jugados": 5,
+          "puntos": 12,
+          "jugados": 6,
           "jugadosCasa": 3,
-          "jugadosFuera": 2,
-          "ganados": 3,
+          "jugadosFuera": 3,
+          "ganados": 4,
           "empatados": 0,
           "perdidos": 2,
-          "golesFavor": 19,
-          "golesContra": 14,
+          "golesFavor": 21,
+          "golesContra": 15,
           "racha": [
-            "P",
             "G",
             "G",
             "P",
+            "G",
             "G"
           ]
         },
@@ -4538,20 +4538,20 @@
           "posicion": 12,
           "equipo": "C.F. SAN JOSE OBRERO",
           "puntos": 4,
-          "jugados": 5,
-          "jugadosCasa": 2,
+          "jugados": 6,
+          "jugadosCasa": 3,
           "jugadosFuera": 3,
           "ganados": 1,
           "empatados": 1,
-          "perdidos": 3,
-          "golesFavor": 15,
-          "golesContra": 21,
+          "perdidos": 4,
+          "golesFavor": 16,
+          "golesContra": 23,
           "racha": [
             "P",
             "P",
-            "P",
             "G",
-            "E"
+            "E",
+            "P"
           ]
         },
         {
