@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T11:41:59.691Z",
+  "actualizado": "2026-10-17T12:48:43.678Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -649,7 +649,7 @@
               "campo": "BAZAN CAMPO MUNICIPAL",
               "superficie": "Hierba Artificial",
               "codCampo": "3020",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649979",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649979&cod_acta=2649979",
               "jugado": false
             },
             {
@@ -658,7 +658,7 @@
               "codLocal": "343216",
               "codVisitante": "329822",
               "fecha": "2026-10-17",
-              "hora": "12:15",
+              "hora": "14:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -666,7 +666,7 @@
               "campo": "SANTA FE",
               "superficie": "Hierba Artificial",
               "codCampo": "3051",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649975",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649975&cod_acta=2649975",
               "jugado": false
             },
             {
@@ -4391,6 +4391,7 @@
             "P",
             "G",
             "G",
+            "G",
             "G"
           ]
         },
@@ -4448,6 +4449,7 @@
             "G",
             "P",
             "P",
+            "G",
             "G"
           ]
         },
@@ -4487,6 +4489,7 @@
             "P",
             "G",
             "G",
+            "P",
             "P"
           ]
         },
@@ -4606,6 +4609,7 @@
             "P",
             "P",
             "E",
+            "P",
             "P"
           ]
         },

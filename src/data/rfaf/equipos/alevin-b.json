@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T11:42:14.134Z",
+  "actualizado": "2026-10-17T12:48:58.777Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -624,7 +624,7 @@
               "codLocal": "44810826",
               "codVisitante": "48525745",
               "fecha": "2026-10-17",
-              "hora": "12:00",
+              "hora": "13:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -632,7 +632,7 @@
               "campo": "ALBERTO UMBRIA",
               "superficie": "Hierba Artificial",
               "codCampo": "3079",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709907",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709907&cod_acta=2709907",
               "jugado": false
             },
             {
@@ -641,7 +641,7 @@
               "codLocal": "28567666",
               "codVisitante": "309618",
               "fecha": "2026-10-17",
-              "hora": "13:00",
+              "hora": "14:25",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -649,7 +649,7 @@
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709904",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709904&cod_acta=2709904",
               "jugado": false
             },
             {
@@ -666,7 +666,7 @@
               "campo": "SAN ENRIQUE",
               "superficie": "Hierba Natural",
               "codCampo": "2020864",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709908",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709908&cod_acta=2709908",
               "jugado": false
             },
             {
@@ -4339,16 +4339,17 @@
         {
           "posicion": 2,
           "equipo": "A.D. TARAGUILLA",
-          "puntos": 9,
-          "jugados": 3,
-          "jugadosCasa": 1,
+          "puntos": 12,
+          "jugados": 4,
+          "jugadosCasa": 2,
           "jugadosFuera": 2,
-          "ganados": 3,
+          "ganados": 4,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 25,
-          "golesContra": 8,
+          "golesFavor": 31,
+          "golesContra": 9,
           "racha": [
+            "G",
             "G",
             "G",
             "G"
@@ -4357,16 +4358,17 @@
         {
           "posicion": 3,
           "equipo": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL \"A\"",
-          "puntos": 9,
-          "jugados": 3,
+          "puntos": 12,
+          "jugados": 4,
           "jugadosCasa": 2,
-          "jugadosFuera": 1,
-          "ganados": 3,
+          "jugadosFuera": 2,
+          "ganados": 4,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 17,
-          "golesContra": 7,
+          "golesFavor": 20,
+          "golesContra": 8,
           "racha": [
+            "G",
             "G",
             "G",
             "G"
@@ -4402,7 +4404,7 @@
           "ganados": 3,
           "empatados": 0,
           "perdidos": 2,
-          "golesFavor": 26,
+          "golesFavor": 32,
           "golesContra": 12,
           "racha": [
             "P",
@@ -4453,25 +4455,6 @@
         },
         {
           "posicion": 8,
-          "equipo": "C.D. GUADIARO",
-          "puntos": 6,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 23,
-          "golesContra": 17,
-          "racha": [
-            "G",
-            "P",
-            "P",
-            "G"
-          ]
-        },
-        {
-          "posicion": 9,
           "equipo": "U.D. TESORILLO C.D.",
           "puntos": 6,
           "jugados": 4,
@@ -4484,6 +4467,26 @@
           "golesContra": 21,
           "racha": [
             "G",
+            "P",
+            "G",
+            "P"
+          ]
+        },
+        {
+          "posicion": 9,
+          "equipo": "C.D. GUADIARO",
+          "puntos": 6,
+          "jugados": 5,
+          "jugadosCasa": 3,
+          "jugadosFuera": 2,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 3,
+          "golesFavor": 24,
+          "golesContra": 20,
+          "racha": [
+            "G",
+            "P",
             "P",
             "G",
             "P"
@@ -4550,19 +4553,20 @@
           "posicion": 13,
           "equipo": "C.D. ATHLETIC CLUB JIMENA",
           "puntos": 3,
-          "jugados": 4,
+          "jugados": 5,
           "jugadosCasa": 2,
-          "jugadosFuera": 2,
+          "jugadosFuera": 3,
           "ganados": 1,
           "empatados": 0,
-          "perdidos": 3,
-          "golesFavor": 14,
-          "golesContra": 35,
+          "perdidos": 4,
+          "golesFavor": 15,
+          "golesContra": 41,
           "racha": [
             "P",
             "P",
             "P",
-            "G"
+            "G",
+            "P"
           ]
         },
         {
@@ -4576,7 +4580,7 @@
           "empatados": 0,
           "perdidos": 5,
           "golesFavor": 8,
-          "golesContra": 24,
+          "golesContra": 30,
           "racha": [
             "P",
             "P",
