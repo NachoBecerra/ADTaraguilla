@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T07:21:04.513Z",
+  "actualizado": "2026-10-17T12:27:14.829Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -750,16 +750,16 @@
               "codLocal": "2064503",
               "codVisitante": "307520",
               "fecha": "2026-10-17",
-              "hora": "12:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "hora": "13:15",
+              "golesLocal": 1,
+              "golesVisitante": 1,
+              "origen": "clasificacion",
               "localidad": null,
               "campo": "La Palma Polideportivo Municipal Nuevo",
               "superficie": "Hierba Artificial",
               "codCampo": "6903",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651422",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651422&cod_acta=2651422",
+              "jugado": true
             },
             {
               "local": "REAL BETIS BALOMPIE S.A.D.",
@@ -792,7 +792,7 @@
               "campo": "Juan Gadiaga Pastores",
               "superficie": "Hierba Artificial",
               "codCampo": "3559",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651426",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651426&cod_acta=2651426",
               "jugado": false
             },
             {
@@ -4318,6 +4318,26 @@
       "clasificacion": [
         {
           "posicion": 1,
+          "equipo": "SENECA C.F.",
+          "puntos": 16,
+          "jugados": 6,
+          "jugadosCasa": 3,
+          "jugadosFuera": 3,
+          "ganados": 5,
+          "empatados": 1,
+          "perdidos": 0,
+          "golesFavor": 14,
+          "golesContra": 6,
+          "racha": [
+            "E",
+            "G",
+            "G",
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 2,
           "equipo": "SAN ROQUE BALOMPIE",
           "puntos": 13,
           "jugados": 5,
@@ -4333,26 +4353,6 @@
             "G",
             "G",
             "E",
-            "G"
-          ]
-        },
-        {
-          "posicion": 2,
-          "equipo": "SENECA C.F.",
-          "puntos": 13,
-          "jugados": 5,
-          "jugadosCasa": 3,
-          "jugadosFuera": 2,
-          "ganados": 4,
-          "empatados": 1,
-          "perdidos": 0,
-          "golesFavor": 12,
-          "golesContra": 6,
-          "racha": [
-            "G",
-            "E",
-            "G",
-            "G",
             "G"
           ]
         },
@@ -4418,6 +4418,26 @@
         },
         {
           "posicion": 6,
+          "equipo": "A.D. TARAGUILLA",
+          "puntos": 10,
+          "jugados": 6,
+          "jugadosCasa": 3,
+          "jugadosFuera": 3,
+          "ganados": 3,
+          "empatados": 1,
+          "perdidos": 2,
+          "golesFavor": 18,
+          "golesContra": 7,
+          "racha": [
+            "G",
+            "G",
+            "P",
+            "G",
+            "E"
+          ]
+        },
+        {
+          "posicion": 7,
           "equipo": "SEVILLA F.C., S.A.D.",
           "puntos": 10,
           "jugados": 5,
@@ -4431,26 +4451,6 @@
           "racha": [
             "G",
             "E",
-            "G",
-            "P",
-            "G"
-          ]
-        },
-        {
-          "posicion": 7,
-          "equipo": "A.D. TARAGUILLA",
-          "puntos": 9,
-          "jugados": 5,
-          "jugadosCasa": 3,
-          "jugadosFuera": 2,
-          "ganados": 3,
-          "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 17,
-          "golesContra": 6,
-          "racha": [
-            "P",
-            "G",
             "G",
             "P",
             "G"
@@ -4578,41 +4578,41 @@
         },
         {
           "posicion": 14,
-          "equipo": "ALGECIRAS C.F., S.A.D.",
+          "equipo": "SIEMPRE ALEGRES C.D.",
           "puntos": 3,
-          "jugados": 5,
-          "jugadosCasa": 2,
+          "jugados": 6,
+          "jugadosCasa": 3,
           "jugadosFuera": 3,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 4,
-          "golesFavor": 7,
-          "golesContra": 19,
+          "ganados": 0,
+          "empatados": 3,
+          "perdidos": 3,
+          "golesFavor": 4,
+          "golesContra": 14,
           "racha": [
-            "G",
+            "E",
             "P",
+            "E",
             "P",
-            "P",
-            "P"
+            "E"
           ]
         },
         {
           "posicion": 15,
-          "equipo": "SIEMPRE ALEGRES C.D.",
-          "puntos": 2,
-          "jugados": 5,
-          "jugadosCasa": 2,
+          "equipo": "ALGECIRAS C.F., S.A.D.",
+          "puntos": 3,
+          "jugados": 6,
+          "jugadosCasa": 3,
           "jugadosFuera": 3,
-          "ganados": 0,
-          "empatados": 2,
-          "perdidos": 3,
-          "golesFavor": 3,
-          "golesContra": 13,
+          "ganados": 1,
+          "empatados": 0,
+          "perdidos": 5,
+          "golesFavor": 7,
+          "golesContra": 21,
           "racha": [
             "P",
-            "E",
             "P",
-            "E",
+            "P",
+            "P",
             "P"
           ]
         },
