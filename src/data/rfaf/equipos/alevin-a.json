@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T15:42:19.647Z",
+  "actualizado": "2026-10-17T17:17:29.965Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -693,15 +693,15 @@
               "codVisitante": "303122",
               "fecha": "2026-10-17",
               "hora": "17:00",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "golesLocal": 6,
+              "golesVisitante": 1,
+              "origen": "clasificacion",
               "localidad": "San Roque",
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649976",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649976&cod_acta=2649976",
+              "jugado": true
             },
             {
               "local": "U.D. LA ALGAIDA",
@@ -4359,17 +4359,18 @@
         {
           "posicion": 3,
           "equipo": "A.D. TARAGUILLA",
-          "puntos": 10,
-          "jugados": 4,
-          "jugadosCasa": 2,
+          "puntos": 13,
+          "jugados": 5,
+          "jugadosCasa": 3,
           "jugadosFuera": 2,
-          "ganados": 3,
+          "ganados": 4,
           "empatados": 1,
           "perdidos": 0,
-          "golesFavor": 17,
-          "golesContra": 5,
+          "golesFavor": 23,
+          "golesContra": 6,
           "racha": [
             "E",
+            "G",
             "G",
             "G",
             "G"
@@ -4417,25 +4418,6 @@
         },
         {
           "posicion": 6,
-          "equipo": "C.F. SAN JOSE OBRERO",
-          "puntos": 9,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 3,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 15,
-          "golesContra": 12,
-          "racha": [
-            "G",
-            "G",
-            "P",
-            "G"
-          ]
-        },
-        {
-          "posicion": 7,
           "equipo": "ARCOS C.F.",
           "puntos": 9,
           "jugados": 5,
@@ -4455,7 +4437,7 @@
           ]
         },
         {
-          "posicion": 8,
+          "posicion": 7,
           "equipo": "C.D. DIVINA PASTORA SANLUQUEÑA",
           "puntos": 9,
           "jugados": 5,
@@ -4472,6 +4454,26 @@
             "P",
             "G",
             "G"
+          ]
+        },
+        {
+          "posicion": 8,
+          "equipo": "C.F. SAN JOSE OBRERO",
+          "puntos": 9,
+          "jugados": 5,
+          "jugadosCasa": 2,
+          "jugadosFuera": 3,
+          "ganados": 3,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 16,
+          "golesContra": 18,
+          "racha": [
+            "G",
+            "G",
+            "P",
+            "G",
+            "P"
           ]
         },
         {
