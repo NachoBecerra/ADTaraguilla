@@ -7,7 +7,7 @@
   "orden": 3,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T18:23:24.191Z",
+  "actualizado": "2026-10-17T18:44:14.773Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
   "competiciones": [
     {
@@ -321,16 +321,16 @@
               "codLocal": "307517",
               "codVisitante": "45125368",
               "fecha": "2026-10-17",
-              "hora": "19:43",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "hora": "18:30",
+              "golesLocal": 9,
+              "golesVisitante": 0,
+              "origen": "clasificacion",
               "localidad": "San Roque",
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694119&cod_acta=2694119",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2694119&cod_acta=2694119",
+              "jugado": true
             },
             {
               "local": "HISTORICO RECREATIVO LINENSE CLUB DE FÚTBOL",
@@ -2469,7 +2469,7 @@
           "ganados": 2,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 21,
+          "golesFavor": 25,
           "golesContra": 5,
           "racha": [
             "P",
@@ -2613,7 +2613,7 @@
           "empatados": 1,
           "perdidos": 2,
           "golesFavor": 1,
-          "golesContra": 10,
+          "golesContra": 14,
           "racha": [
             "P",
             "E",
