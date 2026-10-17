@@ -7,7 +7,7 @@
   "orden": 3,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T15:42:04.345Z",
+  "actualizado": "2026-10-17T18:23:24.191Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307517",
   "competiciones": [
     {
@@ -321,7 +321,7 @@
               "codLocal": "307517",
               "codVisitante": "45125368",
               "fecha": "2026-10-17",
-              "hora": "18:30",
+              "hora": "19:43",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -329,7 +329,7 @@
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694119",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2694119&cod_acta=2694119",
               "jugado": false
             },
             {
@@ -2461,6 +2461,24 @@
         },
         {
           "posicion": 3,
+          "equipo": "A.D. TARAGUILLA",
+          "puntos": 6,
+          "jugados": 3,
+          "jugadosCasa": 2,
+          "jugadosFuera": 1,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 21,
+          "golesContra": 5,
+          "racha": [
+            "P",
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 4,
           "equipo": "U.D. TESORILLO C.D.",
           "puntos": 6,
           "jugados": 3,
@@ -2473,23 +2491,6 @@
           "golesContra": 5,
           "racha": [
             "G",
-            "P",
-            "G"
-          ]
-        },
-        {
-          "posicion": 4,
-          "equipo": "A.D. TARAGUILLA",
-          "puntos": 3,
-          "jugados": 2,
-          "jugadosCasa": 1,
-          "jugadosFuera": 1,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 16,
-          "golesContra": 5,
-          "racha": [
             "P",
             "G"
           ]
@@ -2605,17 +2606,18 @@
           "posicion": 11,
           "equipo": "C.D. EPRO CAMPO DE GIBRALTAR",
           "puntos": 1,
-          "jugados": 2,
+          "jugados": 3,
           "jugadosCasa": 1,
-          "jugadosFuera": 1,
+          "jugadosFuera": 2,
           "ganados": 0,
           "empatados": 1,
-          "perdidos": 1,
+          "perdidos": 2,
           "golesFavor": 1,
-          "golesContra": 5,
+          "golesContra": 10,
           "racha": [
             "P",
-            "E"
+            "E",
+            "P"
           ]
         },
         {
