@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T11:18:42.415Z",
+  "actualizado": "2026-10-17T11:41:59.691Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -615,7 +615,7 @@
               "campo": "Chiclana De La Frontera.- Isabel la Catolica",
               "superficie": "Hierba Artificial",
               "codCampo": "10877769",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649973",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649973&cod_acta=2649973",
               "jugado": false
             },
             {
@@ -632,7 +632,7 @@
               "campo": "BURREÑOS",
               "superficie": "Hierba Artificial",
               "codCampo": "3459",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649974",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649974&cod_acta=2649974",
               "jugado": false
             },
             {
@@ -4377,6 +4377,25 @@
         },
         {
           "posicion": 4,
+          "equipo": "A.D. MARIANISTAS C.D.",
+          "puntos": 12,
+          "jugados": 5,
+          "jugadosCasa": 3,
+          "jugadosFuera": 2,
+          "ganados": 4,
+          "empatados": 0,
+          "perdidos": 1,
+          "golesFavor": 23,
+          "golesContra": 5,
+          "racha": [
+            "P",
+            "G",
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 5,
           "equipo": "ATLETICO ZABAL",
           "puntos": 9,
           "jugados": 4,
@@ -4392,25 +4411,6 @@
             "G",
             "G",
             "P"
-          ]
-        },
-        {
-          "posicion": 5,
-          "equipo": "A.D. MARIANISTAS C.D.",
-          "puntos": 9,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 3,
-          "empatados": 0,
-          "perdidos": 1,
-          "golesFavor": 16,
-          "golesContra": 4,
-          "racha": [
-            "P",
-            "G",
-            "G",
-            "G"
           ]
         },
         {
@@ -4435,15 +4435,15 @@
         {
           "posicion": 7,
           "equipo": "ARCOS C.F.",
-          "puntos": 6,
-          "jugados": 4,
+          "puntos": 9,
+          "jugados": 5,
           "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 2,
+          "jugadosFuera": 3,
+          "ganados": 3,
           "empatados": 0,
           "perdidos": 2,
-          "golesFavor": 17,
-          "golesContra": 13,
+          "golesFavor": 20,
+          "golesContra": 15,
           "racha": [
             "G",
             "P",
@@ -4453,75 +4453,78 @@
         },
         {
           "posicion": 8,
-          "equipo": "C.D. SAN FERNANDO 1940",
-          "puntos": 6,
-          "jugados": 4,
+          "equipo": "C.D. DIVINA PASTORA SANLUQUEÑA",
+          "puntos": 9,
+          "jugados": 5,
           "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 2,
+          "jugadosFuera": 3,
+          "ganados": 3,
           "empatados": 0,
           "perdidos": 2,
-          "golesFavor": 13,
-          "golesContra": 11,
+          "golesFavor": 14,
+          "golesContra": 13,
           "racha": [
+            "G",
+            "P",
             "P",
             "G",
-            "G",
-            "P"
+            "G"
           ]
         },
         {
           "posicion": 9,
-          "equipo": "A.D. LOS BURREÑOS",
+          "equipo": "C.D. SAN FERNANDO 1940",
           "puntos": 6,
-          "jugados": 4,
-          "jugadosCasa": 2,
+          "jugados": 5,
+          "jugadosCasa": 3,
           "jugadosFuera": 2,
           "ganados": 2,
           "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 9,
-          "golesContra": 10,
+          "perdidos": 3,
+          "golesFavor": 15,
+          "golesContra": 14,
           "racha": [
-            "G",
             "P",
+            "G",
             "G",
             "P"
           ]
         },
         {
           "posicion": 10,
-          "equipo": "C.D. DIVINA PASTORA SANLUQUEÑA",
+          "equipo": "A.D. LOS BURREÑOS",
           "puntos": 6,
-          "jugados": 4,
-          "jugadosCasa": 2,
+          "jugados": 5,
+          "jugadosCasa": 3,
           "jugadosFuera": 2,
           "ganados": 2,
           "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 10,
-          "golesContra": 13,
+          "perdidos": 3,
+          "golesFavor": 12,
+          "golesContra": 14,
           "racha": [
             "G",
             "P",
+            "G",
             "P",
-            "G"
+            "P"
           ]
         },
         {
           "posicion": 11,
-          "equipo": "SPORTING CHICLANA C.D.",
-          "puntos": 3,
-          "jugados": 4,
+          "equipo": "C.D. SAN ROQUE",
+          "puntos": 6,
+          "jugados": 5,
           "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 1,
+          "jugadosFuera": 3,
+          "ganados": 2,
           "empatados": 0,
           "perdidos": 3,
-          "golesFavor": 8,
-          "golesContra": 15,
+          "golesFavor": 12,
+          "golesContra": 22,
           "racha": [
             "P",
+            "G",
             "P",
             "P",
             "G"
@@ -4529,44 +4532,26 @@
         },
         {
           "posicion": 12,
-          "equipo": "C.D. SAN ROQUE",
+          "equipo": "SPORTING CHICLANA C.D.",
           "puntos": 3,
-          "jugados": 4,
-          "jugadosCasa": 2,
+          "jugados": 5,
+          "jugadosCasa": 3,
           "jugadosFuera": 2,
           "ganados": 1,
           "empatados": 0,
-          "perdidos": 3,
+          "perdidos": 4,
           "golesFavor": 8,
           "golesContra": 19,
           "racha": [
             "P",
-            "G",
             "P",
+            "P",
+            "G",
             "P"
           ]
         },
         {
           "posicion": 13,
-          "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
-          "puntos": 1,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 0,
-          "empatados": 1,
-          "perdidos": 3,
-          "golesFavor": 6,
-          "golesContra": 22,
-          "racha": [
-            "P",
-            "P",
-            "E",
-            "P"
-          ]
-        },
-        {
-          "posicion": 14,
           "equipo": "U.D. LA ALGAIDA",
           "puntos": 1,
           "jugados": 5,
@@ -4586,7 +4571,7 @@
           ]
         },
         {
-          "posicion": 15,
+          "posicion": 14,
           "equipo": "MONITORES FUTBOL DE ALGECIRAS",
           "puntos": 1,
           "jugados": 5,
@@ -4602,6 +4587,25 @@
             "P",
             "P",
             "P",
+            "P"
+          ]
+        },
+        {
+          "posicion": 15,
+          "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
+          "puntos": 1,
+          "jugados": 5,
+          "jugadosCasa": 2,
+          "jugadosFuera": 3,
+          "ganados": 0,
+          "empatados": 1,
+          "perdidos": 4,
+          "golesFavor": 7,
+          "golesContra": 29,
+          "racha": [
+            "P",
+            "P",
+            "E",
             "P"
           ]
         },
