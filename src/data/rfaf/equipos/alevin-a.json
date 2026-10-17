@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T15:19:11.044Z",
+  "actualizado": "2026-10-17T15:42:19.647Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -675,7 +675,7 @@
               "codLocal": "326326",
               "codVisitante": "308320",
               "fecha": "2026-10-17",
-              "hora": "16:41",
+              "hora": "16:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -683,7 +683,7 @@
               "campo": "VIRGEN DEL CARMEN (LA LINEA)",
               "superficie": "Hierba Artificial",
               "codCampo": "2069065",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649978&cod_acta=2649978",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2649978&cod_acta=2649978",
               "jugado": false
             },
             {
@@ -4405,8 +4405,8 @@
           "ganados": 4,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 26,
-          "golesContra": 7,
+          "golesFavor": 28,
+          "golesContra": 8,
           "racha": [
             "G",
             "G",
@@ -4624,8 +4624,8 @@
           "ganados": 0,
           "empatados": 0,
           "perdidos": 5,
-          "golesFavor": 4,
-          "golesContra": 25,
+          "golesFavor": 5,
+          "golesContra": 27,
           "racha": [
             "P",
             "P",
