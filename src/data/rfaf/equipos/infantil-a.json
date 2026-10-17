@@ -7,7 +7,7 @@
   "orden": 4,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T12:48:13.930Z",
+  "actualizado": "2026-10-17T13:18:39.888Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307520",
   "competiciones": [
     {
@@ -809,7 +809,7 @@
               "campo": "CIUDAD DVA. FRANCISCO MENDOZA.",
               "superficie": "Hierba Artificial",
               "codCampo": "2346925",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2651427",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2651427&cod_acta=2651427",
               "jugado": false
             },
             {
@@ -4349,11 +4349,11 @@
           "golesFavor": 19,
           "golesContra": 7,
           "racha": [
-            "G",
             "P",
             "G",
             "G",
-            "G"
+            "G",
+            "E"
           ]
         },
         {
@@ -4390,10 +4390,10 @@
           "golesContra": 5,
           "racha": [
             "G",
-            "G",
             "P",
             "G",
-            "G"
+            "G",
+            "E"
           ]
         },
         {

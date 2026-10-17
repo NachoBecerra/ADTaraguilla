@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T12:48:28.863Z",
+  "actualizado": "2026-10-17T13:18:54.988Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -802,15 +802,15 @@
               "codVisitante": "307530",
               "fecha": "2026-10-17",
               "hora": "12:45",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "golesLocal": 1,
+              "golesVisitante": 2,
+              "origen": "clasificacion",
               "localidad": "Puerto Real",
               "campo": "PACO GALLEGO",
               "superficie": "Hierba Artificial",
               "codCampo": "3095",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663755",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663755&cod_acta=2663755",
+              "jugado": true
             },
             {
               "local": "ARCOS C.F.",
@@ -4319,21 +4319,21 @@
         {
           "posicion": 1,
           "equipo": "A.D. TARAGUILLA",
-          "puntos": 13,
-          "jugados": 5,
+          "puntos": 16,
+          "jugados": 6,
           "jugadosCasa": 3,
-          "jugadosFuera": 2,
-          "ganados": 4,
+          "jugadosFuera": 3,
+          "ganados": 5,
           "empatados": 1,
           "perdidos": 0,
-          "golesFavor": 29,
-          "golesContra": 8,
+          "golesFavor": 31,
+          "golesContra": 9,
           "racha": [
             "G",
             "G",
             "G",
-            "G",
-            "E"
+            "E",
+            "G"
           ]
         },
         {
@@ -4358,26 +4358,6 @@
         },
         {
           "posicion": 3,
-          "equipo": "C.D. LA SALLE",
-          "puntos": 13,
-          "jugados": 5,
-          "jugadosCasa": 2,
-          "jugadosFuera": 3,
-          "ganados": 4,
-          "empatados": 1,
-          "perdidos": 0,
-          "golesFavor": 12,
-          "golesContra": 5,
-          "racha": [
-            "G",
-            "G",
-            "G",
-            "E",
-            "G"
-          ]
-        },
-        {
-          "posicion": 4,
           "equipo": "ATLETICO ZABAL",
           "puntos": 10,
           "jugados": 4,
@@ -4396,7 +4376,7 @@
           ]
         },
         {
-          "posicion": 5,
+          "posicion": 4,
           "equipo": "BAHIA SAN FERNANDO C.D.",
           "puntos": 13,
           "jugados": 6,
@@ -4413,6 +4393,26 @@
             "G",
             "G",
             "G"
+          ]
+        },
+        {
+          "posicion": 5,
+          "equipo": "C.D. LA SALLE",
+          "puntos": 13,
+          "jugados": 6,
+          "jugadosCasa": 3,
+          "jugadosFuera": 3,
+          "ganados": 4,
+          "empatados": 1,
+          "perdidos": 1,
+          "golesFavor": 13,
+          "golesContra": 7,
+          "racha": [
+            "G",
+            "G",
+            "E",
+            "G",
+            "P"
           ]
         },
         {
