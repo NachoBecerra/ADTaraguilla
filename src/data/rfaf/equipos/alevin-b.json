@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T12:48:58.777Z",
+  "actualizado": "2026-10-17T13:42:36.096Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -624,7 +624,7 @@
               "codLocal": "44810826",
               "codVisitante": "48525745",
               "fecha": "2026-10-17",
-              "hora": "13:00",
+              "hora": "12:00",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -632,7 +632,7 @@
               "campo": "ALBERTO UMBRIA",
               "superficie": "Hierba Artificial",
               "codCampo": "3079",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709907&cod_acta=2709907",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709907&cod_acta=2709907",
               "jugado": false
             },
             {
@@ -641,16 +641,16 @@
               "codLocal": "28567666",
               "codVisitante": "309618",
               "fecha": "2026-10-17",
-              "hora": "14:25",
-              "golesLocal": null,
-              "golesVisitante": null,
-              "origen": null,
+              "hora": "13:00",
+              "golesLocal": 11,
+              "golesVisitante": 1,
+              "origen": "clasificacion",
               "localidad": "San Roque",
               "campo": "HERMANOS GARCIA MOTA CAMPO FÚTBOL",
               "superficie": "Hierba Artificial",
               "codCampo": "3236",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2709904&cod_acta=2709904",
-              "jugado": false
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2709904&cod_acta=2709904",
+              "jugado": true
             },
             {
               "local": "C.D. GUADIARO",
@@ -4346,7 +4346,7 @@
           "ganados": 4,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 31,
+          "golesFavor": 36,
           "golesContra": 9,
           "racha": [
             "G",
@@ -4365,8 +4365,8 @@
           "ganados": 4,
           "empatados": 0,
           "perdidos": 0,
-          "golesFavor": 20,
-          "golesContra": 8,
+          "golesFavor": 23,
+          "golesContra": 9,
           "racha": [
             "G",
             "G",
@@ -4436,6 +4436,25 @@
         },
         {
           "posicion": 7,
+          "equipo": "U.D. TESORILLO C.D.",
+          "puntos": 9,
+          "jugados": 5,
+          "jugadosCasa": 3,
+          "jugadosFuera": 2,
+          "ganados": 3,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 22,
+          "golesContra": 22,
+          "racha": [
+            "G",
+            "P",
+            "G",
+            "P"
+          ]
+        },
+        {
+          "posicion": 8,
           "equipo": "C.D. JUVENTUD PALMONES C.F.",
           "puntos": 7,
           "jugados": 4,
@@ -4454,25 +4473,6 @@
           ]
         },
         {
-          "posicion": 8,
-          "equipo": "U.D. TESORILLO C.D.",
-          "puntos": 6,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 19,
-          "golesContra": 21,
-          "racha": [
-            "G",
-            "P",
-            "G",
-            "P"
-          ]
-        },
-        {
           "posicion": 9,
           "equipo": "C.D. GUADIARO",
           "puntos": 6,
@@ -4482,8 +4482,8 @@
           "ganados": 2,
           "empatados": 0,
           "perdidos": 3,
-          "golesFavor": 24,
-          "golesContra": 20,
+          "golesFavor": 25,
+          "golesContra": 23,
           "racha": [
             "G",
             "P",
@@ -4534,14 +4534,14 @@
           "posicion": 12,
           "equipo": "PUENTE MAYORGA RVO \"A\"",
           "puntos": 3,
-          "jugados": 4,
+          "jugados": 5,
           "jugadosCasa": 2,
-          "jugadosFuera": 2,
+          "jugadosFuera": 3,
           "ganados": 1,
           "empatados": 0,
-          "perdidos": 3,
-          "golesFavor": 12,
-          "golesContra": 25,
+          "perdidos": 4,
+          "golesFavor": 13,
+          "golesContra": 28,
           "racha": [
             "P",
             "P",
@@ -4560,7 +4560,7 @@
           "empatados": 0,
           "perdidos": 4,
           "golesFavor": 15,
-          "golesContra": 41,
+          "golesContra": 46,
           "racha": [
             "P",
             "P",
