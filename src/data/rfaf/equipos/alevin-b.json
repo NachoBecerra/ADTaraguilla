@@ -7,7 +7,7 @@
   "orden": 7,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T10:42:30.912Z",
+  "actualizado": "2026-10-17T11:18:57.451Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=28567666",
   "competiciones": [
     {
@@ -4394,6 +4394,26 @@
         },
         {
           "posicion": 5,
+          "equipo": "C.D. SAN BERNARDO",
+          "puntos": 9,
+          "jugados": 5,
+          "jugadosCasa": 3,
+          "jugadosFuera": 2,
+          "ganados": 3,
+          "empatados": 0,
+          "perdidos": 2,
+          "golesFavor": 26,
+          "golesContra": 12,
+          "racha": [
+            "P",
+            "G",
+            "P",
+            "G",
+            "G"
+          ]
+        },
+        {
+          "posicion": 6,
           "equipo": "ATLETICO ZABAL \"A\"",
           "puntos": 9,
           "jugados": 5,
@@ -4413,7 +4433,7 @@
           ]
         },
         {
-          "posicion": 6,
+          "posicion": 7,
           "equipo": "C.D. JUVENTUD PALMONES C.F.",
           "puntos": 7,
           "jugados": 4,
@@ -4429,25 +4449,6 @@
             "G",
             "P",
             "E"
-          ]
-        },
-        {
-          "posicion": 7,
-          "equipo": "C.D. SAN BERNARDO",
-          "puntos": 6,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 2,
-          "empatados": 0,
-          "perdidos": 2,
-          "golesFavor": 23,
-          "golesContra": 11,
-          "racha": [
-            "P",
-            "G",
-            "P",
-            "G"
           ]
         },
         {
@@ -4568,15 +4569,16 @@
           "posicion": 14,
           "equipo": "U.D. LOS BARRIOS \"B\"",
           "puntos": 0,
-          "jugados": 4,
+          "jugados": 5,
           "jugadosCasa": 2,
-          "jugadosFuera": 2,
+          "jugadosFuera": 3,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 4,
-          "golesFavor": 7,
-          "golesContra": 21,
+          "perdidos": 5,
+          "golesFavor": 8,
+          "golesContra": 24,
           "racha": [
+            "P",
             "P",
             "P",
             "P",
