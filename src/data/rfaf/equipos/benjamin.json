@@ -7,7 +7,7 @@
   "orden": 8,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T14:42:19.556Z",
+  "actualizado": "2026-10-17T15:18:41.204Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307530",
   "competiciones": [
     {
@@ -826,7 +826,7 @@
               "campo": "ANTONIO CAMACHO",
               "superficie": "Hierba Artificial",
               "codCampo": "3171",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2663757",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=2663757&cod_acta=2663757",
               "jugado": false
             },
             {
@@ -4358,25 +4358,6 @@
         },
         {
           "posicion": 3,
-          "equipo": "ATLETICO ZABAL",
-          "puntos": 10,
-          "jugados": 4,
-          "jugadosCasa": 2,
-          "jugadosFuera": 2,
-          "ganados": 3,
-          "empatados": 1,
-          "perdidos": 0,
-          "golesFavor": 16,
-          "golesContra": 7,
-          "racha": [
-            "G",
-            "G",
-            "G",
-            "E"
-          ]
-        },
-        {
-          "posicion": 4,
           "equipo": "BAHIA SAN FERNANDO C.D.",
           "puntos": 13,
           "jugados": 6,
@@ -4396,7 +4377,7 @@
           ]
         },
         {
-          "posicion": 5,
+          "posicion": 4,
           "equipo": "C.D. LA SALLE",
           "puntos": 13,
           "jugados": 6,
@@ -4416,7 +4397,7 @@
           ]
         },
         {
-          "posicion": 6,
+          "posicion": 5,
           "equipo": "C.D. ESTRELLA PORTUENSE F.C.",
           "puntos": 12,
           "jugados": 6,
@@ -4433,6 +4414,26 @@
             "P",
             "G",
             "G"
+          ]
+        },
+        {
+          "posicion": 6,
+          "equipo": "ATLETICO ZABAL",
+          "puntos": 10,
+          "jugados": 5,
+          "jugadosCasa": 2,
+          "jugadosFuera": 3,
+          "ganados": 3,
+          "empatados": 1,
+          "perdidos": 1,
+          "golesFavor": 18,
+          "golesContra": 10,
+          "racha": [
+            "G",
+            "G",
+            "G",
+            "E",
+            "P"
           ]
         },
         {
@@ -4516,6 +4517,26 @@
         },
         {
           "posicion": 11,
+          "equipo": "ARCOS C.F.",
+          "puntos": 6,
+          "jugados": 6,
+          "jugadosCasa": 3,
+          "jugadosFuera": 3,
+          "ganados": 2,
+          "empatados": 0,
+          "perdidos": 4,
+          "golesFavor": 15,
+          "golesContra": 23,
+          "racha": [
+            "G",
+            "P",
+            "P",
+            "P",
+            "G"
+          ]
+        },
+        {
+          "posicion": 12,
           "equipo": "C.D. AD PUEBLO NUEVO LA GRANJA",
           "puntos": 6,
           "jugados": 6,
@@ -4535,7 +4556,7 @@
           ]
         },
         {
-          "posicion": 12,
+          "posicion": 13,
           "equipo": "C.F. SAN JOSE OBRERO",
           "puntos": 4,
           "jugados": 6,
@@ -4551,26 +4572,6 @@
             "P",
             "G",
             "E",
-            "P"
-          ]
-        },
-        {
-          "posicion": 13,
-          "equipo": "ARCOS C.F.",
-          "puntos": 3,
-          "jugados": 5,
-          "jugadosCasa": 2,
-          "jugadosFuera": 3,
-          "ganados": 1,
-          "empatados": 0,
-          "perdidos": 4,
-          "golesFavor": 12,
-          "golesContra": 21,
-          "racha": [
-            "P",
-            "G",
-            "P",
-            "P",
             "P"
           ]
         },

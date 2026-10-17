@@ -7,7 +7,7 @@
   "orden": 6,
   "enCompeticion": true,
   "temporada": "2026-2027",
-  "actualizado": "2026-10-17T13:42:21.271Z",
+  "actualizado": "2026-10-17T15:19:11.044Z",
   "urlRfaf": "https://www.rfaf.es/pnfg/NPcd/NFG_VisEquipos?cod_primaria=1000119&Codigo_Equipo=307521",
   "competiciones": [
     {
@@ -675,7 +675,7 @@
               "codLocal": "326326",
               "codVisitante": "308320",
               "fecha": "2026-10-17",
-              "hora": "16:00",
+              "hora": "16:41",
               "golesLocal": null,
               "golesVisitante": null,
               "origen": null,
@@ -683,7 +683,7 @@
               "campo": "VIRGEN DEL CARMEN (LA LINEA)",
               "superficie": "Hierba Artificial",
               "codCampo": "2069065",
-              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649978",
+              "urlActa": "https://www.rfaf.es/pnfg/NPcd/NFG_CmpPrevio?cod_primaria=1000120&CodActa=2649978&cod_acta=2649978",
               "jugado": false
             },
             {
@@ -4398,20 +4398,21 @@
         {
           "posicion": 5,
           "equipo": "ATLETICO ZABAL",
-          "puntos": 9,
-          "jugados": 4,
-          "jugadosCasa": 2,
+          "puntos": 12,
+          "jugados": 5,
+          "jugadosCasa": 3,
           "jugadosFuera": 2,
-          "ganados": 3,
+          "ganados": 4,
           "empatados": 0,
           "perdidos": 1,
-          "golesFavor": 22,
+          "golesFavor": 26,
           "golesContra": 7,
           "racha": [
             "G",
             "G",
             "G",
-            "P"
+            "P",
+            "G"
           ]
         },
         {
@@ -4617,15 +4618,16 @@
           "posicion": 16,
           "equipo": "TARIFA U.D.",
           "puntos": 0,
-          "jugados": 4,
+          "jugados": 5,
           "jugadosCasa": 2,
-          "jugadosFuera": 2,
+          "jugadosFuera": 3,
           "ganados": 0,
           "empatados": 0,
-          "perdidos": 4,
+          "perdidos": 5,
           "golesFavor": 4,
-          "golesContra": 21,
+          "golesContra": 25,
           "racha": [
+            "P",
             "P",
             "P",
             "P",
